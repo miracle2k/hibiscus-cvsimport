@@ -19,7 +19,6 @@ import de.willuhn.util.I18N;
 
 /**
  * Dialog für die Eingabe eines Passwortes beim Laden des Passports.
- * TODO: Text schoen machen
  */
 public class PassportLoadDialog extends PasswordDialog {
 
@@ -67,7 +66,10 @@ public class PassportLoadDialog extends PasswordDialog {
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2005-02-06 19:03:36  willuhn
+ * Revision 1.4  2005-02-07 22:06:40  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.3  2005/02/06 19:03:36  willuhn
  * *** empty log message ***
  *
  * Revision 1.2  2005/02/01 17:15:37  willuhn
