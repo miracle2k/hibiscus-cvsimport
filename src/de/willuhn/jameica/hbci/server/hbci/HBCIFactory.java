@@ -91,8 +91,10 @@ public class HBCIFactory {
 		// holen uns den Implementor des Passports.
 		String clazz = pt.getImplementor();
 
-		// instanziieren ihn und liefern ihn zurueck.
-		return (Passport) Settings.getDatabase().createObject(Application.getClassLoader().load(clazz),passport.getID());
+		// instanziieren ihn mit passendem Typ
+		passport = (Passport) Settings.getDatabase().createObject(Application.getClassLoader().load(clazz),passport.getID());
+		passport.setPassportType(pt);
+		return passport;
 	}
 
 
@@ -207,7 +209,14 @@ public class HBCIFactory {
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2004-04-24 19:04:51  willuhn
+ * Revision 1.4  2004-04-27 22:23:56  willuhn
+ * @N configurierbarer CTAPI-Treiber
+ * @C konkrete Passport-Klassen (DDV) nach de.willuhn.jameica.passports verschoben
+ * @N verschiedenste Passport-Typen sind jetzt voellig frei erweiterbar (auch die Config-Dialoge)
+ * @N crc32 Checksumme in Umsatz
+ * @N neue Felder im Umsatz
+ *
+ * Revision 1.3  2004/04/24 19:04:51  willuhn
  * @N Ueberweisung.execute works!! ;)
  *
  * Revision 1.2  2004/04/22 23:46:50  willuhn

@@ -145,7 +145,22 @@ public class HBCI extends AbstractPlugin
    */
   public boolean update(double oldVersion)
   {
-    return true;
+		// Mal schauen, ob fuer diesen Versionswechsel ein Update-Script vorliegt.
+		File update = new File(getResources().getPath() + "/sql/update_" + oldVersion + "-" + getVersion() + ".sql");
+		if (!update.exists())
+			return true;
+
+		try
+		{
+			EmbeddedDatabase db = getResources().getDatabase();
+			db.executeSQLScript(update);
+			return true;
+		}
+		catch (Exception e)
+		{
+			Application.getLog().error("unable to execute update sql script " + update.getAbsolutePath(),e);
+			return false;
+		}
   }
 
   /**
@@ -160,7 +175,14 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
- * Revision 1.12  2004-04-04 18:30:23  willuhn
+ * Revision 1.13  2004-04-27 22:23:56  willuhn
+ * @N configurierbarer CTAPI-Treiber
+ * @C konkrete Passport-Klassen (DDV) nach de.willuhn.jameica.passports verschoben
+ * @N verschiedenste Passport-Typen sind jetzt voellig frei erweiterbar (auch die Config-Dialoge)
+ * @N crc32 Checksumme in Umsatz
+ * @N neue Felder im Umsatz
+ *
+ * Revision 1.12  2004/04/04 18:30:23  willuhn
  * *** empty log message ***
  *
  * Revision 1.11  2004/04/01 22:06:59  willuhn

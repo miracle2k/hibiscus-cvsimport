@@ -57,6 +57,19 @@ public class Converter {
 	{
 		Umsatz umsatz = (Umsatz) Settings.getDatabase().createObject(Umsatz.class,null);
 
+		umsatz.setArt(u.text);
+		umsatz.setCustomerRef(u.customerref);
+		umsatz.setPrimanota(u.primanota);
+
+		try {
+			umsatz.setSaldo(u.saldo.value.value);
+		}
+		catch (NullPointerException e)
+		{
+			// Falls u.saldo null liefert
+			/* ignore */
+		}
+
 		// C(redit) = HABEN
 		// D(ebit)  = SOLL
 		if (u.cd.endsWith("C"))
@@ -155,7 +168,14 @@ public class Converter {
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2004-04-25 17:41:05  willuhn
+ * Revision 1.6  2004-04-27 22:23:56  willuhn
+ * @N configurierbarer CTAPI-Treiber
+ * @C konkrete Passport-Klassen (DDV) nach de.willuhn.jameica.passports verschoben
+ * @N verschiedenste Passport-Typen sind jetzt voellig frei erweiterbar (auch die Config-Dialoge)
+ * @N crc32 Checksumme in Umsatz
+ * @N neue Felder im Umsatz
+ *
+ * Revision 1.5  2004/04/25 17:41:05  willuhn
  * @D javadoc
  *
  * Revision 1.4  2004/04/22 23:46:50  willuhn
