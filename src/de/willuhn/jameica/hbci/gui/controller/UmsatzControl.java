@@ -16,7 +16,6 @@ import java.rmi.RemoteException;
 
 import org.eclipse.swt.widgets.TableItem;
 
-import de.willuhn.jameica.Application;
 import de.willuhn.jameica.PluginLoader;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.controller.AbstractControl;
@@ -35,6 +34,7 @@ import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Umsatz;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
+import de.willuhn.util.Logger;
 
 /**
  * Controller, der fuer die Umsatz-Liste eines Kontos zustaendig ist.
@@ -123,7 +123,7 @@ public class UmsatzControl extends AbstractControl {
   	}
   	catch (RemoteException e)
   	{
-  		Application.getLog().error("error while loading konto view",e);
+  		Logger.error("error while loading konto view",e);
 			GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Laden des Kontos"));
   	}
 
@@ -170,7 +170,7 @@ public class UmsatzControl extends AbstractControl {
 				}
 				catch (Throwable t)
 				{
-					Application.getLog().error("error while reading saldo",t);
+					Logger.error("error while reading saldo",t);
 					GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Abrufen der Umsätze."));
 				}
 			}
@@ -195,7 +195,7 @@ public class UmsatzControl extends AbstractControl {
 		}
 		catch (Exception e)
 		{
-			Application.getLog().error("error while deleting umsaetze",e);
+			Logger.error("error while deleting umsaetze",e);
 			GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Löschen der Umsätze"));
 			return;
 		}
@@ -217,7 +217,7 @@ public class UmsatzControl extends AbstractControl {
 				}
 				catch (Exception e)
 				{
-					Application.getLog().error("error while deleting umsaetze",e);
+					Logger.error("error while deleting umsaetze",e);
 					GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Löschen der Umsätze."));
 				}
 			}
@@ -230,7 +230,10 @@ public class UmsatzControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.13  2004-06-08 22:28:58  willuhn
+ * Revision 1.14  2004-06-30 20:58:28  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.13  2004/06/08 22:28:58  willuhn
  * *** empty log message ***
  *
  * Revision 1.12  2004/05/02 17:04:38  willuhn

@@ -26,11 +26,11 @@ import org.kapott.hbci.passport.HBCIPassport;
 import org.kapott.hbci.passport.INILetter;
 import org.kapott.hbci.status.HBCIMsgStatus;
 
-import de.willuhn.jameica.Application;
 import de.willuhn.jameica.PluginLoader;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.hbci.gui.DialogFactory;
 import de.willuhn.util.I18N;
+import de.willuhn.util.Logger;
 
 /**
  * Dieser HBCICallbackSWT implementiert den HBCICallbackSWT des HBCI-Systems und
@@ -55,28 +55,27 @@ public class HBCICallbackSWT extends AbstractHBCICallback
    */
   public void log(String msg, int level, Date date, StackTraceElement trace)
   {
-		de.willuhn.util.Logger l = Application.getLog();
   	switch (level)
   	{
   		case HBCIUtils.LOG_CHIPCARD:
 			case HBCIUtils.LOG_DEBUG:
-  			l.debug(msg);
+  			Logger.debug(msg);
   			break;
 
 			case HBCIUtils.LOG_INFO:
-				l.info(msg);
+				Logger.info(msg);
 				break;
 
 			case HBCIUtils.LOG_WARN:
-				l.warn(msg);
+				Logger.warn(msg);
 				break;
 
   		case HBCIUtils.LOG_ERR:
-  			l.error(msg + " " + trace.toString());
+				Logger.error(msg + " " + trace.toString());
 				break;
 
 			default:
-				l.warn(msg);
+				Logger.warn(msg);
   	}
   }
 
@@ -128,7 +127,7 @@ public class HBCICallbackSWT extends AbstractHBCICallback
 				case NEED_FILTER:
 				case NEED_USERID:
 				case NEED_CUSTOMERID:
-					Application.getLog().warn("NOT IMPLEMENTED: " + msg+ " ["+retData.toString()+"]: ");
+					Logger.warn("NOT IMPLEMENTED: " + msg+ " ["+retData.toString()+"]: ");
 					break;
 
 				case NEED_NEW_INST_KEYS_ACK:
@@ -241,7 +240,7 @@ public class HBCICallbackSWT extends AbstractHBCICallback
 
 	private void status(String text)
 	{
-		Application.getLog().debug(text);
+		Logger.debug(text);
 	}
 	
   /**
@@ -373,7 +372,10 @@ public class HBCICallbackSWT extends AbstractHBCICallback
 
 /**********************************************************************
  * $Log$
- * Revision 1.11  2004-05-05 21:27:13  willuhn
+ * Revision 1.12  2004-06-30 20:58:29  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.11  2004/05/05 21:27:13  willuhn
  * @N added TAN-Dialog
  *
  * Revision 1.10  2004/03/30 22:07:49  willuhn

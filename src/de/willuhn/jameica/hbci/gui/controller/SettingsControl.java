@@ -22,7 +22,6 @@ import org.eclipse.swt.widgets.Listener;
 
 import de.willuhn.datasource.pseudo.PseudoIterator;
 import de.willuhn.datasource.rmi.GenericObject;
-import de.willuhn.jameica.Application;
 import de.willuhn.jameica.PluginLoader;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.controller.AbstractControl;
@@ -38,6 +37,7 @@ import de.willuhn.jameica.hbci.PassportRegistry;
 import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.passport.Passport;
 import de.willuhn.util.I18N;
+import de.willuhn.util.Logger;
 
 /**
  * Controller fuer die Einstellungen.
@@ -257,7 +257,7 @@ public class SettingsControl extends AbstractControl {
 		}
 		catch (RemoteException e)
 		{
-			Application.getLog().error("error while storing settings",e);
+			Logger.error("error while storing settings",e);
 			GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Speichern der Einstellungen"));
 		}
   }
@@ -278,7 +278,7 @@ public class SettingsControl extends AbstractControl {
 		}
 		catch (Exception e)
 		{
-			Application.getLog().error("error while getting data from yes/no dialog",e);
+			Logger.error("error while getting data from yes/no dialog",e);
 			return;
 		}
 		Settings.setCheckSum(null);
@@ -302,7 +302,7 @@ public class SettingsControl extends AbstractControl {
 		}
 		catch (Exception e)
 		{
-			Application.getLog().error("error while opening passport",e);
+			Logger.error("error while opening passport",e);
 			GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Laden des Sicherheitsmediums"));
 		}
 	}
@@ -339,7 +339,10 @@ public class SettingsControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.25  2004-06-18 19:47:31  willuhn
+ * Revision 1.26  2004-06-30 20:58:28  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.25  2004/06/18 19:47:31  willuhn
  * *** empty log message ***
  *
  * Revision 1.24  2004/06/17 22:06:55  willuhn

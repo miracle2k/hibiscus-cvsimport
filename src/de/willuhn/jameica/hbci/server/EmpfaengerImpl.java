@@ -18,11 +18,11 @@ import org.kapott.hbci.manager.HBCIUtils;
 
 import de.willuhn.datasource.db.AbstractDBObject;
 import de.willuhn.datasource.rmi.DBIterator;
-import de.willuhn.jameica.Application;
 import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.rmi.Empfaenger;
 import de.willuhn.jameica.hbci.rmi.Ueberweisung;
 import de.willuhn.util.ApplicationException;
+import de.willuhn.util.Logger;
 
 /**
  */
@@ -76,7 +76,7 @@ public class EmpfaengerImpl extends AbstractDBObject implements Empfaenger {
 		}
 		catch (RemoteException e)
 		{
-			Application.getLog().error("error while checking empfaenger",e);
+			Logger.error("error while checking empfaenger",e);
 			throw new ApplicationException("Fehler bei der Prüfung des Empfängers");
 		}
   }
@@ -152,7 +152,10 @@ public class EmpfaengerImpl extends AbstractDBObject implements Empfaenger {
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2004-06-17 00:14:10  willuhn
+ * Revision 1.5  2004-06-30 20:58:29  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.4  2004/06/17 00:14:10  willuhn
  * @N GenericObject, GenericIterator
  *
  * Revision 1.3  2004/04/05 23:28:46  willuhn

@@ -21,9 +21,9 @@ import org.eclipse.swt.graphics.RGB;
 
 import sun.misc.BASE64Encoder;
 import de.willuhn.datasource.rmi.DBService;
-import de.willuhn.jameica.Application;
 import de.willuhn.jameica.PluginLoader;
 import de.willuhn.jameica.gui.GUI;
+import de.willuhn.util.Logger;
 
 /**
  * Verwaltet die Einstellungen des Plugins.
@@ -53,8 +53,14 @@ public class Settings
   {
     if (db != null)
       return db;
-    db = PluginLoader.getPlugin(HBCI.class).getResources().getDatabase().getDBService();
-    return db;
+		try {
+			db = PluginLoader.getPlugin(HBCI.class).getResources().getDatabase().getDBService();
+			return db;
+		}
+		catch (Exception e)
+		{
+			throw new RemoteException("unable to open/create database",e);
+		}
   }
 
 	/**
@@ -316,14 +322,14 @@ public class Settings
     }
     catch (NoSuchAlgorithmException nsae)
     {
-      Application.getLog().warn("algorithm SHA1 not found, trying MD5");
+      Logger.warn("algorithm SHA1 not found, trying MD5");
       try {
         md = MessageDigest.getInstance("MD5");
         hashed = md.digest(getWorkPath().getBytes());
       }
       catch (NoSuchAlgorithmException nsae2)
       {
-        Application.getLog().error("no such algorithm SHA1/MD5",nsae2);
+        Logger.error("no such algorithm SHA1/MD5",nsae2);
         hashed = getWorkPath().getBytes();
       }
     }
@@ -335,7 +341,10 @@ public class Settings
 
 /*********************************************************************
  * $Log$
- * Revision 1.15  2004-06-10 20:56:33  willuhn
+ * Revision 1.16  2004-06-30 20:58:29  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.15  2004/06/10 20:56:33  willuhn
  * @D javadoc comments fixed
  *
  * Revision 1.14  2004/05/25 23:23:18  willuhn

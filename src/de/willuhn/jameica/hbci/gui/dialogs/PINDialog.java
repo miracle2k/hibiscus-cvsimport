@@ -16,13 +16,13 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import sun.misc.BASE64Encoder;
-import de.willuhn.jameica.Application;
 import de.willuhn.jameica.PluginLoader;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.dialogs.PasswordDialog;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.util.I18N;
+import de.willuhn.util.Logger;
 
 /**
  * Dialog für die PIN-Eingabe.
@@ -73,7 +73,7 @@ public class PINDialog extends PasswordDialog {
 			}
 			catch (NoSuchAlgorithmException e)
 			{
-				Application.getLog().error("hash algorithm not found",e);
+				Logger.error("hash algorithm not found",e);
 				GUI.getStatusBar().setErrorText(i18n.tr("Prüfsumme konnte nicht ermittelt werden. Option wurde deaktiviert."));
 				Settings.setCheckPin(false);
 				Settings.setCheckSum(null);
@@ -88,7 +88,7 @@ public class PINDialog extends PasswordDialog {
 			}
 			catch (NoSuchAlgorithmException e)
 			{
-				Application.getLog().error("hash algorithm not found",e);
+				Logger.error("hash algorithm not found",e);
 				GUI.getStatusBar().setErrorText(i18n.tr("Prüfsumme konnte nicht verglichen werden. Option wurde deaktiviert."));
 				Settings.setCheckPin(false);
 				Settings.setCheckSum(null);
@@ -145,7 +145,10 @@ public class PINDialog extends PasswordDialog {
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2004-03-30 22:07:50  willuhn
+ * Revision 1.5  2004-06-30 20:58:29  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.4  2004/03/30 22:07:50  willuhn
  * *** empty log message ***
  *
  * Revision 1.3  2004/03/03 22:26:41  willuhn

@@ -14,7 +14,6 @@ package de.willuhn.jameica.hbci.gui.views;
 
 import java.rmi.RemoteException;
 
-import de.willuhn.jameica.Application;
 import de.willuhn.jameica.PluginLoader;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.util.ButtonArea;
@@ -24,6 +23,7 @@ import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.gui.controller.EmpfaengerControl;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
+import de.willuhn.util.Logger;
 
 /**
  * Empfaenger bearbeiten.
@@ -51,7 +51,7 @@ public class EmpfaengerNeu extends AbstractView {
 		}
 		catch (RemoteException e)
 		{
-			Application.getLog().error("error while reading konto",e);
+			Logger.error("error while reading konto",e);
 			GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Lesen der Empfängerdaten."));
 		}
 
@@ -75,7 +75,10 @@ public class EmpfaengerNeu extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2004-04-12 19:15:31  willuhn
+ * Revision 1.5  2004-06-30 20:58:28  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.4  2004/04/12 19:15:31  willuhn
  * @C refactoring
  *
  * Revision 1.3  2004/03/30 22:07:49  willuhn

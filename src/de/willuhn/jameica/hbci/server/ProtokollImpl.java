@@ -16,13 +16,13 @@ import java.rmi.RemoteException;
 import java.util.Date;
 
 import de.willuhn.datasource.db.AbstractDBObject;
-import de.willuhn.jameica.Application;
 import de.willuhn.jameica.PluginLoader;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Protokoll;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
+import de.willuhn.util.Logger;
 
 /**
  * Implementierung der HBCI-Protokollierung pro Konto.
@@ -78,7 +78,7 @@ public class ProtokollImpl extends AbstractDBObject implements Protokoll {
 		}
 		catch (RemoteException e)
 		{
-			Application.getLog().error("error while insert check",e);
+			Logger.error("error while insert check",e);
 			throw new ApplicationException(i18n.tr("Fehler beim Speichern des Umsatz-Typs."));
 		}
 		// beim Insert fuegen wir das Datum ein. Somit muss
@@ -164,7 +164,10 @@ public class ProtokollImpl extends AbstractDBObject implements Protokoll {
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2004-06-17 00:14:10  willuhn
+ * Revision 1.3  2004-06-30 20:58:29  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.2  2004/06/17 00:14:10  willuhn
  * @N GenericObject, GenericIterator
  *
  * Revision 1.1  2004/05/25 23:23:17  willuhn
