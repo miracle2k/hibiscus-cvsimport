@@ -66,7 +66,7 @@ public abstract class AbstractHBCIJob implements HBCIJob {
 		while (e2.hasMoreElements())
 		{
 			String name = (String) e2.nextElement();
-			org.kapott.hbci.structures.Konto konto = (org.kapott.hbci.structures.Konto) params.get(name);
+			org.kapott.hbci.structures.Konto konto = (org.kapott.hbci.structures.Konto) kontoParams.get(name);
 			job.setParam(name,konto);
 		}
 
@@ -134,7 +134,10 @@ public abstract class AbstractHBCIJob implements HBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2004-04-22 23:46:50  willuhn
+ * Revision 1.3  2004-04-24 19:04:51  willuhn
+ * @N Ueberweisung.execute works!! ;)
+ *
+ * Revision 1.2  2004/04/22 23:46:50  willuhn
  * @N UeberweisungJob
  *
  * Revision 1.1  2004/04/19 22:05:51  willuhn

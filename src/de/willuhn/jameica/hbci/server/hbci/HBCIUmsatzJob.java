@@ -39,6 +39,15 @@ public class HBCIUmsatzJob extends AbstractHBCIJob {
   public HBCIUmsatzJob(Konto konto)
 	{
 		super(konto);
+
+		try {
+			setJobParam("my",Converter.JameicaKonto2HBCIKonto(konto));
+		}
+		catch (RemoteException e)
+		{
+			throw new RuntimeException("Fehler beim Setzen des Kontos");
+		}
+
 		i18n = PluginLoader.getPlugin(HBCI.class).getResources().getI18N();
 	}
 
@@ -84,7 +93,10 @@ public class HBCIUmsatzJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2004-04-19 22:05:51  willuhn
+ * Revision 1.2  2004-04-24 19:04:51  willuhn
+ * @N Ueberweisung.execute works!! ;)
+ *
+ * Revision 1.1  2004/04/19 22:05:51  willuhn
  * @C HBCIJobs refactored
  *
  **********************************************************************/

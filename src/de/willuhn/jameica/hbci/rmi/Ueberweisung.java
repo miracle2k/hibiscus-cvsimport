@@ -149,13 +149,30 @@ public interface Ueberweisung extends DBObject {
    * @throws ApplicationException
    */
   public void execute() throws RemoteException, ApplicationException;
+  
+  /**
+   * Dupliziert die Ueberweisung.
+   * @return eine neue Ueberweisung mit den Eigenschaften dieser.
+   * @throws RemoteException
+   */
+  public Ueberweisung duplicate() throws RemoteException;
+  
+  /**
+   * Prueft, ob die Ueberweisung ueberfaellig ist.
+   * @return true, wenn sie ueberfaellig ist.
+   * @throws RemoteException
+   */
+  public boolean ueberfaellig() throws RemoteException;
 	
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2004-04-05 23:28:45  willuhn
+ * Revision 1.6  2004-04-24 19:04:51  willuhn
+ * @N Ueberweisung.execute works!! ;)
+ *
+ * Revision 1.5  2004/04/05 23:28:45  willuhn
  * *** empty log message ***
  *
  * Revision 1.4  2004/03/06 18:25:10  willuhn

@@ -108,7 +108,7 @@ public class UeberweisungImpl
 				throw new ApplicationException("Bitten geben Sie als weiteren Verwendungszweck maximal 35 Zeichen an");
 
 			if (getTermin() == null)
-				throw new ApplicationException("Bitte geben Sie einen Termin an, zu dem die Überweisung ausgeführt werden soll.");
+				setTermin(new Date());
   	}
   	catch (RemoteException e)
   	{
@@ -328,12 +328,43 @@ public class UeberweisungImpl
 		setField("empfaenger_name",name);
   }
 
+  /**
+   * @see de.willuhn.jameica.hbci.rmi.Ueberweisung#duplicate()
+   */
+  public Ueberweisung duplicate() throws RemoteException {
+    Ueberweisung u = (Ueberweisung) Settings.getDatabase().createObject(Ueberweisung.class,null);
+    u.setBetrag(getBetrag());
+    u.setEmpfaengerBlz(getEmpfaengerBlz());
+    u.setEmpfaengerKonto(getEmpfaengerKonto());
+    u.setEmpfaengerName(getEmpfaengerName());
+    u.setKonto(getKonto());
+    u.setTermin(getTermin());
+    u.setZweck(getZweck());
+    u.setZweck2(getZweck2());
+    return u;
+  }
+
+  /**
+   * @see de.willuhn.jameica.hbci.rmi.Ueberweisung#ueberfaellig()
+   */
+  public boolean ueberfaellig() throws RemoteException {
+    if (ausgefuehrt())
+    	return false;
+    Date termin = getTermin();
+    if (termin == null)
+    	return false;
+    return (termin.before(new Date()));
+  }
+
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.8  2004-04-22 23:46:50  willuhn
+ * Revision 1.9  2004-04-24 19:04:51  willuhn
+ * @N Ueberweisung.execute works!! ;)
+ *
+ * Revision 1.8  2004/04/22 23:46:50  willuhn
  * @N UeberweisungJob
  *
  * Revision 1.7  2004/04/19 22:05:51  willuhn
