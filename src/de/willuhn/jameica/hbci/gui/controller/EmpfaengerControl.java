@@ -72,7 +72,7 @@ public class EmpfaengerControl extends AbstractControl {
 		if (empfaenger != null)
 			return empfaenger;
 
-		empfaenger = (Empfaenger) Settings.getDatabase().createObject(Empfaenger.class,null);
+		empfaenger = (Empfaenger) Settings.getDBService().createObject(Empfaenger.class,null);
 		return empfaenger;
 	}
 
@@ -83,7 +83,7 @@ public class EmpfaengerControl extends AbstractControl {
    */
   public Part getEmpfaengerListe() throws RemoteException
 	{
-		DBIterator list = Settings.getDatabase().createList(Empfaenger.class);
+		DBIterator list = Settings.getDBService().createList(Empfaenger.class);
 
 		TablePart table = new TablePart(list,this);
 		table.addColumn(i18n.tr("Kontonummer"),"kontonummer");
@@ -255,7 +255,10 @@ public class EmpfaengerControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.16  2004-07-21 23:54:30  willuhn
+ * Revision 1.17  2004-07-23 15:51:43  willuhn
+ * @C Rest des Refactorings
+ *
+ * Revision 1.16  2004/07/21 23:54:30  willuhn
  * *** empty log message ***
  *
  * Revision 1.15  2004/07/20 21:48:00  willuhn

@@ -70,7 +70,7 @@ public class WelcomeControl extends AbstractControl {
 		if (offeneUeberweisungen != null)
 			return offeneUeberweisungen;
 
-		DBIterator list = Settings.getDatabase().createList(Ueberweisung.class);
+		DBIterator list = Settings.getDBService().createList(Ueberweisung.class);
 		list.addFilter("ausgefuehrt = 0");
 
 		offeneUeberweisungen = new TablePart(list,this);
@@ -134,7 +134,7 @@ public class WelcomeControl extends AbstractControl {
 		if (kontoStats != null)
 			return kontoStats;
 
-		DBIterator list = Settings.getDatabase().createList(Konto.class);
+		DBIterator list = Settings.getDBService().createList(Konto.class);
 
 		kontoStats = new TablePart(list,new KontoControl(null));
 		kontoStats.addColumn(i18n.tr("Kontonummer"),"kontonummer");
@@ -195,7 +195,10 @@ public class WelcomeControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.8  2004-07-21 23:54:30  willuhn
+ * Revision 1.9  2004-07-23 15:51:44  willuhn
+ * @C Rest des Refactorings
+ *
+ * Revision 1.8  2004/07/21 23:54:30  willuhn
  * *** empty log message ***
  *
  * Revision 1.7  2004/07/20 23:31:49  willuhn

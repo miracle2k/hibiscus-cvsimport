@@ -14,7 +14,7 @@ package de.willuhn.jameica.hbci.gui.controller;
 
 import java.rmi.RemoteException;
 
-import de.willuhn.datasource.rmi.GenericObject;
+import de.willuhn.datasource.GenericObject;
 import de.willuhn.jameica.hbci.passport.Passport;
 
 /**
@@ -89,7 +89,10 @@ public class PassportObject implements GenericObject
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2004-06-18 19:47:31  willuhn
+ * Revision 1.2  2004-07-23 15:51:44  willuhn
+ * @C Rest des Refactorings
+ *
+ * Revision 1.1  2004/06/18 19:47:31  willuhn
  * *** empty log message ***
  *
  **********************************************************************/

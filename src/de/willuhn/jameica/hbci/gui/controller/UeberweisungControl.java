@@ -72,7 +72,7 @@ public class UeberweisungControl extends AbstractTransferControl
 		if (super.getTransfer() != null)
 			return (Ueberweisung) super.getTransfer();
 		
-		transfer = (Ueberweisung) Settings.getDatabase().createObject(Ueberweisung.class,null);
+		transfer = (Ueberweisung) Settings.getDBService().createObject(Ueberweisung.class,null);
 		return (Ueberweisung) transfer;
 	}
 
@@ -83,7 +83,7 @@ public class UeberweisungControl extends AbstractTransferControl
 	 */
 	public Part getUeberweisungListe() throws RemoteException
 	{
-		DBIterator list = Settings.getDatabase().createList(Ueberweisung.class);
+		DBIterator list = Settings.getDBService().createList(Ueberweisung.class);
 
 		TablePart table = new TablePart(list,this);
 		table.setFormatter(new TableFormatter() {
@@ -351,7 +351,10 @@ public class UeberweisungControl extends AbstractTransferControl
 
 /**********************************************************************
  * $Log$
- * Revision 1.25  2004-07-20 21:48:00  willuhn
+ * Revision 1.26  2004-07-23 15:51:44  willuhn
+ * @C Rest des Refactorings
+ *
+ * Revision 1.25  2004/07/20 21:48:00  willuhn
  * @N ContextMenus
  *
  * Revision 1.24  2004/07/20 00:11:07  willuhn

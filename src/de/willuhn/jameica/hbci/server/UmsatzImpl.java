@@ -16,8 +16,8 @@ import java.rmi.RemoteException;
 import java.util.Date;
 import java.util.zip.CRC32;
 
+import de.willuhn.datasource.GenericObject;
 import de.willuhn.datasource.db.AbstractDBObject;
-import de.willuhn.datasource.rmi.GenericObject;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Umsatz;
@@ -362,7 +362,10 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz {
 
 /**********************************************************************
  * $Log$
- * Revision 1.11  2004-07-21 23:54:30  willuhn
+ * Revision 1.12  2004-07-23 15:51:44  willuhn
+ * @C Rest des Refactorings
+ *
+ * Revision 1.11  2004/07/21 23:54:30  willuhn
  * *** empty log message ***
  *
  * Revision 1.10  2004/07/13 22:20:37  willuhn

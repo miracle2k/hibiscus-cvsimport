@@ -141,7 +141,7 @@ public class EmpfaengerImpl extends AbstractDBObject implements Empfaenger {
    * @see de.willuhn.jameica.hbci.rmi.Empfaenger#getUeberweisungen()
    */
   public DBIterator getUeberweisungen() throws RemoteException {
-		DBIterator list = Settings.getDatabase().createList(Ueberweisung.class);
+		DBIterator list = Settings.getDBService().createList(Ueberweisung.class);
 		list.addFilter("empfaenger_blz = " + this.getBLZ());
 		list.addFilter("empfaenger_konto = " + this.getKontonummer());
 		return list;
@@ -152,7 +152,10 @@ public class EmpfaengerImpl extends AbstractDBObject implements Empfaenger {
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2004-07-13 22:20:37  willuhn
+ * Revision 1.7  2004-07-23 15:51:44  willuhn
+ * @C Rest des Refactorings
+ *
+ * Revision 1.6  2004/07/13 22:20:37  willuhn
  * @N Code fuer DauerAuftraege
  * @C paar Funktionsnamen umbenannt
  *

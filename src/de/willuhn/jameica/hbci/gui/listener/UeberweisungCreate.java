@@ -51,7 +51,7 @@ public class UeberweisungCreate implements Listener
   	{
 			try {
 				Konto k = (Konto) event.data;
-				u = (Ueberweisung) Settings.getDatabase().createObject(Ueberweisung.class,null);
+				u = (Ueberweisung) Settings.getDBService().createObject(Ueberweisung.class,null);
 				u.setKonto(k);
 			}
 			catch (Exception e)
@@ -59,7 +59,7 @@ public class UeberweisungCreate implements Listener
 				// Mal mit 'nem Empfaenger versuchen
 				try {
 					Empfaenger empf = (Empfaenger) event.data;
-					u = (Ueberweisung) Settings.getDatabase().createObject(Ueberweisung.class,null);
+					u = (Ueberweisung) Settings.getDBService().createObject(Ueberweisung.class,null);
 					u.setEmpfaenger(empf);
 				}
 				catch (Exception e2)
@@ -76,7 +76,10 @@ public class UeberweisungCreate implements Listener
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2004-07-20 21:48:00  willuhn
+ * Revision 1.3  2004-07-23 15:51:44  willuhn
+ * @C Rest des Refactorings
+ *
+ * Revision 1.2  2004/07/20 21:48:00  willuhn
  * @N ContextMenus
  *
  * Revision 1.1  2004/07/09 00:04:40  willuhn
