@@ -69,7 +69,7 @@ public class KontoNeu extends AbstractView {
         {
         	control.handleStore();
         }
-      });
+      },null,true);
 
 
 			LabelGroup saldo = new LabelGroup(getParent(),i18n.tr("Finanzstatus"));
@@ -106,7 +106,10 @@ public class KontoNeu extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.22  2004-10-29 00:32:32  willuhn
+ * Revision 1.23  2004-10-29 16:16:13  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.22  2004/10/29 00:32:32  willuhn
  * @N HBCI job restrictions
  *
  * Revision 1.21  2004/10/20 12:34:02  willuhn

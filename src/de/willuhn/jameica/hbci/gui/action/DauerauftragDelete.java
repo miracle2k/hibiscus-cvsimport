@@ -95,7 +95,7 @@ public class DauerauftragDelete implements Action
 						catch (RemoteException e)
 						{
 							Logger.error("error while deleting dauerauftrag",e);
-							GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Löschen des Dauerauftrages"));
+							GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Löschen des Dauerauftrages") + " [" + e.getMessage() + "]");
 						}
 						finally
 						{
@@ -124,7 +124,10 @@ public class DauerauftragDelete implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2004-10-25 22:39:14  willuhn
+ * Revision 1.4  2004-10-29 16:16:13  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.3  2004/10/25 22:39:14  willuhn
  * *** empty log message ***
  *
  * Revision 1.2  2004/10/25 17:58:56  willuhn

@@ -97,7 +97,7 @@ public class DauerauftragExecute implements Action
 					catch (RemoteException e)
 					{
 						Logger.error("error while executing ueberweisung",e);
-						GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Ausführen der Überweisung"));
+						GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Ausführen der Überweisung") + " [" + e.getMessage() + "]");
 					}
 					finally
 					{
@@ -119,7 +119,10 @@ public class DauerauftragExecute implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2004-10-29 00:32:32  willuhn
+ * Revision 1.5  2004-10-29 16:16:13  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.4  2004/10/29 00:32:32  willuhn
  * @N HBCI job restrictions
  *
  * Revision 1.3  2004/10/25 22:39:14  willuhn

@@ -100,7 +100,7 @@ public class KontoFetchFromPassport implements Action
 				catch (Throwable t)
 				{
 					Logger.error("error while reading data from passport",t);
-					GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Lesen der Konto-Daten. Bitte prüfen Sie die Einstellungen des Mediums."));
+					GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Lesen der Konto-Daten. Bitte prüfen Sie die Einstellungen des Sicherheits-Mediums."));
 				}
 				finally
 				{
@@ -115,7 +115,10 @@ public class KontoFetchFromPassport implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2004-10-25 22:39:14  willuhn
+ * Revision 1.5  2004-10-29 16:16:13  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.4  2004/10/25 22:39:14  willuhn
  * *** empty log message ***
  *
  * Revision 1.3  2004/10/24 17:19:02  willuhn

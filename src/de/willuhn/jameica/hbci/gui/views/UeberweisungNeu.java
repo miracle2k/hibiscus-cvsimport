@@ -71,7 +71,7 @@ public class UeberweisungNeu extends AbstractView {
       {
       	control.handleStore();
       }
-    });
+    },null,true);
   }
 
   /**
@@ -85,7 +85,10 @@ public class UeberweisungNeu extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.20  2004-10-25 17:58:56  willuhn
+ * Revision 1.21  2004-10-29 16:16:12  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.20  2004/10/25 17:58:56  willuhn
  * @N Haufen Dauerauftrags-Code
  *
  * Revision 1.19  2004/10/24 17:19:02  willuhn

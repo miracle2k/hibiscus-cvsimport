@@ -90,7 +90,7 @@ public class KontoFetchDauerauftraege implements Action
 				catch (RemoteException e)
 				{
 					Logger.error("error while reading dauerauftraege",e);
-					GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Abrufen der Daueraufträge."));
+					GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Abrufen der Daueraufträge.") + " [" + e.getMessage() + "]");
 				}
 				finally
 				{
@@ -106,7 +106,10 @@ public class KontoFetchDauerauftraege implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2004-10-25 23:12:02  willuhn
+ * Revision 1.6  2004-10-29 16:16:13  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.5  2004/10/25 23:12:02  willuhn
  * *** empty log message ***
  *
  * Revision 1.4  2004/10/25 22:39:14  willuhn

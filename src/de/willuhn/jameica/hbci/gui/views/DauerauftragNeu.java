@@ -79,7 +79,7 @@ public class DauerauftragNeu extends AbstractView
 			{
 				control.handleStore();
 			}
-		});
+    },null,true);
   }
 
   /**
@@ -94,7 +94,10 @@ public class DauerauftragNeu extends AbstractView
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2004-10-25 17:58:56  willuhn
+ * Revision 1.6  2004-10-29 16:16:13  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.5  2004/10/25 17:58:56  willuhn
  * @N Haufen Dauerauftrags-Code
  *
  * Revision 1.4  2004/10/24 17:19:02  willuhn

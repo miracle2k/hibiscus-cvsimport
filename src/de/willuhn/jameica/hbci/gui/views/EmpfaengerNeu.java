@@ -68,8 +68,7 @@ public class EmpfaengerNeu extends AbstractView {
       {
       	control.handleStore();
       }
-    });
-
+    },null,true);
 
   }
 
@@ -84,7 +83,10 @@ public class EmpfaengerNeu extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.10  2004-10-20 12:34:02  willuhn
+ * Revision 1.11  2004-10-29 16:16:12  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.10  2004/10/20 12:34:02  willuhn
  * *** empty log message ***
  *
  * Revision 1.9  2004/10/19 23:33:31  willuhn

@@ -44,7 +44,7 @@ public class EmpfaengerListe extends AbstractView {
 			control.getEmpfaengerListe().paint(getParent());
 
 			ButtonArea buttons = new ButtonArea(getParent(),1);
-			buttons.addButton(i18n.tr("neuer Empfänger"),new EmpfaengerNeu());
+			buttons.addButton(i18n.tr("neuer Empfänger"),new EmpfaengerNeu(),null,true);
 
 		}
 		catch (Exception e)
@@ -65,7 +65,10 @@ public class EmpfaengerListe extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2004-10-19 23:33:31  willuhn
+ * Revision 1.10  2004-10-29 16:16:12  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.9  2004/10/19 23:33:31  willuhn
  * *** empty log message ***
  *
  * Revision 1.8  2004/10/08 13:37:48  willuhn
