@@ -32,6 +32,7 @@ import de.willuhn.jameica.gui.parts.TablePart;
 import de.willuhn.jameica.gui.views.AbstractView;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
+import de.willuhn.jameica.hbci.gui.menus.UeberweisungList;
 import de.willuhn.jameica.hbci.gui.views.UeberweisungNeu;
 import de.willuhn.jameica.hbci.rmi.Ueberweisung;
 import de.willuhn.util.I18N;
@@ -70,7 +71,6 @@ public class WelcomeControl extends AbstractControl {
 					Ueberweisung u = (Ueberweisung) item.getData();
 					if (u.getTermin().before(current))
 					{
-						item.setBackground(Settings.getUeberfaelligBackground());
 						item.setForeground(Settings.getUeberfaelligForeground());
 					}
 				}
@@ -83,6 +83,9 @@ public class WelcomeControl extends AbstractControl {
 		table.addColumn(i18n.tr("Name des Empfängers"),"empfaenger_name");
 		table.addColumn(i18n.tr("Betrag"),"betrag", new CurrencyFormatter("",HBCI.DECIMALFORMAT));
 		table.addColumn(i18n.tr("Termin"),"termin", new DateFormatter(HBCI.LONGDATEFORMAT));
+
+		table.setContextMenu(new UeberweisungList());
+
 		return table;
 	}
 
@@ -147,7 +150,10 @@ public class WelcomeControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2004-07-09 00:04:40  willuhn
+ * Revision 1.6  2004-07-20 21:48:00  willuhn
+ * @N ContextMenus
+ *
+ * Revision 1.5  2004/07/09 00:04:40  willuhn
  * @C Redesign
  *
  * Revision 1.4  2004/04/21 22:28:42  willuhn
