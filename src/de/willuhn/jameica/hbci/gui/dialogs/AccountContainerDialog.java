@@ -158,7 +158,11 @@ public class AccountContainerDialog extends AbstractDialog
 	private Input getCustomerId()
 	{
 		if (customerid == null)
+		{
 			customerid = new TextInput(passport.getCustomerId());
+			customerid.setComment(i18n.tr("Meist identisch mit Benutzerkennung"));
+		}
+			
 		return customerid;
 	}
 
@@ -175,7 +179,10 @@ public class AccountContainerDialog extends AbstractDialog
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2005-03-11 02:44:42  web0
+ * Revision 1.4  2005-03-23 00:05:46  web0
+ * @C RDH fixes
+ *
+ * Revision 1.3  2005/03/11 02:44:42  web0
  * @N added pin/tan support
  *
  * Revision 1.2  2005/03/09 01:07:02  web0

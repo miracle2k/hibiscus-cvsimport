@@ -58,7 +58,7 @@ public class NewInstKeysDialog extends AbstractDialog
   {
 		LabelGroup group = new LabelGroup(parent,i18n.tr("Schlüsseldetails"));
 		group.addText(i18n.tr(
-      "Bitte vergleichen Sie die von der Bank übermittelten Schlüsseln mit\n" +      "denen in Ihren Unterlagen. Stimmen diese mit den folgenden Werten überein,\n" +      "dann bestätigen Sie bitte mit OK. Andernfalls brechen Sie den Vorgang aus\n" +      "Sicherheitsgründen bitte ab."),true);
+      "Bitte vergleichen Sie die von der Bank übermittelten Schlüssel mit\n" +      "denen in Ihren Unterlagen. Stimmen diese mit den folgenden Werten überein,\n" +      "dann bestätigen Sie bitte mit OK. Andernfalls brechen Sie den Vorgang aus\n" +      "Sicherheitsgründen bitte ab."),true);
 
 		INILetter iniletter = new INILetter(passport,INILetter.TYPE_INST);
 
@@ -98,7 +98,10 @@ public class NewInstKeysDialog extends AbstractDialog
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2005-02-03 18:57:42  willuhn
+ * Revision 1.4  2005-03-23 00:05:46  web0
+ * @C RDH fixes
+ *
+ * Revision 1.3  2005/02/03 18:57:42  willuhn
  * *** empty log message ***
  *
  * Revision 1.2  2005/02/02 18:19:46  willuhn
