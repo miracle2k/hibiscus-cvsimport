@@ -112,13 +112,15 @@ public interface Turnus extends DBObject
    * @throws RemoteException
    */
   public boolean isInitial() throws RemoteException;
-
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2004-07-14 23:48:31  willuhn
+ * Revision 1.3  2004-07-15 23:39:22  willuhn
+ * @N TurnusImpl
+ *
+ * Revision 1.2  2004/07/14 23:48:31  willuhn
  * @N mehr Code fuer Dauerauftraege
  *
  * Revision 1.1  2004/07/11 16:14:29  willuhn

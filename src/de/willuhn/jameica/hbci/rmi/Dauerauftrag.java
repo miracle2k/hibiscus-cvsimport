@@ -63,12 +63,25 @@ public interface Dauerauftrag extends Transfer
    */
   public void setTurnus(Turnus turnus) throws RemoteException;
 
+	/**
+	 * Liefert <code>true</code> wenn der Dauerauftrag bei der Bank aktiv ist.
+	 * Ob dieser nun von der Bank abgerufen oder lokal erstellt und dann
+	 * eingereicht wurde, spielt keine Rolle. Entscheidend ist lediglich, dass
+	 * er bei der Bank vorliegt und aktiv ist.
+	 * @return true, wenn der Dauerauftrag bei der Bank aktiv ist.
+	 * @throws RemoteException
+	 */
+	public boolean isAktiv() throws RemoteException;
+
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2004-07-11 16:14:29  willuhn
+ * Revision 1.2  2004-07-15 23:39:22  willuhn
+ * @N TurnusImpl
+ *
+ * Revision 1.1  2004/07/11 16:14:29  willuhn
  * @N erster Code fuer Dauerauftraege
  *
  **********************************************************************/
