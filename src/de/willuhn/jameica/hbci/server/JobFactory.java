@@ -39,6 +39,7 @@ import de.willuhn.util.I18N;
  * <b>Hinweis:</b>: Die Factory speichert grundsaetzlich keine Objekte
  * in der Datenbank. Das ist Sache des Aufrufers. Hier werden lediglich
  * die HBCI-Jobs ausgefuehrt.
+ * TODO: Die Jobs muessten mal noch in extra Klassen aufgeteilt werden.
  */
 public class JobFactory {
 
@@ -375,7 +376,10 @@ public class JobFactory {
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2004-03-06 18:25:10  willuhn
+ * Revision 1.8  2004-03-11 08:55:42  willuhn
+ * @N UmsatzDetails
+ *
+ * Revision 1.7  2004/03/06 18:25:10  willuhn
  * @D javadoc
  * @C removed empfaenger_id from umsatz
  *

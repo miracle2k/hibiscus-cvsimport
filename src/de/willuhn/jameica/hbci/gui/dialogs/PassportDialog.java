@@ -27,7 +27,7 @@ import org.eclipse.swt.widgets.Label;
 import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.jameica.PluginLoader;
 import de.willuhn.jameica.gui.dialogs.AbstractDialog;
-import de.willuhn.jameica.gui.parts.Input;
+import de.willuhn.jameica.gui.parts.AbstractInput;
 import de.willuhn.jameica.gui.parts.SelectInput;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
@@ -43,7 +43,7 @@ import de.willuhn.util.MultipleClassLoader;
  */
 public class PassportDialog extends AbstractDialog {
 
-	private Input auswahl;
+	private AbstractInput auswahl;
 	private Passport choosen;
 	
 	private I18N i18n;
@@ -143,7 +143,10 @@ public class PassportDialog extends AbstractDialog {
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2004-03-06 18:25:10  willuhn
+ * Revision 1.4  2004-03-11 08:55:42  willuhn
+ * @N UmsatzDetails
+ *
+ * Revision 1.3  2004/03/06 18:25:10  willuhn
  * @D javadoc
  * @C removed empfaenger_id from umsatz
  *
