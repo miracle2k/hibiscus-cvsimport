@@ -81,6 +81,8 @@ public class HBCIFactory {
 	/**
 	 * Fuehrt alle Jobs aus, die bis dato geadded wurden.
 	 * @param handle der Passport, ueber den die Jobs ausgefuehrt werden sollen.
+	 * @throws ApplicationException
+	 * @throws RemoteException
 	 */
 	public synchronized void executeJobs(PassportHandle handle) throws ApplicationException, RemoteException
 	{
@@ -173,7 +175,10 @@ public class HBCIFactory {
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2004-05-05 22:14:47  willuhn
+ * Revision 1.7  2004-06-10 20:56:33  willuhn
+ * @D javadoc comments fixed
+ *
+ * Revision 1.6  2004/05/05 22:14:47  willuhn
  * *** empty log message ***
  *
  * Revision 1.5  2004/05/04 23:07:23  willuhn

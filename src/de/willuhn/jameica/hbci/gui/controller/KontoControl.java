@@ -55,7 +55,6 @@ public class KontoControl extends AbstractControl {
 
 	// Fachobjekte
 	private Konto konto 			 		= null;
-	private Passport passport  		= null;
 	
 	// Eingabe-Felder
 	private AbstractInput kontonummer  		= null;
@@ -607,7 +606,10 @@ public class KontoControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.33  2004-06-08 22:28:58  willuhn
+ * Revision 1.34  2004-06-10 20:56:33  willuhn
+ * @D javadoc comments fixed
+ *
+ * Revision 1.33  2004/06/08 22:28:58  willuhn
  * *** empty log message ***
  *
  * Revision 1.32  2004/06/07 22:22:33  willuhn

@@ -57,8 +57,6 @@ public class SettingsControl extends AbstractControl {
 
 	private TablePart passportList 					= null;
 
-	private AbstractInput importProgram			= null;	
-
 	private AbstractInput ueberweisungLimit = null;
 
 	private I18N i18n;
@@ -338,7 +336,10 @@ public class SettingsControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.22  2004-06-03 00:23:42  willuhn
+ * Revision 1.23  2004-06-10 20:56:33  willuhn
+ * @D javadoc comments fixed
+ *
+ * Revision 1.22  2004/06/03 00:23:42  willuhn
  * *** empty log message ***
  *
  * Revision 1.21  2004/05/25 23:23:17  willuhn

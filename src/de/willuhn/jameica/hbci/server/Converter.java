@@ -52,7 +52,9 @@ public class Converter {
 	 *    kann also auch bei Soll-Buchungen fehlen.
 	 *  </li>
 	 * </ul>
+	 * @param u der zu convertierende Umsatz.
    * @return das neu erzeugte Umsatz-Objekt.
+	 * @throws RemoteException
    */
   public static Umsatz convert(GVRKUms.UmsLine u) throws RemoteException
 	{
@@ -188,7 +190,10 @@ public class Converter {
 
 /**********************************************************************
  * $Log$
- * Revision 1.8  2004-05-05 22:14:47  willuhn
+ * Revision 1.9  2004-06-10 20:56:33  willuhn
+ * @D javadoc comments fixed
+ *
+ * Revision 1.8  2004/05/05 22:14:47  willuhn
  * *** empty log message ***
  *
  * Revision 1.7  2004/04/27 23:50:15  willuhn
