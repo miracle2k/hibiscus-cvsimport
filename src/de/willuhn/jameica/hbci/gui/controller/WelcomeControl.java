@@ -100,9 +100,8 @@ public class WelcomeControl extends AbstractControl {
 	/**
 	 * Liefert einen formatierten Welcome-Text.
    * @return Welcome-Text.
-   * @throws RemoteException
    */
-  public Part getQuickLinks() throws RemoteException
+  public Part getQuickLinks()
 	{
 		if (quickLinks != null)
 			return quickLinks;
@@ -163,7 +162,10 @@ public class WelcomeControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.15  2004-11-13 17:12:15  willuhn
+ * Revision 1.16  2005-03-09 01:07:02  web0
+ * @D javadoc fixes
+ *
+ * Revision 1.15  2004/11/13 17:12:15  willuhn
  * *** empty log message ***
  *
  * Revision 1.14  2004/11/13 17:02:04  willuhn

@@ -14,7 +14,6 @@ package de.willuhn.jameica.hbci.gui.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.rmi.RemoteException;
 
 import de.willuhn.io.FileFinder;
 import de.willuhn.jameica.gui.AbstractControl;
@@ -49,9 +48,8 @@ public class LicenseControl extends AbstractControl {
   /**
    * Liefert eine Liste mit allen direkt von Hibiscus verwendeten Komponenten.
    * @return Liste der verwendeten Komponenten
-   * @throws RemoteException
    */
-  public Part getLibList() throws RemoteException
+  public Part getLibList()
   {
     if (libList != null)
       return libList;
@@ -118,7 +116,10 @@ public class LicenseControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.11  2004-11-12 18:25:07  willuhn
+ * Revision 1.12  2005-03-09 01:07:02  web0
+ * @D javadoc fixes
+ *
+ * Revision 1.11  2004/11/12 18:25:07  willuhn
  * *** empty log message ***
  *
  * Revision 1.10  2004/10/20 12:08:18  willuhn

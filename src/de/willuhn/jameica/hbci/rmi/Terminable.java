@@ -56,6 +56,7 @@ public interface Terminable
    * Markiert das Objekt als ausgefuehrt und speichert die Aenderung
    * unmittelbar.
    * @throws RemoteException
+   * @throws ApplicationException
    */
   public void setAusgefuehrt() throws RemoteException, ApplicationException;
 
@@ -64,7 +65,10 @@ public interface Terminable
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2005-03-02 17:59:30  web0
+ * Revision 1.3  2005-03-09 01:07:02  web0
+ * @D javadoc fixes
+ *
+ * Revision 1.2  2005/03/02 17:59:30  web0
  * @N some refactoring
  *
  * Revision 1.1  2005/02/19 16:49:32  willuhn

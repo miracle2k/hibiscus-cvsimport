@@ -73,9 +73,8 @@ public class SammelLastBuchungControl extends AbstractControl
 	/**
 	 * Liefert die aktuelle Buchung.
    * @return die Buchung.
-   * @throws RemoteException
    */
-  public SammelLastBuchung getBuchung() throws RemoteException
+  public SammelLastBuchung getBuchung()
 	{
 		if (this.buchung != null)
 			return this.buchung;
@@ -336,7 +335,10 @@ public class SammelLastBuchungControl extends AbstractControl
 
 /*****************************************************************************
  * $Log$
- * Revision 1.2  2005-03-05 19:11:25  web0
+ * Revision 1.3  2005-03-09 01:07:02  web0
+ * @D javadoc fixes
+ *
+ * Revision 1.2  2005/03/05 19:11:25  web0
  * @N SammelLastschrift-Code complete
  *
  * Revision 1.1  2005/03/02 17:59:31  web0

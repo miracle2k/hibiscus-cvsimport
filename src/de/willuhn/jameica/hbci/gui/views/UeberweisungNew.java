@@ -33,7 +33,7 @@ import de.willuhn.util.I18N;
 public class UeberweisungNew extends AbstractView {
 
   /**
-   * @see de.willuhn.jameica.gui.views.AbstractView#bind()
+   * @see de.willuhn.jameica.gui.AbstractView#bind()
    */
   public void bind() throws Exception {
 
@@ -84,7 +84,7 @@ public class UeberweisungNew extends AbstractView {
   }
 
   /**
-   * @see de.willuhn.jameica.gui.views.AbstractView#unbind()
+   * @see de.willuhn.jameica.gui.AbstractView#unbind()
    */
   public void unbind() throws ApplicationException {
   }
@@ -94,7 +94,10 @@ public class UeberweisungNew extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2005-02-03 18:57:42  willuhn
+ * Revision 1.4  2005-03-09 01:07:02  web0
+ * @D javadoc fixes
+ *
+ * Revision 1.3  2005/02/03 18:57:42  willuhn
  * *** empty log message ***
  *
  * Revision 1.2  2005/02/02 18:19:46  willuhn

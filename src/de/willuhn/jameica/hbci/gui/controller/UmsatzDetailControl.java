@@ -64,9 +64,8 @@ public class UmsatzDetailControl extends AbstractControl {
   /**
    * Liefert das Umsatz-Objekt, das auf dem Detail-Dialog angezeigt wird.
    * @return das Umsatz-Objekt.
-   * @throws RemoteException
    */
-  public Umsatz getUmsatz() throws RemoteException
+  public Umsatz getUmsatz()
   {
     if (umsatz != null)
       return umsatz;
@@ -239,7 +238,10 @@ public class UmsatzDetailControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.15  2004-10-20 12:08:18  willuhn
+ * Revision 1.16  2005-03-09 01:07:02  web0
+ * @D javadoc fixes
+ *
+ * Revision 1.15  2004/10/20 12:08:18  willuhn
  * @C MVC-Refactoring (new Controllers)
  *
  * Revision 1.14  2004/10/08 13:37:47  willuhn

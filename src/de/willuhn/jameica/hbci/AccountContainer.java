@@ -22,19 +22,49 @@ package de.willuhn.jameica.hbci;
  */
 public class AccountContainer
 {
+	/**
+	 * Land.
+	 */
 	public String country 		= "DE";
+
+	/**
+	 * BLZ.
+	 */
 	public String blz 				= null;
+
+  /**
+	 * Host.
+	 */
 	public String host 				= null;
-	public int 		port				= 3000;
-	public String filter			= null;
-	public String userid			= null;
-	public String customerid	= null;
+	
+  /**
+   * TCP-Port.
+   */
+  public int 		port				= 3000;
+	
+  /**
+   * Filter.
+   */
+  public String filter			= null;
+	
+  /**
+   * Benutzer-Kennung.
+   */
+  public String userid			= null;
+	
+  /**
+   * Kunden-Kennung.
+   */
+  public String customerid	= null;
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2005-02-02 16:15:52  willuhn
+ * Revision 1.2  2005-03-09 01:07:02  web0
+ * @D javadoc fixes
+ *
+ * Revision 1.1  2005/02/02 16:15:52  willuhn
  * @N Neue Dialoge fuer RDH
  *
  **********************************************************************/

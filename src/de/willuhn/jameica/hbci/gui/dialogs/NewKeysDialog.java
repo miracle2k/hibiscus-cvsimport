@@ -66,6 +66,7 @@ public class NewKeysDialog extends AbstractDialog
 	}
 
   /**
+   * @param p
    */
   public NewKeysDialog(HBCIPassport p)
   {
@@ -146,6 +147,7 @@ public class NewKeysDialog extends AbstractDialog
 	/**
 	 * Liefert eine Liste der verfuegbaren Drucker.
    * @return Liste der Drucker.
+	 * @throws Exception
    */
   private Input getPrinterList() throws Exception
 	{
@@ -238,7 +240,10 @@ public class NewKeysDialog extends AbstractDialog
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2005-03-05 19:11:25  web0
+ * Revision 1.6  2005-03-09 01:07:02  web0
+ * @D javadoc fixes
+ *
+ * Revision 1.5  2005/03/05 19:11:25  web0
  * @N SammelLastschrift-Code complete
  *
  * Revision 1.4  2005/02/03 23:57:05  willuhn

@@ -206,7 +206,7 @@ public class Converter {
 
 	/**
 	 * Konvertiert einen Hibiscus-Adresse in ein HBCI4Java Konto.
-	 * @param empfaenger unsere Adresse
+	 * @param adresse unsere Adresse.
 	 * @return das HBCI4Java Konto.
 	 * @throws RemoteException
 	 */
@@ -266,7 +266,10 @@ public class Converter {
 
 /**********************************************************************
  * $Log$
- * Revision 1.22  2005-03-06 18:04:17  web0
+ * Revision 1.23  2005-03-09 01:07:02  web0
+ * @D javadoc fixes
+ *
+ * Revision 1.22  2005/03/06 18:04:17  web0
  * @B Converter hat beim Konvertieren eines HBCI4Java-Kontos in eine Adresse ggf. eine lokal vorhandene geliefert
  *
  * Revision 1.21  2005/03/06 14:04:26  web0

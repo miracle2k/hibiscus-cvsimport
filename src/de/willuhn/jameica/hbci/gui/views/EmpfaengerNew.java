@@ -34,7 +34,7 @@ import de.willuhn.util.I18N;
 public class EmpfaengerNew extends AbstractView {
 
   /**
-   * @see de.willuhn.jameica.gui.views.AbstractView#bind()
+   * @see de.willuhn.jameica.gui.AbstractView#bind()
    */
   public void bind() throws Exception {
 
@@ -73,7 +73,7 @@ public class EmpfaengerNew extends AbstractView {
   }
 
   /**
-   * @see de.willuhn.jameica.gui.views.AbstractView#unbind()
+   * @see de.willuhn.jameica.gui.AbstractView#unbind()
    */
   public void unbind() throws ApplicationException {
   }
@@ -83,7 +83,10 @@ public class EmpfaengerNew extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2005-03-04 00:52:45  web0
+ * Revision 1.3  2005-03-09 01:07:02  web0
+ * @D javadoc fixes
+ *
+ * Revision 1.2  2005/03/04 00:52:45  web0
  * @C s/Empfaenger/Adresse/
  *
  * Revision 1.1  2004/11/13 17:12:15  willuhn

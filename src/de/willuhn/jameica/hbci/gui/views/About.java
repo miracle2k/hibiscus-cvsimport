@@ -33,7 +33,7 @@ import de.willuhn.util.I18N;
 public class About extends AbstractView {
 
   /**
-   * @see de.willuhn.jameica.gui.views.AbstractView#bind()
+   * @see de.willuhn.jameica.gui.AbstractView#bind()
    */
   public void bind() throws Exception {
     I18N i18n = Application.getI18n();
@@ -59,7 +59,7 @@ public class About extends AbstractView {
   }
 
   /**
-   * @see de.willuhn.jameica.gui.views.AbstractView#unbind()
+   * @see de.willuhn.jameica.gui.AbstractView#unbind()
    */
   public void unbind() throws ApplicationException {
   }
@@ -69,7 +69,10 @@ public class About extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2004-10-11 22:41:25  willuhn
+ * Revision 1.8  2005-03-09 01:07:02  web0
+ * @D javadoc fixes
+ *
+ * Revision 1.7  2004/10/11 22:41:25  willuhn
  * *** empty log message ***
  *
  * Revision 1.6  2004/10/08 13:37:48  willuhn

@@ -36,7 +36,7 @@ public class Welcome extends AbstractView
 {
 
   /**
-   * @see de.willuhn.jameica.gui.views.AbstractView#bind()
+   * @see de.willuhn.jameica.gui.AbstractView#bind()
    */
   public void bind() throws Exception
   {
@@ -65,7 +65,7 @@ public class Welcome extends AbstractView
   }
 
   /**
-   * @see de.willuhn.jameica.gui.views.AbstractView#unbind()
+   * @see de.willuhn.jameica.gui.AbstractView#unbind()
    */
   public void unbind() throws ApplicationException
   {
@@ -76,7 +76,10 @@ public class Welcome extends AbstractView
 
 /**********************************************************************
  * $Log$
- * Revision 1.15  2005-01-14 00:48:49  willuhn
+ * Revision 1.16  2005-03-09 01:07:02  web0
+ * @D javadoc fixes
+ *
+ * Revision 1.15  2005/01/14 00:48:49  willuhn
  * *** empty log message ***
  *
  * Revision 1.14  2004/10/08 13:37:48  willuhn

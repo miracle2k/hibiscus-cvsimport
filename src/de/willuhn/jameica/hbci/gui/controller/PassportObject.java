@@ -38,7 +38,7 @@ public class PassportObject implements GenericObject
 
 	/**
 	 * Liefert den Passport.
-   * @return
+	 * @return Passport.
    */
   public Passport getPassport()
 	{
@@ -97,7 +97,10 @@ public class PassportObject implements GenericObject
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2005-02-01 18:27:14  willuhn
+ * Revision 1.6  2005-03-09 01:07:02  web0
+ * @D javadoc fixes
+ *
+ * Revision 1.5  2005/02/01 18:27:14  willuhn
  * *** empty log message ***
  *
  * Revision 1.4  2005/01/05 15:17:50  willuhn

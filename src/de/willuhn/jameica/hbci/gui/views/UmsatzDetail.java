@@ -13,8 +13,6 @@
 
 package de.willuhn.jameica.hbci.gui.views;
 
-import java.rmi.RemoteException;
-
 import de.willuhn.jameica.gui.AbstractView;
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
@@ -25,7 +23,6 @@ import de.willuhn.jameica.hbci.gui.action.Back;
 import de.willuhn.jameica.hbci.gui.action.EmpfaengerAdd;
 import de.willuhn.jameica.hbci.gui.controller.UmsatzDetailControl;
 import de.willuhn.jameica.system.Application;
-import de.willuhn.logging.Logger;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
 
@@ -35,7 +32,7 @@ import de.willuhn.util.I18N;
 public class UmsatzDetail extends AbstractView {
 
   /**
-   * @see de.willuhn.jameica.gui.views.AbstractView#bind()
+   * @see de.willuhn.jameica.gui.AbstractView#bind()
    */
   public void bind() throws Exception {
 
@@ -71,20 +68,13 @@ public class UmsatzDetail extends AbstractView {
     {
       public void handleAction(Object context) throws ApplicationException
       {
-      	try
-      	{
-					new EmpfaengerAdd().handleAction(control.getUmsatz());
-      	}
-      	catch (RemoteException e)
-      	{
-      		Logger.error("error while adding empfaenger",e);
-      		GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Hinzufügen zum Adressbuch"));
-      	}
+				new EmpfaengerAdd().handleAction(control.getUmsatz());
       }
     });
   }
+
   /**
-   * @see de.willuhn.jameica.gui.views.AbstractView#unbind()
+   * @see de.willuhn.jameica.gui.AbstractView#unbind()
    */
   public void unbind() throws ApplicationException {
   }
@@ -93,7 +83,10 @@ public class UmsatzDetail extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.13  2005-02-06 17:46:17  willuhn
+ * Revision 1.14  2005-03-09 01:07:02  web0
+ * @D javadoc fixes
+ *
+ * Revision 1.13  2005/02/06 17:46:17  willuhn
  * *** empty log message ***
  *
  * Revision 1.12  2004/11/12 18:25:07  willuhn

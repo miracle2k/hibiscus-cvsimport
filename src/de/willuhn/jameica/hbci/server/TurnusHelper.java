@@ -139,9 +139,8 @@ public class TurnusHelper
    * @param index Index des Wochentages von 1 - 7.
    * @return Bezeichnung des Wochentages, oder <code>null</code> wenn der Index
    * ausserhalb des definierten Bereichs liegt.
-   * @throws RemoteException
    */
-  public static String getWochentag(int index) throws RemoteException
+  public static String getWochentag(int index)
 	{
 		if (index < 1 || index > 7)
 			return null;
@@ -153,9 +152,8 @@ public class TurnusHelper
 	 * Hinweis: Da es sich um ein Array handelt, zaehlt der Index
 	 * natuerlich nicht von 1-7 sondern von 0-6.
 	 * @return Bezeichnungen der Wochentage.
-	 * @throws RemoteException
 	 */
-  public static String[] getWochentage() throws RemoteException
+  public static String[] getWochentage()
 	{
 		if (wochentage != null)
 			return wochentage;
@@ -180,7 +178,10 @@ public class TurnusHelper
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2004-10-25 17:58:56  willuhn
+ * Revision 1.10  2005-03-09 01:07:02  web0
+ * @D javadoc fixes
+ *
+ * Revision 1.9  2004/10/25 17:58:56  willuhn
  * @N Haufen Dauerauftrags-Code
  *
  * Revision 1.8  2004/10/23 17:34:31  willuhn

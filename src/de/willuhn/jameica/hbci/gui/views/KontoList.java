@@ -31,7 +31,7 @@ import de.willuhn.util.I18N;
 public class KontoList extends AbstractView {
 
   /**
-   * @see de.willuhn.jameica.gui.views.AbstractView#bind()
+   * @see de.willuhn.jameica.gui.AbstractView#bind()
    */
   public void bind() throws Exception {
 
@@ -75,7 +75,7 @@ public class KontoList extends AbstractView {
   }
 
   /**
-   * @see de.willuhn.jameica.gui.views.AbstractView#unbind()
+   * @see de.willuhn.jameica.gui.AbstractView#unbind()
    */
   public void unbind() throws ApplicationException {
   }
@@ -85,7 +85,10 @@ public class KontoList extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2004-11-13 17:12:15  willuhn
+ * Revision 1.2  2005-03-09 01:07:02  web0
+ * @D javadoc fixes
+ *
+ * Revision 1.1  2004/11/13 17:12:15  willuhn
  * *** empty log message ***
  *
  * Revision 1.20  2004/11/13 17:02:04  willuhn

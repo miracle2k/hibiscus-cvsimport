@@ -243,7 +243,7 @@ public class HBCIFactory {
 	 * Sie werden intern weiterverarbeitet, um zum Beispiel die Auswahlmoeglichkeiten
 	 * in der Benutzeroberflaeche auf die tatsaechlichen Moeglichkeiten der Bank zu beschraenken.
    * @param job zu testender Job.
-	 * @param handle der Passport, ueber den der Job getestet werden soll.
+	 * @param h der Passport, ueber den der Job getestet werden soll.
    * @return Liste der Restriktionen.
    * @throws ApplicationException
    * @throws RemoteException
@@ -319,7 +319,10 @@ public class HBCIFactory {
 
 /**********************************************************************
  * $Log$
- * Revision 1.25  2005-03-06 16:33:57  web0
+ * Revision 1.26  2005-03-09 01:07:02  web0
+ * @D javadoc fixes
+ *
+ * Revision 1.25  2005/03/06 16:33:57  web0
  * @B huu, job results of exclusive jobs were not executed
  *
  * Revision 1.24  2005/03/05 19:11:25  web0
