@@ -53,7 +53,7 @@ public class Converter {
 	 *  </li>
    * @return das neu erzeugte Umsatz-Objekt.
    */
-  protected static Umsatz convert(GVRKUms.UmsLine u) throws RemoteException
+  public static Umsatz convert(GVRKUms.UmsLine u) throws RemoteException
 	{
 		Umsatz umsatz = (Umsatz) Settings.getDatabase().createObject(Umsatz.class,null);
 
@@ -106,7 +106,7 @@ public class Converter {
    * @return das HBCI4Java Konto.
    * @throws RemoteException
    */
-  protected static Konto convert(de.willuhn.jameica.hbci.rmi.Konto konto) throws RemoteException
+  public static Konto convert(de.willuhn.jameica.hbci.rmi.Konto konto) throws RemoteException
 	{
 		org.kapott.hbci.structures.Konto k =
 			new org.kapott.hbci.structures.Konto(konto.getBLZ(),konto.getKontonummer());
@@ -123,7 +123,7 @@ public class Converter {
 	 * @return unser Empfaenger.
 	 * @throws RemoteException
 	 */
-	protected static Empfaenger convert(Konto konto) throws RemoteException
+	public static Empfaenger convert(Konto konto) throws RemoteException
 	{
 		Empfaenger e = (Empfaenger) Settings.getDatabase().createObject(Empfaenger.class,null);
 		e.setBLZ(konto.blz);
@@ -140,7 +140,10 @@ public class Converter {
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2004-03-06 18:25:10  willuhn
+ * Revision 1.3  2004-04-19 22:05:51  willuhn
+ * @C HBCIJobs refactored
+ *
+ * Revision 1.2  2004/03/06 18:25:10  willuhn
  * @D javadoc
  * @C removed empfaenger_id from umsatz
  *
