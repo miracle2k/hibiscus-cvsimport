@@ -46,6 +46,10 @@ public class DialogFactory {
 			GUI.setActionText(e.getLocalizedMessage());
 			throw new RuntimeException(e);
 		}
+		finally
+		{
+			close();
+		}
 	}
 
 	/**
@@ -67,6 +71,10 @@ public class DialogFactory {
 			Application.getLog().error(e.getLocalizedMessage(),e);
 			GUI.setActionText(e.getLocalizedMessage());
 			throw new RuntimeException(e);
+		}
+		finally
+		{
+			close();
 		}
 	}
 
@@ -103,7 +111,10 @@ public class DialogFactory {
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2004-02-24 22:47:05  willuhn
+ * Revision 1.8  2004-02-27 01:10:18  willuhn
+ * @N passport config refactored
+ *
+ * Revision 1.7  2004/02/24 22:47:05  willuhn
  * @N GUI refactoring
  *
  * Revision 1.6  2004/02/22 20:04:54  willuhn
