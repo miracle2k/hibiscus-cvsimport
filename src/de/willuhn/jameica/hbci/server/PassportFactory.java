@@ -39,7 +39,7 @@ public class PassportFactory {
 		
 		PassportImpl kp = null;
 
-		if (new Integer(p.getID()).intValue() == Passport.TYPE_DDV)
+		if (p.getType() == Passport.TYPE_DDV)
 			kp = (PassportImpl) Settings.getDatabase().createObject(PassportDDV.class,p.getID());
 		// hier spaeter weitere Passports hinzufuegen
 		
@@ -52,7 +52,12 @@ public class PassportFactory {
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2004-02-12 00:38:41  willuhn
+ * Revision 1.2  2004-02-17 00:53:22  willuhn
+ * @N SaldoAbfrage
+ * @N Ueberweisung
+ * @N Empfaenger
+ *
+ * Revision 1.1  2004/02/12 00:38:41  willuhn
  * *** empty log message ***
  *
  **********************************************************************/
