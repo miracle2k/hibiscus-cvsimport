@@ -55,13 +55,13 @@ public class Settings extends AbstractView {
 			);
 
 			ButtonArea buttons = new ButtonArea(getParent(),3);
+			buttons.addCustomButton(I18N.tr("gespeicherte Check-Summe löschen"),new MouseAdapter() {
+				public void mouseUp(MouseEvent e) {
+					control.handleDeleteCheckSum();
+				}
+			});
 			buttons.addCancelButton(control);
 			buttons.addStoreButton(control);
-			buttons.addCustomButton(I18N.tr("gespeicherte Check-Summe löschen"),new MouseAdapter() {
-        public void mouseUp(MouseEvent e) {
-					control.handleDeleteCheckSum();
-        }
-      });
 		}
 		catch (RemoteException e)
 		{
@@ -83,7 +83,10 @@ public class Settings extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2004-02-21 19:49:04  willuhn
+ * Revision 1.4  2004-02-25 23:11:46  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.3  2004/02/21 19:49:04  willuhn
  * @N PINDialog
  *
  * Revision 1.2  2004/02/20 20:45:13  willuhn
