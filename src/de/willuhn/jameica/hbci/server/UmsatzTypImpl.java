@@ -49,9 +49,9 @@ public class UmsatzTypImpl extends AbstractDBObject implements UmsatzTyp {
   }
 
   /**
-   * @see de.willuhn.datasource.rmi.DBObject#getPrimaryField()
+   * @see de.willuhn.datasource.rmi.GenericObject#getPrimaryAttribute()
    */
-  public String getPrimaryField() throws RemoteException {
+  public String getPrimaryAttribute() throws RemoteException {
     return "name";
   }
 
@@ -104,21 +104,21 @@ public class UmsatzTypImpl extends AbstractDBObject implements UmsatzTyp {
    * @see de.willuhn.jameica.hbci.rmi.UmsatzTyp#getName()
    */
   public String getName() throws RemoteException {
-    return (String) getField("name");
+    return (String) getAttribute("name");
   }
 
   /**
    * @see de.willuhn.jameica.hbci.rmi.UmsatzTyp#getField()
    */
   public String getField() throws RemoteException {
-		return (String) getField("field");
+		return (String) getAttribute("field");
   }
 
   /**
    * @see de.willuhn.jameica.hbci.rmi.UmsatzTyp#getPattern()
    */
   public String getPattern() throws RemoteException {
-		return (String) getField("pattern");
+		return (String) getAttribute("pattern");
   }
 
   /**
@@ -190,7 +190,10 @@ public class UmsatzTypImpl extends AbstractDBObject implements UmsatzTyp {
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2004-05-25 23:23:17  willuhn
+ * Revision 1.2  2004-06-17 00:14:10  willuhn
+ * @N GenericObject, GenericIterator
+ *
+ * Revision 1.1  2004/05/25 23:23:17  willuhn
  * @N UeberweisungTyp
  * @N Protokoll
  *

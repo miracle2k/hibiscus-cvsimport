@@ -145,14 +145,16 @@ public class HBCI extends AbstractPlugin
    */
   public void shutDown()
   {
-  	getResources().getI18N().flush();
   }
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.15  2004-05-05 21:10:55  willuhn
+ * Revision 1.16  2004-06-17 00:14:10  willuhn
+ * @N GenericObject, GenericIterator
+ *
+ * Revision 1.15  2004/05/05 21:10:55  willuhn
  * *** empty log message ***
  *
  * Revision 1.14  2004/05/04 23:07:23  willuhn
