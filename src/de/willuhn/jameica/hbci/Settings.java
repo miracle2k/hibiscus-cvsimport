@@ -236,7 +236,7 @@ public class Settings
    */
   public static boolean getCheckPin()
   {
-    return settings.getBoolean("checkpin",false);
+    return settings.getBoolean("checkpin",true);
   }
 
   /**
@@ -313,7 +313,10 @@ public class Settings
 
 /*********************************************************************
  * $Log$
- * Revision 1.12  2004-05-11 21:11:32  willuhn
+ * Revision 1.13  2004-05-11 23:31:40  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.12  2004/05/11 21:11:32  willuhn
  * *** empty log message ***
  *
  * Revision 1.11  2004/05/09 17:39:49  willuhn

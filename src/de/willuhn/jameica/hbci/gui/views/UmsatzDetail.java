@@ -56,9 +56,9 @@ public class UmsatzDetail extends AbstractView {
 
 		LabelGroup add = new LabelGroup(getParent(),i18n.tr("Zusätzliche Angaben"));
     
-		add.addLabelPair(i18n.tr("Art der Buchung"),				control.getArt());
-		add.addLabelPair(i18n.tr("Kundenreferenz"),				control.getCustomerRef());
-		add.addLabelPair(i18n.tr("Primanota-Kennzeichen"),	control.getPrimanota());
+		add.addLabelPair(i18n.tr("Art der Buchung"),					control.getArt());
+		add.addLabelPair(i18n.tr("Kundenreferenz"),						control.getCustomerRef());
+		add.addLabelPair(i18n.tr("Primanota-Kennzeichen"),		control.getPrimanota());
 
     ButtonArea buttons = new ButtonArea(getParent(),2);
     buttons.addCustomButton(i18n.tr("Empfänger in Adressbuch übernehmen"),new MouseAdapter() {
@@ -78,7 +78,10 @@ public class UmsatzDetail extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2004-04-27 22:23:56  willuhn
+ * Revision 1.5  2004-05-11 23:31:40  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.4  2004/04/27 22:23:56  willuhn
  * @N configurierbarer CTAPI-Treiber
  * @C konkrete Passport-Klassen (DDV) nach de.willuhn.jameica.passports verschoben
  * @N verschiedenste Passport-Typen sind jetzt voellig frei erweiterbar (auch die Config-Dialoge)
