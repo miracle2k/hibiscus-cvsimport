@@ -21,6 +21,7 @@ import de.willuhn.jameica.Application;
 import de.willuhn.jameica.PluginLoader;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.util.ButtonArea;
+import de.willuhn.jameica.gui.util.Headline;
 import de.willuhn.jameica.gui.util.LabelGroup;
 import de.willuhn.jameica.gui.views.AbstractView;
 import de.willuhn.jameica.hbci.HBCI;
@@ -61,8 +62,11 @@ public class KontoNeu extends AbstractView {
 			saldo.addLabelPair(i18n.tr("Saldo"),										control.getSaldo());
 			saldo.addLabelPair(i18n.tr("letzte Aktualisierung"),		control.getSaldoDatum());
 
-			ButtonArea buttons = saldo.createButtonArea(2);
+			new Headline(getParent(),i18n.tr("Protokoll des Kontos"));
+			control.getProtokoll().paint(getParent());
 
+
+			ButtonArea buttons = saldo.createButtonArea(2);
 			buttons.addCustomButton(i18n.tr("Saldo aktualisieren"), new MouseAdapter() {
 				public void mouseUp(MouseEvent e) {
 					control.handleRefreshSaldo();
@@ -73,7 +77,6 @@ public class KontoNeu extends AbstractView {
 					control.handleShowUmsaetze();
         }
       });
-
 
 			control.init();
 		}
@@ -103,7 +106,11 @@ public class KontoNeu extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.12  2004-04-12 19:15:31  willuhn
+ * Revision 1.13  2004-05-25 23:23:18  willuhn
+ * @N UeberweisungTyp
+ * @N Protokoll
+ *
+ * Revision 1.12  2004/04/12 19:15:31  willuhn
  * @C refactoring
  *
  * Revision 1.11  2004/04/05 23:28:46  willuhn

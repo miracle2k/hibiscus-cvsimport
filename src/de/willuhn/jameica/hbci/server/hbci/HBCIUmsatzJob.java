@@ -20,6 +20,7 @@ import de.willuhn.jameica.Application;
 import de.willuhn.jameica.PluginLoader;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.rmi.Konto;
+import de.willuhn.jameica.hbci.rmi.Protokoll;
 import de.willuhn.jameica.hbci.rmi.Umsatz;
 import de.willuhn.jameica.hbci.server.Converter;
 import de.willuhn.util.ApplicationException;
@@ -69,10 +70,12 @@ public class HBCIUmsatzJob extends AbstractHBCIJob {
 		String statusText = getStatusText();
 		if (!result.isOK())
 		{
-			throw new ApplicationException(
-				statusText != null ?
-					i18n.tr("Fehlermeldung der Bank") + ": " + statusText :
-					i18n.tr("Fehler beim Abrufen der Umsätze"));
+			String msg = (statusText != null) ?
+										i18n.tr("Fehlermeldung der Bank") + ": " + statusText :
+										i18n.tr("Fehler beim Abrufen der Umsätze");
+
+			addToProtokoll(i18n.tr("Fehler beim Abrufen der Umsätze") + " ("+ msg +")",Protokoll.TYP_ERROR);
+			throw new ApplicationException(msg);
 		}
 		Application.getLog().debug("job result is ok, returning saldo");
 
@@ -85,6 +88,7 @@ public class HBCIUmsatzJob extends AbstractHBCIJob {
 			umsaetze[i] = Converter.convert(lines[i]);
 			umsaetze[i].setKonto(getKonto()); // muessen wir noch machen, weil der Converter das Konto nicht kennt
 		}
+		addToProtokoll(i18n.tr("Umsätze abgerufen"),Protokoll.TYP_SUCCESS);
 		return umsaetze;
 
 	}
@@ -93,7 +97,11 @@ public class HBCIUmsatzJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2004-04-24 19:04:51  willuhn
+ * Revision 1.3  2004-05-25 23:23:18  willuhn
+ * @N UeberweisungTyp
+ * @N Protokoll
+ *
+ * Revision 1.2  2004/04/24 19:04:51  willuhn
  * @N Ueberweisung.execute works!! ;)
  *
  * Revision 1.1  2004/04/19 22:05:51  willuhn

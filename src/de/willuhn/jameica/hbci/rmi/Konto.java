@@ -161,6 +161,20 @@ public interface Konto extends DBObject {
   public DBIterator getUmsaetze() throws RemoteException;
 
 	/**
+	 * Liefert eine Liste aller Ueberweisungen, die ueber dieses Konto getaetigt wurden.
+	 * @return Ueberweisungsliste.
+	 * @throws RemoteException
+	 */
+	public DBIterator getUeberweisungen() throws RemoteException;
+	
+	/**
+	 * Liefert die HBCI-Protokollierung des Kontos in Form einer Liste von Protokoll-Objekten.
+   * @return Liste von Protokoll-Objekten.
+   * @throws RemoteException
+   */
+  public DBIterator getProtokolle() throws RemoteException;
+
+	/**
 	 * Loescht alle Umsaetze des Kontos.
    * @throws RemoteException
    * @throws ApplicationException
@@ -171,7 +185,11 @@ public interface Konto extends DBObject {
 
 /**********************************************************************
  * $Log$
- * Revision 1.12  2004-05-05 22:14:47  willuhn
+ * Revision 1.13  2004-05-25 23:23:17  willuhn
+ * @N UeberweisungTyp
+ * @N Protokoll
+ *
+ * Revision 1.12  2004/05/05 22:14:47  willuhn
  * *** empty log message ***
  *
  * Revision 1.11  2004/04/14 23:53:46  willuhn

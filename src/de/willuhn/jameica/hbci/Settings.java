@@ -36,6 +36,7 @@ public class Settings
   private static DBService db = null;
 	private static String workPath = null;
 	private static String libPath = null;
+	private static double ueberweisungLimit;
 
 	private static Color buchungSollForeground = null;
 	private static Color buchungSollBackground = null;
@@ -280,6 +281,28 @@ public class Settings
     return settings.getBoolean("online",false);
   }
 
+	/**
+	 * Liefert das Limit bei Ueberweisungen.
+	 * Soll den Benutzer davor schuetzen, versehentlich zu grosse Betraege bei
+	 * einer Ueberweisung einzugeben.
+   * @return Ueberweisungslimit.
+   */
+  public static double getUeberweisungLimit()
+	{
+		return settings.getDouble("ueberweisunglimit",1000.0);
+	}
+	
+	/**
+	 * Definiert ein Limit bei Ueberweisungen.
+	 * Soll den Benutzer davor schuetzen, versehentlich zu grosse Betraege bei
+	 * einer Ueberweisung einzugeben.
+   * @param limit das Limit fuer Ueberweisungen.
+   */
+  public static void setUeberweisungLimit(double limit)
+	{
+		settings.setAttribute("ueberweisunglimit",limit);
+	}
+	
   /**
    * Liefert das Passwort mit die lokalen Daten verschluesselt werden.
    * @return Passphrase.
@@ -313,7 +336,11 @@ public class Settings
 
 /*********************************************************************
  * $Log$
- * Revision 1.13  2004-05-11 23:31:40  willuhn
+ * Revision 1.14  2004-05-25 23:23:18  willuhn
+ * @N UeberweisungTyp
+ * @N Protokoll
+ *
+ * Revision 1.13  2004/05/11 23:31:40  willuhn
  * *** empty log message ***
  *
  * Revision 1.12  2004/05/11 21:11:32  willuhn
