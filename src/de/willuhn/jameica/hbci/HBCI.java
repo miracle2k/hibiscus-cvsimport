@@ -137,13 +137,17 @@ public class HBCI extends AbstractPlugin
    */
   public void shutDown()
   {
+  	getResources().getI18N().flush();
   }
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.10  2004-03-19 01:44:13  willuhn
+ * Revision 1.11  2004-04-01 22:06:59  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.10  2004/03/19 01:44:13  willuhn
  * *** empty log message ***
  *
  * Revision 1.9  2004/03/17 00:06:28  willuhn
