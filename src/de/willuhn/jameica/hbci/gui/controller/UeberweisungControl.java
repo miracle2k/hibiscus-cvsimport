@@ -108,7 +108,7 @@ public class UeberweisungControl extends AbstractControl {
    * @return das Konto.
    * @throws RemoteException
    */
-  private Konto getKonto() throws RemoteException
+  public Konto getKonto() throws RemoteException
 	{
 		if (konto != null)
 			return konto;
@@ -667,7 +667,10 @@ public class UeberweisungControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.14  2004-04-24 19:04:51  willuhn
+ * Revision 1.15  2004-05-04 23:07:23  willuhn
+ * @C refactored Passport stuff
+ *
+ * Revision 1.14  2004/04/24 19:04:51  willuhn
  * @N Ueberweisung.execute works!! ;)
  *
  * Revision 1.13  2004/04/21 22:28:42  willuhn

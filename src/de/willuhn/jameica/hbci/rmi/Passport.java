@@ -21,7 +21,7 @@ import java.rmi.RemoteException;
 public interface Passport extends Remote {
 
 	/**
-	 * Liefert den sprechenden Namen des Passports.
+	 * Liefert den Namen des Passports.
    * @return Name des Passports.
    * @throws RemoteException
    */
@@ -47,10 +47,7 @@ public interface Passport extends Remote {
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2004-05-04 23:08:12  willuhn
- * *** empty log message ***
- *
- * Revision 1.8  2004/05/04 23:07:23  willuhn
+ * Revision 1.8  2004-05-04 23:07:23  willuhn
  * @C refactored Passport stuff
  *
  * Revision 1.7  2004/04/19 22:05:52  willuhn
