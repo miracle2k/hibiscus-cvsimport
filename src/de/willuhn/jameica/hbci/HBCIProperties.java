@@ -33,7 +33,7 @@ public class HBCIProperties
   }
 
 	/**
-	 * Liste der erlaubten Zeichen (z.Bsp. fuer den Verwendungszweck.).
+	 * Liste der in DTAUS erlaubten Zeichen.
 	 */
 	public final static String HBCI_DTAUS_VALIDCHARS =
 		settings.getString("hbci.dtaus.validchars",
@@ -80,7 +80,10 @@ public class HBCIProperties
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2005-03-05 19:11:25  web0
+ * Revision 1.5  2005-03-09 01:16:17  web0
+ * *** empty log message ***
+ *
+ * Revision 1.4  2005/03/05 19:11:25  web0
  * @N SammelLastschrift-Code complete
  *
  * Revision 1.3  2005/02/28 16:28:24  web0
