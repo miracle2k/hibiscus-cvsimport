@@ -27,7 +27,6 @@ import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.passport.Passport;
 import de.willuhn.jameica.hbci.rmi.Dauerauftrag;
 import de.willuhn.jameica.hbci.rmi.Konto;
-import de.willuhn.jameica.hbci.rmi.Login;
 import de.willuhn.jameica.hbci.rmi.Protokoll;
 import de.willuhn.jameica.hbci.rmi.Ueberweisung;
 import de.willuhn.jameica.hbci.rmi.Umsatz;
@@ -428,30 +427,15 @@ public class KontoImpl extends AbstractDBObject implements Konto {
 		setAttribute("saldo",new Double(saldo));
 		setAttribute("saldo_datum",new Date());
   }
-
-  /**
-   * ueberschreiben wir, um immer nur die Konten des angemeldeten Benutzers
-   * anzuzeigen.
-   * @see de.willuhn.datasource.db.AbstractDBObject#getListQuery()
-   */
-  protected String getListQuery() throws RemoteException
-  {
-    Login currentLogin = ((HBCI)Application.getPluginLoader().getPlugin(HBCI.class)).getCurrentLogin();
-    if (currentLogin == null)
-    {
-      // User nicht eingeloggt.
-      // Wir liefern ein Query, welches ein leeres Resultset liefert.
-      return super.getListQuery() + " where 1=2";
-    }
-    return super.getListQuery() + " where login_id = " + currentLogin.getID();
-  }
-
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.39  2004-11-15 18:09:18  willuhn
+ * Revision 1.40  2004-11-17 19:02:28  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.39  2004/11/15 18:09:18  willuhn
  * @N Login fuer die gesamte Anwendung
  *
  * Revision 1.38  2004/11/12 18:25:07  willuhn
