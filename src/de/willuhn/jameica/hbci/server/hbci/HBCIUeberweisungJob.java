@@ -56,9 +56,8 @@ public class HBCIUeberweisungJob extends AbstractHBCIJob
 		this.konto = ueberweisung.getKonto();
 
 		setJobParam("src",Converter.HibiscusKonto2HBCIKonto(konto));
-		setJobParam("btg.curr",konto.getWaehrung() == null ? "EUR" : konto.getWaehrung());
 
-		setJobParam("btg.value",ueberweisung.getBetrag());
+		setJobParam("btg",ueberweisung.getBetrag(),konto.getWaehrung() == null ? "EUR" : konto.getWaehrung());
 
 		Empfaenger empfaenger = (Empfaenger) Settings.getDBService().createObject(Empfaenger.class,null);
 		empfaenger.setBLZ(ueberweisung.getEmpfaengerBLZ());
@@ -101,7 +100,7 @@ public class HBCIUeberweisungJob extends AbstractHBCIJob
 
 			String error = (statusText != null) ?
 										i18n.tr("Fehlermeldung der Bank") + ": " + statusText :
-										i18n.tr("Unbekannter Fehler beim Ausführen der Überweisung");
+										i18n.tr("Unbekannter Fehler");
 
 			konto.addToProtokoll(msg + " ("+error+")",Protokoll.TYP_ERROR);
 			throw new ApplicationException(msg + " ("+error+")");
@@ -119,7 +118,10 @@ public class HBCIUeberweisungJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.14  2004-10-25 22:39:14  willuhn
+ * Revision 1.15  2004-10-26 23:47:08  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.14  2004/10/25 22:39:14  willuhn
  * *** empty log message ***
  *
  * Revision 1.13  2004/10/25 17:58:56  willuhn

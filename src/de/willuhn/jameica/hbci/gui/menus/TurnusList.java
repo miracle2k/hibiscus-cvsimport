@@ -12,12 +12,8 @@
  **********************************************************************/
 package de.willuhn.jameica.hbci.gui.menus;
 
-import de.willuhn.jameica.gui.parts.CheckedContextMenuItem;
 import de.willuhn.jameica.gui.parts.ContextMenu;
-import de.willuhn.jameica.gui.parts.ContextMenuItem;
 import de.willuhn.jameica.hbci.HBCI;
-import de.willuhn.jameica.hbci.gui.action.EmpfaengerNeu;
-import de.willuhn.jameica.hbci.gui.action.UeberweisungNeu;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.util.I18N;
 
@@ -28,28 +24,27 @@ import de.willuhn.util.I18N;
 public class TurnusList extends ContextMenu
 {
 
-	private I18N i18n;
+  private I18N i18n;
 
-	/**
-	 * Erzeugt das Kontext-Menu fuer eine Liste von Turnus-Objekten.
-	 */
-	public TurnusList()
-	{
-		i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
+  /**
+   * Erzeugt das Kontext-Menu fuer eine Liste von Turnus-Objekten.
+   */
+  public TurnusList()
+  {
+    i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
-		addItem(new CheckedContextMenuItem(i18n.tr("Öffnen"),new EmpfaengerNeu()));
-		addItem(new CheckedContextMenuItem(i18n.tr("Neue Überweisung mit diesem Empfänger..."), new UeberweisungNeu()));
-		addItem(ContextMenuItem.SEPARATOR);
-
-		addItem(new ContextMenuItem(i18n.tr("Neue Adresse..."), new EmpfaengerNeu()));
-	}
+    // TODO TurnusMenu
+  }
 
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2004-10-25 17:58:56  willuhn
+ * Revision 1.2  2004-10-26 23:47:08  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.1  2004/10/25 17:58:56  willuhn
  * @N Haufen Dauerauftrags-Code
  *
  * Revision 1.6  2004/10/18 23:38:17  willuhn
