@@ -40,7 +40,7 @@ public class Settings extends AbstractView {
 		GUI.setTitleText(I18N.tr("Einstellungen"));
 		final SettingsControl control = new SettingsControl(this);
 		
-		LabelGroup settings = new LabelGroup(getParent(),I18N.tr("Einstellungen"));
+		LabelGroup settings = new LabelGroup(getParent(),I18N.tr("Grundeinstellungen"));
 
 		try {
 
@@ -114,7 +114,10 @@ public class Settings extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2004-02-27 01:11:53  willuhn
+ * Revision 1.7  2004-02-27 01:12:22  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.6  2004/02/27 01:11:53  willuhn
  * *** empty log message ***
  *
  * Revision 1.5  2004/02/27 01:10:18  willuhn
