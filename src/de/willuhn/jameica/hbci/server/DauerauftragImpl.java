@@ -107,8 +107,8 @@ public class DauerauftragImpl extends AbstractTransferImpl
 		if (ze == null || intervall == null || tag == null)
 			return null;
   	Turnus t = (Turnus) getService().createObject(Turnus.class,null);
-  	t.setIntervall(ze.intValue());
-		t.setZeiteinheit(intervall.intValue());
+  	t.setIntervall(intervall.intValue());
+		t.setZeiteinheit(ze.intValue());
 		t.setTag(tag.intValue());
 		return t;
   }
@@ -276,7 +276,10 @@ public class DauerauftragImpl extends AbstractTransferImpl
 
 /**********************************************************************
  * $Log$
- * Revision 1.16  2005-03-02 17:59:30  web0
+ * Revision 1.17  2005-03-04 00:16:43  web0
+ * @B Bugzilla http://www.willuhn.de/bugzilla/show_bug.cgi?id=15
+ *
+ * Revision 1.16  2005/03/02 17:59:30  web0
  * @N some refactoring
  *
  * Revision 1.15  2005/02/19 16:49:32  willuhn

@@ -73,10 +73,11 @@ public class DauerauftragDelete implements Action
 			if (da.isActive())
 			{
 
+				// TODO Zieltermin fuer Loeschen des DA nicht benutzerfreundlich!
 				CalendarDialog d2 = new CalendarDialog(CalendarDialog.POSITION_MOUSE);
 				d2.setTitle(i18n.tr("Zieldatum"));
 				d2.setText(i18n.tr(
-					"Bitte wählen Sie das Datum aus, zu dem der Dauerauftrag gelöscht\n" +					"werden soll oder schliessen Sie das Fenster einfach, wenn Sie die\n" +					"Löschung zum nächstmöglichen Termin durchführen wollen."));
+					"Bitte wählen Sie das Datum aus, zu dem der Dauerauftrag gelöscht " +					"werden soll oder schliessen Sie das Fenster einfach, wenn Sie die " +					"Löschung zum nächstmöglichen Termin durchführen wollen.\n\n" +					"Hinweis: Es ist durchaus möglich, dass Ihre Bank das Löschen eines " +					"Dauerauftrages zu einem definierten Datum nicht unterstützt. Schliessen " +					"Sie in diesem Fall bitte ebenfalls einfach das Fenster."));
 				Date fd = null;
 				try
 				{
@@ -147,7 +148,10 @@ public class DauerauftragDelete implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.10  2005-02-28 23:59:57  web0
+ * Revision 1.11  2005-03-04 00:16:43  web0
+ * @B Bugzilla http://www.willuhn.de/bugzilla/show_bug.cgi?id=15
+ *
+ * Revision 1.10  2005/02/28 23:59:57  web0
  * @B http://www.willuhn.de/bugzilla/show_bug.cgi?id=15
  *
  * Revision 1.9  2005/02/28 15:30:47  web0
