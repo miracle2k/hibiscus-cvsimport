@@ -136,8 +136,15 @@ public interface Umsatz extends DBObject, Checksum
    * @param k das Konto.
    * @throws RemoteException
    */
-  public void setKonto(Konto k) throws RemoteException;
+  void setKonto(Konto k) throws RemoteException;
 
+	/**
+	 * Speichert Name,BLZ und Konto des Empfaengers en bloc.
+   * @param empf der zu speichernde Empfaenger.
+   * @throws RemoteException
+   */
+  void setEmpfaenger(Empfaenger empf) throws RemoteException;
+	
 	/**
 	 * Speichert den Namen des Empfaengers.
    * @param name des Empfaenger.
@@ -150,48 +157,49 @@ public interface Umsatz extends DBObject, Checksum
    * @param konto Kontonummer des Empfaenger.
    * @throws RemoteException
    */
-  public void setEmpfaengerKonto(String konto) throws RemoteException;
+	public void setEmpfaengerKonto(String konto) throws RemoteException;
+
   /**
    * Speichert die BLZ des Empfaengers.
    * @param blz BLZ des Empfaenger.
    * @throws RemoteException
    */
-  public void setEmpfaengerBLZ(String blz) throws RemoteException;
+	public void setEmpfaengerBLZ(String blz) throws RemoteException;
   
   /**
 	 * Betrag der Buchung. Soll-Buchungen werden durch negative Werte dargestellt.
    * @param d Betrag der Buchung.
    * @throws RemoteException
    */
-  public void setBetrag(double d) throws RemoteException;
+	public void setBetrag(double d) throws RemoteException;
 	
 	/**
 	 * Verwendungszweck.
    * @param zweck
    * @throws RemoteException
    */
-  public void setZweck(String zweck) throws RemoteException;
+	public void setZweck(String zweck) throws RemoteException;
 	
 	/**
 	 * weiterer Verwendungszweck. Darf <code>null</code> sein.
    * @param zweck2
    * @throws RemoteException
    */
-  public void setZweck2(String zweck2) throws RemoteException;
+	public void setZweck2(String zweck2) throws RemoteException;
 	
 	/**
 	 * Datum der Buchung.
    * @param d
    * @throws RemoteException
    */
-  public void setDatum(Date d) throws RemoteException;
+	public void setDatum(Date d) throws RemoteException;
 	
   /**
    * Datum der Wertstellung.
    * @param d
    * @throws RemoteException
    */
-  public void setValuta(Date d) throws RemoteException;
+	public void setValuta(Date d) throws RemoteException;
 
 	/**
 	 * Speichert den Saldo des Kontos nach dieser Buchung.
@@ -226,13 +234,16 @@ public interface Umsatz extends DBObject, Checksum
    * @param typ Umsatz-Typ.
    * @throws RemoteException
    */
-  public void setUmsatzTyp(UmsatzTyp typ) throws RemoteException;
+	public void setUmsatzTyp(UmsatzTyp typ) throws RemoteException;
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2004-10-17 16:28:46  willuhn
+ * Revision 1.7  2004-10-23 17:34:31  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.6  2004/10/17 16:28:46  willuhn
  * @N Die ersten Dauerauftraege abgerufen ;)
  *
  * Revision 1.5  2004/05/25 23:23:17  willuhn

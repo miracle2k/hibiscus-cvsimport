@@ -25,8 +25,6 @@ public class DauerauftragNeu extends AbstractView
    */
   public void bind() throws Exception
   {
-    // TODO Auto-generated method stub
-
   }
 
   /**
@@ -34,8 +32,6 @@ public class DauerauftragNeu extends AbstractView
    */
   public void unbind() throws ApplicationException
   {
-    // TODO Auto-generated method stub
-
   }
 
 }
@@ -43,7 +39,10 @@ public class DauerauftragNeu extends AbstractView
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2004-10-08 13:37:48  willuhn
+ * Revision 1.3  2004-10-23 17:34:31  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.2  2004/10/08 13:37:48  willuhn
  * *** empty log message ***
  *
  * Revision 1.1  2004/07/13 23:08:37  willuhn
