@@ -60,7 +60,7 @@ public class KontoImpl extends AbstractDBObject implements Konto {
   }
 
   /**
-   * @see de.willuhn.datasource.rmi.GenericObject#getPrimaryAttribute()
+   * @see de.willuhn.datasource.GenericObject#getPrimaryAttribute()
    */
   public String getPrimaryAttribute() throws RemoteException {
     return "kontonummer";
@@ -455,7 +455,10 @@ public class KontoImpl extends AbstractDBObject implements Konto {
 
 /**********************************************************************
  * $Log$
- * Revision 1.31  2004-07-25 17:15:06  willuhn
+ * Revision 1.32  2004-08-18 23:13:51  willuhn
+ * @D Javadoc
+ *
+ * Revision 1.31  2004/07/25 17:15:06  willuhn
  * @C PluginLoader is no longer static
  *
  * Revision 1.30  2004/07/23 15:51:44  willuhn

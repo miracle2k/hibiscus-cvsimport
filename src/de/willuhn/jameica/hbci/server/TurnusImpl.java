@@ -49,7 +49,7 @@ public class TurnusImpl extends AbstractDBObject implements Turnus
   }
 
   /**
-   * @see de.willuhn.datasource.rmi.GenericObject#getPrimaryAttribute()
+   * @see de.willuhn.datasource.GenericObject#getPrimaryAttribute()
    */
   public String getPrimaryAttribute() throws RemoteException
   {
@@ -203,7 +203,10 @@ public class TurnusImpl extends AbstractDBObject implements Turnus
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2004-07-25 17:15:06  willuhn
+ * Revision 1.4  2004-08-18 23:13:51  willuhn
+ * @D Javadoc
+ *
+ * Revision 1.3  2004/07/25 17:15:06  willuhn
  * @C PluginLoader is no longer static
  *
  * Revision 1.2  2004/07/21 23:54:30  willuhn

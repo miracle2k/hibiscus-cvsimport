@@ -32,6 +32,9 @@ public class UmsatzList extends ContextMenu
 
 	private I18N i18n;
 
+	/**
+	 * Erzeugt ein Kontext-Menu fuer eine Liste von Umsaetzen.
+	 */
 	public UmsatzList()
 	{
 		i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
@@ -51,7 +54,10 @@ public class UmsatzList extends ContextMenu
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2004-07-25 17:15:06  willuhn
+ * Revision 1.4  2004-08-18 23:13:51  willuhn
+ * @D Javadoc
+ *
+ * Revision 1.3  2004/07/25 17:15:06  willuhn
  * @C PluginLoader is no longer static
  *
  * Revision 1.2  2004/07/21 23:54:31  willuhn

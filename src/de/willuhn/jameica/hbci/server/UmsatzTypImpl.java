@@ -49,7 +49,7 @@ public class UmsatzTypImpl extends AbstractDBObject implements UmsatzTyp {
   }
 
   /**
-   * @see de.willuhn.datasource.rmi.GenericObject#getPrimaryAttribute()
+   * @see de.willuhn.datasource.GenericObject#getPrimaryAttribute()
    */
   public String getPrimaryAttribute() throws RemoteException {
     return "name";
@@ -190,7 +190,10 @@ public class UmsatzTypImpl extends AbstractDBObject implements UmsatzTyp {
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2004-07-25 17:15:06  willuhn
+ * Revision 1.8  2004-08-18 23:13:51  willuhn
+ * @D Javadoc
+ *
+ * Revision 1.7  2004/07/25 17:15:06  willuhn
  * @C PluginLoader is no longer static
  *
  * Revision 1.6  2004/07/23 15:51:44  willuhn

@@ -43,7 +43,7 @@ public class EmpfaengerImpl extends AbstractDBObject implements Empfaenger {
   }
 
   /**
-   * @see de.willuhn.datasource.rmi.GenericObject#getPrimaryAttribute()
+   * @see de.willuhn.datasource.GenericObject#getPrimaryAttribute()
    */
   public String getPrimaryAttribute() throws RemoteException {
     return "name";
@@ -152,7 +152,10 @@ public class EmpfaengerImpl extends AbstractDBObject implements Empfaenger {
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2004-07-23 15:51:44  willuhn
+ * Revision 1.8  2004-08-18 23:13:51  willuhn
+ * @D Javadoc
+ *
+ * Revision 1.7  2004/07/23 15:51:44  willuhn
  * @C Rest des Refactorings
  *
  * Revision 1.6  2004/07/13 22:20:37  willuhn

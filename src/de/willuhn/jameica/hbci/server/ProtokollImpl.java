@@ -47,7 +47,7 @@ public class ProtokollImpl extends AbstractDBObject implements Protokoll {
   }
 
   /**
-   * @see de.willuhn.datasource.rmi.DBObject#getPrimaryField()
+   * @see de.willuhn.datasource.GenericObject#getPrimaryAttribute()
    */
   public String getPrimaryAttribute() throws RemoteException {
     return "kommentar";
@@ -164,7 +164,10 @@ public class ProtokollImpl extends AbstractDBObject implements Protokoll {
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2004-07-25 17:15:06  willuhn
+ * Revision 1.7  2004-08-18 23:13:51  willuhn
+ * @D Javadoc
+ *
+ * Revision 1.6  2004/07/25 17:15:06  willuhn
  * @C PluginLoader is no longer static
  *
  * Revision 1.5  2004/07/21 23:54:30  willuhn
