@@ -250,30 +250,6 @@ public abstract class AbstractTransferControl extends AbstractControl
 		return storeEmpfaenger;
 	}
 
-  /**
-   * @see de.willuhn.jameica.gui.controller.AbstractControl#handleDelete()
-   */
-  // TODO: Der hier noch
-  public synchronized void handleDelete() {
-		try {
-			if (getTransfer() == null || getTransfer().isNewObject())
-				return;
-
-			YesNoDialog d = new YesNoDialog(YesNoDialog.POSITION_CENTER);
-			d.setTitle(i18n.tr("Sicher?"));
-			d.setText(i18n.tr("Wollen Sie diesen Auftrag wirklich löschen?"));
-			if (!((Boolean) d.open()).booleanValue())
-				return;
-			getTransfer().delete();
-			GUI.getStatusBar().setSuccessText(i18n.tr("Auftrag gelöscht."));
-		}
-		catch (Exception e)
-		{
-			Logger.error("error while deleting transfer",e);
-			GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Löschen des Auftrags."));
-		}
-  }
-
 	/**
    * Speichert den Geld-Transfer.
    */
@@ -432,7 +408,10 @@ public abstract class AbstractTransferControl extends AbstractControl
 
 /**********************************************************************
  * $Log$
- * Revision 1.11  2004-10-20 12:34:02  willuhn
+ * Revision 1.12  2004-10-21 14:05:05  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.11  2004/10/20 12:34:02  willuhn
  * *** empty log message ***
  *
  * Revision 1.10  2004/10/20 12:08:18  willuhn

@@ -19,7 +19,7 @@ import de.willuhn.jameica.gui.util.ButtonArea;
 import de.willuhn.jameica.gui.util.LabelGroup;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.gui.action.Back;
-import de.willuhn.jameica.hbci.gui.action.UeberweisungDelete;
+import de.willuhn.jameica.hbci.gui.action.TransferDelete;
 import de.willuhn.jameica.hbci.gui.controller.UeberweisungControl;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.util.ApplicationException;
@@ -65,11 +65,11 @@ public class UeberweisungNeu extends AbstractView {
     {
       public void handleAction(Object context) throws ApplicationException
       {
-      	control.handleDelete();// TODO Der hier noch
+      	control.handleExecute();
       }
     });
 		buttonArea.addButton(i18n.tr("Zurück"), 				 new Back());
-		buttonArea.addButton(i18n.tr("Löschen"),				 new UeberweisungDelete(), control.getTransfer());
+		buttonArea.addButton(i18n.tr("Löschen"),				 new TransferDelete(), control.getTransfer());
 		buttonArea.addButton(i18n.tr("Speichern"), new Action()
     {
       public void handleAction(Object context) throws ApplicationException
@@ -90,7 +90,10 @@ public class UeberweisungNeu extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.17  2004-10-20 12:34:02  willuhn
+ * Revision 1.18  2004-10-21 14:05:05  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.17  2004/10/20 12:34:02  willuhn
  * *** empty log message ***
  *
  * Revision 1.16  2004/10/08 13:37:48  willuhn
