@@ -36,7 +36,7 @@ public class PassportLoadDialog extends PasswordDialog {
 
     setTitle(i18n.tr("Passwort-Eingabe"));
     setLabelText(i18n.tr("Ihre Passwort"));
-    setText(i18n.tr("Bitte geben Sie von Ihnen vergebene Passwort für dieses\nSicherheitsmedium ein."));
+    setText(i18n.tr("Bitte geben Sie das von Ihnen vergebene Passwort für dieses\nSicherheitsmedium ein."));
   }
 
 	/**
@@ -67,7 +67,10 @@ public class PassportLoadDialog extends PasswordDialog {
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2005-02-01 17:15:37  willuhn
+ * Revision 1.3  2005-02-06 19:03:36  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.2  2005/02/01 17:15:37  willuhn
  * *** empty log message ***
  *
  * Revision 1.1  2005/01/09 23:21:05  willuhn
