@@ -19,7 +19,6 @@ import org.eclipse.swt.graphics.RGB;
 
 import de.willuhn.datasource.rmi.DBService;
 import de.willuhn.jameica.gui.GUI;
-import de.willuhn.jameica.gui.parts.ProgressBar;
 import de.willuhn.jameica.security.Wallet;
 import de.willuhn.jameica.system.Application;
 
@@ -40,10 +39,6 @@ public class Settings
 	private static Color buchungHabenForeground = null;
 	private static Color ueberfaelligForeground = null;
 	
-	private static ProgressBar hbciProgress = null;
-
-	private static AccountContainer accountContainer = null;
-
   /**
    * Liefert den Datenbank-Service.
    * @return Datenbank.
@@ -235,7 +230,10 @@ public class Settings
 
 /*********************************************************************
  * $Log$
- * Revision 1.30  2005-02-08 22:28:00  willuhn
+ * Revision 1.31  2005-03-05 19:11:25  web0
+ * @N SammelLastschrift-Code complete
+ *
+ * Revision 1.30  2005/02/08 22:28:00  willuhn
  * *** empty log message ***
  *
  * Revision 1.29  2005/02/02 16:15:52  willuhn

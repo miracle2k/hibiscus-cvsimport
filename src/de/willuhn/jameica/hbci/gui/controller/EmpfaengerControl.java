@@ -129,7 +129,7 @@ public class EmpfaengerControl extends AbstractControl {
 	{
 		if (name != null)
 			return name;
-		name = new TextInput(getEmpfaenger().getName(),HBCIProperties.HBCI_TRANSFER_USAGE_MAXLENGTH);
+		name = new TextInput(getEmpfaenger().getName(),HBCIProperties.HBCI_TRANSFER_NAME_MAXLENGTH);
 		return name;
 	}
 
@@ -191,7 +191,10 @@ public class EmpfaengerControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.27  2005-03-01 18:51:04  web0
+ * Revision 1.28  2005-03-05 19:11:25  web0
+ * @N SammelLastschrift-Code complete
+ *
+ * Revision 1.27  2005/03/01 18:51:04  web0
  * @N Dialoge fuer Sammel-Lastschriften
  *
  * Revision 1.26  2005/02/27 17:11:49  web0

@@ -145,14 +145,12 @@ public class HBCIFactory {
 					dumpJob(j);
 					job.setJob(j);
 					handler.addJob(j);
-					handler.execute();
+					handler.newMsg();
 					if (cancelled)
 					{
 						cancelled = false;
 						throw new OperationCanceledException();
 					}
-					Logger.info("executing check for job " + job.getIdentifier());
-					job.handleResult();
 				}
 
 
@@ -311,7 +309,10 @@ public class HBCIFactory {
 
 /**********************************************************************
  * $Log$
- * Revision 1.23  2005-02-28 23:59:57  web0
+ * Revision 1.24  2005-03-05 19:11:25  web0
+ * @N SammelLastschrift-Code complete
+ *
+ * Revision 1.23  2005/02/28 23:59:57  web0
  * @B http://www.willuhn.de/bugzilla/show_bug.cgi?id=15
  *
  * Revision 1.22  2005/02/01 17:15:37  willuhn

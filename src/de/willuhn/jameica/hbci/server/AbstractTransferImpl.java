@@ -72,8 +72,8 @@ public abstract class AbstractTransferImpl extends AbstractDBObject implements T
 			if (getGegenkontoName() == null || getGegenkontoName().length() == 0)
 				throw new ApplicationException(i18n.tr("Bitte geben Sie den Namen des Kontoinhabers des Gegenkontos ein"));
 
-			if (getGegenkontoName().length() > HBCIProperties.HBCI_TRANSFER_USAGE_MAXLENGTH)
-				throw new ApplicationException(i18n.tr("Bitte geben Sie maximal {0} Zeichen für den Namen des Kontoinhabers ein",""+HBCIProperties.HBCI_TRANSFER_USAGE_MAXLENGTH));
+			if (getGegenkontoName().length() > HBCIProperties.HBCI_TRANSFER_NAME_MAXLENGTH)
+				throw new ApplicationException(i18n.tr("Bitte geben Sie maximal {0} Zeichen für den Namen des Kontoinhabers ein",""+HBCIProperties.HBCI_TRANSFER_NAME_MAXLENGTH));
 
 			if (!HBCIUtils.checkAccountCRC(getGegenkontoBLZ(),getGegenkontoNummer()))
 				throw new ApplicationException(i18n.tr("Ungültige BLZ/Kontonummer. Bitte prüfen Sie Ihre Eingaben."));
@@ -269,7 +269,10 @@ public abstract class AbstractTransferImpl extends AbstractDBObject implements T
 
 /**********************************************************************
  * $Log$
- * Revision 1.19  2005-03-02 17:59:30  web0
+ * Revision 1.20  2005-03-05 19:11:25  web0
+ * @N SammelLastschrift-Code complete
+ *
+ * Revision 1.19  2005/03/02 17:59:30  web0
  * @N some refactoring
  *
  * Revision 1.18  2005/02/28 16:28:24  web0

@@ -46,6 +46,12 @@ public class HBCIProperties
   public final static int HBCI_TRANSFER_USAGE_MAXLENGTH =
     settings.getInt("hbci.transfer.usage.maxlength",27);
 
+	/**
+	 * Maximale Text-Laenge fuer Namen.
+	 */
+	public final static int HBCI_TRANSFER_NAME_MAXLENGTH =
+		settings.getInt("hbci.transfer.name.maxlength",27);
+
   /**
    * Prueft die uebergebenen Strings auf Vorhandensein nicht erlaubter Zeichen.
    * @param chars zu testende Zeichen.
@@ -74,7 +80,10 @@ public class HBCIProperties
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2005-02-28 16:28:24  web0
+ * Revision 1.4  2005-03-05 19:11:25  web0
+ * @N SammelLastschrift-Code complete
+ *
+ * Revision 1.3  2005/02/28 16:28:24  web0
  * @N first code for "Sammellastschrift"
  *
  * Revision 1.2  2004/11/02 18:48:32  willuhn

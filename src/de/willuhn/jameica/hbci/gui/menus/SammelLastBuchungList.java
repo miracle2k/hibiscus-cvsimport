@@ -46,12 +46,10 @@ public class SammelLastBuchungList extends ContextMenu
 		i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
     this.lastschrift = lastschrift;
 
-		addItem(new CheckedContextMenuItem(i18n.tr("Öffnen"), new SammelLastBuchungNew()));
+		addItem(new CheckedContextMenuItem(i18n.tr("Buchung öffnen"), new SammelLastBuchungNew()));
+		addItem(new NotActiveMenuItem(i18n.tr("Buchung löschen..."), new SammelLastBuchungDelete()));
 		addItem(ContextMenuItem.SEPARATOR);
-		addItem(new NotActiveMenuItem(i18n.tr("Löschen..."), new SammelLastBuchungDelete()));
-		addItem(ContextMenuItem.SEPARATOR);
-		addItem(new NotActiveMenuItem(i18n.tr("Neue Buchung..."), new BNeu()));
-		
+		addItem(new ContextMenuItem(i18n.tr("Neue Buchung..."), new BNeu()));
 	}
 
 	/**
@@ -110,7 +108,10 @@ public class SammelLastBuchungList extends ContextMenu
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2005-03-02 00:22:05  web0
+ * Revision 1.3  2005-03-05 19:11:25  web0
+ * @N SammelLastschrift-Code complete
+ *
+ * Revision 1.2  2005/03/02 00:22:05  web0
  * @N first code for "Sammellastschrift"
  *
  * Revision 1.1  2005/03/01 18:51:04  web0

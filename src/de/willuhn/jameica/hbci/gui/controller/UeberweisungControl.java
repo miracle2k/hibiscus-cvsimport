@@ -24,8 +24,6 @@ import de.willuhn.jameica.gui.formatter.CurrencyFormatter;
 import de.willuhn.jameica.gui.formatter.DateFormatter;
 import de.willuhn.jameica.gui.formatter.Formatter;
 import de.willuhn.jameica.gui.formatter.TableFormatter;
-import de.willuhn.jameica.gui.input.DialogInput;
-import de.willuhn.jameica.gui.input.Input;
 import de.willuhn.jameica.gui.parts.TablePart;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
@@ -39,10 +37,6 @@ import de.willuhn.jameica.hbci.rmi.Ueberweisung;
 public class UeberweisungControl extends AbstractBaseUeberweisungControl
 {
 
-	// Eingabe-Felder
-	private DialogInput termin = null;
-	private Input comment			 = null;
-	
 	private TablePart table		 = null;
   
   private Ueberweisung transfer = null;
@@ -127,7 +121,10 @@ public class UeberweisungControl extends AbstractBaseUeberweisungControl
 
 /**********************************************************************
  * $Log$
- * Revision 1.38  2005-02-04 18:27:54  willuhn
+ * Revision 1.39  2005-03-05 19:11:25  web0
+ * @N SammelLastschrift-Code complete
+ *
+ * Revision 1.38  2005/02/04 18:27:54  willuhn
  * @C Refactoring zwischen Lastschrift und Ueberweisung
  *
  * Revision 1.37  2005/02/04 00:57:00  willuhn

@@ -85,6 +85,14 @@ public interface SammelLastBuchung extends DBObject
   public void setGegenkonto(Adresse gegenkonto) throws RemoteException;
 
 	/**
+	 * Liefert das Gegenkonto als Adress-Objekt.
+	 * Das Adress-Objekt muss nicht zwangslaeufig in der Datenbank existieren.
+   * @return Adresse.
+   * @throws RemoteException
+   */
+  public Adresse getGegenkonto() throws RemoteException;
+	
+	/**
 	 * Liefert den Betrag.
 	 * @return Betrag.
 	 * @throws RemoteException
@@ -138,7 +146,10 @@ public interface SammelLastBuchung extends DBObject
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2005-02-28 16:28:24  web0
+ * Revision 1.3  2005-03-05 19:11:25  web0
+ * @N SammelLastschrift-Code complete
+ *
+ * Revision 1.2  2005/02/28 16:28:24  web0
  * @N first code for "Sammellastschrift"
  *
  * Revision 1.1  2005/02/27 17:11:49  web0

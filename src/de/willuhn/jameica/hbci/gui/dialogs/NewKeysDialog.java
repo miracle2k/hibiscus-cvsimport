@@ -57,10 +57,8 @@ public class NewKeysDialog extends AbstractDialog
 	private HBCIPassport passport;
 	private INILetter iniletter;
 	private I18N i18n;
-	private Boolean choosen;
 	
 	private Input printerList = null;
-	private PrintRequestAttributeSet printProps = null;
 
 	static
 	{
@@ -240,7 +238,10 @@ public class NewKeysDialog extends AbstractDialog
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2005-02-03 23:57:05  willuhn
+ * Revision 1.5  2005-03-05 19:11:25  web0
+ * @N SammelLastschrift-Code complete
+ *
+ * Revision 1.4  2005/02/03 23:57:05  willuhn
  * *** empty log message ***
  *
  * Revision 1.3  2005/02/03 18:57:42  willuhn
