@@ -34,7 +34,7 @@ public class UeberweisungNeu extends AbstractView {
 
 		I18N i18n = PluginLoader.getPlugin(HBCI.class).getResources().getI18N();
 
-		GUI.setTitleText(i18n.tr("Überweisung bearbeiten"));
+		GUI.getView().setTitle(i18n.tr("Überweisung bearbeiten"));
 		
 		UeberweisungControl control = new UeberweisungControl(this);
 		LabelGroup group = new LabelGroup(getParent(),i18n.tr("Eigenschaften"));
@@ -71,7 +71,10 @@ public class UeberweisungNeu extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2004-03-04 00:35:19  willuhn
+ * Revision 1.5  2004-03-30 22:07:49  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.4  2004/03/04 00:35:19  willuhn
  * *** empty log message ***
  *
  * Revision 1.3  2004/03/04 00:26:24  willuhn

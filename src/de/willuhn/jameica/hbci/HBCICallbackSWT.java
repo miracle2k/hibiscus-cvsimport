@@ -96,11 +96,11 @@ public class HBCICallbackSWT extends AbstractHBCICallback
 					break;
 	
 				case NEED_CHIPCARD:
-					GUI.setActionText(i18n.tr("Bitte legen Sie Ihre HBCI-Chipkarte in das Lesegerät."));
+					GUI.getStatusBar().setErrorText(i18n.tr("Bitte legen Sie Ihre HBCI-Chipkarte in das Lesegerät."));
 					break;
 
 				case HAVE_CHIPCARD:
-					GUI.setActionText(i18n.tr("HBCI-Chipkarte wird ausgelesen."));
+				GUI.getStatusBar().setSuccessText(i18n.tr("HBCI-Chipkarte wird ausgelesen."));
 					break;
 	
 				case NEED_HARDPIN:
@@ -371,7 +371,10 @@ public class HBCICallbackSWT extends AbstractHBCICallback
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2004-03-06 18:25:10  willuhn
+ * Revision 1.10  2004-03-30 22:07:49  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.9  2004/03/06 18:25:10  willuhn
  * @D javadoc
  * @C removed empfaenger_id from umsatz
  *

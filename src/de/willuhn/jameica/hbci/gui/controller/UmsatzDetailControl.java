@@ -201,7 +201,7 @@ public class UmsatzDetailControl extends AbstractControl {
     catch(RemoteException e)
     {
       Application.getLog().error("error while opening umsatz list",e);
-      GUI.setActionText(i18n.tr("Fehler beim Laden der Umsätze"));
+			GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Laden der Umsätze"));
     }
   }
   
@@ -228,16 +228,16 @@ public class UmsatzDetailControl extends AbstractControl {
       e.setKontonummer(getUmsatz().getEmpfaengerKonto());
       e.setName(getUmsatz().getEmpfaengerName());
       e.store();
-      GUI.setActionText(i18n.tr("Adresse gespeichert"));
+			GUI.getStatusBar().setSuccessText(i18n.tr("Adresse gespeichert"));
     }
     catch (ApplicationException ae)
     {
-      GUI.setErrorText(i18n.tr(ae.getMessage()));
+			GUI.getView().setErrorText(i18n.tr(ae.getMessage()));
     }
     catch (Exception re)
     {
       Application.getLog().error("error while storing empfaenger",re);
-      GUI.setErrorText(i18n.tr("Fehler beim Speichern des Empfängers"));
+			GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Speichern des Empfängers"));
     }
   }
 
@@ -263,7 +263,10 @@ public class UmsatzDetailControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2004-03-11 08:55:42  willuhn
+ * Revision 1.2  2004-03-30 22:07:50  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.1  2004/03/11 08:55:42  willuhn
  * @N UmsatzDetails
  *
  **********************************************************************/

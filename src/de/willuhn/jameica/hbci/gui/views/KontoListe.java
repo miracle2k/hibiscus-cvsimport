@@ -47,7 +47,7 @@ public class KontoListe extends AbstractView {
 
 		I18N i18n = PluginLoader.getPlugin(HBCI.class).getResources().getI18N();
 
-		GUI.setTitleText(i18n.tr("Vorhandene Bankverbindungen"));
+		GUI.getView().setTitle(i18n.tr("Vorhandene Bankverbindungen"));
 
 
 		DBIterator passports = Settings.getDatabase().createList(Passport.class);
@@ -98,7 +98,7 @@ public class KontoListe extends AbstractView {
 		catch (Exception e)
 		{
 			Application.getLog().error("error while loading konto list",e);
-			GUI.setActionText(i18n.tr("Fehler beim Lesen der Bankverbindungen."));
+			GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Lesen der Bankverbindungen."));
 		}
   }
 
@@ -113,7 +113,10 @@ public class KontoListe extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2004-03-04 00:26:24  willuhn
+ * Revision 1.7  2004-03-30 22:07:49  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.6  2004/03/04 00:26:24  willuhn
  * @N Ueberweisung
  *
  * Revision 1.5  2004/03/03 22:26:40  willuhn

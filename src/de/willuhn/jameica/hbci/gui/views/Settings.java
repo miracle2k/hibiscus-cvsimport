@@ -41,7 +41,7 @@ public class Settings extends AbstractView {
 
 		I18N i18n = PluginLoader.getPlugin(HBCI.class).getResources().getI18N();
 
-		GUI.setTitleText(i18n.tr("Einstellungen"));
+		GUI.getView().setTitle(i18n.tr("Einstellungen"));
 		final SettingsControl control = new SettingsControl(this);
 		
 		LabelGroup settings = new LabelGroup(getParent(),i18n.tr("Grundeinstellungen"));
@@ -88,7 +88,7 @@ public class Settings extends AbstractView {
 		catch (RemoteException e)
 		{
 			Application.getLog().error("error while showing settings",e);
-			GUI.setActionText(i18n.tr("Fehler beim Laden der Einstellungen"));
+			GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Laden der Einstellungen"));
 		}
   }
 
@@ -105,7 +105,10 @@ public class Settings extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2004-03-03 22:26:40  willuhn
+ * Revision 1.10  2004-03-30 22:07:49  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.9  2004/03/03 22:26:40  willuhn
  * @N help texts
  * @C refactoring
  *

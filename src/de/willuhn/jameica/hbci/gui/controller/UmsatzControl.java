@@ -97,7 +97,7 @@ public class UmsatzControl extends AbstractControl {
   	catch (RemoteException e)
   	{
   		Application.getLog().error("error while loading konto view",e);
-  		GUI.setActionText(i18n.tr("Fehler beim Laden des Kontos"));
+			GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Laden des Kontos"));
   	}
   }
 
@@ -125,37 +125,40 @@ public class UmsatzControl extends AbstractControl {
    */
   public void handleGetUmsaetze()
 	{
-		GUI.startProgress();
+		GUI.getStatusBar().startProgress();
 
 		GUI.startSync(new Runnable() {
 			public void run() {
 				try {
-					GUI.setActionText(i18n.tr("Umsätze werden abgerufen..."));
+					GUI.getStatusBar().setSuccessText(i18n.tr("Umsätze werden abgerufen..."));
 					getKonto().refreshUmsaetze();
 					// Jetzt aktualisieren wir die GUI, indem wir uns selbst neu laden ;)
 					GUI.startView(UmsatzListe.class.getName(),getKonto());
-					GUI.setActionText(i18n.tr("...Umsätze erfolgreich übertragen"));
+					GUI.getStatusBar().setSuccessText(i18n.tr("...Umsätze erfolgreich übertragen"));
 				}
 				catch (ApplicationException e2)
 				{
-					GUI.setErrorText(e2.getLocalizedMessage());
+					GUI.getView().setErrorText(i18n.tr(e2.getMessage()));
 				}
 				catch (Exception e)
 				{
 					Application.getLog().error("error while reading saldo",e);
-					GUI.setErrorText(i18n.tr("Fehler beim Abrufen der Umsätze."));
+					GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Abrufen der Umsätze."));
 				}
 			}
 		});
 
-		GUI.stopProgress();
+		GUI.getStatusBar().stopProgress();
 	}
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2004-03-11 08:55:42  willuhn
+ * Revision 1.5  2004-03-30 22:07:49  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.4  2004/03/11 08:55:42  willuhn
  * @N UmsatzDetails
  *
  * Revision 1.3  2004/03/06 18:25:10  willuhn

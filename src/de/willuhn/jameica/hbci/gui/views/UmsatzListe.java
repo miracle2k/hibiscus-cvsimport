@@ -39,7 +39,7 @@ public class UmsatzListe extends AbstractView {
 
 		I18N i18n = PluginLoader.getPlugin(HBCI.class).getResources().getI18N();
 
-		GUI.setTitleText(i18n.tr("Umsätze des Kontos"));
+		GUI.getView().setTitle(i18n.tr("Umsätze des Kontos"));
 		
 		final UmsatzControl control = new UmsatzControl(this);
 
@@ -59,7 +59,7 @@ public class UmsatzListe extends AbstractView {
 		catch (RemoteException e)
 		{
 			Application.getLog().error("error while loading umsatz list",e);
-			GUI.setActionText(i18n.tr("Fehler beim Laden der Umsätze"));
+			GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Laden der Umsätze"));
 		}
 
   }
@@ -75,7 +75,10 @@ public class UmsatzListe extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2004-03-05 00:04:10  willuhn
+ * Revision 1.2  2004-03-30 22:07:49  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.1  2004/03/05 00:04:10  willuhn
  * @N added code for umsatzlist
  *
  **********************************************************************/

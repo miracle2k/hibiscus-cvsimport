@@ -34,7 +34,7 @@ public class UeberweisungListe extends AbstractView {
 
 		I18N i18n = PluginLoader.getPlugin(HBCI.class).getResources().getI18N();
 
-		GUI.setTitleText(i18n.tr("Vorhandene Überweisungen"));
+		GUI.getView().setTitle(i18n.tr("Vorhandene Überweisungen"));
 		
 		UeberweisungControl control = new UeberweisungControl(this);
 		
@@ -49,7 +49,7 @@ public class UeberweisungListe extends AbstractView {
 		catch (Exception e)
 		{
 			Application.getLog().error("error while loading ueberweisung list",e);
-			GUI.setActionText(i18n.tr("Fehler beim Lesen der Überweisungen."));
+			GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Lesen der Überweisungen."));
 		}
   }
 
@@ -64,7 +64,10 @@ public class UeberweisungListe extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2004-03-03 22:26:40  willuhn
+ * Revision 1.3  2004-03-30 22:07:49  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.2  2004/03/03 22:26:40  willuhn
  * @N help texts
  * @C refactoring
  *

@@ -74,7 +74,7 @@ public class PINDialog extends PasswordDialog {
 			catch (NoSuchAlgorithmException e)
 			{
 				Application.getLog().error("hash algorithm not found",e);
-				GUI.setActionText(i18n.tr("Prüfsumme konnte nicht ermittelt werden. Option wurde deaktiviert."));
+				GUI.getStatusBar().setErrorText(i18n.tr("Prüfsumme konnte nicht ermittelt werden. Option wurde deaktiviert."));
 				Settings.setCheckPin(false);
 				Settings.setCheckSum(null);
 			}
@@ -89,7 +89,7 @@ public class PINDialog extends PasswordDialog {
 			catch (NoSuchAlgorithmException e)
 			{
 				Application.getLog().error("hash algorithm not found",e);
-				GUI.setActionText(i18n.tr("Prüfsumme konnte nicht verglichen werden. Option wurde deaktiviert."));
+				GUI.getStatusBar().setErrorText(i18n.tr("Prüfsumme konnte nicht verglichen werden. Option wurde deaktiviert."));
 				Settings.setCheckPin(false);
 				Settings.setCheckSum(null);
 				return true;
@@ -145,7 +145,10 @@ public class PINDialog extends PasswordDialog {
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2004-03-03 22:26:41  willuhn
+ * Revision 1.4  2004-03-30 22:07:50  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.3  2004/03/03 22:26:41  willuhn
  * @N help texts
  * @C refactoring
  *

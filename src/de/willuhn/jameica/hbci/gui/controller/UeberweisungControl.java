@@ -330,7 +330,7 @@ public class UeberweisungControl extends AbstractControl {
 			catch (RemoteException er)
 			{
 				Application.getLog().error("error while updating currency",er);
-				GUI.setActionText(i18n.tr("Fehler bei Ermittlung der Währung"));
+				GUI.getStatusBar().setErrorText(i18n.tr("Fehler bei Ermittlung der Währung"));
 			}
 		}
 	}
@@ -356,7 +356,7 @@ public class UeberweisungControl extends AbstractControl {
 			catch (RemoteException er)
 			{
 				Application.getLog().error("error while choosing empfaenger",er);
-				GUI.setActionText(i18n.tr("Fehler bei der Auswahl des Empfängers"));
+				GUI.getStatusBar().setErrorText(i18n.tr("Fehler bei der Auswahl des Empfängers"));
     	}
     }
 	}
@@ -365,7 +365,10 @@ public class UeberweisungControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2004-03-11 08:55:42  willuhn
+ * Revision 1.8  2004-03-30 22:07:49  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.7  2004/03/11 08:55:42  willuhn
  * @N UmsatzDetails
  *
  * Revision 1.6  2004/03/06 18:25:10  willuhn

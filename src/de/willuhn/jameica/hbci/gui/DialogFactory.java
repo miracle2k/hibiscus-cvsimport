@@ -43,7 +43,7 @@ public class DialogFactory {
 		catch (Exception e)
 		{
 			Application.getLog().error(e.getLocalizedMessage(),e);
-			GUI.setActionText(e.getLocalizedMessage());
+			GUI.getStatusBar().setErrorText(e.getLocalizedMessage());
 			throw new RuntimeException(e);
 		}
 		finally
@@ -70,7 +70,7 @@ public class DialogFactory {
 		catch (Exception e)
 		{
 			Application.getLog().error(e.getLocalizedMessage(),e);
-			GUI.setActionText(e.getLocalizedMessage());
+			GUI.getStatusBar().setErrorText(e.getLocalizedMessage());
 			throw new RuntimeException(e);
 		}
 		finally
@@ -112,7 +112,10 @@ public class DialogFactory {
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2004-03-06 18:25:10  willuhn
+ * Revision 1.10  2004-03-30 22:07:50  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.9  2004/03/06 18:25:10  willuhn
  * @D javadoc
  * @C removed empfaenger_id from umsatz
  *
