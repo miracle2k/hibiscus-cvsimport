@@ -105,7 +105,7 @@ public class HBCICallbackSWT extends AbstractHBCICallback
 					break;
 
 				case NEED_SOFTPIN:
-					String p = DialogFactory.openPassword("PIN-Eingabe","Bitte geben Sie Ihre PIN ein.");
+					String p = DialogFactory.getPIN();
 					retData.replace(0,retData.length(),p);
 					break;
 				case NEED_PT_PIN:
@@ -368,7 +368,10 @@ public class HBCICallbackSWT extends AbstractHBCICallback
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2004-02-17 00:53:22  willuhn
+ * Revision 1.7  2004-02-21 19:49:04  willuhn
+ * @N PINDialog
+ *
+ * Revision 1.6  2004/02/17 00:53:22  willuhn
  * @N SaldoAbfrage
  * @N Ueberweisung
  * @N Empfaenger

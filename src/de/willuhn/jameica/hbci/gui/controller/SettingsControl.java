@@ -13,6 +13,11 @@
 package de.willuhn.jameica.hbci.gui.controller;
 
 import java.rmi.RemoteException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 
 import de.willuhn.jameica.Application;
 import de.willuhn.jameica.gui.GUI;
@@ -57,7 +62,7 @@ public class SettingsControl extends AbstractControl {
    * @return
    * @throws RemoteException
    */
-  public CheckboxInput checkPin() throws RemoteException
+  public CheckboxInput getCheckPin() throws RemoteException
 	{
 		if (checkPin != null)
 			return checkPin;
@@ -65,7 +70,8 @@ public class SettingsControl extends AbstractControl {
 		// - In den Settings noch speichern
 		// - Dialog nicht vergroesserbar machen
 		// - OK/Uebernehmen Button
-		//checkPin = new CheckboxInput(Settings.getCheckPin());
+		checkPin = new CheckboxInput(Settings.getCheckPin());
+		checkPin.addComment("",new CheckPinListener());
 		return checkPin;
 	}
   /**
@@ -87,6 +93,10 @@ public class SettingsControl extends AbstractControl {
   public void handleStore() {
 		try {
 			Settings.setOnlineMode(CheckboxInput.ENABLED.equals(getOnlineMode().getValue()));
+			Settings.setCheckPin(CheckboxInput.ENABLED.equals(getCheckPin().getValue()));
+
+			// Wir gehen nochmal auf Nummer sicher, dass die Pruefsummen-Algorithmen vorhanden sind
+			new CheckPinListener().handleEvent(null);
 			GUI.setActionText(I18N.tr("Einstellungen gespeichert."));
 		}
 		catch (RemoteException e)
@@ -95,6 +105,14 @@ public class SettingsControl extends AbstractControl {
 			GUI.setActionText(I18N.tr("Fehler beim Speichern der Einstellungen"));
 		}
   }
+
+	/**
+   * Loescht den ggf. vorhandenen gespeicherten Pin-Hash.
+   */
+  public void handleDeleteCheckSum()
+	{
+		Settings.setCheckSum(null);
+	}
 
   /**
    * @see de.willuhn.jameica.gui.controller.AbstractControl#handleCreate()
@@ -108,12 +126,41 @@ public class SettingsControl extends AbstractControl {
   public void handleLoad(String id) {
   }
 
+	/**
+	 * Listener, der prueft, ob die Hash-Algorithmen zur Checksummen-Bildung
+	 * verfuegbar sind.
+   */
+  private class CheckPinListener implements Listener
+	{
+
+    /**
+     * @see org.eclipse.swt.widgets.Listener#handleEvent(org.eclipse.swt.widgets.Event)
+     */
+    public void handleEvent(Event event) {
+			try {
+				MessageDigest md = MessageDigest.getInstance("MD5");
+				md = MessageDigest.getInstance("SHA1");
+			}
+			catch (NoSuchAlgorithmException e)
+			{
+				Settings.setCheckPin(false);
+				try {
+					getCheckPin().disable();
+				}
+				catch (RemoteException e1) {/*useless*/}
+				GUI.setActionText(I18N.tr("Algorithmen zur Prüfsummenbildung auf diesem System nicht vorhanden"));
+			}
+    }
+	}
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2004-02-20 20:45:13  willuhn
+ * Revision 1.3  2004-02-21 19:49:04  willuhn
+ * @N PINDialog
+ *
+ * Revision 1.2  2004/02/20 20:45:13  willuhn
  * *** empty log message ***
  *
  * Revision 1.1  2004/02/17 00:53:22  willuhn
