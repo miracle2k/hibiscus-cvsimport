@@ -20,8 +20,6 @@ import org.eclipse.swt.widgets.Listener;
 import de.willuhn.datasource.GenericObject;
 import de.willuhn.datasource.pseudo.PseudoIterator;
 import de.willuhn.datasource.rmi.DBIterator;
-import de.willuhn.jameica.gui.AbstractControl;
-import de.willuhn.jameica.gui.AbstractView;
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.Part;
@@ -40,30 +38,21 @@ import de.willuhn.util.I18N;
 
 /**
  */
-public class TurnusControl extends AbstractControl
+public class TurnusControl
 {
 
 	// Das Fachobjekt
 	private Turnus turnus = null;
 
-	private Input intervall				= null;
-	private Input zeiteinheit			= null;
-	private Input tagMonatlich		= null;
-	private Input tagWoechentlich	= null;
+	private SelectInput intervall				= null;
+	private SelectInput zeiteinheit			= null;
+	private SelectInput tagMonatlich		= null;
+	private SelectInput tagWoechentlich	= null;
 	private Input comment					= null;
 
 	private TablePart turnusList	= null;
 
-	private I18N i18n;
-
-  /**
-   * @param view
-   */
-  public TurnusControl(AbstractView view)
-  {
-    super(view);
-    i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
-  }
+	private I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
 	/**
 	 * Liefert eine Liste mit existierenden Zahlungsturnus(sen?).
@@ -81,10 +70,32 @@ public class TurnusControl extends AbstractControl
 		{
 			public void handleAction(Object context) throws ApplicationException
 			{
-				if (context == null)
-					return;
-				turnus = (Turnus) context;
-				// TODO: Restliche Felder aktualisieren.
+				try
+				{
+					if (context == null)
+						return;
+					turnus = (Turnus) context;
+			
+					getIntervall().setPreselected("" + turnus.getIntervall());
+					int zh = turnus.getZeiteinheit();
+					if (zh == Turnus.ZEITEINHEIT_MONATLICH)
+					{
+						getTagMonatlich().setPreselected("" + turnus.getTag());
+						getTagMonatlich().enable();
+						getTagWoechentlich().disable();
+					}
+					else
+					{
+						getZeiteinheit().setPreselected(new Zeiteinheit(Turnus.ZEITEINHEIT_WOECHENTLICH));
+						getTagWoechentlich().setPreselected(new Tag(turnus.getTag()));
+						getTagWoechentlich().enable();
+						getTagMonatlich().disable();
+					}
+				}
+				catch (Exception e)
+				{
+					Logger.error("error while updating combo boxes",e);
+				}
 			}
 		});
 
@@ -99,10 +110,6 @@ public class TurnusControl extends AbstractControl
    */
   public Turnus getTurnus() throws RemoteException
 	{
-		if (turnus != null)
-			return turnus;
-		turnus = (Turnus) getCurrentObject();
-		
 		if (turnus != null)
 			return turnus;
 		
@@ -123,7 +130,7 @@ public class TurnusControl extends AbstractControl
    * @return Intervall.
    * @throws RemoteException
    */
-  public Input getIntervall() throws RemoteException
+  public SelectInput getIntervall() throws RemoteException
 	{
 		if (intervall != null)
 			return intervall;
@@ -159,7 +166,7 @@ public class TurnusControl extends AbstractControl
    * @return Zeiteinheit.
    * @throws RemoteException
    */
-  public Input getZeiteinheit() throws RemoteException
+  public SelectInput getZeiteinheit() throws RemoteException
 	{
 		if (zeiteinheit != null)
 			return zeiteinheit;
@@ -181,7 +188,7 @@ public class TurnusControl extends AbstractControl
    * @return Tag.
    * @throws RemoteException
    */
-  public Input getTagMonatlich() throws RemoteException
+  public SelectInput getTagMonatlich() throws RemoteException
 	{
 		if (tagMonatlich != null)
 			return tagMonatlich;
@@ -200,7 +207,7 @@ public class TurnusControl extends AbstractControl
 	 * @return Tag.
 	 * @throws RemoteException
 	 */
-	public Input getTagWoechentlich() throws RemoteException
+	public SelectInput getTagWoechentlich() throws RemoteException
 	{
 		if (tagWoechentlich != null)
 			return tagWoechentlich;
@@ -399,7 +406,10 @@ public class TurnusControl extends AbstractControl
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2004-11-18 23:46:21  willuhn
+ * Revision 1.5  2004-11-26 00:04:08  willuhn
+ * @N TurnusDetail
+ *
+ * Revision 1.4  2004/11/18 23:46:21  willuhn
  * *** empty log message ***
  *
  * Revision 1.3  2004/11/15 00:38:30  willuhn
