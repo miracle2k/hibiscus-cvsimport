@@ -42,7 +42,7 @@ public class Settings extends AbstractView {
 		LabelGroup settings = new LabelGroup(getParent(),i18n.tr("Grundeinstellungen"));
 
 		// Einstellungen
-		settings.addCheckbox(control.getOnlineMode(),i18n.tr("Keine Nachfrage vor Verbindungsaufbau"));
+		settings.addCheckbox(control.getOnlineMode(),i18n.tr("Bei Kommunikation mit der Bank Internetverbindung ohne Nachfrage herstellen"));
 		settings.addCheckbox(control.getCheckPin(),i18n.tr("PIN-Eingabe via Check-Summe prüfen"));
 		
 		settings.addLabelPair(i18n.tr("Limit für Aufträge"), control.getUeberweisungLimit());
@@ -88,7 +88,10 @@ public class Settings extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.27  2005-01-19 00:16:04  willuhn
+ * Revision 1.28  2005-01-30 20:45:35  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.27  2005/01/19 00:16:04  willuhn
  * @N Lastschriften
  *
  * Revision 1.26  2004/10/20 12:34:02  willuhn

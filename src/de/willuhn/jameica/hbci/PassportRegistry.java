@@ -43,7 +43,7 @@ public class PassportRegistry {
 				Logger.info("found passport type " + found[i].getName() + ", try to instantiate");
 				try {
 					Passport p = (Passport) found[i].newInstance();
-					Application.getStartupMonitor().setStatusText("init passport " + p.getName());
+					Application.getCallback().getStartupMonitor().setStatusText("init passport " + p.getName());
 					passportsByName.put(p.getName(),p);
 					passportsByClass.put(found[i].getName(),p);
 					Logger.info("[" + p.getName() + "] instantiated successfully");
@@ -111,7 +111,10 @@ public class PassportRegistry {
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2005-01-09 18:48:40  willuhn
+ * Revision 1.10  2005-01-30 20:45:35  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.9  2005/01/09 18:48:40  willuhn
  * @N native lib for sizrdh
  *
  * Revision 1.8  2004/11/12 18:25:08  willuhn

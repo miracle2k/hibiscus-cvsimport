@@ -131,16 +131,16 @@ public class HBCI extends AbstractPlugin
   public void init() throws ApplicationException
   {
 		try {
-			Application.getStartupMonitor().setStatusText("hibiscus: checking database integrity");
+			Application.getCallback().getStartupMonitor().setStatusText("hibiscus: checking database integrity");
 			checkConsistency();
 		}
 		catch (Exception e)
 		{
 			throw new ApplicationException(
-				getResources().getI18N().tr("Fehler beim Prüfung der Datenbank-Integrität, " +					"Plugin wird aus Sicherheitsgründen deaktiviert"),e);
+				getResources().getI18N().tr("Fehler beim Prï¿½fung der Datenbank-Integritï¿½t, " +					"Plugin wird aus Sicherheitsgrï¿½nden deaktiviert"),e);
 		}
 
-    Application.getStartupMonitor().setStatusText("hibiscus: init passport registry");
+    Application.getCallback().getStartupMonitor().setStatusText("hibiscus: init passport registry");
 		PassportRegistry.init();
 
 		try {
@@ -211,7 +211,10 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
- * Revision 1.37  2005-01-19 00:33:32  willuhn
+ * Revision 1.38  2005-01-30 20:45:35  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.37  2005/01/19 00:33:32  willuhn
  * *** empty log message ***
  *
  * Revision 1.36  2005/01/05 15:17:50  willuhn

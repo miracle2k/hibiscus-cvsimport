@@ -45,7 +45,7 @@ public class HBCIDBServiceImpl extends EmbeddedDBServiceImpl implements HBCIDBSe
   public String getName() throws RemoteException
   {
 		I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
-    return i18n.tr("Datenbank-Service für Hibiscus");
+    return i18n.tr("Datenbank-Service fÃ¼r Hibiscus");
   }
 
   /**
@@ -71,7 +71,10 @@ public class HBCIDBServiceImpl extends EmbeddedDBServiceImpl implements HBCIDBSe
 
 /*********************************************************************
  * $Log$
- * Revision 1.8  2005-01-05 15:17:50  willuhn
+ * Revision 1.9  2005-01-30 20:45:35  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.8  2005/01/05 15:17:50  willuhn
  * @N Neues Service-System in Jameica
  *
  * Revision 1.7  2004/11/17 19:02:28  willuhn
