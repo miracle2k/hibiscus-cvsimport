@@ -66,10 +66,6 @@ public class SettingsControl extends AbstractControl {
 	{
 		if (checkPin != null)
 			return checkPin;
-		// TODO HIER
-		// - In den Settings noch speichern
-		// - Dialog nicht vergroesserbar machen
-		// - OK/Uebernehmen Button
 		checkPin = new CheckboxInput(Settings.getCheckPin());
 		checkPin.addComment("",new CheckPinListener());
 		return checkPin;
@@ -157,7 +153,11 @@ public class SettingsControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2004-02-21 19:49:04  willuhn
+ * Revision 1.4  2004-02-22 20:04:53  willuhn
+ * @N Ueberweisung
+ * @N Empfaenger
+ *
+ * Revision 1.3  2004/02/21 19:49:04  willuhn
  * @N PINDialog
  *
  * Revision 1.2  2004/02/20 20:45:13  willuhn

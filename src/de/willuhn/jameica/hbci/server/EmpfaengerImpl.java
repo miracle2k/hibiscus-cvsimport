@@ -53,7 +53,17 @@ public class EmpfaengerImpl extends AbstractDBObject implements Empfaenger {
    * @see de.willuhn.datasource.db.AbstractDBObject#deleteCheck()
    */
   protected void deleteCheck() throws ApplicationException {
-		throw new ApplicationException("nicht implementiert");
+		try {
+			DBIterator list = Settings.getDatabase().createList(Ueberweisung.class);
+			list.addFilter("empfaenger_id = '" + this.getID() + "'");
+			if (list.hasNext())
+				throw new ApplicationException("Empfänger kann nicht gelöscht werden, da Überweisungen existieren.");
+		}
+		catch (RemoteException e)
+		{
+			Application.getLog().error("error while deleteCheck in empfaenger",e);
+			throw new ApplicationException("Fehler beim Löschen des Empfängers",e);
+		}
   }
 
   /**
@@ -152,7 +162,11 @@ public class EmpfaengerImpl extends AbstractDBObject implements Empfaenger {
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2004-02-17 00:53:22  willuhn
+ * Revision 1.2  2004-02-22 20:04:54  willuhn
+ * @N Ueberweisung
+ * @N Empfaenger
+ *
+ * Revision 1.1  2004/02/17 00:53:22  willuhn
  * @N SaldoAbfrage
  * @N Ueberweisung
  * @N Empfaenger

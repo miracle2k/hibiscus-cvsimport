@@ -37,7 +37,7 @@ public class PassportDetails extends AbstractView {
    */
   public void bind() throws Exception {
 
-		addHeadline("Eigenschaften des Sicherheitsmediums");
+		GUI.setTitleText(I18N.tr("Eigenschaften des Sicherheitsmediums"));
 
 		Konto k = (Konto) getCurrentObject();
 		Passport p = k.getPassport();
@@ -89,7 +89,11 @@ public class PassportDetails extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2004-02-20 20:45:13  willuhn
+ * Revision 1.4  2004-02-22 20:04:53  willuhn
+ * @N Ueberweisung
+ * @N Empfaenger
+ *
+ * Revision 1.3  2004/02/20 20:45:13  willuhn
  * *** empty log message ***
  *
  * Revision 1.2  2004/02/12 00:38:41  willuhn

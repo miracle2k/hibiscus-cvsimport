@@ -15,16 +15,15 @@ package de.willuhn.jameica.hbci.gui.controller;
 import java.rmi.RemoteException;
 import java.util.Date;
 
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
-import org.eclipse.swt.widgets.MessageBox;
 import org.kapott.hbci.manager.HBCIUtils;
 
 import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.jameica.Application;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.controller.AbstractControl;
+import de.willuhn.jameica.gui.dialogs.YesNoDialog;
 import de.willuhn.jameica.gui.parts.Input;
 import de.willuhn.jameica.gui.parts.LabelInput;
 import de.willuhn.jameica.gui.parts.SelectInput;
@@ -236,11 +235,19 @@ public class KontoControl extends AbstractControl {
   public void handleDelete() {
 		try {
 
-			MessageBox box = new MessageBox(GUI.getShell(),SWT.ICON_WARNING | SWT.YES | SWT.NO);
-			box.setText(I18N.tr("Bankverbindung wirklich löschen?"));
-			box.setMessage(I18N.tr("Wollen Sie diese Bankverbindung wirklich löschen?"));
-			if (box.open() != SWT.YES)
+			YesNoDialog d = new YesNoDialog(YesNoDialog.POSITION_CENTER);
+			d.setTitle(I18N.tr("Bankverbindung löschen"));
+			d.setText(I18N.tr("Wollen Sie diese Bankverbindung wirklich löschen?"));
+
+			try {
+				if (!d.getChoice())
+					return;
+			}
+			catch (Exception e)
+			{
+				Application.getLog().error(e.getLocalizedMessage(),e);
 				return;
+			}
 
 			// ok, wir loeschen das Objekt
 			getKonto().delete();
@@ -451,7 +458,11 @@ public class KontoControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2004-02-20 01:36:56  willuhn
+ * Revision 1.8  2004-02-22 20:04:54  willuhn
+ * @N Ueberweisung
+ * @N Empfaenger
+ *
+ * Revision 1.7  2004/02/20 01:36:56  willuhn
  * *** empty log message ***
  *
  * Revision 1.6  2004/02/20 01:25:25  willuhn
