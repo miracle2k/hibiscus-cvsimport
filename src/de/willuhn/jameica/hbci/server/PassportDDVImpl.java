@@ -183,7 +183,7 @@ public class PassportDDVImpl
 	
 			hbciPassport = AbstractHBCIPassport.getInstance();
 			Application.getLog().info("passport opened");
-			handler=new HBCIHandler("210",hbciPassport); // TODO irgendwo auslesen
+			handler=new HBCIHandler("210",hbciPassport);
 			return handler;
 		}
 		catch (Exception e)
@@ -258,7 +258,10 @@ public class PassportDDVImpl
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2004-02-17 00:53:22  willuhn
+ * Revision 1.5  2004-02-24 22:47:04  willuhn
+ * @N GUI refactoring
+ *
+ * Revision 1.4  2004/02/17 00:53:22  willuhn
  * @N SaldoAbfrage
  * @N Ueberweisung
  * @N Empfaenger
