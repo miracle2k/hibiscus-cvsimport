@@ -79,7 +79,7 @@ public class UeberweisungImpl extends AbstractTransferImpl implements Ueberweisu
   	catch (RemoteException e)
   	{
   		Logger.error("error while checking ueberweisung",e);
-  		throw new ApplicationException("Fehler beim Prüfen der Überweisung.");
+  		throw new ApplicationException(i18n.tr("Fehler beim Prüfen der Überweisung."));
   	}
 		super.insertCheck();
   }
@@ -90,12 +90,12 @@ public class UeberweisungImpl extends AbstractTransferImpl implements Ueberweisu
   protected void updateCheck() throws ApplicationException {
 		try {
 			if (ausgefuehrt())
-				throw new ApplicationException("Die Überweisung wurde bereits ausgeführt und kann daher nicht mehr geändert werden.");
+				throw new ApplicationException(i18n.tr("Die Überweisung wurde bereits ausgeführt und kann daher nicht mehr geändert werden."));
 		}
 		catch (RemoteException e)
 		{
 			Logger.error("error while checking ueberweisung",e);
-			throw new ApplicationException("Fehler beim Prüfen der Überweisung.");
+			throw new ApplicationException(i18n.tr("Fehler beim Prüfen der Überweisung."));
 		}
 		super.updateCheck();
   }
@@ -194,7 +194,10 @@ public class UeberweisungImpl extends AbstractTransferImpl implements Ueberweisu
 
 /**********************************************************************
  * $Log$
- * Revision 1.26  2004-10-25 22:39:14  willuhn
+ * Revision 1.27  2004-11-02 18:48:32  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.26  2004/10/25 22:39:14  willuhn
  * *** empty log message ***
  *
  * Revision 1.25  2004/10/25 17:58:56  willuhn

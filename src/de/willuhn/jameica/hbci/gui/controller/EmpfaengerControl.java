@@ -27,6 +27,7 @@ import de.willuhn.jameica.gui.input.Input;
 import de.willuhn.jameica.gui.input.TextInput;
 import de.willuhn.jameica.gui.parts.TablePart;
 import de.willuhn.jameica.hbci.HBCI;
+import de.willuhn.jameica.hbci.HBCIProperties;
 import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.gui.menus.EmpfaengerList;
 import de.willuhn.jameica.hbci.rmi.Empfaenger;
@@ -128,7 +129,7 @@ public class EmpfaengerControl extends AbstractControl {
 	{
 		if (name != null)
 			return name;
-		name = new TextInput(getEmpfaenger().getName(),27);
+		name = new TextInput(getEmpfaenger().getName(),HBCIProperties.HBCI_TRANSFER_USAGE_MAXLENGTH);
 		return name;
 	}
 
@@ -190,7 +191,10 @@ public class EmpfaengerControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.22  2004-10-20 12:08:18  willuhn
+ * Revision 1.23  2004-11-02 18:48:32  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.22  2004/10/20 12:08:18  willuhn
  * @C MVC-Refactoring (new Controllers)
  *
  * Revision 1.21  2004/10/19 23:33:31  willuhn

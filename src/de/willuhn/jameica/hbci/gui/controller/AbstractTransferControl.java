@@ -182,7 +182,7 @@ public abstract class AbstractTransferControl extends AbstractControl
 	{
 		if (empfName != null)
 			return empfName;
-		empfName = new TextInput(getTransfer().getEmpfaengerName(),27);
+		empfName = new TextInput(getTransfer().getEmpfaengerName(),HBCIProperties.HBCI_TRANSFER_USAGE_MAXLENGTH);
 		return empfName;
 	}
 
@@ -407,7 +407,10 @@ public abstract class AbstractTransferControl extends AbstractControl
 
 /**********************************************************************
  * $Log$
- * Revision 1.14  2004-11-01 23:10:19  willuhn
+ * Revision 1.15  2004-11-02 18:48:32  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.14  2004/11/01 23:10:19  willuhn
  * @N Pruefung auf gueltige Zeichen in Verwendungszweck
  *
  * Revision 1.13  2004/10/25 17:58:57  willuhn

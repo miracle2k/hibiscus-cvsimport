@@ -31,6 +31,12 @@ public class HBCIProperties
 											 "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 ,.&-+*%/$üöäÜÖÄß"
 		); 
 
+  /**
+   * Maximale Text-Laenge einer Verwendungszweck-Zeile.
+   */
+  public final static int HBCI_TRANSFER_USAGE_MAXLENGTH =
+    settings.getInt("hbci.transfer.usage.maxlength",27);
+
 	// disabled
 	private HBCIProperties()
 	{
@@ -41,7 +47,10 @@ public class HBCIProperties
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2004-11-01 23:10:19  willuhn
+ * Revision 1.2  2004-11-02 18:48:32  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.1  2004/11/01 23:10:19  willuhn
  * @N Pruefung auf gueltige Zeichen in Verwendungszweck
  *
  **********************************************************************/
