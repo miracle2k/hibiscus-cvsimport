@@ -12,6 +12,8 @@
  **********************************************************************/
 package de.willuhn.jameica.hbci.rmi.hbci;
 
+import java.rmi.RemoteException;
+
 import de.willuhn.jameica.hbci.rmi.Konto;
 
 
@@ -28,12 +30,13 @@ public interface HBCIJob {
    */
   public String getIdentifier();
 
-	/**
+  /**
 	 * Diese Funktion wird von der HBCIFactory intern aufgerufen.
 	 * Sie uebergibt hier den erzeugten HBCI-Job der Abfrage.
    * @param job der erzeugte Job.
+   * @throws RemoteException
    */
-  public void setJob(org.kapott.hbci.GV.HBCIJob job);
+  public void setJob(org.kapott.hbci.GV.HBCIJob job) throws RemoteException;
 
 	/**
 	 * Liefert das Konto, fuer das der Job zustaendig ist.
@@ -45,7 +48,10 @@ public interface HBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2004-04-19 22:05:51  willuhn
+ * Revision 1.2  2004-04-22 23:46:50  willuhn
+ * @N UeberweisungJob
+ *
+ * Revision 1.1  2004/04/19 22:05:51  willuhn
  * @C HBCIJobs refactored
  *
  **********************************************************************/

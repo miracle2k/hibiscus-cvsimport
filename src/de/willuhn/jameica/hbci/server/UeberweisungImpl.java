@@ -21,6 +21,8 @@ import de.willuhn.datasource.db.AbstractDBObject;
 import de.willuhn.jameica.Application;
 import de.willuhn.jameica.PluginLoader;
 import de.willuhn.jameica.hbci.HBCI;
+import de.willuhn.jameica.hbci.Settings;
+import de.willuhn.jameica.hbci.rmi.Empfaenger;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Ueberweisung;
 import de.willuhn.jameica.hbci.server.hbci.*;
@@ -237,9 +239,24 @@ public class UeberweisungImpl
 
 			HBCIFactory factory = HBCIFactory.getInstance();
 			HBCIUeberweisungJob job = new HBCIUeberweisungJob(getKonto());
+
+			Empfaenger empfaenger = (Empfaenger) Settings.getDatabase().createObject(Empfaenger.class,null);
+			empfaenger.setBLZ(getEmpfaengerBlz());
+			empfaenger.setKontonummer(getEmpfaengerKonto());
+			empfaenger.setName(getEmpfaengerName());
+			
+			job.setEmpfaenger(empfaenger);
+
+			job.setBetrag(getBetrag());
+			job.setZweck(getZweck());
+			job.setZweck2(getZweck2());
 			
 			factory.addJob(job);
 			factory.executeJobs(getKonto().getPassport().getHandle());
+
+			// Wenn der Job nicht erfolgreich war, fliegt hier eine ApplikationException
+			// mit der Fehlermeldung der Bank.
+			job.check();
 
 			// wenn alles erfolgreich verlief, koennen wir die Ueberweisung auf
 			// Status "ausgefuehrt" setzen.
@@ -316,7 +333,10 @@ public class UeberweisungImpl
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2004-04-19 22:05:51  willuhn
+ * Revision 1.8  2004-04-22 23:46:50  willuhn
+ * @N UeberweisungJob
+ *
+ * Revision 1.7  2004/04/19 22:05:51  willuhn
  * @C HBCIJobs refactored
  *
  * Revision 1.6  2004/04/14 23:53:46  willuhn

@@ -152,9 +152,9 @@ public class HBCIFactory {
 
 					Application.getLog().info("adding job " + job.getIdentifier() + " to queue");
 					HBCIJob j = handler.newJob(job.getIdentifier());
-					j.setParam("my",Converter.convert(konto));
-					handler.addJob(j);
+					j.setParam("my",Converter.JameicaKonto2HBCIKonto(konto));
 					job.setJob(j);
+					handler.addJob(j);
 				}
 
 				Application.getLog().info("executing jobs");
@@ -209,7 +209,10 @@ public class HBCIFactory {
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2004-04-19 22:05:51  willuhn
+ * Revision 1.2  2004-04-22 23:46:50  willuhn
+ * @N UeberweisungJob
+ *
+ * Revision 1.1  2004/04/19 22:05:51  willuhn
  * @C HBCIJobs refactored
  *
  * Revision 1.1  2004/04/14 23:53:46  willuhn
