@@ -20,9 +20,9 @@ import de.willuhn.jameica.gui.dialogs.YesNoDialog;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.rmi.Empfaenger;
 import de.willuhn.jameica.system.Application;
+import de.willuhn.logging.Logger;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
-import de.willuhn.util.Logger;
 
 /**
  * Action fuer Loeschen eines Empfaengers.
@@ -78,7 +78,10 @@ public class EmpfaengerDelete implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2004-10-25 17:58:56  willuhn
+ * Revision 1.3  2004-11-12 18:25:07  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.2  2004/10/25 17:58:56  willuhn
  * @N Haufen Dauerauftrags-Code
  *
  * Revision 1.1  2004/10/20 12:08:18  willuhn

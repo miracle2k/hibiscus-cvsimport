@@ -36,9 +36,9 @@ import de.willuhn.jameica.hbci.rmi.Empfaenger;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Transfer;
 import de.willuhn.jameica.system.Application;
+import de.willuhn.logging.Logger;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
-import de.willuhn.util.Logger;
 
 /**
  * Abstrakter Basis-Controler fuer die Zahlungen.
@@ -407,7 +407,10 @@ public abstract class AbstractTransferControl extends AbstractControl
 
 /**********************************************************************
  * $Log$
- * Revision 1.15  2004-11-02 18:48:32  willuhn
+ * Revision 1.16  2004-11-12 18:25:07  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.15  2004/11/02 18:48:32  willuhn
  * *** empty log message ***
  *
  * Revision 1.14  2004/11/01 23:10:19  willuhn

@@ -26,8 +26,8 @@ import de.willuhn.jameica.plugin.AbstractPlugin;
 import de.willuhn.jameica.plugin.Manifest;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.jameica.util.InfoReader;
+import de.willuhn.logging.Logger;
 import de.willuhn.util.I18N;
-import de.willuhn.util.Logger;
 
 /**
  * Controller fuer den Dialog Lizenzinformationen.
@@ -118,7 +118,10 @@ public class LicenseControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.10  2004-10-20 12:08:18  willuhn
+ * Revision 1.11  2004-11-12 18:25:07  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.10  2004/10/20 12:08:18  willuhn
  * @C MVC-Refactoring (new Controllers)
  *
  * Revision 1.9  2004/10/11 22:41:25  willuhn

@@ -25,9 +25,9 @@ import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Protokoll;
 import de.willuhn.jameica.hbci.rmi.Transfer;
 import de.willuhn.jameica.system.Application;
+import de.willuhn.logging.Logger;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
-import de.willuhn.util.Logger;
 
 /**
  * Abstrakte Basis-Implementierung von Geld-Transfers zwischen Konten.
@@ -261,7 +261,10 @@ public abstract class AbstractTransferImpl extends AbstractDBObject implements T
 
 /**********************************************************************
  * $Log$
- * Revision 1.13  2004-11-02 18:48:32  willuhn
+ * Revision 1.14  2004-11-12 18:25:07  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.13  2004/11/02 18:48:32  willuhn
  * *** empty log message ***
  *
  * Revision 1.12  2004/11/01 23:10:19  willuhn

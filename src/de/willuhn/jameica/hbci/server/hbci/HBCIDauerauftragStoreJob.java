@@ -27,9 +27,9 @@ import de.willuhn.jameica.hbci.server.Converter;
 import de.willuhn.jameica.hbci.server.hbci.tests.PreTimeRestriction;
 import de.willuhn.jameica.hbci.server.hbci.tests.TurnusRestriction;
 import de.willuhn.jameica.system.Application;
+import de.willuhn.logging.Logger;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
-import de.willuhn.util.Logger;
 
 /**
  * Job fuer "Dauerauftrag bei der Bank speichern".
@@ -159,7 +159,10 @@ public class HBCIDauerauftragStoreJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2004-10-29 00:33:00  willuhn
+ * Revision 1.6  2004-11-12 18:25:07  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.5  2004/10/29 00:33:00  willuhn
  * *** empty log message ***
  *
  * Revision 1.4  2004/10/29 00:32:32  willuhn

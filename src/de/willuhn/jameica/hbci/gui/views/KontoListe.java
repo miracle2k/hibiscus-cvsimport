@@ -21,9 +21,9 @@ import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.gui.action.KontoNeu;
 import de.willuhn.jameica.hbci.gui.controller.KontoControl;
 import de.willuhn.jameica.system.Application;
+import de.willuhn.logging.Logger;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
-import de.willuhn.util.Logger;
 
 /**
  * Zeigt eine Liste mit den vorhandenen Bankverbindungen an.
@@ -85,7 +85,10 @@ public class KontoListe extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.18  2004-10-20 12:34:02  willuhn
+ * Revision 1.19  2004-11-12 18:25:07  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.18  2004/10/20 12:34:02  willuhn
  * *** empty log message ***
  *
  * Revision 1.17  2004/10/08 13:37:48  willuhn

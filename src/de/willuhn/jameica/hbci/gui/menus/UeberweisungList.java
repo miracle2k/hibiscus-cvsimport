@@ -23,9 +23,9 @@ import de.willuhn.jameica.hbci.gui.action.UeberweisungExecute;
 import de.willuhn.jameica.hbci.gui.action.UeberweisungNeu;
 import de.willuhn.jameica.hbci.rmi.Ueberweisung;
 import de.willuhn.jameica.system.Application;
+import de.willuhn.logging.Logger;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
-import de.willuhn.util.Logger;
 
 /**
  * Kontext-Menu, welches an Listen mit Ueberweisungen gehangen werden kann.
@@ -108,7 +108,10 @@ public class UeberweisungList extends ContextMenu
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2004-10-25 17:58:56  willuhn
+ * Revision 1.8  2004-11-12 18:25:08  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.7  2004/10/25 17:58:56  willuhn
  * @N Haufen Dauerauftrags-Code
  *
  * Revision 1.6  2004/10/18 23:38:17  willuhn

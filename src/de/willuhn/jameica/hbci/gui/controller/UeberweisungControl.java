@@ -38,7 +38,7 @@ import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.gui.menus.UeberweisungList;
 import de.willuhn.jameica.hbci.rmi.Transfer;
 import de.willuhn.jameica.hbci.rmi.Ueberweisung;
-import de.willuhn.util.Logger;
+import de.willuhn.logging.Logger;
 
 /**
  * Controller fuer die Ueberweisungen.
@@ -357,7 +357,10 @@ public class UeberweisungControl extends AbstractTransferControl
 
 /**********************************************************************
  * $Log$
- * Revision 1.32  2004-10-25 17:58:56  willuhn
+ * Revision 1.33  2004-11-12 18:25:07  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.32  2004/10/25 17:58:56  willuhn
  * @N Haufen Dauerauftrags-Code
  *
  * Revision 1.31  2004/10/20 12:08:18  willuhn

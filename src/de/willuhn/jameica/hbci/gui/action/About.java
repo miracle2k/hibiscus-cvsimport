@@ -16,9 +16,9 @@ import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.dialogs.ViewDialog;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.system.Application;
+import de.willuhn.logging.Logger;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
-import de.willuhn.util.Logger;
 
 /**
  * Action fuer About-Dialog.
@@ -49,7 +49,10 @@ public class About implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2004-10-12 23:48:39  willuhn
+ * Revision 1.2  2004-11-12 18:25:07  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.1  2004/10/12 23:48:39  willuhn
  * @N Actions
  *
  **********************************************************************/

@@ -20,9 +20,9 @@ import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.rmi.Ueberweisung;
 import de.willuhn.jameica.system.Application;
+import de.willuhn.logging.Logger;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
-import de.willuhn.util.Logger;
 
 /**
  * Eine Ueberweisung.
@@ -194,7 +194,10 @@ public class UeberweisungImpl extends AbstractTransferImpl implements Ueberweisu
 
 /**********************************************************************
  * $Log$
- * Revision 1.27  2004-11-02 18:48:32  willuhn
+ * Revision 1.28  2004-11-12 18:25:07  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.27  2004/11/02 18:48:32  willuhn
  * *** empty log message ***
  *
  * Revision 1.26  2004/10/25 22:39:14  willuhn

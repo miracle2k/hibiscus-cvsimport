@@ -17,8 +17,8 @@ import java.util.Hashtable;
 
 import de.willuhn.jameica.hbci.passport.Passport;
 import de.willuhn.jameica.system.Application;
+import de.willuhn.logging.Logger;
 import de.willuhn.util.ClassFinder;
-import de.willuhn.util.Logger;
 
 /**
  * Sucht alle verfuegbaren Passports und prueft diese auf Verwendbarkeit.
@@ -110,7 +110,10 @@ public class PassportRegistry {
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2004-10-19 23:33:31  willuhn
+ * Revision 1.8  2004-11-12 18:25:08  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.7  2004/10/19 23:33:31  willuhn
  * *** empty log message ***
  *
  * Revision 1.6  2004/07/21 23:54:30  willuhn

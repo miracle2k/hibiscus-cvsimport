@@ -29,8 +29,8 @@ import de.willuhn.jameica.hbci.gui.DialogFactory;
 import de.willuhn.jameica.hbci.server.hbci.HBCIFactory;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.jameica.system.OperationCanceledException;
+import de.willuhn.logging.Logger;
 import de.willuhn.util.I18N;
-import de.willuhn.util.Logger;
 import de.willuhn.util.ProgressMonitor;
 
 /**
@@ -347,7 +347,10 @@ public class HBCICallbackSWT extends AbstractHBCICallback
 
 /**********************************************************************
  * $Log$
- * Revision 1.17  2004-10-24 17:19:02  willuhn
+ * Revision 1.18  2004-11-12 18:25:08  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.17  2004/10/24 17:19:02  willuhn
  * *** empty log message ***
  *
  * Revision 1.16  2004/10/19 23:33:31  willuhn

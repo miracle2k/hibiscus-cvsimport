@@ -16,7 +16,7 @@ import de.willuhn.jameica.gui.dialogs.AbstractDialog;
 import de.willuhn.jameica.gui.dialogs.SimpleDialog;
 import de.willuhn.jameica.hbci.gui.dialogs.PINDialog;
 import de.willuhn.jameica.hbci.gui.dialogs.TANDialog;
-import de.willuhn.util.Logger;
+import de.willuhn.logging.Logger;
 
 /**
  * Hilfsklasse zur Erzeugung von Hilfs-Dialogen bei der HBCI-Kommunikation.
@@ -124,7 +124,10 @@ public class DialogFactory {
 
 /**********************************************************************
  * $Log$
- * Revision 1.16  2004-10-19 23:33:31  willuhn
+ * Revision 1.17  2004-11-12 18:25:07  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.16  2004/10/19 23:33:31  willuhn
  * *** empty log message ***
  *
  * Revision 1.15  2004/06/30 20:58:29  willuhn

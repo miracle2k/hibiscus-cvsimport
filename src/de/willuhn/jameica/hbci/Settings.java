@@ -24,7 +24,7 @@ import de.willuhn.datasource.rmi.DBService;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.parts.ProgressBar;
 import de.willuhn.jameica.system.Application;
-import de.willuhn.util.Logger;
+import de.willuhn.logging.Logger;
 
 /**
  * Verwaltet die Einstellungen des Plugins.
@@ -279,7 +279,10 @@ public class Settings
 
 /*********************************************************************
  * $Log$
- * Revision 1.22  2004-10-24 17:19:02  willuhn
+ * Revision 1.23  2004-11-12 18:25:08  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.22  2004/10/24 17:19:02  willuhn
  * *** empty log message ***
  *
  * Revision 1.21  2004/07/25 17:15:06  willuhn

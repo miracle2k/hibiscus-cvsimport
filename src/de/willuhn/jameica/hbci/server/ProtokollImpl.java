@@ -20,9 +20,9 @@ import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Protokoll;
 import de.willuhn.jameica.system.Application;
+import de.willuhn.logging.Logger;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
-import de.willuhn.util.Logger;
 
 /**
  * Implementierung der HBCI-Protokollierung pro Konto.
@@ -164,7 +164,10 @@ public class ProtokollImpl extends AbstractDBObject implements Protokoll {
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2004-08-18 23:13:51  willuhn
+ * Revision 1.8  2004-11-12 18:25:07  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.7  2004/08/18 23:13:51  willuhn
  * @D Javadoc
  *
  * Revision 1.6  2004/07/25 17:15:06  willuhn

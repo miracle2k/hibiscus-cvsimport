@@ -19,9 +19,9 @@ import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.system.Application;
+import de.willuhn.logging.Logger;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
-import de.willuhn.util.Logger;
 
 /**
  * Action fuer die Anzeige der Umsaetze eines Kontos.
@@ -59,7 +59,10 @@ public class UmsatzListe implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2004-10-20 12:08:18  willuhn
+ * Revision 1.3  2004-11-12 18:25:07  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.2  2004/10/20 12:08:18  willuhn
  * @C MVC-Refactoring (new Controllers)
  *
  * Revision 1.1  2004/10/18 23:38:17  willuhn

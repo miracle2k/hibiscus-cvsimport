@@ -25,9 +25,9 @@ import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.passport.PassportHandle;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.jameica.system.OperationCanceledException;
+import de.willuhn.logging.Logger;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
-import de.willuhn.util.Logger;
 
 /**
  * Diese Klasse ist fuer die Ausfuehrung der HBCI-Jobs zustaendig.
@@ -247,7 +247,10 @@ public class HBCIFactory {
 
 /**********************************************************************
  * $Log$
- * Revision 1.19  2004-11-04 22:30:33  willuhn
+ * Revision 1.20  2004-11-12 18:25:08  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.19  2004/11/04 22:30:33  willuhn
  * *** empty log message ***
  *
  * Revision 1.18  2004/11/02 18:48:32  willuhn

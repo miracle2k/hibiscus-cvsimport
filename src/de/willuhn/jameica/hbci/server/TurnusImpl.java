@@ -22,9 +22,9 @@ import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.rmi.Dauerauftrag;
 import de.willuhn.jameica.hbci.rmi.Turnus;
 import de.willuhn.jameica.system.Application;
+import de.willuhn.logging.Logger;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
-import de.willuhn.util.Logger;
 
 /**
  * Implementierung eines Zahlungs-Turnus fuer Geld-Transfers.
@@ -225,7 +225,10 @@ public class TurnusImpl extends AbstractDBObject implements Turnus
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2004-10-25 17:58:56  willuhn
+ * Revision 1.7  2004-11-12 18:25:07  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.6  2004/10/25 17:58:56  willuhn
  * @N Haufen Dauerauftrags-Code
  *
  * Revision 1.5  2004/10/17 16:28:46  willuhn

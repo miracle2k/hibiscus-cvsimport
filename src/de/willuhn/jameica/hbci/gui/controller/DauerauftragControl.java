@@ -37,7 +37,7 @@ import de.willuhn.jameica.hbci.gui.menus.DauerauftragList;
 import de.willuhn.jameica.hbci.rmi.Dauerauftrag;
 import de.willuhn.jameica.hbci.rmi.Transfer;
 import de.willuhn.jameica.hbci.rmi.Turnus;
-import de.willuhn.util.Logger;
+import de.willuhn.logging.Logger;
 
 /**
  * Controller fuer Dauer-Auftraege.
@@ -258,7 +258,10 @@ public class DauerauftragControl extends AbstractTransferControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.14  2004-10-29 00:32:32  willuhn
+ * Revision 1.15  2004-11-12 18:25:07  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.14  2004/10/29 00:32:32  willuhn
  * @N HBCI job restrictions
  *
  * Revision 1.13  2004/10/26 23:47:08  willuhn
