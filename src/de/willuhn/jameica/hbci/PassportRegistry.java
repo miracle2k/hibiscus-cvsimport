@@ -52,6 +52,10 @@ public class PassportRegistry {
 				}
 			}
 		}
+		catch (ClassNotFoundException cn)
+		{
+			Application.getLog().warn("no passports found");
+		}
 		catch (Throwable t)
 		{
 			Application.getLog().error("error while searching for passports",t);
@@ -105,7 +109,10 @@ public class PassportRegistry {
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2004-05-05 22:14:47  willuhn
+ * Revision 1.4  2004-05-11 21:11:32  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.3  2004/05/05 22:14:47  willuhn
  * *** empty log message ***
  *
  * Revision 1.2  2004/05/04 23:30:53  willuhn
