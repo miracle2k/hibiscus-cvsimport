@@ -85,7 +85,11 @@ public class LastschriftDialog extends AbstractDialog {
 
 		group.addSeparator();
 
-		Input zweck = new LabelInput(ueb.getZweck() + "/" + ueb.getZweck2());
+		String s = ueb.getZweck();
+		String s2 = ueb.getZweck2();
+		if (s2 != null && s2.length() > 0)
+			s += " / " + s2;
+		Input zweck = new LabelInput(s);
 		group.addLabelPair(i18n.tr("Verwendungszweck"),zweck);
 
 		Input betrag = new LabelInput(HBCI.DECIMALFORMAT.format(ueb.getBetrag()) + " " + ueb.getKonto().getWaehrung());
@@ -115,7 +119,10 @@ public class LastschriftDialog extends AbstractDialog {
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2005-01-19 00:16:05  willuhn
+ * Revision 1.2  2005-03-01 00:38:27  web0
+ * *** empty log message ***
+ *
+ * Revision 1.1  2005/01/19 00:16:05  willuhn
  * @N Lastschriften
  *
  **********************************************************************/
