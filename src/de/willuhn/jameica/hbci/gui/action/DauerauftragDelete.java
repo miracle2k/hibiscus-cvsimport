@@ -101,7 +101,7 @@ public class DauerauftragDelete implements Action
 							HBCIFactory factory = HBCIFactory.getInstance();
 
               // BUGZILLA #15 http://www.willuhn.de/bugzilla/show_bug.cgi?id=15
-              factory.addJob(new HBCIDauerauftragListJob(da.getKonto()));
+              factory.addExclusiveJob(new HBCIDauerauftragListJob(da.getKonto()));
 							factory.addJob(new HBCIDauerauftragDeleteJob(da,date));
 							factory.executeJobs(da.getKonto().getPassport().getHandle()); 
 							da.delete();
@@ -147,7 +147,10 @@ public class DauerauftragDelete implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2005-02-28 15:30:47  web0
+ * Revision 1.10  2005-02-28 23:59:57  web0
+ * @B http://www.willuhn.de/bugzilla/show_bug.cgi?id=15
+ *
+ * Revision 1.9  2005/02/28 15:30:47  web0
  * @B Bugzilla #15
  *
  * Revision 1.8  2004/11/17 19:02:28  willuhn
