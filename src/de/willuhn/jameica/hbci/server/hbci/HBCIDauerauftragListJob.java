@@ -20,7 +20,7 @@ import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.rmi.Dauerauftrag;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Protokoll;
-import de.willuhn.jameica.hbci.server.Converter;
+import de.willuhn.jameica.hbci.server.util.Converter;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
@@ -100,7 +100,7 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob {
 		for (int i=0;i<lines.length;++i)
 		{
 			auftraege[i] = Converter.HBCIDauer2HibiscusDauerauftrag(lines[i]);
-			auftraege[i].setKonto(getKonto());
+			auftraege[i].setKonto(getKonto()); // TODO Das muesste auch wieder raus
 		}
 		try {
 			getKonto().addToProtokoll(i18n.tr("Daueraufträge abgerufen"),Protokoll.TYP_SUCCESS);
@@ -117,7 +117,11 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2004-10-17 16:28:46  willuhn
+ * Revision 1.5  2004-10-18 23:38:17  willuhn
+ * @C Refactoring
+ * @C Aufloesung der Listener und Ersatz gegen Actions
+ *
+ * Revision 1.4  2004/10/17 16:28:46  willuhn
  * @N Die ersten Dauerauftraege abgerufen ;)
  *
  * Revision 1.3  2004/07/25 17:15:06  willuhn

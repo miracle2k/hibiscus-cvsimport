@@ -68,7 +68,6 @@ public class DauerauftragControl extends AbstractTransferControl {
 		DBIterator list = Settings.getDBService().createList(Dauerauftrag.class);
 
 		TablePart table = new TablePart(list,this);
-		// table.addMenu(i18n.tr("Duplizieren"), new UeberweisungDuplicate()); TODO
 
 		table.addColumn(i18n.tr("Konto"),"konto_id");
 		table.addColumn(i18n.tr("Kto. des Empfängers"),"empfaenger_konto");
@@ -175,7 +174,11 @@ public class DauerauftragControl extends AbstractTransferControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2004-10-17 16:28:46  willuhn
+ * Revision 1.7  2004-10-18 23:38:18  willuhn
+ * @C Refactoring
+ * @C Aufloesung der Listener und Ersatz gegen Actions
+ *
+ * Revision 1.6  2004/10/17 16:28:46  willuhn
  * @N Die ersten Dauerauftraege abgerufen ;)
  *
  * Revision 1.5  2004/10/08 13:37:47  willuhn
