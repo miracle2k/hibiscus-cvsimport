@@ -25,7 +25,6 @@ import org.kapott.hbci.exceptions.NeedKeyAckException;
 import org.kapott.hbci.manager.HBCIUtils;
 import org.kapott.hbci.manager.HBCIUtilsInternal;
 import org.kapott.hbci.passport.HBCIPassport;
-import org.kapott.hbci.passport.INILetter;
 
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.hbci.gui.DialogFactory;
@@ -91,8 +90,6 @@ public class HBCICallbackSWT extends AbstractHBCICallback
   public void callback(HBCIPassport passport, int reason, String msg, int datatype, StringBuffer retData) {
 
 		try {
-				INILetter iniletter;
-				Date      date;
 
 			AccountContainer container = (AccountContainer) accountCache.get(passport);
 
@@ -425,7 +422,10 @@ public class HBCICallbackSWT extends AbstractHBCICallback
 
 /**********************************************************************
  * $Log$
- * Revision 1.23  2005-02-03 23:57:05  willuhn
+ * Revision 1.24  2005-02-28 15:30:47  web0
+ * @B Bugzilla #15
+ *
+ * Revision 1.23  2005/02/03 23:57:05  willuhn
  * *** empty log message ***
  *
  * Revision 1.22  2005/02/02 16:15:52  willuhn

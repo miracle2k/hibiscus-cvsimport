@@ -19,6 +19,7 @@ import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.gui.dialogs.DauerauftragDialog;
 import de.willuhn.jameica.hbci.rmi.Dauerauftrag;
+import de.willuhn.jameica.hbci.server.hbci.HBCIDauerauftragListJob;
 import de.willuhn.jameica.hbci.server.hbci.HBCIDauerauftragStoreJob;
 import de.willuhn.jameica.hbci.server.hbci.HBCIFactory;
 import de.willuhn.jameica.system.Application;
@@ -80,6 +81,8 @@ public class DauerauftragExecute implements Action
 							GUI.getStatusBar().setStatusText(i18n.tr("Führe Dauerauftrag aus..."));
 						
 						HBCIFactory factory = HBCIFactory.getInstance();
+            // BUGZILLA #15 http://www.willuhn.de/bugzilla/show_bug.cgi?id=15
+            factory.addJob(new HBCIDauerauftragListJob(d.getKonto()));
 						factory.addJob(job);
 						factory.executeJobs(d.getKonto().getPassport().getHandle()); 
 						GUI.getStatusBar().setSuccessText(i18n.tr("...Dauerauftrag erfolgreich gelöscht"));
@@ -119,7 +122,10 @@ public class DauerauftragExecute implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2004-11-12 18:25:07  willuhn
+ * Revision 1.7  2005-02-28 15:30:47  web0
+ * @B Bugzilla #15
+ *
+ * Revision 1.6  2004/11/12 18:25:07  willuhn
  * *** empty log message ***
  *
  * Revision 1.5  2004/10/29 16:16:13  willuhn
