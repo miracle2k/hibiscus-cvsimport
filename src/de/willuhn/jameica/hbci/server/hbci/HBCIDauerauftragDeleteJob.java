@@ -65,17 +65,17 @@ public class HBCIDauerauftragDeleteJob extends AbstractHBCIJob
 
 			setJobParam("orderid",auftrag.getOrderID());
 
-			// Jetzt noch die Tests fuer die Job-Restriktionen
-			Properties p = HBCIFactory.getInstance().getJobRestrictions(this,this.konto.getPassport().getHandle());
-			Enumeration keys = p.keys();
-			while (keys.hasMoreElements())
-			{
-				String s = (String) keys.nextElement();
-				Logger.debug("[hbci job restriction] name: " + s + ", value: " + p.getProperty(s));
-			}
-
 			if (date != null)
 			{
+				// Jetzt noch die Tests fuer die Job-Restriktionen
+				Properties p = HBCIFactory.getInstance().getJobRestrictions(this,this.konto.getPassport().getHandle());
+				Enumeration keys = p.keys();
+				while (keys.hasMoreElements())
+				{
+					String s = (String) keys.nextElement();
+					Logger.debug("[hbci job restriction] name: " + s + ", value: " + p.getProperty(s));
+				}
+
 				Logger.info("target date for DauerDel: " + date.toString());
 				new CanTermDelRestriction(p).test(); // Test nur, wenn Datum angegeben
 				setJobParam("date",date);
@@ -144,7 +144,10 @@ public class HBCIDauerauftragDeleteJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2004-11-17 19:02:28  willuhn
+ * Revision 1.8  2004-11-18 23:46:21  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.7  2004/11/17 19:02:28  willuhn
  * *** empty log message ***
  *
  * Revision 1.6  2004/11/14 19:21:37  willuhn

@@ -19,12 +19,16 @@ import org.eclipse.swt.widgets.Listener;
 
 import de.willuhn.datasource.GenericObject;
 import de.willuhn.datasource.pseudo.PseudoIterator;
+import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.jameica.gui.AbstractControl;
 import de.willuhn.jameica.gui.AbstractView;
+import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
+import de.willuhn.jameica.gui.Part;
 import de.willuhn.jameica.gui.input.Input;
 import de.willuhn.jameica.gui.input.LabelInput;
 import de.willuhn.jameica.gui.input.SelectInput;
+import de.willuhn.jameica.gui.parts.TablePart;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.rmi.Turnus;
@@ -48,6 +52,8 @@ public class TurnusControl extends AbstractControl
 	private Input tagWoechentlich	= null;
 	private Input comment					= null;
 
+	private TablePart turnusList	= null;
+
 	private I18N i18n;
 
   /**
@@ -58,6 +64,34 @@ public class TurnusControl extends AbstractControl
     super(view);
     i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
   }
+
+	/**
+	 * Liefert eine Liste mit existierenden Zahlungsturnus(sen?).
+   * @return Liste existierender Turn^WDatensätze ;).
+   * @throws RemoteException
+   */
+  public Part getTurnusList() throws RemoteException
+	{
+		if (turnusList != null)
+			return turnusList;
+
+		DBIterator list = Settings.getDBService().createList(Turnus.class);
+
+		turnusList = new TablePart(list,new Action()
+		{
+			public void handleAction(Object context) throws ApplicationException
+			{
+				if (context == null)
+					return;
+				turnus = (Turnus) context;
+				// TODO: Restliche Felder aktualisieren.
+			}
+		});
+
+		turnusList.addColumn(i18n.tr("Bezeichnung"),"bezeichnung");
+		turnusList.disableSummary();
+		return turnusList;
+	}
 
 	/**
 	 * Liefert den Turnus.
@@ -110,7 +144,6 @@ public class TurnusControl extends AbstractControl
 					Zeiteinheit ze = (Zeiteinheit) getZeiteinheit().getValue();
 					if (ze.id == Turnus.ZEITEINHEIT_MONATLICH)
 						intervall.setComment(i18n.tr("Monate"));
-					else
 						intervall.setComment(i18n.tr("Wochen"));
 				}
 				catch (Exception e)
@@ -178,6 +211,7 @@ public class TurnusControl extends AbstractControl
 			values[i] = new Tag(i+1);
 		}
 		tagWoechentlich = new SelectInput(PseudoIterator.fromArray(values),new Tag(getTurnus().getTag()));
+		new TagListener().handleEvent(null); // TODO an passender Stelle ausloesen
 		return tagWoechentlich;
 	}
 
@@ -200,6 +234,7 @@ public class TurnusControl extends AbstractControl
 			{
 				t.setTag(Integer.parseInt((String)getTagMonatlich().getValue()));
 			}
+
 			t.setIntervall(Integer.parseInt((String)getIntervall().getValue()));
 			t.store();
 			getComment().setValue(i18n.tr("Zahlungsturnus gespeichert"));
@@ -364,7 +399,10 @@ public class TurnusControl extends AbstractControl
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2004-11-15 00:38:30  willuhn
+ * Revision 1.4  2004-11-18 23:46:21  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.3  2004/11/15 00:38:30  willuhn
  * *** empty log message ***
  *
  * Revision 1.2  2004/11/14 19:21:37  willuhn
