@@ -53,6 +53,8 @@ public class Settings extends AbstractView {
 		colors.addLabelPair(i18n.tr("Hintergrund Sollbuchung"),control.getBuchungSollBackground());
 		colors.addLabelPair(i18n.tr("Vordergrund Habenbuchung"),control.getBuchungHabenForeground());
 		colors.addLabelPair(i18n.tr("Hintergrund Habenbuchung"),control.getBuchungHabenBackground());
+		colors.addLabelPair(i18n.tr("Vordergrund überfällige Überweisungen"),control.getUeberfaelligForeground());
+		colors.addLabelPair(i18n.tr("Hintergrund überfällige Überweisungen"),control.getUeberfaelligBackground());
 
 		ButtonArea buttons = settings.createButtonArea(1);
 		buttons.addCustomButton(i18n.tr("gespeicherte Check-Summe löschen"),new MouseAdapter() {
@@ -99,7 +101,10 @@ public class Settings extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.13  2004-04-14 23:53:46  willuhn
+ * Revision 1.14  2004-04-21 22:28:42  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.13  2004/04/14 23:53:46  willuhn
  * *** empty log message ***
  *
  * Revision 1.12  2004/04/12 19:15:31  willuhn

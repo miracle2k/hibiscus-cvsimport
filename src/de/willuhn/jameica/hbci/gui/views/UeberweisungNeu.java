@@ -53,6 +53,7 @@ public class UeberweisungNeu extends AbstractView {
 		group.addLabelPair(i18n.tr("Verwendungszweck"),					control.getZweck());
 		group.addLabelPair(i18n.tr("weiterer Verwendungszweck"),control.getZweck2());
 		group.addLabelPair(i18n.tr("Betrag"),										control.getBetrag());
+		group.addLabelPair(i18n.tr("Termin"),										control.getTermin());
 
 
 		ButtonArea buttonArea = new ButtonArea(getParent(),4);
@@ -77,7 +78,10 @@ public class UeberweisungNeu extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2004-04-12 19:15:31  willuhn
+ * Revision 1.8  2004-04-21 22:28:42  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.7  2004/04/12 19:15:31  willuhn
  * @C refactoring
  *
  * Revision 1.6  2004/04/05 23:28:46  willuhn

@@ -41,6 +41,8 @@ public class Settings
 	private static Color buchungSollBackground = null;
 	private static Color buchungHabenForeground = null;
 	private static Color buchungHabenBackground = null;
+	private static Color ueberfaelligForeground = null;
+	private static Color ueberfaelligBackground = null;
 
   /**
    * Liefert den Datenbank-Service.
@@ -108,6 +110,32 @@ public class Settings
 	}
 
 	/**
+	 * Liefert die Hintergrundfarbe fuer ueberfaellige Ueberweisungen.
+	 * @return Farbe.
+	 */
+	public static Color getUeberfaelligBackground()
+	{
+		if (ueberfaelligBackground != null)
+			return ueberfaelligBackground;
+
+		ueberfaelligBackground = new Color(GUI.getDisplay(),settings.getRGB("ueberfaellig.bg",new RGB(255,255,255)));
+		return ueberfaelligBackground;
+	}
+
+	/**
+	 * Liefert die Vordergrundfarbe fuer ueberfaellige Ueberweisungen.
+	 * @return Farbe.
+	 */
+	public static Color getUeberfaelligForeground()
+	{
+		if (ueberfaelligForeground != null)
+			return ueberfaelligForeground;
+
+		ueberfaelligForeground = new Color(GUI.getDisplay(),settings.getRGB("ueberfaellig.fg",new RGB(0,0,0)));
+		return ueberfaelligForeground;
+	}
+
+	/**
 	 * Speichert die Farben fuer den Vordergrund von Soll-Buchungen.
    * @param rgb
    */
@@ -145,6 +173,26 @@ public class Settings
 	{
 		settings.setAttribute("buchung.haben.bg",rgb);
 		buchungHabenBackground = null;
+	}
+
+	/**
+	 * Speichert die Farben fuer den Hintergrund von ueberfaelligen Ueberweisungen.
+	 * @param rgb
+	 */
+	public static void setUeberfaelligBackground(RGB rgb)
+	{
+		settings.setAttribute("ueberfaellig.bg",rgb);
+		ueberfaelligBackground = null;
+	}
+
+	/**
+	 * Speichert die Farben fuer den Vordergrund von ueberfaelligen Ueberweisungen.
+	 * @param rgb
+	 */
+	public static void setUeberfaelligForeground(RGB rgb)
+	{
+		settings.setAttribute("ueberfaellig.fg",rgb);
+		ueberfaelligForeground = null;
 	}
 
 	/**
@@ -265,7 +313,10 @@ public class Settings
 
 /*********************************************************************
  * $Log$
- * Revision 1.9  2004-04-13 23:14:23  willuhn
+ * Revision 1.10  2004-04-21 22:28:42  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.9  2004/04/13 23:14:23  willuhn
  * @N datadir
  *
  * Revision 1.8  2004/04/12 19:15:31  willuhn
