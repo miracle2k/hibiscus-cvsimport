@@ -43,7 +43,6 @@ import de.willuhn.jameica.gui.views.AbstractView;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.gui.dialogs.UeberweisungDialog;
-import de.willuhn.jameica.hbci.gui.listener.UeberweisungCreate;
 import de.willuhn.jameica.hbci.gui.listener.UeberweisungDuplicate;
 import de.willuhn.jameica.hbci.gui.listener.UeberweisungExecute;
 import de.willuhn.jameica.hbci.gui.views.UeberweisungNeu;
@@ -149,7 +148,6 @@ public class UeberweisungControl extends AbstractControl {
 				catch (RemoteException e) { /*ignore */}
       }
     });
-		table.addMenu(i18n.tr("Neue Überweisung"), new UeberweisungCreate());
     table.addMenu(i18n.tr("Jetzt ausführen"), new UeberweisungExecute());
 		table.addMenu(i18n.tr("Duplizieren"), new UeberweisungDuplicate());
 
@@ -697,7 +695,10 @@ public class UeberweisungControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.21  2004-07-09 00:04:40  willuhn
+ * Revision 1.22  2004-07-09 00:12:29  willuhn
+ * @B minor bugs
+ *
+ * Revision 1.21  2004/07/09 00:04:40  willuhn
  * @C Redesign
  *
  * Revision 1.20  2004/06/30 20:58:28  willuhn
