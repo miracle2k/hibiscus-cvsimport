@@ -151,7 +151,7 @@ public class UmsatzControl extends AbstractControl {
 	/**
    * Holt die Umsaetze vom HBCI-Server und zeigt sie an. 
    */
-  public void handleGetUmsaetze()
+  public synchronized void handleGetUmsaetze()
 	{
 		GUI.getStatusBar().startProgress();
 
@@ -230,7 +230,10 @@ public class UmsatzControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.12  2004-05-02 17:04:38  willuhn
+ * Revision 1.13  2004-06-08 22:28:58  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.12  2004/05/02 17:04:38  willuhn
  * *** empty log message ***
  *
  * Revision 1.11  2004/04/19 22:53:52  willuhn

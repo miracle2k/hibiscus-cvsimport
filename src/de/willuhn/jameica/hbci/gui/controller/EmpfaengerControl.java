@@ -142,7 +142,7 @@ public class EmpfaengerControl extends AbstractControl {
   /**
    * @see de.willuhn.jameica.gui.controller.AbstractControl#handleDelete()
    */
-  public void handleDelete() {
+  public synchronized void handleDelete() {
 		try {
 
 			if (getEmpfaenger() == null || getEmpfaenger().isNewObject())
@@ -191,7 +191,7 @@ public class EmpfaengerControl extends AbstractControl {
   /**
    * @see de.willuhn.jameica.gui.controller.AbstractControl#handleStore()
    */
-  public void handleStore() {
+  public synchronized void handleStore() {
   	try {
   		getEmpfaenger().setKontonummer((String)getKontonummer().getValue());
   		getEmpfaenger().setBLZ((String)getBlz().getValue());
@@ -252,7 +252,10 @@ public class EmpfaengerControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.11  2004-06-03 00:23:42  willuhn
+ * Revision 1.12  2004-06-08 22:28:58  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.11  2004/06/03 00:23:42  willuhn
  * *** empty log message ***
  *
  * Revision 1.10  2004/05/26 23:23:10  willuhn
