@@ -180,7 +180,8 @@ public abstract class AbstractTransferControl extends AbstractControl
 	{
 		if (zweck != null)
 			return zweck;
-		zweck = new TextInput(getTransfer().getZweck());
+		// BUGZILLA #10 http://www.willuhn.de/bugzilla/show_bug.cgi?id=10
+		zweck = new TextInput(getTransfer().getZweck(),27);
 		zweck.setValidChars(HBCIProperties.HBCI_DTAUS_VALIDCHARS);
 		return zweck;
 	}
@@ -194,7 +195,8 @@ public abstract class AbstractTransferControl extends AbstractControl
 	{
 		if (zweck2 != null)
 			return zweck2;
-		zweck2 = new TextInput(getTransfer().getZweck2());
+		// BUGZILLA #10 http://www.willuhn.de/bugzilla/show_bug.cgi?id=10
+		zweck2 = new TextInput(getTransfer().getZweck2(),27);
 		zweck2.setValidChars(HBCIProperties.HBCI_DTAUS_VALIDCHARS);
 		return zweck2;
 	}
@@ -395,7 +397,10 @@ public abstract class AbstractTransferControl extends AbstractControl
 
 /**********************************************************************
  * $Log$
- * Revision 1.19  2005-02-04 18:27:54  willuhn
+ * Revision 1.20  2005-02-19 16:49:32  willuhn
+ * @B bugs 3,8,10
+ *
+ * Revision 1.19  2005/02/04 18:27:54  willuhn
  * @C Refactoring zwischen Lastschrift und Ueberweisung
  *
  * Revision 1.18  2005/01/19 00:33:32  willuhn

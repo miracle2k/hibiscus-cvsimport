@@ -122,6 +122,9 @@ public class HBCI extends AbstractPlugin
 		if (checkSum.equals("Oj3JSimz84VKq44EEzQOZQ==")) // 1.1
 			return;
 
+		if (checkSum.equals("NhTl6Nt8RmaRNz49M/SGiA==")) // 1.2
+			return;
+
 		throw new Exception("database checksum does not match any known version: " + checkSum);
 	}
 
@@ -202,12 +205,26 @@ public class HBCI extends AbstractPlugin
   	{
 			try {
 				getDatabase().executeSQLScript(new File(getResources().getPath() + "/sql/update_1.0-1.1.sql"));
+				// Update erfolgreich. Versionsnummer erhoehen.
+				oldVersion = 1.1;
 			}
 			catch (Exception e)
 			{
 				throw new ApplicationException(getResources().getI18N().tr("Fehler beim Update der Datenbank"),e);
 			}
   	}
+
+		if (oldVersion == 1.1)
+		{
+			try {
+				getDatabase().executeSQLScript(new File(getResources().getPath() + "/sql/update_1.1-1.2.sql"));
+			}
+			catch (Exception e)
+			{
+				throw new ApplicationException(getResources().getI18N().tr("Fehler beim Update der Datenbank"),e);
+			}
+		}
+
   }
 
   /**
@@ -221,7 +238,10 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
- * Revision 1.41  2005-02-08 22:28:00  willuhn
+ * Revision 1.42  2005-02-19 16:49:32  willuhn
+ * @B bugs 3,8,10
+ *
+ * Revision 1.41  2005/02/08 22:28:00  willuhn
  * *** empty log message ***
  *
  * Revision 1.40  2005/02/03 18:57:42  willuhn

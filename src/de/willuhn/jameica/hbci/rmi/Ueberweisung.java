@@ -16,14 +16,17 @@ package de.willuhn.jameica.hbci.rmi;
 /**
  * Bildet eine Ueberweisung ab.
  */
-public interface Ueberweisung extends BaseUeberweisung
+public interface Ueberweisung extends Transfer, Terminable, Checksum
 {
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.12  2005-02-04 18:27:54  willuhn
+ * Revision 1.13  2005-02-19 16:49:32  willuhn
+ * @B bugs 3,8,10
+ *
+ * Revision 1.12  2005/02/04 18:27:54  willuhn
  * @C Refactoring zwischen Lastschrift und Ueberweisung
  *
  * Revision 1.11  2005/02/03 18:57:42  willuhn

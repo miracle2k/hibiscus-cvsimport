@@ -19,7 +19,7 @@ import de.willuhn.datasource.rmi.DBObject;
 /**
  * Basis-Interface fuer Geld-Transfers zwischen Konten.
  */
-public interface Transfer extends DBObject, Checksum
+public interface Transfer extends DBObject
 {
 
 	/**
@@ -138,7 +138,10 @@ public interface Transfer extends DBObject, Checksum
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2005-01-19 00:16:04  willuhn
+ * Revision 1.6  2005-02-19 16:49:32  willuhn
+ * @B bugs 3,8,10
+ *
+ * Revision 1.5  2005/01/19 00:16:04  willuhn
  * @N Lastschriften
  *
  * Revision 1.4  2004/10/17 16:28:46  willuhn

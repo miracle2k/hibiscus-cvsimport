@@ -61,6 +61,10 @@ public class HBCILastschriftJob extends AbstractHBCIJob
 
 			setJobParam("btg",lastschrift.getBetrag(),konto.getWaehrung() == null ? "EUR" : konto.getWaehrung());
 
+			// BUGZILLA #8 http://www.willuhn.de/bugzilla/show_bug.cgi?id=8
+			if (lastschrift.getTyp() != null)
+				setJobParam("type",lastschrift.getTyp());
+
 			Empfaenger empfaenger = (Empfaenger) Settings.getDBService().createObject(Empfaenger.class,null);
 			empfaenger.setBLZ(lastschrift.getEmpfaengerBLZ());
 			empfaenger.setKontonummer(lastschrift.getEmpfaengerKonto());
@@ -132,7 +136,10 @@ public class HBCILastschriftJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2005-02-03 18:57:42  willuhn
+ * Revision 1.3  2005-02-19 16:49:32  willuhn
+ * @B bugs 3,8,10
+ *
+ * Revision 1.2  2005/02/03 18:57:42  willuhn
  * *** empty log message ***
  *
  * Revision 1.1  2005/01/19 00:16:04  willuhn
