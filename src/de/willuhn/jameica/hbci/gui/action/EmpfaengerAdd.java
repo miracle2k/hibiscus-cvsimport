@@ -58,9 +58,9 @@ public class EmpfaengerAdd implements Action
 			if (context instanceof Transfer)
 			{
 				Transfer t = (Transfer) context;
-				blz   = t.getEmpfaengerBLZ();
-				konto = t.getEmpfaengerKonto();
-				name  = t.getEmpfaengerName();
+				blz   = t.getGegenkontoBLZ();
+				konto = t.getGegenkontoNummer();
+				name  = t.getGegenkontoName();
 			}
 			else if (context instanceof Umsatz)
 			{
@@ -105,7 +105,10 @@ public class EmpfaengerAdd implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2005-02-27 17:11:49  web0
+ * Revision 1.4  2005-03-02 17:59:30  web0
+ * @N some refactoring
+ *
+ * Revision 1.3  2005/02/27 17:11:49  web0
  * @N first code for "Sammellastschrift"
  * @C "Empfaenger" renamed into "Adresse"
  *

@@ -65,7 +65,7 @@ public class DauerauftragNew implements Action
 			try {
 				Adresse e = (Adresse) context;
 				d = (Dauerauftrag) Settings.getDBService().createObject(Dauerauftrag.class,null);
-				d.setEmpfaenger(e);
+				d.setGegenkonto(e);
 			}
 			catch (RemoteException e)
 			{
@@ -81,7 +81,10 @@ public class DauerauftragNew implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2005-02-27 17:11:49  web0
+ * Revision 1.5  2005-03-02 17:59:30  web0
+ * @N some refactoring
+ *
+ * Revision 1.4  2005/02/27 17:11:49  web0
  * @N first code for "Sammellastschrift"
  * @C "Empfaenger" renamed into "Adresse"
  *

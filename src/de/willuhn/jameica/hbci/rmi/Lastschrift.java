@@ -17,7 +17,7 @@ import java.rmi.RemoteException;
 /**
  * Ne Lastschrift ist ja auch nur ne Ueberweisung. Nur andersrum ;).
  */
-public interface Lastschrift extends Transfer, Terminable, Checksum
+public interface Lastschrift extends Transfer, Terminable, Duplicatable
 {
 
 	/**
@@ -40,7 +40,10 @@ public interface Lastschrift extends Transfer, Terminable, Checksum
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2005-02-19 16:49:32  willuhn
+ * Revision 1.4  2005-03-02 17:59:30  web0
+ * @N some refactoring
+ *
+ * Revision 1.3  2005/02/19 16:49:32  willuhn
  * @B bugs 3,8,10
  *
  * Revision 1.2  2005/02/04 18:27:54  willuhn

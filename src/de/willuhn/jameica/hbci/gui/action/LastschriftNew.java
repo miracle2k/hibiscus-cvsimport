@@ -60,7 +60,7 @@ public class LastschriftNew implements Action
 			try {
 				Adresse e = (Adresse) context;
 				u = (Lastschrift) Settings.getDBService().createObject(Lastschrift.class,null);
-				u.setEmpfaenger(e);
+				u.setGegenkonto(e);
 			}
 			catch (RemoteException e)
 			{
@@ -76,7 +76,10 @@ public class LastschriftNew implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2005-02-27 17:11:49  web0
+ * Revision 1.3  2005-03-02 17:59:30  web0
+ * @N some refactoring
+ *
+ * Revision 1.2  2005/02/27 17:11:49  web0
  * @N first code for "Sammellastschrift"
  * @C "Empfaenger" renamed into "Adresse"
  *

@@ -28,7 +28,8 @@ import de.willuhn.util.I18N;
  * Implementierung des Containers fuer Sammellastschrift-Buchungen.
  * @author willuhn
  */
-public class SammelLastschriftImpl extends AbstractDBObject implements SammelLastschrift
+public class SammelLastschriftImpl extends AbstractDBObject
+  implements SammelLastschrift
 {
 
   private I18N i18n;
@@ -294,7 +295,10 @@ public class SammelLastschriftImpl extends AbstractDBObject implements SammelLas
 
 /*****************************************************************************
  * $Log$
- * Revision 1.2  2005-03-01 18:51:04  web0
+ * Revision 1.3  2005-03-02 17:59:30  web0
+ * @N some refactoring
+ *
+ * Revision 1.2  2005/03/01 18:51:04  web0
  * @N Dialoge fuer Sammel-Lastschriften
  *
  * Revision 1.1  2005/02/28 16:28:24  web0

@@ -14,13 +14,14 @@ package de.willuhn.jameica.hbci.server;
 
 import java.rmi.RemoteException;
 
-import de.willuhn.jameica.hbci.rmi.Transfer;
+import de.willuhn.jameica.hbci.rmi.Duplicatable;
 import de.willuhn.jameica.hbci.rmi.Ueberweisung;
 
 /**
  * Eine Ueberweisung.
  */
-public class UeberweisungImpl extends AbstractBaseUeberweisungImpl implements Ueberweisung
+public class UeberweisungImpl extends AbstractBaseUeberweisungImpl
+  implements Ueberweisung
 {
 
   /**
@@ -38,14 +39,14 @@ public class UeberweisungImpl extends AbstractBaseUeberweisungImpl implements Ue
   }
 
   /**
-   * @see de.willuhn.jameica.hbci.rmi.Transfer#duplicate()
+   * @see de.willuhn.jameica.hbci.rmi.Duplicatable#duplicate()
    */
-  public Transfer duplicate() throws RemoteException {
+  public Duplicatable duplicate() throws RemoteException {
     Ueberweisung u = (Ueberweisung) getService().createObject(Ueberweisung.class,null);
     u.setBetrag(getBetrag());
-    u.setEmpfaengerBLZ(getEmpfaengerBLZ());
-    u.setEmpfaengerKonto(getEmpfaengerKonto());
-    u.setEmpfaengerName(getEmpfaengerName());
+    u.setGegenkontoBLZ(getGegenkontoBLZ());
+    u.setGegenkontoNummer(getGegenkontoNummer());
+    u.setGegenkontoName(getGegenkontoName());
     u.setKonto(getKonto());
     u.setTermin(getTermin());
     u.setZweck(getZweck());
@@ -59,7 +60,10 @@ public class UeberweisungImpl extends AbstractBaseUeberweisungImpl implements Ue
 
 /**********************************************************************
  * $Log$
- * Revision 1.33  2005-02-28 16:28:24  web0
+ * Revision 1.34  2005-03-02 17:59:30  web0
+ * @N some refactoring
+ *
+ * Revision 1.33  2005/02/28 16:28:24  web0
  * @N first code for "Sammellastschrift"
  *
  * Revision 1.32  2005/02/04 18:27:54  willuhn

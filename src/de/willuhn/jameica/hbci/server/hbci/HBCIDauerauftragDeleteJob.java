@@ -116,7 +116,7 @@ public class HBCIDauerauftragDeleteJob extends AbstractHBCIJob
 	{
 		String statusText = getStatusText();
 
-		String empfName = i18n.tr("an") + " " + dauerauftrag.getEmpfaengerName();
+		String empfName = i18n.tr("an") + " " + dauerauftrag.getGegenkontoName();
 
 		if (!getJobResult().isOK())
 		{
@@ -144,7 +144,10 @@ public class HBCIDauerauftragDeleteJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.8  2004-11-18 23:46:21  willuhn
+ * Revision 1.9  2005-03-02 17:59:30  web0
+ * @N some refactoring
+ *
+ * Revision 1.8  2004/11/18 23:46:21  willuhn
  * *** empty log message ***
  *
  * Revision 1.7  2004/11/17 19:02:28  willuhn

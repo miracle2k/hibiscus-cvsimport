@@ -62,9 +62,9 @@ public class HBCIUeberweisungJob extends AbstractHBCIJob
 			setJobParam("btg",ueberweisung.getBetrag(),konto.getWaehrung() == null ? "EUR" : konto.getWaehrung());
 
 			Adresse empfaenger = (Adresse) Settings.getDBService().createObject(Adresse.class,null);
-			empfaenger.setBLZ(ueberweisung.getEmpfaengerBLZ());
-			empfaenger.setKontonummer(ueberweisung.getEmpfaengerKonto());
-			empfaenger.setName(ueberweisung.getEmpfaengerName());
+			empfaenger.setBLZ(ueberweisung.getGegenkontoBLZ());
+			empfaenger.setKontonummer(ueberweisung.getGegenkontoNummer());
+			empfaenger.setName(ueberweisung.getGegenkontoName());
 
 			setJobParam("dst",Converter.HibiscusAdresse2HBCIKonto(empfaenger));
 			setJobParam("name",empfaenger.getName());
@@ -105,7 +105,7 @@ public class HBCIUeberweisungJob extends AbstractHBCIJob
   {
 		String statusText = getStatusText();
 
-		String empfName = i18n.tr("an") + " " + ueberweisung.getEmpfaengerName();
+		String empfName = i18n.tr("an") + " " + ueberweisung.getGegenkontoName();
 
 		if (!getJobResult().isOK())
 		{
@@ -131,7 +131,10 @@ public class HBCIUeberweisungJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.20  2005-02-27 17:11:49  web0
+ * Revision 1.21  2005-03-02 17:59:30  web0
+ * @N some refactoring
+ *
+ * Revision 1.20  2005/02/27 17:11:49  web0
  * @N first code for "Sammellastschrift"
  * @C "Empfaenger" renamed into "Adresse"
  *

@@ -133,7 +133,7 @@ public class Converter {
 		auftrag.setOrderID(d.orderid);
 
 		// Jetzt noch der Empfaenger
-		auftrag.setEmpfaenger(HBCIKonto2HibiscusAdresse(d.other));
+		auftrag.setGegenkonto(HBCIKonto2HibiscusAdresse(d.other));
 
 		// Verwendungszweck
 		if (d.usage.length == 0)
@@ -246,7 +246,10 @@ public class Converter {
 
 /**********************************************************************
  * $Log$
- * Revision 1.18  2005-02-27 17:11:49  web0
+ * Revision 1.19  2005-03-02 17:59:30  web0
+ * @N some refactoring
+ *
+ * Revision 1.18  2005/02/27 17:11:49  web0
  * @N first code for "Sammellastschrift"
  * @C "Empfaenger" renamed into "Adresse"
  *

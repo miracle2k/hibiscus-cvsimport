@@ -20,7 +20,7 @@ import de.willuhn.util.ApplicationException;
 /**
  * Bildet einen Dauerauftrag in Hibiscus ab.
  */
-public interface Dauerauftrag extends Transfer
+public interface Dauerauftrag extends Transfer, Checksum
 {
 
 	/**
@@ -103,7 +103,10 @@ public interface Dauerauftrag extends Transfer
 
 /**********************************************************************
  * $Log$
- * Revision 1.8  2004-10-25 23:12:02  willuhn
+ * Revision 1.9  2005-03-02 17:59:30  web0
+ * @N some refactoring
+ *
+ * Revision 1.8  2004/10/25 23:12:02  willuhn
  * *** empty log message ***
  *
  * Revision 1.7  2004/10/25 22:39:14  willuhn

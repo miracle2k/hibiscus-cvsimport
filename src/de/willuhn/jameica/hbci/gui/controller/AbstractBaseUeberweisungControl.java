@@ -61,12 +61,12 @@ public abstract class AbstractBaseUeberweisungControl extends AbstractTransferCo
 		if (comment != null)
 			return comment;
 		comment = new LabelInput("");
-		Terminable bu = (Terminable) getTransfer();
-		if (bu.ausgefuehrt())
+    Terminable t = (Terminable) getTransfer();
+		if (t.ausgefuehrt())
 		{
 			comment.setValue(i18n.tr("Der Auftrag wurde bereits ausgeführt"));
 		}
-		else if (bu.ueberfaellig())
+		else if (t.ueberfaellig())
 		{
 			comment.setValue(i18n.tr("Der Auftrag ist überfällig"));
 		}
@@ -260,7 +260,10 @@ public abstract class AbstractBaseUeberweisungControl extends AbstractTransferCo
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2005-03-01 18:51:04  web0
+ * Revision 1.4  2005-03-02 17:59:31  web0
+ * @N some refactoring
+ *
+ * Revision 1.3  2005/03/01 18:51:04  web0
  * @N Dialoge fuer Sammel-Lastschriften
  *
  * Revision 1.2  2005/02/19 16:49:32  willuhn
