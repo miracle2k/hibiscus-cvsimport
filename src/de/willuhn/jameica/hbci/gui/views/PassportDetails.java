@@ -76,13 +76,14 @@ public class PassportDetails extends AbstractView {
 			group.addCheckbox(control.getSoftPin(), i18n.tr("Tastatur des PCs zur PIN-Eingabe verwenden"));
 			
 			// und noch die Abschicken-Knoepfe
-			ButtonArea buttonArea = new ButtonArea(getParent(),3);
+			ButtonArea buttonArea = new ButtonArea(getParent(),4);
 			buttonArea.addCustomButton(i18n.tr("Kartenleser testen"), new MouseAdapter() {
 				public void mouseUp(MouseEvent e) {
 					control.handleTest();
 				}
 			});
 			buttonArea.addCancelButton(control);
+			buttonArea.addDeleteButton(control);
 			buttonArea.addStoreButton(control);
 
   	}
@@ -107,7 +108,10 @@ public class PassportDetails extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2004-03-03 22:26:40  willuhn
+ * Revision 1.7  2004-03-04 00:26:24  willuhn
+ * @N Ueberweisung
+ *
+ * Revision 1.6  2004/03/03 22:26:40  willuhn
  * @N help texts
  * @C refactoring
  *
