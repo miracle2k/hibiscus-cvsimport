@@ -43,6 +43,7 @@ public class PassportControlDDV extends AbstractControl {
 	// Eingabe-Felder
 	private AbstractInput name 			 = null; 
 	private AbstractInput type			 = null;
+	private AbstractInput model			 = null;
 	private AbstractInput port 			 = null;
 	private AbstractInput ctNumber	 = null;
 	private AbstractInput entryIndex = null;
@@ -78,6 +79,19 @@ public class PassportControlDDV extends AbstractControl {
 			throw new RemoteException("passport not found");
 		}
 		return passport;
+	}
+
+	/**
+	 * Liefert eine Auswahl der unterstuetzten Chipkartenleser.
+   * @return Auswahl-Feld.
+   * @throws RemoteException
+   */
+  public AbstractInput getModel() throws RemoteException
+	{
+		if (model != null)
+			return model;
+		// TODO: unterstuetzte Modelle
+		return null;
 	}
 
 	/**
@@ -313,7 +327,10 @@ public class PassportControlDDV extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.15  2004-04-19 22:05:52  willuhn
+ * Revision 1.16  2004-04-25 18:17:14  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.15  2004/04/19 22:05:52  willuhn
  * @C HBCIJobs refactored
  *
  * Revision 1.14  2004/04/13 23:14:23  willuhn

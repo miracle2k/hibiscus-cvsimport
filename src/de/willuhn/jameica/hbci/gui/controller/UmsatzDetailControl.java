@@ -203,8 +203,6 @@ public class UmsatzDetailControl extends AbstractControl {
       Application.getLog().error("error while opening umsatz list",e);
 			GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Laden der Umsätze"));
     }
-		GUI.startPreviousView();
-
   }
   
   /**
@@ -265,7 +263,10 @@ public class UmsatzDetailControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2004-04-19 22:53:52  willuhn
+ * Revision 1.6  2004-04-25 18:17:14  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.5  2004/04/19 22:53:52  willuhn
  * *** empty log message ***
  *
  * Revision 1.4  2004/04/13 23:14:23  willuhn
