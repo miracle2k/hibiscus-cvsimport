@@ -357,6 +357,7 @@ public class KontoControl extends AbstractControl {
 			// und jetzt speichern wir.
 			getKonto().store();
 			GUI.getStatusBar().setSuccessText(i18n.tr("Bankverbindung gespeichert."));
+      GUI.getView().setSuccessText("");
 		}
 		catch (ApplicationException e1)
 		{
@@ -456,7 +457,11 @@ public class KontoControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.51  2005-02-03 18:57:42  willuhn
+ * Revision 1.52  2005-03-30 23:26:28  web0
+ * @B bug 29
+ * @B bug 30
+ *
+ * Revision 1.51  2005/02/03 18:57:42  willuhn
  * *** empty log message ***
  *
  * Revision 1.50  2005/02/01 18:27:14  willuhn

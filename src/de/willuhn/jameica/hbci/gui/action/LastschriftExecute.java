@@ -18,6 +18,7 @@ import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.gui.dialogs.LastschriftDialog;
+import de.willuhn.jameica.hbci.gui.views.LastschriftNew;
 import de.willuhn.jameica.hbci.rmi.Lastschrift;
 import de.willuhn.jameica.hbci.server.hbci.HBCIFactory;
 import de.willuhn.jameica.hbci.server.hbci.HBCILastschriftJob;
@@ -80,6 +81,8 @@ public class LastschriftExecute implements Action
 						factory.addJob(new HBCILastschriftJob(u));
 						factory.executeJobs(u.getKonto().getPassport().getHandle()); 
 						GUI.getStatusBar().setSuccessText(i18n.tr("Lastschrift erfolgreich ausgeführt"));
+            // BUGZILLA 30 http://www.willuhn.de/bugzilla/show_bug.cgi?id=30
+            GUI.startView(LastschriftNew.class,u);
         	}
 					catch (OperationCanceledException oce)
 					{
@@ -115,7 +118,11 @@ public class LastschriftExecute implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2005-03-02 00:22:05  web0
+ * Revision 1.3  2005-03-30 23:26:28  web0
+ * @B bug 29
+ * @B bug 30
+ *
+ * Revision 1.2  2005/03/02 00:22:05  web0
  * @N first code for "Sammellastschrift"
  *
  * Revision 1.1  2005/01/19 00:16:04  willuhn

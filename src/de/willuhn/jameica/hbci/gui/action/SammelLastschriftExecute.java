@@ -18,6 +18,7 @@ import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.gui.dialogs.SammelLastschriftDialog;
+import de.willuhn.jameica.hbci.gui.views.SammelLastschriftNew;
 import de.willuhn.jameica.hbci.rmi.SammelLastschrift;
 import de.willuhn.jameica.hbci.server.hbci.HBCIFactory;
 import de.willuhn.jameica.hbci.server.hbci.HBCISammelLastschriftJob;
@@ -82,6 +83,8 @@ public class SammelLastschriftExecute implements Action
 						factory.addJob(new HBCISammelLastschriftJob(u));
 						factory.executeJobs(u.getKonto().getPassport().getHandle()); 
 						GUI.getStatusBar().setSuccessText(i18n.tr("Sammel-Lastschrift erfolgreich ausgeführt"));
+            // BUGZILLA 30 http://www.willuhn.de/bugzilla/show_bug.cgi?id=30
+            GUI.startView(SammelLastschriftNew.class,u);
         	}
 					catch (OperationCanceledException oce)
 					{
@@ -117,7 +120,11 @@ public class SammelLastschriftExecute implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2005-03-05 19:19:48  web0
+ * Revision 1.4  2005-03-30 23:26:28  web0
+ * @B bug 29
+ * @B bug 30
+ *
+ * Revision 1.3  2005/03/05 19:19:48  web0
  * *** empty log message ***
  *
  * Revision 1.2  2005/03/05 19:11:25  web0

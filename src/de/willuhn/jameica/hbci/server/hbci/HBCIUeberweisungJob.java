@@ -15,6 +15,7 @@ package de.willuhn.jameica.hbci.server.hbci;
 import java.rmi.RemoteException;
 
 import de.willuhn.jameica.hbci.HBCI;
+import de.willuhn.jameica.hbci.HBCIProperties;
 import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.rmi.Adresse;
 import de.willuhn.jameica.hbci.rmi.Konto;
@@ -59,7 +60,12 @@ public class HBCIUeberweisungJob extends AbstractHBCIJob
 
 			setJobParam("src",Converter.HibiscusKonto2HBCIKonto(konto));
 
-			setJobParam("btg",ueberweisung.getBetrag(),konto.getWaehrung() == null ? "EUR" : konto.getWaehrung());
+      // BUGZILLA 29 http://www.willuhn.de/bugzilla/show_bug.cgi?id=29
+      String curr = konto.getWaehrung();
+      if (curr == null || curr.length() == 0)
+        curr = HBCIProperties.CURRENCY_DEFAULT_DE;
+
+			setJobParam("btg",ueberweisung.getBetrag(),curr);
 
 			Adresse empfaenger = (Adresse) Settings.getDBService().createObject(Adresse.class,null);
 			empfaenger.setBLZ(ueberweisung.getGegenkontoBLZ());
@@ -131,7 +137,11 @@ public class HBCIUeberweisungJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.21  2005-03-02 17:59:30  web0
+ * Revision 1.22  2005-03-30 23:26:28  web0
+ * @B bug 29
+ * @B bug 30
+ *
+ * Revision 1.21  2005/03/02 17:59:30  web0
  * @N some refactoring
  *
  * Revision 1.20  2005/02/27 17:11:49  web0
