@@ -41,7 +41,7 @@ public class DauerauftragNew extends AbstractView
 
 		I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
-		GUI.getView().setTitle(i18n.tr("Überweisung bearbeiten"));
+		GUI.getView().setTitle(i18n.tr("Dauerauftrag bearbeiten"));
 		
 		LabelGroup konten = new LabelGroup(getParent(),i18n.tr("Konten"));
 		
@@ -101,7 +101,10 @@ public class DauerauftragNew extends AbstractView
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2004-11-13 17:12:15  willuhn
+ * Revision 1.2  2005-03-04 00:52:03  web0
+ * @B typo
+ *
+ * Revision 1.1  2004/11/13 17:12:15  willuhn
  * *** empty log message ***
  *
  * Revision 1.7  2004/11/13 17:02:04  willuhn
