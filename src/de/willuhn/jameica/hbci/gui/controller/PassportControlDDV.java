@@ -256,7 +256,7 @@ public class PassportControlDDV extends AbstractControl {
 
 		GUI.setActionText(I18N.tr("Teste Chipkartenleser..."));
 
-		GUI.startJob(new Runnable() {
+		GUI.startSync(new Runnable() {
       public void run() {
 				handleStore();
 				if (!stored)
@@ -280,7 +280,10 @@ public class PassportControlDDV extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2004-02-20 01:36:56  willuhn
+ * Revision 1.5  2004-02-23 20:30:47  willuhn
+ * @C refactoring in AbstractDialog
+ *
+ * Revision 1.4  2004/02/20 01:36:56  willuhn
  * *** empty log message ***
  *
  * Revision 1.3  2004/02/13 00:41:56  willuhn
