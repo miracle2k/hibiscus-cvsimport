@@ -113,7 +113,7 @@ public class SammelLastBuchungControl extends AbstractControl
 	{
 		if (gkBLZ != null)
 			return gkBLZ;
-		gkBLZ = new TextInput(getBuchung().getGegenkontoBLZ());
+		gkBLZ = new TextInput(getBuchung().getGegenkontoBLZ(),HBCIProperties.HBCI_BLZ_LENGTH);
 
 		gkBLZ.setComment("");
 		gkBLZ.addListener(new BLZListener());
@@ -335,7 +335,10 @@ public class SammelLastBuchungControl extends AbstractControl
 
 /*****************************************************************************
  * $Log$
- * Revision 1.3  2005-03-09 01:07:02  web0
+ * Revision 1.4  2005-04-05 21:51:54  web0
+ * @B Begrenzung aller BLZ-Eingaben auf 8 Zeichen
+ *
+ * Revision 1.3  2005/03/09 01:07:02  web0
  * @D javadoc fixes
  *
  * Revision 1.2  2005/03/05 19:11:25  web0

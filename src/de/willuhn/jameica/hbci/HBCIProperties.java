@@ -47,6 +47,12 @@ public class HBCIProperties
   public final static int HBCI_TRANSFER_USAGE_MAXLENGTH =
     settings.getInt("hbci.transfer.usage.maxlength",27);
 
+  /**
+   * Laenge von Bankleitzahlen.
+   */
+  public final static int HBCI_BLZ_LENGTH =
+    settings.getInt("hbci.blz.maxlength",8);
+
 	/**
 	 * Maximale Text-Laenge fuer Namen.
 	 */
@@ -102,7 +108,10 @@ public class HBCIProperties
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2005-03-30 23:26:28  web0
+ * Revision 1.8  2005-04-05 21:51:54  web0
+ * @B Begrenzung aller BLZ-Eingaben auf 8 Zeichen
+ *
+ * Revision 1.7  2005/03/30 23:26:28  web0
  * @B bug 29
  * @B bug 30
  *
