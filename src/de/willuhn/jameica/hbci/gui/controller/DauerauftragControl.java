@@ -15,12 +15,12 @@ package de.willuhn.jameica.hbci.gui.controller;
 import java.rmi.RemoteException;
 
 import de.willuhn.datasource.rmi.DBIterator;
+import de.willuhn.jameica.gui.AbstractView;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.Part;
 import de.willuhn.jameica.gui.formatter.CurrencyFormatter;
 import de.willuhn.jameica.gui.formatter.Formatter;
 import de.willuhn.jameica.gui.parts.TablePart;
-import de.willuhn.jameica.gui.views.AbstractView;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.gui.views.DauerauftragNeu;
@@ -119,7 +119,10 @@ public class DauerauftragControl extends AbstractTransferControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2004-07-23 15:51:44  willuhn
+ * Revision 1.5  2004-10-08 13:37:47  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.4  2004/07/23 15:51:44  willuhn
  * @C Rest des Refactorings
  *
  * Revision 1.3  2004/07/20 00:11:07  willuhn

@@ -16,11 +16,11 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Label;
 
+import de.willuhn.jameica.gui.AbstractView;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.input.LabelInput;
 import de.willuhn.jameica.gui.parts.FormTextPart;
 import de.willuhn.jameica.gui.util.LabelGroup;
-import de.willuhn.jameica.gui.views.AbstractView;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.plugin.AbstractPlugin;
 import de.willuhn.jameica.system.Application;
@@ -69,7 +69,10 @@ public class About extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2004-07-25 17:15:05  willuhn
+ * Revision 1.6  2004-10-08 13:37:48  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.5  2004/07/25 17:15:05  willuhn
  * @C PluginLoader is no longer static
  *
  * Revision 1.4  2004/07/21 23:54:30  willuhn

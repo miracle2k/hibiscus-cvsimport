@@ -17,11 +17,11 @@ import java.io.FileInputStream;
 import java.rmi.RemoteException;
 
 import de.willuhn.io.FileFinder;
+import de.willuhn.jameica.gui.AbstractControl;
+import de.willuhn.jameica.gui.AbstractView;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.Part;
-import de.willuhn.jameica.gui.controller.AbstractControl;
 import de.willuhn.jameica.gui.parts.FormTextPart;
-import de.willuhn.jameica.gui.views.AbstractView;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.plugin.AbstractPlugin;
 import de.willuhn.jameica.plugin.Manifest;
@@ -150,7 +150,10 @@ public class LicenseControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2004-10-08 00:19:08  willuhn
+ * Revision 1.8  2004-10-08 13:37:47  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.7  2004/10/08 00:19:08  willuhn
  * *** empty log message ***
  *
  * Revision 1.6  2004/07/25 17:15:05  willuhn

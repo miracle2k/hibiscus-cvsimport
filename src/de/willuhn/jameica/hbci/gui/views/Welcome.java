@@ -19,10 +19,10 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 
+import de.willuhn.jameica.gui.AbstractView;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.util.Color;
 import de.willuhn.jameica.gui.util.Headline;
-import de.willuhn.jameica.gui.views.AbstractView;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.gui.controller.WelcomeControl;
 import de.willuhn.jameica.system.Application;
@@ -75,7 +75,10 @@ public class Welcome extends AbstractView
 
 /**********************************************************************
  * $Log$
- * Revision 1.13  2004-09-13 20:54:38  willuhn
+ * Revision 1.14  2004-10-08 13:37:48  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.13  2004/09/13 20:54:38  willuhn
  * @N bg color
  *
  * Revision 1.12  2004/07/25 17:15:05  willuhn
