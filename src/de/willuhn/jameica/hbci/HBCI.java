@@ -137,7 +137,7 @@ public class HBCI extends AbstractPlugin
 		catch (Exception e)
 		{
 			throw new ApplicationException(
-				getResources().getI18N().tr("Fehler beim Prï¿½fung der Datenbank-Integritï¿½t, " +					"Plugin wird aus Sicherheitsgrï¿½nden deaktiviert"),e);
+				getResources().getI18N().tr("Fehler beim Prüfung der Datenbank-Integrität, " +					"Plugin wird aus Sicherheitsgründen deaktiviert"),e);
 		}
 
     Application.getCallback().getStartupMonitor().setStatusText("hibiscus: checking passport directory");
@@ -221,7 +221,10 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
- * Revision 1.40  2005-02-03 18:57:42  willuhn
+ * Revision 1.41  2005-02-08 22:28:00  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.40  2005/02/03 18:57:42  willuhn
  * *** empty log message ***
  *
  * Revision 1.39  2005/02/01 17:15:37  willuhn

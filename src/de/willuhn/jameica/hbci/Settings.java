@@ -195,7 +195,7 @@ public class Settings
    */
   public static boolean getOnlineMode()
   {
-    return settings.getBoolean("online",false);
+    return settings.getBoolean("online",true);
   }
 
 	/**
@@ -235,7 +235,10 @@ public class Settings
 
 /*********************************************************************
  * $Log$
- * Revision 1.29  2005-02-02 16:15:52  willuhn
+ * Revision 1.30  2005-02-08 22:28:00  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.29  2005/02/02 16:15:52  willuhn
  * @N Neue Dialoge fuer RDH
  *
  * Revision 1.28  2005/02/01 17:15:37  willuhn

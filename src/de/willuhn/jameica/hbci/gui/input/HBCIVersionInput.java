@@ -26,7 +26,7 @@ import de.willuhn.util.I18N;
 public class HBCIVersionInput extends SelectInput implements Input
 {
 
-  private static HBCIVersionObject[] VERSIONS = new HBCIVersionObject[6];
+  private static HBCIVersionObject[] VERSIONS = new HBCIVersionObject[5]; // ARRAY-Groesse mit aendern!
   private static HBCIVersionObject DEFAULT    = null;
   
   private static I18N i18n;
@@ -40,7 +40,7 @@ public class HBCIVersionInput extends SelectInput implements Input
     VERSIONS[2] = new HBCIVersionObject("210","HBCI 2.1");
     VERSIONS[3] = new HBCIVersionObject("220","HBCI 2.2");
     VERSIONS[4] = new HBCIVersionObject("plus","HBCI+");
-    VERSIONS[5] = new HBCIVersionObject("300","FinTS 3.0");
+    // VERSIONS[5] = new HBCIVersionObject("300","FinTS 3.0");
   }
 
   
@@ -171,7 +171,10 @@ public class HBCIVersionInput extends SelectInput implements Input
 
 /*****************************************************************************
  * $Log$
- * Revision 1.1  2005-02-08 18:34:41  willuhn
+ * Revision 1.2  2005-02-08 22:28:00  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.1  2005/02/08 18:34:41  willuhn
  * *** empty log message ***
  *
 *****************************************************************************/
