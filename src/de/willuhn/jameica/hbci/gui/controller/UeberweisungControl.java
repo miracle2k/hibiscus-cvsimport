@@ -88,6 +88,7 @@ public class UeberweisungControl extends AbstractTransferControl
 		if (table != null)
 			return table;
 
+		// TODO: Hier wird ggf. die falsche Impl (naemlich LastschriftIml) geladen
 		DBIterator list = Settings.getDBService().createList(Ueberweisung.class);
 
 		table = new TablePart(list,new de.willuhn.jameica.hbci.gui.action.UeberweisungNew());
@@ -361,7 +362,10 @@ public class UeberweisungControl extends AbstractTransferControl
 
 /**********************************************************************
  * $Log$
- * Revision 1.36  2005-02-03 18:57:42  willuhn
+ * Revision 1.37  2005-02-04 00:57:00  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.36  2005/02/03 18:57:42  willuhn
  * *** empty log message ***
  *
  * Revision 1.35  2005/01/19 00:16:05  willuhn
