@@ -16,7 +16,7 @@ import java.rmi.RemoteException;
 
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
-import de.willuhn.jameica.hbci.rmi.Empfaenger;
+import de.willuhn.jameica.hbci.rmi.Adresse;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Protokoll;
 import de.willuhn.jameica.hbci.rmi.Ueberweisung;
@@ -61,12 +61,12 @@ public class HBCIUeberweisungJob extends AbstractHBCIJob
 
 			setJobParam("btg",ueberweisung.getBetrag(),konto.getWaehrung() == null ? "EUR" : konto.getWaehrung());
 
-			Empfaenger empfaenger = (Empfaenger) Settings.getDBService().createObject(Empfaenger.class,null);
+			Adresse empfaenger = (Adresse) Settings.getDBService().createObject(Adresse.class,null);
 			empfaenger.setBLZ(ueberweisung.getEmpfaengerBLZ());
 			empfaenger.setKontonummer(ueberweisung.getEmpfaengerKonto());
 			empfaenger.setName(ueberweisung.getEmpfaengerName());
 
-			setJobParam("dst",Converter.HibiscusEmpfaenger2HBCIKonto(empfaenger));
+			setJobParam("dst",Converter.HibiscusAdresse2HBCIKonto(empfaenger));
 			setJobParam("name",empfaenger.getName());
 
 			setJobParam("usage",ueberweisung.getZweck());
@@ -131,7 +131,11 @@ public class HBCIUeberweisungJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.19  2005-02-03 18:57:42  willuhn
+ * Revision 1.20  2005-02-27 17:11:49  web0
+ * @N first code for "Sammellastschrift"
+ * @C "Empfaenger" renamed into "Adresse"
+ *
+ * Revision 1.19  2005/02/03 18:57:42  willuhn
  * *** empty log message ***
  *
  * Revision 1.18  2005/02/02 18:19:46  willuhn

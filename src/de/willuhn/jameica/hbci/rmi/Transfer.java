@@ -104,7 +104,7 @@ public interface Transfer extends DBObject
    * @param e
    * @throws RemoteException
    */
-  public void setEmpfaenger(Empfaenger e) throws RemoteException;
+  public void setEmpfaenger(Adresse e) throws RemoteException;
 
 	/**
 	 * Speichert den zu ueberweisenden Betrag.
@@ -138,7 +138,11 @@ public interface Transfer extends DBObject
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2005-02-19 16:49:32  willuhn
+ * Revision 1.7  2005-02-27 17:11:49  web0
+ * @N first code for "Sammellastschrift"
+ * @C "Empfaenger" renamed into "Adresse"
+ *
+ * Revision 1.6  2005/02/19 16:49:32  willuhn
  * @B bugs 3,8,10
  *
  * Revision 1.5  2005/01/19 00:16:04  willuhn

@@ -143,7 +143,7 @@ public interface Umsatz extends DBObject, Checksum
    * @param empf der zu speichernde Empfaenger.
    * @throws RemoteException
    */
-  void setEmpfaenger(Empfaenger empf) throws RemoteException;
+  void setEmpfaenger(Adresse empf) throws RemoteException;
 	
 	/**
 	 * Speichert den Namen des Empfaengers.
@@ -240,7 +240,11 @@ public interface Umsatz extends DBObject, Checksum
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2004-10-23 17:34:31  willuhn
+ * Revision 1.8  2005-02-27 17:11:49  web0
+ * @N first code for "Sammellastschrift"
+ * @C "Empfaenger" renamed into "Adresse"
+ *
+ * Revision 1.7  2004/10/23 17:34:31  willuhn
  * *** empty log message ***
  *
  * Revision 1.6  2004/10/17 16:28:46  willuhn

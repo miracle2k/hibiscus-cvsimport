@@ -17,7 +17,7 @@ import java.rmi.RemoteException;
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.hbci.Settings;
-import de.willuhn.jameica.hbci.rmi.Empfaenger;
+import de.willuhn.jameica.hbci.rmi.Adresse;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Ueberweisung;
 import de.willuhn.util.ApplicationException;
@@ -55,10 +55,10 @@ public class UeberweisungNew implements Action
 				// Dann halt nicht
 			}
 		}
-		else if (context instanceof Empfaenger)
+		else if (context instanceof Adresse)
 		{
 			try {
-				Empfaenger e = (Empfaenger) context;
+				Adresse e = (Adresse) context;
 				u = (Ueberweisung) Settings.getDBService().createObject(Ueberweisung.class,null);
 				u.setEmpfaenger(e);
 			}
@@ -76,7 +76,11 @@ public class UeberweisungNew implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2005-01-19 00:16:04  willuhn
+ * Revision 1.4  2005-02-27 17:11:49  web0
+ * @N first code for "Sammellastschrift"
+ * @C "Empfaenger" renamed into "Adresse"
+ *
+ * Revision 1.3  2005/01/19 00:16:04  willuhn
  * @N Lastschriften
  *
  * Revision 1.2  2004/11/13 17:12:14  willuhn

@@ -19,7 +19,7 @@ import java.util.zip.CRC32;
 import de.willuhn.datasource.GenericObject;
 import de.willuhn.datasource.db.AbstractDBObject;
 import de.willuhn.jameica.hbci.HBCI;
-import de.willuhn.jameica.hbci.rmi.Empfaenger;
+import de.willuhn.jameica.hbci.rmi.Adresse;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Umsatz;
 import de.willuhn.jameica.hbci.rmi.UmsatzTyp;
@@ -185,7 +185,7 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
 	/**
 	 * @see de.willuhn.jameica.hbci.rmi.Umsatz#setEmpfaenger(de.willuhn.jameica.hbci.rmi.Empfaenger)
 	 */
-	public void setEmpfaenger(Empfaenger empf) throws RemoteException
+	public void setEmpfaenger(Adresse empf) throws RemoteException
 	{
 		setEmpfaengerBLZ(empf.getBLZ());
 		setEmpfaengerKonto(empf.getKontonummer());
@@ -375,7 +375,11 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
 
 /**********************************************************************
  * $Log$
- * Revision 1.18  2005-02-19 16:49:32  willuhn
+ * Revision 1.19  2005-02-27 17:11:49  web0
+ * @N first code for "Sammellastschrift"
+ * @C "Empfaenger" renamed into "Adresse"
+ *
+ * Revision 1.18  2005/02/19 16:49:32  willuhn
  * @B bugs 3,8,10
  *
  * Revision 1.17  2004/11/12 18:25:07  willuhn
