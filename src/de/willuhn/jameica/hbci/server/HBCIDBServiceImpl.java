@@ -6,7 +6,7 @@
  * $Locker$
  * $State$
  *
- * Copyright (c) by  bbv AG
+ * Copyright (c) by willuhn.webdesign
  * All rights reserved
  *
  **********************************************************************/
@@ -42,7 +42,10 @@ public class HBCIDBServiceImpl extends DBServiceImpl implements DBService
 
 /*********************************************************************
  * $Log$
- * Revision 1.3  2004-07-25 17:15:06  willuhn
+ * Revision 1.4  2004-08-31 18:13:51  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.3  2004/07/25 17:15:06  willuhn
  * @C PluginLoader is no longer static
  *
  * Revision 1.2  2004/07/23 16:23:46  willuhn
