@@ -281,8 +281,8 @@ public abstract class AbstractTransferControl extends AbstractControl
   }
 
 	/**
-	 * @see de.willuhn.jameica.gui.controller.AbstractControl#handleStore()
-	 */
+   * Speichert den Geld-Transfer.
+   */
 	public synchronized void handleStore()
 	{
 		stored = false;
@@ -438,7 +438,10 @@ public abstract class AbstractTransferControl extends AbstractControl
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2004-10-15 20:09:43  willuhn
+ * Revision 1.10  2004-10-20 12:08:18  willuhn
+ * @C MVC-Refactoring (new Controllers)
+ *
+ * Revision 1.9  2004/10/15 20:09:43  willuhn
  * @B Laengen-Pruefung bei Empfaengername
  *
  * Revision 1.8  2004/10/08 13:37:47  willuhn

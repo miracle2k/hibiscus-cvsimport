@@ -18,11 +18,14 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 
 import de.willuhn.jameica.gui.AbstractView;
+import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.util.ButtonArea;
 import de.willuhn.jameica.gui.util.Headline;
 import de.willuhn.jameica.gui.util.LabelGroup;
 import de.willuhn.jameica.hbci.HBCI;
+import de.willuhn.jameica.hbci.gui.action.Back;
+import de.willuhn.jameica.hbci.gui.action.KontoDelete;
 import de.willuhn.jameica.hbci.gui.controller.KontoControl;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.util.ApplicationException;
@@ -59,9 +62,15 @@ public class KontoNeu extends AbstractView {
 
 			// und noch die Abschicken-Knoepfe
 			ButtonArea buttonArea = group.createButtonArea(3);
-			buttonArea.addCancelButton(control);
-			buttonArea.addDeleteButton(control);
-			buttonArea.addStoreButton(control);
+			buttonArea.addButton(i18n.tr("Zurück"),new Back());
+			buttonArea.addButton(i18n.tr("Konto löschen"),new KontoDelete(),control.getKonto());
+			buttonArea.addButton(i18n.tr("Speichern"),new Action()
+      {
+        public void handleAction(Object context) throws ApplicationException
+        {
+        	control.handleStore();
+        }
+      });
 
 
 			LabelGroup saldo = new LabelGroup(getParent(),i18n.tr("Finanzstatus"));
@@ -109,7 +118,10 @@ public class KontoNeu extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.19  2004-10-08 13:37:48  willuhn
+ * Revision 1.20  2004-10-20 12:08:18  willuhn
+ * @C MVC-Refactoring (new Controllers)
+ *
+ * Revision 1.19  2004/10/08 13:37:48  willuhn
  * *** empty log message ***
  *
  * Revision 1.18  2004/07/25 17:15:05  willuhn
