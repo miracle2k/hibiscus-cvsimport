@@ -130,6 +130,7 @@ public class Converter {
 		auftrag.setLetzteZahlung(d.lastdate);
 		auftrag.setKonto(HBCIKonto2HibiscusKonto(d.my));
 		auftrag.setBetrag(d.value.value);
+		auftrag.setOrderID(d.orderid);
 
 		// Jetzt noch der Empfaenger
 		auftrag.setEmpfaenger(HBCIKonto2HibiscusEmpfaenger(d.other));
@@ -245,7 +246,10 @@ public class Converter {
 
 /**********************************************************************
  * $Log$
- * Revision 1.16  2004-10-23 17:34:31  willuhn
+ * Revision 1.17  2004-10-24 17:19:02  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.16  2004/10/23 17:34:31  willuhn
  * *** empty log message ***
  *
  * Revision 1.1  2004/10/18 23:38:17  willuhn

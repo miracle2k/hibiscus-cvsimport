@@ -100,7 +100,6 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob {
 		for (int i=0;i<lines.length;++i)
 		{
 			auftraege[i] = Converter.HBCIDauer2HibiscusDauerauftrag(lines[i]);
-			auftraege[i].activate();
 		}
 		try {
 			getKonto().addToProtokoll(i18n.tr("Daueraufträge abgerufen"),Protokoll.TYP_SUCCESS);
@@ -117,7 +116,10 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2004-10-23 17:34:31  willuhn
+ * Revision 1.7  2004-10-24 17:19:02  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.6  2004/10/23 17:34:31  willuhn
  * *** empty log message ***
  *
  * Revision 1.5  2004/10/18 23:38:17  willuhn
