@@ -120,7 +120,7 @@ public class HBCI extends AbstractPlugin
 		if (checkSum.equals("KvynDJyxe6D1XUvSCkNAFA==")) // 1.0
 			return;
 
-		if (checkSum.equals("0619/tBF02SlEZ0spWjWHA==")) // 1.1
+		if (checkSum.equals("BSefTB6JQx7l7wrqbNP68g==")) // 1.1
 			return;
 
 		throw new Exception("database checksum does not match any known version: " + checkSum);
@@ -233,7 +233,10 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
- * Revision 1.34  2004-11-17 19:02:28  willuhn
+ * Revision 1.35  2004-11-26 01:23:13  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.34  2004/11/17 19:02:28  willuhn
  * *** empty log message ***
  *
  * Revision 1.33  2004/11/15 18:09:18  willuhn
