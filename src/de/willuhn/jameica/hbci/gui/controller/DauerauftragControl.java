@@ -49,6 +49,8 @@ public class DauerauftragControl extends AbstractTransferControl {
 	private DialogInput ersteZahlung	= null;
 	private DialogInput letzteZahlung	= null;
 
+  private Dauerauftrag transfer = null;
+
   /**
    * ct.
    * @param view
@@ -63,11 +65,15 @@ public class DauerauftragControl extends AbstractTransferControl {
 	 */
 	public Transfer getTransfer() throws RemoteException
 	{
-		if (super.getTransfer() != null)
-			return (Dauerauftrag) super.getTransfer();
-		
-		transfer = (Dauerauftrag) Settings.getDBService().createObject(Dauerauftrag.class,null);
-		return (Dauerauftrag) transfer;
+    if (transfer != null)
+      return transfer;
+
+    transfer = (Dauerauftrag) getCurrentObject();
+    if (transfer != null)
+      return transfer;
+      
+    transfer = (Dauerauftrag) Settings.getDBService().createObject(Dauerauftrag.class,null);
+    return transfer;
 	}
 
 	/**
@@ -259,7 +265,10 @@ public class DauerauftragControl extends AbstractTransferControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.18  2004-11-26 00:04:08  willuhn
+ * Revision 1.19  2005-02-04 18:27:54  willuhn
+ * @C Refactoring zwischen Lastschrift und Ueberweisung
+ *
+ * Revision 1.18  2004/11/26 00:04:08  willuhn
  * @N TurnusDetail
  *
  * Revision 1.17  2004/11/18 23:46:21  willuhn
