@@ -241,7 +241,7 @@ public class UeberweisungControl extends AbstractControl {
 	{
 		if (betrag != null)
 			return betrag;
-		betrag = new DecimalInput(HBCI.DECIMALFORMAT.format(getUeberweisung().getBetrag()));
+		betrag = new DecimalInput(getUeberweisung().getBetrag(),HBCI.DECIMALFORMAT);
 		new KontoListener().handleEvent(null);
 		return betrag;
 	}
@@ -324,7 +324,7 @@ public class UeberweisungControl extends AbstractControl {
 		 */
 		public void handleEvent(Event event) {
 			try {
-				Konto k = (Konto) Settings.getDatabase().createObject(Konto.class,getKontoAuswahl().getValue());
+				Konto k = (Konto) getKontoAuswahl().getValue();
 				betrag.setComment(k.getWaehrung());
 			}
 			catch (RemoteException er)
@@ -351,7 +351,7 @@ public class UeberweisungControl extends AbstractControl {
 				empfblz.setValue(empfaenger.getBLZ());
 				empfName.setValue(empfaenger.getName());
 				// Wenn der Empfaenger aus dem Adressbuch kommt, deaktivieren wir die Checkbox
-				storeEmpfaenger.setValue(CheckboxInput.DISABLED);
+				storeEmpfaenger.setValue(Boolean.FALSE);
 			}
 			catch (RemoteException er)
 			{
@@ -365,7 +365,11 @@ public class UeberweisungControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2004-03-04 00:35:19  willuhn
+ * Revision 1.6  2004-03-06 18:25:10  willuhn
+ * @D javadoc
+ * @C removed empfaenger_id from umsatz
+ *
+ * Revision 1.5  2004/03/04 00:35:19  willuhn
  * *** empty log message ***
  *
  * Revision 1.4  2004/03/04 00:26:24  willuhn

@@ -78,11 +78,6 @@ public class UeberweisungImpl
 			if (getKonto().isNewObject())
 				throw new ApplicationException("Bitte speichern Sie zunächst das Konto");
 
-			if (getBetrag() > BETRAG_MAX)
-				throw new ApplicationException("Maximaler Überweisungsbetrag von " + 
-					HBCI.DECIMALFORMAT.format(BETRAG_MAX) + " " + getKonto().getWaehrung() +
-					"überschritten.");
-
 			if (getEmpfaenger() == null)
 				throw new ApplicationException("Bitte wählen Sie einen Empfänger aus");
 			
@@ -280,7 +275,11 @@ public class UeberweisungImpl
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2004-03-05 00:04:10  willuhn
+ * Revision 1.4  2004-03-06 18:25:10  willuhn
+ * @D javadoc
+ * @C removed empfaenger_id from umsatz
+ *
+ * Revision 1.3  2004/03/05 00:04:10  willuhn
  * @N added code for umsatzlist
  *
  * Revision 1.2  2004/02/17 01:01:38  willuhn

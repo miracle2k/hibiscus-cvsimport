@@ -89,7 +89,7 @@ public class PassportDDVImpl
    * @see de.willuhn.jameica.hbci.rmi.PassportDDV#useBIO()
    */
   public boolean useBIO() throws RemoteException {
-		return "1".equals((String) getParam(PassportDDV.USEBIO));
+		return "1".equals(getParam(PassportDDV.USEBIO));
   }
 
   /**
@@ -103,7 +103,7 @@ public class PassportDDVImpl
    * @see de.willuhn.jameica.hbci.rmi.PassportDDV#useSoftPin()
    */
   public boolean useSoftPin() throws RemoteException {
-		return "1".equals((String) getParam(PassportDDV.SOFTPIN));
+		return "1".equals(getParam(PassportDDV.SOFTPIN));
   }
 
   /**
@@ -258,7 +258,11 @@ public class PassportDDVImpl
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2004-02-27 01:10:18  willuhn
+ * Revision 1.7  2004-03-06 18:25:10  willuhn
+ * @D javadoc
+ * @C removed empfaenger_id from umsatz
+ *
+ * Revision 1.6  2004/02/27 01:10:18  willuhn
  * @N passport config refactored
  *
  * Revision 1.5  2004/02/24 22:47:04  willuhn

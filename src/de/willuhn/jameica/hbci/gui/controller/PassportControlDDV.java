@@ -223,7 +223,7 @@ public class PassportControlDDV extends AbstractControl {
 
   	try {
 			try {
-				getPassport().setCTNumber(Integer.parseInt(getCTNumber().getValue()));
+				getPassport().setCTNumber(Integer.parseInt((String)getCTNumber().getValue()));
 			}
 			catch (NumberFormatException e)
 			{
@@ -232,7 +232,7 @@ public class PassportControlDDV extends AbstractControl {
 			}
 
 			try {
-				getPassport().setEntryIndex(Integer.parseInt(getEntryIndex().getValue()));
+				getPassport().setEntryIndex(Integer.parseInt((String)getEntryIndex().getValue()));
 			}
 			catch (NumberFormatException e)
 			{
@@ -246,9 +246,9 @@ public class PassportControlDDV extends AbstractControl {
 					getPassport().setPort(i);
 			}
 
-			getPassport().setBIO(CheckboxInput.ENABLED.equals(getBio().getValue()));
-			getPassport().setSoftPin(CheckboxInput.ENABLED.equals(getSoftPin().getValue()));
-			getPassport().setName(getName().getValue());
+			getPassport().setBIO(((Boolean)getBio().getValue()).booleanValue());
+			getPassport().setSoftPin(((Boolean)getSoftPin().getValue()).booleanValue());
+			getPassport().setName((String)getName().getValue());
 			
 			getPassport().store();
 
@@ -311,7 +311,11 @@ public class PassportControlDDV extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2004-03-04 00:26:24  willuhn
+ * Revision 1.10  2004-03-06 18:25:10  willuhn
+ * @D javadoc
+ * @C removed empfaenger_id from umsatz
+ *
+ * Revision 1.9  2004/03/04 00:26:24  willuhn
  * @N Ueberweisung
  *
  * Revision 1.8  2004/03/03 22:26:40  willuhn

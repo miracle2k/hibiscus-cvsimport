@@ -71,7 +71,7 @@ public class UmsatzControl extends AbstractControl {
   public Table getUmsatzListe() throws RemoteException
 	{
 		Table table = new Table(getKonto().getUmsaetze(),this);
-		table.addColumn(i18n.tr("Empfänger"),"empfaenger_id");
+		table.addColumn(i18n.tr("Empfänger"),"empfaenger_name");
 		table.addColumn(i18n.tr("Betrag"),"betrag",
 			new CurrencyFormatter(getKonto().getWaehrung(),HBCI.DECIMALFORMAT));
 		table.addColumn(i18n.tr("Verwendungszweck"),"zweck");
@@ -153,7 +153,11 @@ public class UmsatzControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2004-03-05 08:38:47  willuhn
+ * Revision 1.3  2004-03-06 18:25:10  willuhn
+ * @D javadoc
+ * @C removed empfaenger_id from umsatz
+ *
+ * Revision 1.2  2004/03/05 08:38:47  willuhn
  * @N umsaetze works now
  *
  * Revision 1.1  2004/03/05 00:04:10  willuhn

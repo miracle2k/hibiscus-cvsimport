@@ -36,7 +36,7 @@ public class DialogFactory {
 		SimpleDialog d = new SimpleDialog(AbstractDialog.POSITION_CENTER);
 		d.setTitle(headline);
 		d.setText(text);
-		dialog = (AbstractDialog) d;
+		dialog = d;
 		try {
 			d.open();
 		}
@@ -58,6 +58,7 @@ public class DialogFactory {
 	 * oder die PIN drei mal falsch eingegeben wurde (bei aktivierter Checksummen-Pruefung).
 	 * Hintergrund: Der Dialog wurde aus dem HBCICallBack heraus aufgerufen und soll im
 	 * Fehlerfall den HBCI-Vorgang abbrechen.
+	 * @return die eingegebene PIN.
 	 */
 	public static synchronized String getPIN()
 	{
@@ -111,7 +112,11 @@ public class DialogFactory {
 
 /**********************************************************************
  * $Log$
- * Revision 1.8  2004-02-27 01:10:18  willuhn
+ * Revision 1.9  2004-03-06 18:25:10  willuhn
+ * @D javadoc
+ * @C removed empfaenger_id from umsatz
+ *
+ * Revision 1.8  2004/02/27 01:10:18  willuhn
  * @N passport config refactored
  *
  * Revision 1.7  2004/02/24 22:47:05  willuhn
