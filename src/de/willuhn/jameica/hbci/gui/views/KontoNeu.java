@@ -85,6 +85,7 @@ public class KontoNeu extends AbstractView {
 			control.getProtokoll().paint(getParent());
 
 			control.init();
+			
 		}
 		catch (RemoteException e)
 		{
@@ -105,7 +106,10 @@ public class KontoNeu extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.21  2004-10-20 12:34:02  willuhn
+ * Revision 1.22  2004-10-29 00:32:32  willuhn
+ * @N HBCI job restrictions
+ *
+ * Revision 1.21  2004/10/20 12:34:02  willuhn
  * *** empty log message ***
  *
  * Revision 1.20  2004/10/20 12:08:18  willuhn

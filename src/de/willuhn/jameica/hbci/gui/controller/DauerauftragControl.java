@@ -134,6 +134,7 @@ public class DauerauftragControl extends AbstractTransferControl {
 
 		Turnus t = ((Dauerauftrag)getTransfer()).getTurnus();
 		turnus = new DialogInput(t == null ? "" : t.getBezeichnung(),tad);
+		turnus.setValue(t);
 		turnus.disableClientControl();
 		return turnus;
 	}
@@ -257,7 +258,10 @@ public class DauerauftragControl extends AbstractTransferControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.13  2004-10-26 23:47:08  willuhn
+ * Revision 1.14  2004-10-29 00:32:32  willuhn
+ * @N HBCI job restrictions
+ *
+ * Revision 1.13  2004/10/26 23:47:08  willuhn
  * *** empty log message ***
  *
  * Revision 1.12  2004/10/25 23:22:39  willuhn
