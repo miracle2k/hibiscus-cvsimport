@@ -30,6 +30,7 @@ public class SettingsControl extends AbstractControl {
 
 	// Eingabe-Felder
 	private CheckboxInput onlineMode = null;
+	private CheckboxInput checkPin = null;
 
   /**
    * @param view
@@ -51,6 +52,22 @@ public class SettingsControl extends AbstractControl {
 		return onlineMode;
 	}
 
+	/**
+	 * Liefert eine Checkbox 
+   * @return
+   * @throws RemoteException
+   */
+  public CheckboxInput checkPin() throws RemoteException
+	{
+		if (checkPin != null)
+			return checkPin;
+		// TODO HIER
+		// - In den Settings noch speichern
+		// - Dialog nicht vergroesserbar machen
+		// - OK/Uebernehmen Button
+		//checkPin = new CheckboxInput(Settings.getCheckPin());
+		return checkPin;
+	}
   /**
    * @see de.willuhn.jameica.gui.controller.AbstractControl#handleDelete()
    */
@@ -96,7 +113,10 @@ public class SettingsControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2004-02-17 00:53:22  willuhn
+ * Revision 1.2  2004-02-20 20:45:13  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.1  2004/02/17 00:53:22  willuhn
  * @N SaldoAbfrage
  * @N Ueberweisung
  * @N Empfaenger

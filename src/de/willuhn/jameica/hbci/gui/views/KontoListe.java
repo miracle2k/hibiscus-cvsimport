@@ -12,8 +12,6 @@
  **********************************************************************/
 package de.willuhn.jameica.hbci.gui.views;
 
-import org.eclipse.swt.widgets.Composite;
-
 import de.willuhn.jameica.Application;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.parts.ButtonArea;
@@ -26,14 +24,6 @@ import de.willuhn.util.I18N;
  * Zeigt eine Liste mit den vorhandenen Bankverbindungen an.
  */
 public class KontoListe extends AbstractView {
-
-  /**
-   * ct.
-   * @param parent
-   */
-  public KontoListe(Composite parent) {
-    super(parent);
-  }
 
   /**
    * @see de.willuhn.jameica.gui.views.AbstractView#bind()
@@ -70,7 +60,10 @@ public class KontoListe extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2004-02-11 00:11:20  willuhn
+ * Revision 1.2  2004-02-20 20:45:13  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.1  2004/02/11 00:11:20  willuhn
  * *** empty log message ***
  *
  **********************************************************************/

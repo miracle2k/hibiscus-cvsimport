@@ -13,8 +13,6 @@
 
 package de.willuhn.jameica.hbci.gui.views;
 
-import org.eclipse.swt.widgets.Composite;
-
 import de.willuhn.jameica.gui.views.AbstractView;
 import de.willuhn.util.ApplicationException;
 
@@ -23,14 +21,6 @@ import de.willuhn.util.ApplicationException;
  */
 public class Welcome extends AbstractView
 {
-
-  /**
-   * @param parent
-   */
-  public Welcome(Composite parent)
-  {
-    super(parent);
-  }
 
   /**
    * @see de.willuhn.jameica.gui.views.AbstractView#bind()
@@ -51,7 +41,10 @@ public class Welcome extends AbstractView
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2004-02-09 13:06:03  willuhn
+ * Revision 1.2  2004-02-20 20:45:13  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.1  2004/02/09 13:06:03  willuhn
  * @C misc
  *
  **********************************************************************/
