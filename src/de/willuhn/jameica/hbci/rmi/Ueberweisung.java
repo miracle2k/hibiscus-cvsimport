@@ -121,14 +121,17 @@ public interface Ueberweisung extends DBObject {
 	 * Ist dieser Termin nicht definiert, wird sie sofort ausgefuehrt.
    * @throws ApplicationException
    */
-  public void execute() throws ApplicationException;
+  public void execute() throws RemoteException, ApplicationException;
 	
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2004-02-17 00:53:22  willuhn
+ * Revision 1.2  2004-02-17 01:01:38  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.1  2004/02/17 00:53:22  willuhn
  * @N SaldoAbfrage
  * @N Ueberweisung
  * @N Empfaenger
