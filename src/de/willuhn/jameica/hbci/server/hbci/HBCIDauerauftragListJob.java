@@ -132,6 +132,12 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob {
 						found = true;
 						Logger.info("overwriting dauerauftrag order id: " + auftrag.getOrderID());
 						ex.overwrite(auftrag);
+						// BUGZILLA 22 http://www.willuhn.de/bugzilla/show_bug.cgi?id=22
+						// BEGIN
+						String name = ex.getGegenkontoName();
+						if (name != null && name.length() > 27)
+							ex.setGegenkontoName(name.substring(0,27));
+						// END
 						ex.store();
 						break;
 					}
@@ -183,7 +189,10 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.13  2005-03-04 00:50:16  web0
+ * Revision 1.14  2005-03-06 16:53:52  web0
+ * @B bugzilla 22
+ *
+ * Revision 1.13  2005/03/04 00:50:16  web0
  * @N Eingrauen abgelaufener Dauerauftraege
  * @N automatisches Loeschen von Dauerauftraegen, die lokal zwar
  * noch als aktiv markiert sind, bei der Bank jedoch nicht mehr existieren
