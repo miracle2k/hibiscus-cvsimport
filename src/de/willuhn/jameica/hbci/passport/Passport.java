@@ -55,12 +55,25 @@ public interface Passport extends Remote {
    */
   public Class getConfigDialog() throws RemoteException;
 
+	/**
+	 * Wird von Hibiscus bei einem Versionswechsel aufgerufen.
+	 * Auf diese Weise werden alle installierten Passports informiert,
+	 * wenn ein Hibiscus-Update durchgefuehrt wird und koennen
+	 * daraufhin selbst ebenfalls Update-Routinen durchfuehren.
+   * @param oldVersion alte Hibiscus-Version.
+   * @param newVersion Neue Hibiscus-Version.
+   * @throws RemoteException
+   */
+  public void update(double oldVersion, double newVersion) throws RemoteException;
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2004-05-05 22:14:47  willuhn
+ * Revision 1.2  2005-02-06 17:46:17  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.1  2004/05/05 22:14:47  willuhn
  * *** empty log message ***
  *
  * Revision 1.9  2004/05/04 23:08:12  willuhn
