@@ -74,7 +74,7 @@ public class UeberweisungDialog extends AbstractDialog {
 		kto.setComment(ueb.getKonto().getBezeichnung());
 		group.addLabelPair(i18n.tr("Eigenes Konto"),kto);
 
-		group.addSeparator();
+    group.addSeparator();
 
 		Input empfName = new LabelInput(ueb.getGegenkontoName());
 		group.addLabelPair(i18n.tr("Name des Empfänger"),empfName);
@@ -83,19 +83,23 @@ public class UeberweisungDialog extends AbstractDialog {
 		empfKto.setComment(ueb.getGegenkontoBLZ() + "/" + HBCIUtils.getNameForBLZ(ueb.getGegenkontoBLZ()));
 		group.addLabelPair(i18n.tr("Konto des Empfängers"),empfKto);
 
-		group.addSeparator();
+    group.addSeparator();
 
-		String s = ueb.getZweck();
-		String s2 = ueb.getZweck2();
-		if (s2 != null && s2.length() > 0)
-			s += " / " + s2;
-		Input zweck = new LabelInput(s);
-		group.addLabelPair(i18n.tr("Verwendungszweck"),zweck);
+    Input betrag = new LabelInput(HBCI.DECIMALFORMAT.format(ueb.getBetrag()) + " " + ueb.getKonto().getWaehrung());
+    group.addLabelPair(i18n.tr("Betrag"),betrag);
 
-		Input betrag = new LabelInput(HBCI.DECIMALFORMAT.format(ueb.getBetrag()) + " " + ueb.getKonto().getWaehrung());
-		group.addLabelPair(i18n.tr("Betrag"),betrag);
+    // BUGZILLA 32 http://www.willuhn.de/bugzilla/show_bug.cgi?id=32
+    LabelGroup zweck = new LabelGroup(parent,i18n.tr("Verwendungszweck"));
+    zweck.addText(ueb.getZweck(),true);
+    String z2 = ueb.getZweck2();
+    if (z2 != null && z2.length() > 0)
+    {
+      zweck.addSeparator();
+      zweck.addText(z2,true);
+    }
 
-		ButtonArea b = group.createButtonArea(2);
+
+		ButtonArea b = new ButtonArea(parent,2);
 		b.addButton(i18n.tr("Jetzt ausführen"), new Action()
     {
       public void handleAction(Object context) throws ApplicationException
@@ -119,7 +123,10 @@ public class UeberweisungDialog extends AbstractDialog {
 
 /**********************************************************************
  * $Log$
- * Revision 1.11  2005-03-02 17:59:30  web0
+ * Revision 1.12  2005-04-05 22:49:02  web0
+ * @B bug 32
+ *
+ * Revision 1.11  2005/03/02 17:59:30  web0
  * @N some refactoring
  *
  * Revision 1.10  2005/03/01 00:38:27  web0

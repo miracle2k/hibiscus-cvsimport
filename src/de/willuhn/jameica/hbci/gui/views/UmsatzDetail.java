@@ -74,7 +74,7 @@ public class UmsatzDetail extends AbstractView {
     if (z2 != null && z2.length() > 0)
     {
       zweck.addSeparator();
-      zweck.addText(u.getZweck2(),true);
+      zweck.addText(z2,true);
     }
    
 		// add.addLabelPair(i18n.tr("Verwendungszweck"),									control.getZweck());
@@ -113,7 +113,10 @@ public class UmsatzDetail extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.17  2005-04-05 22:13:30  web0
+ * Revision 1.18  2005-04-05 22:49:02  web0
+ * @B bug 32
+ *
+ * Revision 1.17  2005/04/05 22:13:30  web0
  * @B bug 38
  *
  * Revision 1.16  2005/03/30 23:51:16  web0
