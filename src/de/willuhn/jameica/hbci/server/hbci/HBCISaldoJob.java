@@ -15,6 +15,7 @@ package de.willuhn.jameica.hbci.server.hbci;
 import java.rmi.RemoteException;
 
 import org.kapott.hbci.GV_Result.GVRSaldoReq;
+import org.kapott.hbci.structures.Saldo;
 
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.rmi.Konto;
@@ -99,8 +100,13 @@ public class HBCISaldoJob extends AbstractHBCIJob {
 
 		konto.addToProtokoll(i18n.tr("Saldo abgerufen"),Protokoll.TYP_SUCCESS);
 
-		// Jetzt speichern wir noch den neuen Saldo.
-		konto.setSaldo(result.getEntries()[0].ready.value.value);
+    // Jetzt speichern wir noch den neuen Saldo.
+    Saldo saldo = result.getEntries()[0].ready;
+    if (saldo.cd.endsWith("C"))
+  		konto.setSaldo(saldo.value.value);
+    else
+      konto.setSaldo(-saldo.value.value);
+
 		konto.store();
 		Logger.info("saldo fetched successfully");
   }
@@ -109,7 +115,10 @@ public class HBCISaldoJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.15  2004-11-13 17:02:04  willuhn
+ * Revision 1.16  2005-02-03 18:57:42  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.15  2004/11/13 17:02:04  willuhn
  * @N Bearbeiten des Zahlungsturnus
  *
  * Revision 1.14  2004/11/12 18:25:08  willuhn

@@ -70,27 +70,11 @@ public class UeberweisungImpl extends AbstractTransferImpl implements Ueberweisu
   }
 
   /**
-   * @see de.willuhn.datasource.db.AbstractDBObject#insertCheck()
-   */
-  protected void insertCheck() throws ApplicationException {
-  	try {
-			if (getTermin() == null)
-				setTermin(new Date());
-  	}
-  	catch (RemoteException e)
-  	{
-  		Logger.error("error while checking ueberweisung",e);
-  		throw new ApplicationException(i18n.tr("Fehler beim Prüfen des Auftrags."));
-  	}
-		super.insertCheck();
-  }
-
-  /**
    * @see de.willuhn.datasource.db.AbstractDBObject#updateCheck()
    */
   protected void updateCheck() throws ApplicationException {
 		try {
-			if (ausgefuehrt())
+			if (!whileStore && ausgefuehrt())
 				throw new ApplicationException(i18n.tr("Auftrag wurde bereits ausgeführt und kann daher nicht mehr geändert werden."));
 		}
 		catch (RemoteException e)
@@ -99,6 +83,18 @@ public class UeberweisungImpl extends AbstractTransferImpl implements Ueberweisu
 			throw new ApplicationException(i18n.tr("Fehler beim Prüfen des Auftrags."));
 		}
 		super.updateCheck();
+  }
+
+  /**
+   * @see de.willuhn.datasource.db.AbstractDBObject#insert()
+   */
+  public void insert() throws RemoteException, ApplicationException
+  {
+    if (getTermin() == null)
+      setTermin(new Date());
+    if (getAttribute("ausgefuehrt") == null) // Status noch nicht definiert
+      setAttribute("ausgefuehrt",new Integer(0));
+    super.insert();
   }
 
   /**
@@ -123,18 +119,6 @@ public class UeberweisungImpl extends AbstractTransferImpl implements Ueberweisu
    */
   public void setTermin(Date termin) throws RemoteException {
 		setAttribute("termin",termin);
-  }
-
-  /**
-   * @see de.willuhn.datasource.rmi.DBObject#store()
-   */
-  public void store() throws RemoteException, ApplicationException {
-		if (isNewObject())
-		{
-			if (getTermin() == null) setTermin(new Date());
-			setAttribute("ausgefuehrt",new Integer(0));
-		}
-    super.store();
   }
 
   /**
@@ -183,19 +167,36 @@ public class UeberweisungImpl extends AbstractTransferImpl implements Ueberweisu
 		return crc.getValue();
   }
 
+  // Kleines Hilfsboolean damit uns der Status-Wechsel
+  // beim Speichern nicht um die Ohren fliegt.
+  private boolean whileStore = false;
+
   /**
    * @see de.willuhn.jameica.hbci.rmi.Ueberweisung#setAusgefuehrt()
    */
-  public void setAusgefuehrt() throws RemoteException
+  public void setAusgefuehrt() throws RemoteException, ApplicationException
   {
-		setAttribute("ausgefuehrt",new Integer(1));
+    try
+    {
+      whileStore = true;
+      setAttribute("ausgefuehrt",new Integer(1));
+      store();
+    }
+    finally
+    {
+      whileStore = false;
+    }
   }
+
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.29  2005-01-19 00:16:05  willuhn
+ * Revision 1.30  2005-02-03 18:57:42  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.29  2005/01/19 00:16:05  willuhn
  * @N Lastschriften
  *
  * Revision 1.28  2004/11/12 18:25:07  willuhn

@@ -50,7 +50,8 @@ public class NewKeysDialog extends AbstractDialog
   protected void paint(Composite parent) throws Exception
   {
 		LabelGroup group = new LabelGroup(parent,i18n.tr("Ini-Brief"));
-		group.addText(i18n.tr("Bitte drucken Sie den Ini-Brief aus und senden Ihn " +			"an Ihre Bank. Nach der Freischaltung durch Ihr Geldinstitut kann dieser " +			"Schlüssel verwendet werden."),true);
+		group.addText(i18n.tr(
+      "Bitte drucken Sie den Ini-Brief aus und senden Ihn an Ihre Bank.\n" +      "Nach der Freischaltung durch Ihr Geldinstitut kann dieser Schlüssel\n" +      "verwendet werden."),true);
 
 		// TODO Ausdruck des Ini-Briefs
 		ButtonArea buttons = new ButtonArea(parent,2);
@@ -83,7 +84,10 @@ public class NewKeysDialog extends AbstractDialog
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2005-02-02 18:19:47  willuhn
+ * Revision 1.3  2005-02-03 18:57:42  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.2  2005/02/02 18:19:47  willuhn
  * *** empty log message ***
  *
  * Revision 1.1  2005/02/02 16:15:52  willuhn

@@ -47,6 +47,9 @@ public class LastschriftDelete implements Action
 			if (u.isNewObject())
 				return;
 
+      if (u.ausgefuehrt())
+        throw new ApplicationException(i18n.tr("Lastschrift wurde bereits ausgeführt und darf daher nicht mehr gelöscht werden."));
+
 			YesNoDialog d = new YesNoDialog(YesNoDialog.POSITION_CENTER);
 			d.setTitle(i18n.tr("Lastschrift löschen"));
 			d.setText(i18n.tr("Wollen Sie diese Lastschrift wirklich löschen?"));
@@ -78,7 +81,10 @@ public class LastschriftDelete implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2005-01-19 00:16:04  willuhn
+ * Revision 1.2  2005-02-03 18:57:42  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.1  2005/01/19 00:16:04  willuhn
  * @N Lastschriften
  *
  **********************************************************************/

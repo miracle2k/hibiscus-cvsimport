@@ -38,6 +38,7 @@ public class UeberweisungNew extends AbstractView {
   public void bind() throws Exception {
 
 		final UeberweisungControl control = new UeberweisungControl(this);
+    final Transfer transfer = control.getTransfer();
 
 		I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
@@ -48,7 +49,7 @@ public class UeberweisungNew extends AbstractView {
 		konten.addLabelPair(i18n.tr("persönliches Konto"),				control.getKontoAuswahl());		
 		konten.addLabelPair(i18n.tr("Konto des Empfängers"),			control.getEmpfaengerKonto());		
 		konten.addLabelPair(i18n.tr("BLZ des Empfängers"),				control.getEmpfaengerBlz());		
-		konten.addLabelPair(i18n.tr("Name des Empfängers"),			control.getEmpfaengerName());
+		konten.addLabelPair(i18n.tr("Name des Empfängers"),			  control.getEmpfaengerName());
 		konten.addCheckbox(control.getStoreEmpfaenger(),i18n.tr("Empfängerdaten im Adressbuch speichern"));
 
 		LabelGroup details = new LabelGroup(getParent(),i18n.tr("Details"));
@@ -61,8 +62,6 @@ public class UeberweisungNew extends AbstractView {
 		details.addSeparator();
 
 		details.addLabelPair(i18n.tr("Bemerkung"),								control.getComment());
-
-		final Transfer transfer = control.getTransfer();
 
 		ButtonArea buttonArea = new ButtonArea(getParent(),4);
 		buttonArea.addButton(i18n.tr("Zurück"), 				 				 new Back());
@@ -95,7 +94,10 @@ public class UeberweisungNew extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2005-02-02 18:19:46  willuhn
+ * Revision 1.3  2005-02-03 18:57:42  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.2  2005/02/02 18:19:46  willuhn
  * *** empty log message ***
  *
  * Revision 1.1  2004/11/13 17:12:15  willuhn

@@ -121,11 +121,10 @@ public class HBCILastschriftJob extends AbstractHBCIJob
 			throw new ApplicationException(msg + " ("+error+")");
 		}
 
-		konto.addToProtokoll(i18n.tr("Lastschrift ausgeführt") + " " + empfName,Protokoll.TYP_SUCCESS);
 
 		// Wir markieren die Ueberweisung als "ausgefuehrt"
 		lastschrift.setAusgefuehrt();
-		lastschrift.store();
+    konto.addToProtokoll(i18n.tr("Lastschrift ausgeführt") + " " + empfName,Protokoll.TYP_SUCCESS);
 		Logger.info("lastschrift submitted successfully");
   }
 }
@@ -133,7 +132,10 @@ public class HBCILastschriftJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2005-01-19 00:16:04  willuhn
+ * Revision 1.2  2005-02-03 18:57:42  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.1  2005/01/19 00:16:04  willuhn
  * @N Lastschriften
  *
  **********************************************************************/

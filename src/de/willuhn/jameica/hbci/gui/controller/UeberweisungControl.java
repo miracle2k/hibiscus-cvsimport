@@ -67,11 +67,15 @@ public class UeberweisungControl extends AbstractTransferControl
    */
   public Transfer getTransfer() throws RemoteException
 	{
-		if (super.getTransfer() != null)
-			return (Ueberweisung) super.getTransfer();
-		
-		transfer = (Ueberweisung) Settings.getDBService().createObject(Ueberweisung.class,null);
-		return (Ueberweisung) transfer;
+    if (transfer != null)
+      return transfer;
+
+    transfer = (Transfer) getCurrentObject();
+    if (transfer != null)
+      return transfer;
+      
+    transfer = (Transfer) Settings.getDBService().createObject(Ueberweisung.class,null);
+		return transfer;
 	}
 
 	/**
@@ -357,7 +361,10 @@ public class UeberweisungControl extends AbstractTransferControl
 
 /**********************************************************************
  * $Log$
- * Revision 1.35  2005-01-19 00:16:05  willuhn
+ * Revision 1.36  2005-02-03 18:57:42  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.35  2005/01/19 00:16:05  willuhn
  * @N Lastschriften
  *
  * Revision 1.34  2004/11/13 17:02:04  willuhn

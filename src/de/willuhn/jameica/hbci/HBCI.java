@@ -140,6 +140,16 @@ public class HBCI extends AbstractPlugin
 				getResources().getI18N().tr("Fehler beim Pr�fung der Datenbank-Integrit�t, " +					"Plugin wird aus Sicherheitsgr�nden deaktiviert"),e);
 		}
 
+    Application.getCallback().getStartupMonitor().setStatusText("hibiscus: checking passport directory");
+    String path = Settings.getWorkPath() + "/passports/";
+    Logger.info("checking if " + path + " exists");
+    File f = new File(path);
+    if (!f.exists())
+    {
+      Logger.info("no, creating " + path);
+      f.mkdirs();
+    }
+
     Application.getCallback().getStartupMonitor().setStatusText("hibiscus: init passport registry");
 		PassportRegistry.init();
 
@@ -211,7 +221,10 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
- * Revision 1.39  2005-02-01 17:15:37  willuhn
+ * Revision 1.40  2005-02-03 18:57:42  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.39  2005/02/01 17:15:37  willuhn
  * *** empty log message ***
  *
  * Revision 1.38  2005/01/30 20:45:35  willuhn
