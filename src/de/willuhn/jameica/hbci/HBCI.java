@@ -15,7 +15,6 @@ package de.willuhn.jameica.hbci;
 
 import java.io.File;
 import java.io.IOException;
-import java.rmi.RemoteException;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -144,7 +143,10 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2004-03-17 00:06:28  willuhn
+ * Revision 1.10  2004-03-19 01:44:13  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.9  2004/03/17 00:06:28  willuhn
  * *** empty log message ***
  *
  * Revision 1.8  2004/03/06 18:25:10  willuhn

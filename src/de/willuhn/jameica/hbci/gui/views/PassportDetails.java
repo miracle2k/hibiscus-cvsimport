@@ -29,7 +29,6 @@ import de.willuhn.jameica.hbci.rmi.PassportDDV;
 import de.willuhn.jameica.hbci.rmi.PassportType;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
-import de.willuhn.util.MultipleClassLoader;
 
 /**
  * Dialog, ueber den die Passports konfiguriert werden koennen.
@@ -52,7 +51,7 @@ public class PassportDetails extends AbstractView {
 		// TODO: Das ist noch gar nicht schoen.
 		PassportType pt = p.getPassportType();
 		String clazz = pt.getImplementor();
-		p = (Passport) Settings.getDatabase().createObject(MultipleClassLoader.load(clazz),p.getID());
+		p = (Passport) Settings.getDatabase().createObject(Application.getClassLoader().load(clazz),p.getID());
 		if (p.isNewObject())
 			p.setPassportType(pt); // ist ein neuer Passport - der hat keinen Typ nach dem Laden
 		setCurrentObject(p);
@@ -108,7 +107,10 @@ public class PassportDetails extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2004-03-04 00:26:24  willuhn
+ * Revision 1.8  2004-03-19 01:44:13  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.7  2004/03/04 00:26:24  willuhn
  * @N Ueberweisung
  *
  * Revision 1.6  2004/03/03 22:26:40  willuhn
