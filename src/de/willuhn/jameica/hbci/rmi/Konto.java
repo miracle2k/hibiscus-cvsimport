@@ -14,7 +14,6 @@ package de.willuhn.jameica.hbci.rmi;
 
 import java.rmi.RemoteException;
 
-import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.datasource.rmi.DBObject;
 
 /**
@@ -92,20 +91,15 @@ public interface Konto extends DBObject {
    */
   public void setPassport(Passport passport) throws RemoteException;
 
-	/**
-	 * Liefert einen Iterator mit Objekten des Typs <code>PassportParam</code>, welche
-	 * zur Initialisierung des Passports benoetigt werden.
-   * @return DBIterator mit PassportParams.
-   * @throws RemoteException
-   */
-  public DBIterator getPassportParams() throws RemoteException;
-
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2004-02-11 15:40:42  willuhn
+ * Revision 1.3  2004-02-12 00:38:40  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.2  2004/02/11 15:40:42  willuhn
  * *** empty log message ***
  *
  * Revision 1.1  2004/02/11 00:11:20  willuhn

@@ -25,6 +25,7 @@ public class Settings
 
   private static de.willuhn.jameica.Settings settings = new de.willuhn.jameica.Settings(HBCI.class);
   private static DBService db = null;
+  private static String path = null;
 
 	/**
 	 * Liefert den Datenbank-Service.
@@ -45,11 +46,32 @@ public class Settings
 		Settings.db = db;
 	}
 
+	/**
+	 * Speichert den Verzeichnis-Pfad zu diesem Plugin.
+   * @param path Pfad zu diesem Plugin.
+   */
+  protected static void setPath(String path)
+	{
+		Settings.path = path;
+	}
+
+	/**
+	 * Liefert den Verzeichnis-Pfad in dem sich das Plugin befindet.
+   * @return Pfad des Plugins.
+   */
+  public static String getPath()
+	{
+		return Settings.path;
+	}
+	
 }
 
 /*********************************************************************
  * $Log$
- * Revision 1.2  2004-02-09 22:09:40  willuhn
+ * Revision 1.3  2004-02-12 00:38:40  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.2  2004/02/09 22:09:40  willuhn
  * *** empty log message ***
  *
  * Revision 1.1  2004/02/09 13:06:03  willuhn

@@ -46,13 +46,28 @@ public interface Passport extends DBObject {
    * @throws RemoteException
    */
   public void setName(String name) throws RemoteException;
+  
+  /**
+   * Oeffnet den Passport.
+   * @throws RemoteException muss geworfen werden, wenn die Initialisierung fehlschlaegt.
+   * Die Exeption sollte einen sinnvollen Fehlertext enthalten. 
+   */
+  public void open() throws RemoteException;
 
+	/**
+	 * Schliesst den Passport.
+   * @throws RemoteException
+   */
+  public void close() throws RemoteException;
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2004-02-11 00:11:20  willuhn
+ * Revision 1.2  2004-02-12 00:38:40  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.1  2004/02/11 00:11:20  willuhn
  * *** empty log message ***
  *
  **********************************************************************/
