@@ -21,7 +21,6 @@ import de.willuhn.jameica.gui.util.ButtonArea;
 import de.willuhn.jameica.gui.util.LabelGroup;
 import de.willuhn.jameica.gui.views.AbstractView;
 import de.willuhn.jameica.hbci.HBCI;
-import de.willuhn.jameica.hbci.gui.DialogFactory;
 import de.willuhn.jameica.hbci.gui.controller.UeberweisungControl;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
@@ -37,10 +36,6 @@ public class UeberweisungNeu extends AbstractView {
   public void bind() throws Exception {
 
 		final UeberweisungControl control = new UeberweisungControl(this);
-
-		// Bevor hier irgendwas angezeigt wird, muss sicher sein, dass
-		// wir einen Passport haben
-		if (!DialogFactory.checkPassport(control.getKonto())) return;
 
 		I18N i18n = PluginLoader.getPlugin(HBCI.class).getResources().getI18N();
 
@@ -87,7 +82,10 @@ public class UeberweisungNeu extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.11  2004-05-04 23:07:24  willuhn
+ * Revision 1.12  2004-05-04 23:58:20  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.11  2004/05/04 23:07:24  willuhn
  * @C refactored Passport stuff
  *
  * Revision 1.10  2004/04/27 22:23:56  willuhn
