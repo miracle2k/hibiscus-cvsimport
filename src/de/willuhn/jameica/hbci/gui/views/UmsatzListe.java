@@ -48,12 +48,17 @@ public class UmsatzListe extends AbstractView {
 			Table list = control.getUmsatzListe();
 			list.paint(getParent());
 			
-			ButtonArea buttons = new ButtonArea(getParent(),2);
+			ButtonArea buttons = new ButtonArea(getParent(),3);
 			buttons.addCustomButton(i18n.tr("Umsätze abrufen"), new MouseAdapter() {
         public void mouseUp(MouseEvent e) {
         	control.handleGetUmsaetze();
         }
       });
+			buttons.addCustomButton(i18n.tr("alle Umsätze löschen"), new MouseAdapter() {
+				public void mouseUp(MouseEvent e) {
+					control.handleDeleteUmsaetze();
+				}
+			});
 			buttons.addCancelButton(control);
 		}
 		catch (RemoteException e)
@@ -75,7 +80,10 @@ public class UmsatzListe extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2004-03-30 22:07:49  willuhn
+ * Revision 1.3  2004-04-04 18:30:23  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.2  2004/03/30 22:07:49  willuhn
  * *** empty log message ***
  *
  * Revision 1.1  2004/03/05 00:04:10  willuhn

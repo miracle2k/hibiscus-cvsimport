@@ -303,7 +303,7 @@ public class KontoImpl extends AbstractDBObject implements Konto {
 		if (isNewObject())
 			throw new ApplicationException("Bitte speichern Sie zunächst das Konto.");
 
-		Umsatz[] umsaetze = JobFactory.getInstance().getAlleUmsaetze(this);
+		Umsatz[] umsaetze = JobFactory.getInstance().getUmsaetze(this);
 
 		// wir speichern die Umsaetze gleich noch ab
 		try {
@@ -337,12 +337,30 @@ public class KontoImpl extends AbstractDBObject implements Konto {
 		list.addFilter("konto_id = " + getID() + "ORDER BY TONUMBER(datum)");
 		return list;
   }
+
+  /**
+   * @see de.willuhn.jameica.hbci.rmi.Konto#deleteUmsaetze()
+   */
+  public void deleteUmsaetze() throws ApplicationException, RemoteException {
+		DBIterator list = Settings.getDatabase().createList(Umsatz.class);
+		list.addFilter("konto_id = " + getID());
+		if (!list.hasNext())
+			return;
+
+		while (list.hasNext())
+		{
+			list.next().delete();
+		}
+  }
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.14  2004-03-19 01:44:13  willuhn
+ * Revision 1.15  2004-04-04 18:30:23  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.14  2004/03/19 01:44:13  willuhn
  * *** empty log message ***
  *
  * Revision 1.13  2004/03/06 18:25:10  willuhn

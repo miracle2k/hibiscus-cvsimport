@@ -144,12 +144,22 @@ public interface Konto extends DBObject {
    * @throws RemoteException
    */
   public DBIterator getUmsaetze() throws RemoteException;
+
+	/**
+	 * Loescht alle Umsaetze des Kontos.
+   * @throws RemoteException
+   * @throws ApplicationException
+   */
+  public void deleteUmsaetze() throws ApplicationException, RemoteException;
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.8  2004-03-05 00:04:10  willuhn
+ * Revision 1.9  2004-04-04 18:30:23  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.8  2004/03/05 00:04:10  willuhn
  * @N added code for umsatzlist
  *
  * Revision 1.7  2004/02/25 23:11:46  willuhn
