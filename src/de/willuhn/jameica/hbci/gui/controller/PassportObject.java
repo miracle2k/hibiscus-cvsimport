@@ -84,12 +84,23 @@ public class PassportObject implements GenericObject
 		return other.getID().equals(other.getID());
 	}
 
+  /**
+   * @see de.willuhn.datasource.GenericObject#getAttributeNames()
+   */
+  public String[] getAttributeNames() throws RemoteException
+  {
+    return new String[]{"name"};
+  }
+
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2004-08-18 23:13:51  willuhn
+ * Revision 1.4  2005-01-05 15:17:50  willuhn
+ * @N Neues Service-System in Jameica
+ *
+ * Revision 1.3  2004/08/18 23:13:51  willuhn
  * @D Javadoc
  *
  * Revision 1.2  2004/07/23 15:51:44  willuhn

@@ -382,6 +382,14 @@ public class TurnusControl
     		return false;
     	return this.getID().equals(arg0.getID());
     }
+
+    /**
+     * @see de.willuhn.datasource.GenericObject#getAttributeNames()
+     */
+    public String[] getAttributeNames() throws RemoteException
+    {
+      return new String[] {"foo"};
+    }
 	}
 
 	private class Tag implements GenericObject
@@ -430,13 +438,24 @@ public class TurnusControl
 				return false;
 			return this.getID().equals(arg0.getID());
     }
+
+    /**
+     * @see de.willuhn.datasource.GenericObject#getAttributeNames()
+     */
+    public String[] getAttributeNames() throws RemoteException
+    {
+      return new String[] {"foo"};
+    }
 	}
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2004-11-26 01:23:13  willuhn
+ * Revision 1.7  2005-01-05 15:17:50  willuhn
+ * @N Neues Service-System in Jameica
+ *
+ * Revision 1.6  2004/11/26 01:23:13  willuhn
  * *** empty log message ***
  *
  * Revision 1.5  2004/11/26 00:04:08  willuhn

@@ -18,15 +18,15 @@ import java.rmi.RemoteException;
 import de.willuhn.datasource.db.EmbeddedDBServiceImpl;
 import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.datasource.rmi.DBObject;
-import de.willuhn.datasource.rmi.DBService;
 import de.willuhn.jameica.hbci.HBCI;
+import de.willuhn.jameica.hbci.rmi.HBCIDBService;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.util.I18N;
 
 /**
  * @author willuhn
  */
-public class HBCIDBServiceImpl extends EmbeddedDBServiceImpl implements DBService
+public class HBCIDBServiceImpl extends EmbeddedDBServiceImpl implements HBCIDBService
 {
 
   /**
@@ -71,7 +71,10 @@ public class HBCIDBServiceImpl extends EmbeddedDBServiceImpl implements DBServic
 
 /*********************************************************************
  * $Log$
- * Revision 1.7  2004-11-17 19:02:28  willuhn
+ * Revision 1.8  2005-01-05 15:17:50  willuhn
+ * @N Neues Service-System in Jameica
+ *
+ * Revision 1.7  2004/11/17 19:02:28  willuhn
  * *** empty log message ***
  *
  * Revision 1.6  2004/11/03 18:42:55  willuhn
