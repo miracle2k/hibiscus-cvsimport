@@ -73,7 +73,7 @@ public class PassportRegistry {
 
 	/**
 	 * Liefert eine Instanz des angegebenen Passports.
-	 * @param className Java-Klasse des Passports.
+	 * @param classname Java-Klasse des Passports.
 	 * @return Instanz des Passports.
 	 * @throws Exception
 	 */
@@ -105,7 +105,10 @@ public class PassportRegistry {
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2004-05-04 23:07:23  willuhn
+ * Revision 1.2  2004-05-04 23:30:53  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.1  2004/05/04 23:07:23  willuhn
  * @C refactored Passport stuff
  *
  **********************************************************************/
