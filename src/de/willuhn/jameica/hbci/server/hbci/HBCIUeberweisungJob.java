@@ -135,10 +135,22 @@ public class HBCIUeberweisungJob extends AbstractHBCIJob {
 										i18n.tr("Fehlermeldung der Bank") + ": " + statusText :
 										i18n.tr("Unbekannter Fehler beim Ausführen der Überweisung");
 
-			addToProtokoll(msg + " ("+error+")",Protokoll.TYP_ERROR);
+			try {
+				getKonto().addToProtokoll(msg + " ("+error+")",Protokoll.TYP_ERROR);
+			}
+			catch (RemoteException e)
+			{
+				Logger.error("error while writing protocol",e);
+			}
 			throw new ApplicationException(msg + " ("+error+")");
 		}
-		addToProtokoll(i18n.tr("Überweisung ausgeführt") + " " + empfName,Protokoll.TYP_SUCCESS);
+		try {
+			getKonto().addToProtokoll(i18n.tr("Überweisung ausgeführt") + " " + empfName,Protokoll.TYP_SUCCESS);
+		}
+		catch (RemoteException e)
+		{
+			Logger.error("error while writing protocol",e);
+		}
 		Logger.debug("ueberweisung sent successfully");
   }
 }
@@ -146,7 +158,10 @@ public class HBCIUeberweisungJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2004-06-30 20:58:29  willuhn
+ * Revision 1.7  2004-07-09 00:04:40  willuhn
+ * @C Redesign
+ *
+ * Revision 1.6  2004/06/30 20:58:29  willuhn
  * *** empty log message ***
  *
  * Revision 1.5  2004/05/25 23:23:18  willuhn

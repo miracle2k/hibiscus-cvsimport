@@ -19,7 +19,7 @@ import org.eclipse.swt.events.MouseEvent;
 
 import de.willuhn.jameica.PluginLoader;
 import de.willuhn.jameica.gui.GUI;
-import de.willuhn.jameica.gui.parts.TablePart;
+import de.willuhn.jameica.gui.Part;
 import de.willuhn.jameica.gui.util.ButtonArea;
 import de.willuhn.jameica.gui.views.AbstractView;
 import de.willuhn.jameica.hbci.HBCI;
@@ -45,7 +45,7 @@ public class UmsatzListe extends AbstractView {
 
 		try {
 			
-			TablePart list = control.getUmsatzListe();
+			Part list = control.getUmsatzListe();
 			list.paint(getParent());
 			
 			ButtonArea buttons = new ButtonArea(getParent(),3);
@@ -80,7 +80,10 @@ public class UmsatzListe extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2004-06-30 20:58:28  willuhn
+ * Revision 1.6  2004-07-09 00:04:40  willuhn
+ * @C Redesign
+ *
+ * Revision 1.5  2004/06/30 20:58:28  willuhn
  * *** empty log message ***
  *
  * Revision 1.4  2004/04/12 19:15:31  willuhn

@@ -22,6 +22,7 @@ import org.eclipse.swt.widgets.TableItem;
 import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.jameica.PluginLoader;
 import de.willuhn.jameica.gui.GUI;
+import de.willuhn.jameica.gui.Part;
 import de.willuhn.jameica.gui.controller.AbstractControl;
 import de.willuhn.jameica.gui.formatter.CurrencyFormatter;
 import de.willuhn.jameica.gui.formatter.DateFormatter;
@@ -56,7 +57,7 @@ public class WelcomeControl extends AbstractControl {
 	 * @return Tabelle.
 	 * @throws RemoteException
 	 */
-	public TablePart getOffeneUeberweisungen() throws RemoteException
+	public Part getOffeneUeberweisungen() throws RemoteException
 	{
 		DBIterator list = Settings.getDatabase().createList(Ueberweisung.class);
 		list.addFilter("ausgefuehrt = 0");
@@ -90,7 +91,7 @@ public class WelcomeControl extends AbstractControl {
    * @return Welcome-Text.
    * @throws RemoteException
    */
-  public FormTextPart getWelcomeText() throws RemoteException
+  public Part getWelcomeText() throws RemoteException
 	{
 		if (welcomeText != null)
 			return welcomeText;
@@ -146,7 +147,10 @@ public class WelcomeControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2004-04-21 22:28:42  willuhn
+ * Revision 1.5  2004-07-09 00:04:40  willuhn
+ * @C Redesign
+ *
+ * Revision 1.4  2004/04/21 22:28:42  willuhn
  * *** empty log message ***
  *
  * Revision 1.3  2004/04/19 22:53:52  willuhn

@@ -175,6 +175,15 @@ public interface Konto extends DBObject {
   public DBIterator getProtokolle() throws RemoteException;
 
 	/**
+	 * Fuegt den uebergebenen Text zum Konto-Protokoll hinzu.
+   * @param kommentar der hinzuzufuegende Text.
+   * @param protokollTyp Typ des Protokoll-Eintrags.
+   * Siehe <code>de.willuhn.jameica.hbci.rmi.Protokoll</code>.
+   * @throws RemoteException
+   */
+  public void addToProtokoll(String kommentar, int protokollTyp) throws RemoteException;
+	
+	/**
 	 * Loescht alle Umsaetze des Kontos.
    * @throws RemoteException
    * @throws ApplicationException
@@ -185,7 +194,10 @@ public interface Konto extends DBObject {
 
 /**********************************************************************
  * $Log$
- * Revision 1.13  2004-05-25 23:23:17  willuhn
+ * Revision 1.14  2004-07-09 00:04:40  willuhn
+ * @C Redesign
+ *
+ * Revision 1.13  2004/05/25 23:23:17  willuhn
  * @N UeberweisungTyp
  * @N Protokoll
  *

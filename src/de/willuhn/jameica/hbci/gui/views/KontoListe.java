@@ -48,7 +48,6 @@ public class KontoListe extends AbstractView {
 			ButtonArea buttons = new ButtonArea(getParent(),1);
 			buttons.addCreateButton(i18n.tr("Neue Bankverbindung"),control);
 
-
 			LabelGroup group = new LabelGroup(getParent(),i18n.tr("Konten aus Medium lesen"));
 			group.addLabelPair(i18n.tr("Sicherheitsmedium"),control.getPassportAuswahl());
 
@@ -83,7 +82,10 @@ public class KontoListe extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.12  2004-06-30 20:58:28  willuhn
+ * Revision 1.13  2004-07-09 00:04:40  willuhn
+ * @C Redesign
+ *
+ * Revision 1.12  2004/06/30 20:58:28  willuhn
  * *** empty log message ***
  *
  * Revision 1.11  2004/06/03 00:23:43  willuhn

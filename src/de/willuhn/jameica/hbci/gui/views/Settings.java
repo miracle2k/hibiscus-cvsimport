@@ -66,7 +66,7 @@ public class Settings extends AbstractView {
 
 		// Passports
 		LabelGroup passports = new LabelGroup(getParent(),i18n.tr("Sicherheitsmedien"));
-		passports.addTable(control.getPassportListe());
+		passports.addPart(control.getPassportListe());
 
 		ButtonArea buttons3 = new ButtonArea(getParent(),2);
 		buttons3.addCancelButton(control);
@@ -85,7 +85,10 @@ public class Settings extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.19  2004-05-25 23:23:17  willuhn
+ * Revision 1.20  2004-07-09 00:04:40  willuhn
+ * @C Redesign
+ *
+ * Revision 1.19  2004/05/25 23:23:17  willuhn
  * @N UeberweisungTyp
  * @N Protokoll
  *
