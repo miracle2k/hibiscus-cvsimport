@@ -41,7 +41,7 @@ public class HBCISaldoJob extends AbstractHBCIJob {
 		super(konto);
 
 		try {
-			setJobParam("my",Converter.JameicaKonto2HBCIKonto(konto));
+			setJobParam("my",Converter.HibiscusKonto2HBCIKonto(konto));
 		}
 		catch (RemoteException e)
 		{
@@ -99,7 +99,10 @@ public class HBCISaldoJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2004-07-09 00:04:40  willuhn
+ * Revision 1.7  2004-07-14 23:48:31  willuhn
+ * @N mehr Code fuer Dauerauftraege
+ *
+ * Revision 1.6  2004/07/09 00:04:40  willuhn
  * @C Redesign
  *
  * Revision 1.5  2004/06/30 20:58:29  willuhn

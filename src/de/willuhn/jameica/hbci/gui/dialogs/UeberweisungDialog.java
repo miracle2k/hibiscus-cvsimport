@@ -80,7 +80,7 @@ public class UeberweisungDialog extends AbstractDialog {
 		group.addLabelPair(i18n.tr("Name des Empfänger"),empfName);
 
 		Input empfKto = new LabelInput(ueb.getEmpfaengerKonto());
-		empfKto.setComment(ueb.getEmpfaengerBlz() + "/" + HBCIUtils.getNameForBLZ(ueb.getEmpfaengerBlz()));
+		empfKto.setComment(ueb.getEmpfaengerBLZ() + "/" + HBCIUtils.getNameForBLZ(ueb.getEmpfaengerBLZ()));
 		group.addLabelPair(i18n.tr("Konto des Empfängers"),empfKto);
 
 		group.addSeparator();
@@ -112,7 +112,10 @@ public class UeberweisungDialog extends AbstractDialog {
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2004-07-09 00:04:40  willuhn
+ * Revision 1.3  2004-07-14 23:48:31  willuhn
+ * @N mehr Code fuer Dauerauftraege
+ *
+ * Revision 1.2  2004/07/09 00:04:40  willuhn
  * @C Redesign
  *
  * Revision 1.1  2004/05/26 23:23:10  willuhn
