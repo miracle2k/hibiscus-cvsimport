@@ -34,7 +34,7 @@ public interface Ueberweisung extends DBObject {
 	
 	/**
 	 * Liefert den Empfaenger.
-   * @return
+   * @return Empfaenger der Ueberweisung.
    * @throws RemoteException
    */
   public Empfaenger getEmpfaenger() throws RemoteException;
@@ -128,7 +128,11 @@ public interface Ueberweisung extends DBObject {
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2004-02-17 01:01:38  willuhn
+ * Revision 1.3  2004-03-05 00:19:23  willuhn
+ * @D javadoc fixes
+ * @C Converter moved into server package
+ *
+ * Revision 1.2  2004/02/17 01:01:38  willuhn
  * *** empty log message ***
  *
  * Revision 1.1  2004/02/17 00:53:22  willuhn

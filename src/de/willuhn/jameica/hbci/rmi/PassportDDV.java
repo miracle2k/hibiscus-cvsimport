@@ -37,17 +37,17 @@ public interface PassportDDV extends Passport {
 
 	/**
 	 * Liefert den Port des Kartenlesers.
-	 * "0" steht hierbei z.Bsp. fuer COM1, "1" fuer COM2 usw.
+	 * &quot;0&quot; steht hierbei z.Bsp. fuer COM1, &quot;1&quot; fuer COM2 usw.
    * @return Portnummer.
-   * @throws RemoteException
+   * @throws RemoteException.
    */
   public int getPort() throws RemoteException;
 
 	/**
 	 * Speichert den zu verwendenden Port.
-	 * "0" steht hierbei z.Bsp. fuer COM1, "1" fuer COM2 usw.
+	 * &quot;0&quot; steht hierbei z.Bsp. fuer COM1, &quot;1&quot; fuer COM2 usw.
    * @param port Portnummer.
-   * @throws RemoteException
+   * @throws RemoteException.
    */
   public void setPort(int port) throws RemoteException;
 
@@ -112,7 +112,11 @@ public interface PassportDDV extends Passport {
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2004-02-12 00:38:40  willuhn
+ * Revision 1.2  2004-03-05 00:19:23  willuhn
+ * @D javadoc fixes
+ * @C Converter moved into server package
+ *
+ * Revision 1.1  2004/02/12 00:38:40  willuhn
  * *** empty log message ***
  *
  **********************************************************************/

@@ -84,8 +84,8 @@ public class SettingsControl extends AbstractControl {
 	}
 
 	/**
-	 * Liefert eine Checkbox 
-   * @return
+	 * Liefert eine Checkbox zur Aktivierung oder Deaktivierung der Pin-Pruefung via Checksumme.
+   * @return Checkbox.
    * @throws RemoteException
    */
   public CheckboxInput getCheckPin() throws RemoteException
@@ -129,7 +129,7 @@ public class SettingsControl extends AbstractControl {
   }
 
 	/**
-   * Loescht den ggf. vorhandenen gespeicherten Pin-Hash.
+   * Loescht den gegebenenfalls vorhandenen gespeicherten Pin-Hash.
    */
   public void handleDeleteCheckSum()
 	{
@@ -181,7 +181,11 @@ public class SettingsControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2004-03-03 22:26:40  willuhn
+ * Revision 1.8  2004-03-05 00:19:23  willuhn
+ * @D javadoc fixes
+ * @C Converter moved into server package
+ *
+ * Revision 1.7  2004/03/03 22:26:40  willuhn
  * @N help texts
  * @C refactoring
  *
