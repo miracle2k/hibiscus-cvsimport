@@ -161,12 +161,45 @@ public class KontoImpl extends AbstractDBObject implements Konto {
   	return list;
   }
 
+  /**
+   * @see de.willuhn.datasource.rmi.DBObject#delete()
+   */
+  public void delete() throws RemoteException, ApplicationException
+  {
+    // Wir muessen die PassportParameter mit loeschen
+    try {
+      transactionBegin();
+      super.delete();
+      DBIterator list = getPassportParams();
+      PassportParam p = null;
+      while (list.hasNext())
+      {
+        p = (PassportParam) list.next();
+        p.delete();
+      }
+      transactionCommit();
+    }
+    catch (RemoteException e)
+    {
+      transactionRollback();
+      throw e;
+    }
+    catch (ApplicationException e2)
+    {
+      transactionRollback();
+      throw e2;
+    }
+  }
+
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2004-02-11 00:11:20  willuhn
+ * Revision 1.2  2004-02-11 10:33:59  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.1  2004/02/11 00:11:20  willuhn
  * *** empty log message ***
  *
  **********************************************************************/
