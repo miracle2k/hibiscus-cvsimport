@@ -30,7 +30,7 @@ public class DialogFactory {
    */
   public static void openSimple(final String headline, final String text)
 	{
-		SimpleDialog d = new SimpleDialog();
+		SimpleDialog d = new SimpleDialog(Dialog.POSITION_CENTER);
 		d.setTitle(headline);
 		d.setText(text);
 		dialog = (Dialog) d;
@@ -44,7 +44,7 @@ public class DialogFactory {
 	 */
 	public static String openPassword(final String headline, final String text)
 	{
-		PasswordDialog d = new PasswordDialog();
+		PasswordDialog d = new PasswordDialog(Dialog.POSITION_CENTER);
 		d.setTitle(headline);
 		d.setText(text);
 		dialog = (Dialog) d;
@@ -67,7 +67,10 @@ public class DialogFactory {
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2004-02-13 00:41:56  willuhn
+ * Revision 1.3  2004-02-20 01:25:25  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.2  2004/02/13 00:41:56  willuhn
  * *** empty log message ***
  *
  * Revision 1.1  2004/02/12 23:46:46  willuhn

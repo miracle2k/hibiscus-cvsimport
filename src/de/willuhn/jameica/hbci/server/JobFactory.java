@@ -21,6 +21,7 @@ import org.kapott.hbci.status.HBCIDialogStatus;
 import org.kapott.hbci.status.HBCIExecStatus;
 
 import de.willuhn.jameica.Application;
+import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Passport;
 import de.willuhn.jameica.hbci.rmi.Ueberweisung;
@@ -44,6 +45,8 @@ public class JobFactory {
    */
   protected static synchronized double getSaldo(Konto konto) throws RemoteException
 	{
+
+		GUI.startProgress();
 
 		if (konto == null)
 			throw new RemoteException("Konto is null");
@@ -87,6 +90,7 @@ public class JobFactory {
 		}
 		finally
 		{
+			GUI.stopProgress();
 			try {
 				p.close();
 			}
@@ -108,7 +112,10 @@ public class JobFactory {
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2004-02-17 01:01:38  willuhn
+ * Revision 1.3  2004-02-20 01:25:25  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.2  2004/02/17 01:01:38  willuhn
  * *** empty log message ***
  *
  * Revision 1.1  2004/02/17 00:53:22  willuhn

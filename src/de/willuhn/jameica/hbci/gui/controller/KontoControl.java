@@ -378,9 +378,9 @@ public class KontoControl extends AbstractControl {
   public void handleRefreshSaldo()
 	{
 		try {
-			if ("".equals(getKontonummer().getValue()))
+			if (getKonto().isNewObject())
 			{
-				GUI.setActionText(I18N.tr("Bitte geben Sie mindestens die Kontonummer ein"));
+				GUI.setActionText(I18N.tr("Bitte speichern Sie zunächst die Bankverbindung"));
 				return;
 			}
 		}
@@ -395,7 +395,7 @@ public class KontoControl extends AbstractControl {
       	try {
       		GUI.setActionText(I18N.tr("Saldo des Kontos wird ermittelt..."));
 					getKonto().refreshSaldo();
-					getSaldo().setValue(HBCI.DECIMALFORMAT.format(getKonto().getSaldo()));
+					getSaldo().setValue(HBCI.DECIMALFORMAT.format(getKonto().getSaldo()) + " " + getKonto().getWaehrung());
 					getSaldoDatum().setValue(HBCI.LONGDATEFORMAT.format(getKonto().getSaldoDatum()));
 					GUI.setActionText(I18N.tr("Saldo des Kontos erfolgreich übertragen..."));
       	}
@@ -439,7 +439,10 @@ public class KontoControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2004-02-17 01:07:19  willuhn
+ * Revision 1.6  2004-02-20 01:25:25  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.5  2004/02/17 01:07:19  willuhn
  * *** empty log message ***
  *
  * Revision 1.4  2004/02/17 00:53:22  willuhn
