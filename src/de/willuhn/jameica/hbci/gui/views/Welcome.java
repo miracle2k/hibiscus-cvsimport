@@ -40,6 +40,7 @@ public class Welcome extends AbstractView
    */
   public void bind() throws Exception
   {
+
 		I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 		WelcomeControl control = new WelcomeControl(this);
 
@@ -75,7 +76,10 @@ public class Welcome extends AbstractView
 
 /**********************************************************************
  * $Log$
- * Revision 1.14  2004-10-08 13:37:48  willuhn
+ * Revision 1.15  2005-01-14 00:48:49  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.14  2004/10/08 13:37:48  willuhn
  * *** empty log message ***
  *
  * Revision 1.13  2004/09/13 20:54:38  willuhn
