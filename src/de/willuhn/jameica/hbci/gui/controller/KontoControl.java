@@ -402,7 +402,7 @@ public class KontoControl extends AbstractControl {
       	catch (RemoteException e)
       	{
 					Application.getLog().error("error while reading saldo",e);
-					GUI.setActionText(I18N.tr("Fehler beim Lesen des Saldos"));
+					GUI.setActionText(e.getLocalizedMessage());
       	}
       	catch (ApplicationException e2)
       	{
@@ -439,7 +439,10 @@ public class KontoControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2004-02-17 00:53:22  willuhn
+ * Revision 1.5  2004-02-17 01:07:19  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.4  2004/02/17 00:53:22  willuhn
  * @N SaldoAbfrage
  * @N Ueberweisung
  * @N Empfaenger
