@@ -73,7 +73,7 @@ public class WelcomeControl extends AbstractControl {
 		DBIterator list = Settings.getDBService().createList(Ueberweisung.class);
 		list.addFilter("ausgefuehrt = 0");
 
-		offeneUeberweisungen = new TablePart(list,new de.willuhn.jameica.hbci.gui.action.UeberweisungNeu());
+		offeneUeberweisungen = new TablePart(list,new de.willuhn.jameica.hbci.gui.action.UeberweisungNew());
 		offeneUeberweisungen.setFormatter(new TableFormatter() {
       public void format(TableItem item) {
 				try {
@@ -136,7 +136,7 @@ public class WelcomeControl extends AbstractControl {
 
 		DBIterator list = Settings.getDBService().createList(Konto.class);
 
-		kontoStats = new TablePart(list,new de.willuhn.jameica.hbci.gui.action.KontoNeu());
+		kontoStats = new TablePart(list,new de.willuhn.jameica.hbci.gui.action.KontoNew());
 		kontoStats.addColumn(i18n.tr("Kontonummer"),"kontonummer");
 		kontoStats.addColumn(i18n.tr("Bezeichnung"),"bezeichnung");
 		kontoStats.addColumn(i18n.tr("Saldo"),"saldo");
@@ -163,7 +163,10 @@ public class WelcomeControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.13  2004-11-12 18:25:07  willuhn
+ * Revision 1.14  2004-11-13 17:02:04  willuhn
+ * @N Bearbeiten des Zahlungsturnus
+ *
+ * Revision 1.13  2004/11/12 18:25:07  willuhn
  * *** empty log message ***
  *
  * Revision 1.12  2004/10/20 12:08:18  willuhn

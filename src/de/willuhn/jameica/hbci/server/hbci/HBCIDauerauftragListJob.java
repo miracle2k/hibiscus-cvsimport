@@ -42,16 +42,32 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob {
    */
   public HBCIDauerauftragListJob(Konto konto) throws ApplicationException, RemoteException
 	{
-		i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
+		try
+		{
+			i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
-		if (konto == null)
-			throw new ApplicationException(i18n.tr("Bitte wählen Sie ein Konto aus"));
-		if (konto.isNewObject())
-			konto.store();
+			if (konto == null)
+				throw new ApplicationException(i18n.tr("Bitte wählen Sie ein Konto aus"));
+			if (konto.isNewObject())
+				konto.store();
 
-		this.konto = konto;
+			this.konto = konto;
 
-		setJobParam("my",Converter.HibiscusKonto2HBCIKonto(konto));
+			setJobParam("my",Converter.HibiscusKonto2HBCIKonto(konto));
+		}
+		catch (RemoteException e)
+		{
+			throw e;
+		}
+		catch (ApplicationException e2)
+		{
+			throw e2;
+		}
+		catch (Throwable t)
+		{
+			Logger.error("error while executing job " + getIdentifier(),t);
+			throw new ApplicationException(i18n.tr("Fehler beim Erstellen des Auftrags. Fehlermeldung: {0}",t.getMessage()),t);
+		}
 	}
 
   /**
@@ -137,7 +153,10 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.10  2004-11-12 18:25:08  willuhn
+ * Revision 1.11  2004-11-13 17:02:04  willuhn
+ * @N Bearbeiten des Zahlungsturnus
+ *
+ * Revision 1.10  2004/11/12 18:25:08  willuhn
  * *** empty log message ***
  *
  * Revision 1.9  2004/10/25 22:39:14  willuhn

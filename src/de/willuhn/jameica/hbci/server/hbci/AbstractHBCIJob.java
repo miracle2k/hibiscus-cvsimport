@@ -110,7 +110,7 @@ public abstract class AbstractHBCIJob
 	{
 		try
 		{
-			// TODO: Das ist sicher nicht alles, was wir von der Bank erfahren. Was waehre besser?
+			// TODO: Das ist sicher nicht alles, was wir von der Bank erfahren. Was waere besser?
 			return getJobResult().getJobStatus().getRetVals()[0].text;
 		}
 		catch (ArrayIndexOutOfBoundsException aio)
@@ -214,7 +214,10 @@ public abstract class AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.12  2004-11-12 18:25:08  willuhn
+ * Revision 1.13  2004-11-13 17:02:04  willuhn
+ * @N Bearbeiten des Zahlungsturnus
+ *
+ * Revision 1.12  2004/11/12 18:25:08  willuhn
  * *** empty log message ***
  *
  * Revision 1.11  2004/10/26 23:47:08  willuhn

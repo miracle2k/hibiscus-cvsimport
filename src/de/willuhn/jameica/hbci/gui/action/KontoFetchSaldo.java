@@ -61,7 +61,7 @@ public class KontoFetchSaldo implements Action
 						factory.executeJobs(k.getPassport().getHandle());
 						GUI.getStatusBar().setSuccessText(i18n.tr("...Saldo erfolgreich abgerufen"));
 
-						new de.willuhn.jameica.hbci.gui.action.KontoNeu().handleAction(k);
+						new de.willuhn.jameica.hbci.gui.action.KontoNew().handleAction(k);
 					}
 					catch (OperationCanceledException oce)
 					{
@@ -97,7 +97,10 @@ public class KontoFetchSaldo implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2004-11-12 18:25:07  willuhn
+ * Revision 1.7  2004-11-13 17:02:03  willuhn
+ * @N Bearbeiten des Zahlungsturnus
+ *
+ * Revision 1.6  2004/11/12 18:25:07  willuhn
  * *** empty log message ***
  *
  * Revision 1.5  2004/10/29 16:16:13  willuhn

@@ -82,6 +82,7 @@ public class DauerauftragDelete implements Action
 							HBCIFactory factory = HBCIFactory.getInstance();
 							factory.addJob(new HBCIDauerauftragDeleteJob(da));
 							factory.executeJobs(da.getKonto().getPassport().getHandle()); 
+							da.delete();
 							GUI.getStatusBar().setSuccessText(i18n.tr("...Dauerauftrag erfolgreich gelöscht"));
 						}
 						catch (OperationCanceledException oce)
@@ -109,8 +110,8 @@ public class DauerauftragDelete implements Action
 			{
 				// nur lokal loeschen
 				da.delete();
+				GUI.getStatusBar().setSuccessText(i18n.tr("Dauerauftrag gelöscht."));
 			}
-			GUI.getStatusBar().setSuccessText(i18n.tr("Dauerauftrag gelöscht."));
 		}
 		catch (RemoteException e)
 		{
@@ -124,7 +125,10 @@ public class DauerauftragDelete implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2004-11-12 18:25:07  willuhn
+ * Revision 1.6  2004-11-13 17:02:04  willuhn
+ * @N Bearbeiten des Zahlungsturnus
+ *
+ * Revision 1.5  2004/11/12 18:25:07  willuhn
  * *** empty log message ***
  *
  * Revision 1.4  2004/10/29 16:16:13  willuhn

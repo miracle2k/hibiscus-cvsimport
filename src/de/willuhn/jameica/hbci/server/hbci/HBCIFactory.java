@@ -148,6 +148,23 @@ public class HBCIFactory {
 					job.handleResult();
 				}
 			}
+			catch (RemoteException e)
+			{
+				throw e;
+			}
+			catch (ApplicationException e2)
+			{
+				throw e2;
+			}
+			catch (OperationCanceledException e3)
+			{
+				throw e3;
+			}
+			catch (Throwable t)
+			{
+				Logger.error("error while executing jobs",t);
+				throw new ApplicationException(i18n.tr("Fehler beim Ausführen der Aufträge. Fehlermeldung: {0}",t.getMessage()),t);
+			}
 			finally
 			{
 				stop();
@@ -247,7 +264,10 @@ public class HBCIFactory {
 
 /**********************************************************************
  * $Log$
- * Revision 1.20  2004-11-12 18:25:08  willuhn
+ * Revision 1.21  2004-11-13 17:02:04  willuhn
+ * @N Bearbeiten des Zahlungsturnus
+ *
+ * Revision 1.20  2004/11/12 18:25:08  willuhn
  * *** empty log message ***
  *
  * Revision 1.19  2004/11/04 22:30:33  willuhn

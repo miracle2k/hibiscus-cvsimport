@@ -84,7 +84,7 @@ public class EmpfaengerControl extends AbstractControl {
 	{
 		DBIterator list = Settings.getDBService().createList(Empfaenger.class);
 
-		TablePart table = new TablePart(list,new de.willuhn.jameica.hbci.gui.action.EmpfaengerNeu());
+		TablePart table = new TablePart(list,new de.willuhn.jameica.hbci.gui.action.EmpfaengerNew());
 		table.addColumn(i18n.tr("Kontonummer"),"kontonummer");
 		table.addColumn(i18n.tr("Bankleitzahl"),"blz");
 		table.addColumn(i18n.tr("Name"),"name");
@@ -191,7 +191,10 @@ public class EmpfaengerControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.24  2004-11-12 18:25:07  willuhn
+ * Revision 1.25  2004-11-13 17:02:04  willuhn
+ * @N Bearbeiten des Zahlungsturnus
+ *
+ * Revision 1.24  2004/11/12 18:25:07  willuhn
  * *** empty log message ***
  *
  * Revision 1.23  2004/11/02 18:48:32  willuhn
