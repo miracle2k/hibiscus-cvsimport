@@ -27,6 +27,7 @@ import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.passport.Passport;
 import de.willuhn.jameica.hbci.rmi.Dauerauftrag;
 import de.willuhn.jameica.hbci.rmi.Konto;
+import de.willuhn.jameica.hbci.rmi.Lastschrift;
 import de.willuhn.jameica.hbci.rmi.Protokoll;
 import de.willuhn.jameica.hbci.rmi.Ueberweisung;
 import de.willuhn.jameica.hbci.rmi.Umsatz;
@@ -200,12 +201,20 @@ public class KontoImpl extends AbstractDBObject implements Konto {
 			
 			// dann die Dauerauftraege
 			DBIterator list = getDauerauftraege();
-			if (!list.hasNext())
-				return;
-
+			Dauerauftrag da = null;
 			while (list.hasNext())
 			{
-				((DBObject)list.next()).delete();
+				da = (Dauerauftrag) list.next();
+				da.delete();
+			}
+
+			// noch die Lastschriften
+			list = getLastschriften();
+			Lastschrift ls = null;
+			while (list.hasNext())
+			{
+				ls = (Lastschrift) list.next();
+				ls.delete();
 			}
 
 			// und jetzt die Ueberweisungen
@@ -314,6 +323,16 @@ public class KontoImpl extends AbstractDBObject implements Konto {
 	public DBIterator getDauerauftraege() throws RemoteException
 	{
 		DBIterator list = Settings.getDBService().createList(Dauerauftrag.class);
+		list.addFilter("konto_id = " + getID());
+		return list;
+	}
+
+	/**
+	 * @see de.willuhn.jameica.hbci.rmi.Konto#getLastschriften()
+	 */
+	public DBIterator getLastschriften() throws RemoteException
+	{
+		DBIterator list = Settings.getDBService().createList(Lastschrift.class);
 		list.addFilter("konto_id = " + getID());
 		return list;
 	}
@@ -432,7 +451,10 @@ public class KontoImpl extends AbstractDBObject implements Konto {
 
 /**********************************************************************
  * $Log$
- * Revision 1.42  2005-02-03 18:57:42  willuhn
+ * Revision 1.43  2005-02-03 23:57:05  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.42  2005/02/03 18:57:42  willuhn
  * *** empty log message ***
  *
  * Revision 1.41  2005/02/02 18:19:47  willuhn

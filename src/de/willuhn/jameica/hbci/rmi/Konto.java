@@ -171,6 +171,13 @@ public interface Konto extends DBObject,Checksum
   public DBIterator getDauerauftraege() throws RemoteException;
 
 	/**
+	 * Liefert alle Lastschriften, die fuer das Konto vorliegen.
+   * @return Liste der Lastschriften.
+   * @throws RemoteException
+   */
+  public DBIterator getLastschriften() throws RemoteException;
+
+	/**
 	 * Liefert die HBCI-Protokollierung des Kontos in Form einer Liste von Protokoll-Objekten.
    * @return Liste von Protokoll-Objekten.
    * @throws RemoteException
@@ -197,7 +204,10 @@ public interface Konto extends DBObject,Checksum
 
 /**********************************************************************
  * $Log$
- * Revision 1.19  2004-10-25 23:12:02  willuhn
+ * Revision 1.20  2005-02-03 23:57:05  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.19  2004/10/25 23:12:02  willuhn
  * *** empty log message ***
  *
  * Revision 1.18  2004/10/25 22:39:14  willuhn

@@ -59,14 +59,7 @@ public class UeberweisungImpl extends AbstractTransferImpl implements Ueberweisu
    * @see de.willuhn.datasource.db.AbstractDBObject#deleteCheck()
    */
   protected void deleteCheck() throws ApplicationException {
-		try {
-			if (ausgefuehrt())
-				throw new ApplicationException(i18n.tr("Bereits ausgeführte Aufträge können nicht gelöscht werden."));
-		}
-		catch (RemoteException e)
-		{
-			throw new ApplicationException(i18n.tr("Fehler beim Löschen des Auftrags."));
-		}
+  	// Kann geloescht werden
   }
 
   /**
@@ -193,7 +186,10 @@ public class UeberweisungImpl extends AbstractTransferImpl implements Ueberweisu
 
 /**********************************************************************
  * $Log$
- * Revision 1.30  2005-02-03 18:57:42  willuhn
+ * Revision 1.31  2005-02-03 23:57:05  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.30  2005/02/03 18:57:42  willuhn
  * *** empty log message ***
  *
  * Revision 1.29  2005/01/19 00:16:05  willuhn
