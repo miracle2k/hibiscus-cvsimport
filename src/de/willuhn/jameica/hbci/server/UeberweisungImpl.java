@@ -23,6 +23,7 @@ import de.willuhn.jameica.hbci.rmi.Ueberweisung;
 import de.willuhn.jameica.hbci.server.hbci.HBCIFactory;
 import de.willuhn.jameica.hbci.server.hbci.HBCIUeberweisungJob;
 import de.willuhn.jameica.system.Application;
+import de.willuhn.jameica.system.OperationCanceledException;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
 import de.willuhn.util.Logger;
@@ -132,7 +133,11 @@ public class UeberweisungImpl extends AbstractTransferImpl implements Ueberweisu
   /**
    * @see de.willuhn.jameica.hbci.rmi.Ueberweisung#execute()
    */
-  public synchronized void execute() throws ApplicationException, RemoteException {
+  public synchronized void execute() throws
+  	ApplicationException, 
+  	RemoteException, 
+  	OperationCanceledException
+  {
 
 		if (isNewObject())
 			store();
@@ -241,7 +246,10 @@ public class UeberweisungImpl extends AbstractTransferImpl implements Ueberweisu
 
 /**********************************************************************
  * $Log$
- * Revision 1.23  2004-10-18 23:38:17  willuhn
+ * Revision 1.24  2004-10-19 23:33:31  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.23  2004/10/18 23:38:17  willuhn
  * @C Refactoring
  * @C Aufloesung der Listener und Ersatz gegen Actions
  *

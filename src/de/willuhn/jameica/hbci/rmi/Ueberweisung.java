@@ -15,6 +15,7 @@ package de.willuhn.jameica.hbci.rmi;
 import java.rmi.RemoteException;
 import java.util.Date;
 
+import de.willuhn.jameica.system.OperationCanceledException;
 import de.willuhn.util.ApplicationException;
 
 /**
@@ -44,13 +45,14 @@ public interface Ueberweisung extends Transfer
    */
   public void setTermin(Date termin) throws RemoteException;
 
-	/**
+  /**
 	 * Fuehrt die Ueberweisung aus zum definierten Termin aus.
 	 * Ist dieser Termin nicht definiert, wird sie sofort ausgefuehrt.
 	 * @throws RemoteException
    * @throws ApplicationException
+   * @throws OperationCanceledException
    */
-  public void execute() throws RemoteException, ApplicationException;
+  public void execute() throws RemoteException, ApplicationException, OperationCanceledException;
   
   /**
    * Dupliziert die Ueberweisung.
@@ -71,7 +73,10 @@ public interface Ueberweisung extends Transfer
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2004-07-11 16:14:29  willuhn
+ * Revision 1.8  2004-10-19 23:33:31  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.7  2004/07/11 16:14:29  willuhn
  * @N erster Code fuer Dauerauftraege
  *
  * Revision 1.6  2004/04/24 19:04:51  willuhn

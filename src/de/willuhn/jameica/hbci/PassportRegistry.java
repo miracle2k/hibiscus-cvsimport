@@ -40,12 +40,12 @@ public class PassportRegistry {
 			Class[] found = finder.findImplementors(Passport.class);
 			for (int i=0;i<found.length;++i)
 			{
-				Logger.info("found passport type " + found[i].getName() + ", try to instanciate");
+				Logger.info("found passport type " + found[i].getName() + ", try to instantiate");
 				try {
 					Passport p = (Passport) found[i].newInstance();
 					passportsByName.put(p.getName(),p);
 					passportsByClass.put(found[i].getName(),p);
-					Logger.info("[" + p.getName() + "] instanciated successfully");
+					Logger.info("[" + p.getName() + "] instantiated successfully");
 				}
 				catch (Exception e)
 				{
@@ -110,7 +110,10 @@ public class PassportRegistry {
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2004-07-21 23:54:30  willuhn
+ * Revision 1.7  2004-10-19 23:33:31  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.6  2004/07/21 23:54:30  willuhn
  * *** empty log message ***
  *
  * Revision 1.5  2004/06/30 20:58:29  willuhn

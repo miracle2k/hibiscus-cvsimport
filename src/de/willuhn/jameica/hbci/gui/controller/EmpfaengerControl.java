@@ -85,7 +85,7 @@ public class EmpfaengerControl extends AbstractControl {
 	{
 		DBIterator list = Settings.getDBService().createList(Empfaenger.class);
 
-		TablePart table = new TablePart(list,this);
+		TablePart table = new TablePart(list,new de.willuhn.jameica.hbci.gui.action.EmpfaengerNeu());
 		table.addColumn(i18n.tr("Kontonummer"),"kontonummer");
 		table.addColumn(i18n.tr("Bankleitzahl"),"blz");
 		table.addColumn(i18n.tr("Name"),"name");
@@ -184,14 +184,6 @@ public class EmpfaengerControl extends AbstractControl {
   }
 
   /**
-   * @see de.willuhn.jameica.gui.controller.AbstractControl#handleCancel()
-   */
-  public void handleCancel() {
-		// GUI.startView(EmpfaengerListe.class.getName(),null);
-		GUI.startPreviousView();
-  }
-
-  /**
    * @see de.willuhn.jameica.gui.controller.AbstractControl#handleStore()
    */
   public synchronized void handleStore() {
@@ -255,7 +247,10 @@ public class EmpfaengerControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.20  2004-10-15 20:09:43  willuhn
+ * Revision 1.21  2004-10-19 23:33:31  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.20  2004/10/15 20:09:43  willuhn
  * @B Laengen-Pruefung bei Empfaengername
  *
  * Revision 1.19  2004/10/08 13:37:47  willuhn

@@ -12,13 +12,12 @@
  **********************************************************************/
 package de.willuhn.jameica.hbci.gui.views;
 
-import org.eclipse.swt.widgets.Event;
-import org.eclipse.swt.widgets.Listener;
-
 import de.willuhn.jameica.gui.AbstractView;
+import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.util.ButtonArea;
 import de.willuhn.jameica.hbci.HBCI;
+import de.willuhn.jameica.hbci.gui.action.DauerauftragNeu;
 import de.willuhn.jameica.hbci.gui.controller.DauerauftragControl;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.util.ApplicationException;
@@ -46,14 +45,14 @@ public class DauerauftragListe extends AbstractView {
 			control.getDauerauftragListe().paint(getParent());
 
 			ButtonArea buttons = new ButtonArea(getParent(),2);
-			buttons.addCustomButton(i18n.tr("Existierende Daueraufträge abrufen"), new Listener()
+			buttons.addButton(i18n.tr("Existierende Daueraufträge abrufen"), new Action()
       {
-        public void handleEvent(Event event)
+        public void handleAction(Object context) throws ApplicationException
         {
-        	control.handleFetchDauerauftraege();
+					control.handleFetchDauerauftraege();
         }
       });
-			buttons.addCreateButton(i18n.tr("neuer Dauerauftrag"),control);
+			buttons.addButton(i18n.tr("neuer Dauerauftrag"),new DauerauftragNeu());
 
 		}
 		catch (Exception e)
@@ -74,7 +73,10 @@ public class DauerauftragListe extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2004-10-17 16:28:46  willuhn
+ * Revision 1.8  2004-10-19 23:33:31  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.7  2004/10/17 16:28:46  willuhn
  * @N Die ersten Dauerauftraege abgerufen ;)
  *
  * Revision 1.6  2004/10/08 13:37:48  willuhn
