@@ -312,7 +312,9 @@ public class KontoControl extends AbstractControl {
    * @see de.willuhn.jameica.gui.controller.AbstractControl#handleCancel()
    */
   public void handleCancel() {
-		GUI.startView(KontoListe.class.getName(),null);
+		// GUI.startView(KontoListe.class.getName(),null);
+		GUI.startPreviousView();
+
   }
 
   /**
@@ -522,7 +524,10 @@ public class KontoControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.21  2004-04-12 19:15:31  willuhn
+ * Revision 1.22  2004-04-13 23:14:23  willuhn
+ * @N datadir
+ *
+ * Revision 1.21  2004/04/12 19:15:31  willuhn
  * @C refactoring
  *
  * Revision 1.20  2004/04/05 23:28:46  willuhn
