@@ -58,9 +58,9 @@ public class KontoFetchDauerauftraege implements Action
 					try {
 						GUI.getStatusBar().setSuccessText(i18n.tr("Daueraufträge werden abgerufen..."));
 						k.refreshDauerauftraege();
-						// Jetzt aktualisieren wir die GUI, indem wir uns selbst neu laden ;)
-						GUI.startView(DauerauftragListe.class.getName(),null);
 						GUI.getStatusBar().setSuccessText(i18n.tr("...Umsätze erfolgreich übertragen"));
+
+						new DauerauftragListe().handleAction(k);
 					}
 					catch (ApplicationException e2)
 					{
@@ -85,7 +85,10 @@ public class KontoFetchDauerauftraege implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2004-10-20 12:08:18  willuhn
+ * Revision 1.2  2004-10-23 18:13:45  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.1  2004/10/20 12:08:18  willuhn
  * @C MVC-Refactoring (new Controllers)
  *
  * Revision 1.1  2004/10/18 23:38:17  willuhn

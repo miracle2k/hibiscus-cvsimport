@@ -17,7 +17,6 @@ import java.rmi.RemoteException;
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.hbci.HBCI;
-import de.willuhn.jameica.hbci.gui.views.KontoNeu;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.util.ApplicationException;
@@ -66,7 +65,7 @@ public class KontoFetchSaldo implements Action
 				public void run() {
 					try {
 						k.refreshSaldo();
-						GUI.startView(KontoNeu.class.getName(),k);
+						new de.willuhn.jameica.hbci.gui.action.KontoNeu().handleAction(k);
 					}
 					catch (ApplicationException e2)
 					{
@@ -96,7 +95,10 @@ public class KontoFetchSaldo implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2004-10-20 12:08:18  willuhn
+ * Revision 1.2  2004-10-23 18:13:45  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.1  2004/10/20 12:08:18  willuhn
  * @C MVC-Refactoring (new Controllers)
  *
  * Revision 1.1  2004/10/18 23:38:17  willuhn
