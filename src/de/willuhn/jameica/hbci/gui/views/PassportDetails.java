@@ -22,11 +22,11 @@ import de.willuhn.jameica.gui.util.ButtonArea;
 import de.willuhn.jameica.gui.util.LabelGroup;
 import de.willuhn.jameica.gui.views.AbstractView;
 import de.willuhn.jameica.hbci.HBCI;
-import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.gui.controller.PassportControlDDV;
 import de.willuhn.jameica.hbci.rmi.Passport;
 import de.willuhn.jameica.hbci.rmi.PassportDDV;
 import de.willuhn.jameica.hbci.rmi.PassportType;
+import de.willuhn.jameica.hbci.server.HBCIFactory;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
 
@@ -44,14 +44,13 @@ public class PassportDetails extends AbstractView {
 
 		GUI.getView().setTitle(i18n.tr("Eigenschaften des Sicherheitsmediums"));
 
-		Passport p = (Passport) getCurrentObject();
-		
-		// Das ist erstmal nur ein anonymer Passport. Wir muessen noch die
-		// zugehoerige Impl suchen.
-		// TODO: Das ist noch gar nicht schoen.
+		Passport 		  p = (Passport) getCurrentObject();
 		PassportType pt = p.getPassportType();
-		String clazz = pt.getImplementor();
-		p = (Passport) Settings.getDatabase().createObject(Application.getClassLoader().load(clazz),p.getID());
+
+		// getCurrentObject ist erstmal nur ein anonymer Passport. Wir muessen noch die
+		// zugehoerige Impl suchen.
+		p = HBCIFactory.getInstance().findImplementor(p);
+
 		if (p.isNewObject())
 			p.setPassportType(pt); // ist ein neuer Passport - der hat keinen Typ nach dem Laden
 		setCurrentObject(p);
@@ -107,7 +106,10 @@ public class PassportDetails extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.10  2004-04-12 19:15:31  willuhn
+ * Revision 1.11  2004-04-14 23:53:46  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.10  2004/04/12 19:15:31  willuhn
  * @C refactoring
  *
  * Revision 1.9  2004/03/30 22:07:49  willuhn

@@ -144,6 +144,7 @@ public class PassportDDVImpl
 		try {
 	
 			Application.getLog().info("using passport path " + Settings.getWorkPath() + "/passports/");
+			Application.getLog().info("using library path " + Settings.getLibPath());
 			HBCIUtils.setParam("client.passport.default","DDV");
 			HBCIUtils.setParam("client.passport.DDV.path",Settings.getWorkPath() + "/passports/");
 	
@@ -248,7 +249,10 @@ public class PassportDDVImpl
 
 /**********************************************************************
  * $Log$
- * Revision 1.10  2004-04-13 23:14:22  willuhn
+ * Revision 1.11  2004-04-14 23:53:46  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.10  2004/04/13 23:14:22  willuhn
  * @N datadir
  *
  * Revision 1.9  2004/04/05 23:28:46  willuhn

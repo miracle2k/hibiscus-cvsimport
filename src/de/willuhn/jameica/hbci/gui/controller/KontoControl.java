@@ -38,7 +38,7 @@ import de.willuhn.jameica.hbci.gui.views.KontoNeu;
 import de.willuhn.jameica.hbci.gui.views.UmsatzListe;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Passport;
-import de.willuhn.jameica.hbci.rmi.PassportType;
+import de.willuhn.jameica.hbci.server.HBCIFactory;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
 
@@ -102,19 +102,14 @@ public class KontoControl extends AbstractControl {
 		if (passport != null)
 			return passport;
 
-
-		// TODO: Schoener machen (ueber Factory).
-		Passport tmp = (Passport) getPassportAuswahl().getValue();
-
-		PassportType pt = tmp.getPassportType();
-		String clazz = pt.getImplementor();
 		try {
-		  passport = (Passport) Settings.getDatabase().createObject(Application.getClassLoader().load(clazz),tmp.getID());
-		  return passport;
+			passport = HBCIFactory.getInstance().findImplementor((Passport) getPassportAuswahl().getValue());
+			return passport;
 		}
 		catch (ClassNotFoundException e)
 		{
-		  throw new RemoteException("unable to find implementor for this passport",e);
+			Application.getLog().error("unable to find implementor for passport",e);
+			throw new RemoteException("unable to find implementor for passport",e);
 		}
   }
 
@@ -524,7 +519,10 @@ public class KontoControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.22  2004-04-13 23:14:23  willuhn
+ * Revision 1.23  2004-04-14 23:53:46  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.22  2004/04/13 23:14:23  willuhn
  * @N datadir
  *
  * Revision 1.21  2004/04/12 19:15:31  willuhn

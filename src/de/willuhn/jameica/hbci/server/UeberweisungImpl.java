@@ -234,7 +234,7 @@ public class UeberweisungImpl
 	
 		try {
 
-			JobFactory.getInstance().execute(this);
+			HBCIFactory.getInstance().execute(this);
 
 			// wenn alles erfolgreich verlief, koennen wir die Ueberweisung auf
 			// Status "ausgefuehrt" setzen.
@@ -311,7 +311,10 @@ public class UeberweisungImpl
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2004-04-05 23:28:46  willuhn
+ * Revision 1.6  2004-04-14 23:53:46  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.5  2004/04/05 23:28:46  willuhn
  * *** empty log message ***
  *
  * Revision 1.4  2004/03/06 18:25:10  willuhn

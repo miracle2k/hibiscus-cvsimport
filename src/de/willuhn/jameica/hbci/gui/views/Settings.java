@@ -92,8 +92,6 @@ public class Settings extends AbstractView {
    * @see de.willuhn.jameica.gui.views.AbstractView#unbind()
    */
   public void unbind() throws ApplicationException {
-    // TODO Auto-generated method stub
-
   }
 
 }
@@ -101,7 +99,10 @@ public class Settings extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.12  2004-04-12 19:15:31  willuhn
+ * Revision 1.13  2004-04-14 23:53:46  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.12  2004/04/12 19:15:31  willuhn
  * @C refactoring
  *
  * Revision 1.11  2004/04/05 23:28:46  willuhn
