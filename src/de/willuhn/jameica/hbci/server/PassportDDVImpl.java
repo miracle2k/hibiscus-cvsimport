@@ -235,6 +235,7 @@ public class PassportDDVImpl
 				k.setKontonummer(konten[i].number);
 				k.setKundennummer(konten[i].customerid);
 				k.setName(konten[i].name);
+				k.setBezeichnung(konten[i].type);
 				k.setWaehrung(konten[i].curr);
 				result.add(k);
 			}
@@ -258,7 +259,10 @@ public class PassportDDVImpl
 
 /**********************************************************************
  * $Log$
- * Revision 1.8  2004-03-30 22:07:50  willuhn
+ * Revision 1.9  2004-04-05 23:28:46  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.8  2004/03/30 22:07:50  willuhn
  * *** empty log message ***
  *
  * Revision 1.7  2004/03/06 18:25:10  willuhn

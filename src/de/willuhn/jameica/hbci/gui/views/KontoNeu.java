@@ -50,6 +50,7 @@ public class KontoNeu extends AbstractView {
 
 			group.addLabelPair(i18n.tr("Kontonummer"),			    		control.getKontonummer());
 			group.addLabelPair(i18n.tr("Bankleitzahl"),			    		control.getBlz());
+			group.addLabelPair(i18n.tr("Bezeichnung des Kontos"),		control.getBezeichnung());
 			group.addLabelPair(i18n.tr("Kontoinhaber"),			    		control.getName());
 			group.addLabelPair(i18n.tr("Kundennummer"),							control.getKundennummer());
       group.addLabelPair(i18n.tr("Währungsbezeichnung"),  		control.getWaehrung());
@@ -102,7 +103,10 @@ public class KontoNeu extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.10  2004-03-30 22:07:49  willuhn
+ * Revision 1.11  2004-04-05 23:28:46  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.10  2004/03/30 22:07:49  willuhn
  * *** empty log message ***
  *
  * Revision 1.9  2004/03/05 00:04:10  willuhn

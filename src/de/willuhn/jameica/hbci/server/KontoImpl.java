@@ -305,11 +305,16 @@ public class KontoImpl extends AbstractDBObject implements Konto {
 
 		Umsatz[] umsaetze = JobFactory.getInstance().getUmsaetze(this);
 
+		// Wir vergleichen noch mit den Umsaetzen, die wir schon haben und
+		// speichern nur die neuen.
+		DBIterator existing = getUmsaetze();
+
 		// wir speichern die Umsaetze gleich noch ab
 		try {
 			for (int i=0;i<umsaetze.length;++i)
 			{
-				umsaetze[i].store();
+				if (existing.contains(umsaetze[i]) == null)
+					umsaetze[i].store();
 			}
 		}
 		catch (ApplicationException e)
@@ -352,12 +357,29 @@ public class KontoImpl extends AbstractDBObject implements Konto {
 			list.next().delete();
 		}
   }
+
+  /**
+   * @see de.willuhn.jameica.hbci.rmi.Konto#getBezeichnung()
+   */
+  public String getBezeichnung() throws RemoteException {
+    return (String) getField("bezeichnung");
+  }
+
+  /**
+   * @see de.willuhn.jameica.hbci.rmi.Konto#setBezeichnung(java.lang.String)
+   */
+  public void setBezeichnung(String bezeichnung) throws RemoteException {
+		setField("bezeichnung",bezeichnung);
+  }
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.15  2004-04-04 18:30:23  willuhn
+ * Revision 1.16  2004-04-05 23:28:46  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.15  2004/04/04 18:30:23  willuhn
  * *** empty log message ***
  *
  * Revision 1.14  2004/03/19 01:44:13  willuhn

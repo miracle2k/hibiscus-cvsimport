@@ -158,7 +158,7 @@ public class JobFactory {
   public synchronized void execute(Ueberweisung u) throws ApplicationException, RemoteException
 	{
 		if (u == null)
-			throw new ApplicationException(i18n.tr("Bitte geben Sie die Überweisungan, " +				"welche Sie ausführen möchten"));
+			throw new ApplicationException(i18n.tr("Bitte geben Sie die Überweisung an, " +				"welche Sie ausführen möchten"));
 
 		if (u.ausgefuehrt())
 			throw new ApplicationException(i18n.tr("Überweisung wurde bereits ausgeführt."));
@@ -332,7 +332,10 @@ public class JobFactory {
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2004-04-04 18:30:23  willuhn
+ * Revision 1.10  2004-04-05 23:28:46  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.9  2004/04/04 18:30:23  willuhn
  * *** empty log message ***
  *
  * Revision 1.8  2004/03/11 08:55:42  willuhn
