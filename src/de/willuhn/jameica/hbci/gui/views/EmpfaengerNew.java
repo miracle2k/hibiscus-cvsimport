@@ -40,7 +40,7 @@ public class EmpfaengerNew extends AbstractView {
 
 		I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
-		GUI.getView().setTitle(i18n.tr("Empfänger bearbeiten"));
+		GUI.getView().setTitle(i18n.tr("Adresse bearbeiten"));
 		
 		final EmpfaengerControl control = new EmpfaengerControl(this);
 		LabelGroup group = new LabelGroup(getParent(),i18n.tr("Eigenschaften"));
@@ -83,7 +83,10 @@ public class EmpfaengerNew extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2004-11-13 17:12:15  willuhn
+ * Revision 1.2  2005-03-04 00:52:45  web0
+ * @C s/Empfaenger/Adresse/
+ *
+ * Revision 1.1  2004/11/13 17:12:15  willuhn
  * *** empty log message ***
  *
  * Revision 1.12  2004/11/12 18:25:07  willuhn
