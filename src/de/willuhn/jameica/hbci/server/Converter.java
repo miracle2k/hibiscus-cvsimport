@@ -119,7 +119,7 @@ public class Converter {
 
 	/**
 	 * Konvertiert einen Jameica-Empfaenger in ein HBCI4Java Konto.
-	 * @param Empfaenger unser Empfaenger
+	 * @param empfaenger unser Empfaenger
 	 * @return das HBCI4Java Konto.
 	 * @throws RemoteException
 	 */
@@ -155,7 +155,10 @@ public class Converter {
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2004-04-22 23:46:50  willuhn
+ * Revision 1.5  2004-04-25 17:41:05  willuhn
+ * @D javadoc
+ *
+ * Revision 1.4  2004/04/22 23:46:50  willuhn
  * @N UeberweisungJob
  *
  * Revision 1.3  2004/04/19 22:05:51  willuhn
