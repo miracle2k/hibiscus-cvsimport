@@ -42,7 +42,7 @@ public class Welcome extends AbstractView
 		group.addTable(control.getOffeneUeberweisungen());
 
 		control.getWelcomeText().paint(getParent());
-
+	
   }
 
   /**
@@ -57,7 +57,10 @@ public class Welcome extends AbstractView
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2004-04-12 19:15:31  willuhn
+ * Revision 1.8  2004-05-23 15:33:10  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.7  2004/04/12 19:15:31  willuhn
  * @C refactoring
  *
  * Revision 1.6  2004/04/05 23:28:46  willuhn
