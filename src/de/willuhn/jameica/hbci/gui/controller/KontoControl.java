@@ -429,17 +429,17 @@ public class KontoControl extends AbstractControl {
 					getKonto().refreshSaldo();
 					getSaldo().setValue(HBCI.DECIMALFORMAT.format(getKonto().getSaldo()) + " " + getKonto().getWaehrung());
 					getSaldoDatum().setValue(HBCI.LONGDATEFORMAT.format(getKonto().getSaldoDatum()));
-					GUI.setActionText(i18n.tr("Saldo des Kontos erfolgreich übertragen..."));
-      	}
-      	catch (RemoteException e)
-      	{
-					Application.getLog().error("error while reading saldo",e);
-					GUI.setActionText(e.getLocalizedMessage());
+					GUI.setActionText(i18n.tr("...Saldo des Kontos erfolgreich übertragen"));
       	}
       	catch (ApplicationException e2)
       	{
-      		GUI.setActionText(e2.getLocalizedMessage());
+      		GUI.setErrorText(e2.getLocalizedMessage());
       	}
+				catch (Exception e)
+				{
+					Application.getLog().error("error while reading saldo",e);
+					GUI.setActionText(i18n.tr("Fehler beim Abrufen des Saldos."));
+				}
       }
     });
 
@@ -494,7 +494,10 @@ public class KontoControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.13  2004-03-05 00:04:10  willuhn
+ * Revision 1.14  2004-03-05 00:40:29  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.13  2004/03/05 00:04:10  willuhn
  * @N added code for umsatzlist
  *
  * Revision 1.12  2004/03/03 22:26:40  willuhn
