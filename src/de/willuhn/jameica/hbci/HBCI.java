@@ -120,7 +120,7 @@ public class HBCI extends AbstractPlugin
 		if (checkSum.equals("KvynDJyxe6D1XUvSCkNAFA==")) // 1.0
 			return;
 
-		if (checkSum.equals("GC9v3eRr3vUpYFO2dxwYyg==")) // 1.1
+		if (checkSum.equals("TK7cSwV0T85Hysg5TjUDlQ==")) // 1.1
 			return;
 
 		throw new Exception("database checksum does not match any known version: " + checkSum);
@@ -223,7 +223,10 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
- * Revision 1.29  2004-10-24 17:19:02  willuhn
+ * Revision 1.30  2004-10-25 17:58:57  willuhn
+ * @N Haufen Dauerauftrags-Code
+ *
+ * Revision 1.29  2004/10/24 17:19:02  willuhn
  * *** empty log message ***
  *
  * Revision 1.28  2004/10/14 23:14:20  willuhn

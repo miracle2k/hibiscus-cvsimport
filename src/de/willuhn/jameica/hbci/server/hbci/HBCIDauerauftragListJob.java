@@ -32,28 +32,23 @@ import de.willuhn.util.Logger;
 public class HBCIDauerauftragListJob extends AbstractHBCIJob {
 
 	private I18N i18n = null;
+	private Konto konto = null;
 
 	/**
-	 * ct.
    * @param konto Konto, ueber welches die existierenden Dauerauftraege abgerufen werden.
+   * @throws RemoteException
    */
-  public HBCIDauerauftragListJob(Konto konto)
+  public HBCIDauerauftragListJob(Konto konto) throws RemoteException
 	{
-		super(konto);
+		this.konto = konto;
 
-		try {
-			setJobParam("my",Converter.HibiscusKonto2HBCIKonto(konto));
-		}
-		catch (RemoteException e)
-		{
-			throw new RuntimeException("Fehler beim Setzen des Kontos");
-		}
+		setJobParam("my",Converter.HibiscusKonto2HBCIKonto(konto));
 
 		i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 	}
 
   /**
-   * @see de.willuhn.jameica.hbci.rmi.hbci.HBCIJob#getIdentifier()
+   * @see de.willuhn.jameica.hbci.server.hbci.AbstractHBCIJob#getIdentifier()
    */
   public String getIdentifier() {
     return "DauerList";
@@ -83,7 +78,7 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob {
 										i18n.tr("Fehler beim Abrufen der Umsätze");
 
 			try {
-				getKonto().addToProtokoll(i18n.tr("Fehler beim Abrufen der Daueraufträge") + " ("+ msg +")",Protokoll.TYP_ERROR);
+				konto.addToProtokoll(i18n.tr("Fehler beim Abrufen der Daueraufträge") + " ("+ msg +")",Protokoll.TYP_ERROR);
 			}
 			catch (RemoteException e)
 			{
@@ -102,7 +97,7 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob {
 			auftraege[i] = Converter.HBCIDauer2HibiscusDauerauftrag(lines[i]);
 		}
 		try {
-			getKonto().addToProtokoll(i18n.tr("Daueraufträge abgerufen"),Protokoll.TYP_SUCCESS);
+			konto.addToProtokoll(i18n.tr("Daueraufträge abgerufen"),Protokoll.TYP_SUCCESS);
 		}
 		catch (RemoteException e)
 		{
@@ -116,7 +111,10 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2004-10-24 17:19:02  willuhn
+ * Revision 1.8  2004-10-25 17:58:56  willuhn
+ * @N Haufen Dauerauftrags-Code
+ *
+ * Revision 1.7  2004/10/24 17:19:02  willuhn
  * *** empty log message ***
  *
  * Revision 1.6  2004/10/23 17:34:31  willuhn

@@ -14,6 +14,8 @@ package de.willuhn.jameica.hbci.server.hbci;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.Properties;
 
 import org.kapott.hbci.GV.HBCIJob;
 import org.kapott.hbci.manager.HBCIHandler;
@@ -21,7 +23,6 @@ import org.kapott.hbci.manager.HBCIHandler;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.passport.PassportHandle;
-import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.jameica.system.OperationCanceledException;
 import de.willuhn.util.ApplicationException;
@@ -70,7 +71,7 @@ public class HBCIFactory {
    * @param job auszufuehrender Job.
    * @throws ApplicationException
    */
-  public synchronized void addJob(de.willuhn.jameica.hbci.rmi.hbci.HBCIJob job) throws ApplicationException
+  public synchronized void addJob(AbstractHBCIJob job) throws ApplicationException
 	{
 		if (inProgress)
 			throw new ApplicationException("Es läuft bereits eine andere HBCI-Abfrage.");
@@ -115,17 +116,20 @@ public class HBCIFactory {
 
 				for (int i=0;i<jobs.size();++i)
 				{
-					de.willuhn.jameica.hbci.rmi.hbci.HBCIJob job = (de.willuhn.jameica.hbci.rmi.hbci.HBCIJob) jobs.get(i);
+					AbstractHBCIJob job = (AbstractHBCIJob) jobs.get(i);
 					
-					Konto konto = job.getKonto();
-					if (konto == null)
-					{
-						Logger.warn("no konto defined in job " + job.getIdentifier() + ", skipping");
-						continue;
-					}
-
 					Logger.info("adding job " + job.getIdentifier() + " to queue");
 					HBCIJob j = handler.newJob(job.getIdentifier());
+
+					Logger.info("Job restrictions for " + job.getIdentifier());
+					Properties p = j.getJobRestrictions();
+					Enumeration en = p.keys();
+					while (en.hasMoreElements())
+					{
+						String key = (String) en.nextElement();
+						Logger.info("  " + key + ": " + p.getProperty(key));
+					}
+
 					job.setJob(j);
 					handler.addJob(j);
 				}
@@ -203,7 +207,10 @@ public class HBCIFactory {
 
 /**********************************************************************
  * $Log$
- * Revision 1.13  2004-10-24 17:19:02  willuhn
+ * Revision 1.14  2004-10-25 17:58:56  willuhn
+ * @N Haufen Dauerauftrags-Code
+ *
+ * Revision 1.13  2004/10/24 17:19:02  willuhn
  * *** empty log message ***
  *
  * Revision 1.12  2004/10/19 23:33:31  willuhn

@@ -65,7 +65,6 @@ public class UeberweisungDelete implements Action
 			// ok, wir loeschen das Objekt
 			u.delete();
 			GUI.getStatusBar().setSuccessText(i18n.tr("Überweisung gelöscht."));
-			GUI.startPreviousView();
 		}
 		catch (RemoteException e)
 		{
@@ -79,7 +78,10 @@ public class UeberweisungDelete implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2004-10-24 17:19:02  willuhn
+ * Revision 1.4  2004-10-25 17:58:56  willuhn
+ * @N Haufen Dauerauftrags-Code
+ *
+ * Revision 1.3  2004/10/24 17:19:02  willuhn
  * *** empty log message ***
  *
  * Revision 1.1  2004/10/21 14:05:05  willuhn

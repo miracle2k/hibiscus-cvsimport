@@ -65,7 +65,6 @@ public class EmpfaengerDelete implements Action
 			// ok, wir loeschen das Objekt
 			empf.delete();
 			GUI.getStatusBar().setSuccessText(i18n.tr("Empfängeradresse gelöscht."));
-			GUI.startPreviousView();
 		}
 		catch (RemoteException e)
 		{
@@ -79,7 +78,10 @@ public class EmpfaengerDelete implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2004-10-20 12:08:18  willuhn
+ * Revision 1.2  2004-10-25 17:58:56  willuhn
+ * @N Haufen Dauerauftrags-Code
+ *
+ * Revision 1.1  2004/10/20 12:08:18  willuhn
  * @C MVC-Refactoring (new Controllers)
  *
  **********************************************************************/

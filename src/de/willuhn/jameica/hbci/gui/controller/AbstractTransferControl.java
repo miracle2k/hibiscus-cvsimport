@@ -62,8 +62,6 @@ public abstract class AbstractTransferControl extends AbstractControl
 
 	private CheckboxInput storeEmpfaenger = null;
 
-	boolean stored												= false;
-
 	I18N i18n;
 
   /**
@@ -255,7 +253,6 @@ public abstract class AbstractTransferControl extends AbstractControl
    */
 	public synchronized void handleStore()
 	{
-		stored = false;
 		try {
   		
 			getTransfer().transactionBegin();
@@ -301,7 +298,6 @@ public abstract class AbstractTransferControl extends AbstractControl
 				GUI.getStatusBar().setSuccessText(i18n.tr("Auftrag gespeichert"));
 			}
 			getTransfer().transactionCommit();
-			stored = true;
 		}
 		catch (ApplicationException e)
 		{
@@ -408,7 +404,10 @@ public abstract class AbstractTransferControl extends AbstractControl
 
 /**********************************************************************
  * $Log$
- * Revision 1.12  2004-10-21 14:05:05  willuhn
+ * Revision 1.13  2004-10-25 17:58:57  willuhn
+ * @N Haufen Dauerauftrags-Code
+ *
+ * Revision 1.12  2004/10/21 14:05:05  willuhn
  * *** empty log message ***
  *
  * Revision 1.11  2004/10/20 12:34:02  willuhn

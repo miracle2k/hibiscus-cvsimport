@@ -60,7 +60,7 @@ public class UeberweisungExecute implements Action
 				throw new ApplicationException(i18n.tr("Überweisung wurde bereits ausgeführt"));
 
 			if (u.isNewObject())
-				throw new ApplicationException(i18n.tr("Bitte speichern Sie zunächst die Überweisung"));
+				u.store(); // wir speichern bei Bedarf selbst.
 
 			UeberweisungDialog d = new UeberweisungDialog(u,UeberweisungDialog.POSITION_CENTER);
 			try
@@ -120,7 +120,10 @@ public class UeberweisungExecute implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2004-10-24 17:19:02  willuhn
+ * Revision 1.4  2004-10-25 17:58:56  willuhn
+ * @N Haufen Dauerauftrags-Code
+ *
+ * Revision 1.3  2004/10/24 17:19:02  willuhn
  * *** empty log message ***
  *
  * Revision 1.2  2004/10/19 23:33:31  willuhn

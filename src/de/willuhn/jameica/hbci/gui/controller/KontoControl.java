@@ -141,6 +141,7 @@ public class KontoControl extends AbstractControl {
 		});
 		protokoll.addColumn(i18n.tr("Datum"),"datum",new DateFormatter(HBCI.LONGDATEFORMAT));
 		protokoll.addColumn(i18n.tr("Kommentar"),"kommentar");
+		protokoll.disableSummary();
 		return protokoll;
 
 	}
@@ -449,7 +450,10 @@ public class KontoControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.45  2004-10-20 12:08:18  willuhn
+ * Revision 1.46  2004-10-25 17:58:57  willuhn
+ * @N Haufen Dauerauftrags-Code
+ *
+ * Revision 1.45  2004/10/20 12:08:18  willuhn
  * @C MVC-Refactoring (new Controllers)
  *
  * Revision 1.44  2004/10/08 13:37:47  willuhn

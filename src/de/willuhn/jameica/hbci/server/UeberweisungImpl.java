@@ -18,7 +18,6 @@ import java.util.zip.CRC32;
 
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
-import de.willuhn.jameica.hbci.rmi.Empfaenger;
 import de.willuhn.jameica.hbci.rmi.Ueberweisung;
 import de.willuhn.jameica.hbci.server.hbci.HBCIFactory;
 import de.willuhn.jameica.hbci.server.hbci.HBCIUeberweisungJob;
@@ -148,18 +147,7 @@ public class UeberweisungImpl extends AbstractTransferImpl implements Ueberweisu
 		try {
 
 			HBCIFactory factory = HBCIFactory.getInstance();
-			HBCIUeberweisungJob job = new HBCIUeberweisungJob(getKonto());
-
-			Empfaenger empfaenger = (Empfaenger) Settings.getDBService().createObject(Empfaenger.class,null);
-			empfaenger.setBLZ(getEmpfaengerBLZ());
-			empfaenger.setKontonummer(getEmpfaengerKonto());
-			empfaenger.setName(getEmpfaengerName());
-			
-			job.setEmpfaenger(empfaenger);
-
-			job.setBetrag(getBetrag());
-			job.setZweck(getZweck());
-			job.setZweck2(getZweck2());
+			HBCIUeberweisungJob job = new HBCIUeberweisungJob(this);
 			
 			factory.addJob(job);
 			factory.executeJobs(getKonto().getPassport().getHandle());
@@ -246,7 +234,10 @@ public class UeberweisungImpl extends AbstractTransferImpl implements Ueberweisu
 
 /**********************************************************************
  * $Log$
- * Revision 1.24  2004-10-19 23:33:31  willuhn
+ * Revision 1.25  2004-10-25 17:58:56  willuhn
+ * @N Haufen Dauerauftrags-Code
+ *
+ * Revision 1.24  2004/10/19 23:33:31  willuhn
  * *** empty log message ***
  *
  * Revision 1.23  2004/10/18 23:38:17  willuhn
