@@ -119,31 +119,6 @@ public abstract class AbstractBaseUeberweisungControl extends AbstractTransferCo
 		return termin;
 	}
 
-	/**
-   * Deaktiviert alle Eingabe-Felder.
-   */
-  private void disableAll()
-	{
-		try {
-			Terminable bu = (Terminable) getTransfer();
-
-			if (!bu.ausgefuehrt())
-				return;
-			getBetrag().disable();
-			getEmpfaengerBlz().disable();
-			getEmpfaengerKonto().disable();
-			getEmpfaengerName().disable();
-			getKontoAuswahl().disable();
-			getTermin().disable();
-			getZweck().disable();
-			getZweck2().disable();
-		}
-		catch (RemoteException e)
-		{
-			Logger.error("error while disabling fields",e);
-		}
-	}
-
   /**
    * @see de.willuhn.jameica.hbci.gui.controller.AbstractTransferControl#handleStore()
    */
@@ -285,7 +260,10 @@ public abstract class AbstractBaseUeberweisungControl extends AbstractTransferCo
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2005-02-19 16:49:32  willuhn
+ * Revision 1.3  2005-03-01 18:51:04  web0
+ * @N Dialoge fuer Sammel-Lastschriften
+ *
+ * Revision 1.2  2005/02/19 16:49:32  willuhn
  * @B bugs 3,8,10
  *
  * Revision 1.1  2005/02/04 18:27:54  willuhn

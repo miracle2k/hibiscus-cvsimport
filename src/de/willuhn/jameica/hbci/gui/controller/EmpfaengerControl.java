@@ -152,14 +152,14 @@ public class EmpfaengerControl extends AbstractControl {
   		getEmpfaenger().store();
   		GUI.getStatusBar().setSuccessText(i18n.tr("Adresse gespeichert"));
   	}
+    catch (ApplicationException e2)
+    {
+      GUI.getView().setErrorText(e2.getMessage());
+    }
   	catch (RemoteException e)
   	{
   		Logger.error("error while storing address",e);
   		GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Speichern der Adresse"));
-  	}
-  	catch (ApplicationException e2)
-  	{
-  		GUI.getView().setErrorText(e2.getLocalizedMessage());
   	}
   }
 
@@ -191,7 +191,10 @@ public class EmpfaengerControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.26  2005-02-27 17:11:49  web0
+ * Revision 1.27  2005-03-01 18:51:04  web0
+ * @N Dialoge fuer Sammel-Lastschriften
+ *
+ * Revision 1.26  2005/02/27 17:11:49  web0
  * @N first code for "Sammellastschrift"
  * @C "Empfaenger" renamed into "Adresse"
  *

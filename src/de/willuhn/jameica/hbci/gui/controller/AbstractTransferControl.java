@@ -327,11 +327,10 @@ public abstract class AbstractTransferControl extends AbstractControl
 		 * @see org.eclipse.swt.widgets.Listener#handleEvent(org.eclipse.swt.widgets.Event)
 		 */
 		public void handleEvent(Event event) {
-			if (event == null)
+			if (event == null || event.data == null)
 				return;
 			konto = (Konto) event.data;
-			if (konto == null)
-				return;
+
 			try {
 				String b = konto.getBezeichnung();
 				getKontoAuswahl().setText(konto.getKontonummer());
@@ -397,7 +396,10 @@ public abstract class AbstractTransferControl extends AbstractControl
 
 /**********************************************************************
  * $Log$
- * Revision 1.21  2005-02-27 17:11:49  web0
+ * Revision 1.22  2005-03-01 18:51:04  web0
+ * @N Dialoge fuer Sammel-Lastschriften
+ *
+ * Revision 1.21  2005/02/27 17:11:49  web0
  * @N first code for "Sammellastschrift"
  * @C "Empfaenger" renamed into "Adresse"
  *

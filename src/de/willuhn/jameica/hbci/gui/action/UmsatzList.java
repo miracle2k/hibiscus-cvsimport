@@ -44,12 +44,12 @@ public class UmsatzList implements Action
 		try
 		{
 			if (k.isNewObject())
-				throw new ApplicationException(i18n.tr("Bitte speichern Sie zunächst das Konto"));
+				k.store(); // wir speichern eigenmaechtig
 		}
 		catch (RemoteException e)
 		{
-			Logger.error("error while loading umsaetze",e);
-			GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Laden der Umsätze"));
+			Logger.error("error while storing konto",e);
+			GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Speichern des Kontos"));
 		}
 		GUI.startView(de.willuhn.jameica.hbci.gui.views.UmsatzList.class,k);
   }
@@ -59,7 +59,10 @@ public class UmsatzList implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2005-01-19 00:16:04  willuhn
+ * Revision 1.4  2005-03-01 18:51:04  web0
+ * @N Dialoge fuer Sammel-Lastschriften
+ *
+ * Revision 1.3  2005/01/19 00:16:04  willuhn
  * @N Lastschriften
  *
  * Revision 1.2  2004/11/13 17:12:15  willuhn
