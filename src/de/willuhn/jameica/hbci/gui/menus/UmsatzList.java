@@ -15,6 +15,7 @@ package de.willuhn.jameica.hbci.gui.menus;
 import de.willuhn.jameica.gui.parts.CheckedContextMenuItem;
 import de.willuhn.jameica.gui.parts.ContextMenu;
 import de.willuhn.jameica.hbci.HBCI;
+import de.willuhn.jameica.hbci.gui.action.EmpfaengerAdd;
 import de.willuhn.jameica.hbci.gui.action.UmsatzDetail;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.util.I18N;
@@ -36,6 +37,9 @@ public class UmsatzList extends ContextMenu
 		i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
 		addItem(new CheckedContextMenuItem(i18n.tr("Öffnen"),new UmsatzDetail()));
+
+		addItem(new CheckedContextMenuItem(i18n.tr("Empfänger in Adressbuch übernehmen"),new EmpfaengerAdd()));
+
 	}
 
 }
@@ -43,7 +47,10 @@ public class UmsatzList extends ContextMenu
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2004-10-18 23:38:17  willuhn
+ * Revision 1.6  2005-03-01 22:05:13  web0
+ * @B fixed help pages
+ *
+ * Revision 1.5  2004/10/18 23:38:17  willuhn
  * @C Refactoring
  * @C Aufloesung der Listener und Ersatz gegen Actions
  *
