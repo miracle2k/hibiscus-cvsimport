@@ -31,7 +31,10 @@ public class About implements Action
    */
   public void handleAction(Object context) throws ApplicationException
   {
+    I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
+
   	ViewDialog d = new ViewDialog(new de.willuhn.jameica.hbci.gui.views.About(),ViewDialog.POSITION_CENTER);
+    d.setTitle(i18n.tr("About"));
   	try
   	{
 			d.open();
@@ -39,7 +42,6 @@ public class About implements Action
   	catch (Exception e)
   	{
   		Logger.error("error while opening about dialog",e);
-  		I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
   		throw new ApplicationException(i18n.tr("Fehler beim Anzeigen des About-Dialogs"),e);
   	}
   }
@@ -49,7 +51,11 @@ public class About implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2004-11-12 18:25:07  willuhn
+ * Revision 1.3  2005-03-31 23:05:46  web0
+ * @N geaenderte Startseite
+ * @N klickbare Links
+ *
+ * Revision 1.2  2004/11/12 18:25:07  willuhn
  * *** empty log message ***
  *
  * Revision 1.1  2004/10/12 23:48:39  willuhn

@@ -14,6 +14,7 @@ package de.willuhn.jameica.hbci.gui.action;
 
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
+import de.willuhn.jameica.hbci.rmi.Adresse;
 import de.willuhn.util.ApplicationException;
 
 /**
@@ -28,7 +29,10 @@ public class EmpfaengerNew implements Action
    */
   public void handleAction(Object context) throws ApplicationException
   {
-		GUI.startView(de.willuhn.jameica.hbci.gui.views.EmpfaengerNew.class,context);
+    Adresse e = null;
+    if (context instanceof Adresse)
+      e = (Adresse) context;
+		GUI.startView(de.willuhn.jameica.hbci.gui.views.EmpfaengerNew.class,e);
   }
 
 }
@@ -36,7 +40,11 @@ public class EmpfaengerNew implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2005-01-19 00:16:04  willuhn
+ * Revision 1.4  2005-03-31 23:05:46  web0
+ * @N geaenderte Startseite
+ * @N klickbare Links
+ *
+ * Revision 1.3  2005/01/19 00:16:04  willuhn
  * @N Lastschriften
  *
  * Revision 1.2  2004/11/13 17:12:15  willuhn
