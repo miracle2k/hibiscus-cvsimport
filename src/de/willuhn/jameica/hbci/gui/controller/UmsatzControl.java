@@ -77,7 +77,8 @@ public class UmsatzControl extends AbstractControl {
    */
   public TablePart getUmsatzListe() throws RemoteException
 	{
-		TablePart table = new TablePart(getKonto().getUmsaetze(),this,new TableFormatter() {
+		TablePart table = new TablePart(getKonto().getUmsaetze(),this);
+		table.setFormatter(new TableFormatter() {
       public void format(TableItem item) {
       	Umsatz u = (Umsatz) item.getData();
       	if (u == null) return;
@@ -229,7 +230,10 @@ public class UmsatzControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.10  2004-04-19 22:05:52  willuhn
+ * Revision 1.11  2004-04-19 22:53:52  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.10  2004/04/19 22:05:52  willuhn
  * @C HBCIJobs refactored
  *
  * Revision 1.9  2004/04/13 23:14:22  willuhn

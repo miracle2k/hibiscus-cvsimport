@@ -13,9 +13,11 @@
 package de.willuhn.jameica.hbci.gui.controller;
 
 import java.rmi.RemoteException;
+import java.util.Date;
 
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.TableItem;
 
 import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.jameica.PluginLoader;
@@ -23,6 +25,7 @@ import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.controller.AbstractControl;
 import de.willuhn.jameica.gui.formatter.CurrencyFormatter;
 import de.willuhn.jameica.gui.formatter.DateFormatter;
+import de.willuhn.jameica.gui.formatter.TableFormatter;
 import de.willuhn.jameica.gui.parts.FormTextPart;
 import de.willuhn.jameica.gui.parts.TablePart;
 import de.willuhn.jameica.gui.views.AbstractView;
@@ -59,6 +62,18 @@ public class WelcomeControl extends AbstractControl {
 		list.addFilter("ausgefuehrt = 0");
 
 		TablePart table = new TablePart(list,this);
+		table.setFormatter(new TableFormatter() {
+      public void format(TableItem item) {
+				try {
+					Date current = new Date();
+					Ueberweisung u = (Ueberweisung) item.getData();
+					if (u.getTermin().after(current))
+						item.setBackground(Settings.getBuchungSollBackground());
+				}
+				catch (RemoteException e)
+				{ /* ignore */}
+      }
+    });
 		table.addColumn(i18n.tr("Konto"),"konto_id");
 		table.addColumn(i18n.tr("Kto. des Empfängers"),"empfaenger_konto");
 		table.addColumn(i18n.tr("BLZ des Empfängers"),"empfaenger_blz");
@@ -129,7 +144,10 @@ public class WelcomeControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2004-04-12 19:15:31  willuhn
+ * Revision 1.3  2004-04-19 22:53:52  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.2  2004/04/12 19:15:31  willuhn
  * @C refactoring
  *
  * Revision 1.1  2004/04/05 23:28:46  willuhn

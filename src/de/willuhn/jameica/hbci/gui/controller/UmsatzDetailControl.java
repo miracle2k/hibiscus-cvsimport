@@ -28,6 +28,7 @@ import de.willuhn.jameica.gui.input.LabelInput;
 import de.willuhn.jameica.gui.views.AbstractView;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
+import de.willuhn.jameica.hbci.gui.views.UmsatzListe;
 import de.willuhn.jameica.hbci.rmi.Empfaenger;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Umsatz;
@@ -194,14 +195,14 @@ public class UmsatzDetailControl extends AbstractControl {
    * @see de.willuhn.jameica.gui.controller.AbstractControl#handleCancel()
    */
   public void handleCancel() {
-//    try {
-//      GUI.startView(UmsatzListe.class.getName(),getUmsatz().getKonto());
-//    }
-//    catch(RemoteException e)
-//    {
-//      Application.getLog().error("error while opening umsatz list",e);
-//			GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Laden der Umsätze"));
-//    }
+    try {
+      GUI.startView(UmsatzListe.class.getName(),getUmsatz().getKonto());
+    }
+    catch(RemoteException e)
+    {
+      Application.getLog().error("error while opening umsatz list",e);
+			GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Laden der Umsätze"));
+    }
 		GUI.startPreviousView();
 
   }
@@ -264,7 +265,10 @@ public class UmsatzDetailControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2004-04-13 23:14:23  willuhn
+ * Revision 1.5  2004-04-19 22:53:52  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.4  2004/04/13 23:14:23  willuhn
  * @N datadir
  *
  * Revision 1.3  2004/04/12 19:15:31  willuhn
