@@ -130,7 +130,7 @@ public class EmpfaengerControl extends AbstractControl {
 	{
 		if (name != null)
 			return name;
-		name = new TextInput(getEmpfaenger().getName());
+		name = new TextInput(getEmpfaenger().getName(),27);
 		return name;
 	}
 
@@ -255,7 +255,10 @@ public class EmpfaengerControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.19  2004-10-08 13:37:47  willuhn
+ * Revision 1.20  2004-10-15 20:09:43  willuhn
+ * @B Laengen-Pruefung bei Empfaengername
+ *
+ * Revision 1.19  2004/10/08 13:37:47  willuhn
  * *** empty log message ***
  *
  * Revision 1.18  2004/07/25 17:15:05  willuhn

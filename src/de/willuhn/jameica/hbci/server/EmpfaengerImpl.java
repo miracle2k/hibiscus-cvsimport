@@ -64,6 +64,9 @@ public class EmpfaengerImpl extends AbstractDBObject implements Empfaenger {
 			if (getName() == null || getName().length() == 0)
 				throw new ApplicationException("Bitte geben Sie einen Namen ein.");
 
+			if (getName().length() > 27)
+				throw new ApplicationException("Bitte geben Sie maximal 27 Zeichen für den Namen ein.");
+
 			if (getBLZ() == null || getBLZ().length() == 0)
 				throw new ApplicationException("Bitte geben Sie eine BLZ ein.");
 
@@ -152,7 +155,10 @@ public class EmpfaengerImpl extends AbstractDBObject implements Empfaenger {
 
 /**********************************************************************
  * $Log$
- * Revision 1.8  2004-08-18 23:13:51  willuhn
+ * Revision 1.9  2004-10-15 20:09:43  willuhn
+ * @B Laengen-Pruefung bei Empfaengername
+ *
+ * Revision 1.8  2004/08/18 23:13:51  willuhn
  * @D Javadoc
  *
  * Revision 1.7  2004/07/23 15:51:44  willuhn
