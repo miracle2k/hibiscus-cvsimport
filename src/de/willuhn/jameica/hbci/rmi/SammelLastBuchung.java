@@ -19,7 +19,7 @@ import de.willuhn.datasource.rmi.DBObject;
 /**
  * Interface fuer eine einzelne Buchung einer Sammellastschrift.
  */
-public interface SammelLastBuchung extends DBObject, Checksum
+public interface SammelLastBuchung extends DBObject
 {
 	/**
 	 * Liefert die zugeordnete Sammellastschrift.
@@ -138,7 +138,10 @@ public interface SammelLastBuchung extends DBObject, Checksum
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2005-02-27 17:11:49  web0
+ * Revision 1.2  2005-02-28 16:28:24  web0
+ * @N first code for "Sammellastschrift"
+ *
+ * Revision 1.1  2005/02/27 17:11:49  web0
  * @N first code for "Sammellastschrift"
  * @C "Empfaenger" renamed into "Adresse"
  *

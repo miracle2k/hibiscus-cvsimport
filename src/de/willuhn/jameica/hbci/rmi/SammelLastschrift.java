@@ -20,7 +20,7 @@ import de.willuhn.datasource.rmi.DBObject;
 /**
  * Interface fuer Sammellastschriften.
  */
-public interface SammelLastschrift extends DBObject, Terminable, Checksum
+public interface SammelLastschrift extends DBObject, Terminable
 {
 	/**
 	 * Liefert eine Liste der Buchungen fuer diese Sammellastschrift.
@@ -42,12 +42,29 @@ public interface SammelLastschrift extends DBObject, Terminable, Checksum
    * @throws RemoteException
    */
   public void setKonto(Konto konto) throws RemoteException;
+
+  /**
+   * Liefert eine Bezeichnung der Sammellastschrift.
+   * @return Bezeichnung.
+   * @throws RemoteException
+   */
+  public String getBezeichnung() throws RemoteException;
+
+  /**
+   * Speichert die Bezeichnung.
+   * @param bezeichnung
+   * @throws RemoteException
+   */
+  public void setBezeichnung(String bezeichnung) throws RemoteException;
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2005-02-27 17:11:49  web0
+ * Revision 1.2  2005-02-28 16:28:24  web0
+ * @N first code for "Sammellastschrift"
+ *
+ * Revision 1.1  2005/02/27 17:11:49  web0
  * @N first code for "Sammellastschrift"
  * @C "Empfaenger" renamed into "Adresse"
  *

@@ -17,7 +17,6 @@ import java.rmi.RemoteException;
 import de.willuhn.datasource.db.AbstractDBObject;
 import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.jameica.hbci.HBCI;
-import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.rmi.Umsatz;
 import de.willuhn.jameica.hbci.rmi.UmsatzTyp;
 import de.willuhn.jameica.system.Application;
@@ -180,7 +179,7 @@ public class UmsatzTypImpl extends AbstractDBObject implements UmsatzTyp {
    * @see de.willuhn.jameica.hbci.rmi.UmsatzTyp#getUmsaetze()
    */
   public DBIterator getUmsaetze() throws RemoteException {
-		DBIterator list = Settings.getDBService().createList(Umsatz.class);
+		DBIterator list = getService().createList(Umsatz.class);
 		list.addFilter("umsatztyp_id = " + getID() + " ORDER BY TONUMBER(datum)");
 		return list;
   }
@@ -190,7 +189,10 @@ public class UmsatzTypImpl extends AbstractDBObject implements UmsatzTyp {
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2004-11-12 18:25:07  willuhn
+ * Revision 1.10  2005-02-28 16:28:24  web0
+ * @N first code for "Sammellastschrift"
+ *
+ * Revision 1.9  2004/11/12 18:25:07  willuhn
  * *** empty log message ***
  *
  * Revision 1.8  2004/08/18 23:13:51  willuhn
