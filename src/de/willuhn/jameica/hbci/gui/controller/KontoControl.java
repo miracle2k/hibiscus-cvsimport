@@ -91,9 +91,17 @@ public class KontoControl extends AbstractControl {
 		if (konto != null)
 			return konto;
 		
-		konto = (Konto) getCurrentObject();
-		if (konto != null)
-			return konto;
+		try {
+			konto = (Konto) getCurrentObject();
+			if (konto != null)
+				return konto;
+		}
+		catch (ClassCastException e)
+		{
+			// Falls wir von 'nem anderen Dialog kommen, kann es durchaus sein,
+			// das getCurrentObject() was falsches liefert. Das ist aber nicht
+			// weiter schlimm. Wir erstellen dann einfach ein neues.
+		}
 		
 		// Kein Konto verfuegbar - wir bauen ein neues.
 		konto = (Konto) Settings.getDatabase().createObject(Konto.class,null);
@@ -600,7 +608,10 @@ public class KontoControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.30  2004-06-03 00:23:42  willuhn
+ * Revision 1.31  2004-06-07 21:55:59  willuhn
+ * @B ClassCastException nach dem Verlassen der Passport-Config von der KontoListe aus
+ *
+ * Revision 1.30  2004/06/03 00:23:42  willuhn
  * *** empty log message ***
  *
  * Revision 1.29  2004/05/26 23:23:10  willuhn
