@@ -15,7 +15,6 @@ package de.willuhn.jameica.hbci.rmi;
 import java.rmi.RemoteException;
 import java.util.Date;
 
-import de.willuhn.jameica.system.OperationCanceledException;
 import de.willuhn.util.ApplicationException;
 
 /**
@@ -99,37 +98,15 @@ public interface Dauerauftrag extends Transfer
    */
   public void delete() throws RemoteException, ApplicationException;
 
-	/**
-	 * Loescht den Dauerauftrag nur online bei der Bank - nicht lokal.
-   * @throws RemoteException
-   * @throws ApplicationException
-   * @throws OperationCanceledException
-   */
-  public void deleteOnline() throws
-		RemoteException,
-		ApplicationException,
-		OperationCanceledException;
-
-	/**
-	 * Fuehrt den Dauerauftrag aus.
-	 * Die Funktion erkennt selbst, ob es sich um einen neuen oder bei der Bank
-	 * schon vorliegenden Dauerauftrag handelt und entscheidet selbst, ob er
-	 * neu angelegt oder geaendert wird.
-	 * @throws RemoteException
-	 * @throws ApplicationException
-	 * @throws OperationCanceledException
-	 */
-	public void execute() throws
-		RemoteException,
-		ApplicationException,
-		OperationCanceledException;
-
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2004-10-25 17:58:57  willuhn
+ * Revision 1.7  2004-10-25 22:39:14  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.6  2004/10/25 17:58:57  willuhn
  * @N Haufen Dauerauftrags-Code
  *
  * Revision 1.5  2004/10/24 17:19:03  willuhn

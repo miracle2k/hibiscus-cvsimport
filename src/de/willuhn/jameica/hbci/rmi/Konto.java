@@ -17,8 +17,7 @@ import java.util.Date;
 
 import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.datasource.rmi.DBObject;
-import de.willuhn.jameica.hbci.passport.*;
-import de.willuhn.jameica.system.OperationCanceledException;
+import de.willuhn.jameica.hbci.passport.Passport;
 import de.willuhn.util.ApplicationException;
 
 /**
@@ -134,39 +133,19 @@ public interface Konto extends DBObject,Checksum
   public double getSaldo() throws RemoteException;
 
 	/**
+	 * Speichert den neuen Saldo.
+   * @param saldo Neuer Saldo.
+   * @throws RemoteException
+   */
+  public void setSaldo(double saldo) throws RemoteException;
+	
+	/**
 	 * Liefert das Datum des aktuellen Saldos oder <code>null</code> wenn er
 	 * noch nie abgefragt wurde.
    * @return Datum des Saldos.
    * @throws RemoteException
    */
   public Date getSaldoDatum() throws RemoteException;
-
-  /**
-	 * Aktualisiert den Saldo online.
-   * @return der neue Saldo.
-   * @throws ApplicationException
-   * @throws RemoteException
-   * @throws OperationCanceledException
-   */
-  public double refreshSaldo() throws ApplicationException, RemoteException, OperationCanceledException;
-
-  /**
-	 * Aktualisiert die Umsaetze des Kontos online.
-   * @return die neu hinzugekommenen Umsaetze.
-   * @throws ApplicationException
-   * @throws RemoteException
-   * @throws OperationCanceledException
-   */
-  public Umsatz[] refreshUmsaetze() throws ApplicationException, RemoteException, OperationCanceledException;
-
-  /**
-	 * Aktualisiert die Dauerauftraege des Kontos online.
-	 * @return die neu hinzugekommenen Dauerauftraege.
-   * @throws ApplicationException
-   * @throws RemoteException
-   * @throws OperationCanceledException
-   */
-  public Dauerauftrag[] refreshDauerauftraege() throws ApplicationException, RemoteException, OperationCanceledException;
 
 	/**
 	 * Liefert eine Liste aller Umsaetze fuer das Konto.
@@ -233,7 +212,10 @@ public interface Konto extends DBObject,Checksum
 
 /**********************************************************************
  * $Log$
- * Revision 1.17  2004-10-25 17:58:57  willuhn
+ * Revision 1.18  2004-10-25 22:39:14  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.17  2004/10/25 17:58:57  willuhn
  * @N Haufen Dauerauftrags-Code
  *
  * Revision 1.16  2004/10/24 17:19:03  willuhn

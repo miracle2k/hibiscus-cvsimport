@@ -141,10 +141,12 @@ public class HBCIFactory {
 					cancelled = false;
 					throw new OperationCanceledException();
 				}
-			}
-			catch (RemoteException e)
-			{
-				throw e;
+				for (int i=0;i<jobs.size();++i)
+				{
+					AbstractHBCIJob job = (AbstractHBCIJob) jobs.get(i);
+					Logger.info("executing check for job " + job.getIdentifier());
+					job.handleResult();
+				}
 			}
 			finally
 			{
@@ -207,7 +209,10 @@ public class HBCIFactory {
 
 /**********************************************************************
  * $Log$
- * Revision 1.14  2004-10-25 17:58:56  willuhn
+ * Revision 1.15  2004-10-25 22:39:14  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.14  2004/10/25 17:58:56  willuhn
  * @N Haufen Dauerauftrags-Code
  *
  * Revision 1.13  2004/10/24 17:19:02  willuhn

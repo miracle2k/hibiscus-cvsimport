@@ -19,10 +19,7 @@ import java.util.zip.CRC32;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.rmi.Ueberweisung;
-import de.willuhn.jameica.hbci.server.hbci.HBCIFactory;
-import de.willuhn.jameica.hbci.server.hbci.HBCIUeberweisungJob;
 import de.willuhn.jameica.system.Application;
-import de.willuhn.jameica.system.OperationCanceledException;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
 import de.willuhn.util.Logger;
@@ -33,8 +30,6 @@ import de.willuhn.util.Logger;
 public class UeberweisungImpl extends AbstractTransferImpl implements Ueberweisung
 {
 
-	private boolean inExecute = false;
-	
 	private I18N i18n;
 
   /**
@@ -94,7 +89,7 @@ public class UeberweisungImpl extends AbstractTransferImpl implements Ueberweisu
    */
   protected void updateCheck() throws ApplicationException {
 		try {
-			if (ausgefuehrt() && !inExecute)
+			if (ausgefuehrt())
 				throw new ApplicationException("Die Überweisung wurde bereits ausgeführt und kann daher nicht mehr geändert werden.");
 		}
 		catch (RemoteException e)
@@ -127,49 +122,6 @@ public class UeberweisungImpl extends AbstractTransferImpl implements Ueberweisu
    */
   public void setTermin(Date termin) throws RemoteException {
 		setAttribute("termin",termin);
-  }
-
-  /**
-   * @see de.willuhn.jameica.hbci.rmi.Ueberweisung#execute()
-   */
-  public synchronized void execute() throws
-  	ApplicationException, 
-  	RemoteException, 
-  	OperationCanceledException
-  {
-
-		if (isNewObject())
-			store();
-	
-		if (ausgefuehrt())
-			throw new ApplicationException("Die Überweisung wurde bereits ausgeführt.");
-
-		try {
-
-			HBCIFactory factory = HBCIFactory.getInstance();
-			HBCIUeberweisungJob job = new HBCIUeberweisungJob(this);
-			
-			factory.addJob(job);
-			factory.executeJobs(getKonto().getPassport().getHandle());
-
-			// Wenn der Job nicht erfolgreich war, fliegt hier eine ApplikationException
-			// mit der Fehlermeldung der Bank.
-			job.check();
-
-			// wenn alles erfolgreich verlief, koennen wir die Ueberweisung auf
-			// Status "ausgefuehrt" setzen.
-			inExecute = true; // ist noetig, weil uns sonst das updateCheck() um die Ohren fliegt
-			setAttribute("ausgefuehrt",new Integer(1));
-			store();
-		}
-		catch (RemoteException e)
-		{
-			Logger.error("error while executing ueberweisung",e);
-			throw new ApplicationException(i18n.tr("Fehler beim Ausfuehren der Überweisung"));
-		}
-		finally {
-			inExecute = false;
-		}
   }
 
   /**
@@ -229,12 +181,23 @@ public class UeberweisungImpl extends AbstractTransferImpl implements Ueberweisu
 		crc.update(s.getBytes());
 		return crc.getValue();
   }
+
+  /**
+   * @see de.willuhn.jameica.hbci.rmi.Ueberweisung#setAusgefuehrt()
+   */
+  public void setAusgefuehrt() throws RemoteException
+  {
+		setAttribute("ausgefuehrt",new Integer(1));
+  }
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.25  2004-10-25 17:58:56  willuhn
+ * Revision 1.26  2004-10-25 22:39:14  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.25  2004/10/25 17:58:56  willuhn
  * @N Haufen Dauerauftrags-Code
  *
  * Revision 1.24  2004/10/19 23:33:31  willuhn
