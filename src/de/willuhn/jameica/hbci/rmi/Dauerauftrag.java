@@ -84,7 +84,7 @@ public interface Dauerauftrag extends Transfer, Checksum
 	 * Liefert <code>true</code> wenn der Dauerauftrag bei der Bank aktiv ist.
 	 * Ob dieser nun von der Bank abgerufen oder lokal erstellt und dann
 	 * eingereicht wurde, spielt keine Rolle. Entscheidend ist lediglich, dass
-	 * er bei der Bank vorliegt.
+	 * er bei der Bank vorliegt und aktiv ist. 
 	 * @return true, wenn der Dauerauftrag bei der Bank aktiv ist.
 	 * @throws RemoteException
 	 */
@@ -103,7 +103,12 @@ public interface Dauerauftrag extends Transfer, Checksum
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2005-03-02 17:59:30  web0
+ * Revision 1.10  2005-03-04 00:50:16  web0
+ * @N Eingrauen abgelaufener Dauerauftraege
+ * @N automatisches Loeschen von Dauerauftraegen, die lokal zwar
+ * noch als aktiv markiert sind, bei der Bank jedoch nicht mehr existieren
+ *
+ * Revision 1.9  2005/03/02 17:59:30  web0
  * @N some refactoring
  *
  * Revision 1.8  2004/10/25 23:12:02  willuhn

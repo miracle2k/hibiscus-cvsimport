@@ -113,6 +113,7 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob {
 		GVRDauerList.Dauer[] lines = result.getEntries();
 		Dauerauftrag auftrag;
 		Dauerauftrag ex;
+		Logger.info("checking for new and changed entries");
 		for (int i=0;i<lines.length;++i)
 		{
 			try
@@ -129,15 +130,17 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob {
 					{
 						// Den haben wir schon, ueberschreiben wir
 						found = true;
-						Logger.debug("overwriting dauerauftrag order id: " + auftrag.getOrderID());
+						Logger.info("overwriting dauerauftrag order id: " + auftrag.getOrderID());
 						ex.overwrite(auftrag);
 						ex.store();
 						break;
 					}
 				}
 				if (!found)
+				{
+					Logger.info("storing dauerauftrag order id: " + auftrag.getOrderID());
 					auftrag.store();// den hammer nicht gefunden. Neu anlegen
-
+				}
 				existing.begin();
 			}
 			catch (Exception e)
@@ -146,6 +149,32 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob {
 			}
 		}
 
+		Logger.info("checking for deletable entries");
+		existing.begin();
+		while (existing.hasNext())
+		{
+			ex = (Dauerauftrag) existing.next();
+			if (!ex.isActive())
+				continue; // der existiert nicht bei der Bank und muss daher auch nicht geloescht werden.
+			boolean found = false;
+			for (int i=0;i<lines.length;++i)
+			{
+				auftrag = Converter.HBCIDauer2HibiscusDauerauftrag(lines[i]);
+				if (auftrag.getOrderID() != null && 
+						auftrag.getOrderID().equals(ex.getOrderID()) &&
+					  auftrag.getKonto().equals(ex.getKonto())
+					 )
+				{
+					found = true;
+					break;
+				}
+				if (!found)
+				{
+					Logger.info("dauerauftrag order id: " + ex.getOrderID() + " does no longer exist online, can be deleted");
+					ex.delete();
+				}
+			}
+		}
 
 		Logger.info("dauerauftrag list fetched successfully");
   }
@@ -154,7 +183,12 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.12  2004-11-14 19:21:37  willuhn
+ * Revision 1.13  2005-03-04 00:50:16  web0
+ * @N Eingrauen abgelaufener Dauerauftraege
+ * @N automatisches Loeschen von Dauerauftraegen, die lokal zwar
+ * noch als aktiv markiert sind, bei der Bank jedoch nicht mehr existieren
+ *
+ * Revision 1.12  2004/11/14 19:21:37  willuhn
  * *** empty log message ***
  *
  * Revision 1.11  2004/11/13 17:02:04  willuhn
