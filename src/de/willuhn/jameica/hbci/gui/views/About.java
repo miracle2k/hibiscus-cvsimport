@@ -23,7 +23,6 @@ import de.willuhn.jameica.gui.util.LabelGroup;
 import de.willuhn.jameica.gui.views.AbstractView;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.plugin.AbstractPlugin;
-import de.willuhn.jameica.plugin.PluginLoader;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
@@ -54,7 +53,7 @@ public class About extends AbstractView {
 
     LabelGroup group = new LabelGroup(getParent(),i18n.tr("Hibiscus"));
 
-     AbstractPlugin plugin = PluginLoader.getPlugin(HBCI.class);
+     AbstractPlugin plugin = Application.getPluginLoader().getPlugin(HBCI.class);
     group.addLabelPair(i18n.tr("Version"),           new LabelInput(""+ plugin.getVersion() + "-" + plugin.getBuildnumber()));
 
   }
@@ -70,7 +69,10 @@ public class About extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2004-07-21 23:54:30  willuhn
+ * Revision 1.5  2004-07-25 17:15:05  willuhn
+ * @C PluginLoader is no longer static
+ *
+ * Revision 1.4  2004/07/21 23:54:30  willuhn
  * *** empty log message ***
  *
  * Revision 1.3  2004/06/08 22:28:58  willuhn

@@ -24,7 +24,7 @@ import de.willuhn.jameica.gui.util.ButtonArea;
 import de.willuhn.jameica.gui.util.LabelGroup;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.rmi.Ueberweisung;
-import de.willuhn.jameica.plugin.PluginLoader;
+import de.willuhn.jameica.system.Application;
 import de.willuhn.util.I18N;
 
 /**
@@ -48,7 +48,7 @@ public class UeberweisungDialog extends AbstractDialog {
   public UeberweisungDialog(Ueberweisung u, int position) {
     super(position);
 
-		i18n = PluginLoader.getPlugin(HBCI.class).getResources().getI18N();
+		i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
     this.ueb = u;
     this.setTitle(i18n.tr("Sicher?"));
@@ -115,7 +115,10 @@ public class UeberweisungDialog extends AbstractDialog {
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2004-07-21 23:54:30  willuhn
+ * Revision 1.6  2004-07-25 17:15:06  willuhn
+ * @C PluginLoader is no longer static
+ *
+ * Revision 1.5  2004/07/21 23:54:30  willuhn
  * *** empty log message ***
  *
  * Revision 1.4  2004/07/20 22:53:03  willuhn

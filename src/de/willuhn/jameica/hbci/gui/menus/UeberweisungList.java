@@ -25,7 +25,7 @@ import de.willuhn.jameica.hbci.gui.listener.UeberweisungDuplicate;
 import de.willuhn.jameica.hbci.gui.listener.UeberweisungExecute;
 import de.willuhn.jameica.hbci.gui.views.UeberweisungNeu;
 import de.willuhn.jameica.hbci.rmi.Ueberweisung;
-import de.willuhn.jameica.plugin.PluginLoader;
+import de.willuhn.jameica.system.Application;
 import de.willuhn.util.I18N;
 import de.willuhn.util.Logger;
 
@@ -38,7 +38,7 @@ public class UeberweisungList extends ContextMenu
 	private I18N i18n	= null;
 	public UeberweisungList()
 	{
-		i18n = PluginLoader.getPlugin(HBCI.class).getResources().getI18N();
+		i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
 		addItem(new CheckedContextMenuItem(i18n.tr("Öffnen"), new Listener()
     {
@@ -96,7 +96,10 @@ public class UeberweisungList extends ContextMenu
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2004-07-21 23:54:31  willuhn
+ * Revision 1.4  2004-07-25 17:15:06  willuhn
+ * @C PluginLoader is no longer static
+ *
+ * Revision 1.3  2004/07/21 23:54:31  willuhn
  * *** empty log message ***
  *
  * Revision 1.2  2004/07/20 23:31:49  willuhn

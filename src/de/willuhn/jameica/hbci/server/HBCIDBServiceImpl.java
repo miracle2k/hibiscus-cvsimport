@@ -18,7 +18,6 @@ import java.rmi.RemoteException;
 import de.willuhn.datasource.db.DBServiceImpl;
 import de.willuhn.datasource.rmi.DBService;
 import de.willuhn.jameica.hbci.HBCI;
-import de.willuhn.jameica.plugin.PluginLoader;
 import de.willuhn.jameica.system.Application;
 
 /**
@@ -33,7 +32,7 @@ public class HBCIDBServiceImpl extends DBServiceImpl implements DBService
   public HBCIDBServiceImpl() throws RemoteException
   {
     super("com.mckoi.JDBCDriver",
-          ":jdbc:mckoi:local://" + PluginLoader.getPlugin(HBCI.class).getResources().getWorkPath() + "/db/db.conf",
+          ":jdbc:mckoi:local://" + Application.getPluginLoader().getPlugin(HBCI.class).getResources().getWorkPath() + "/db/db.conf",
           "hibiscus","hibiscus");
     this.setClassFinder(Application.getClassLoader().getClassFinder());
   }
@@ -43,7 +42,10 @@ public class HBCIDBServiceImpl extends DBServiceImpl implements DBService
 
 /*********************************************************************
  * $Log$
- * Revision 1.2  2004-07-23 16:23:46  willuhn
+ * Revision 1.3  2004-07-25 17:15:06  willuhn
+ * @C PluginLoader is no longer static
+ *
+ * Revision 1.2  2004/07/23 16:23:46  willuhn
  * *** empty log message ***
  *
  * Revision 1.1  2004/07/23 15:51:44  willuhn

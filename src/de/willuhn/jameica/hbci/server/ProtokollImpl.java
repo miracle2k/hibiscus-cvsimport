@@ -19,7 +19,7 @@ import de.willuhn.datasource.db.AbstractDBObject;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Protokoll;
-import de.willuhn.jameica.plugin.PluginLoader;
+import de.willuhn.jameica.system.Application;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
 import de.willuhn.util.Logger;
@@ -36,7 +36,7 @@ public class ProtokollImpl extends AbstractDBObject implements Protokoll {
    */
   public ProtokollImpl() throws RemoteException {
     super();
-    i18n = PluginLoader.getPlugin(HBCI.class).getResources().getI18N();
+    i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
   }
 
   /**
@@ -164,7 +164,10 @@ public class ProtokollImpl extends AbstractDBObject implements Protokoll {
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2004-07-21 23:54:30  willuhn
+ * Revision 1.6  2004-07-25 17:15:06  willuhn
+ * @C PluginLoader is no longer static
+ *
+ * Revision 1.5  2004/07/21 23:54:30  willuhn
  * *** empty log message ***
  *
  * Revision 1.4  2004/07/13 22:20:37  willuhn

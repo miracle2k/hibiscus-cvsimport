@@ -14,7 +14,7 @@ package de.willuhn.jameica.hbci.gui.dialogs;
 
 import de.willuhn.jameica.gui.dialogs.PasswordDialog;
 import de.willuhn.jameica.hbci.HBCI;
-import de.willuhn.jameica.plugin.PluginLoader;
+import de.willuhn.jameica.system.Application;
 import de.willuhn.util.I18N;
 
 /**
@@ -33,7 +33,7 @@ public class TANDialog extends PasswordDialog {
    */
   public TANDialog(int position) {
     super(position);
-		i18n = PluginLoader.getPlugin(HBCI.class).getResources().getI18N();
+		i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
     setTitle(i18n.tr("TAN-Eingabe"));
     setLabelText(i18n.tr("Ihre TAN"));
@@ -68,7 +68,10 @@ public class TANDialog extends PasswordDialog {
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2004-07-21 23:54:30  willuhn
+ * Revision 1.3  2004-07-25 17:15:06  willuhn
+ * @C PluginLoader is no longer static
+ *
+ * Revision 1.2  2004/07/21 23:54:30  willuhn
  * *** empty log message ***
  *
  * Revision 1.1  2004/05/05 21:27:13  willuhn

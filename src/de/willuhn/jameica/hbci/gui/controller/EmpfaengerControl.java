@@ -32,7 +32,7 @@ import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.gui.menus.EmpfaengerList;
 import de.willuhn.jameica.hbci.gui.views.EmpfaengerNeu;
 import de.willuhn.jameica.hbci.rmi.Empfaenger;
-import de.willuhn.jameica.plugin.PluginLoader;
+import de.willuhn.jameica.system.Application;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
 import de.willuhn.util.Logger;
@@ -49,7 +49,7 @@ public class EmpfaengerControl extends AbstractControl {
 	private Input blz					= null;
 	private Input name				= null;
 
-	private I18N i18n = PluginLoader.getPlugin(HBCI.class).getResources().getI18N();
+	private I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
   /**
    * @param view
    */
@@ -255,7 +255,10 @@ public class EmpfaengerControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.17  2004-07-23 15:51:43  willuhn
+ * Revision 1.18  2004-07-25 17:15:05  willuhn
+ * @C PluginLoader is no longer static
+ *
+ * Revision 1.17  2004/07/23 15:51:43  willuhn
  * @C Rest des Refactorings
  *
  * Revision 1.16  2004/07/21 23:54:30  willuhn

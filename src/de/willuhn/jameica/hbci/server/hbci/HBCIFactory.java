@@ -21,7 +21,7 @@ import org.kapott.hbci.manager.HBCIHandler;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.passport.PassportHandle;
 import de.willuhn.jameica.hbci.rmi.Konto;
-import de.willuhn.jameica.plugin.PluginLoader;
+import de.willuhn.jameica.system.Application;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
 import de.willuhn.util.Logger;
@@ -45,7 +45,7 @@ public class HBCIFactory {
    * ct.
    */
   private HBCIFactory() {
-  	i18n = PluginLoader.getPlugin(HBCI.class).getResources().getI18N();
+  	i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
   }
 
 	/**
@@ -175,7 +175,10 @@ public class HBCIFactory {
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2004-07-21 23:54:31  willuhn
+ * Revision 1.10  2004-07-25 17:15:06  willuhn
+ * @C PluginLoader is no longer static
+ *
+ * Revision 1.9  2004/07/21 23:54:31  willuhn
  * *** empty log message ***
  *
  * Revision 1.8  2004/06/30 20:58:29  willuhn

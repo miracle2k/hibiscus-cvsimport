@@ -21,7 +21,7 @@ import de.willuhn.jameica.gui.util.LabelGroup;
 import de.willuhn.jameica.gui.views.AbstractView;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.gui.controller.UeberweisungControl;
-import de.willuhn.jameica.plugin.PluginLoader;
+import de.willuhn.jameica.system.Application;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
 
@@ -37,7 +37,7 @@ public class UeberweisungNeu extends AbstractView {
 
 		final UeberweisungControl control = new UeberweisungControl(this);
 
-		I18N i18n = PluginLoader.getPlugin(HBCI.class).getResources().getI18N();
+		I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
 		GUI.getView().setTitle(i18n.tr("Überweisung bearbeiten"));
 		
@@ -84,7 +84,10 @@ public class UeberweisungNeu extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.14  2004-07-21 23:54:30  willuhn
+ * Revision 1.15  2004-07-25 17:15:05  willuhn
+ * @C PluginLoader is no longer static
+ *
+ * Revision 1.14  2004/07/21 23:54:30  willuhn
  * *** empty log message ***
  *
  * Revision 1.13  2004/07/20 22:53:03  willuhn

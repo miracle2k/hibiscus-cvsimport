@@ -20,7 +20,7 @@ import de.willuhn.jameica.gui.util.ButtonArea;
 import de.willuhn.jameica.gui.views.AbstractView;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.gui.controller.DauerauftragControl;
-import de.willuhn.jameica.plugin.PluginLoader;
+import de.willuhn.jameica.system.Application;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
 import de.willuhn.util.Logger;
@@ -35,7 +35,7 @@ public class DauerauftragListe extends AbstractView {
    */
   public void bind() throws Exception {
 
-		I18N i18n = PluginLoader.getPlugin(HBCI.class).getResources().getI18N();
+		I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
 		GUI.getView().setTitle(i18n.tr("Vorhandene Daueraufträge"));
 		
@@ -75,7 +75,10 @@ public class DauerauftragListe extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2004-07-21 23:54:30  willuhn
+ * Revision 1.5  2004-07-25 17:15:05  willuhn
+ * @C PluginLoader is no longer static
+ *
+ * Revision 1.4  2004/07/21 23:54:30  willuhn
  * *** empty log message ***
  *
  * Revision 1.3  2004/07/20 22:53:03  willuhn

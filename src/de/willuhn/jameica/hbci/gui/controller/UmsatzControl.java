@@ -33,7 +33,7 @@ import de.willuhn.jameica.hbci.gui.views.UmsatzDetail;
 import de.willuhn.jameica.hbci.gui.views.UmsatzListe;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Umsatz;
-import de.willuhn.jameica.plugin.PluginLoader;
+import de.willuhn.jameica.system.Application;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
 import de.willuhn.util.Logger;
@@ -54,7 +54,7 @@ public class UmsatzControl extends AbstractControl {
    */
   public UmsatzControl(AbstractView view) {
     super(view);
-    i18n = PluginLoader.getPlugin(HBCI.class).getResources().getI18N();
+    i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
   }
 
 	/**
@@ -232,7 +232,10 @@ public class UmsatzControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.17  2004-07-21 23:54:30  willuhn
+ * Revision 1.18  2004-07-25 17:15:05  willuhn
+ * @C PluginLoader is no longer static
+ *
+ * Revision 1.17  2004/07/21 23:54:30  willuhn
  * *** empty log message ***
  *
  * Revision 1.16  2004/07/20 21:48:00  willuhn
