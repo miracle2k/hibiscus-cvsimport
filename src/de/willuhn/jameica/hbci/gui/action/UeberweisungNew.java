@@ -68,7 +68,7 @@ public class UeberweisungNew implements Action
 			}
 		}
 
-  	GUI.startView(de.willuhn.jameica.hbci.gui.views.UeberweisungNeu.class.getName(),u);
+  	GUI.startView(de.willuhn.jameica.hbci.gui.views.UeberweisungNew.class.getName(),u);
   }
 
 }
@@ -76,7 +76,10 @@ public class UeberweisungNew implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2004-11-13 17:02:03  willuhn
+ * Revision 1.2  2004-11-13 17:12:14  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.1  2004/11/13 17:02:03  willuhn
  * @N Bearbeiten des Zahlungsturnus
  *
  * Revision 1.2  2004/10/18 23:38:17  willuhn

@@ -17,7 +17,7 @@ import java.rmi.RemoteException;
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.hbci.HBCI;
-import de.willuhn.jameica.hbci.gui.views.UmsatzListe;
+import de.willuhn.jameica.hbci.gui.views.UmsatzList;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.server.hbci.HBCIFactory;
 import de.willuhn.jameica.hbci.server.hbci.HBCIUmsatzJob;
@@ -59,7 +59,7 @@ public class KontoFetchUmsaetze implements Action
 						HBCIFactory factory = HBCIFactory.getInstance();
 						factory.addJob(new HBCIUmsatzJob(k));
 						factory.executeJobs(k.getPassport().getHandle());
-						GUI.startView(UmsatzListe.class.getName(),k);
+						GUI.startView(UmsatzList.class.getName(),k);
 						GUI.getStatusBar().setSuccessText(i18n.tr("...Umsätze erfolgreich übertragen"));
 					}
 					catch (OperationCanceledException oce)
@@ -95,7 +95,10 @@ public class KontoFetchUmsaetze implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2004-11-12 18:25:07  willuhn
+ * Revision 1.6  2004-11-13 17:12:14  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.5  2004/11/12 18:25:07  willuhn
  * *** empty log message ***
  *
  * Revision 1.4  2004/10/29 16:16:13  willuhn

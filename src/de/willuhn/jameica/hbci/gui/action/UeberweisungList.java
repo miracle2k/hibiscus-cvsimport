@@ -27,7 +27,7 @@ public class UeberweisungList implements Action
    */
   public void handleAction(Object context) throws ApplicationException
   {
-		GUI.startView(de.willuhn.jameica.hbci.gui.views.UeberweisungListe.class.getName(),null);
+		GUI.startView(de.willuhn.jameica.hbci.gui.views.UeberweisungList.class.getName(),null);
   }
 
 }
@@ -35,7 +35,10 @@ public class UeberweisungList implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2004-11-13 17:02:04  willuhn
+ * Revision 1.2  2004-11-13 17:12:14  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.1  2004/11/13 17:02:04  willuhn
  * @N Bearbeiten des Zahlungsturnus
  *
  * Revision 1.1  2004/10/12 23:48:39  willuhn

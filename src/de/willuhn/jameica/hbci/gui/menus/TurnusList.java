@@ -38,6 +38,9 @@ public class TurnusList extends ContextMenu
 
 		addItem(new CheckedContextMenuItem(i18n.tr("Bearbeiten..."),new TurnusNew()));
 		addItem(new CheckedContextMenuItem(i18n.tr("Löschen..."),new TurnusDelete()));
+
+		// TODO: TurnusNew
+		//addItem(new CheckedContextMenuItem(i18n.tr("Neu..."),new TurnusDelete()));
   }
 
 }
@@ -45,7 +48,10 @@ public class TurnusList extends ContextMenu
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2004-11-13 17:02:04  willuhn
+ * Revision 1.4  2004-11-13 17:12:15  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.3  2004/11/13 17:02:04  willuhn
  * @N Bearbeiten des Zahlungsturnus
  *
  * Revision 1.2  2004/10/26 23:47:08  willuhn
