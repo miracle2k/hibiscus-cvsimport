@@ -59,12 +59,23 @@ public interface Passport extends DBObject {
    * @throws RemoteException
    */
   public void close() throws RemoteException;
+  
+  /**
+   * Prueft, ob der Passport offen ist.
+   * @return true, wenn er offen ist.
+   * @throws RemoteException
+   */
+  public boolean isOpen() throws RemoteException;
+  
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2004-02-12 00:38:40  willuhn
+ * Revision 1.3  2004-02-12 23:46:46  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.2  2004/02/12 00:38:40  willuhn
  * *** empty log message ***
  *
  * Revision 1.1  2004/02/11 00:11:20  willuhn

@@ -199,12 +199,29 @@ public class KontoImpl extends AbstractDBObject implements Konto {
     super.store();
   }
 
+  /**
+   * @see de.willuhn.jameica.hbci.rmi.Konto#getKundennummer()
+   */
+  public String getKundennummer() throws RemoteException {
+    return (String) getField("kundennummer");
+  }
+
+  /**
+   * @see de.willuhn.jameica.hbci.rmi.Konto#setKundennummer(java.lang.String)
+   */
+  public void setKundennummer(String kundennummer) throws RemoteException {
+		setField("kundennummer",kundennummer);
+  }
+
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2004-02-12 00:38:41  willuhn
+ * Revision 1.5  2004-02-12 23:46:46  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.4  2004/02/12 00:38:41  willuhn
  * *** empty log message ***
  *
  * Revision 1.3  2004/02/11 15:40:42  willuhn
