@@ -149,7 +149,7 @@ public abstract class AbstractTransferControl extends AbstractControl
 		d.addColumn(i18n.tr("Name"),"name");
 		d.addColumn(i18n.tr("Kontonummer"),"kontonummer");
 		d.addColumn(i18n.tr("BLZ"),"blz");
-		d.setTitle(i18n.tr("Auswahl des Empfängers"));
+		d.setTitle(i18n.tr("Auswahl des Gegenkontos"));
 		d.addCloseListener(new EmpfaengerListener());
 
 		empfkto = new DialogInput(getTransfer().getEmpfaengerKonto(),d);
@@ -410,7 +410,10 @@ public abstract class AbstractTransferControl extends AbstractControl
 
 /**********************************************************************
  * $Log$
- * Revision 1.17  2004-11-13 17:02:04  willuhn
+ * Revision 1.18  2005-01-19 00:33:32  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.17  2004/11/13 17:02:04  willuhn
  * @N Bearbeiten des Zahlungsturnus
  *
  * Revision 1.16  2004/11/12 18:25:07  willuhn

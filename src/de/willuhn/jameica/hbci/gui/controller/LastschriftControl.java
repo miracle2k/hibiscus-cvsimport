@@ -98,13 +98,15 @@ public class LastschriftControl extends UeberweisungControl
 		table.setContextMenu(new LastschriftList());
 		return table;
   }
-
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2005-01-19 00:16:05  willuhn
+ * Revision 1.2  2005-01-19 00:33:32  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.1  2005/01/19 00:16:05  willuhn
  * @N Lastschriften
  *
  **********************************************************************/
