@@ -85,10 +85,6 @@ public class HBCIDauerauftragStoreJob extends AbstractHBCIJob {
 		if (zweck2 != null && zweck2.length() > 0)
 			setJobParam("usage_2",zweck2);
 
-		// So, jetzt noch der Turnus.
-		// TODO Die Bank unterstuetzt ggf. nur einen Teil der von uns angebotenen Zahlungsrythmen.
-		// Das sollte mal per job.getJobRestrictions() abgefragt und ausgefiltert werden.
-
 		setJobParam("firstdate",dauerauftrag.getErsteZahlung());
 
 		Date letzteZahlung = dauerauftrag.getLetzteZahlung();
@@ -100,9 +96,9 @@ public class HBCIDauerauftragStoreJob extends AbstractHBCIJob {
 		setJobParam("turnus",turnus.getIntervall());
 		setJobParam("execday",turnus.getTag());
 
+
 		// Jetzt noch die Tests fuer die Job-Restriktionen
 		Properties p = HBCIFactory.getInstance().getJobRestrictions(this,this.konto.getPassport().getHandle());
-
 		new TurnusRestriction(turnus,p).test();
 		new PreTimeRestriction(dauerauftrag.getErsteZahlung(),p).test();
 
@@ -163,7 +159,10 @@ public class HBCIDauerauftragStoreJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2004-10-29 00:32:32  willuhn
+ * Revision 1.5  2004-10-29 00:33:00  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.4  2004/10/29 00:32:32  willuhn
  * @N HBCI job restrictions
  *
  * Revision 1.3  2004/10/26 23:47:08  willuhn
