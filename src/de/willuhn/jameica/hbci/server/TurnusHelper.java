@@ -136,13 +136,16 @@ public class TurnusHelper
   /**
 	 * Liefert die Bezeichnung des Werktages mit dem genannten Index.
 	 * Den zum Zahltag des Turnus gehoerenden kann man dann wie folgt ermitteln:<br>
-	 * <code>String tag = TurnusHelper.getWochentage(turnus.getTag())</code>.
+	 * <code>String tag = TurnusHelper.getWochentag(turnus.getTag())</code>.
    * @param index Index des Wochentages von 1 - 7.
-   * @return Bezeichnung des Wochentages.
+   * @return Bezeichnung des Wochentages, oder <code>null</code> wenn der Index
+   * ausserhalb des definierten Bereichs liegt.
    * @throws RemoteException
    */
   public static String getWochentag(int index) throws RemoteException
 	{
+		if (index < 1 || index > 7)
+			return null;
 		return getWochentage()[index - 1];
 	}
 
@@ -178,7 +181,10 @@ public class TurnusHelper
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2004-07-25 17:15:06  willuhn
+ * Revision 1.6  2004-10-17 16:28:46  willuhn
+ * @N Die ersten Dauerauftraege abgerufen ;)
+ *
+ * Revision 1.5  2004/07/25 17:15:06  willuhn
  * @C PluginLoader is no longer static
  *
  * Revision 1.4  2004/07/23 15:51:44  willuhn

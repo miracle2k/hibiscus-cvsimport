@@ -71,14 +71,17 @@ public interface Dauerauftrag extends Transfer
 	 * @return true, wenn der Dauerauftrag bei der Bank aktiv ist.
 	 * @throws RemoteException
 	 */
-	public boolean isAktiv() throws RemoteException;
+	public boolean isActive() throws RemoteException;
 
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2004-07-15 23:39:22  willuhn
+ * Revision 1.3  2004-10-17 16:28:46  willuhn
+ * @N Die ersten Dauerauftraege abgerufen ;)
+ *
+ * Revision 1.2  2004/07/15 23:39:22  willuhn
  * @N TurnusImpl
  *
  * Revision 1.1  2004/07/11 16:14:29  willuhn

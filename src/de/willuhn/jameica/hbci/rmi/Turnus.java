@@ -19,7 +19,7 @@ import de.willuhn.datasource.rmi.DBObject;
 /**
  * Bildet einen Turnus bei wiederkehrenden Zahlungen ab.
  */
-public interface Turnus extends DBObject
+public interface Turnus extends DBObject, Checksum
 {
 
 	/**
@@ -117,7 +117,10 @@ public interface Turnus extends DBObject
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2004-07-15 23:39:22  willuhn
+ * Revision 1.4  2004-10-17 16:28:46  willuhn
+ * @N Die ersten Dauerauftraege abgerufen ;)
+ *
+ * Revision 1.3  2004/07/15 23:39:22  willuhn
  * @N TurnusImpl
  *
  * Revision 1.2  2004/07/14 23:48:31  willuhn

@@ -13,6 +13,7 @@
 package de.willuhn.jameica.hbci.server;
 
 import java.rmi.RemoteException;
+import java.util.zip.CRC32;
 
 import de.willuhn.datasource.db.AbstractDBObject;
 import de.willuhn.jameica.hbci.HBCI;
@@ -198,12 +199,28 @@ public class TurnusImpl extends AbstractDBObject implements Turnus
 		return getAttribute("initial") != null;
   }
 
+  /**
+   * @see de.willuhn.jameica.hbci.rmi.Checksum#getChecksum()
+   */
+  public long getChecksum() throws RemoteException
+  {
+		String s = ("" + getIntervall()) + 
+		           ("" + getTag()) +
+		           ("" + getZeiteinheit());
+		CRC32 crc = new CRC32();
+		crc.update(s.getBytes());
+		return crc.getValue();
+  }
+
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2004-08-18 23:13:51  willuhn
+ * Revision 1.5  2004-10-17 16:28:46  willuhn
+ * @N Die ersten Dauerauftraege abgerufen ;)
+ *
+ * Revision 1.4  2004/08/18 23:13:51  willuhn
  * @D Javadoc
  *
  * Revision 1.3  2004/07/25 17:15:06  willuhn

@@ -120,7 +120,7 @@ public class Converter {
 	}
 
   /**
-	 * Konvertiert eine Zeile aus der Liste der abgerufenen Dauerumsaetze.
+	 * Konvertiert eine Zeile aus der Liste der abgerufenen Dauerauftraege.
    * @param d der Dauerauftrag aus HBCI4Java.
    * @return Unser Dauerauftrag.
    * @throws RemoteException
@@ -129,11 +129,12 @@ public class Converter {
   public static Dauerauftrag HBCIDauer2HibiscusDauerauftrag(GVRDauerList.Dauer d)
   	throws RemoteException, ApplicationException
 	{
-		Dauerauftrag auftrag = (Dauerauftrag) Settings.getDBService().createObject(Dauerauftrag.class,null);
+		DauerauftragImpl auftrag = (DauerauftragImpl) Settings.getDBService().createObject(Dauerauftrag.class,null);
 		auftrag.setErsteZahlung(d.firstdate);
 		auftrag.setLetzteZahlung(d.lastdate);
-		auftrag.setKonto(HBCIKonto2HibiscusKonto(d.my));
+		// auftrag.setKonto(HBCIKonto2HibiscusKonto(d.my)); // TODO Mal einheitlich loesen. Derzeit wird im HBCI-Job das Konto auch gespeichert
 		auftrag.setBetrag(d.value.value);
+		auftrag.activate(); // Wir aktivieren die Auftraege.
 
 		// Jetzt noch der Empfaenger
 		auftrag.setEmpfaenger(HBCIKonto2HibiscusEmpfaenger(d.other));
@@ -236,7 +237,10 @@ public class Converter {
 
 /**********************************************************************
  * $Log$
- * Revision 1.13  2004-07-23 15:51:44  willuhn
+ * Revision 1.14  2004-10-17 16:28:46  willuhn
+ * @N Die ersten Dauerauftraege abgerufen ;)
+ *
+ * Revision 1.13  2004/07/23 15:51:44  willuhn
  * @C Rest des Refactorings
  *
  * Revision 1.12  2004/07/20 21:48:00  willuhn

@@ -53,7 +53,7 @@ public class UmsatzListe extends AbstractView {
       {
         public void handleEvent(Event event)
         {
-					control.handleGetUmsaetze();
+					control.handleFetchUmsaetze();
         }
       });
 			buttons.addCustomButton(i18n.tr("alle Umsätze löschen"), new Listener()
@@ -84,7 +84,10 @@ public class UmsatzListe extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.10  2004-10-08 13:37:48  willuhn
+ * Revision 1.11  2004-10-17 16:28:46  willuhn
+ * @N Die ersten Dauerauftraege abgerufen ;)
+ *
+ * Revision 1.10  2004/10/08 13:37:48  willuhn
  * *** empty log message ***
  *
  * Revision 1.9  2004/07/25 17:15:05  willuhn

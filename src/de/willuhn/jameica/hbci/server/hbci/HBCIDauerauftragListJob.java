@@ -100,6 +100,7 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob {
 		for (int i=0;i<lines.length;++i)
 		{
 			auftraege[i] = Converter.HBCIDauer2HibiscusDauerauftrag(lines[i]);
+			auftraege[i].setKonto(getKonto());
 		}
 		try {
 			getKonto().addToProtokoll(i18n.tr("Daueraufträge abgerufen"),Protokoll.TYP_SUCCESS);
@@ -116,7 +117,10 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2004-07-25 17:15:06  willuhn
+ * Revision 1.4  2004-10-17 16:28:46  willuhn
+ * @N Die ersten Dauerauftraege abgerufen ;)
+ *
+ * Revision 1.3  2004/07/25 17:15:06  willuhn
  * @C PluginLoader is no longer static
  *
  * Revision 1.2  2004/07/21 23:54:30  willuhn

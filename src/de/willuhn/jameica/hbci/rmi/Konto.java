@@ -23,7 +23,8 @@ import de.willuhn.util.ApplicationException;
 /**
  * Bildet eine Bankverbindung in HBCI ab.
  */
-public interface Konto extends DBObject {
+public interface Konto extends DBObject,Checksum
+{
 
 	/**
 	 * Liefert die Kontonummer fuer diese Bankverbindung.
@@ -144,14 +145,21 @@ public interface Konto extends DBObject {
    * @throws ApplicationException
    * @throws RemoteException
    */
-  public void refreshSaldo() throws ApplicationException,RemoteException;
+  public void refreshSaldo() throws ApplicationException, RemoteException;
 
 	/**
 	 * Aktualisiert die Umsaetze des Kontos online.
    * @throws ApplicationException
    * @throws RemoteException
    */
-  public void refreshUmsaetze() throws ApplicationException,RemoteException;
+  public void refreshUmsaetze() throws ApplicationException, RemoteException;
+
+	/**
+	 * Aktualisiertr die Dauerauftraege des Kontos online.
+   * @throws ApplicationException
+   * @throws RemoteException
+   */
+  public void refreshDauerauftraege() throws ApplicationException, RemoteException;
 
 	/**
 	 * Liefert eine Liste aller Umsaetze fuer das Konto.
@@ -166,6 +174,22 @@ public interface Konto extends DBObject {
 	 * @throws RemoteException
 	 */
 	public DBIterator getUeberweisungen() throws RemoteException;
+	
+	/**
+	 * Liefert alle Dauerauftraege, die fuer das Konto vorliegen.
+	 * Dabei werden auch jene geliefert, die lokal erstellt, jedoch noch nicht
+	 * zur Bank hochgeladen wurden.
+   * @return Liste der Dauerauftraege.
+   * @throws RemoteException
+   */
+  public DBIterator getDauerauftraege() throws RemoteException;
+
+	/**
+	 * Liefert nur genau die Dauerauftraege, die ebenfalls der Bank bekannt und somit aktiv sind.
+   * @return Liste der aktiven Dauerauftraege.
+   * @throws RemoteException
+   */
+  public DBIterator getAktiveDauerauftraege() throws RemoteException;
 	
 	/**
 	 * Liefert die HBCI-Protokollierung des Kontos in Form einer Liste von Protokoll-Objekten.
@@ -194,7 +218,10 @@ public interface Konto extends DBObject {
 
 /**********************************************************************
  * $Log$
- * Revision 1.14  2004-07-09 00:04:40  willuhn
+ * Revision 1.15  2004-10-17 16:28:46  willuhn
+ * @N Die ersten Dauerauftraege abgerufen ;)
+ *
+ * Revision 1.14  2004/07/09 00:04:40  willuhn
  * @C Redesign
  *
  * Revision 1.13  2004/05/25 23:23:17  willuhn
