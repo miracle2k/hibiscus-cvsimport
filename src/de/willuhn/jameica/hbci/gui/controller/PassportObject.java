@@ -81,7 +81,7 @@ public class PassportObject implements GenericObject
 	{
 		if (other == null)
 			return false;
-		return other.getID().equals(other.getID());
+		return getID().equals(other.getID());
 	}
 
   /**
@@ -97,7 +97,10 @@ public class PassportObject implements GenericObject
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2005-01-05 15:17:50  willuhn
+ * Revision 1.5  2005-02-01 18:27:14  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.4  2005/01/05 15:17:50  willuhn
  * @N Neues Service-System in Jameica
  *
  * Revision 1.3  2004/08/18 23:13:51  willuhn
