@@ -489,7 +489,7 @@ public class KontoControl extends AbstractControl {
 								newKonto.setKundennummer(konten[i].getKundennummer());
 								newKonto.setName(konten[i].getName());
 								newKonto.setWaehrung(konten[i].getWaehrung());
-								newKonto.setPassport(getKonto().getPassport()); // wir speichern den ausgewaehlten Passport.
+								newKonto.setPassport(p); // wir speichern den ausgewaehlten Passport.
 								newKonto.store();
 							}
 							catch (Exception e)
@@ -607,7 +607,10 @@ public class KontoControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.37  2004-06-30 20:58:28  willuhn
+ * Revision 1.38  2004-07-04 17:07:59  willuhn
+ * @B Umsaetze wurden teilweise nicht als bereits vorhanden erkannt und wurden somit doppelt angezeigt
+ *
+ * Revision 1.37  2004/06/30 20:58:28  willuhn
  * *** empty log message ***
  *
  * Revision 1.36  2004/06/18 19:53:17  willuhn

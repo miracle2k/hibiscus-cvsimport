@@ -85,10 +85,9 @@ public class HBCI extends AbstractPlugin
 		EmbeddedDatabase db = this.getResources().getDatabase();
 
 		String checkSum = db.getMD5Sum();
-		System.out.println(checkSum);
 		if (checkSum.equals("KvynDJyxe6D1XUvSCkNAFA=="))
 			return 1.0;
-		throw new Exception("database checksum does not match any known version.");
+		throw new Exception("database checksum does not match any known version: " + checkSum);
 	}
 
   /**
@@ -152,7 +151,10 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
- * Revision 1.18  2004-07-01 19:46:27  willuhn
+ * Revision 1.19  2004-07-04 17:07:59  willuhn
+ * @B Umsaetze wurden teilweise nicht als bereits vorhanden erkannt und wurden somit doppelt angezeigt
+ *
+ * Revision 1.18  2004/07/01 19:46:27  willuhn
  * @N db integrity check
  *
  * Revision 1.17  2004/06/30 20:58:29  willuhn
