@@ -92,7 +92,7 @@ public interface Dauerauftrag extends Transfer
 
   /**
    * Loescht den Dauerauftrag lediglich im lokalen Datenbestand, nicht jedoch bei der Bank.
-   * Um den Dauerauftrag online zu loeschen, muss die Funktion <code>deleteOnline()</code>
+   * Um den Dauerauftrag online zu loeschen, muss <code>HBCIDauerauftragDeleteJob</code>
    * verwendet werden.
    * @see de.willuhn.datasource.rmi.Changeable#delete()
    */
@@ -103,7 +103,10 @@ public interface Dauerauftrag extends Transfer
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2004-10-25 22:39:14  willuhn
+ * Revision 1.8  2004-10-25 23:12:02  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.7  2004/10/25 22:39:14  willuhn
  * *** empty log message ***
  *
  * Revision 1.6  2004/10/25 17:58:57  willuhn

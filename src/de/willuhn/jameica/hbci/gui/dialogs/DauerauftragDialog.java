@@ -117,7 +117,7 @@ public class DauerauftragDialog extends AbstractDialog {
 		
 
 		ButtonArea b = group.createButtonArea(2);
-		b.addButton(i18n.tr("OK"), new Action()
+		b.addButton(i18n.tr("Jetzt ausführen"), new Action()
     {
       public void handleAction(Object context) throws ApplicationException
       {
@@ -140,7 +140,10 @@ public class DauerauftragDialog extends AbstractDialog {
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2004-10-25 17:58:56  willuhn
+ * Revision 1.2  2004-10-25 23:12:02  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.1  2004/10/25 17:58:56  willuhn
  * @N Haufen Dauerauftrags-Code
  *
  **********************************************************************/

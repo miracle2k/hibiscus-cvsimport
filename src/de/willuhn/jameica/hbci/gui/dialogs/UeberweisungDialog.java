@@ -92,7 +92,7 @@ public class UeberweisungDialog extends AbstractDialog {
 		group.addLabelPair(i18n.tr("Betrag"),betrag);
 
 		ButtonArea b = group.createButtonArea(2);
-		b.addButton(i18n.tr("OK"), new Action()
+		b.addButton(i18n.tr("Jetzt ausführen"), new Action()
     {
       public void handleAction(Object context) throws ApplicationException
       {
@@ -115,7 +115,10 @@ public class UeberweisungDialog extends AbstractDialog {
 
 /**********************************************************************
  * $Log$
- * Revision 1.8  2004-10-25 17:58:56  willuhn
+ * Revision 1.9  2004-10-25 23:12:02  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.8  2004/10/25 17:58:56  willuhn
  * @N Haufen Dauerauftrags-Code
  *
  * Revision 1.7  2004/10/19 23:33:31  willuhn

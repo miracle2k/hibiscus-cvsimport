@@ -23,6 +23,7 @@ import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.system.Application;
+import de.willuhn.jameica.system.OperationCanceledException;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
 
@@ -61,7 +62,7 @@ public class KontoAuswahlDialog extends AbstractDialog
 		group.addLabelPair(i18n.tr("Konto"),kto);
 
 		ButtonArea b = group.createButtonArea(2);
-		b.addButton(i18n.tr("OK"), new Action()
+		b.addButton(i18n.tr("Übernehmen"), new Action()
     {
       public void handleAction(Object context) throws ApplicationException
       {
@@ -73,7 +74,7 @@ public class KontoAuswahlDialog extends AbstractDialog
     {
       public void handleAction(Object context) throws ApplicationException
       {
-				close();
+				throw new OperationCanceledException();
       }
     });
   }
@@ -93,7 +94,10 @@ public class KontoAuswahlDialog extends AbstractDialog
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2004-10-19 23:33:31  willuhn
+ * Revision 1.3  2004-10-25 23:12:02  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.2  2004/10/19 23:33:31  willuhn
  * *** empty log message ***
  *
  * Revision 1.1  2004/10/17 16:28:46  willuhn

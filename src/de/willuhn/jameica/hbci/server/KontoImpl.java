@@ -195,14 +195,21 @@ public class KontoImpl extends AbstractDBObject implements Konto {
     try {
       this.transactionBegin();
 
-			// Erst die Ueberweisungen loeschen
+			// Erst die Umsaetze loeschen
 			deleteUmsaetze();
 			
 			// dann die Dauerauftraege
-			deleteDauerauftraege();
+			DBIterator list = getDauerauftraege();
+			if (!list.hasNext())
+				return;
 
-			// und jetzt die Umsaetze
-			DBIterator list = getUeberweisungen();
+			while (list.hasNext())
+			{
+				((DBObject)list.next()).delete();
+			}
+
+			// und jetzt die Ueberweisungen
+			list = getUeberweisungen();
 			Ueberweisung u = null;
 			while (list.hasNext())
 			{
@@ -311,17 +318,6 @@ public class KontoImpl extends AbstractDBObject implements Konto {
 		return list;
 	}
 
-	/**
-	 * @see de.willuhn.jameica.hbci.rmi.Konto#getAktiveDauerauftraege()
-	 */
-	public DBIterator getAktiveDauerauftraege() throws RemoteException
-	{
-		DBIterator list = Settings.getDBService().createList(Dauerauftrag.class);
-		list.addFilter("konto_id = " + getID());
-		list.addFilter("aktiv = 1");
-		return list;
-	}
-
   /**
    * @see de.willuhn.jameica.hbci.rmi.Konto#deleteUmsaetze()
    */
@@ -336,21 +332,6 @@ public class KontoImpl extends AbstractDBObject implements Konto {
 			((DBObject)list.next()).delete();
 		}
   }
-
-	/**
-   * @see de.willuhn.jameica.hbci.rmi.Konto#deleteDauerauftraege()
-   */
-	public void deleteDauerauftraege() throws ApplicationException, RemoteException {
-		DBIterator list = Settings.getDBService().createList(Dauerauftrag.class);
-		list.addFilter("konto_id = " + getID());
-		if (!list.hasNext())
-			return;
-
-		while (list.hasNext())
-		{
-			((DBObject)list.next()).delete();
-		}
-	}
 
   /**
    * @see de.willuhn.jameica.hbci.rmi.Konto#getBezeichnung()
@@ -451,7 +432,10 @@ public class KontoImpl extends AbstractDBObject implements Konto {
 
 /**********************************************************************
  * $Log$
- * Revision 1.36  2004-10-25 22:39:14  willuhn
+ * Revision 1.37  2004-10-25 23:12:02  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.36  2004/10/25 22:39:14  willuhn
  * *** empty log message ***
  *
  * Revision 1.35  2004/10/25 17:58:56  willuhn
