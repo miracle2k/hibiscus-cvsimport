@@ -12,8 +12,8 @@
  **********************************************************************/
 package de.willuhn.jameica.hbci.gui.views;
 
-import org.eclipse.swt.events.MouseAdapter;
-import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 
 import de.willuhn.jameica.PluginLoader;
 import de.willuhn.jameica.gui.GUI;
@@ -54,12 +54,13 @@ public class Settings extends AbstractView {
 		colors.addLabelPair(i18n.tr("Vordergrund überfällige Überweisungen"),control.getUeberfaelligForeground());
 
 		ButtonArea buttons = settings.createButtonArea(1);
-		buttons.addCustomButton(i18n.tr("gespeicherte Check-Summe löschen"),new MouseAdapter() {
-			public void mouseUp(MouseEvent e) {
+		buttons.addCustomButton(i18n.tr("gespeicherte Check-Summe löschen"),new Listener()
+    {
+      public void handleEvent(Event event)
+      {
 				control.handleDeleteCheckSum();
-			}
-		});
-
+      }
+    });
 
 		// Passports
 		LabelGroup passports = new LabelGroup(getParent(),i18n.tr("Sicherheitsmedien"));
@@ -82,7 +83,10 @@ public class Settings extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.21  2004-07-20 21:48:00  willuhn
+ * Revision 1.22  2004-07-20 22:53:03  willuhn
+ * @C Refactoring
+ *
+ * Revision 1.21  2004/07/20 21:48:00  willuhn
  * @N ContextMenus
  *
  * Revision 1.20  2004/07/09 00:04:40  willuhn

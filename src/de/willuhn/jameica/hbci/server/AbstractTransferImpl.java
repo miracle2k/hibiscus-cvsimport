@@ -226,7 +226,7 @@ public abstract class AbstractTransferImpl extends AbstractDBObject implements T
   		return;
   	setEmpfaengerBLZ(e.getBLZ());
   	setEmpfaengerKonto(e.getKontonummer());
-  	setEmpfaengerName(e.getKontonummer());
+  	setEmpfaengerName(e.getName());
   }
 
 }
@@ -234,7 +234,10 @@ public abstract class AbstractTransferImpl extends AbstractDBObject implements T
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2004-07-20 21:48:00  willuhn
+ * Revision 1.5  2004-07-20 22:53:03  willuhn
+ * @C Refactoring
+ *
+ * Revision 1.4  2004/07/20 21:48:00  willuhn
  * @N ContextMenus
  *
  * Revision 1.3  2004/07/14 23:48:31  willuhn

@@ -46,7 +46,7 @@ public class EmpfaengerList extends ContextMenu
 			}
 		}));
 
-		addItem(new ContextMenuItem(i18n.tr("Neue Überweisung..."), new UeberweisungCreate()));
+		addItem(new CheckedContextMenuItem(i18n.tr("Neue Überweisung mit diesem Empfänger..."), new UeberweisungCreate()));
 		addItem(ContextMenuItem.SEPARATOR);
 
 		addItem(new ContextMenuItem(i18n.tr("Neue Adresse..."), new Listener()
@@ -63,7 +63,10 @@ public class EmpfaengerList extends ContextMenu
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2004-07-20 21:48:00  willuhn
+ * Revision 1.2  2004-07-20 22:53:03  willuhn
+ * @C Refactoring
+ *
+ * Revision 1.1  2004/07/20 21:48:00  willuhn
  * @N ContextMenus
  *
  **********************************************************************/

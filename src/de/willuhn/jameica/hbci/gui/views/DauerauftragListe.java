@@ -12,8 +12,8 @@
  **********************************************************************/
 package de.willuhn.jameica.hbci.gui.views;
 
-import org.eclipse.swt.events.MouseAdapter;
-import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 
 import de.willuhn.jameica.PluginLoader;
 import de.willuhn.jameica.gui.GUI;
@@ -46,11 +46,12 @@ public class DauerauftragListe extends AbstractView {
 			control.getDauerauftragListe().paint(getParent());
 
 			ButtonArea buttons = new ButtonArea(getParent(),2);
-			buttons.addCustomButton(i18n.tr("Existierende Daueraufträge abrufen"),new MouseAdapter()
+			buttons.addCustomButton(i18n.tr("Existierende Daueraufträge abrufen"), new Listener()
       {
-        public void mouseUp(MouseEvent e)
+        public void handleEvent(Event event)
         {
           // TODO Auto-generated method stub
+
         }
       });
 			buttons.addCreateButton(i18n.tr("neuer Dauerauftrag"),control);
@@ -74,7 +75,10 @@ public class DauerauftragListe extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2004-07-13 23:26:14  willuhn
+ * Revision 1.3  2004-07-20 22:53:03  willuhn
+ * @C Refactoring
+ *
+ * Revision 1.2  2004/07/13 23:26:14  willuhn
  * @N Views fuer Dauerauftrag
  *
  * Revision 1.1  2004/07/13 23:08:37  willuhn
