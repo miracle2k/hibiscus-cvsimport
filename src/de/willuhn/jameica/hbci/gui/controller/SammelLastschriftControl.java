@@ -54,16 +54,16 @@ import de.willuhn.util.I18N;
 public class SammelLastschriftControl extends AbstractControl
 {
 
-  private SammelLastschrift lastschrift = null;
+  private SammelLastschrift lastschrift 	= null;
 
-  private I18N i18n                     = null;
+  private I18N i18n                     	= null;
 
-  private TablePart table               = null;
-  private TablePart buchungen           = null;
-  private DialogInput kontoAuswahl      = null;
-  private Input name                    = null;
-  private DialogInput termin            = null;
-  private Input comment                 = null;
+  private TablePart table               	= null;
+  private TablePart buchungen           	= null;
+  private DialogInput kontoAuswahl				= null;
+  private Input name                    	= null;
+  private DialogInput termin            	= null;
+  private Input comment                 	= null;
 
   /**
    * ct.
@@ -202,7 +202,8 @@ public class SammelLastschriftControl extends AbstractControl
     buchungen.addColumn(i18n.tr("Kontoinhaber"),"gegenkonto_name");
     buchungen.addColumn(i18n.tr("Kontonummer"),"gegenkonto_nr");
     buchungen.addColumn(i18n.tr("Bankleitzahl"),"gegenkonto_blz");
-    String curr = getLastschrift().getKonto().getWaehrung();
+    Konto k = getLastschrift().getKonto();
+    String curr = k != null ? k.getWaehrung() : "";
     buchungen.addColumn(i18n.tr("Betrag"),"betrag",new CurrencyFormatter(curr,HBCI.DECIMALFORMAT));
     buchungen.setContextMenu(new SammelLastBuchungList(getLastschrift()));
     return buchungen;
@@ -218,42 +219,39 @@ public class SammelLastschriftControl extends AbstractControl
     if (kontoAuswahl != null)
       return kontoAuswahl;
 
-    ListDialog d = new ListDialog(Settings.getDBService().createList(Konto.class),ListDialog.POSITION_MOUSE);
-    d.addColumn(i18n.tr("Bezeichnung"),"bezeichnung");
-    d.addColumn(i18n.tr("Kontonummer"),"kontonummer");
-    d.addColumn(i18n.tr("BLZ"),"blz");
-    d.setTitle(i18n.tr("Auswahl des Kontos"));
-    d.addCloseListener(new Listener()
+		ListDialog d = new ListDialog(Settings.getDBService().createList(Konto.class),ListDialog.POSITION_MOUSE);
+		d.addColumn(i18n.tr("Bezeichnung"),"bezeichnung");
+		d.addColumn(i18n.tr("Kontonummer"),"kontonummer");
+		d.addColumn(i18n.tr("BLZ"),"blz");
+		d.setTitle(i18n.tr("Auswahl des Kontos"));
+		d.addCloseListener(new Listener()
     {
       public void handleEvent(Event event)
       {
-        if (event == null || event.data == null)
-          return;
+				if (event == null || event.data == null)
+					return;
+				Konto konto = (Konto) event.data;
 
-        Konto konto = (Konto) event.data;
-
-        try {
-          String b = konto.getBezeichnung();
-          getKontoAuswahl().setText(konto.getKontonummer());
-          getKontoAuswahl().setComment(b == null ? "" : b);
-        }
-        catch (RemoteException er)
-        {
-          Logger.error("error while updating konto",er);
-          GUI.getStatusBar().setErrorText(i18n.tr("Fehler bei der Auswahl des Kontos"));
-        }
+				try {
+					String b = konto.getBezeichnung();
+					getKontoAuswahl().setText(konto.getKontonummer());
+					getKontoAuswahl().setComment(b == null ? "" : b);
+				}
+				catch (RemoteException er)
+				{
+					Logger.error("error while updating currency",er);
+					GUI.getStatusBar().setErrorText(i18n.tr("Fehler bei der Auswahl des Kontos"));
+				}
       }
     });
 
-    Konto k = getLastschrift().getKonto();
-    kontoAuswahl = new DialogInput(k == null ? "" : k.getKontonummer(),d);
-    kontoAuswahl.setComment(k == null ? "" : k.getBezeichnung());
-    kontoAuswahl.disableClientControl();
-    if (getLastschrift().ausgefuehrt())
-      kontoAuswahl.disableButton();
-    kontoAuswahl.setValue(k);
+		Konto k = getLastschrift().getKonto();
+		kontoAuswahl = new DialogInput(k == null ? "" : k.getKontonummer(),d);
+		kontoAuswahl.setComment(k == null ? "" : k.getBezeichnung());
+		kontoAuswahl.disableClientControl();
+		kontoAuswahl.setValue(k);
 
-    return kontoAuswahl;
+		return kontoAuswahl;
   }
 
   /**
@@ -365,7 +363,10 @@ public class SammelLastschriftControl extends AbstractControl
 
 /*****************************************************************************
  * $Log$
- * Revision 1.3  2005-03-01 18:51:04  web0
+ * Revision 1.4  2005-03-02 00:22:05  web0
+ * @N first code for "Sammellastschrift"
+ *
+ * Revision 1.3  2005/03/01 18:51:04  web0
  * @N Dialoge fuer Sammel-Lastschriften
  *
  * Revision 1.2  2005/02/28 18:40:49  web0

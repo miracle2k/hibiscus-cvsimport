@@ -47,6 +47,8 @@ public class SammelLastBuchungNew implements Action
 			try {
         SammelLastschrift s = (SammelLastschrift) context;
 				u = (SammelLastBuchung) Settings.getDBService().createObject(SammelLastBuchung.class,null);
+				if (s.isNewObject())
+					s.store(); // wir speichern eigenmaechtig
 				u.setSammelLastschrift(s);
 			}
 			catch (RemoteException e)
@@ -63,7 +65,10 @@ public class SammelLastBuchungNew implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2005-03-01 18:51:04  web0
+ * Revision 1.2  2005-03-02 00:22:05  web0
+ * @N first code for "Sammellastschrift"
+ *
+ * Revision 1.1  2005/03/01 18:51:04  web0
  * @N Dialoge fuer Sammel-Lastschriften
  *
  **********************************************************************/
