@@ -53,7 +53,7 @@ public class Settings extends AbstractView {
 		colors.addLabelPair(i18n.tr("Vordergrund überfällige Überweisungen"),control.getUeberfaelligForeground());
 
 		ButtonArea buttons = settings.createButtonArea(1);
-		buttons.addButton(i18n.tr("gespeicherte Check-Summe löschen"),new Action()
+		buttons.addButton(i18n.tr("gespeicherte Check-Summen löschen"),new Action()
     {
       public void handleAction(Object context) throws ApplicationException
       {
@@ -88,7 +88,10 @@ public class Settings extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.28  2005-01-30 20:45:35  willuhn
+ * Revision 1.29  2005-02-02 16:15:52  willuhn
+ * @N Neue Dialoge fuer RDH
+ *
+ * Revision 1.28  2005/01/30 20:45:35  willuhn
  * *** empty log message ***
  *
  * Revision 1.27  2005/01/19 00:16:04  willuhn

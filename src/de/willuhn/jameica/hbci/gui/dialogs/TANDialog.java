@@ -27,12 +27,9 @@ public class TANDialog extends PasswordDialog {
 	private I18N i18n;
   /**
    * ct.
-   * @param position Position des Dialogs.
-   * @see de.willuhn.jameica.gui.dialogs.AbstractDialog#POSITION_CENTER
-   * @see de.willuhn.jameica.gui.dialogs.AbstractDialog#POSITION_MOUSE
    */
-  public TANDialog(int position) {
-    super(position);
+  public TANDialog() {
+    super(TANDialog.POSITION_CENTER);
 		i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
     setTitle(i18n.tr("TAN-Eingabe"));
@@ -68,7 +65,10 @@ public class TANDialog extends PasswordDialog {
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2004-07-25 17:15:06  willuhn
+ * Revision 1.4  2005-02-02 16:15:52  willuhn
+ * @N Neue Dialoge fuer RDH
+ *
+ * Revision 1.3  2004/07/25 17:15:06  willuhn
  * @C PluginLoader is no longer static
  *
  * Revision 1.2  2004/07/21 23:54:30  willuhn

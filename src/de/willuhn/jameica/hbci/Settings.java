@@ -42,6 +42,8 @@ public class Settings
 	
 	private static ProgressBar hbciProgress = null;
 
+	private static AccountContainer accountContainer = null;
+
   /**
    * Liefert den Datenbank-Service.
    * @return Datenbank.
@@ -233,7 +235,10 @@ public class Settings
 
 /*********************************************************************
  * $Log$
- * Revision 1.28  2005-02-01 17:15:37  willuhn
+ * Revision 1.29  2005-02-02 16:15:52  willuhn
+ * @N Neue Dialoge fuer RDH
+ *
+ * Revision 1.28  2005/02/01 17:15:37  willuhn
  * *** empty log message ***
  *
  * Revision 1.27  2005/01/30 20:45:35  willuhn
