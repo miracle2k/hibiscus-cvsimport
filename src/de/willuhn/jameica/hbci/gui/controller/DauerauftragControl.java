@@ -98,6 +98,7 @@ public class DauerauftragControl extends AbstractTransferControl {
   public synchronized void handleStore()
   {
 		super.handleStore();
+		// TODO: Turnus
   }
 
   /**
@@ -118,7 +119,10 @@ public class DauerauftragControl extends AbstractTransferControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2004-07-16 00:07:31  willuhn
+ * Revision 1.3  2004-07-20 00:11:07  willuhn
+ * @C Code sharing zwischen Ueberweisung und Dauerauftrag
+ *
+ * Revision 1.2  2004/07/16 00:07:31  willuhn
  * *** empty log message ***
  *
  * Revision 1.1  2004/07/13 23:08:37  willuhn

@@ -62,7 +62,7 @@ public abstract class AbstractTransferControl extends AbstractControl
 
 	private CheckboxInput storeEmpfaenger = null;
 
-	private boolean stored								= false;
+	boolean stored												= false;
 
 	I18N i18n;
 
@@ -286,10 +286,6 @@ public abstract class AbstractTransferControl extends AbstractControl
 		stored = false;
 		try {
   		
-			// erstmal die evtl. Fehler-Zeilen leer machen
-			GUI.getView().setSuccessText("");
-			GUI.getStatusBar().setSuccessText("");
-
 			getTransfer().transactionBegin();
 
 			getTransfer().setBetrag(((Double)getBetrag().getValue()).doubleValue());
@@ -440,7 +436,10 @@ public abstract class AbstractTransferControl extends AbstractControl
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2004-07-14 23:48:31  willuhn
+ * Revision 1.3  2004-07-20 00:11:07  willuhn
+ * @C Code sharing zwischen Ueberweisung und Dauerauftrag
+ *
+ * Revision 1.2  2004/07/14 23:48:31  willuhn
  * @N mehr Code fuer Dauerauftraege
  *
  * Revision 1.1  2004/07/13 23:08:37  willuhn
