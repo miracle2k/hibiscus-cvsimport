@@ -26,9 +26,9 @@ import org.kapott.hbci.passport.HBCIPassport;
 import org.kapott.hbci.passport.INILetter;
 import org.kapott.hbci.status.HBCIMsgStatus;
 
-import de.willuhn.jameica.PluginLoader;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.hbci.gui.DialogFactory;
+import de.willuhn.jameica.plugin.PluginLoader;
 import de.willuhn.util.I18N;
 import de.willuhn.util.Logger;
 
@@ -372,7 +372,10 @@ public class HBCICallbackSWT extends AbstractHBCICallback
 
 /**********************************************************************
  * $Log$
- * Revision 1.12  2004-06-30 20:58:29  willuhn
+ * Revision 1.13  2004-07-21 23:54:30  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.12  2004/06/30 20:58:29  willuhn
  * *** empty log message ***
  *
  * Revision 1.11  2004/05/05 21:27:13  willuhn

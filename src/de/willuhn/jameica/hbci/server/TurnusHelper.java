@@ -17,10 +17,10 @@ import java.rmi.RemoteException;
 import org.kapott.hbci.GV_Result.GVRDauerList;
 
 import de.willuhn.datasource.rmi.DBIterator;
-import de.willuhn.jameica.PluginLoader;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.rmi.Turnus;
+import de.willuhn.jameica.plugin.PluginLoader;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
 
@@ -178,7 +178,10 @@ public class TurnusHelper
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2004-07-15 23:39:22  willuhn
+ * Revision 1.3  2004-07-21 23:54:30  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.2  2004/07/15 23:39:22  willuhn
  * @N TurnusImpl
  *
  * Revision 1.1  2004/07/14 23:48:31  willuhn

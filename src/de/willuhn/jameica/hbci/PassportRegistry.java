@@ -15,8 +15,8 @@ package de.willuhn.jameica.hbci;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
-import de.willuhn.jameica.Application;
 import de.willuhn.jameica.hbci.passport.Passport;
+import de.willuhn.jameica.system.Application;
 import de.willuhn.util.ClassFinder;
 import de.willuhn.util.Logger;
 
@@ -110,7 +110,10 @@ public class PassportRegistry {
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2004-06-30 20:58:29  willuhn
+ * Revision 1.6  2004-07-21 23:54:30  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.5  2004/06/30 20:58:29  willuhn
  * *** empty log message ***
  *
  * Revision 1.4  2004/05/11 21:11:32  willuhn

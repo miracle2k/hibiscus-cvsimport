@@ -15,9 +15,9 @@ package de.willuhn.jameica.hbci.server;
 import java.rmi.RemoteException;
 
 import de.willuhn.datasource.db.AbstractDBObject;
-import de.willuhn.jameica.PluginLoader;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.rmi.Turnus;
+import de.willuhn.jameica.plugin.PluginLoader;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
 import de.willuhn.util.Logger;
@@ -203,7 +203,10 @@ public class TurnusImpl extends AbstractDBObject implements Turnus
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2004-07-15 23:39:22  willuhn
+ * Revision 1.2  2004-07-21 23:54:30  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.1  2004/07/15 23:39:22  willuhn
  * @N TurnusImpl
  *
  **********************************************************************/

@@ -12,12 +12,12 @@
  **********************************************************************/
 package de.willuhn.jameica.hbci.gui.views;
 
-import de.willuhn.jameica.Application;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.Part;
 import de.willuhn.jameica.gui.util.ButtonArea;
 import de.willuhn.jameica.gui.views.AbstractView;
 import de.willuhn.jameica.hbci.gui.controller.LicenseControl;
+import de.willuhn.jameica.system.Application;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
 
@@ -55,7 +55,10 @@ public class License extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2004-07-09 00:04:40  willuhn
+ * Revision 1.3  2004-07-21 23:54:30  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.2  2004/07/09 00:04:40  willuhn
  * @C Redesign
  *
  * Revision 1.1  2004/04/26 22:57:32  willuhn

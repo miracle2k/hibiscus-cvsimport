@@ -15,10 +15,10 @@ package de.willuhn.jameica.hbci.server;
 import java.rmi.RemoteException;
 import java.util.Date;
 
-import de.willuhn.jameica.PluginLoader;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.rmi.Dauerauftrag;
 import de.willuhn.jameica.hbci.rmi.Turnus;
+import de.willuhn.jameica.plugin.PluginLoader;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
 import de.willuhn.util.Logger;
@@ -180,7 +180,10 @@ public class DauerauftragImpl extends AbstractTransferImpl implements Dauerauftr
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2004-07-15 23:39:22  willuhn
+ * Revision 1.4  2004-07-21 23:54:30  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.3  2004/07/15 23:39:22  willuhn
  * @N TurnusImpl
  *
  * Revision 1.2  2004/07/13 22:20:37  willuhn

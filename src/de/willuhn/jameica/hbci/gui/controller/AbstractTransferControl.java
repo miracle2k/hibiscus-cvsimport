@@ -19,7 +19,6 @@ import org.eclipse.swt.widgets.Listener;
 import org.kapott.hbci.manager.HBCIUtils;
 
 import de.willuhn.datasource.rmi.DBIterator;
-import de.willuhn.jameica.PluginLoader;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.controller.AbstractControl;
 import de.willuhn.jameica.gui.dialogs.ListDialog;
@@ -35,6 +34,7 @@ import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.rmi.Empfaenger;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Transfer;
+import de.willuhn.jameica.plugin.PluginLoader;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
 import de.willuhn.util.Logger;
@@ -436,7 +436,10 @@ public abstract class AbstractTransferControl extends AbstractControl
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2004-07-20 00:11:07  willuhn
+ * Revision 1.4  2004-07-21 23:54:30  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.3  2004/07/20 00:11:07  willuhn
  * @C Code sharing zwischen Ueberweisung und Dauerauftrag
  *
  * Revision 1.2  2004/07/14 23:48:31  willuhn

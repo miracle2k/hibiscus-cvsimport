@@ -16,10 +16,10 @@ import java.rmi.RemoteException;
 import java.util.Date;
 
 import de.willuhn.datasource.db.AbstractDBObject;
-import de.willuhn.jameica.PluginLoader;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Protokoll;
+import de.willuhn.jameica.plugin.PluginLoader;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
 import de.willuhn.util.Logger;
@@ -164,7 +164,10 @@ public class ProtokollImpl extends AbstractDBObject implements Protokoll {
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2004-07-13 22:20:37  willuhn
+ * Revision 1.5  2004-07-21 23:54:30  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.4  2004/07/13 22:20:37  willuhn
  * @N Code fuer DauerAuftraege
  * @C paar Funktionsnamen umbenannt
  *

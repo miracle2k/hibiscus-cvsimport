@@ -17,13 +17,13 @@ import java.rmi.RemoteException;
 import org.kapott.hbci.manager.HBCIUtils;
 
 import de.willuhn.datasource.db.AbstractDBObject;
-import de.willuhn.jameica.PluginLoader;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.rmi.Empfaenger;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Protokoll;
 import de.willuhn.jameica.hbci.rmi.Transfer;
+import de.willuhn.jameica.plugin.PluginLoader;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
 import de.willuhn.util.Logger;
@@ -234,7 +234,10 @@ public abstract class AbstractTransferImpl extends AbstractDBObject implements T
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2004-07-20 22:53:03  willuhn
+ * Revision 1.6  2004-07-21 23:54:30  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.5  2004/07/20 22:53:03  willuhn
  * @C Refactoring
  *
  * Revision 1.4  2004/07/20 21:48:00  willuhn

@@ -16,12 +16,12 @@ import java.rmi.RemoteException;
 
 import org.kapott.hbci.GV_Result.GVRKUms;
 
-import de.willuhn.jameica.PluginLoader;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Protokoll;
 import de.willuhn.jameica.hbci.rmi.Umsatz;
 import de.willuhn.jameica.hbci.server.Converter;
+import de.willuhn.jameica.plugin.PluginLoader;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
 import de.willuhn.util.Logger;
@@ -117,7 +117,10 @@ public class HBCIUmsatzJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2004-07-14 23:48:31  willuhn
+ * Revision 1.8  2004-07-21 23:54:31  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.7  2004/07/14 23:48:31  willuhn
  * @N mehr Code fuer Dauerauftraege
  *
  * Revision 1.6  2004/07/09 00:04:40  willuhn

@@ -15,7 +15,6 @@ package de.willuhn.jameica.hbci.gui.menus;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 
-import de.willuhn.jameica.PluginLoader;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.parts.CheckedContextMenuItem;
 import de.willuhn.jameica.gui.parts.ContextMenu;
@@ -23,6 +22,7 @@ import de.willuhn.jameica.gui.parts.ContextMenuItem;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.gui.listener.UeberweisungCreate;
 import de.willuhn.jameica.hbci.gui.views.EmpfaengerNeu;
+import de.willuhn.jameica.plugin.PluginLoader;
 import de.willuhn.util.I18N;
 
 /**
@@ -63,7 +63,10 @@ public class EmpfaengerList extends ContextMenu
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2004-07-20 22:53:03  willuhn
+ * Revision 1.3  2004-07-21 23:54:31  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.2  2004/07/20 22:53:03  willuhn
  * @C Refactoring
  *
  * Revision 1.1  2004/07/20 21:48:00  willuhn

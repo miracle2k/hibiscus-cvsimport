@@ -16,11 +16,11 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import sun.misc.BASE64Encoder;
-import de.willuhn.jameica.PluginLoader;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.dialogs.PasswordDialog;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
+import de.willuhn.jameica.plugin.PluginLoader;
 import de.willuhn.util.I18N;
 import de.willuhn.util.Logger;
 
@@ -145,7 +145,10 @@ public class PINDialog extends PasswordDialog {
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2004-06-30 20:58:29  willuhn
+ * Revision 1.6  2004-07-21 23:54:30  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.5  2004/06/30 20:58:29  willuhn
  * *** empty log message ***
  *
  * Revision 1.4  2004/03/30 22:07:50  willuhn

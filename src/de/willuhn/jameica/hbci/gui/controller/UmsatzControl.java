@@ -16,7 +16,6 @@ import java.rmi.RemoteException;
 
 import org.eclipse.swt.widgets.TableItem;
 
-import de.willuhn.jameica.PluginLoader;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.Part;
 import de.willuhn.jameica.gui.controller.AbstractControl;
@@ -34,6 +33,7 @@ import de.willuhn.jameica.hbci.gui.views.UmsatzDetail;
 import de.willuhn.jameica.hbci.gui.views.UmsatzListe;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Umsatz;
+import de.willuhn.jameica.plugin.PluginLoader;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
 import de.willuhn.util.Logger;
@@ -232,7 +232,10 @@ public class UmsatzControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.16  2004-07-20 21:48:00  willuhn
+ * Revision 1.17  2004-07-21 23:54:30  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.16  2004/07/20 21:48:00  willuhn
  * @N ContextMenus
  *
  * Revision 1.15  2004/07/09 00:04:40  willuhn

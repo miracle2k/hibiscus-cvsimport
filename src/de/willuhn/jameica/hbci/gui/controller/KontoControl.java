@@ -23,7 +23,6 @@ import org.kapott.hbci.manager.HBCIUtils;
 import de.willuhn.datasource.pseudo.PseudoIterator;
 import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.datasource.rmi.GenericObject;
-import de.willuhn.jameica.PluginLoader;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.Part;
 import de.willuhn.jameica.gui.controller.AbstractControl;
@@ -46,6 +45,7 @@ import de.willuhn.jameica.hbci.gui.views.UmsatzListe;
 import de.willuhn.jameica.hbci.passport.Passport;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Protokoll;
+import de.willuhn.jameica.plugin.PluginLoader;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
 import de.willuhn.util.Logger;
@@ -631,7 +631,10 @@ public class KontoControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.40  2004-07-20 21:48:00  willuhn
+ * Revision 1.41  2004-07-21 23:54:30  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.40  2004/07/20 21:48:00  willuhn
  * @N ContextMenus
  *
  * Revision 1.39  2004/07/09 00:04:40  willuhn
