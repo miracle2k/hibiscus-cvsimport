@@ -15,6 +15,8 @@ package de.willuhn.jameica.hbci.gui;
 import de.willuhn.jameica.gui.dialogs.AbstractDialog;
 import de.willuhn.jameica.gui.dialogs.SimpleDialog;
 import de.willuhn.jameica.hbci.gui.dialogs.PINDialog;
+import de.willuhn.jameica.hbci.gui.dialogs.PassportLoadDialog;
+import de.willuhn.jameica.hbci.gui.dialogs.PassportSaveDialog;
 import de.willuhn.jameica.hbci.gui.dialogs.TANDialog;
 import de.willuhn.logging.Logger;
 
@@ -61,6 +63,42 @@ public class DialogFactory {
 	{
 		check();
 		dialog = new PINDialog(AbstractDialog.POSITION_CENTER);
+		try {
+			return (String) dialog.open();
+		}
+		finally
+		{
+			close();
+		}
+	}
+
+	/**
+	 * Dialog zur Eingabe des Passworts fuer das Sicherheitsmedium beim Laden.
+   * @return eingegebenes Passwort.
+   * @throws Exception
+   */
+  public static synchronized String loadPassport() throws Exception
+	{
+		check();
+		dialog = new PassportLoadDialog(AbstractDialog.POSITION_CENTER);
+		try {
+			return (String) dialog.open();
+		}
+		finally
+		{
+			close();
+		}
+	}
+
+	/**
+	 * Dialog zur Eingabe des Passworts fuer das Sicherheitsmedium beim Speichern.
+	 * @return eingegebenes Passwort.
+	 * @throws Exception
+	 */
+	public static synchronized String savePassport() throws Exception
+	{
+		check();
+		dialog = new PassportSaveDialog(AbstractDialog.POSITION_CENTER);
 		try {
 			return (String) dialog.open();
 		}
@@ -124,7 +162,10 @@ public class DialogFactory {
 
 /**********************************************************************
  * $Log$
- * Revision 1.17  2004-11-12 18:25:07  willuhn
+ * Revision 1.18  2005-01-09 23:21:05  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.17  2004/11/12 18:25:07  willuhn
  * *** empty log message ***
  *
  * Revision 1.16  2004/10/19 23:33:31  willuhn

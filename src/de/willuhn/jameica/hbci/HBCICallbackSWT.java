@@ -93,8 +93,13 @@ public class HBCICallbackSWT extends AbstractHBCICallback
             
 			switch (reason) {
 				case NEED_PASSPHRASE_LOAD:
+					// TODO: Passport-Passwort
+					retData.replace(0,retData.length(),DialogFactory.loadPassport());
+//				retData.replace(0,retData.length(),Settings.getPassphrase());
+					break;
 				case NEED_PASSPHRASE_SAVE:
-					retData.replace(0,retData.length(),Settings.getPassphrase());
+					retData.replace(0,retData.length(),DialogFactory.savePassport());
+//					retData.replace(0,retData.length(),Settings.getPassphrase());
 					break;
 	
 				case NEED_CHIPCARD:
@@ -347,7 +352,10 @@ public class HBCICallbackSWT extends AbstractHBCICallback
 
 /**********************************************************************
  * $Log$
- * Revision 1.18  2004-11-12 18:25:08  willuhn
+ * Revision 1.19  2005-01-09 23:21:05  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.18  2004/11/12 18:25:08  willuhn
  * *** empty log message ***
  *
  * Revision 1.17  2004/10/24 17:19:02  willuhn
