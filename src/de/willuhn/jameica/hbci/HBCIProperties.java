@@ -52,7 +52,22 @@ public class HBCIProperties
 	public final static int HBCI_TRANSFER_NAME_MAXLENGTH =
 		settings.getInt("hbci.transfer.name.maxlength",27);
 
-  /**
+
+	// BUGZILLA 28 http://www.willuhn.de/bugzilla/show_bug.cgi?id=28
+	
+	/**
+	 * Maximale Laenge fuer PINs.
+	 */
+	public final static int HBCI_PIN_MAXLENGTH =
+		settings.getInt("hbci.pin.maxlength",6);
+	
+	/**
+	 * Minimale Laenge fuer PINs.
+	 */
+	public final static int HBCI_PIN_MINLENGTH =
+	  settings.getInt("hbci.pin.minlength",5);
+	
+	/**
    * Prueft die uebergebenen Strings auf Vorhandensein nicht erlaubter Zeichen.
    * @param chars zu testende Zeichen.
    * @throws ApplicationException
@@ -80,7 +95,10 @@ public class HBCIProperties
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2005-03-09 01:16:17  web0
+ * Revision 1.6  2005-03-25 23:08:44  web0
+ * @B bug 28
+ *
+ * Revision 1.5  2005/03/09 01:16:17  web0
  * *** empty log message ***
  *
  * Revision 1.4  2005/03/05 19:11:25  web0

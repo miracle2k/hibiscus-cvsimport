@@ -20,6 +20,7 @@ import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.dialogs.PasswordDialog;
 import de.willuhn.jameica.gui.util.SWTUtil;
 import de.willuhn.jameica.hbci.HBCI;
+import de.willuhn.jameica.hbci.HBCIProperties;
 import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.security.Wallet;
 import de.willuhn.jameica.system.Application;
@@ -62,9 +63,14 @@ public class PINDialog extends PasswordDialog {
    */
   protected boolean checkPassword(String password)
 	{
-		if (password == null || password.length() != 5)
+  	// BUGZILLA 28 http://www.willuhn.de/bugzilla/show_bug.cgi?id=28
+		if (password == null || password.length() < HBCIProperties.HBCI_PIN_MINLENGTH || password.length() > HBCIProperties.HBCI_PIN_MAXLENGTH)
 		{
-			setErrorText(i18n.tr("Fehler: PIN muss fünfstellig sein.") + " " + getRetryString());
+			String[] s = new String[] {
+			  "" + HBCIProperties.HBCI_PIN_MINLENGTH,
+			  "" + HBCIProperties.HBCI_PIN_MAXLENGTH
+			};
+			setErrorText(i18n.tr("Länge der PIN ungültig ({0}-{1} Zeichen)",s) + " " + getRetryString());
 			return false;
 		}
 
@@ -143,7 +149,10 @@ public class PINDialog extends PasswordDialog {
 
 /**********************************************************************
  * $Log$
- * Revision 1.10  2005-03-09 01:07:02  web0
+ * Revision 1.11  2005-03-25 23:08:44  web0
+ * @B bug 28
+ *
+ * Revision 1.10  2005/03/09 01:07:02  web0
  * @D javadoc fixes
  *
  * Revision 1.9  2005/02/01 17:15:37  willuhn
