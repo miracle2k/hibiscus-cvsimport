@@ -129,6 +129,7 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob {
 					{
 						// Den haben wir schon, ueberschreiben wir
 						found = true;
+						Logger.debug("overwriting dauerauftrag order id: " + auftrag.getOrderID());
 						ex.overwrite(auftrag);
 						ex.store();
 						break;
@@ -153,7 +154,10 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.11  2004-11-13 17:02:04  willuhn
+ * Revision 1.12  2004-11-14 19:21:37  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.11  2004/11/13 17:02:04  willuhn
  * @N Bearbeiten des Zahlungsturnus
  *
  * Revision 1.10  2004/11/12 18:25:08  willuhn

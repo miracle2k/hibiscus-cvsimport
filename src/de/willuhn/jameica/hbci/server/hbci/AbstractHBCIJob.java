@@ -44,7 +44,6 @@ public abstract class AbstractHBCIJob
 
 	private I18N i18n             = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
-
 	/**
 	 * HBCI4Java verwendet intern eindeutige Job-Namen.
 	 * Diese Funktion liefert genau den Namen fuer genau den
@@ -214,7 +213,10 @@ public abstract class AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.13  2004-11-13 17:02:04  willuhn
+ * Revision 1.14  2004-11-14 19:21:37  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.13  2004/11/13 17:02:04  willuhn
  * @N Bearbeiten des Zahlungsturnus
  *
  * Revision 1.12  2004/11/12 18:25:08  willuhn
