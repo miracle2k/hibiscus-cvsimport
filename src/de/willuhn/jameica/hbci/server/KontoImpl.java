@@ -191,12 +191,31 @@ public class KontoImpl extends AbstractDBObject implements Konto {
     }
   }
 
+  /**
+   * @see de.willuhn.jameica.hbci.rmi.Konto#getWaehrung()
+   */
+  public String getWaehrung() throws RemoteException
+  {
+    return (String) getField("waehrung");
+  }
+
+  /**
+   * @see de.willuhn.jameica.hbci.rmi.Konto#setWaehrung(java.lang.String)
+   */
+  public void setWaehrung(String waehrung) throws RemoteException
+  {
+    setField("waehrung",waehrung);
+  }
+
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2004-02-11 10:33:59  willuhn
+ * Revision 1.3  2004-02-11 15:40:42  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.2  2004/02/11 10:33:59  willuhn
  * *** empty log message ***
  *
  * Revision 1.1  2004/02/11 00:11:20  willuhn

@@ -51,6 +51,7 @@ public class KontoControl extends AbstractControl {
 	private Input blz         = null;
 	private Input name				= null;
 	private Input passport    = null;
+  private Input waehrung    = null;
 
 	private boolean stored = false;
 
@@ -108,7 +109,7 @@ public class KontoControl extends AbstractControl {
 	}
 
 	/**
-	 * Lifert den Namen des Konto-Inhabers.
+	 * Liefert den Namen des Konto-Inhabers.
    * @return Name des Konto-Inhabers.
    * @throws RemoteException
    */
@@ -119,6 +120,19 @@ public class KontoControl extends AbstractControl {
 		name = new TextInput(getKonto().getName());
 		return name;
 	}
+
+  /**
+   * Liefert die Waehrungsbezeichnung.
+   * @return Waehrungsbezeichnung.
+   * @throws RemoteException
+   */
+  public Input getWaehrung() throws RemoteException
+  {
+    if (waehrung != null)
+      return waehrung;
+    waehrung = new TextInput(getKonto().getWaehrung());
+    return waehrung;
+  }
 
 	/**
 	 * Lifert das Auswahl-Feld fuer das Sicherheitsmedium.
@@ -211,6 +225,7 @@ public class KontoControl extends AbstractControl {
 			getKonto().setKontonummer(getKontonummer().getValue());
 			getKonto().setBLZ(getBlz().getValue());
 			getKonto().setName(getName().getValue());
+      getKonto().setWaehrung(getWaehrung().getValue());
       
 			// und jetzt speichern wir.
 			getKonto().store();
@@ -296,7 +311,10 @@ public class KontoControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2004-02-11 00:11:20  willuhn
+ * Revision 1.2  2004-02-11 15:40:42  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.1  2004/02/11 00:11:20  willuhn
  * *** empty log message ***
  *
  **********************************************************************/
