@@ -18,6 +18,7 @@ import org.kapott.hbci.GV_Result.GVRDauerList;
 
 import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.jameica.hbci.HBCI;
+import de.willuhn.jameica.hbci.HBCIProperties;
 import de.willuhn.jameica.hbci.rmi.Dauerauftrag;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Protokoll;
@@ -135,8 +136,8 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob {
 						// BUGZILLA 22 http://www.willuhn.de/bugzilla/show_bug.cgi?id=22
 						// BEGIN
 						String name = ex.getGegenkontoName();
-						if (name != null && name.length() > 27)
-							ex.setGegenkontoName(name.substring(0,27));
+						if (name != null && name.length() > HBCIProperties.HBCI_TRANSFER_NAME_MAXLENGTH)
+							ex.setGegenkontoName(name.substring(0,HBCIProperties.HBCI_TRANSFER_NAME_MAXLENGTH));
 						// END
 						ex.store();
 						break;
@@ -189,7 +190,10 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.14  2005-03-06 16:53:52  web0
+ * Revision 1.15  2005-03-06 17:05:48  web0
+ * @B bugzilla 22
+ *
+ * Revision 1.14  2005/03/06 16:53:52  web0
  * @B bugzilla 22
  *
  * Revision 1.13  2005/03/04 00:50:16  web0
