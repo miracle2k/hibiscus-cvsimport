@@ -42,13 +42,6 @@ public class HBCIUeberweisungJob extends AbstractHBCIJob {
 			setJobParam("src",Converter.JameicaKonto2HBCIKonto(konto));
 			setJobParam("btg.curr",konto.getWaehrung() == null ? "EUR" : konto.getWaehrung());
 
-//			// So ein Schrott. HBCI4Java sagt: Bei einer Ueberweisung darf
-//			// my.country nicht gesetzt sein. Ansonsten fliegt eine Exception.
-//			// Warum?
-//			org.kapott.hbci.structures.Konto my = Converter.JameicaKonto2HBCIKonto(konto);
-//			my.country = null; 
-//			setJobParam("my",my);
-
 		}
 		catch (RemoteException e)
 		{
@@ -85,7 +78,7 @@ public class HBCIUeberweisungJob extends AbstractHBCIJob {
 
 	/**
 	 * Speichert die Zeile 2 des Ueberweisungszwecks.
-	 * @param zweck Ueberweisungszweck
+	 * @param zweck2 Ueberweisungszweck
 	 */
 	public void setZweck2(String zweck2)
 	{
@@ -133,7 +126,10 @@ public class HBCIUeberweisungJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2004-04-24 19:04:51  willuhn
+ * Revision 1.4  2004-04-27 22:30:04  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.3  2004/04/24 19:04:51  willuhn
  * @N Ueberweisung.execute works!! ;)
  *
  * Revision 1.2  2004/04/22 23:46:50  willuhn
