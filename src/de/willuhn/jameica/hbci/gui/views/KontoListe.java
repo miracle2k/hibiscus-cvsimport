@@ -20,9 +20,9 @@ import de.willuhn.jameica.Application;
 import de.willuhn.jameica.PluginLoader;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.dialogs.YesNoDialog;
-import de.willuhn.jameica.gui.parts.ButtonArea;
-import de.willuhn.jameica.gui.parts.LabelGroup;
-import de.willuhn.jameica.gui.parts.LabelInput;
+import de.willuhn.jameica.gui.input.LabelInput;
+import de.willuhn.jameica.gui.util.ButtonArea;
+import de.willuhn.jameica.gui.util.LabelGroup;
 import de.willuhn.jameica.gui.views.AbstractView;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
@@ -113,7 +113,10 @@ public class KontoListe extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2004-03-30 22:07:49  willuhn
+ * Revision 1.8  2004-04-12 19:15:31  willuhn
+ * @C refactoring
+ *
+ * Revision 1.7  2004/03/30 22:07:49  willuhn
  * *** empty log message ***
  *
  * Revision 1.6  2004/03/04 00:26:24  willuhn

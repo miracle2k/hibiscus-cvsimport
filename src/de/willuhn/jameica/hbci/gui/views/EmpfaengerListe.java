@@ -15,7 +15,7 @@ package de.willuhn.jameica.hbci.gui.views;
 import de.willuhn.jameica.Application;
 import de.willuhn.jameica.PluginLoader;
 import de.willuhn.jameica.gui.GUI;
-import de.willuhn.jameica.gui.parts.ButtonArea;
+import de.willuhn.jameica.gui.util.ButtonArea;
 import de.willuhn.jameica.gui.views.AbstractView;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.gui.controller.EmpfaengerControl;
@@ -64,7 +64,10 @@ public class EmpfaengerListe extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2004-03-30 22:07:49  willuhn
+ * Revision 1.4  2004-04-12 19:15:31  willuhn
+ * @C refactoring
+ *
+ * Revision 1.3  2004/03/30 22:07:49  willuhn
  * *** empty log message ***
  *
  * Revision 1.2  2004/03/03 22:26:40  willuhn

@@ -24,9 +24,9 @@ import de.willuhn.jameica.PluginLoader;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.controller.AbstractControl;
 import de.willuhn.jameica.gui.dialogs.YesNoDialog;
-import de.willuhn.jameica.gui.parts.AbstractInput;
-import de.willuhn.jameica.gui.parts.Table;
-import de.willuhn.jameica.gui.parts.TextInput;
+import de.willuhn.jameica.gui.input.AbstractInput;
+import de.willuhn.jameica.gui.input.TextInput;
+import de.willuhn.jameica.gui.parts.TablePart;
 import de.willuhn.jameica.gui.views.AbstractView;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
@@ -80,11 +80,11 @@ public class EmpfaengerControl extends AbstractControl {
    * @return Tabelle.
    * @throws RemoteException
    */
-  public Table getEmpfaengerListe() throws RemoteException
+  public TablePart getEmpfaengerListe() throws RemoteException
 	{
 		DBIterator list = Settings.getDatabase().createList(Empfaenger.class);
 
-		Table table = new Table(list,this);
+		TablePart table = new TablePart(list,this);
 		table.addColumn(i18n.tr("Kontonummer"),"kontonummer");
 		table.addColumn(i18n.tr("Bankleitzahl"),"blz");
 		table.addColumn(i18n.tr("Name"),"name");
@@ -248,7 +248,10 @@ public class EmpfaengerControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2004-03-30 22:07:50  willuhn
+ * Revision 1.8  2004-04-12 19:15:31  willuhn
+ * @C refactoring
+ *
+ * Revision 1.7  2004/03/30 22:07:50  willuhn
  * *** empty log message ***
  *
  * Revision 1.6  2004/03/11 08:55:42  willuhn

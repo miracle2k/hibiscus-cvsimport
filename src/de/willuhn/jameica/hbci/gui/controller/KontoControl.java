@@ -25,11 +25,11 @@ import de.willuhn.jameica.PluginLoader;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.controller.AbstractControl;
 import de.willuhn.jameica.gui.dialogs.YesNoDialog;
-import de.willuhn.jameica.gui.parts.AbstractInput;
-import de.willuhn.jameica.gui.parts.LabelInput;
-import de.willuhn.jameica.gui.parts.SelectInput;
-import de.willuhn.jameica.gui.parts.Table;
-import de.willuhn.jameica.gui.parts.TextInput;
+import de.willuhn.jameica.gui.input.AbstractInput;
+import de.willuhn.jameica.gui.input.LabelInput;
+import de.willuhn.jameica.gui.input.SelectInput;
+import de.willuhn.jameica.gui.input.TextInput;
+import de.willuhn.jameica.gui.parts.TablePart;
 import de.willuhn.jameica.gui.views.AbstractView;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
@@ -250,11 +250,11 @@ public class KontoControl extends AbstractControl {
    * @return Tabelle mit Bankverbindungen.
    * @throws RemoteException
    */
-  public Table getKontoListe() throws RemoteException
+  public TablePart getKontoListe() throws RemoteException
 	{
 		DBIterator list = Settings.getDatabase().createList(Konto.class);
 
-		Table table = new Table(list,this);
+		TablePart table = new TablePart(list,this);
 		table.addColumn(i18n.tr("Kontonummer"),"kontonummer");
 		table.addColumn(i18n.tr("Bankleitzahl"),"blz");
 		table.addColumn(i18n.tr("Bezeichnung"),"bezeichnung");
@@ -522,7 +522,10 @@ public class KontoControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.20  2004-04-05 23:28:46  willuhn
+ * Revision 1.21  2004-04-12 19:15:31  willuhn
+ * @C refactoring
+ *
+ * Revision 1.20  2004/04/05 23:28:46  willuhn
  * *** empty log message ***
  *
  * Revision 1.19  2004/04/01 22:06:59  willuhn

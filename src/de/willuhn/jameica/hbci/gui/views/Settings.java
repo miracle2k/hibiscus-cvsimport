@@ -18,8 +18,8 @@ import org.eclipse.swt.events.MouseEvent;
 import de.willuhn.jameica.Application;
 import de.willuhn.jameica.PluginLoader;
 import de.willuhn.jameica.gui.GUI;
-import de.willuhn.jameica.gui.parts.ButtonArea;
-import de.willuhn.jameica.gui.parts.LabelGroup;
+import de.willuhn.jameica.gui.util.ButtonArea;
+import de.willuhn.jameica.gui.util.LabelGroup;
 import de.willuhn.jameica.gui.views.AbstractView;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.gui.controller.SettingsControl;
@@ -101,7 +101,10 @@ public class Settings extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.11  2004-04-05 23:28:46  willuhn
+ * Revision 1.12  2004-04-12 19:15:31  willuhn
+ * @C refactoring
+ *
+ * Revision 1.11  2004/04/05 23:28:46  willuhn
  * *** empty log message ***
  *
  * Revision 1.10  2004/03/30 22:07:49  willuhn

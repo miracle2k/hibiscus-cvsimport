@@ -23,8 +23,8 @@ import de.willuhn.jameica.PluginLoader;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.controller.AbstractControl;
 import de.willuhn.jameica.gui.dialogs.YesNoDialog;
-import de.willuhn.jameica.gui.parts.AbstractInput;
-import de.willuhn.jameica.gui.parts.LabelInput;
+import de.willuhn.jameica.gui.input.AbstractInput;
+import de.willuhn.jameica.gui.input.LabelInput;
 import de.willuhn.jameica.gui.views.AbstractView;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
@@ -263,7 +263,10 @@ public class UmsatzDetailControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2004-03-30 22:07:50  willuhn
+ * Revision 1.3  2004-04-12 19:15:31  willuhn
+ * @C refactoring
+ *
+ * Revision 1.2  2004/03/30 22:07:50  willuhn
  * *** empty log message ***
  *
  * Revision 1.1  2004/03/11 08:55:42  willuhn

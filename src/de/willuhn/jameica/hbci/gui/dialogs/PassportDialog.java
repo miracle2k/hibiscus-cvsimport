@@ -28,8 +28,8 @@ import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.jameica.Application;
 import de.willuhn.jameica.PluginLoader;
 import de.willuhn.jameica.gui.dialogs.AbstractDialog;
-import de.willuhn.jameica.gui.parts.AbstractInput;
-import de.willuhn.jameica.gui.parts.SelectInput;
+import de.willuhn.jameica.gui.input.AbstractInput;
+import de.willuhn.jameica.gui.input.SelectInput;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.rmi.Passport;
@@ -143,7 +143,10 @@ public class PassportDialog extends AbstractDialog {
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2004-03-19 01:44:13  willuhn
+ * Revision 1.6  2004-04-12 19:15:31  willuhn
+ * @C refactoring
+ *
+ * Revision 1.5  2004/03/19 01:44:13  willuhn
  * *** empty log message ***
  *
  * Revision 1.4  2004/03/11 08:55:42  willuhn
