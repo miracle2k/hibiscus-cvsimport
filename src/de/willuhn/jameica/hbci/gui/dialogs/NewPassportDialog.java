@@ -33,7 +33,7 @@ import de.willuhn.jameica.gui.input.AbstractInput;
 import de.willuhn.jameica.gui.input.SelectInput;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.PassportRegistry;
-import de.willuhn.jameica.hbci.rmi.Passport;
+import de.willuhn.jameica.hbci.passport.Passport;
 import de.willuhn.util.I18N;
 
 /**
@@ -157,7 +157,10 @@ public class NewPassportDialog extends AbstractDialog {
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2004-05-04 23:07:23  willuhn
+ * Revision 1.8  2004-05-05 22:14:47  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.7  2004/05/04 23:07:23  willuhn
  * @C refactored Passport stuff
  *
  * Revision 1.6  2004/04/27 22:23:56  willuhn

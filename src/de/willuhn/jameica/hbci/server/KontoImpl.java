@@ -24,8 +24,8 @@ import de.willuhn.jameica.PluginLoader;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.PassportRegistry;
 import de.willuhn.jameica.hbci.Settings;
+import de.willuhn.jameica.hbci.passport.Passport;
 import de.willuhn.jameica.hbci.rmi.Konto;
-import de.willuhn.jameica.hbci.rmi.Passport;
 import de.willuhn.jameica.hbci.rmi.Ueberweisung;
 import de.willuhn.jameica.hbci.rmi.Umsatz;
 import de.willuhn.jameica.hbci.server.hbci.HBCIFactory;
@@ -153,7 +153,7 @@ public class KontoImpl extends AbstractDBObject implements Konto {
 		}
   }
 
-  /**?
+  /**
    * @see de.willuhn.jameica.hbci.rmi.Konto#setKontonummer(java.lang.String)
    */
   public void setKontonummer(String kontonummer) throws RemoteException {
@@ -175,7 +175,7 @@ public class KontoImpl extends AbstractDBObject implements Konto {
 	}
 
   /**
-   * @see de.willuhn.jameica.hbci.rmi.Konto#setPassport(de.willuhn.jameica.hbci.rmi.Passport)
+   * @see de.willuhn.jameica.hbci.rmi.Konto#setPassport(de.willuhn.jameica.hbci.passport.Passport)
    */
   public void setPassport(Passport passport) throws RemoteException {
 		if (passport == null)
@@ -391,7 +391,10 @@ public class KontoImpl extends AbstractDBObject implements Konto {
 
 /**********************************************************************
  * $Log$
- * Revision 1.19  2004-05-04 23:07:24  willuhn
+ * Revision 1.20  2004-05-05 22:14:47  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.19  2004/05/04 23:07:24  willuhn
  * @C refactored Passport stuff
  *
  * Revision 1.18  2004/04/19 22:05:51  willuhn
