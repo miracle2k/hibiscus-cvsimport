@@ -15,7 +15,7 @@ package de.willuhn.jameica.hbci.server;
 
 import java.rmi.RemoteException;
 
-import de.willuhn.datasource.db.DBServiceImpl;
+import de.willuhn.datasource.db.EmbeddedDBServiceImpl;
 import de.willuhn.datasource.rmi.DBService;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.system.Application;
@@ -24,7 +24,7 @@ import de.willuhn.util.I18N;
 /**
  * @author willuhn
  */
-public class HBCIDBServiceImpl extends DBServiceImpl implements DBService
+public class HBCIDBServiceImpl extends EmbeddedDBServiceImpl implements DBService
 {
 
   /**
@@ -32,8 +32,7 @@ public class HBCIDBServiceImpl extends DBServiceImpl implements DBService
    */
   public HBCIDBServiceImpl() throws RemoteException
   {
-    super("com.mckoi.JDBCDriver",
-          ":jdbc:mckoi:local://" + Application.getPluginLoader().getPlugin(HBCI.class).getResources().getWorkPath() + "/db/db.conf",
+    super(Application.getPluginLoader().getPlugin(HBCI.class).getResources().getWorkPath() + "/db/db.conf",
           "hibiscus","hibiscus");
     this.setClassFinder(Application.getClassLoader().getClassFinder());
   }
@@ -52,7 +51,10 @@ public class HBCIDBServiceImpl extends DBServiceImpl implements DBService
 
 /*********************************************************************
  * $Log$
- * Revision 1.5  2004-09-15 22:31:42  willuhn
+ * Revision 1.6  2004-11-03 18:42:55  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.5  2004/09/15 22:31:42  willuhn
  * *** empty log message ***
  *
  * Revision 1.4  2004/08/31 18:13:51  willuhn
