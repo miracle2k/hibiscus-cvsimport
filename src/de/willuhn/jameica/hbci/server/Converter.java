@@ -22,8 +22,8 @@ import org.kapott.hbci.swift.DTAUS;
 
 import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.jameica.hbci.Settings;
-import de.willuhn.jameica.hbci.rmi.Dauerauftrag;
 import de.willuhn.jameica.hbci.rmi.Adresse;
+import de.willuhn.jameica.hbci.rmi.Dauerauftrag;
 import de.willuhn.jameica.hbci.rmi.SammelLastBuchung;
 import de.willuhn.jameica.hbci.rmi.SammelLastschrift;
 import de.willuhn.jameica.hbci.rmi.Umsatz;
@@ -212,11 +212,10 @@ public class Converter {
 	 */
 	public static Konto HibiscusAdresse2HBCIKonto(Adresse adresse) throws RemoteException
 	{
-		return new org.kapott.hbci.structures.Konto(
-			"DE",
-			adresse.getBLZ(),
-			adresse.getKontonummer()
-		);
+		org.kapott.hbci.structures.Konto k =
+			new org.kapott.hbci.structures.Konto("DE",adresse.getBLZ(),adresse.getKontonummer());
+		k.name = adresse.getName();
+		return k;
 	}
 
 	/**
@@ -275,7 +274,10 @@ public class Converter {
 
 /**********************************************************************
  * $Log$
- * Revision 1.20  2005-03-05 19:11:25  web0
+ * Revision 1.21  2005-03-06 14:04:26  web0
+ * @N SammelLastschrift seems to work now
+ *
+ * Revision 1.20  2005/03/05 19:11:25  web0
  * @N SammelLastschrift-Code complete
  *
  * Revision 1.19  2005/03/02 17:59:30  web0
