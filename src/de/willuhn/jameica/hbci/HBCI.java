@@ -119,7 +119,7 @@ public class HBCI extends AbstractPlugin
 		if (checkSum.equals("KvynDJyxe6D1XUvSCkNAFA==")) // 1.0
 			return;
 
-		if (checkSum.equals("z9T4ahYgJTVSLnUChnQJsg==")) // 1.1
+		if (checkSum.equals("Oj3JSimz84VKq44EEzQOZQ==")) // 1.1
 			return;
 
 		throw new Exception("database checksum does not match any known version: " + checkSum);
@@ -144,7 +144,7 @@ public class HBCI extends AbstractPlugin
 		PassportRegistry.init();
 
 		try {
-			HBCIUtils.init(null,null,new HBCICallbackSWT(Settings.getHBCIProgressBar()));
+			HBCIUtils.init(null,null,new HBCICallbackSWT());
 			int logLevel = 3;
 			try
 			{
@@ -211,7 +211,10 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
- * Revision 1.38  2005-01-30 20:45:35  willuhn
+ * Revision 1.39  2005-02-01 17:15:37  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.38  2005/01/30 20:45:35  willuhn
  * *** empty log message ***
  *
  * Revision 1.37  2005/01/19 00:33:32  willuhn
