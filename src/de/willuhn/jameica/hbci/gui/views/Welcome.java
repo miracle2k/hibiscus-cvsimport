@@ -13,6 +13,12 @@
 
 package de.willuhn.jameica.hbci.gui.views;
 
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
+
 import de.willuhn.jameica.PluginLoader;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.util.Headline;
@@ -38,11 +44,21 @@ public class Welcome extends AbstractView
 
 		GUI.getView().setTitle(i18n.tr("Hibiscus - HBCI-Onlinebanking"));
 
-		new Headline(getParent(),i18n.tr("Offene Überweisungen"));
-		control.getOffeneUeberweisungen().paint(getParent());
+		Composite comp = new Composite(getParent(),SWT.NONE);
+		comp.setLayoutData(new GridData(GridData.FILL_BOTH));
+		comp.setLayout(new GridLayout(3,false));
 
-		control.getWelcomeText().paint(getParent());
-	
+		new Headline(comp,i18n.tr("Offene Überweisungen"));
+		Label sep = new Label(comp,SWT.SEPARATOR);
+		GridData gd = new GridData(GridData.FILL_VERTICAL);
+		gd.verticalSpan = 3;
+		sep.setLayoutData(gd);
+		new Headline(comp,i18n.tr("Konten"));
+
+		control.getOffeneUeberweisungen().paint(comp);
+		control.getKontoStats().paint(comp);	
+		
+		control.getQuickLinks().paint(comp);
   }
 
   /**
@@ -57,7 +73,10 @@ public class Welcome extends AbstractView
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2004-05-25 23:23:18  willuhn
+ * Revision 1.10  2004-07-20 23:31:49  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.9  2004/05/25 23:23:18  willuhn
  * @N UeberweisungTyp
  * @N Protokoll
  *
