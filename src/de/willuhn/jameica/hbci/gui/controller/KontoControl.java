@@ -294,7 +294,6 @@ public class KontoControl extends AbstractControl {
 		table.addColumn(i18n.tr("Bezeichnung"),"bezeichnung");
 		table.addColumn(i18n.tr("Kontoinhaber"),"name");
 		table.addColumn(i18n.tr("Kundennummer"),"kundennummer");
-		table.addColumn(i18n.tr("Sicherheitsmedium"),"passport_id");
 		return table;
 	}
 
@@ -608,7 +607,10 @@ public class KontoControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.31  2004-06-07 21:55:59  willuhn
+ * Revision 1.32  2004-06-07 22:22:33  willuhn
+ * @B Spalte "Passport" in KontoListe entfernt - nicht mehr noetig
+ *
+ * Revision 1.31  2004/06/07 21:55:59  willuhn
  * @B ClassCastException nach dem Verlassen der Passport-Config von der KontoListe aus
  *
  * Revision 1.30  2004/06/03 00:23:42  willuhn
