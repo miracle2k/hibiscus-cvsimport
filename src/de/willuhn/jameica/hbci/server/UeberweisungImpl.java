@@ -89,6 +89,10 @@ public class UeberweisungImpl
 			if (getKonto().isNewObject())
 				throw new ApplicationException("Bitte speichern Sie zunächst das Konto");
 
+			if (getBetrag() > Settings.getUeberweisungLimit())
+				throw new ApplicationException("Limit für Überweisungsbetrag überschritten: " + 
+					HBCI.DECIMALFORMAT.format(Settings.getUeberweisungLimit()) + " " + getKonto().getWaehrung());
+
 			if (getEmpfaengerKonto() == null || "".equals(getEmpfaengerKonto()))
 				throw new ApplicationException("Bitte geben Sie die Kontonummer des Empfängers ein");
 			
@@ -361,7 +365,12 @@ public class UeberweisungImpl
 
 /**********************************************************************
  * $Log$
- * Revision 1.10  2004-05-23 15:33:10  willuhn
+ * Revision 1.11  2004-05-26 23:23:10  willuhn
+ * @N neue Sicherheitsabfrage vor Ueberweisung
+ * @C Check des Ueberweisungslimit
+ * @N Timeout fuer Messages in Statusbars
+ *
+ * Revision 1.10  2004/05/23 15:33:10  willuhn
  * *** empty log message ***
  *
  * Revision 1.9  2004/04/24 19:04:51  willuhn

@@ -163,6 +163,7 @@ public class EmpfaengerControl extends AbstractControl {
 			// ok, wir loeschen das Objekt
 			getEmpfaenger().delete();
 			GUI.getStatusBar().setSuccessText(i18n.tr("Empfängeradresse gelöscht."));
+			GUI.startPreviousView();
 		}
 		catch (RemoteException e)
 		{
@@ -248,7 +249,12 @@ public class EmpfaengerControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2004-04-13 23:14:23  willuhn
+ * Revision 1.10  2004-05-26 23:23:10  willuhn
+ * @N neue Sicherheitsabfrage vor Ueberweisung
+ * @C Check des Ueberweisungslimit
+ * @N Timeout fuer Messages in Statusbars
+ *
+ * Revision 1.9  2004/04/13 23:14:23  willuhn
  * @N datadir
  *
  * Revision 1.8  2004/04/12 19:15:31  willuhn
