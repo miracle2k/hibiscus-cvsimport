@@ -64,7 +64,7 @@ public class HBCI extends AbstractPlugin
   };
 
   static {
-    DECIMALFORMAT.applyPattern("#0.00");
+    DECIMALFORMAT.applyPattern("#0,00");
   }
 
   private EmbeddedDatabase db = null;
@@ -220,7 +220,10 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
- * Revision 1.26  2004-08-18 23:13:51  willuhn
+ * Revision 1.27  2004-10-08 00:19:08  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.26  2004/08/18 23:13:51  willuhn
  * @D Javadoc
  *
  * Revision 1.25  2004/07/23 15:51:44  willuhn
