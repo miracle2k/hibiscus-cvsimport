@@ -61,7 +61,7 @@ public class KontoFetchUmsaetze implements Action
 						factory.addJob(new HBCIUmsatzJob(k));
 
 						// BUGZILLA #3 http://www.willuhn.de/bugzilla/show_bug.cgi?id=3
-						factory.addJob(new HBCISaldoJob(k));
+						factory.addExclusiveJob(new HBCISaldoJob(k));
 
 						factory.executeJobs(k.getPassport().getHandle());
 						GUI.startView(UmsatzList.class,k);
@@ -100,7 +100,10 @@ public class KontoFetchUmsaetze implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.8  2005-02-19 16:49:32  willuhn
+ * Revision 1.9  2005-03-02 18:48:21  web0
+ * @B Bugzilla #3 Saldo wird beim Abrufen der Umsaetze jetzt als exklusiver Job ausgefuehrt
+ *
+ * Revision 1.8  2005/02/19 16:49:32  willuhn
  * @B bugs 3,8,10
  *
  * Revision 1.7  2005/01/19 00:16:04  willuhn
