@@ -276,7 +276,7 @@ public class KontoImpl extends AbstractDBObject implements Konto {
    * @see de.willuhn.jameica.hbci.rmi.Konto#getSaldo()
    */
   public double getSaldo() throws RemoteException {
-		Double d = (Double) getAttribute("saldo");
+		Double d = (Double) getAttribute("saldo"); // TODO Testen ob negativer Saldo korrekt ausgegeben wird
 		if (d == null)
 			return 0;
 		return d.doubleValue();
@@ -432,7 +432,10 @@ public class KontoImpl extends AbstractDBObject implements Konto {
 
 /**********************************************************************
  * $Log$
- * Revision 1.40  2004-11-17 19:02:28  willuhn
+ * Revision 1.41  2005-02-02 18:19:47  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.40  2004/11/17 19:02:28  willuhn
  * *** empty log message ***
  *
  * Revision 1.39  2004/11/15 18:09:18  willuhn

@@ -125,7 +125,7 @@ public class HBCIUeberweisungJob extends AbstractHBCIJob
 
 		// Wir markieren die Ueberweisung als "ausgefuehrt"
 		ueberweisung.setAusgefuehrt();
-		ueberweisung.store();
+		ueberweisung.store(); //TODO Erzeugt Fehler
 		Logger.info("ueberweisung submitted successfully");
   }
 }
@@ -133,7 +133,10 @@ public class HBCIUeberweisungJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.17  2004-11-13 17:02:04  willuhn
+ * Revision 1.18  2005-02-02 18:19:46  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.17  2004/11/13 17:02:04  willuhn
  * @N Bearbeiten des Zahlungsturnus
  *
  * Revision 1.16  2004/11/12 18:25:08  willuhn
