@@ -136,8 +136,13 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob {
 						// BUGZILLA 22 http://www.willuhn.de/bugzilla/show_bug.cgi?id=22
 						// BEGIN
 						String name = ex.getGegenkontoName();
+						Logger.debug("checking name length: " + name + ", chars: " + name.length());
 						if (name != null && name.length() > HBCIProperties.HBCI_TRANSFER_NAME_MAXLENGTH)
+						{
+							Logger.warn("name of other account longer than " + HBCIProperties.HBCI_TRANSFER_NAME_MAXLENGTH +
+								" chars. stripping");
 							ex.setGegenkontoName(name.substring(0,HBCIProperties.HBCI_TRANSFER_NAME_MAXLENGTH));
+						}
 						// END
 						ex.store();
 						break;
@@ -190,7 +195,10 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.15  2005-03-06 17:05:48  web0
+ * Revision 1.16  2005-03-06 17:10:57  web0
+ * *** empty log message ***
+ *
+ * Revision 1.15  2005/03/06 17:05:48  web0
  * @B bugzilla 22
  *
  * Revision 1.14  2005/03/06 16:53:52  web0
