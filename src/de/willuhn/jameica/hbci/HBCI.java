@@ -87,6 +87,10 @@ public class HBCI extends AbstractPlugin
 		String checkSum = db.getMD5Sum();
 		if (checkSum.equals("KvynDJyxe6D1XUvSCkNAFA=="))
 			return 1.0;
+
+		if (checkSum.equals("gUw7UlvJPKYd3TPzsZ6w3g=="))
+			return 1.1;
+
 		throw new Exception("database checksum does not match any known version: " + checkSum);
 	}
 
@@ -95,8 +99,6 @@ public class HBCI extends AbstractPlugin
    */
   public void init() throws ApplicationException
   {
-  	Application.splash("init passport registry");
-  	PassportRegistry.init();
 		try {
 			Application.splash("checking database integrity");
 			getDBVersion();
@@ -106,6 +108,9 @@ public class HBCI extends AbstractPlugin
 			throw new ApplicationException(
 				getResources().getI18N().tr("Fehler beim Prüfung der Datenbank-Integrität, " +					"Plugin wird aus Sicherheitsgründen deaktiviert"),e);
 		}
+
+		Application.splash("init passport registry");
+		PassportRegistry.init();
 
 		try {
 			HBCIUtils.init(null,null,new HBCICallbackSWT());
@@ -162,7 +167,10 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
- * Revision 1.20  2004-07-11 16:14:29  willuhn
+ * Revision 1.21  2004-07-13 23:26:14  willuhn
+ * @N Views fuer Dauerauftrag
+ *
+ * Revision 1.20  2004/07/11 16:14:29  willuhn
  * @N erster Code fuer Dauerauftraege
  *
  * Revision 1.19  2004/07/04 17:07:59  willuhn
