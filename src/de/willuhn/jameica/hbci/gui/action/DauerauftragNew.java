@@ -73,7 +73,7 @@ public class DauerauftragNew implements Action
 			}
 		}
 
-  	GUI.startView(de.willuhn.jameica.hbci.gui.views.DauerauftragNew.class.getName(),d);
+  	GUI.startView(de.willuhn.jameica.hbci.gui.views.DauerauftragNew.class,d);
   }
 
 }
@@ -81,7 +81,10 @@ public class DauerauftragNew implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2004-11-13 17:12:14  willuhn
+ * Revision 1.3  2005-01-19 00:16:04  willuhn
+ * @N Lastschriften
+ *
+ * Revision 1.2  2004/11/13 17:12:14  willuhn
  * *** empty log message ***
  *
  * Revision 1.1  2004/11/13 17:02:03  willuhn

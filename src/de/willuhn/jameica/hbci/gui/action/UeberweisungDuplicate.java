@@ -54,7 +54,7 @@ public class UeberweisungDuplicate implements Action
 
 		try {
 			Ueberweisung u = (Ueberweisung) context;
-			GUI.startView(UeberweisungNew.class.getName(),u.duplicate());
+			GUI.startView(UeberweisungNew.class,u.duplicate());
 		}
 		catch (RemoteException e)
 		{
@@ -68,7 +68,10 @@ public class UeberweisungDuplicate implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2004-11-13 17:12:15  willuhn
+ * Revision 1.4  2005-01-19 00:16:04  willuhn
+ * @N Lastschriften
+ *
+ * Revision 1.3  2004/11/13 17:12:15  willuhn
  * *** empty log message ***
  *
  * Revision 1.2  2004/11/12 18:25:07  willuhn

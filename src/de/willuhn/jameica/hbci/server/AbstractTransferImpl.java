@@ -60,7 +60,7 @@ public abstract class AbstractTransferImpl extends AbstractDBObject implements T
 				throw new ApplicationException(i18n.tr("Bitte speichern Sie zunächst das Konto"));
 
 			if (getBetrag() > Settings.getUeberweisungLimit())
-				throw new ApplicationException(i18n.tr("Limit für Überweisungsbetrag überschritten: {0} ", 
+				throw new ApplicationException(i18n.tr("Auftragslimit überschritten: {0} ", 
 					HBCI.DECIMALFORMAT.format(Settings.getUeberweisungLimit()) + " " + getKonto().getWaehrung()));
 
 			if (getEmpfaengerKonto() == null || "".equals(getEmpfaengerKonto()))
@@ -240,7 +240,7 @@ public abstract class AbstractTransferImpl extends AbstractDBObject implements T
     super.delete();
     if (k == null)
     	return;
-    k.addToProtokoll(i18n.tr("Überweisung an " + getEmpfaengerName() + " gelöscht"),Protokoll.TYP_SUCCESS);
+    k.addToProtokoll(i18n.tr("Auftrag an " + getEmpfaengerName() + " gelöscht"),Protokoll.TYP_SUCCESS);
   }
 
 
@@ -256,12 +256,22 @@ public abstract class AbstractTransferImpl extends AbstractDBObject implements T
   	setEmpfaengerName(e.getName());
   }
 
+	/**
+   * @see de.willuhn.jameica.hbci.rmi.Transfer#duplicate()
+   */
+	public Transfer duplicate() throws RemoteException {
+		throw new UnsupportedOperationException("not implemented");
+	}
+
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.14  2004-11-12 18:25:07  willuhn
+ * Revision 1.15  2005-01-19 00:16:05  willuhn
+ * @N Lastschriften
+ *
+ * Revision 1.14  2004/11/12 18:25:07  willuhn
  * *** empty log message ***
  *
  * Revision 1.13  2004/11/02 18:48:32  willuhn

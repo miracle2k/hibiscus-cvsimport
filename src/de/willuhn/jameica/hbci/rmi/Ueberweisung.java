@@ -49,13 +49,6 @@ public interface Ueberweisung extends Transfer
   public void setTermin(Date termin) throws RemoteException;
 
   /**
-   * Dupliziert die Ueberweisung.
-   * @return eine neue Ueberweisung mit den Eigenschaften dieser.
-   * @throws RemoteException
-   */
-  public Ueberweisung duplicate() throws RemoteException;
-  
-  /**
    * Prueft, ob die Ueberweisung ueberfaellig ist.
    * @return true, wenn sie ueberfaellig ist.
    * @throws RemoteException
@@ -67,7 +60,10 @@ public interface Ueberweisung extends Transfer
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2004-10-25 22:39:14  willuhn
+ * Revision 1.10  2005-01-19 00:16:04  willuhn
+ * @N Lastschriften
+ *
+ * Revision 1.9  2004/10/25 22:39:14  willuhn
  * *** empty log message ***
  *
  * Revision 1.8  2004/10/19 23:33:31  willuhn

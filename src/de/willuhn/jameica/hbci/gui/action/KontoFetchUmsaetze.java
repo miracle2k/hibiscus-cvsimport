@@ -59,7 +59,7 @@ public class KontoFetchUmsaetze implements Action
 						HBCIFactory factory = HBCIFactory.getInstance();
 						factory.addJob(new HBCIUmsatzJob(k));
 						factory.executeJobs(k.getPassport().getHandle());
-						GUI.startView(UmsatzList.class.getName(),k);
+						GUI.startView(UmsatzList.class,k);
 						GUI.getStatusBar().setSuccessText(i18n.tr("...Umsätze erfolgreich übertragen"));
 					}
 					catch (OperationCanceledException oce)
@@ -95,7 +95,10 @@ public class KontoFetchUmsaetze implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2004-11-13 17:12:14  willuhn
+ * Revision 1.7  2005-01-19 00:16:04  willuhn
+ * @N Lastschriften
+ *
+ * Revision 1.6  2004/11/13 17:12:14  willuhn
  * *** empty log message ***
  *
  * Revision 1.5  2004/11/12 18:25:07  willuhn

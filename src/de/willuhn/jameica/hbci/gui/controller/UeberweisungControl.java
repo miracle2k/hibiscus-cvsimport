@@ -136,11 +136,11 @@ public class UeberweisungControl extends AbstractTransferControl
 		Ueberweisung u = (Ueberweisung) getTransfer();
 		if (u.ausgefuehrt())
 		{
-			comment.setValue(i18n.tr("Die Überweisung wurde bereits ausgeführt"));
+			comment.setValue(i18n.tr("Der Auftrag wurde bereits ausgeführt"));
 		}
 		else if (u.ueberfaellig())
 		{
-			comment.setValue(i18n.tr("Die Überweisung ist überfällig"));
+			comment.setValue(i18n.tr("Der Auftrag ist überfällig"));
 		}
 		return comment;
 	}
@@ -171,7 +171,7 @@ public class UeberweisungControl extends AbstractTransferControl
 					if (u.ueberfaellig() && choosen.after(new Date()));
 						getComment().setValue("");
 					if (choosen.before(new Date()))
-						getComment().setValue(i18n.tr("Die Überweisung ist überfällig."));
+						getComment().setValue(i18n.tr("Der Auftrag ist überfällig."));
 				}
 				catch (RemoteException e) {/*ignore*/}
 			}
@@ -227,7 +227,7 @@ public class UeberweisungControl extends AbstractTransferControl
 			
 			if (u.ausgefuehrt())
 			{
-				GUI.getStatusBar().setErrorText(i18n.tr("Die Überweisung wurde bereits ausgeführt und kann daher nicht geändert werden"));
+				GUI.getStatusBar().setErrorText(i18n.tr("Der Auftrag wurde bereits ausgeführt und kann daher nicht geändert werden"));
 				return false;
 			}
 
@@ -251,7 +251,7 @@ public class UeberweisungControl extends AbstractTransferControl
 		{
 			Logger.error("rollback failed",re);
 			Logger.error("error while storing ueberweisung",re);
-			GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Speichern der Überweisung"));
+			GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Speichern des Auftrags"));
   	}
 		return false;
   }
@@ -357,7 +357,10 @@ public class UeberweisungControl extends AbstractTransferControl
 
 /**********************************************************************
  * $Log$
- * Revision 1.34  2004-11-13 17:02:04  willuhn
+ * Revision 1.35  2005-01-19 00:16:05  willuhn
+ * @N Lastschriften
+ *
+ * Revision 1.34  2004/11/13 17:02:04  willuhn
  * @N Bearbeiten des Zahlungsturnus
  *
  * Revision 1.33  2004/11/12 18:25:07  willuhn

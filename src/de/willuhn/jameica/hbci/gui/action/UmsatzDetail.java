@@ -28,7 +28,7 @@ public class UmsatzDetail implements Action
    */
   public void handleAction(Object context) throws ApplicationException
   {
-		GUI.startView(de.willuhn.jameica.hbci.gui.views.UmsatzDetail.class.getName(),context);
+		GUI.startView(de.willuhn.jameica.hbci.gui.views.UmsatzDetail.class,context);
   }
 
 }
@@ -36,7 +36,10 @@ public class UmsatzDetail implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2004-10-18 23:38:17  willuhn
+ * Revision 1.2  2005-01-19 00:16:04  willuhn
+ * @N Lastschriften
+ *
+ * Revision 1.1  2004/10/18 23:38:17  willuhn
  * @C Refactoring
  * @C Aufloesung der Listener und Ersatz gegen Actions
  *

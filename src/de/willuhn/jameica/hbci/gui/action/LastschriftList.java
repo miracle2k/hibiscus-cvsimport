@@ -17,18 +17,17 @@ import de.willuhn.jameica.gui.GUI;
 import de.willuhn.util.ApplicationException;
 
 /**
- * Action fuer die Detail-Ansicht eines Kontos.
+ * Action fuer die Liste der LastschriftL.
  */
-public class KontoNew implements Action
+public class LastschriftList implements Action
 {
 
   /**
-   * Erwartet ein Objekt vom Typ <code>Konto</code> im Context.
    * @see de.willuhn.jameica.gui.Action#handleAction(java.lang.Object)
    */
   public void handleAction(Object context) throws ApplicationException
   {
-		GUI.startView(de.willuhn.jameica.hbci.gui.views.KontoNew.class,context);
+		GUI.startView(de.willuhn.jameica.hbci.gui.views.LastschriftList.class,null);
   }
 
 }
@@ -36,7 +35,7 @@ public class KontoNew implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2005-01-19 00:16:04  willuhn
+ * Revision 1.1  2005-01-19 00:16:04  willuhn
  * @N Lastschriften
  *
  * Revision 1.2  2004/11/13 17:12:14  willuhn
@@ -45,8 +44,7 @@ public class KontoNew implements Action
  * Revision 1.1  2004/11/13 17:02:04  willuhn
  * @N Bearbeiten des Zahlungsturnus
  *
- * Revision 1.1  2004/10/18 23:38:17  willuhn
- * @C Refactoring
- * @C Aufloesung der Listener und Ersatz gegen Actions
+ * Revision 1.1  2004/10/12 23:48:39  willuhn
+ * @N Actions
  *
  **********************************************************************/

@@ -27,7 +27,7 @@ public class Welcome implements Action
    */
   public void handleAction(Object context) throws ApplicationException
   {
-  	GUI.startView(de.willuhn.jameica.hbci.gui.views.Welcome.class.getName(),null);
+  	GUI.startView(de.willuhn.jameica.hbci.gui.views.Welcome.class,null);
   }
 
 }
@@ -35,7 +35,10 @@ public class Welcome implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2004-10-12 23:48:39  willuhn
+ * Revision 1.2  2005-01-19 00:16:04  willuhn
+ * @N Lastschriften
+ *
+ * Revision 1.1  2004/10/12 23:48:39  willuhn
  * @N Actions
  *
  **********************************************************************/

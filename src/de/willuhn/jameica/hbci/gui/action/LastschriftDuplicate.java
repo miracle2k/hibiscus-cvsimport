@@ -17,39 +17,49 @@ import java.rmi.RemoteException;
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.hbci.HBCI;
-import de.willuhn.jameica.hbci.passport.Passport;
+import de.willuhn.jameica.hbci.rmi.Lastschrift;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.logging.Logger;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
 
 /**
- * Action, ueber die ein Passport konfiguriert werden kann.
+ * Action, die zur Duplizierung einer Lastschrift ausgefuehrt werden kann.
+ * Er erwartet ein Objekt vom Typ <code>Lastschrift</code> als Context.
  */
-public class PassportDetail implements Action
+public class LastschriftDuplicate implements Action
 {
 
+	private I18N i18n = null;
+
   /**
-   * Erwartet ein Objekt vom Typ <code>de.willuhn.jameica.hbci.passport.Passport</code>.
+   * ct.
+   */
+  public LastschriftDuplicate()
+  {
+    super();
+		i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
+  }
+
+  /**
+   * Dupliziert die uebergebene Lastschrift und oeffnet sie in einem neuen Dialog.
+	 * Erwartet ein Objekt vom Typ <code>Lastschrift</code> als Context.
    * @see de.willuhn.jameica.gui.Action#handleAction(java.lang.Object)
    */
   public void handleAction(Object context) throws ApplicationException
   {
-  	I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
-
-  	if (context == null || !(context instanceof Passport))
-  		throw new ApplicationException(i18n.tr("Bitte wählen Sie ein Sicherheits-Medium aus"));
+		if (context == null)
+			throw new ApplicationException(i18n.tr("Keine Lastschrift angegeben"));
 
 		try {
-			Passport p = (Passport) context;
-			GUI.startView(p.getConfigDialog(),p);
+			Lastschrift u = (Lastschrift) context;
+			GUI.startView(LastschriftNew.class,u.duplicate());
 		}
 		catch (RemoteException e)
 		{
-			Logger.error("error while opening passport",e);
-			GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Laden des Sicherheitsmediums"));
+			Logger.error("error while duplicating lastschrift",e);
+			GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Duplizieren der Lastschrift"));
 		}
-
   }
 
 }
@@ -57,13 +67,7 @@ public class PassportDetail implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2005-01-19 00:16:04  willuhn
+ * Revision 1.1  2005-01-19 00:16:04  willuhn
  * @N Lastschriften
- *
- * Revision 1.2  2004/11/12 18:25:07  willuhn
- * *** empty log message ***
- *
- * Revision 1.1  2004/10/20 12:08:18  willuhn
- * @C MVC-Refactoring (new Controllers)
  *
  **********************************************************************/

@@ -94,7 +94,7 @@ public class KontoFetchFromPassport implements Action
 						}
 				
 					}
-					GUI.startView(KontoList.class.getName(),null);
+					GUI.startView(KontoList.class,null);
 					GUI.getStatusBar().setSuccessText(i18n.tr("Konten erfolgreich ausgelesen"));
 				}
 				catch (Throwable t)
@@ -115,7 +115,10 @@ public class KontoFetchFromPassport implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2004-11-13 17:12:14  willuhn
+ * Revision 1.8  2005-01-19 00:16:04  willuhn
+ * @N Lastschriften
+ *
+ * Revision 1.7  2004/11/13 17:12:14  willuhn
  * *** empty log message ***
  *
  * Revision 1.6  2004/11/12 18:25:07  willuhn

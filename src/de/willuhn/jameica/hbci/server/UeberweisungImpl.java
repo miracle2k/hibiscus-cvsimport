@@ -18,6 +18,7 @@ import java.util.zip.CRC32;
 
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
+import de.willuhn.jameica.hbci.rmi.Transfer;
 import de.willuhn.jameica.hbci.rmi.Ueberweisung;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.logging.Logger;
@@ -60,11 +61,11 @@ public class UeberweisungImpl extends AbstractTransferImpl implements Ueberweisu
   protected void deleteCheck() throws ApplicationException {
 		try {
 			if (ausgefuehrt())
-				throw new ApplicationException(i18n.tr("Bereits ausgeführte Überweisungen können nicht gelöscht werden."));
+				throw new ApplicationException(i18n.tr("Bereits ausgeführte Aufträge können nicht gelöscht werden."));
 		}
 		catch (RemoteException e)
 		{
-			throw new ApplicationException(i18n.tr("Fehler beim Löschen der Überweisung."));
+			throw new ApplicationException(i18n.tr("Fehler beim Löschen des Auftrags."));
 		}
   }
 
@@ -79,7 +80,7 @@ public class UeberweisungImpl extends AbstractTransferImpl implements Ueberweisu
   	catch (RemoteException e)
   	{
   		Logger.error("error while checking ueberweisung",e);
-  		throw new ApplicationException(i18n.tr("Fehler beim Prüfen der Überweisung."));
+  		throw new ApplicationException(i18n.tr("Fehler beim Prüfen des Auftrags."));
   	}
 		super.insertCheck();
   }
@@ -90,12 +91,12 @@ public class UeberweisungImpl extends AbstractTransferImpl implements Ueberweisu
   protected void updateCheck() throws ApplicationException {
 		try {
 			if (ausgefuehrt())
-				throw new ApplicationException(i18n.tr("Die Überweisung wurde bereits ausgeführt und kann daher nicht mehr geändert werden."));
+				throw new ApplicationException(i18n.tr("Auftrag wurde bereits ausgeführt und kann daher nicht mehr geändert werden."));
 		}
 		catch (RemoteException e)
 		{
 			Logger.error("error while checking ueberweisung",e);
-			throw new ApplicationException(i18n.tr("Fehler beim Prüfen der Überweisung."));
+			throw new ApplicationException(i18n.tr("Fehler beim Prüfen des Auftrags."));
 		}
 		super.updateCheck();
   }
@@ -137,9 +138,9 @@ public class UeberweisungImpl extends AbstractTransferImpl implements Ueberweisu
   }
 
   /**
-   * @see de.willuhn.jameica.hbci.rmi.Ueberweisung#duplicate()
+   * @see de.willuhn.jameica.hbci.rmi.Transfer#duplicate()
    */
-  public Ueberweisung duplicate() throws RemoteException {
+  public Transfer duplicate() throws RemoteException {
     Ueberweisung u = (Ueberweisung) Settings.getDBService().createObject(Ueberweisung.class,null);
     u.setBetrag(getBetrag());
     u.setEmpfaengerBLZ(getEmpfaengerBLZ());
@@ -194,7 +195,10 @@ public class UeberweisungImpl extends AbstractTransferImpl implements Ueberweisu
 
 /**********************************************************************
  * $Log$
- * Revision 1.28  2004-11-12 18:25:07  willuhn
+ * Revision 1.29  2005-01-19 00:16:05  willuhn
+ * @N Lastschriften
+ *
+ * Revision 1.28  2004/11/12 18:25:07  willuhn
  * *** empty log message ***
  *
  * Revision 1.27  2004/11/02 18:48:32  willuhn

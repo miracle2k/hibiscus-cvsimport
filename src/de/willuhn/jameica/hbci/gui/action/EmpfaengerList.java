@@ -27,7 +27,7 @@ public class EmpfaengerList implements Action
    */
   public void handleAction(Object context) throws ApplicationException
   {
-		GUI.startView(de.willuhn.jameica.hbci.gui.views.EmpfaengerList.class.getName(),null);
+		GUI.startView(de.willuhn.jameica.hbci.gui.views.EmpfaengerList.class,null);
   }
 
 }
@@ -35,7 +35,10 @@ public class EmpfaengerList implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2004-11-13 17:12:15  willuhn
+ * Revision 1.3  2005-01-19 00:16:04  willuhn
+ * @N Lastschriften
+ *
+ * Revision 1.2  2004/11/13 17:12:15  willuhn
  * *** empty log message ***
  *
  * Revision 1.1  2004/11/13 17:02:04  willuhn
