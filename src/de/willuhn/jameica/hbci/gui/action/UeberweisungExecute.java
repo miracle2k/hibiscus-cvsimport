@@ -81,7 +81,7 @@ public class UeberweisungExecute implements Action
 						factory.addJob(new HBCIUeberweisungJob(u));
 						factory.executeJobs(u.getKonto().getPassport().getHandle()); 
 						GUI.getStatusBar().setSuccessText(i18n.tr("Überweisung erfolgreich ausgeführt"));
-            // BUGZILLA 30 http://www.willuhn.de/bugzilla/show_bug.cgi?id=30
+            // BUGZILLA 31 http://www.willuhn.de/bugzilla/show_bug.cgi?id=31
             GUI.startView(UeberweisungNew.class,u);
         	}
 					catch (OperationCanceledException oce)
@@ -118,7 +118,10 @@ public class UeberweisungExecute implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.8  2005-03-30 23:26:28  web0
+ * Revision 1.9  2005-03-30 23:28:13  web0
+ * @B bug 31
+ *
+ * Revision 1.8  2005/03/30 23:26:28  web0
  * @B bug 29
  * @B bug 30
  *
