@@ -168,9 +168,9 @@ public class UmsatzControl extends AbstractControl {
 				{
 					GUI.getView().setErrorText(i18n.tr(e2.getMessage()));
 				}
-				catch (Exception e)
+				catch (Throwable t)
 				{
-					Application.getLog().error("error while reading saldo",e);
+					Application.getLog().error("error while reading saldo",t);
 					GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Abrufen der Umsätze."));
 				}
 			}
@@ -230,7 +230,10 @@ public class UmsatzControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.11  2004-04-19 22:53:52  willuhn
+ * Revision 1.12  2004-05-02 17:04:38  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.11  2004/04/19 22:53:52  willuhn
  * *** empty log message ***
  *
  * Revision 1.10  2004/04/19 22:05:52  willuhn
