@@ -38,7 +38,7 @@ public class UmsatzList extends ContextMenu
 
 		addItem(new CheckedContextMenuItem(i18n.tr("Öffnen"),new UmsatzDetail()));
 
-		addItem(new CheckedContextMenuItem(i18n.tr("Empfänger in Adressbuch übernehmen"),new EmpfaengerAdd()));
+		addItem(new CheckedContextMenuItem(i18n.tr("Gegenkonto in Adressbuch übernehmen"),new EmpfaengerAdd()));
 
 	}
 
@@ -47,7 +47,10 @@ public class UmsatzList extends ContextMenu
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2005-03-01 22:05:13  web0
+ * Revision 1.7  2005-04-16 13:34:01  web0
+ * *** empty log message ***
+ *
+ * Revision 1.6  2005/03/01 22:05:13  web0
  * @B fixed help pages
  *
  * Revision 1.5  2004/10/18 23:38:17  willuhn
