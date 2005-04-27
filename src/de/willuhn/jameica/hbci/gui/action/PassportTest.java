@@ -32,26 +32,30 @@ public class PassportTest implements Action
 {
 
   /**
-   * Erwartet ein Objekt vom Typ <code>de.willuhn.jameica.hbci.passport.Passport</code>.
+   * Erwartet ein Objekt vom Typ <code>de.willuhn.jameica.hbci.passport.Passport</code> oder
+   * <code>de.willuhn.jameica.hbci.passport.PassportHandle</code> oder
    * @see de.willuhn.jameica.gui.Action#handleAction(java.lang.Object)
    */
-  public void handleAction(Object context) throws ApplicationException
+  public void handleAction(final Object context) throws ApplicationException
   {
 		final I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
-		if (context == null || !(context instanceof Passport))
+		if (context == null || (!(context instanceof Passport) && !(context instanceof PassportHandle)))
 			throw new ApplicationException(i18n.tr("Bitte wählen Sie ein Sicherheits-Medium aus."));
 
 		GUI.getStatusBar().startProgress();
 		GUI.getStatusBar().setSuccessText(i18n.tr("Teste Sicherheits-Medium..."));
 
-		final Passport p = (Passport) context;
 		try
 		{
 			GUI.startSync(new Runnable() {
 				public void run() {
 					try {
-						PassportHandle handle = p.getHandle();
+						PassportHandle handle = null;
+            if (context instanceof Passport)
+              handle = ((Passport)context).getHandle();
+            else
+              handle = (PassportHandle) context;
 						handle.open();
 						handle.close(); // nein, nicht im finally, denn wenn das Oeffnen
  													  // fehlschlaegt, ist nichts zum Schliessen da ;)
@@ -84,7 +88,12 @@ public class PassportTest implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2005-04-12 23:19:29  web0
+ * Revision 1.5  2005-04-27 00:31:36  web0
+ * @N real test connection
+ * @N all hbci versions are now shown in select box
+ * @C userid and customerid are changable
+ *
+ * Revision 1.4  2005/04/12 23:19:29  web0
  * @B Bug 52
  *
  * Revision 1.3  2005/04/05 21:51:54  web0
