@@ -16,6 +16,7 @@ import de.willuhn.jameica.gui.AbstractView;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.util.ButtonArea;
 import de.willuhn.jameica.hbci.HBCI;
+import de.willuhn.jameica.hbci.gui.action.Back;
 import de.willuhn.jameica.hbci.gui.action.SammelLastschriftNew;
 import de.willuhn.jameica.hbci.gui.controller.SammelLastschriftControl;
 import de.willuhn.jameica.system.Application;
@@ -43,7 +44,8 @@ public class SammelLastschriftList extends AbstractView {
 
 			control.getListe().paint(getParent());
 
-			ButtonArea buttons = new ButtonArea(getParent(),1);
+			ButtonArea buttons = new ButtonArea(getParent(),2);
+      buttons.addButton(i18n.tr("Zurück"),new Back());
 			buttons.addButton(i18n.tr("Neue Sammel-Lastschrift"),new SammelLastschriftNew(),null,true);
 
 		}
@@ -65,7 +67,12 @@ public class SammelLastschriftList extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2005-03-09 01:07:02  web0
+ * Revision 1.4  2005-05-02 23:56:45  web0
+ * @B bug 66, 67
+ * @C umsatzliste nach vorn verschoben
+ * @C protokoll nach hinten verschoben
+ *
+ * Revision 1.3  2005/03/09 01:07:02  web0
  * @D javadoc fixes
  *
  * Revision 1.2  2005/03/01 18:51:04  web0

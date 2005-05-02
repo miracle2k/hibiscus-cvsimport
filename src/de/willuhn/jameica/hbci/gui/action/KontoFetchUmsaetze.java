@@ -17,7 +17,6 @@ import java.rmi.RemoteException;
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.hbci.HBCI;
-import de.willuhn.jameica.hbci.gui.views.UmsatzList;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.server.hbci.HBCIFactory;
 import de.willuhn.jameica.hbci.server.hbci.HBCISaldoJob;
@@ -64,7 +63,7 @@ public class KontoFetchUmsaetze implements Action
 						factory.addExclusiveJob(new HBCISaldoJob(k));
 
 						factory.executeJobs(k.getPassport().getHandle());
-						GUI.startView(UmsatzList.class,k);
+						GUI.startView(GUI.getCurrentView().getClass(),k);
 						GUI.getStatusBar().setSuccessText(i18n.tr("...Umsätze erfolgreich übertragen"));
 					}
 					catch (OperationCanceledException oce)
@@ -100,7 +99,12 @@ public class KontoFetchUmsaetze implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2005-03-02 18:48:21  web0
+ * Revision 1.10  2005-05-02 23:56:45  web0
+ * @B bug 66, 67
+ * @C umsatzliste nach vorn verschoben
+ * @C protokoll nach hinten verschoben
+ *
+ * Revision 1.9  2005/03/02 18:48:21  web0
  * @B Bugzilla #3 Saldo wird beim Abrufen der Umsaetze jetzt als exklusiver Job ausgefuehrt
  *
  * Revision 1.8  2005/02/19 16:49:32  willuhn
