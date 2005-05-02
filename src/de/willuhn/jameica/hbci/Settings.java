@@ -190,7 +190,7 @@ public class Settings
    */
   public static boolean getOnlineMode()
   {
-    return settings.getBoolean("online",true);
+    return settings.getBoolean("online",false);
   }
 
 	/**
@@ -230,7 +230,10 @@ public class Settings
 
 /*********************************************************************
  * $Log$
- * Revision 1.31  2005-03-05 19:11:25  web0
+ * Revision 1.32  2005-05-02 11:54:09  web0
+ * *** empty log message ***
+ *
+ * Revision 1.31  2005/03/05 19:11:25  web0
  * @N SammelLastschrift-Code complete
  *
  * Revision 1.30  2005/02/08 22:28:00  willuhn
