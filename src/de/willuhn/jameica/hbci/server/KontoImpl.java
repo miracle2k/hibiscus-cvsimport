@@ -392,6 +392,8 @@ public class KontoImpl extends AbstractDBObject implements Konto {
 		{
 			((DBObject)list.next()).delete();
 		}
+    addToProtokoll(i18n.tr("Umsätze des Kontos gelöscht"), Protokoll.TYP_SUCCESS);
+
   }
 
   /**
@@ -429,8 +431,9 @@ public class KontoImpl extends AbstractDBObject implements Konto {
    * @see de.willuhn.datasource.rmi.DBObject#store()
    */
   public void store() throws RemoteException, ApplicationException {
+    if (hasChanged())
+      addToProtokoll(i18n.tr("Konto-Eigenschaften aktualisiert"), Protokoll.TYP_SUCCESS);
     super.store();
-		addToProtokoll(i18n.tr("Konto aktualisiert"), Protokoll.TYP_SUCCESS);
   }
 
   /**
@@ -438,7 +441,7 @@ public class KontoImpl extends AbstractDBObject implements Konto {
    */
   public final void addToProtokoll(String kommentar, int protokollTyp) throws RemoteException
   {
-		if (kommentar == null || kommentar.length() == 0)
+		if (kommentar == null || kommentar.length() == 0 || this.getID() == null)
 			return;
 
 		try {
@@ -494,7 +497,10 @@ public class KontoImpl extends AbstractDBObject implements Konto {
 
 /**********************************************************************
  * $Log$
- * Revision 1.49  2005-05-02 23:56:45  web0
+ * Revision 1.50  2005-05-08 17:48:51  web0
+ * @N Bug 56
+ *
+ * Revision 1.49  2005/05/02 23:56:45  web0
  * @B bug 66, 67
  * @C umsatzliste nach vorn verschoben
  * @C protokoll nach hinten verschoben

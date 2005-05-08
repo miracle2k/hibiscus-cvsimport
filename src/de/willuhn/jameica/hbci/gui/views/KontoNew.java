@@ -54,6 +54,8 @@ public class KontoNew extends AbstractView {
       if (s1 == null) s1 = "";
 
       String s2 = k.getKontonummer();
+      if (s2 == null) s2 = "";
+
       GUI.getView().setTitle(i18n.tr("Konto-Details: {0} [Ktr.-Nr.: {1}]",new String[]{s1,s2}));
     }
     else
@@ -119,7 +121,10 @@ public class KontoNew extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2005-05-02 23:56:45  web0
+ * Revision 1.4  2005-05-08 17:48:51  web0
+ * @N Bug 56
+ *
+ * Revision 1.3  2005/05/02 23:56:45  web0
  * @B bug 66, 67
  * @C umsatzliste nach vorn verschoben
  * @C protokoll nach hinten verschoben
