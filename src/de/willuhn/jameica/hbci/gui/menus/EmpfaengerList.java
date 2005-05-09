@@ -41,7 +41,6 @@ public class EmpfaengerList extends ContextMenu
 	{
 		i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
-    // TODO Support fuer Mehrfachmarkierungen
 		addItem(new SingleItem(i18n.tr("Öffnen"),new EmpfaengerNew()));
 		addItem(new SingleItem(i18n.tr("Neue Überweisung mit diesem Empfänger..."), new UeberweisungNew()));
 		addItem(new SingleItem(i18n.tr("Neue Lastschrift von diesem Konto einziehen..."), new LastschriftNew()));
@@ -80,7 +79,10 @@ public class EmpfaengerList extends ContextMenu
 
 /**********************************************************************
  * $Log$
- * Revision 1.11  2005-05-09 15:02:12  web0
+ * Revision 1.12  2005-05-09 17:26:56  web0
+ * @N Bugzilla 68
+ *
+ * Revision 1.11  2005/05/09 15:02:12  web0
  * @N mehrere Adressen gleichzeitig loeschen
  *
  * Revision 1.10  2005/05/09 12:24:20  web0

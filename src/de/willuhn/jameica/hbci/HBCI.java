@@ -127,6 +127,9 @@ public class HBCI extends AbstractPlugin
 		if (checkSum.equals("kwi5vy1fvgOOVtoTYJYjuA==")) // 1.3
 			return;
 
+    if (checkSum.equals("DcR3PHBGYtTMnoP2T45kvg==")) // 1.4
+      return;
+
 		throw new Exception("database checksum does not match any known version: " + checkSum);
 	}
 
@@ -254,7 +257,10 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
- * Revision 1.46  2005-03-24 16:49:02  web0
+ * Revision 1.47  2005-05-09 17:26:56  web0
+ * @N Bugzilla 68
+ *
+ * Revision 1.46  2005/03/24 16:49:02  web0
  * @B error in log mapping
  *
  * Revision 1.45  2005/02/28 16:28:24  web0
