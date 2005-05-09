@@ -99,6 +99,7 @@ public class FilterEngine
    */
   public void filter(Umsatz u) throws RemoteException
   {
+    long start = System.currentTimeMillis();
     Logger.debug("filtering " + u.getAttribute(u.getPrimaryAttribute()));
     for (int i=0;i<this.targets.size();++i)
     {
@@ -162,6 +163,7 @@ public class FilterEngine
         }
       }
     }
+    Logger.info("used time: " + (System.currentTimeMillis() - start) + " millis");
   }
   
 }
@@ -169,7 +171,10 @@ public class FilterEngine
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2005-05-09 23:47:24  web0
+ * Revision 1.2  2005-05-09 23:54:41  web0
+ * *** empty log message ***
+ *
+ * Revision 1.1  2005/05/09 23:47:24  web0
  * @N added first code for the filter framework
  *
  **********************************************************************/
