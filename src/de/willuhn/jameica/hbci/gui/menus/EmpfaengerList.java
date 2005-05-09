@@ -39,6 +39,7 @@ public class EmpfaengerList extends ContextMenu
 	{
 		i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
+    // TODO Support fuer Mehrfachmarkierungen
 		addItem(new CheckedContextMenuItem(i18n.tr("Öffnen"),new EmpfaengerNew()));
 		addItem(new CheckedContextMenuItem(i18n.tr("Neue Überweisung mit diesem Empfänger..."), new UeberweisungNew()));
 		addItem(new CheckedContextMenuItem(i18n.tr("Neue Lastschrift von diesem Konto einziehen..."), new LastschriftNew()));
@@ -54,7 +55,12 @@ public class EmpfaengerList extends ContextMenu
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2005-01-19 00:16:04  willuhn
+ * Revision 1.10  2005-05-09 12:24:20  web0
+ * @N Changelog
+ * @N Support fuer Mehrfachmarkierungen
+ * @N Mehere Adressen en bloc aus Umsatzliste uebernehmen
+ *
+ * Revision 1.9  2005/01/19 00:16:04  willuhn
  * @N Lastschriften
  *
  * Revision 1.8  2004/11/13 17:02:04  willuhn

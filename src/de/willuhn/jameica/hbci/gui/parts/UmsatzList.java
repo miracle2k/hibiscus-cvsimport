@@ -69,6 +69,7 @@ public class UmsatzList extends TablePart implements Part
   {
     super(list, action);
     this.i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
+    setMulti(true);
     setFormatter(new TableFormatter() {
       public void format(TableItem item) {
         Umsatz u = (Umsatz) item.getData();
@@ -107,7 +108,12 @@ public class UmsatzList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2005-05-08 17:48:51  web0
+ * Revision 1.3  2005-05-09 12:24:20  web0
+ * @N Changelog
+ * @N Support fuer Mehrfachmarkierungen
+ * @N Mehere Adressen en bloc aus Umsatzliste uebernehmen
+ *
+ * Revision 1.2  2005/05/08 17:48:51  web0
  * @N Bug 56
  *
  * Revision 1.1  2005/05/02 23:56:45  web0

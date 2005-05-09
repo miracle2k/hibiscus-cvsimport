@@ -17,6 +17,7 @@ import de.willuhn.jameica.gui.parts.ContextMenu;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.gui.action.EmpfaengerAdd;
 import de.willuhn.jameica.hbci.gui.action.UmsatzDetail;
+import de.willuhn.jameica.hbci.rmi.Umsatz;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.util.I18N;
 
@@ -36,18 +37,42 @@ public class UmsatzList extends ContextMenu
 	{
 		i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
-		addItem(new CheckedContextMenuItem(i18n.tr("Öffnen"),new UmsatzDetail()));
+		addItem(new OpenItem());
 
 		addItem(new CheckedContextMenuItem(i18n.tr("Gegenkonto in Adressbuch übernehmen"),new EmpfaengerAdd()));
 
 	}
 
+  /**
+   * Ueberschrieben, um zu pruefen, ob ein Array oder ein einzelnes Element markiert ist.
+   */
+  private class OpenItem extends CheckedContextMenuItem
+  {
+    private OpenItem()
+    {
+      super(i18n.tr("Öffnen"),new UmsatzDetail());
+    }
+    /**
+     * @see de.willuhn.jameica.gui.parts.ContextMenuItem#isEnabledFor(java.lang.Object)
+     */
+    public boolean isEnabledFor(Object o)
+    {
+      if (o instanceof Umsatz[])
+        return false;
+      return super.isEnabledFor(o);
+    }
+  }
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2005-04-16 13:34:01  web0
+ * Revision 1.8  2005-05-09 12:24:20  web0
+ * @N Changelog
+ * @N Support fuer Mehrfachmarkierungen
+ * @N Mehere Adressen en bloc aus Umsatzliste uebernehmen
+ *
+ * Revision 1.7  2005/04/16 13:34:01  web0
  * *** empty log message ***
  *
  * Revision 1.6  2005/03/01 22:05:13  web0
