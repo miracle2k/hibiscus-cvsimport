@@ -12,10 +12,10 @@
  **********************************************************************/
 package de.willuhn.jameica.hbci.gui.dialogs;
 
+import java.rmi.RemoteException;
 import java.security.NoSuchAlgorithmException;
 
 import org.kapott.hbci.passport.HBCIPassport;
-import org.kapott.hbci.passport.HBCIPassportPinTan;
 
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.dialogs.PasswordDialog;
@@ -23,6 +23,8 @@ import de.willuhn.jameica.gui.util.SWTUtil;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.HBCIProperties;
 import de.willuhn.jameica.hbci.Settings;
+import de.willuhn.jameica.hbci.rmi.Konto;
+import de.willuhn.jameica.hbci.server.hbci.HBCIFactory;
 import de.willuhn.jameica.security.Wallet;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.logging.Logger;
@@ -53,12 +55,22 @@ public class PINDialog extends PasswordDialog {
     super(PINDialog.POSITION_CENTER);
     this.passport = passport;
 
+    // BUGZILLA 71 http://www.willuhn.de/bugzilla/show_bug.cgi?id=71
     String suffix = this.passport.getCustomerId();
-    if (this.passport instanceof HBCIPassportPinTan)
+  
+    Konto konto = HBCIFactory.getInstance().getCurrentKonto();
+    if (konto != null)
     {
-      // BUGZILLA 71 http://www.willuhn.de/bugzilla/show_bug.cgi?id=71
-      suffix += ((HBCIPassportPinTan) this.passport).getFileName();
+      try
+      {
+        suffix += "." + konto.getKontonummer();
+      }
+      catch (RemoteException e)
+      {
+        Logger.error("unable to append account number to pin wallet entry",e);
+      }
     }
+
     this.walletKey = "hbci.passport.pinchecksum." + suffix;
 
 		i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
@@ -160,7 +172,10 @@ public class PINDialog extends PasswordDialog {
 
 /**********************************************************************
  * $Log$
- * Revision 1.12  2005-05-10 22:00:58  web0
+ * Revision 1.13  2005-05-10 22:26:15  web0
+ * @B bug 71
+ *
+ * Revision 1.12  2005/05/10 22:00:58  web0
  * @B bug 71 muss noch geklaert werden
  *
  * Revision 1.11  2005/03/25 23:08:44  web0

@@ -79,7 +79,7 @@ public class LastschriftExecute implements Action
 						GUI.getStatusBar().setStatusText(i18n.tr("Führe Lastschrift aus..."));
 						HBCIFactory factory = HBCIFactory.getInstance();
 						factory.addJob(new HBCILastschriftJob(u));
-						factory.executeJobs(u.getKonto().getPassport().getHandle()); 
+						factory.executeJobs(u.getKonto()); 
 						GUI.getStatusBar().setSuccessText(i18n.tr("Lastschrift erfolgreich ausgeführt"));
             // BUGZILLA 31 http://www.willuhn.de/bugzilla/show_bug.cgi?id=31
             GUI.startView(LastschriftNew.class,u);
@@ -118,7 +118,10 @@ public class LastschriftExecute implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2005-03-30 23:28:13  web0
+ * Revision 1.5  2005-05-10 22:26:15  web0
+ * @B bug 71
+ *
+ * Revision 1.4  2005/03/30 23:28:13  web0
  * @B bug 31
  *
  * Revision 1.3  2005/03/30 23:26:28  web0

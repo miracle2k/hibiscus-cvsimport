@@ -44,6 +44,7 @@ public class FilterEngine
 {
   private static FilterEngine engine = null;
     private ArrayList targets        = null;
+    private boolean enabled          = true;
 
   private FilterEngine()
   {
@@ -75,7 +76,8 @@ public class FilterEngine
     }
     catch (ClassNotFoundException e)
     {
-      Logger.error("error while loading filter targets, filter engine will not work",e);
+      Logger.warn("no filter targets found, filter engine disabled");
+      this.enabled = false;
     }
   }
 
@@ -99,6 +101,9 @@ public class FilterEngine
    */
   public void filter(Umsatz u) throws RemoteException
   {
+    if (!this.enabled)
+      return;
+
     long start = System.currentTimeMillis();
     Logger.debug("filtering " + u.getAttribute(u.getPrimaryAttribute()));
     for (int i=0;i<this.targets.size();++i)
@@ -171,7 +176,10 @@ public class FilterEngine
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2005-05-09 23:54:41  web0
+ * Revision 1.3  2005-05-10 22:26:15  web0
+ * @B bug 71
+ *
+ * Revision 1.2  2005/05/09 23:54:41  web0
  * *** empty log message ***
  *
  * Revision 1.1  2005/05/09 23:47:24  web0

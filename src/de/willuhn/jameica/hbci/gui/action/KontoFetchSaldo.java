@@ -58,7 +58,7 @@ public class KontoFetchSaldo implements Action
 						GUI.getStatusBar().startProgress();
 						HBCIFactory factory = HBCIFactory.getInstance();
 						factory.addJob(new HBCISaldoJob(k));
-						factory.executeJobs(k.getPassport().getHandle());
+						factory.executeJobs(k);
 						GUI.getStatusBar().setSuccessText(i18n.tr("...Saldo erfolgreich abgerufen"));
 
 						new de.willuhn.jameica.hbci.gui.action.KontoNew().handleAction(k);
@@ -97,7 +97,10 @@ public class KontoFetchSaldo implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2004-11-13 17:02:03  willuhn
+ * Revision 1.8  2005-05-10 22:26:15  web0
+ * @B bug 71
+ *
+ * Revision 1.7  2004/11/13 17:02:03  willuhn
  * @N Bearbeiten des Zahlungsturnus
  *
  * Revision 1.6  2004/11/12 18:25:07  willuhn

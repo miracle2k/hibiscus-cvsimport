@@ -74,7 +74,7 @@ public class KontoFetchDauerauftraege implements Action
 					GUI.getStatusBar().startProgress();
 					HBCIFactory factory = HBCIFactory.getInstance();
 					factory.addJob(new HBCIDauerauftragListJob(k));
-					factory.executeJobs(k.getPassport().getHandle());
+					factory.executeJobs(k);
 					GUI.getStatusBar().setSuccessText(i18n.tr("...Daueraufträge erfolgreich übertragen"));
 
 					new DauerauftragList().handleAction(k);
@@ -106,7 +106,10 @@ public class KontoFetchDauerauftraege implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.8  2004-11-13 17:02:04  willuhn
+ * Revision 1.9  2005-05-10 22:26:15  web0
+ * @B bug 71
+ *
+ * Revision 1.8  2004/11/13 17:02:04  willuhn
  * @N Bearbeiten des Zahlungsturnus
  *
  * Revision 1.7  2004/11/12 18:25:07  willuhn
