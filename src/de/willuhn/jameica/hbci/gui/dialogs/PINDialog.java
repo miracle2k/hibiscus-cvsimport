@@ -15,6 +15,7 @@ package de.willuhn.jameica.hbci.gui.dialogs;
 import java.security.NoSuchAlgorithmException;
 
 import org.kapott.hbci.passport.HBCIPassport;
+import org.kapott.hbci.passport.HBCIPassportPinTan;
 
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.dialogs.PasswordDialog;
@@ -38,6 +39,8 @@ public class PINDialog extends PasswordDialog {
 	private I18N i18n;
 	private HBCIPassport passport;
 
+  private String walletKey = null;
+
   /**
    * ct.
    * @param passport Passport, fuer den die PIN-Abfrage gemacht wird. Grund: Der
@@ -49,6 +52,14 @@ public class PINDialog extends PasswordDialog {
 
     super(PINDialog.POSITION_CENTER);
     this.passport = passport;
+
+    String suffix = this.passport.getCustomerId();
+    if (this.passport instanceof HBCIPassportPinTan)
+    {
+      // BUGZILLA 71 http://www.willuhn.de/bugzilla/show_bug.cgi?id=71
+      suffix += ((HBCIPassportPinTan) this.passport).getFileName();
+    }
+    this.walletKey = "hbci.passport.pinchecksum." + suffix;
 
 		i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
@@ -82,7 +93,7 @@ public class PINDialog extends PasswordDialog {
 		{
 			// PIN-Ueberpruefung aktiv. Also checken wir die Pruef-Summe
 			Wallet w = Settings.getWallet();
-			String checkSum = (String) w.get("hbci.passport.pinchecksum." + passport.getCustomerId());
+			String checkSum = (String) w.get(this.walletKey);
 
 			if (checkSum == null || checkSum.length() == 0)
 			{
@@ -90,14 +101,14 @@ public class PINDialog extends PasswordDialog {
 				// eine neue Check-Summe bilden, sie abspeichern und
 				// hoffen, dass sie richtig eingegeben wurd.
 				try {
-					w.set("hbci.passport.pinchecksum." + passport.getCustomerId(),Checksum.md5(password.getBytes()));
+					w.set(this.walletKey,Checksum.md5(password.getBytes()));
 				}
 				catch (NoSuchAlgorithmException e)
 				{
 					Logger.error("hash algorithm not found",e);
 					GUI.getStatusBar().setErrorText(i18n.tr("Prüfsumme konnte nicht ermittelt werden. Option wurde deaktiviert."));
 					Settings.setCheckPin(false);
-					w.set("hbci.passport.pinchecksum." + passport.getCustomerId(),null);
+					w.set(this.walletKey,null);
 				}
 				return true;
 			}
@@ -112,7 +123,7 @@ public class PINDialog extends PasswordDialog {
 				Logger.error("hash algorithm not found",e);
 				GUI.getStatusBar().setErrorText(i18n.tr("Prüfsumme konnte nicht verglichen werden. Option wurde deaktiviert."));
 				Settings.setCheckPin(false);
-				w.set("hbci.passport.pinchecksum." + passport.getCustomerId(),null);
+				w.set(this.walletKey,null);
 				return true;
 			}
 			if (n != null && checkSum != null && n.length() > 0 && checkSum.length() > 0 && n.equals(checkSum))
@@ -149,7 +160,10 @@ public class PINDialog extends PasswordDialog {
 
 /**********************************************************************
  * $Log$
- * Revision 1.11  2005-03-25 23:08:44  web0
+ * Revision 1.12  2005-05-10 22:00:58  web0
+ * @B bug 71 muss noch geklaert werden
+ *
+ * Revision 1.11  2005/03/25 23:08:44  web0
  * @B bug 28
  *
  * Revision 1.10  2005/03/09 01:07:02  web0
