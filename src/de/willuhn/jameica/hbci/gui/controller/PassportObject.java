@@ -15,6 +15,7 @@ package de.willuhn.jameica.hbci.gui.controller;
 import java.rmi.RemoteException;
 
 import de.willuhn.datasource.GenericObject;
+import de.willuhn.jameica.hbci.PassportRegistry;
 import de.willuhn.jameica.hbci.passport.Passport;
 
 /**
@@ -35,6 +36,11 @@ public class PassportObject implements GenericObject
 	{
 		this.passport = p;
 	}
+
+  public PassportObject(String passportClass) throws Exception
+  {
+    this.passport = PassportRegistry.findByClass(passportClass);
+  }
 
 	/**
 	 * Liefert den Passport.
@@ -97,7 +103,11 @@ public class PassportObject implements GenericObject
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2005-03-09 01:07:02  web0
+ * Revision 1.7  2005-05-19 23:31:07  web0
+ * @B RMI over SSL support
+ * @N added handbook
+ *
+ * Revision 1.6  2005/03/09 01:07:02  web0
  * @D javadoc fixes
  *
  * Revision 1.5  2005/02/01 18:27:14  willuhn

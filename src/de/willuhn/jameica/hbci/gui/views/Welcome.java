@@ -43,7 +43,6 @@ public class Welcome extends AbstractView
     group.addPart(control.getOffeneUeberweisungen());
 
 		control.getQuickLinks().paint(getParent());
-
   }
 
   /**
@@ -58,7 +57,11 @@ public class Welcome extends AbstractView
 
 /**********************************************************************
  * $Log$
- * Revision 1.17  2005-03-31 23:05:46  web0
+ * Revision 1.18  2005-05-19 23:31:07  web0
+ * @B RMI over SSL support
+ * @N added handbook
+ *
+ * Revision 1.17  2005/03/31 23:05:46  web0
  * @N geaenderte Startseite
  * @N klickbare Links
  *

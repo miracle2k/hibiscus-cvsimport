@@ -16,14 +16,11 @@ import java.rmi.RemoteException;
 import java.util.Date;
 import java.util.zip.CRC32;
 
-import org.kapott.hbci.manager.HBCIUtils;
-
 import de.willuhn.datasource.db.AbstractDBObject;
 import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.datasource.rmi.DBObject;
 import de.willuhn.jameica.hbci.HBCI;
-import de.willuhn.jameica.hbci.PassportRegistry;
-import de.willuhn.jameica.hbci.passport.Passport;
+import de.willuhn.jameica.hbci.HBCIProperties;
 import de.willuhn.jameica.hbci.rmi.Dauerauftrag;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Lastschrift;
@@ -89,14 +86,11 @@ public class KontoImpl extends AbstractDBObject implements Konto {
 			if (getKundennummer() == null || getKundennummer().length() == 0)
 				throw new ApplicationException(i18n.tr("Bitte geben Sie Ihre Kundennummer ein."));
 
-			if (getPassport() == null)
-				throw new ApplicationException(i18n.tr("Bitte wählen Sie ein Sicherheitsmedium aus."));
-
       // BUGZILLA 29 http://www.willuhn.de/bugzilla/show_bug.cgi?id=29
       if (getWaehrung() == null || getWaehrung().length() != 3)
         throw new ApplicationException(i18n.tr("Bitte verwenden Sie einen 3-Buchstaben-Währungscode Z.Bsp. \"EUR\"."));
 
-			if (!HBCIUtils.checkAccountCRC(getBLZ(),getKontonummer()))
+			if (!HBCIProperties.checkAccountCRC(getBLZ(),getKontonummer()))
 				throw new ApplicationException(i18n.tr("Ungültige BLZ/Kontonummer. Bitte prüfen Sie Ihre Eingaben."));
 			
 		}
@@ -143,24 +137,10 @@ public class KontoImpl extends AbstractDBObject implements Konto {
   }
 
   /**
-   * @see de.willuhn.jameica.hbci.rmi.Konto#getPassport()
+   * @see de.willuhn.jameica.hbci.rmi.Konto#getPassportClass()
    */
-  public Passport getPassport() throws RemoteException {
-
-		String className = (String) getAttribute("passport_class");
-		if (className == null)
-			return null;
-
-		try {
-			Passport p = PassportRegistry.findByClass(className);
-			// BUGZILLA #7 http://www.willuhn.de/bugzilla/show_bug.cgi?id=7
-			p.init(this);
-			return p;
-		}
-		catch (Exception e)
-		{
-			throw new RemoteException("unable to load defined passport",e);
-		}
+  public String getPassportClass() throws RemoteException {
+		return (String) getAttribute("passport_class");
   }
 
   /**
@@ -185,12 +165,10 @@ public class KontoImpl extends AbstractDBObject implements Konto {
 	}
 
   /**
-   * @see de.willuhn.jameica.hbci.rmi.Konto#setPassport(de.willuhn.jameica.hbci.passport.Passport)
+   * @see de.willuhn.jameica.hbci.rmi.Konto#setPassportClass(java.lang.String)
    */
-  public void setPassport(Passport passport) throws RemoteException {
-		if (passport == null)
-			return;
-  	setAttribute("passport_class",passport.getClass().getName());
+  public void setPassportClass(String passport) throws RemoteException {
+  	setAttribute("passport_class",passport);
   }
 
   /**
@@ -497,7 +475,11 @@ public class KontoImpl extends AbstractDBObject implements Konto {
 
 /**********************************************************************
  * $Log$
- * Revision 1.50  2005-05-08 17:48:51  web0
+ * Revision 1.51  2005-05-19 23:31:07  web0
+ * @B RMI over SSL support
+ * @N added handbook
+ *
+ * Revision 1.50  2005/05/08 17:48:51  web0
  * @N Bug 56
  *
  * Revision 1.49  2005/05/02 23:56:45  web0

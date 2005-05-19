@@ -81,7 +81,7 @@ public class KontoFetchFromPassport implements Action
 							// Konto neu anlegen
 							Logger.info("saving new konto");
 							try {
-								konten[i].setPassport(p); // wir speichern den ausgewaehlten Passport.
+								konten[i].setPassportClass(p.getClass().getName()); // wir speichern den ausgewaehlten Passport.
 								konten[i].store();
 								Logger.info("konto saved successfully");
 							}
@@ -115,7 +115,11 @@ public class KontoFetchFromPassport implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.8  2005-01-19 00:16:04  willuhn
+ * Revision 1.9  2005-05-19 23:31:07  web0
+ * @B RMI over SSL support
+ * @N added handbook
+ *
+ * Revision 1.8  2005/01/19 00:16:04  willuhn
  * @N Lastschriften
  *
  * Revision 1.7  2004/11/13 17:12:14  willuhn

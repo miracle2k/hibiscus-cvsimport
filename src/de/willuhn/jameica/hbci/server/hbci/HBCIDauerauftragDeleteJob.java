@@ -18,6 +18,8 @@ import java.util.Enumeration;
 import java.util.Properties;
 
 import de.willuhn.jameica.hbci.HBCI;
+import de.willuhn.jameica.hbci.PassportRegistry;
+import de.willuhn.jameica.hbci.passport.Passport;
 import de.willuhn.jameica.hbci.rmi.Dauerauftrag;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Protokoll;
@@ -68,7 +70,11 @@ public class HBCIDauerauftragDeleteJob extends AbstractHBCIJob
 			if (date != null)
 			{
 				// Jetzt noch die Tests fuer die Job-Restriktionen
-				Properties p = HBCIFactory.getInstance().getJobRestrictions(this,this.konto.getPassport().getHandle());
+        Passport passport = PassportRegistry.findByClass(this.konto.getPassportClass());
+        // BUGZILLA #7 http://www.willuhn.de/bugzilla/show_bug.cgi?id=7
+        passport.init(this.konto);
+
+				Properties p = HBCIFactory.getInstance().getJobRestrictions(this,passport.getHandle());
 				Enumeration keys = p.keys();
 				while (keys.hasMoreElements())
 				{
@@ -144,7 +150,11 @@ public class HBCIDauerauftragDeleteJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2005-03-02 17:59:30  web0
+ * Revision 1.10  2005-05-19 23:31:07  web0
+ * @B RMI over SSL support
+ * @N added handbook
+ *
+ * Revision 1.9  2005/03/02 17:59:30  web0
  * @N some refactoring
  *
  * Revision 1.8  2004/11/18 23:46:21  willuhn
