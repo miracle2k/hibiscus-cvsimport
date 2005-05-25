@@ -95,13 +95,15 @@ public class OPPatternImpl extends AbstractPatternImpl implements OPPattern
   {
     super.updateCheck();
   }
-
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2005-05-24 23:30:03  web0
+ * Revision 1.2  2005-05-25 00:42:04  web0
+ * @N Dialoge fuer OP-Verwaltung
+ *
+ * Revision 1.1  2005/05/24 23:30:03  web0
  * @N Erster Code fuer OP-Verwaltung
  *
  **********************************************************************/

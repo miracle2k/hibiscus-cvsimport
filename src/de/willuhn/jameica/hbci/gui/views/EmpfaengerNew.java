@@ -55,8 +55,8 @@ public class EmpfaengerNew extends AbstractView {
 		}
 		catch (RemoteException e)
 		{
-			Logger.error("error while reading konto",e);
-			GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Lesen der Empfängerdaten."));
+			Logger.error("error while reading address",e);
+			GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Lesen der Adresse."));
 		}
 
     
@@ -88,7 +88,10 @@ public class EmpfaengerNew extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2005-05-08 17:48:51  web0
+ * Revision 1.5  2005-05-25 00:42:04  web0
+ * @N Dialoge fuer OP-Verwaltung
+ *
+ * Revision 1.4  2005/05/08 17:48:51  web0
  * @N Bug 56
  *
  * Revision 1.3  2005/03/09 01:07:02  web0
