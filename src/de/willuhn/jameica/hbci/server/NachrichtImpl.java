@@ -58,13 +58,6 @@ public class NachrichtImpl extends AbstractDBObject implements Nachricht
   }
 
   /**
-   * @see de.willuhn.datasource.db.AbstractDBObject#deleteCheck()
-   */
-  protected void deleteCheck() throws ApplicationException
-  {
-  }
-
-  /**
    * @see de.willuhn.datasource.db.AbstractDBObject#insertCheck()
    */
   protected void insertCheck() throws ApplicationException
@@ -89,14 +82,6 @@ public class NachrichtImpl extends AbstractDBObject implements Nachricht
   protected void updateCheck() throws ApplicationException
   {
     this.insertCheck();
-  }
-
-  /**
-   * @see de.willuhn.datasource.db.AbstractDBObject#getForeignObject(java.lang.String)
-   */
-  protected Class getForeignObject(String arg0) throws RemoteException
-  {
-    return null;
   }
 
   /**
@@ -183,7 +168,10 @@ public class NachrichtImpl extends AbstractDBObject implements Nachricht
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2005-05-09 17:26:56  web0
+ * Revision 1.2  2005-05-30 22:55:27  web0
+ * *** empty log message ***
+ *
+ * Revision 1.1  2005/05/09 17:26:56  web0
  * @N Bugzilla 68
  *
  **********************************************************************/

@@ -47,13 +47,6 @@ public abstract class AbstractBaseUeberweisungImpl extends AbstractTransferImpl
   }
 
   /**
-   * @see de.willuhn.datasource.db.AbstractDBObject#deleteCheck()
-   */
-  protected void deleteCheck() throws ApplicationException {
-  	// Kann geloescht werden
-  }
-
-  /**
    * @see de.willuhn.datasource.db.AbstractDBObject#updateCheck()
    */
   protected void updateCheck() throws ApplicationException {
@@ -143,7 +136,10 @@ public abstract class AbstractBaseUeberweisungImpl extends AbstractTransferImpl
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2005-03-02 17:59:30  web0
+ * Revision 1.4  2005-05-30 22:55:27  web0
+ * *** empty log message ***
+ *
+ * Revision 1.3  2005/03/02 17:59:30  web0
  * @N some refactoring
  *
  * Revision 1.2  2005/02/19 16:49:32  willuhn

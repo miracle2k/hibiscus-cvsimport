@@ -115,14 +115,6 @@ public class TurnusImpl extends AbstractDBObject implements Turnus
   }
 
   /**
-   * @see de.willuhn.datasource.db.AbstractDBObject#getForeignObject(java.lang.String)
-   */
-  protected Class getForeignObject(String arg0) throws RemoteException
-  {
-    return null;
-  }
-
-  /**
    * @see de.willuhn.jameica.hbci.rmi.Turnus#getBezeichnung()
    */
   public String getBezeichnung() throws RemoteException
@@ -244,7 +236,10 @@ public class TurnusImpl extends AbstractDBObject implements Turnus
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2005-04-09 16:56:30  web0
+ * Revision 1.10  2005-05-30 22:55:27  web0
+ * *** empty log message ***
+ *
+ * Revision 1.9  2005/04/09 16:56:30  web0
  * @N verbose output in turnus
  *
  * Revision 1.8  2004/11/26 01:23:13  willuhn

@@ -64,12 +64,6 @@ public class KontoImpl extends AbstractDBObject implements Konto {
   }
 
   /**
-   * @see de.willuhn.datasource.db.AbstractDBObject#deleteCheck()
-   */
-  protected void deleteCheck() throws ApplicationException {
-  }
-
-  /**
    * @see de.willuhn.datasource.db.AbstractDBObject#insertCheck()
    */
   protected void insertCheck() throws ApplicationException {
@@ -106,13 +100,6 @@ public class KontoImpl extends AbstractDBObject implements Konto {
    */
   protected void updateCheck() throws ApplicationException {
 		insertCheck();
-  }
-
-  /**
-   * @see de.willuhn.datasource.db.AbstractDBObject#getForeignObject(java.lang.String)
-   */
-  protected Class getForeignObject(String field) throws RemoteException {
-    return null;
   }
 
   /**
@@ -475,7 +462,10 @@ public class KontoImpl extends AbstractDBObject implements Konto {
 
 /**********************************************************************
  * $Log$
- * Revision 1.51  2005-05-19 23:31:07  web0
+ * Revision 1.52  2005-05-30 22:55:27  web0
+ * *** empty log message ***
+ *
+ * Revision 1.51  2005/05/19 23:31:07  web0
  * @B RMI over SSL support
  * @N added handbook
  *

@@ -91,6 +91,17 @@ public interface Pattern extends DBObject
   public String getNameForType(int type) throws RemoteException;
 
   /**
+   * Liefert eine sprechenden lokalisierte Bezeichnung fuer das Feld.
+   * Da dies oft der Name eines Datenbank-Feldes ist, kann es dem Nutzer
+   * nicht zugemutet werden und muss daher ueber diese Funktion
+   * in einen verstaendlichen Text gewandelt werden.
+   * @param field
+   * @return
+   * @throws RemoteException
+   */
+  public String getNameForField(String field) throws RemoteException;
+
+  /**
    * Speichert den Typ des Patterns.
    * @param type Typ.
    * @throws RemoteException
@@ -115,7 +126,10 @@ public interface Pattern extends DBObject
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2005-05-24 23:30:03  web0
+ * Revision 1.3  2005-05-30 22:55:27  web0
+ * *** empty log message ***
+ *
+ * Revision 1.2  2005/05/24 23:30:03  web0
  * @N Erster Code fuer OP-Verwaltung
  *
  * Revision 1.1  2005/05/09 23:47:24  web0

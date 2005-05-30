@@ -166,7 +166,7 @@ public abstract class AbstractPatternImpl extends AbstractDBObject implements Pa
   {
     if (arg0.equals("bezeichnung"))
     {
-      return getField() + " " +
+      return getNameForField(getField()) + " " +
              getNameForType(this.getType()) + " " +
              "\"" + getPattern() + "\"";
     }
@@ -185,7 +185,7 @@ public abstract class AbstractPatternImpl extends AbstractDBObject implements Pa
       case Pattern.TYPE_ENDSWITH:
         return i18n.tr("endet mit");
       case Pattern.TYPE_EQUALS:
-        return i18n.tr("entspricht");
+        return i18n.tr(": ");
       case Pattern.TYPE_STARTSWITH:
         return i18n.tr("beginnt mit");
       default:
@@ -212,7 +212,10 @@ public abstract class AbstractPatternImpl extends AbstractDBObject implements Pa
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2005-05-30 14:25:48  web0
+ * Revision 1.3  2005-05-30 22:55:27  web0
+ * *** empty log message ***
+ *
+ * Revision 1.2  2005/05/30 14:25:48  web0
  * *** empty log message ***
  *
  * Revision 1.1  2005/05/24 23:30:03  web0

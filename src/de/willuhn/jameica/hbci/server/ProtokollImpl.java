@@ -54,14 +54,6 @@ public class ProtokollImpl extends AbstractDBObject implements Protokoll {
   }
 
   /**
-   * @see de.willuhn.datasource.db.AbstractDBObject#deleteCheck()
-   */
-  protected void deleteCheck() throws ApplicationException {
-		// muessen sich loeschen lassen. Naemlich dann, wenn
-		// das Konto selbst geloescht wird.
-  }
-
-  /**
    * @see de.willuhn.datasource.db.AbstractDBObject#insertCheck()
    */
   protected void insertCheck() throws ApplicationException
@@ -164,7 +156,10 @@ public class ProtokollImpl extends AbstractDBObject implements Protokoll {
 
 /**********************************************************************
  * $Log$
- * Revision 1.8  2004-11-12 18:25:07  willuhn
+ * Revision 1.9  2005-05-30 22:55:27  web0
+ * *** empty log message ***
+ *
+ * Revision 1.8  2004/11/12 18:25:07  willuhn
  * *** empty log message ***
  *
  * Revision 1.7  2004/08/18 23:13:51  willuhn

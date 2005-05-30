@@ -61,13 +61,6 @@ public class SammelLastschriftImpl extends AbstractDBObject
   }
 
   /**
-   * @see de.willuhn.datasource.db.AbstractDBObject#deleteCheck()
-   */
-  protected void deleteCheck() throws ApplicationException
-  {
-  }
-
-  /**
    * @see de.willuhn.datasource.db.AbstractDBObject#insertCheck()
    */
   protected void insertCheck() throws ApplicationException
@@ -333,7 +326,10 @@ public class SammelLastschriftImpl extends AbstractDBObject
 
 /*****************************************************************************
  * $Log$
- * Revision 1.4  2005-03-05 19:11:25  web0
+ * Revision 1.5  2005-05-30 22:55:27  web0
+ * *** empty log message ***
+ *
+ * Revision 1.4  2005/03/05 19:11:25  web0
  * @N SammelLastschrift-Code complete
  *
  * Revision 1.3  2005/03/02 17:59:30  web0

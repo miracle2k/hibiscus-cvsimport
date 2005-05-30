@@ -59,13 +59,6 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
   }
 
   /**
-   * @see de.willuhn.datasource.db.AbstractDBObject#deleteCheck()
-   */
-  protected void deleteCheck() throws ApplicationException {
-		// Die koennen eigentlich getrost geloescht werden.
-  }
-
-  /**
    * @see de.willuhn.datasource.db.AbstractDBObject#insertCheck()
    */
   protected void insertCheck() throws ApplicationException {
@@ -387,7 +380,10 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
 
 /**********************************************************************
  * $Log$
- * Revision 1.21  2005-05-30 14:25:48  web0
+ * Revision 1.22  2005-05-30 22:55:27  web0
+ * *** empty log message ***
+ *
+ * Revision 1.21  2005/05/30 14:25:48  web0
  * *** empty log message ***
  *
  * Revision 1.20  2005/03/09 01:07:02  web0
