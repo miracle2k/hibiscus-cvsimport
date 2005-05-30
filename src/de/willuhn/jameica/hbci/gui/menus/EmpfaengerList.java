@@ -13,6 +13,8 @@
 package de.willuhn.jameica.hbci.gui.menus;
 
 import de.willuhn.jameica.gui.Action;
+import de.willuhn.jameica.gui.extension.Extendable;
+import de.willuhn.jameica.gui.extension.ExtensionRegistry;
 import de.willuhn.jameica.gui.parts.CheckedContextMenuItem;
 import de.willuhn.jameica.gui.parts.ContextMenu;
 import de.willuhn.jameica.gui.parts.ContextMenuItem;
@@ -20,7 +22,6 @@ import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.gui.action.EmpfaengerDelete;
 import de.willuhn.jameica.hbci.gui.action.EmpfaengerNew;
 import de.willuhn.jameica.hbci.gui.action.LastschriftNew;
-import de.willuhn.jameica.hbci.gui.action.OffenerPostenNew;
 import de.willuhn.jameica.hbci.gui.action.UeberweisungNew;
 import de.willuhn.jameica.hbci.rmi.Adresse;
 import de.willuhn.jameica.system.Application;
@@ -31,7 +32,7 @@ import de.willuhn.util.I18N;
  * Liefert ein vorgefertigtes Kontext-Menu, welches an Listen von Empfaenger-Adressen
  * angehaengt werden kann.
  */
-public class EmpfaengerList extends ContextMenu
+public class EmpfaengerList extends ContextMenu implements Extendable
 {
 
 	private I18N i18n;
@@ -46,12 +47,22 @@ public class EmpfaengerList extends ContextMenu
 		addItem(new SingleItem(i18n.tr("Öffnen"),new EmpfaengerNew()));
 		addItem(new SingleItem(i18n.tr("Neue Überweisung mit diesem Empfänger..."), new UeberweisungNew()));
 		addItem(new SingleItem(i18n.tr("Neue Lastschrift von diesem Konto einziehen..."), new LastschriftNew()));
-    addItem(new ContextMenuItem(i18n.tr("Offenen Posten anlegen..."), new OffenerPostenNew()));
 		addItem(ContextMenuItem.SEPARATOR);
 		addItem(new CheckedContextMenuItem(i18n.tr("Löschen..."), new EmpfaengerDelete()));
     addItem(ContextMenuItem.SEPARATOR);
 		addItem(new ContextMenuItem(i18n.tr("Neue Adresse..."), new ENeu()));
+    
+    // Wir geben das Context-Menu jetzt noch zur Erweiterung frei.
+    ExtensionRegistry.extend(this);
 	}
+
+  /**
+   * @see de.willuhn.jameica.gui.extension.Extendable#getExtendableID()
+   */
+  public String getExtendableID()
+  {
+    return "hibiscus.context.empfaenger.list";
+  } 
 
   /**
    * Ueberschrieben, um zu pruefen, ob ein Array oder ein einzelnes Element markiert ist.
@@ -90,14 +101,16 @@ public class EmpfaengerList extends ContextMenu
     {
       super.handleAction(null);
     }
-  } 
-
+  }
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.13  2005-05-25 00:42:04  web0
+ * Revision 1.14  2005-05-30 12:01:03  web0
+ * @R removed OP stuff
+ *
+ * Revision 1.13  2005/05/25 00:42:04  web0
  * @N Dialoge fuer OP-Verwaltung
  *
  * Revision 1.12  2005/05/09 17:26:56  web0
