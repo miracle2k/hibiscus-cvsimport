@@ -32,6 +32,9 @@ public class TANDialog extends PasswordDialog {
     super(TANDialog.POSITION_CENTER);
 		i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
+    // Deaktivierung der Anzeige von Sternen im TAN-Dialog.
+    setUseStars(false);
+
     setTitle(i18n.tr("TAN-Eingabe"));
     setLabelText(i18n.tr("Ihre TAN"));
     setText(i18n.tr("Bitte geben Sie eine TAN-Nummer ein."));
@@ -65,7 +68,10 @@ public class TANDialog extends PasswordDialog {
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2005-02-02 16:15:52  willuhn
+ * Revision 1.5  2005-06-02 22:57:34  web0
+ * @N Export von Konto-Umsaetzen
+ *
+ * Revision 1.4  2005/02/02 16:15:52  willuhn
  * @N Neue Dialoge fuer RDH
  *
  * Revision 1.3  2004/07/25 17:15:06  willuhn

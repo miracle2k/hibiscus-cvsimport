@@ -49,7 +49,9 @@ public class ExportRegistry
       {
         try
         {
+          Logger.info("trying to load " + list[i].getName());
           exporters[i] = (Exporter) list[i].newInstance();
+          Logger.info("loaded successfully");
         }
         catch (Exception e)
         {
@@ -71,6 +73,9 @@ public class ExportRegistry
    */
   public static Exporter[] getExporters()
   {
+    if (exporters == null)
+      init();
+
     return exporters;
   }
 }
@@ -78,7 +83,10 @@ public class ExportRegistry
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2005-06-02 21:48:44  web0
+ * Revision 1.2  2005-06-02 22:57:34  web0
+ * @N Export von Konto-Umsaetzen
+ *
+ * Revision 1.1  2005/06/02 21:48:44  web0
  * @N Exporter-Package
  * @N CSV-Exporter
  *

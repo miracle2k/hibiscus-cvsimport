@@ -25,6 +25,7 @@ import org.kapott.hbci.callback.HBCICallbackConsole;
 import org.kapott.hbci.manager.HBCIUtils;
 
 import de.willuhn.datasource.db.EmbeddedDatabase;
+import de.willuhn.jameica.hbci.export.ExportRegistry;
 import de.willuhn.jameica.plugin.AbstractPlugin;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.logging.Level;
@@ -169,6 +170,8 @@ public class HBCI extends AbstractPlugin
     {
       Application.getCallback().getStartupMonitor().setStatusText("hibiscus: init passport registry");
       PassportRegistry.init();
+      Application.getCallback().getStartupMonitor().addPercentComplete(3);
+
     }
 
     Application.getCallback().getStartupMonitor().setStatusText("hibiscus: init hbci4java subsystem");
@@ -208,6 +211,12 @@ public class HBCI extends AbstractPlugin
     {
       throw new ApplicationException(getResources().getI18N().tr("Fehler beim Initialisieren des HBCI-Subsystems"),e);
     }
+    Application.getCallback().getStartupMonitor().addPercentComplete(5);
+
+    Application.getCallback().getStartupMonitor().setStatusText("hibiscus: init export filters");
+    ExportRegistry.init();
+    Application.getCallback().getStartupMonitor().addPercentComplete(3);
+
   }
 
   /**
@@ -296,7 +305,10 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
- * Revision 1.50  2005-05-30 12:01:03  web0
+ * Revision 1.51  2005-06-02 22:57:34  web0
+ * @N Export von Konto-Umsaetzen
+ *
+ * Revision 1.50  2005/05/30 12:01:03  web0
  * @R removed OP stuff
  *
  * Revision 1.49  2005/05/24 23:30:03  web0

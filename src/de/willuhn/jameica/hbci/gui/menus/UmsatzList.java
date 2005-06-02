@@ -16,9 +16,11 @@ import de.willuhn.jameica.gui.extension.Extendable;
 import de.willuhn.jameica.gui.extension.ExtensionRegistry;
 import de.willuhn.jameica.gui.parts.CheckedContextMenuItem;
 import de.willuhn.jameica.gui.parts.ContextMenu;
+import de.willuhn.jameica.gui.parts.ContextMenuItem;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.gui.action.EmpfaengerAdd;
 import de.willuhn.jameica.hbci.gui.action.UmsatzDetail;
+import de.willuhn.jameica.hbci.gui.action.UmsatzExport;
 import de.willuhn.jameica.hbci.rmi.Umsatz;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.util.I18N;
@@ -42,6 +44,8 @@ public class UmsatzList extends ContextMenu implements Extendable
 		addItem(new OpenItem());
 
 		addItem(new CheckedContextMenuItem(i18n.tr("Gegenkonto in Adressbuch übernehmen"),new EmpfaengerAdd()));
+    addItem(ContextMenuItem.SEPARATOR);
+    addItem(new CheckedContextMenuItem(i18n.tr("Umsätze exportieren..."),new UmsatzExport()));
 
     // Wir geben das Context-Menu jetzt noch zur Erweiterung frei.
     ExtensionRegistry.extend(this);
@@ -80,7 +84,10 @@ public class UmsatzList extends ContextMenu implements Extendable
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2005-05-30 22:55:27  web0
+ * Revision 1.10  2005-06-02 22:57:34  web0
+ * @N Export von Konto-Umsaetzen
+ *
+ * Revision 1.9  2005/05/30 22:55:27  web0
  * *** empty log message ***
  *
  * Revision 1.8  2005/05/09 12:24:20  web0
