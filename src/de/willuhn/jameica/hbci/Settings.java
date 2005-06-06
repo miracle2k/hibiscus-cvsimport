@@ -172,6 +172,24 @@ public class Settings
   }
 
   /**
+   * Prueft, ob die TAN waehrend der Eingabe angezeigt werden soll.
+   * @return true, wenn die TANs angezeigt werden sollen.
+   */
+  public static boolean getShowTan()
+  {
+    return settings.getBoolean("showtan",false);
+  }
+
+  /**
+   * Legt fest, ob die TANs bei der Eingabe angezeigt werden sollen.
+   * @param show true, wenn sie angezeigt werden sollen.
+   */
+  public static void setShowTan(boolean show)
+  {
+    settings.setAttribute("showtan",show);
+  }
+
+  /**
    * Speichert, ob wir eine permanente Online-Verbindung haben und daher
    * vom HBCI-Kernel nicht dauernd gefragt werden muessen, ob wir eine
    * Internetverbindung haben wollen.
@@ -230,7 +248,10 @@ public class Settings
 
 /*********************************************************************
  * $Log$
- * Revision 1.32  2005-05-02 11:54:09  web0
+ * Revision 1.33  2005-06-06 09:54:39  web0
+ * *** empty log message ***
+ *
+ * Revision 1.32  2005/05/02 11:54:09  web0
  * *** empty log message ***
  *
  * Revision 1.31  2005/03/05 19:11:25  web0

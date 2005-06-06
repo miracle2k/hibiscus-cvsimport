@@ -44,6 +44,7 @@ public class Settings extends AbstractView {
 		// Einstellungen
 		settings.addCheckbox(control.getOnlineMode(),i18n.tr("Bei Kommunikation mit der Bank Internetverbindung ohne Nachfrage herstellen"));
 		settings.addCheckbox(control.getCheckPin(),i18n.tr("PIN-Eingabe via Check-Summe prüfen"));
+    settings.addCheckbox(control.getShowTan(),i18n.tr("TANs während der Eingabe anzeigen"));
 		
 		settings.addLabelPair(i18n.tr("Limit für Aufträge"), control.getUeberweisungLimit());
 		
@@ -88,7 +89,10 @@ public class Settings extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.30  2005-03-09 01:07:02  web0
+ * Revision 1.31  2005-06-06 09:54:39  web0
+ * *** empty log message ***
+ *
+ * Revision 1.30  2005/03/09 01:07:02  web0
  * @D javadoc fixes
  *
  * Revision 1.29  2005/02/02 16:15:52  willuhn
