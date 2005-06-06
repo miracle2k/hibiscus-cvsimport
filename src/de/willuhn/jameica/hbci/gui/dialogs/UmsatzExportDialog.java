@@ -103,7 +103,7 @@ public class UmsatzExportDialog extends AbstractDialog
   {
     FileDialog fd = new FileDialog(GUI.getShell(),SWT.SAVE);
     fd.setText(i18n.tr("Bitte geben Sie den Dateinamen ein, in der die Umsätze gespeichert werden sollen."));
-    fd.setFileName(i18n.tr("hibiscus-umsaetze-{0}.txt",HBCI.FASTDATEFORMAT.format(new Date())));
+    fd.setFileName(i18n.tr("hibiscus-umsaetze-{0}.csv",HBCI.FASTDATEFORMAT.format(new Date())));
     String s = fd.open();
     
     Settings settings = new Settings(this.getClass());
@@ -283,7 +283,10 @@ public class UmsatzExportDialog extends AbstractDialog
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2005-06-02 22:57:34  web0
+ * Revision 1.2  2005-06-06 10:37:07  web0
+ * *** empty log message ***
+ *
+ * Revision 1.1  2005/06/02 22:57:34  web0
  * @N Export von Konto-Umsaetzen
  *
  **********************************************************************/
