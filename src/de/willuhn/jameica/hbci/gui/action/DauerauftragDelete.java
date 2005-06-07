@@ -17,9 +17,9 @@ import java.util.Date;
 
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
-import de.willuhn.jameica.gui.dialogs.CalendarDialog;
 import de.willuhn.jameica.gui.dialogs.YesNoDialog;
 import de.willuhn.jameica.hbci.HBCI;
+import de.willuhn.jameica.hbci.gui.dialogs.DauerauftragDeleteDialog;
 import de.willuhn.jameica.hbci.rmi.Dauerauftrag;
 import de.willuhn.jameica.hbci.server.hbci.HBCIDauerauftragDeleteJob;
 import de.willuhn.jameica.hbci.server.hbci.HBCIDauerauftragListJob;
@@ -73,16 +73,16 @@ public class DauerauftragDelete implements Action
 			if (da.isActive())
 			{
 
-				// TODO Zieltermin fuer Loeschen des DA nicht benutzerfreundlich!
-				CalendarDialog d2 = new CalendarDialog(CalendarDialog.POSITION_MOUSE);
-				d2.setTitle(i18n.tr("Zieldatum"));
-				d2.setText(i18n.tr(
-					"Bitte wählen Sie das Datum aus, zu dem der Dauerauftrag gelöscht " +					"werden soll oder schliessen Sie das Fenster einfach, wenn Sie die " +					"Löschung zum nächstmöglichen Termin durchführen wollen.\n\n" +					"Hinweis: Es ist durchaus möglich, dass Ihre Bank das Löschen eines " +					"Dauerauftrages zu einem definierten Datum nicht unterstützt. Schliessen " +					"Sie in diesem Fall bitte ebenfalls einfach das Fenster."));
+        DauerauftragDeleteDialog d2 = new DauerauftragDeleteDialog(DauerauftragDeleteDialog.POSITION_CENTER);
 				Date fd = null;
 				try
 				{
 					fd = (Date) d2.open();
 				}
+        catch (OperationCanceledException ce)
+        {
+          return;
+        }
 				catch (Exception e)
 				{
 					// OK, dann halt ohne Datum
@@ -148,7 +148,10 @@ public class DauerauftragDelete implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.12  2005-05-10 22:26:15  web0
+ * Revision 1.13  2005-06-07 21:57:25  web0
+ * @B bug 18
+ *
+ * Revision 1.12  2005/05/10 22:26:15  web0
  * @B bug 71
  *
  * Revision 1.11  2005/03/04 00:16:43  web0
