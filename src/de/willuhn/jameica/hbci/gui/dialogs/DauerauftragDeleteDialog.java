@@ -93,7 +93,11 @@ public class DauerauftragDeleteDialog extends AbstractDialog {
           return;
 
         date = (Date) event.data;
-        if (date != null && date.before(new Date()))
+        // Wir rechnen nicht mit gestern sonder mit heute, weil "date"
+        // keine Uhrzeit enthaelt, "today" jedoch schon und so selbst dann
+        // ein Fehler kommen wuerde, wenn der User den aktuellen Tag auswaehlt
+        Date today = new Date(System.currentTimeMillis() - (1000l * 60 * 60 * 24));
+        if (date != null && date.before(today))
         {
           comment.setValue(i18n.tr("Datum darf nicht in der Vergangenheit liegen"));
           return;
@@ -130,7 +134,11 @@ public class DauerauftragDeleteDialog extends AbstractDialog {
         else
         {
           date = (Date) dateInput.getValue();
-          if (date != null && date.before(new Date()))
+          // Wir rechnen nicht mit gestern sonder mit heute, weil "date"
+          // keine Uhrzeit enthaelt, "today" jedoch schon und so selbst dann
+          // ein Fehler kommen wuerde, wenn der User den aktuellen Tag auswaehlt
+          Date today = new Date(System.currentTimeMillis() - (1000l * 60 * 60 * 24));
+          if (date != null && date.before(today))
           {
             comment.setValue(i18n.tr("Datum darf nicht in der Vergangenheit liegen"));
             return;
@@ -161,7 +169,10 @@ public class DauerauftragDeleteDialog extends AbstractDialog {
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2005-06-07 21:57:25  web0
+ * Revision 1.2  2005-06-07 22:19:57  web0
+ * @B bug 49
+ *
+ * Revision 1.1  2005/06/07 21:57:25  web0
  * @B bug 18
  *
  **********************************************************************/

@@ -50,6 +50,13 @@ public class HBCIProperties
   public final static int HBCI_TRANSFER_USAGE_MAXLENGTH =
     settings.getInt("hbci.transfer.usage.maxlength",27);
 
+  // BUGZILLA #49 http://www.willuhn.de/bugzilla/show_bug.cgi?id=49
+  /**
+   * Reservierter Tag fuer "Monatsletzten".
+   */
+  public final static int HBCI_LAST_OF_MONTH =
+    settings.getInt("hbci.lastofmonth",99);
+
   /**
    * Laenge von Bankleitzahlen.
    */
@@ -132,7 +139,10 @@ public class HBCIProperties
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2005-05-19 23:31:07  web0
+ * Revision 1.10  2005-06-07 22:19:57  web0
+ * @B bug 49
+ *
+ * Revision 1.9  2005/05/19 23:31:07  web0
  * @B RMI over SSL support
  * @N added handbook
  *
