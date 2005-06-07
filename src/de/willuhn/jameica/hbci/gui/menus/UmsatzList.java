@@ -19,6 +19,7 @@ import de.willuhn.jameica.gui.parts.ContextMenu;
 import de.willuhn.jameica.gui.parts.ContextMenuItem;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.gui.action.EmpfaengerAdd;
+import de.willuhn.jameica.hbci.gui.action.UmsatzDelete;
 import de.willuhn.jameica.hbci.gui.action.UmsatzDetail;
 import de.willuhn.jameica.hbci.gui.action.UmsatzExport;
 import de.willuhn.jameica.hbci.rmi.Umsatz;
@@ -44,6 +45,9 @@ public class UmsatzList extends ContextMenu implements Extendable
 		addItem(new OpenItem());
 
 		addItem(new CheckedContextMenuItem(i18n.tr("Gegenkonto in Adressbuch übernehmen"),new EmpfaengerAdd()));
+
+    // BUGZILLA #70 http://www.willuhn.de/bugzilla/show_bug.cgi?id=70
+    addItem(new CheckedContextMenuItem(i18n.tr("Löschen..."), new UmsatzDelete()));
     addItem(ContextMenuItem.SEPARATOR);
     addItem(new CheckedContextMenuItem(i18n.tr("Umsätze exportieren..."),new UmsatzExport()));
 
@@ -84,7 +88,10 @@ public class UmsatzList extends ContextMenu implements Extendable
 
 /**********************************************************************
  * $Log$
- * Revision 1.10  2005-06-02 22:57:34  web0
+ * Revision 1.11  2005-06-07 22:41:09  web0
+ * @B bug 70
+ *
+ * Revision 1.10  2005/06/02 22:57:34  web0
  * @N Export von Konto-Umsaetzen
  *
  * Revision 1.9  2005/05/30 22:55:27  web0

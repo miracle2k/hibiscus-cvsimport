@@ -18,7 +18,6 @@ import java.util.zip.CRC32;
 
 import de.willuhn.datasource.db.AbstractDBObject;
 import de.willuhn.datasource.rmi.DBIterator;
-import de.willuhn.datasource.rmi.DBObject;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.HBCIProperties;
 import de.willuhn.jameica.hbci.rmi.Dauerauftrag;
@@ -168,11 +167,18 @@ public class KontoImpl extends AbstractDBObject implements Konto {
     try {
       this.transactionBegin();
 
+      // BUGZILLA #70 http://www.willuhn.de/bugzilla/show_bug.cgi?id=70
 			// Erst die Umsaetze loeschen
-			deleteUmsaetze();
+      DBIterator list = getUmsaetze();
+      Umsatz um = null;
+      while (list.hasNext())
+      {
+        um = (Umsatz) list.next();
+        um.delete();
+      }
 			
 			// dann die Dauerauftraege
-			DBIterator list = getDauerauftraege();
+			list = getDauerauftraege();
 			Dauerauftrag da = null;
 			while (list.hasNext())
 			{
@@ -345,23 +351,6 @@ public class KontoImpl extends AbstractDBObject implements Konto {
 	}
 
   /**
-   * @see de.willuhn.jameica.hbci.rmi.Konto#deleteUmsaetze()
-   */
-  public void deleteUmsaetze() throws ApplicationException, RemoteException {
-		DBIterator list = getService().createList(Umsatz.class);
-		list.addFilter("konto_id = " + getID());
-		if (!list.hasNext())
-			return;
-
-		while (list.hasNext())
-		{
-			((DBObject)list.next()).delete();
-		}
-    addToProtokoll(i18n.tr("Umsätze des Kontos gelöscht"), Protokoll.TYP_SUCCESS);
-
-  }
-
-  /**
    * @see de.willuhn.jameica.hbci.rmi.Konto#getBezeichnung()
    */
   public String getBezeichnung() throws RemoteException {
@@ -462,7 +451,10 @@ public class KontoImpl extends AbstractDBObject implements Konto {
 
 /**********************************************************************
  * $Log$
- * Revision 1.52  2005-05-30 22:55:27  web0
+ * Revision 1.53  2005-06-07 22:41:09  web0
+ * @B bug 70
+ *
+ * Revision 1.52  2005/05/30 22:55:27  web0
  * *** empty log message ***
  *
  * Revision 1.51  2005/05/19 23:31:07  web0
