@@ -36,8 +36,8 @@ import de.willuhn.jameica.gui.input.SelectInput;
 import de.willuhn.jameica.gui.util.ButtonArea;
 import de.willuhn.jameica.gui.util.LabelGroup;
 import de.willuhn.jameica.hbci.HBCI;
-import de.willuhn.jameica.hbci.export.ExportRegistry;
-import de.willuhn.jameica.hbci.export.Exporter;
+import de.willuhn.jameica.hbci.io.IORegistry;
+import de.willuhn.jameica.hbci.io.Exporter;
 import de.willuhn.jameica.hbci.rmi.Umsatz;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.jameica.system.Settings;
@@ -196,7 +196,7 @@ public class UmsatzExportDialog extends AbstractDialog
 		if (exporterListe != null)
 			return exporterListe;
 
-    Exporter[] exporters = ExportRegistry.getExporters();
+    Exporter[] exporters = IORegistry.getExporters();
 
     ArrayList l = new ArrayList();
 
@@ -283,7 +283,10 @@ public class UmsatzExportDialog extends AbstractDialog
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2005-06-06 10:37:07  web0
+ * Revision 1.3  2005-06-08 16:49:00  web0
+ * @N new Import/Export-System
+ *
+ * Revision 1.2  2005/06/06 10:37:07  web0
  * *** empty log message ***
  *
  * Revision 1.1  2005/06/02 22:57:34  web0

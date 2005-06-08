@@ -11,16 +11,16 @@
  *
  **********************************************************************/
 
-package de.willuhn.jameica.hbci.export;
+package de.willuhn.jameica.hbci.io;
 
 import de.willuhn.jameica.system.Application;
 import de.willuhn.logging.Logger;
 import de.willuhn.util.ClassFinder;
 
 /**
- * Ueber diese Klasse koennen alle verfuegbaren Export-Formate abgerufen werden.
+ * Ueber diese Klasse koennen alle verfuegbaren Export-und Import Formate abgerufen werden.
  */
-public class ExportRegistry
+public class IORegistry
 {
 
   // Liste der Export-Filter
@@ -83,7 +83,10 @@ public class ExportRegistry
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2005-06-02 22:57:34  web0
+ * Revision 1.1  2005-06-08 16:48:54  web0
+ * @N new Import/Export-System
+ *
+ * Revision 1.2  2005/06/02 22:57:34  web0
  * @N Export von Konto-Umsaetzen
  *
  * Revision 1.1  2005/06/02 21:48:44  web0

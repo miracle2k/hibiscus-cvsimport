@@ -11,7 +11,7 @@
  *
  **********************************************************************/
 
-package de.willuhn.jameica.hbci.export;
+package de.willuhn.jameica.hbci.io;
 
 import java.io.OutputStream;
 import java.rmi.RemoteException;
@@ -26,7 +26,7 @@ import de.willuhn.util.ApplicationException;
  * insofern sie einen parameterlosen Konstruktor mit dem Modifier "public"
  * besitzen (Java-Bean-Konvention).
  */
-public interface Exporter
+public interface Exporter extends IO
 {
   /**
    * Exportiert die genannte Umsaetze in den angegebenen OutputStream.
@@ -36,18 +36,15 @@ public interface Exporter
    * @throws ApplicationException 
    */
   public void export(Umsatz[] umsaetze, OutputStream os) throws RemoteException, ApplicationException;
-
-  /**
-   * Liefert einen sprechenden Namen des Exporters.
-   * @return
-   */
-  public String getName();
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2005-06-02 21:48:44  web0
+ * Revision 1.1  2005-06-08 16:48:54  web0
+ * @N new Import/Export-System
+ *
+ * Revision 1.1  2005/06/02 21:48:44  web0
  * @N Exporter-Package
  * @N CSV-Exporter
  *
