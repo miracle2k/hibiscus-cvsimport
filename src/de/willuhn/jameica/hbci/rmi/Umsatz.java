@@ -131,7 +131,21 @@ public interface Umsatz extends DBObject, Checksum
    */
   public UmsatzTyp getUmsatzTyp() throws RemoteException;
 
-	/**
+  /**
+   * Liefert einen optionalen Kommentar, den der User zu dem Umsatz eintragen kann.
+   * @return optionaler Kommentar.
+   * @throws RemoteException
+   */
+  public String getKommentar() throws RemoteException;
+
+  /**
+   * Speichert einen optionalen Kommentar zu dem Umsatz.
+   * @param kommentar Kommentar.
+   * @throws RemoteException
+   */
+  public void setKommentar(String kommentar) throws RemoteException;
+
+  /**
 	 * Speichert das Konto, auf welches sich der Umsatz bezieht.
    * @param k das Konto.
    * @throws RemoteException
@@ -240,7 +254,10 @@ public interface Umsatz extends DBObject, Checksum
 
 /**********************************************************************
  * $Log$
- * Revision 1.8  2005-02-27 17:11:49  web0
+ * Revision 1.9  2005-06-13 23:11:01  web0
+ * *** empty log message ***
+ *
+ * Revision 1.8  2005/02/27 17:11:49  web0
  * @N first code for "Sammellastschrift"
  * @C "Empfaenger" renamed into "Adresse"
  *

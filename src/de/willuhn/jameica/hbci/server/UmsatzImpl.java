@@ -397,12 +397,31 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
     k.addToProtokoll(msg,Protokoll.TYP_SUCCESS);
   }
 
+  /**
+   * @see de.willuhn.jameica.hbci.rmi.Umsatz#getKommentar()
+   */
+  public String getKommentar() throws RemoteException
+  {
+    return (String) getAttribute("kommentar");
+  }
+
+  /**
+   * @see de.willuhn.jameica.hbci.rmi.Umsatz#setKommentar(java.lang.String)
+   */
+  public void setKommentar(String kommentar) throws RemoteException
+  {
+    setAttribute("kommentar",kommentar);
+  }
+
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.23  2005-06-07 22:41:09  web0
+ * Revision 1.24  2005-06-13 23:11:01  web0
+ * *** empty log message ***
+ *
+ * Revision 1.23  2005/06/07 22:41:09  web0
  * @B bug 70
  *
  * Revision 1.22  2005/05/30 22:55:27  web0
