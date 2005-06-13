@@ -13,10 +13,6 @@
 
 package de.willuhn.jameica.hbci.gui.views;
 
-import java.net.URL;
-
-import javax.net.ssl.HttpsURLConnection;
-
 import de.willuhn.jameica.gui.AbstractView;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.util.LabelGroup;
@@ -37,16 +33,6 @@ public class Welcome extends AbstractView
    */
   public void bind() throws Exception
   {
-  	try
-  	{
-  		URL u = new URL("https://www.willuhn.de");
-  		HttpsURLConnection conn = (HttpsURLConnection) u.openConnection();
-  		conn.connect();
-  	}
-  	catch (Throwable t)
-  	{
-  		t.printStackTrace();
-  	}
 
 		I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 		WelcomeControl control = new WelcomeControl(this);
@@ -71,7 +57,7 @@ public class Welcome extends AbstractView
 
 /**********************************************************************
  * $Log$
- * Revision 1.19  2005-06-13 11:23:33  web0
+ * Revision 1.20  2005-06-13 11:24:21  web0
  * *** empty log message ***
  *
  * Revision 1.18  2005/05/19 23:31:07  web0
