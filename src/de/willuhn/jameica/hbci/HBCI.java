@@ -151,14 +151,17 @@ public class HBCI extends AbstractPlugin
       // TODO WIEDER ENTFERNEN, WENN RELEASED
       // Damit wir die Updates nicht immer haendisch nachziehen muessen, rufen wir
       // bei einem Fehler das letzte Update-Script nochmal auf.
-      try
+			if (!Application.inClientMode())
       {
-        File f = new File(getResources().getPath() + "/sql/update_1.3-1.4.sql");
-        getDatabase().executeSQLScript(f);
-      }
-      catch (Exception e2)
-      {
-        e2.printStackTrace();
+        try
+        {
+          File f = new File(getResources().getPath() + "/sql/update_1.3-1.4.sql");
+          getDatabase().executeSQLScript(f);
+        }
+        catch (Exception e2)
+        {
+          e2.printStackTrace();
+        }
       }
       ////////////////////////////////////////////////////////////////////////////
 
@@ -321,7 +324,10 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
- * Revision 1.54  2005-06-15 16:10:48  web0
+ * Revision 1.55  2005-06-15 17:51:09  web0
+ * *** empty log message ***
+ *
+ * Revision 1.54  2005/06/15 16:10:48  web0
  * @B javadoc fixes
  *
  * Revision 1.53  2005/06/13 23:11:01  web0
