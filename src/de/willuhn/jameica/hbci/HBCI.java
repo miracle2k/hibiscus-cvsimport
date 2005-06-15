@@ -310,7 +310,7 @@ public class HBCI extends AbstractPlugin
    * sich eine eigene Threadgroup geschaffen. Da wir RMI scheinbar nicht vorschreiben
    * koennen, dass es unsere Threadgroup verwenden soll, muessen wir HBCI4Java
    * pro ThreadGroup und damit ggf. mehrfach initialisieren.
-   * @return
+   * @return liefert den verwendeten HBCICallback.
    */
   HBCICallback getHBCICallback()
   {
@@ -321,7 +321,10 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
- * Revision 1.53  2005-06-13 23:11:01  web0
+ * Revision 1.54  2005-06-15 16:10:48  web0
+ * @B javadoc fixes
+ *
+ * Revision 1.53  2005/06/13 23:11:01  web0
  * *** empty log message ***
  *
  * Revision 1.52  2005/06/08 16:49:00  web0

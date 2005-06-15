@@ -35,7 +35,7 @@ public class NachrichtControl extends AbstractControl {
 
   /**
    * Liefert eine Liste aller vorhandenen Nachrichten
-   * @return
+   * @return liefert eine Liste der vorhandenen Nachrichten.
    * @throws RemoteException
    */
   public Part getListe() throws RemoteException
@@ -50,7 +50,10 @@ public class NachrichtControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2005-05-09 17:26:56  web0
+ * Revision 1.2  2005-06-15 16:10:48  web0
+ * @B javadoc fixes
+ *
+ * Revision 1.1  2005/05/09 17:26:56  web0
  * @N Bugzilla 68
  *
  **********************************************************************/

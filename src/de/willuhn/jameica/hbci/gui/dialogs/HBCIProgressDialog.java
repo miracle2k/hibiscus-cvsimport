@@ -15,6 +15,7 @@ package de.willuhn.jameica.hbci.gui.dialogs;
 
 import org.eclipse.swt.widgets.Composite;
 
+import de.willuhn.jameica.gui.dialogs.AbstractDialog;
 import de.willuhn.jameica.gui.parts.ProgressBar;
 import de.willuhn.util.ProgressMonitor;
 
@@ -22,7 +23,7 @@ import de.willuhn.util.ProgressMonitor;
  * Dialog, der waehrend der Ausfuehrung der HBCI-Geschaeftsvorfaelle Infos und
  * Fortschrittsinformationen angezeigt.
  */
-public class HBCIProgressDialog implements ProgressMonitor
+public class HBCIProgressDialog extends AbstractDialog implements ProgressMonitor
 {
 
   private ProgressBar progress = null;
@@ -32,23 +33,8 @@ public class HBCIProgressDialog implements ProgressMonitor
    */
   public HBCIProgressDialog()
   {
+    super(AbstractDialog.POSITION_CENTER);
     this.progress = new ProgressBar();
-  }
-
-  /**
-   * @see de.willuhn.jameica.gui.dialogs.AbstractDialog#paint(org.eclipse.swt.widgets.Composite)
-   */
-  protected void paint(Composite parent) throws Exception
-  {
-    this.progress.paint(parent);
-  }
-
-  /**
-   * @see de.willuhn.jameica.gui.dialogs.AbstractDialog#getData()
-   */
-  protected Object getData() throws Exception
-  {
-    return null;
   }
 
   /**
@@ -99,12 +85,31 @@ public class HBCIProgressDialog implements ProgressMonitor
     this.progress.log(arg0);
   }
 
+  /**
+   * @see de.willuhn.jameica.gui.dialogs.AbstractDialog#paint(org.eclipse.swt.widgets.Composite)
+   */
+  protected void paint(Composite parent) throws Exception
+  {
+    this.progress.paint(parent);
+  }
+
+  /**
+   * @see de.willuhn.jameica.gui.dialogs.AbstractDialog#getData()
+   */
+  protected Object getData() throws Exception
+  {
+    return null;
+  }
+
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2005-05-06 16:53:07  web0
+ * Revision 1.2  2005-06-15 16:10:48  web0
+ * @B javadoc fixes
+ *
+ * Revision 1.1  2005/05/06 16:53:07  web0
  * *** empty log message ***
  *
  **********************************************************************/

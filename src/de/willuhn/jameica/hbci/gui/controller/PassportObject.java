@@ -37,6 +37,11 @@ public class PassportObject implements GenericObject
 		this.passport = p;
 	}
 
+  /**
+   * ct.
+   * @param passportClass
+   * @throws Exception
+   */
   public PassportObject(String passportClass) throws Exception
   {
     this.passport = PassportRegistry.findByClass(passportClass);
@@ -103,7 +108,10 @@ public class PassportObject implements GenericObject
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2005-05-19 23:31:07  web0
+ * Revision 1.8  2005-06-15 16:10:48  web0
+ * @B javadoc fixes
+ *
+ * Revision 1.7  2005/05/19 23:31:07  web0
  * @B RMI over SSL support
  * @N added handbook
  *

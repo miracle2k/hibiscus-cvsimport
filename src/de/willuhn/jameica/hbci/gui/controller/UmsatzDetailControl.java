@@ -82,7 +82,7 @@ public class UmsatzDetailControl extends AbstractControl {
 
   /**
    * Liefert ein Eingabe-Feld fuer einen zusaetzlichen Kommentar
-   * @return
+   * @return liefert ein Eingabefeld fuer einen zusaetzlichen Kommentar.
    * @throws RemoteException
    */
   public Input getKommentar() throws RemoteException
@@ -290,7 +290,10 @@ public class UmsatzDetailControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.17  2005-06-13 23:11:01  web0
+ * Revision 1.18  2005-06-15 16:10:48  web0
+ * @B javadoc fixes
+ *
+ * Revision 1.17  2005/06/13 23:11:01  web0
  * *** empty log message ***
  *
  * Revision 1.16  2005/03/09 01:07:02  web0

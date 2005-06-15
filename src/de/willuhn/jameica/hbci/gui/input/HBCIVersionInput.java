@@ -55,10 +55,6 @@ public class HBCIVersionInput extends SelectInput implements Input
    * nur jene, welche laut Passport unterstuetzt werden.
    * @throws RemoteException
    */
-  /**
-   * ct.
-   * @throws RemoteException
-   */
   public HBCIVersionInput(HBCIPassport passport, String selectedVersion, boolean showAll) throws RemoteException
   {
     super(createList(passport,showAll),new HBCIVersionObject(selectedVersion));
@@ -78,6 +74,8 @@ public class HBCIVersionInput extends SelectInput implements Input
   /**
    * Erzeugt einen GenericIterator fuer die Auswahl der HBCI-Versionen.
    * @param passport Passport.
+   * @param showAll legt fest, ob alle HBCI-Versionen angezeigt werden sollen oder
+   * nur jene, welche laut Passport unterstuetzt werden.
    * @return Liste der unterstuetzten HBCI-Versionen.
    * @throws RemoteException
    */
@@ -230,7 +228,10 @@ public class HBCIVersionInput extends SelectInput implements Input
 
 /*****************************************************************************
  * $Log$
- * Revision 1.5  2005-04-18 09:28:45  web0
+ * Revision 1.6  2005-06-15 16:10:48  web0
+ * @B javadoc fixes
+ *
+ * Revision 1.5  2005/04/18 09:28:45  web0
  * @B zu wenig HBCI-Versionen in Auswahl
  * @B Refresh der Liste nach RDH-Schluesselimport
  *

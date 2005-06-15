@@ -109,7 +109,7 @@ public class HBCIFactory {
 
   /**
 	 * Fuehrt alle Jobs aus, die bis dato geadded wurden.
-	 * @param Konto, ueber das die Jobs abgewickelt werden sollen.
+	 * @param konto Konto, ueber das die Jobs abgewickelt werden sollen.
 	 * @throws ApplicationException Bei Benutzer-Fehlern (zB kein HBCI-Medium konfiguriert).
 	 * @throws RemoteException Fehler beim Zugriff auf Fachobjekte.
    * @throws OperationCanceledException Wenn der User den Vorgang abbricht.
@@ -366,7 +366,10 @@ public class HBCIFactory {
 
 /**********************************************************************
  * $Log$
- * Revision 1.29  2005-05-19 23:31:07  web0
+ * Revision 1.30  2005-06-15 16:10:48  web0
+ * @B javadoc fixes
+ *
+ * Revision 1.29  2005/05/19 23:31:07  web0
  * @B RMI over SSL support
  * @N added handbook
  *
