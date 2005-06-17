@@ -102,11 +102,8 @@ public class DauerauftragDeleteDialog extends AbstractDialog {
           comment.setValue(i18n.tr("Datum darf nicht in der Vergangenheit liegen"));
           return;
         }
-        else
-        {
-          comment.setValue("");
-        }
 
+        comment.setValue("");
         dateInput.setValue(date);
         dateInput.setText(HBCI.DATEFORMAT.format(date));
       }
@@ -169,7 +166,10 @@ public class DauerauftragDeleteDialog extends AbstractDialog {
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2005-06-08 10:24:41  web0
+ * Revision 1.4  2005-06-17 08:25:05  web0
+ * *** empty log message ***
+ *
+ * Revision 1.3  2005/06/08 10:24:41  web0
  * @B dialog muss bei "naechstmoeglicher Zeitpunkt" null liefern
  *
  * Revision 1.2  2005/06/07 22:19:57  web0

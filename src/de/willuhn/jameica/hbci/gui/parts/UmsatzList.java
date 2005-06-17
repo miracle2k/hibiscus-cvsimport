@@ -63,9 +63,8 @@ public class UmsatzList extends TablePart implements Part
   /**
    * @param list
    * @param action
-   * @throws RemoteException
    */
-  public UmsatzList(GenericIterator list, Action action) throws RemoteException
+  public UmsatzList(GenericIterator list, Action action)
   {
     super(list, action);
     this.i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
@@ -108,7 +107,10 @@ public class UmsatzList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2005-05-09 12:24:20  web0
+ * Revision 1.4  2005-06-17 08:25:05  web0
+ * *** empty log message ***
+ *
+ * Revision 1.3  2005/05/09 12:24:20  web0
  * @N Changelog
  * @N Support fuer Mehrfachmarkierungen
  * @N Mehere Adressen en bloc aus Umsatzliste uebernehmen
