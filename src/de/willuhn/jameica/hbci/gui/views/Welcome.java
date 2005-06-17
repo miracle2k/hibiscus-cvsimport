@@ -13,12 +13,15 @@
 
 package de.willuhn.jameica.hbci.gui.views;
 
+import org.eclipse.swt.SWTError;
+
 import de.willuhn.jameica.gui.AbstractView;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.util.LabelGroup;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.gui.controller.WelcomeControl;
 import de.willuhn.jameica.system.Application;
+import de.willuhn.logging.Logger;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
 
@@ -42,7 +45,14 @@ public class Welcome extends AbstractView
     LabelGroup group = new LabelGroup(getParent(),i18n.tr("Offene Überweisungen"));
     group.addPart(control.getOffeneUeberweisungen());
 
-		control.getQuickLinks().paint(getParent());
+    try
+    {
+      control.getQuickLinks().paint(getParent());
+    }
+    catch (SWTError e)
+    {
+      Logger.error("unable to paint quicklinks. this seems to be a known bug in the sax parser",e);
+    }
   }
 
   /**
@@ -57,7 +67,10 @@ public class Welcome extends AbstractView
 
 /**********************************************************************
  * $Log$
- * Revision 1.20  2005-06-13 11:24:21  web0
+ * Revision 1.21  2005-06-17 16:11:33  web0
+ * *** empty log message ***
+ *
+ * Revision 1.20  2005/06/13 11:24:21  web0
  * *** empty log message ***
  *
  * Revision 1.18  2005/05/19 23:31:07  web0
