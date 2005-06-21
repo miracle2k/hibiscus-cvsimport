@@ -26,7 +26,7 @@ import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
 
 /**
- * 
+ * View des Start-Bildschirms.
  */
 public class Welcome extends AbstractView
 {
@@ -67,7 +67,10 @@ public class Welcome extends AbstractView
 
 /**********************************************************************
  * $Log$
- * Revision 1.21  2005-06-17 16:11:33  web0
+ * Revision 1.22  2005-06-21 20:25:10  web0
+ * *** empty log message ***
+ *
+ * Revision 1.21  2005/06/17 16:11:33  web0
  * *** empty log message ***
  *
  * Revision 1.20  2005/06/13 11:24:21  web0
