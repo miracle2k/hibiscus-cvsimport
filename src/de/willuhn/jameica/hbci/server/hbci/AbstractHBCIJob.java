@@ -103,7 +103,6 @@ public abstract class AbstractHBCIJob
 	{
 		try
 		{
-			// TODO: Das ist sicher nicht alles, was wir von der Bank erfahren. Was waere besser?
 			return getJobResult().getJobStatus().getRetVals()[0].text;
 		}
 		catch (ArrayIndexOutOfBoundsException aio)
@@ -207,7 +206,10 @@ public abstract class AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.16  2005-03-09 01:07:02  web0
+ * Revision 1.17  2005-06-21 20:11:10  web0
+ * @C cvs merge
+ *
+ * Revision 1.16  2005/03/09 01:07:02  web0
  * @D javadoc fixes
  *
  * Revision 1.15  2005/03/05 19:11:25  web0

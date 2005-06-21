@@ -107,8 +107,8 @@ public class UmsatzList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2005-06-17 08:25:05  web0
- * *** empty log message ***
+ * Revision 1.5  2005-06-21 20:11:10  web0
+ * @C cvs merge
  *
  * Revision 1.3  2005/05/09 12:24:20  web0
  * @N Changelog

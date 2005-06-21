@@ -36,6 +36,7 @@ import de.willuhn.jameica.system.OperationCanceledException;
 import de.willuhn.logging.Logger;
 import de.willuhn.util.Base64;
 import de.willuhn.util.I18N;
+import de.willuhn.util.ProgressMonitor;
 
 /**
  * Dieser HBCICallbackSWT implementiert den HBCICallbackSWT des HBCI-Systems und
@@ -61,11 +62,13 @@ public class HBCICallbackSWT extends AbstractHBCICallback
    */
   public void log(String msg, int level, Date date, StackTraceElement trace)
   {
+    boolean log = true;
   	switch (level)
   	{
   		case HBCIUtils.LOG_DEBUG2:
 			case HBCIUtils.LOG_DEBUG:
   			Logger.debug(msg);
+        log = false;
   			break;
 
 			case HBCIUtils.LOG_INFO:
@@ -83,6 +86,11 @@ public class HBCICallbackSWT extends AbstractHBCICallback
 			default:
 				Logger.warn(msg);
   	}
+    if (log)
+    {
+      ProgressMonitor monitor = HBCIFactory.getInstance().getProgressMonitor();
+      monitor.addPercentComplete(1);
+    }
   }
 
   /**
@@ -289,9 +297,10 @@ public class HBCICallbackSWT extends AbstractHBCICallback
    */
   private void status(String text)
 	{
-//		monitor.setStatusText(text);
-//		monitor.log(text + "\n");
-		Logger.info(text);
+    Logger.info(text);
+    ProgressMonitor monitor = HBCIFactory.getInstance().getProgressMonitor();
+    monitor.log(text + "\n");
+    monitor.addPercentComplete(1);
 	}
 	
 	/**
@@ -438,7 +447,10 @@ public class HBCICallbackSWT extends AbstractHBCICallback
 
 /**********************************************************************
  * $Log$
- * Revision 1.26  2005-05-09 17:26:56  web0
+ * Revision 1.27  2005-06-21 20:11:10  web0
+ * @C cvs merge
+ *
+ * Revision 1.26  2005/05/09 17:26:56  web0
  * @N Bugzilla 68
  *
  * Revision 1.25  2005/05/06 14:05:04  web0

@@ -402,7 +402,10 @@ public class UmsatzDetailControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.19  2005-06-17 17:36:34  web0
+ * Revision 1.20  2005-06-21 20:11:10  web0
+ * @C cvs merge
+ *
+ * Revision 1.19  2005/06/17 17:36:34  web0
  * @B bug 75
  *
  * Revision 1.18  2005/06/15 16:10:48  web0

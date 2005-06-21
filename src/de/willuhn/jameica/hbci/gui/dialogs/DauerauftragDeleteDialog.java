@@ -166,8 +166,8 @@ public class DauerauftragDeleteDialog extends AbstractDialog {
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2005-06-17 08:25:05  web0
- * *** empty log message ***
+ * Revision 1.5  2005-06-21 20:11:10  web0
+ * @C cvs merge
  *
  * Revision 1.3  2005/06/08 10:24:41  web0
  * @B dialog muss bei "naechstmoeglicher Zeitpunkt" null liefern

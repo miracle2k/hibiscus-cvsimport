@@ -61,6 +61,10 @@ public class PassportTest implements Action
  													  // fehlschlaegt, ist nichts zum Schliessen da ;)
 						GUI.getStatusBar().setSuccessText(i18n.tr("Sicherheits-Medium erfolgreich getestet."));
 					}
+          catch (ApplicationException ae)
+          {
+            GUI.getStatusBar().setErrorText(ae.getMessage());
+          }
 					catch (RemoteException e)
 					{
             String msg = e.getMessage();
@@ -88,7 +92,10 @@ public class PassportTest implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2005-04-27 00:31:36  web0
+ * Revision 1.6  2005-06-21 20:11:10  web0
+ * @C cvs merge
+ *
+ * Revision 1.5  2005/04/27 00:31:36  web0
  * @N real test connection
  * @N all hbci versions are now shown in select box
  * @C userid and customerid are changable
