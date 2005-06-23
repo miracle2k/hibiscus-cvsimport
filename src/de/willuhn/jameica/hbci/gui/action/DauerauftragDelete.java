@@ -70,7 +70,7 @@ public class DauerauftragDelete implements Action
 				return;
 			}
 
-			if (da.isActive())
+			if (!da.isActive())
 			{
 
         DauerauftragDeleteDialog d2 = new DauerauftragDeleteDialog(DauerauftragDeleteDialog.POSITION_CENTER);
@@ -89,6 +89,8 @@ public class DauerauftragDelete implements Action
 					fd = null;
 				}
 				final Date date = fd;
+        System.out.println(date);
+        if (true) return;
 
 				// Uh, der wird auch online geloescht
 				GUI.startSync(new Runnable()
@@ -148,7 +150,10 @@ public class DauerauftragDelete implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.13  2005-06-07 21:57:25  web0
+ * Revision 1.14  2005-06-23 17:05:33  web0
+ * @B bug 85
+ *
+ * Revision 1.13  2005/06/07 21:57:25  web0
  * @B bug 18
  *
  * Revision 1.12  2005/05/10 22:26:15  web0
