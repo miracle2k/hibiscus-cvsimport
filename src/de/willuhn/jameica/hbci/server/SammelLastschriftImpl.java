@@ -322,11 +322,23 @@ public class SammelLastschriftImpl extends AbstractDBObject
     return super.getAttribute(arg0);
   }
 
+  /**
+   * @see de.willuhn.datasource.db.AbstractDBObject#getListQuery()
+   */
+  protected String getListQuery()
+  {
+    // BUGZILLA 84 http://www.willuhn.de/bugzilla/show_bug.cgi?id=84
+    return super.getListQuery() + "  ORDER BY TONUMBER(termin) DESC";
+  }
+
 }
 
 /*****************************************************************************
  * $Log$
- * Revision 1.5  2005-05-30 22:55:27  web0
+ * Revision 1.6  2005-06-23 17:36:33  web0
+ * @B bug 84
+ *
+ * Revision 1.5  2005/05/30 22:55:27  web0
  * *** empty log message ***
  *
  * Revision 1.4  2005/03/05 19:11:25  web0
