@@ -33,6 +33,7 @@ import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.gui.action.PassportDetail;
 import de.willuhn.jameica.hbci.gui.parts.PassportList;
+import de.willuhn.jameica.hbci.passport.Passport;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.logging.Logger;
 import de.willuhn.util.ApplicationException;
@@ -80,13 +81,9 @@ public class SettingsControl extends AbstractControl {
     {
       public void handleAction(Object context) throws ApplicationException
       {
-        // Wir haben hier nicht direkt die Passports sondern noch einen
-        // GenericObject-Wrapper drum rum (Passport-Objekt). Die Huelle
-        // entfernen wir vorher noch
-        PassportObject o = (PassportObject) context;
-        if (o == null)
+        if (context == null || !(context instanceof Passport))
           return;
-        new PassportDetail().handleAction(o.getPassport());
+        new PassportDetail().handleAction(context);
       }
     };
 
@@ -236,7 +233,10 @@ public class SettingsControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.39  2005-06-21 21:48:24  web0
+ * Revision 1.40  2005-06-23 21:22:19  web0
+ * @B ClassCastException
+ *
+ * Revision 1.39  2005/06/21 21:48:24  web0
  * @B bug 80
  *
  * Revision 1.38  2005/06/06 09:54:39  web0
