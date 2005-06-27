@@ -79,6 +79,9 @@ public class LastschriftList extends TablePart implements Part
       }
     });
   
+    // BUGZILLA 84 http://www.willuhn.de/bugzilla/show_bug.cgi?id=84
+    setRememberOrder(true);
+
     setContextMenu(new de.willuhn.jameica.hbci.gui.menus.LastschriftList());
   }
 
@@ -100,7 +103,10 @@ public class LastschriftList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2005-06-23 21:13:03  web0
+ * Revision 1.3  2005-06-27 15:35:27  web0
+ * @B bug 84
+ *
+ * Revision 1.2  2005/06/23 21:13:03  web0
  * @B bug 84
  *
  * Revision 1.1  2005/05/02 23:56:45  web0

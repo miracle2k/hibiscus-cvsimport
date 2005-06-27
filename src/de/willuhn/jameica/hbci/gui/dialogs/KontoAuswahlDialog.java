@@ -68,7 +68,7 @@ public class KontoAuswahlDialog extends AbstractDialog
 		final KontoList konten = new KontoList(a);
     konten.setContextMenu(null);
     konten.setMulti(false);
-    konten.disableSummary();
+    konten.setSummary(false);
     konten.paint(parent);
 
 		ButtonArea b = new ButtonArea(parent,2);
@@ -108,7 +108,10 @@ public class KontoAuswahlDialog extends AbstractDialog
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2005-06-23 23:03:20  web0
+ * Revision 1.5  2005-06-27 15:35:27  web0
+ * @B bug 84
+ *
+ * Revision 1.4  2005/06/23 23:03:20  web0
  * @N much better KontoAuswahlDialog
  *
  * Revision 1.3  2004/10/25 23:12:02  willuhn

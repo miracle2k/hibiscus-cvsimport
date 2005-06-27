@@ -77,7 +77,7 @@ public class TurnusDialog extends AbstractDialog {
     });
     turnusList.addColumn(i18n.tr("Bezeichnung"),"bezeichnung");
     turnusList.setMulti(false);
-    turnusList.disableSummary();
+    turnusList.setSummary(false);
 
     // Ein Formatter, der die initialen Turnusse rot markiert
     turnusList.setFormatter(new TableFormatter()
@@ -271,7 +271,10 @@ public class TurnusDialog extends AbstractDialog {
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2005-06-07 16:30:02  web0
+ * Revision 1.5  2005-06-27 15:35:27  web0
+ * @B bug 84
+ *
+ * Revision 1.4  2005/06/07 16:30:02  web0
  * @B Turnus-Dialog "geradegezogen" und ergonomischer gestaltet
  *
  * Revision 1.3  2005/03/06 16:06:10  web0

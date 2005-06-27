@@ -67,7 +67,7 @@ public class ProtokollList extends TablePart implements Part
     });
     addColumn(i18n.tr("Datum"),"datum",new DateFormatter(HBCI.LONGDATEFORMAT));
     addColumn(i18n.tr("Kommentar"),"kommentar");
-    disableSummary();
+    setSummary(false);
   }
 
 }
@@ -75,7 +75,10 @@ public class ProtokollList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2005-06-15 16:10:48  web0
+ * Revision 1.3  2005-06-27 15:35:27  web0
+ * @B bug 84
+ *
+ * Revision 1.2  2005/06/15 16:10:48  web0
  * @B javadoc fixes
  *
  * Revision 1.1  2005/05/02 23:56:45  web0
