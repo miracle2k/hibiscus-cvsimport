@@ -147,6 +147,7 @@ public class HBCI extends AbstractPlugin
 
     try {
 			Application.getCallback().getStartupMonitor().setStatusText("hibiscus: checking database integrity");
+
       ////////////////////////////////////////////////////////////////////////////
       // TODO WIEDER ENTFERNEN, WENN RELEASED
       // Damit wir die Updates nicht immer haendisch nachziehen muessen, rufen wir
@@ -155,8 +156,16 @@ public class HBCI extends AbstractPlugin
       {
         try
         {
+          de.willuhn.jameica.system.Settings s = new de.willuhn.jameica.system.Settings(HBCI.class);
+          double size = s.getDouble("sql-update-size",-1);
+          
           File f = new File(getResources().getPath() + "/sql/update_1.3-1.4.sql");
-          getDatabase().executeSQLScript(f);
+          
+          if (f.length() != size)
+          {
+            getDatabase().executeSQLScript(f);
+            s.setAttribute("sql-update-size",(double)f.length());
+          }
         }
         catch (Exception e2)
         {
@@ -324,7 +333,11 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
- * Revision 1.55  2005-06-15 17:51:09  web0
+ * Revision 1.56  2005-06-27 11:26:30  web0
+ * @N neuer Test bei Dauerauftraegen (zum Monatsletzten)
+ * @N neue DDV-Lib
+ *
+ * Revision 1.55  2005/06/15 17:51:09  web0
  * *** empty log message ***
  *
  * Revision 1.54  2005/06/15 16:10:48  web0

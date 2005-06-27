@@ -68,7 +68,17 @@ public class HBCIVersionInput extends SelectInput implements Input
    */
   public HBCIVersionInput(HBCIPassport passport, String selectedVersion) throws RemoteException
   {
-    this(passport,selectedVersion,false);
+    this(passport,selectedVersion,true);
+  }
+
+  /**
+   * ct.
+   * @param selectedVersion die vorausgewaehlte HBCI-Version.
+   * @throws RemoteException
+   */
+  public HBCIVersionInput(String selectedVersion) throws RemoteException
+  {
+    this(null,selectedVersion,true);
   }
 
   /**
@@ -89,7 +99,9 @@ public class HBCIVersionInput extends SelectInput implements Input
 
     try
     {
-      String[] s = passport.getSuppVersions();
+      String[] s = null;
+      if (passport != null)
+        s = passport.getSuppVersions();
       // BUGZILLA 37 http://www.willuhn.de/bugzilla/show_bug.cgi?id=37
       if (showAll || s == null || s.length == 0)
       {
@@ -228,7 +240,11 @@ public class HBCIVersionInput extends SelectInput implements Input
 
 /*****************************************************************************
  * $Log$
- * Revision 1.6  2005-06-15 16:10:48  web0
+ * Revision 1.7  2005-06-27 11:26:30  web0
+ * @N neuer Test bei Dauerauftraegen (zum Monatsletzten)
+ * @N neue DDV-Lib
+ *
+ * Revision 1.6  2005/06/15 16:10:48  web0
  * @B javadoc fixes
  *
  * Revision 1.5  2005/04/18 09:28:45  web0
