@@ -153,6 +153,19 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob {
 				if (!found)
 				{
 					Logger.info("storing dauerauftrag order id: " + auftrag.getOrderID());
+          // BUGZILLA 87 http://www.willuhn.de/bugzilla/show_bug.cgi?id=87
+          Konto k = auftrag.getKonto();
+          if (k == null)
+          {
+            Logger.info("bank didn't sending account informations. assigning account by hand");
+            auftrag.setKonto(konto);
+          }
+          else if (k.isNewObject())
+          {
+            Logger.info("current account is a new one, saving");
+            k.store();
+            auftrag.setKonto(k);
+          }
 					auftrag.store();// den hammer nicht gefunden. Neu anlegen
 				}
 				existing.begin();
@@ -197,7 +210,10 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.17  2005-03-06 17:15:45  web0
+ * Revision 1.18  2005-06-27 21:28:41  web0
+ * @B bug 87
+ *
+ * Revision 1.17  2005/03/06 17:15:45  web0
  * *** empty log message ***
  *
  * Revision 1.16  2005/03/06 17:10:57  web0
