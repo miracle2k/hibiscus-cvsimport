@@ -156,7 +156,7 @@ public class UmsatzDetailControl extends AbstractControl {
     String konto = getUmsatz().getEmpfaengerKonto(); 
     if (konto == null || konto.length() == 0)
     {
-      empfaengerKonto = new TextInput(null);
+      empfaengerKonto = new TextInput(null,15);
       changeEK = true;
     }
     else
@@ -388,7 +388,10 @@ public class UmsatzDetailControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.21  2005-06-27 14:18:49  web0
+ * Revision 1.22  2005-06-27 14:37:14  web0
+ * @B bug 75
+ *
+ * Revision 1.21  2005/06/27 14:18:49  web0
  * @B bug 75
  *
  * Revision 1.20  2005/06/21 20:11:10  web0

@@ -79,9 +79,6 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
 
 			if (getValuta() == null)
 				throw new ApplicationException(i18n.tr("Valuta fehlt."));
-
-			if (getZweck() == null || getZweck().length() == 0)
-				throw new ApplicationException(i18n.tr("Verwendungszweck fehlt."));
 		}
 		catch (RemoteException e)
 		{
@@ -433,7 +430,10 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
 
 /**********************************************************************
  * $Log$
- * Revision 1.25  2005-06-23 17:36:33  web0
+ * Revision 1.26  2005-06-27 14:37:14  web0
+ * @B bug 75
+ *
+ * Revision 1.25  2005/06/23 17:36:33  web0
  * @B bug 84
  *
  * Revision 1.24  2005/06/13 23:11:01  web0
