@@ -170,7 +170,7 @@ public class FilterEngine
           }
           catch (Exception e)
           {
-            // TODO Wie diese Exception behandeln?
+            Logger.error("error while filtering umsatz \"" + u.getAttribute(u.getPrimaryAttribute()) + "\"",e);
           }
         }
       }
@@ -183,7 +183,10 @@ public class FilterEngine
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2005-05-24 23:30:03  web0
+ * Revision 1.5  2005-06-27 22:27:53  web0
+ * *** empty log message ***
+ *
+ * Revision 1.4  2005/05/24 23:30:03  web0
  * @N Erster Code fuer OP-Verwaltung
  *
  * Revision 1.3  2005/05/10 22:26:15  web0

@@ -105,8 +105,13 @@ public class DonateDialog extends AbstractDialog
           Boolean email = (Boolean) getBill().getValue();
           ueberweisung.setZweck("Spende - Hibiscus");
           
-          // TODO EMAIL @ RAUSNEHMEN
-          ueberweisung.setZweck2(email.booleanValue() ? (String) getEMail().getValue() : null);
+          if (email.booleanValue())
+          {
+            String s = (String) getEMail().getValue();
+            if (s != null)
+              s = s.replaceAll("@","*at*");
+            ueberweisung.setZweck2(s);
+          }
           ueberweisung.setKonto((Konto)getKontoauswahl().getValue());
         }
         catch (RemoteException e)
@@ -234,7 +239,10 @@ public class DonateDialog extends AbstractDialog
 
 /*********************************************************************
  * $Log$
- * Revision 1.2  2005-06-27 16:12:35  web0
+ * Revision 1.3  2005-06-27 22:25:43  web0
+ * *** empty log message ***
+ *
+ * Revision 1.2  2005/06/27 16:12:35  web0
  * *** empty log message ***
  *
  * Revision 1.1  2005/06/27 13:36:53  web0
