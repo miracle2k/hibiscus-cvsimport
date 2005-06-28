@@ -154,7 +154,15 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob {
 				{
 					Logger.info("storing dauerauftrag order id: " + auftrag.getOrderID());
           // BUGZILLA 87 http://www.willuhn.de/bugzilla/show_bug.cgi?id=87
-          Konto k = auftrag.getKonto();
+          Konto k = null;
+          try
+          {
+            k = auftrag.getKonto();
+          }
+          catch (Exception e)
+          {
+            Logger.warn("unable to auto assigning account");
+          }
           if (k == null)
           {
             Logger.info("bank didn't sending account informations. assigning account by hand");
@@ -210,7 +218,10 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.18  2005-06-27 21:28:41  web0
+ * Revision 1.19  2005-06-28 08:04:00  web0
+ * @B bug 87
+ *
+ * Revision 1.18  2005/06/27 21:28:41  web0
  * @B bug 87
  *
  * Revision 1.17  2005/03/06 17:15:45  web0
