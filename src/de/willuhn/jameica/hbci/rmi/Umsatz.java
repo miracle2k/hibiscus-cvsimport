@@ -249,12 +249,29 @@ public interface Umsatz extends DBObject, Checksum
    * @throws RemoteException
    */
 	public void setUmsatzTyp(UmsatzTyp typ) throws RemoteException;
+  
+  /**
+   * Prueft, ob der Umsatz vom User geaendert wurde.
+   * @return true, wenn der Umsatz geaendert wurde.
+   * @throws RemoteException
+   */
+  public boolean hasChangedByUser() throws RemoteException;
+  
+  /**
+   * Markiert den Umsatz als "durch den Benutzer geaendert".
+   * Der Vorgang kann nach dem Speichern nicht rueckgaengig gemacht werden.
+   * @throws RemoteException
+   */
+  public void setChangedByUser() throws RemoteException;
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2005-06-13 23:11:01  web0
+ * Revision 1.10  2005-06-30 21:48:56  web0
+ * @B bug 75
+ *
+ * Revision 1.9  2005/06/13 23:11:01  web0
  * *** empty log message ***
  *
  * Revision 1.8  2005/02/27 17:11:49  web0

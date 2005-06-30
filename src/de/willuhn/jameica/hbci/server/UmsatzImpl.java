@@ -35,7 +35,7 @@ import de.willuhn.util.I18N;
 public class UmsatzImpl extends AbstractDBObject implements Umsatz
 {
 
-	I18N i18n;
+	private I18N i18n;
 
   /**
    * @throws RemoteException
@@ -329,7 +329,12 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
    * @see de.willuhn.jameica.hbci.rmi.Checksum#getChecksum()
    */
   public long getChecksum() throws RemoteException {
-		String s = (""+getArt()).toUpperCase() +
+
+    Number n = (Number) this.getAttribute("checksum");
+    if (n != null && n.longValue() != 0)
+      return n.longValue();
+
+    String s = (""+getArt()).toUpperCase() +
 		           getBetrag() +
 		           getKonto().getChecksum() +
 		           getCustomerRef() +
@@ -344,7 +349,7 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
 							 HBCI.DATEFORMAT.format(getValuta());
 		CRC32 crc = new CRC32();
 		crc.update(s.getBytes());
-		return crc.getValue();
+    return crc.getValue();
   }
 
   /**
@@ -425,12 +430,34 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
     setAttribute("kommentar",kommentar);
   }
 
+  /**
+   * @see de.willuhn.jameica.hbci.rmi.Umsatz#hasChangedByUser()
+   */
+  public boolean hasChangedByUser() throws RemoteException
+  {
+    Number n = (Number) this.getAttribute("checksum");
+    return (n != null && n.longValue() != 0);
+  }
+
+  /**
+   * @see de.willuhn.jameica.hbci.rmi.Umsatz#setChangedByUser()
+   */
+  public void setChangedByUser() throws RemoteException
+  {
+    if (hasChangedByUser())
+      return; // wurde schon markiert
+    setAttribute("checksum",new Long(getChecksum()));
+  }
+
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.26  2005-06-27 14:37:14  web0
+ * Revision 1.27  2005-06-30 21:48:56  web0
+ * @B bug 75
+ *
+ * Revision 1.26  2005/06/27 14:37:14  web0
  * @B bug 75
  *
  * Revision 1.25  2005/06/23 17:36:33  web0

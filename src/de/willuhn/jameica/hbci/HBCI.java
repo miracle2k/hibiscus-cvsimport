@@ -132,7 +132,7 @@ public class HBCI extends AbstractPlugin
 		if (checkSum.equals("kwi5vy1fvgOOVtoTYJYjuA==")) // 1.3
 			return;
 
-    if (checkSum.equals("UANsoO1kl5UhNkSBI8ZAlA==")) // 1.4
+    if (checkSum.equals("tCqQDJ51wjMhTWT/LEXfLA==")) // 1.4
       return;
 
 		throw new Exception("database checksum does not match any known version: " + checkSum);
@@ -333,7 +333,10 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
- * Revision 1.56  2005-06-27 11:26:30  web0
+ * Revision 1.57  2005-06-30 21:48:56  web0
+ * @B bug 75
+ *
+ * Revision 1.56  2005/06/27 11:26:30  web0
  * @N neuer Test bei Dauerauftraegen (zum Monatsletzten)
  * @N neue DDV-Lib
  *
