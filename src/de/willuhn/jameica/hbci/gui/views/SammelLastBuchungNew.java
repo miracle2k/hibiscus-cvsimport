@@ -63,7 +63,7 @@ public class SammelLastBuchungNew extends AbstractView {
       {
       	control.handleStore();
       }
-    });
+    },null,true);
   }
 
   /**
@@ -77,7 +77,10 @@ public class SammelLastBuchungNew extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2005-03-09 01:07:02  web0
+ * Revision 1.4  2005-07-04 12:41:39  web0
+ * @B bug 90
+ *
+ * Revision 1.3  2005/03/09 01:07:02  web0
  * @D javadoc fixes
  *
  * Revision 1.2  2005/03/05 19:11:25  web0

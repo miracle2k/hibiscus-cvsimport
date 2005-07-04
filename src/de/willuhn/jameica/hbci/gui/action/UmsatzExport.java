@@ -15,7 +15,7 @@ package de.willuhn.jameica.hbci.gui.action;
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.hbci.HBCI;
-import de.willuhn.jameica.hbci.gui.dialogs.UmsatzExportDialog;
+import de.willuhn.jameica.hbci.gui.dialogs.ExportDialog;
 import de.willuhn.jameica.hbci.rmi.Umsatz;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.logging.Logger;
@@ -56,7 +56,7 @@ public class UmsatzExport implements Action
         u = (Umsatz[]) context;
       }
 
-      UmsatzExportDialog d = new UmsatzExportDialog(u);
+      ExportDialog d = new ExportDialog(u, Umsatz.class);
       d.open();
 		}
 		catch (ApplicationException ae)
@@ -75,7 +75,10 @@ public class UmsatzExport implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2005-06-02 22:57:34  web0
+ * Revision 1.2  2005-07-04 12:41:39  web0
+ * @B bug 90
+ *
+ * Revision 1.1  2005/06/02 22:57:34  web0
  * @N Export von Konto-Umsaetzen
  *
  **********************************************************************/

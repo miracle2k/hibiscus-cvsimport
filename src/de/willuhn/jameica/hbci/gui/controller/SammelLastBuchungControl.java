@@ -205,7 +205,7 @@ public class SammelLastBuchungControl extends AbstractControl
 		return storeAddress;
 	}
 
-	/**
+  /**
 	 * Speichert den Geld-Transfer.
 	 * @return true, wenn das Speichern erfolgreich war.
 	 */
@@ -337,7 +337,10 @@ public class SammelLastBuchungControl extends AbstractControl
 
 /*****************************************************************************
  * $Log$
- * Revision 1.5  2005-07-04 11:36:53  web0
+ * Revision 1.6  2005-07-04 12:41:39  web0
+ * @B bug 90
+ *
+ * Revision 1.5  2005/07/04 11:36:53  web0
  * @B bug 89
  *
  * Revision 1.4  2005/04/05 21:51:54  web0
