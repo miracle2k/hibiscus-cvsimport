@@ -235,14 +235,27 @@ public class KontoControl extends AbstractControl {
 		if (passportAuswahl != null)
 			return passportAuswahl;
 
-		Passport[] passports = PassportRegistry.getPassports();
+    Passport[] passports = null;
+		try
+    {
+      passports = PassportRegistry.getPassports();
+    }
+    catch (Exception e)
+    {
+      Logger.error("error while loading passport list",e);
+      GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Laden der Sicherheitsmedien"));
+      passportAuswahl = new LabelInput(null);
+      return passportAuswahl;
+    }
 
-		PassportObject[] p = new PassportObject[passports.length];
-		for (int i=0;i<passports.length;++i)
-		{
-			p[i] = new PassportObject(passports[i]);
-		}
-		PassportObject current = null;
+
+    PassportObject[] p = new PassportObject[passports.length];
+    for (int i=0;i<passports.length;++i)
+    {
+      p[i] = new PassportObject(passports[i]);
+    }
+    
+    PassportObject current = null;
 		if (getKonto() != null && getKonto().getPassportClass() != null)
     {
       try
@@ -443,7 +456,10 @@ public class KontoControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.58  2005-06-21 21:48:24  web0
+ * Revision 1.59  2005-07-04 21:57:08  web0
+ * @B bug 80
+ *
+ * Revision 1.58  2005/06/21 21:48:24  web0
  * @B bug 80
  *
  * Revision 1.57  2005/06/03 17:14:20  web0
