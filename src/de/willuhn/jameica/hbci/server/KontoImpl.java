@@ -446,12 +446,41 @@ public class KontoImpl extends AbstractDBObject implements Konto {
 		setAttribute("saldo",new Double(saldo));
 		setAttribute("saldo_datum",new Date());
   }
+
+  /**
+   * @see de.willuhn.jameica.hbci.rmi.Konto#getFirstUmsatz()
+   */
+  public Umsatz getFirstUmsatz() throws RemoteException
+  {
+    DBIterator list = getService().createList(Umsatz.class);
+    list.addFilter("konto_id = " + getID());
+    list.setOrder("ORDER BY TONUMBER(valuta) ASC");
+    if (!list.hasNext())
+      return null;
+    return (Umsatz) list.next();
+  }
+
+  /**
+   * @see de.willuhn.jameica.hbci.rmi.Konto#getLastUmsatz()
+   */
+  public Umsatz getLastUmsatz() throws RemoteException
+  {
+    DBIterator list = getService().createList(Umsatz.class);
+    list.addFilter("konto_id = " + getID());
+    list.setOrder("ORDER BY TONUMBER(valuta) DESC");
+    if (!list.hasNext())
+      return null;
+    return (Umsatz) list.next();
+  }
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.53  2005-06-07 22:41:09  web0
+ * Revision 1.54  2005-07-11 13:51:49  web0
+ * *** empty log message ***
+ *
+ * Revision 1.53  2005/06/07 22:41:09  web0
  * @B bug 70
  *
  * Revision 1.52  2005/05/30 22:55:27  web0
