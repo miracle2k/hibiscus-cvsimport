@@ -47,7 +47,7 @@ public abstract class AbstractPatternImpl extends AbstractDBObject implements Pa
   public String getPrimaryAttribute() throws RemoteException
   {
     // synthetisches Attribut
-    return "bezeichnung";
+    return "name";
   }
 
   /**
@@ -164,12 +164,10 @@ public abstract class AbstractPatternImpl extends AbstractDBObject implements Pa
    */
   public Object getAttribute(String arg0) throws RemoteException
   {
-    if (arg0.equals("bezeichnung"))
-    {
-      return getNameForField(getField()) + " " +
-             getNameForType(this.getType()) + " " +
-             "\"" + getPattern() + "\"";
-    }
+    if (arg0.equals("name"))
+      return getNameForField(getField());
+    if (arg0.equals("this"))
+      return this;
     return super.getAttribute(arg0);
   }
 
@@ -185,7 +183,7 @@ public abstract class AbstractPatternImpl extends AbstractDBObject implements Pa
       case Pattern.TYPE_ENDSWITH:
         return i18n.tr("endet mit");
       case Pattern.TYPE_EQUALS:
-        return i18n.tr(": ");
+        return i18n.tr(":");
       case Pattern.TYPE_STARTSWITH:
         return i18n.tr("beginnt mit");
       default:
@@ -212,7 +210,10 @@ public abstract class AbstractPatternImpl extends AbstractDBObject implements Pa
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2005-05-30 22:55:27  web0
+ * Revision 1.4  2005-07-11 18:12:47  web0
+ * *** empty log message ***
+ *
+ * Revision 1.3  2005/05/30 22:55:27  web0
  * *** empty log message ***
  *
  * Revision 1.2  2005/05/30 14:25:48  web0
