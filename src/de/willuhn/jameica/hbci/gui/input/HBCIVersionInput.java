@@ -57,7 +57,7 @@ public class HBCIVersionInput extends SelectInput implements Input
    */
   public HBCIVersionInput(HBCIPassport passport, String selectedVersion, boolean showAll) throws RemoteException
   {
-    super(createList(passport,showAll),new HBCIVersionObject(selectedVersion));
+    super(createList(passport,showAll),selectedVersion == null ? null : new HBCIVersionObject(selectedVersion));
   }
 
   /**
@@ -240,7 +240,10 @@ public class HBCIVersionInput extends SelectInput implements Input
 
 /*****************************************************************************
  * $Log$
- * Revision 1.7  2005-06-27 11:26:30  web0
+ * Revision 1.8  2005-07-12 23:29:01  web0
+ * *** empty log message ***
+ *
+ * Revision 1.7  2005/06/27 11:26:30  web0
  * @N neuer Test bei Dauerauftraegen (zum Monatsletzten)
  * @N neue DDV-Lib
  *
