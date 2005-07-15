@@ -220,7 +220,7 @@ public class SettingsControl extends AbstractControl {
 
 		try
 		{
-			Settings.getWallet().delete("hbci.passport.pinchecksum");
+			Settings.getWallet().deleteAll("hbci.passport.pinchecksum");
 			GUI.getStatusBar().setSuccessText(i18n.tr("Checksummen gelöscht."));
 		}
 		catch (Exception e)
@@ -233,7 +233,10 @@ public class SettingsControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.40  2005-06-23 21:22:19  web0
+ * Revision 1.41  2005-07-15 09:19:35  web0
+ * *** empty log message ***
+ *
+ * Revision 1.40  2005/06/23 21:22:19  web0
  * @B ClassCastException
  *
  * Revision 1.39  2005/06/21 21:48:24  web0
