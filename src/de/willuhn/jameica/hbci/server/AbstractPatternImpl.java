@@ -183,7 +183,7 @@ public abstract class AbstractPatternImpl extends AbstractDBObject implements Pa
       case Pattern.TYPE_ENDSWITH:
         return i18n.tr("endet mit");
       case Pattern.TYPE_EQUALS:
-        return i18n.tr(":");
+        return i18n.tr("identisch mit");
       case Pattern.TYPE_STARTSWITH:
         return i18n.tr("beginnt mit");
       default:
@@ -210,7 +210,10 @@ public abstract class AbstractPatternImpl extends AbstractDBObject implements Pa
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2005-07-11 18:12:47  web0
+ * Revision 1.5  2005-07-20 17:00:37  web0
+ * *** empty log message ***
+ *
+ * Revision 1.4  2005/07/11 18:12:47  web0
  * *** empty log message ***
  *
  * Revision 1.3  2005/05/30 22:55:27  web0
