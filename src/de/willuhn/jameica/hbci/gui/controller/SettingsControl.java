@@ -48,6 +48,7 @@ public class SettingsControl extends AbstractControl {
 	private CheckboxInput onlineMode     		= null;
 	private CheckboxInput checkPin     			= null;
   private CheckboxInput showTan           = null;
+  private CheckboxInput decimalGrouping   = null;
 
 	private Input buchungSollFg     				= null;
 	private Input buchungHabenFg    				= null;
@@ -106,7 +107,20 @@ public class SettingsControl extends AbstractControl {
 		return onlineMode;
 	}
 
-	/**
+  /**
+   * Checkbox zur Auswahl von Dezimal-Trennzeichen in Betraegen.
+   * @return Checkbox.
+   */
+  public CheckboxInput getDecimalGrouping()
+  {
+    //  BUGZILLA 101 http://www.willuhn.de/bugzilla/show_bug.cgi?id=101
+    if (decimalGrouping != null)
+      return decimalGrouping;
+    decimalGrouping = new CheckboxInput(Settings.getDecimalGrouping());
+    return decimalGrouping;
+  }
+
+  /**
 	 * Liefert eine Checkbox zur Aktivierung oder Deaktivierung der Pin-Pruefung via Checksumme.
    * @return Checkbox.
    */
@@ -194,6 +208,7 @@ public class SettingsControl extends AbstractControl {
 		Settings.setOnlineMode(((Boolean)getOnlineMode().getValue()).booleanValue());
 		Settings.setCheckPin(((Boolean)getCheckPin().getValue()).booleanValue());
     Settings.setShowTan(((Boolean)getShowTan().getValue()).booleanValue());
+    Settings.setDecimalGrouping(((Boolean)getDecimalGrouping().getValue()).booleanValue());
 		
 		Settings.setUeberweisungLimit(((Double)getUeberweisungLimit().getValue()).doubleValue());
 
@@ -233,7 +248,10 @@ public class SettingsControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.41  2005-07-15 09:19:35  web0
+ * Revision 1.42  2005-07-24 22:26:42  web0
+ * @B bug 101
+ *
+ * Revision 1.41  2005/07/15 09:19:35  web0
  * *** empty log message ***
  *
  * Revision 1.40  2005/06/23 21:22:19  web0
