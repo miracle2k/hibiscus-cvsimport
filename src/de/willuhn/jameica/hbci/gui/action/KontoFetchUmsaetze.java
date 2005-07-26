@@ -14,6 +14,9 @@ package de.willuhn.jameica.hbci.gui.action;
 
 import java.rmi.RemoteException;
 
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
+
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.hbci.HBCI;
@@ -56,10 +59,13 @@ public class KontoFetchUmsaetze implements Action
 			// BUGZILLA #3 http://www.willuhn.de/bugzilla/show_bug.cgi?id=3
 			factory.addExclusiveJob(new HBCISaldoJob(k));
 
-			factory.executeJobs(k);
+			factory.executeJobs(k, new Listener() {
+        public void handleEvent(Event event)
+        {
+          GUI.startView(GUI.getCurrentView().getClass(),k);
+        }
+      });
 			
-      // TODO Erst ausfuehren, wenn die Jobs fertig sind
-      // GUI.startView(GUI.getCurrentView().getClass(),k);
 		}
 		catch (RemoteException e)
 		{
@@ -73,7 +79,10 @@ public class KontoFetchUmsaetze implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.12  2005-07-26 23:00:03  web0
+ * Revision 1.13  2005-07-26 23:57:18  web0
+ * @N Restliche HBCI-Jobs umgestellt
+ *
+ * Revision 1.12  2005/07/26 23:00:03  web0
  * @N Multithreading-Support fuer HBCI-Jobs
  *
  * Revision 1.11  2005/05/10 22:26:15  web0
