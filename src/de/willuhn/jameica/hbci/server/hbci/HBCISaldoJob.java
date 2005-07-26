@@ -94,6 +94,8 @@ public class HBCISaldoJob extends AbstractHBCIJob {
 										i18n.tr("Fehlermeldung der Bank") + ": " + statusText :
 										i18n.tr("Unbekannter Fehler beim Abrufen des Saldos");
 
+      if (result.getEntries() == null || result.getEntries().length == 0)
+        msg = i18n.tr("Keine Salden für das Konto verfügbar");
 			konto.addToProtokoll(i18n.tr("Fehler beim Abrufen das Saldos") + " ("+ msg +")",Protokoll.TYP_ERROR);
 			throw new ApplicationException(msg);
 		}
@@ -115,7 +117,10 @@ public class HBCISaldoJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.16  2005-02-03 18:57:42  willuhn
+ * Revision 1.17  2005-07-26 23:00:03  web0
+ * @N Multithreading-Support fuer HBCI-Jobs
+ *
+ * Revision 1.16  2005/02/03 18:57:42  willuhn
  * *** empty log message ***
  *
  * Revision 1.15  2004/11/13 17:02:04  willuhn
