@@ -61,7 +61,7 @@ public abstract class AbstractBaseUeberweisungControl extends AbstractTransferCo
     Terminable t = (Terminable) getTransfer();
 		if (t.ausgefuehrt())
 		{
-			comment.setValue(i18n.tr("Der Auftrag wurde bereits ausgeführt"));
+			comment.setValue(i18n.tr("Der Auftrag wurde ausgeführt"));
 		}
 		else if (t.ueberfaellig())
 		{
@@ -257,7 +257,10 @@ public abstract class AbstractBaseUeberweisungControl extends AbstractTransferCo
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2005-03-05 19:11:25  web0
+ * Revision 1.6  2005-07-29 16:48:13  web0
+ * @N Synchronize
+ *
+ * Revision 1.5  2005/03/05 19:11:25  web0
  * @N SammelLastschrift-Code complete
  *
  * Revision 1.4  2005/03/02 17:59:31  web0
