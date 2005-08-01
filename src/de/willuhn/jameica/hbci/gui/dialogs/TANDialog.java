@@ -46,12 +46,15 @@ public class TANDialog extends PasswordDialog {
     try
     {
       Konto konto = HBCIFactory.getInstance().getCurrentKonto();
-      s = konto.getBezeichnung();
-      s += " [" + i18n.tr("Nr.") + " " + konto.getKontonummer();
-      String name = HBCIUtils.getNameForBLZ(konto.getBLZ());
-      if (name != null && name.length() > 0)
-        s += " - " + name;
-      s += "]";
+      if (konto != null)
+      {
+        s = konto.getBezeichnung();
+        s += " [" + i18n.tr("Nr.") + " " + konto.getKontonummer();
+        String name = HBCIUtils.getNameForBLZ(konto.getBLZ());
+        if (name != null && name.length() > 0)
+          s += " - " + name;
+        s += "]";
+      }
     }
     catch (Exception e)
     {
@@ -98,7 +101,10 @@ public class TANDialog extends PasswordDialog {
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2005-07-26 23:00:03  web0
+ * Revision 1.8  2005-08-01 23:27:42  web0
+ * *** empty log message ***
+ *
+ * Revision 1.7  2005/07/26 23:00:03  web0
  * @N Multithreading-Support fuer HBCI-Jobs
  *
  * Revision 1.6  2005/06/06 09:54:39  web0

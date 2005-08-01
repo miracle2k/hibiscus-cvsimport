@@ -81,14 +81,17 @@ public class UmsatzList extends ContextMenu implements Extendable
    */
   public String getExtendableID()
   {
-    return "hibiscus.context.umsatz.list";
+    return this.getClass().getName();
   }
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.11  2005-06-07 22:41:09  web0
+ * Revision 1.12  2005-08-01 23:27:42  web0
+ * *** empty log message ***
+ *
+ * Revision 1.11  2005/06/07 22:41:09  web0
  * @B bug 70
  *
  * Revision 1.10  2005/06/02 22:57:34  web0

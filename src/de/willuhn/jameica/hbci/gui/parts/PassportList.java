@@ -46,10 +46,9 @@ public class PassportList extends TablePart implements Part
     super(init(), new Action() {
       public void handleAction(Object context) throws ApplicationException
       {
-        if (context == null || !(context instanceof PassportObject))
+        if (context == null)
           return;
-        Passport p = ((PassportObject) context).getPassport();
-        action.handleAction(p);
+        action.handleAction((Passport) context);
       }
     });
     this.i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
@@ -81,12 +80,25 @@ public class PassportList extends TablePart implements Part
     return PseudoIterator.fromArray(p);
   }
   
+  /**
+   * @see de.willuhn.jameica.gui.parts.TablePart#getSelection()
+   */
+  public Object getSelection()
+  {
+    Object o = super.getSelection();
+    if (o == null)
+      return null;
+    return ((PassportObject)o).getPassport();
+  }
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2005-07-04 21:57:08  web0
+ * Revision 1.4  2005-08-01 23:27:42  web0
+ * *** empty log message ***
+ *
+ * Revision 1.3  2005/07/04 21:57:08  web0
  * @B bug 80
  *
  * Revision 1.2  2005/06/27 15:35:27  web0

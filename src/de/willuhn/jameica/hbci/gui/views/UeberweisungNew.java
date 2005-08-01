@@ -74,7 +74,7 @@ public class UeberweisungNew extends AbstractView {
 				new UeberweisungExecute().handleAction(transfer);
       }
     },null,true);
-		buttonArea.addButton(i18n.tr("Nur Speichern"), 			     new Action()
+		buttonArea.addButton(i18n.tr("Speichern"), 			     new Action()
     {
       public void handleAction(Object context) throws ApplicationException
       {
@@ -94,7 +94,10 @@ public class UeberweisungNew extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2005-03-09 01:07:02  web0
+ * Revision 1.5  2005-08-01 23:27:42  web0
+ * *** empty log message ***
+ *
+ * Revision 1.4  2005/03/09 01:07:02  web0
  * @D javadoc fixes
  *
  * Revision 1.3  2005/02/03 18:57:42  willuhn

@@ -58,6 +58,7 @@ public class SynchronizeControl extends AbstractControl
     list.addFilter("synchronize = 1 or synchronize is null");
     KontoList l = new KontoList(list,new KontoNew());
     l.setSummary(false);
+    
     return l;
   }
   
@@ -131,7 +132,10 @@ public class SynchronizeControl extends AbstractControl
 
 /*********************************************************************
  * $Log$
- * Revision 1.1  2005-08-01 16:10:41  web0
+ * Revision 1.2  2005-08-01 23:27:42  web0
+ * *** empty log message ***
+ *
+ * Revision 1.1  2005/08/01 16:10:41  web0
  * @N synchronize
  *
  * Revision 1.1  2005/07/29 16:48:13  web0

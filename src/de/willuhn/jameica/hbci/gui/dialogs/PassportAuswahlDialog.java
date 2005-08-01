@@ -54,7 +54,7 @@ public class PassportAuswahlDialog extends AbstractDialog
     LabelGroup group = new LabelGroup(parent,i18n.tr("Sicherheitsmedien"));
     group.addText(i18n.tr("Bitte wählen Sie das zu verwendende Sicherheitsmedium aus"),false);
     
-    PassportList list = new PassportList(new Action() {
+    final PassportList list = new PassportList(new Action() {
       public void handleAction(Object context) throws ApplicationException
       {
         if (context == null || !(context instanceof Passport))
@@ -65,7 +65,17 @@ public class PassportAuswahlDialog extends AbstractDialog
     });
     list.paint(parent);
     
-    ButtonArea buttons = new ButtonArea(parent,1);
+    ButtonArea buttons = new ButtonArea(parent,2);
+    buttons.addButton(i18n.tr("Übernehmen"), new Action() {
+      public void handleAction(Object context) throws ApplicationException
+      {
+        Object o = list.getSelection();
+        if (o == null || !(o instanceof Passport))
+          return;
+        selected = (Passport) o;
+        close();
+      }
+    });
     buttons.addButton(i18n.tr("Abbrechen"),new Action() {
       public void handleAction(Object context) throws ApplicationException
       {
@@ -88,7 +98,10 @@ public class PassportAuswahlDialog extends AbstractDialog
 
 /*********************************************************************
  * $Log$
- * Revision 1.1  2005-06-21 21:48:24  web0
+ * Revision 1.2  2005-08-01 23:27:42  web0
+ * *** empty log message ***
+ *
+ * Revision 1.1  2005/06/21 21:48:24  web0
  * @B bug 80
  *
  **********************************************************************/

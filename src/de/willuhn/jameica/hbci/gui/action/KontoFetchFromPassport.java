@@ -72,10 +72,16 @@ public class KontoFetchFromPassport implements Action
 							if (check.getBLZ().equals(konten[i].getBLZ()) &&
 								check.getKontonummer().equals(konten[i].getKontonummer()))
 							{
-								found = true;
-								Logger.info("  konto exists, skipping");
-                skipped++;
-								break;
+                // Jetzt noch checken, ob die Passports uebereinstimmen
+                String pp = check.getPassportClass();
+                Logger.info("  checking for same passport");
+                if (pp == null || pp.equals(p.getClass().getName()))
+                {
+                  found = true;
+                  Logger.info("  konto exists, skipping");
+                  skipped++;
+                  break;
+                }
 							}
 					
 						}
@@ -129,7 +135,10 @@ public class KontoFetchFromPassport implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.10  2005-06-21 21:48:24  web0
+ * Revision 1.11  2005-08-01 23:27:42  web0
+ * *** empty log message ***
+ *
+ * Revision 1.10  2005/06/21 21:48:24  web0
  * @B bug 80
  *
  * Revision 1.9  2005/05/19 23:31:07  web0

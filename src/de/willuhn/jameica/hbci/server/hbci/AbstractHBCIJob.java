@@ -103,7 +103,13 @@ public abstract class AbstractHBCIJob
 	{
 		try
 		{
-			return getJobResult().getJobStatus().getRetVals()[0].text;
+      String s = getJobResult().getGlobStatus().getErrorString();
+      if (s != null && s.length() > 0)
+        return s;
+			s = getJobResult().getJobStatus().getErrorString();
+      if (s != null && s.length() > 0)
+        return s;
+      return getJobResult().getJobStatus().getRetVals()[0].text;
 		}
 		catch (ArrayIndexOutOfBoundsException aio)
 		{
@@ -206,7 +212,10 @@ public abstract class AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.17  2005-06-21 20:11:10  web0
+ * Revision 1.18  2005-08-01 23:27:42  web0
+ * *** empty log message ***
+ *
+ * Revision 1.17  2005/06/21 20:11:10  web0
  * @C cvs merge
  *
  * Revision 1.16  2005/03/09 01:07:02  web0
