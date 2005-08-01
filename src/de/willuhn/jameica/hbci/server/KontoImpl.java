@@ -480,7 +480,7 @@ public class KontoImpl extends AbstractDBObject implements Konto {
   {
     Integer i = (Integer) getAttribute("synchronize");
     if (i == null)
-      return false;
+      return true;
     return i.intValue() == 1;
   }
 
@@ -496,7 +496,10 @@ public class KontoImpl extends AbstractDBObject implements Konto {
 
 /**********************************************************************
  * $Log$
- * Revision 1.55  2005-07-29 16:48:13  web0
+ * Revision 1.56  2005-08-01 16:10:41  web0
+ * @N synchronize
+ *
+ * Revision 1.55  2005/07/29 16:48:13  web0
  * @N Synchronize
  *
  * Revision 1.54  2005/07/11 13:51:49  web0

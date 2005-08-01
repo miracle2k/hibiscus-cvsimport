@@ -66,7 +66,7 @@ public interface Pattern extends DBObject
 
   /**
    * Speichert den Pattern, nach dem gesucht werden soll.
-   * @param pattern.
+   * @param pattern Pattern, nach dem gesucht werden soll.
    * @throws RemoteException
    */
   public void setPattern(String pattern) throws RemoteException;
@@ -133,7 +133,10 @@ public interface Pattern extends DBObject
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2005-06-28 17:45:41  web0
+ * Revision 1.6  2005-08-01 16:10:41  web0
+ * @N synchronize
+ *
+ * Revision 1.5  2005/06/28 17:45:41  web0
  * *** empty log message ***
  *
  * Revision 1.4  2005/06/15 16:10:48  web0
