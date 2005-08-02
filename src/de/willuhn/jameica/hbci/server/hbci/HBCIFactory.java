@@ -216,17 +216,25 @@ public class HBCIFactory {
    * freizugeben.
    * @param status 
    */
-  private synchronized void stop(int status)
+  private synchronized void stop(final int status)
   {
+    Logger.info("stopping hbci factory");
     inProgress = false;
     this.worker = null;
 
     if (this.listener != null)
     {
-      Event e = new Event();
-      e.type = status;
-      this.listener.handleEvent(e);
+      GUI.startSync(new Runnable() {
+        public void run()
+        {
+          Event e = new Event();
+          e.type = status;
+          Logger.info("executing listener");
+          listener.handleEvent(e);
+        }
+      });
     }
+    Logger.info("finished");
   }
 	
   /**
@@ -576,7 +584,10 @@ public class HBCIFactory {
 
 /*******************************************************************************
  * $Log$
- * Revision 1.35  2005-08-01 23:27:42  web0
+ * Revision 1.36  2005-08-02 20:09:33  web0
+ * @B bug 106
+ *
+ * Revision 1.35  2005/08/01 23:27:42  web0
  * *** empty log message ***
  *
  * Revision 1.34  2005/08/01 20:35:31  web0
