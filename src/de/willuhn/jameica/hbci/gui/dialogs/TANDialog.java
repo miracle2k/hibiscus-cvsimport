@@ -40,7 +40,7 @@ public class TANDialog extends PasswordDialog {
     // Deaktivierung der Anzeige von Sternen im TAN-Dialog.
     setShowPassword(Settings.getShowTan());
 
-    setLabelText(i18n.tr("Ihre TAN"));
+    setLabelText(i18n.tr("TAN"));
 
     String s = null;
     try
@@ -49,11 +49,9 @@ public class TANDialog extends PasswordDialog {
       if (konto != null)
       {
         s = konto.getBezeichnung();
-        s += " [" + i18n.tr("Nr.") + " " + konto.getKontonummer();
         String name = HBCIUtils.getNameForBLZ(konto.getBLZ());
         if (name != null && name.length() > 0)
-          s += " - " + name;
-        s += "]";
+          s += " [" + name + "]";
       }
     }
     catch (Exception e)
@@ -101,7 +99,10 @@ public class TANDialog extends PasswordDialog {
 
 /**********************************************************************
  * $Log$
- * Revision 1.8  2005-08-01 23:27:42  web0
+ * Revision 1.9  2005-08-02 20:33:12  web0
+ * *** empty log message ***
+ *
+ * Revision 1.8  2005/08/01 23:27:42  web0
  * *** empty log message ***
  *
  * Revision 1.7  2005/07/26 23:00:03  web0
