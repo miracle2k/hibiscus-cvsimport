@@ -47,9 +47,9 @@ public class UeberweisungNew extends AbstractView {
 		LabelGroup konten = new LabelGroup(getParent(),i18n.tr("Konten"));
 		
 		konten.addLabelPair(i18n.tr("persönliches Konto"),				control.getKontoAuswahl());		
-		konten.addLabelPair(i18n.tr("Konto des Empfängers"),			control.getEmpfaengerKonto());		
-		konten.addLabelPair(i18n.tr("BLZ des Empfängers"),				control.getEmpfaengerBlz());		
-		konten.addLabelPair(i18n.tr("Name des Empfängers"),			  control.getEmpfaengerName());
+    konten.addLabelPair(i18n.tr("Empfänger Name"),            control.getEmpfaengerName());
+		konten.addLabelPair(i18n.tr("Empfänger Kontonummer"),			control.getEmpfaengerKonto());		
+		konten.addLabelPair(i18n.tr("Empfänger BLZ"),				      control.getEmpfaengerBlz());		
 		konten.addCheckbox(control.getStoreEmpfaenger(),i18n.tr("Empfängerdaten im Adressbuch speichern"));
 
 		LabelGroup details = new LabelGroup(getParent(),i18n.tr("Details"));
@@ -94,7 +94,10 @@ public class UeberweisungNew extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2005-08-01 23:27:42  web0
+ * Revision 1.6  2005-08-04 22:15:14  willuhn
+ * @B bug 109
+ *
+ * Revision 1.5  2005/08/01 23:27:42  web0
  * *** empty log message ***
  *
  * Revision 1.4  2005/03/09 01:07:02  web0
