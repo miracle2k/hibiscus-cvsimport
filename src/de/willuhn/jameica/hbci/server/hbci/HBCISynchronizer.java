@@ -121,12 +121,8 @@ public class HBCISynchronizer
       Logger.info("creating hbci factory");
       HBCIFactory factory = HBCIFactory.getInstance();
 
-      Logger.info("adding umsatz job");
-      factory.addJob(new HBCIUmsatzJob(k));
       
-      Logger.info("adding saldo job");
-      factory.addExclusiveJob(new HBCISaldoJob(k));
-
+      factory.getProgressMonitor().setStatusText(i18n.tr("Synchronisiere Konto {0} [{1}]", new String[]{k.getBezeichnung(),k.getKontonummer()}));
       if (settings.getBoolean("sync.ueb",false))
       {
         Logger.info("adding open transfers");
@@ -182,6 +178,17 @@ public class HBCISynchronizer
           factory.addExclusiveJob(new HBCIDauerauftragStoreJob(u));
         }
       }
+
+      // Umsaetze und Salden werden zum Schluss ausgefuehrt,
+      // damit die oben gesendeten Ueberweisungen gleich mit
+      // erscheinen, insofern die Bank das unterstuetzt.
+      Logger.info("adding umsatz job");
+      factory.addJob(new HBCIUmsatzJob(k));
+      
+      Logger.info("adding saldo job");
+      factory.addExclusiveJob(new HBCISaldoJob(k));
+      
+      
       factory.executeJobs(k,new Listener() {
         public void handleEvent(Event event)
         {
@@ -218,7 +225,10 @@ public class HBCISynchronizer
 
 /*********************************************************************
  * $Log$
- * Revision 1.5  2005-08-05 16:33:42  willuhn
+ * Revision 1.6  2005-08-08 17:04:09  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.5  2005/08/05 16:33:42  willuhn
  * @B bug 108
  * @B bug 110
  *
