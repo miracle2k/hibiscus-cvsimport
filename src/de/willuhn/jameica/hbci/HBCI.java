@@ -230,16 +230,22 @@ public class HBCI extends AbstractPlugin
       {
         Logger.info("init HBCI4Java subsystem with console callback");
         this.callback = new HBCICallbackConsole();
-        HBCIUtils.init(null,null,this.callback);
       }
       else
       {
         Logger.info("init HBCI4Java subsystem with SWT callback");
         this.callback = new HBCICallbackSWT();
-        HBCIUtils.init(null,null,this.callback);
       }
-
+      HBCIUtils.init(null,null,this.callback);
       HBCIUtils.setParam("log.loglevel.default",""+logLevel);
+
+      de.willuhn.jameica.system.Settings s = new de.willuhn.jameica.system.Settings(HBCI.class);
+      String rewriters = s.getString("hbci4java.kernel.rewriters",null);
+      if (rewriters != null && rewriters.length() > 0)
+      {
+        Logger.warn("user defined rewriters found: " + rewriters);
+        HBCIUtils.setParam("kernel.rewriters",rewriters);
+      }
     }
     catch (Exception e)
     {
@@ -339,7 +345,10 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
- * Revision 1.60  2005-07-29 16:48:13  web0
+ * Revision 1.61  2005-08-08 14:39:08  willuhn
+ * @C user defined rewriter list
+ *
+ * Revision 1.60  2005/07/29 16:48:13  web0
  * @N Synchronize
  *
  * Revision 1.59  2005/07/26 23:00:03  web0
