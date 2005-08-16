@@ -72,12 +72,30 @@ public interface Adresse extends DBObject {
    */
   public DBIterator getUeberweisungen() throws RemoteException;
 
+  /**
+   * Liefert einen zusaetzlichen Kommentar fuer den Adressbuch-Eintrag.
+   * @return Kommentar.
+   * @throws RemoteException
+   */
+  public String getKommentar() throws RemoteException;
+  
+  /**
+   * Speichert einen zusaetzlichen Kommentar fuer den Adressbuch-Eintrag.
+   * @param kommentar
+   * @throws RemoteException
+   */
+  public void setKommentar(String kommentar) throws RemoteException;
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2005-02-27 17:11:49  web0
+ * Revision 1.2  2005-08-16 21:33:13  willuhn
+ * @N Kommentar-Feld in Adressen
+ * @N Neuer Adress-Auswahl-Dialog
+ * @B Checkbox "in Adressbuch speichern" in Ueberweisungen
+ *
+ * Revision 1.1  2005/02/27 17:11:49  web0
  * @N first code for "Sammellastschrift"
  * @C "Empfaenger" renamed into "Adresse"
  *

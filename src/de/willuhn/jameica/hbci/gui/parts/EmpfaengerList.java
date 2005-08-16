@@ -17,6 +17,7 @@ import java.rmi.RemoteException;
 
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.Part;
+import de.willuhn.jameica.gui.formatter.Formatter;
 import de.willuhn.jameica.gui.parts.TablePart;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
@@ -43,6 +44,20 @@ public class EmpfaengerList extends TablePart implements Part
     addColumn(i18n.tr("Kontonummer"),"kontonummer");
     addColumn(i18n.tr("Bankleitzahl"),"blz");
     addColumn(i18n.tr("Name"),"name");
+    addColumn(i18n.tr("Kommentar"),"kommentar",new Formatter() {
+      public String format(Object o)
+      {
+        if (o == null)
+          return null;
+        String s = o.toString();
+
+        s = s.replaceAll("\\n|\\r",", ");
+
+        if (s.length() < 30)
+          return s;
+        return s.substring(0,29) + "...";
+      }
+    });
     setContextMenu(new de.willuhn.jameica.hbci.gui.menus.EmpfaengerList());
 
     // BUGZILLA 84 http://www.willuhn.de/bugzilla/show_bug.cgi?id=84
@@ -55,7 +70,12 @@ public class EmpfaengerList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2005-06-27 15:35:27  web0
+ * Revision 1.4  2005-08-16 21:33:13  willuhn
+ * @N Kommentar-Feld in Adressen
+ * @N Neuer Adress-Auswahl-Dialog
+ * @B Checkbox "in Adressbuch speichern" in Ueberweisungen
+ *
+ * Revision 1.3  2005/06/27 15:35:27  web0
  * @B bug 84
  *
  * Revision 1.2  2005/05/09 12:24:20  web0

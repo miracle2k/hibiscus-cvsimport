@@ -140,12 +140,33 @@ public class AdresseImpl extends AbstractDBObject implements Adresse {
 		return list;
   }
 
+  /**
+   * @see de.willuhn.jameica.hbci.rmi.Adresse#getKommentar()
+   */
+  public String getKommentar() throws RemoteException
+  {
+    return (String) getAttribute("kommentar");
+  }
+
+  /**
+   * @see de.willuhn.jameica.hbci.rmi.Adresse#setKommentar(java.lang.String)
+   */
+  public void setKommentar(String kommentar) throws RemoteException
+  {
+    setAttribute("kommentar",kommentar);
+  }
+
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2005-05-30 22:55:27  web0
+ * Revision 1.7  2005-08-16 21:33:13  willuhn
+ * @N Kommentar-Feld in Adressen
+ * @N Neuer Adress-Auswahl-Dialog
+ * @B Checkbox "in Adressbuch speichern" in Ueberweisungen
+ *
+ * Revision 1.6  2005/05/30 22:55:27  web0
  * *** empty log message ***
  *
  * Revision 1.5  2005/05/19 23:31:07  web0

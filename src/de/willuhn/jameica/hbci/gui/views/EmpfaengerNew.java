@@ -50,6 +50,7 @@ public class EmpfaengerNew extends AbstractView {
 			group.addLabelPair(i18n.tr("Kontonummer"),			    		control.getKontonummer());
 			group.addLabelPair(i18n.tr("Bankleitzahl"),			    		control.getBlz());
 			group.addLabelPair(i18n.tr("Name"),			    						control.getName());
+			group.addLabelPair(i18n.tr("Kommentar"),                control.getKommentar());
 
 			control.init();
 		}
@@ -88,7 +89,12 @@ public class EmpfaengerNew extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2005-05-25 00:42:04  web0
+ * Revision 1.6  2005-08-16 21:33:13  willuhn
+ * @N Kommentar-Feld in Adressen
+ * @N Neuer Adress-Auswahl-Dialog
+ * @B Checkbox "in Adressbuch speichern" in Ueberweisungen
+ *
+ * Revision 1.5  2005/05/25 00:42:04  web0
  * @N Dialoge fuer OP-Verwaltung
  *
  * Revision 1.4  2005/05/08 17:48:51  web0
