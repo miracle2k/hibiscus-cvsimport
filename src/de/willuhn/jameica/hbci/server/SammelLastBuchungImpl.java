@@ -150,6 +150,15 @@ public class SammelLastBuchungImpl extends AbstractDBObject implements SammelLas
   }
 
   /**
+   * @see de.willuhn.datasource.GenericObject#getAttribute(java.lang.String)
+   */
+  public Object getAttribute(String arg0) throws RemoteException
+  {
+    if ("this".equals(arg0))
+      return this;
+    return super.getAttribute(arg0);
+  }
+  /**
    * @see de.willuhn.jameica.hbci.rmi.SammelLastBuchung#getGegenkontoName()
    */
   public String getGegenkontoName() throws RemoteException
@@ -287,7 +296,10 @@ public class SammelLastBuchungImpl extends AbstractDBObject implements SammelLas
 
 /*****************************************************************************
  * $Log$
- * Revision 1.4  2005-05-30 22:55:27  web0
+ * Revision 1.5  2005-08-22 12:23:18  willuhn
+ * @N bug 107
+ *
+ * Revision 1.4  2005/05/30 22:55:27  web0
  * *** empty log message ***
  *
  * Revision 1.3  2005/05/19 23:31:07  web0
