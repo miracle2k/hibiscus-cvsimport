@@ -222,6 +222,7 @@ public class SettingsControl extends AbstractControl {
 		Settings.setCheckPin(((Boolean)getCheckPin().getValue()).booleanValue());
     Settings.setShowTan(((Boolean)getShowTan().getValue()).booleanValue());
     Settings.setDecimalGrouping(((Boolean)getDecimalGrouping().getValue()).booleanValue());
+    Settings.setKontoCheck(((Boolean)getKontoCheck().getValue()).booleanValue());
 		
 		Settings.setUeberweisungLimit(((Double)getUeberweisungLimit().getValue()).doubleValue());
 
@@ -261,7 +262,10 @@ public class SettingsControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.43  2005-08-22 10:36:38  willuhn
+ * Revision 1.44  2005-08-22 10:38:47  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.43  2005/08/22 10:36:38  willuhn
  * @N bug 115, 116
  *
  * Revision 1.42  2005/07/24 22:26:42  web0
