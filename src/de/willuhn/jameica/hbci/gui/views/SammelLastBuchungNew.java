@@ -21,6 +21,7 @@ import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.gui.action.Back;
 import de.willuhn.jameica.hbci.gui.action.SammelLastBuchungDelete;
 import de.willuhn.jameica.hbci.gui.controller.SammelLastBuchungControl;
+import de.willuhn.jameica.hbci.rmi.SammelLastschrift;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
@@ -39,7 +40,9 @@ public class SammelLastBuchungNew extends AbstractView {
 
 		I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
-		GUI.getView().setTitle(i18n.tr("Buchung bearbeiten"));
+    SammelLastschrift l = control.getBuchung().getSammelLastschrift();
+    Integer i = (Integer) l.getAttribute("anzahl");
+    GUI.getView().setTitle(i18n.tr("Buchung bearbeiten [Nr. {0}]",String.valueOf(i.intValue() + 1)));
 		
 		LabelGroup group = new LabelGroup(getParent(),i18n.tr("Zahlungspflichtiger"));
 		
@@ -54,14 +57,22 @@ public class SammelLastBuchungNew extends AbstractView {
 		details.addLabelPair(i18n.tr("weiterer Verwendungszweck"),control.getZweck2());
 		details.addLabelPair(i18n.tr("Betrag"),										control.getBetrag());
 
-		ButtonArea buttonArea = new ButtonArea(getParent(),3);
-		buttonArea.addButton(i18n.tr("Zurück"), 				 				 new Back());
-		buttonArea.addButton(i18n.tr("Löschen"),				 				 new SammelLastBuchungDelete(), control.getBuchung());
+		ButtonArea buttonArea = new ButtonArea(getParent(),4);
+		buttonArea.addButton(i18n.tr("Zurück"), 				 				       new Back());
+		buttonArea.addButton(i18n.tr("Löschen"),				 				       new SammelLastBuchungDelete(), control.getBuchung());
 		buttonArea.addButton(i18n.tr("Speichern"), 			     		 new Action()
     {
       public void handleAction(Object context) throws ApplicationException
       {
-      	control.handleStore();
+      	control.handleStore(false);
+      }
+    });
+    // BUGZILLA 116 http://www.willuhn.de/bugzilla/show_bug.cgi?id=116
+    buttonArea.addButton(i18n.tr("Speichern und nächste Buchung"), new Action()
+    {
+      public void handleAction(Object context) throws ApplicationException
+      {
+        control.handleStore(true);
       }
     },null,true);
   }
@@ -77,7 +88,10 @@ public class SammelLastBuchungNew extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2005-07-04 12:41:39  web0
+ * Revision 1.5  2005-08-22 10:36:37  willuhn
+ * @N bug 115, 116
+ *
+ * Revision 1.4  2005/07/04 12:41:39  web0
  * @B bug 90
  *
  * Revision 1.3  2005/03/09 01:07:02  web0

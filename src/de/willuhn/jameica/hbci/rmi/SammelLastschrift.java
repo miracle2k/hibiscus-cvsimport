@@ -20,7 +20,7 @@ import de.willuhn.datasource.rmi.DBObject;
 /**
  * Interface fuer Sammellastschriften.
  */
-public interface SammelLastschrift extends DBObject, Terminable
+public interface SammelLastschrift extends DBObject, Terminable, Duplicatable
 {
 	/**
 	 * Liefert eine Liste der Buchungen fuer diese Sammellastschrift.
@@ -68,7 +68,10 @@ public interface SammelLastschrift extends DBObject, Terminable
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2005-07-04 11:36:53  web0
+ * Revision 1.4  2005-08-22 10:36:38  willuhn
+ * @N bug 115, 116
+ *
+ * Revision 1.3  2005/07/04 11:36:53  web0
  * @B bug 89
  *
  * Revision 1.2  2005/02/28 16:28:24  web0

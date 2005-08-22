@@ -65,7 +65,7 @@ public class SammelLastschriftList extends TablePart implements Part
     });
     addColumn(i18n.tr("Empfänger-Konto"),"konto_id");
     addColumn(i18n.tr("Bezeichnung"),"bezeichnung");
-    addColumn(i18n.tr("Enthaltene Buchungen"),"buchungen");
+    addColumn(i18n.tr("Anzahl Buchungen"),"anzahl");
     addColumn(i18n.tr("Summe"),"summe", new CurrencyFormatter(HBCIProperties.CURRENCY_DEFAULT_DE,HBCI.DECIMALFORMAT));
     addColumn(i18n.tr("Termin"),"termin", new DateFormatter(HBCI.LONGDATEFORMAT));
     addColumn(i18n.tr("Status"),"ausgefuehrt",new Formatter() {
@@ -100,7 +100,10 @@ public class SammelLastschriftList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2005-07-04 11:36:53  web0
+ * Revision 1.4  2005-08-22 10:36:37  willuhn
+ * @N bug 115, 116
+ *
+ * Revision 1.3  2005/07/04 11:36:53  web0
  * @B bug 89
  *
  * Revision 1.2  2005/06/23 21:13:03  web0

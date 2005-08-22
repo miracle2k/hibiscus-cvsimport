@@ -19,6 +19,7 @@ import de.willuhn.jameica.gui.parts.ContextMenuItem;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.gui.action.SammelLastBuchungExport;
 import de.willuhn.jameica.hbci.gui.action.SammelLastschriftDelete;
+import de.willuhn.jameica.hbci.gui.action.SammelLastschriftDuplicate;
 import de.willuhn.jameica.hbci.gui.action.SammelLastschriftExecute;
 import de.willuhn.jameica.hbci.gui.action.SammelLastschriftNew;
 import de.willuhn.jameica.hbci.rmi.SammelLastschrift;
@@ -45,6 +46,8 @@ public class SammelLastschriftList extends ContextMenu
 		addItem(new CheckedContextMenuItem(i18n.tr("Öffnen"), new SammelLastschriftNew()));
     addItem(new ContextMenuItem(i18n.tr("Neue Sammel-Lastschrift..."), new SNeu()));
 		addItem(new NotActiveMenuItem(i18n.tr("Jetzt ausführen..."), new SammelLastschriftExecute()));
+    // BUGZILLA 115 http://www.willuhn.de/bugzilla/show_bug.cgi?id=115
+    addItem(new CheckedContextMenuItem(i18n.tr("Duplizieren"), new SammelLastschriftDuplicate()));
 		addItem(ContextMenuItem.SEPARATOR);
 		addItem(new CheckedContextMenuItem(i18n.tr("Löschen..."), new SammelLastschriftDelete()));
     addItem(ContextMenuItem.SEPARATOR);
@@ -108,7 +111,10 @@ public class SammelLastschriftList extends ContextMenu
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2005-07-04 12:41:39  web0
+ * Revision 1.5  2005-08-22 10:36:38  willuhn
+ * @N bug 115, 116
+ *
+ * Revision 1.4  2005/07/04 12:41:39  web0
  * @B bug 90
  *
  * Revision 1.3  2005/03/02 00:22:05  web0

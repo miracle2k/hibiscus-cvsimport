@@ -46,6 +46,7 @@ public class Settings extends AbstractView {
 		settings.addCheckbox(control.getCheckPin(),i18n.tr("PIN-Eingabe via Check-Summe prüfen"));
     settings.addCheckbox(control.getShowTan(),i18n.tr("TANs während der Eingabe anzeigen"));
     settings.addCheckbox(control.getDecimalGrouping(),i18n.tr("Tausender-Trennzeichen bei Geld-Beträgen verwenden"));
+    settings.addCheckbox(control.getKontoCheck(),i18n.tr("Kontonummern via Prüfsumme der Bank testen"));
 		
 		settings.addLabelPair(i18n.tr("Limit für Aufträge"), control.getUeberweisungLimit());
 		
@@ -90,7 +91,10 @@ public class Settings extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.32  2005-07-24 22:26:42  web0
+ * Revision 1.33  2005-08-22 10:36:37  willuhn
+ * @N bug 115, 116
+ *
+ * Revision 1.32  2005/07/24 22:26:42  web0
  * @B bug 101
  *
  * Revision 1.31  2005/06/06 09:54:39  web0

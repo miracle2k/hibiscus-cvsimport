@@ -15,6 +15,7 @@ import java.util.Date;
 import de.willuhn.datasource.db.AbstractDBObject;
 import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.jameica.hbci.HBCI;
+import de.willuhn.jameica.hbci.rmi.Duplicatable;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Protokoll;
 import de.willuhn.jameica.hbci.rmi.SammelLastBuchung;
@@ -294,6 +295,19 @@ public class SammelLastschriftImpl extends AbstractDBObject
     if ("summe".equals(arg0))
       return new Double(this.getSumme());
 
+    if ("anzahl".equals(arg0))
+    {
+      try
+      {
+        DBIterator l = getBuchungen();
+        return new Integer(l.size());
+      }
+      catch (RemoteException e)
+      {
+        Logger.error("unable to determine number of buchungen",e);
+        return new Integer(0);
+      }
+    }
     if ("buchungen".equals(arg0))
   	{
 			try
@@ -339,11 +353,49 @@ public class SammelLastschriftImpl extends AbstractDBObject
     }
     return sum;
   }
+
+  /**
+   * @see de.willuhn.jameica.hbci.rmi.Duplicatable#duplicate()
+   */
+  public Duplicatable duplicate() throws RemoteException
+  {
+    // BUGZILLA 115 http://www.willuhn.de/bugzilla/show_bug.cgi?id=115
+    SammelLastschrift l = null;
+    try
+    {
+      l = (SammelLastschrift) getService().createObject(SammelLastschrift.class,null);
+      l.transactionBegin();
+      l.setBezeichnung(this.getBezeichnung());
+      l.setKonto(this.getKonto());
+      l.setTermin(this.getTermin());
+      l.store();
+      DBIterator list = this.getBuchungen();
+      while (list.hasNext())
+      {
+        SammelLastBuchung b = (SammelLastBuchung) list.next();
+        SammelLastBuchung b2 = b.duplicate();
+        b2.setSammelLastschrift(l);
+        b2.store();
+      }
+      l.transactionCommit();
+      return l;
+    }
+    catch (Exception e)
+    {
+      if (l != null)
+        l.transactionRollback();
+      Logger.error("unable to duplicate sammellastschrift",e);
+      throw new RemoteException(i18n.tr("Fehler beim Duplizieren der Sammel-Lastschrift"),e);
+    }
+  }
 }
 
 /*****************************************************************************
  * $Log$
- * Revision 1.9  2005-08-02 20:09:33  web0
+ * Revision 1.10  2005-08-22 10:36:38  willuhn
+ * @N bug 115, 116
+ *
+ * Revision 1.9  2005/08/02 20:09:33  web0
  * @B bug 106
  *
  * Revision 1.8  2005/07/04 11:36:53  web0
