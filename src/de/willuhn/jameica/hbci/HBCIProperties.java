@@ -39,10 +39,9 @@ public class HBCIProperties
 	/**
 	 * Liste der in DTAUS erlaubten Zeichen.
 	 */
-  // BUGZILLA 126
 	public final static String HBCI_DTAUS_VALIDCHARS =
 		settings.getString("hbci.dtaus.validchars",
-											 "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 ,.&-+*%/$üצהÜײִ"
+											 "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 ,.&-+*%/$üצהÜײִß"
 		); 
 
   /**
@@ -142,8 +141,8 @@ public class HBCIProperties
 
 /**********************************************************************
  * $Log$
- * Revision 1.12  2005-09-25 23:14:26  willuhn
- * @B bug 126
+ * Revision 1.13  2005-09-25 23:15:02  willuhn
+ * *** empty log message ***
  *
  * Revision 1.11  2005/08/22 10:36:37  willuhn
  * @N bug 115, 116
