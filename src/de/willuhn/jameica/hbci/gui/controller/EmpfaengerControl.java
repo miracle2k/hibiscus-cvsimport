@@ -31,7 +31,7 @@ import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.gui.action.EmpfaengerNew;
 import de.willuhn.jameica.hbci.gui.action.SammelLastBuchungNew;
 import de.willuhn.jameica.hbci.gui.action.UmsatzDetail;
-import de.willuhn.jameica.hbci.gui.parts.SammelLastBuchungList;
+import de.willuhn.jameica.hbci.gui.parts.SammelTransferBuchungList;
 import de.willuhn.jameica.hbci.gui.parts.UmsatzList;
 import de.willuhn.jameica.hbci.rmi.Adresse;
 import de.willuhn.jameica.system.Application;
@@ -124,7 +124,7 @@ public class EmpfaengerControl extends AbstractControl {
     if (this.sammelList != null)
       return this.sammelList;
 
-    this.sammelList = new SammelLastBuchungList(getEmpfaenger().getSammellastBuchungen(),new SammelLastBuchungNew());
+    this.sammelList = new SammelTransferBuchungList(getEmpfaenger().getSammellastBuchungen(),new SammelLastBuchungNew());
     return this.sammelList;
   }
 
@@ -241,7 +241,10 @@ public class EmpfaengerControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.34  2005-08-22 12:23:18  willuhn
+ * Revision 1.35  2005-09-30 00:08:51  willuhn
+ * @N SammelUeberweisungen (merged with SammelLastschrift)
+ *
+ * Revision 1.34  2005/08/22 12:23:18  willuhn
  * @N bug 107
  *
  * Revision 1.33  2005/08/16 21:33:13  willuhn

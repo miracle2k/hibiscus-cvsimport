@@ -12,19 +12,22 @@
  **********************************************************************/
 package de.willuhn.jameica.hbci.gui.action;
 
-import de.willuhn.jameica.hbci.rmi.SammelLastBuchung;
+import de.willuhn.jameica.gui.Action;
+import de.willuhn.jameica.gui.GUI;
+import de.willuhn.util.ApplicationException;
 
 /**
- * Action, ueber die die Buchungen einer Sammellastschrift exportiert werden koennen.
+ * Action fuer die Liste der Sammelueberweisungen.
  */
-public class SammelLastBuchungExport extends AbstractSammelTransferBuchungExport
+public class SammelUeberweisungList implements Action
 {
+
   /**
-   * @see de.willuhn.jameica.hbci.gui.action.AbstractSammelTransferBuchungExport#getExportClass()
+   * @see de.willuhn.jameica.gui.Action#handleAction(java.lang.Object)
    */
-  Class getExportClass()
+  public void handleAction(Object context) throws ApplicationException
   {
-    return SammelLastBuchung.class;
+		GUI.startView(de.willuhn.jameica.hbci.gui.views.SammelUeberweisungList.class,null);
   }
 
 }
@@ -32,10 +35,7 @@ public class SammelLastBuchungExport extends AbstractSammelTransferBuchungExport
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2005-09-30 00:08:50  willuhn
+ * Revision 1.1  2005-09-30 00:08:50  willuhn
  * @N SammelUeberweisungen (merged with SammelLastschrift)
- *
- * Revision 1.1  2005/07/04 12:41:39  web0
- * @B bug 90
  *
  **********************************************************************/

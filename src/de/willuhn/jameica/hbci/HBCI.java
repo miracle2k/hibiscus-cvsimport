@@ -138,7 +138,7 @@ public class HBCI extends AbstractPlugin
 		if (checkSum.equals("kwi5vy1fvgOOVtoTYJYjuA==")) // 1.3
 			return;
 
-    if (checkSum.equals("cAfcZCtiXAe/wNb2gFCH8A==")) // 1.4
+    if (checkSum.equals("n5e5RxsA81Q3NIDKzpm44A==")) // 1.4
       return;
 
 		throw new Exception("database checksum does not match any known version: " + checkSum);
@@ -345,7 +345,10 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
- * Revision 1.62  2005-08-16 21:33:13  willuhn
+ * Revision 1.63  2005-09-30 00:08:51  willuhn
+ * @N SammelUeberweisungen (merged with SammelLastschrift)
+ *
+ * Revision 1.62  2005/08/16 21:33:13  willuhn
  * @N Kommentar-Feld in Adressen
  * @N Neuer Adress-Auswahl-Dialog
  * @B Checkbox "in Adressbuch speichern" in Ueberweisungen
