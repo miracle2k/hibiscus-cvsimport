@@ -92,12 +92,23 @@ public interface Adresse extends DBObject {
    * @throws RemoteException
    */
   public DBIterator getSammellastBuchungen() throws RemoteException;
+  
+  /**
+   * Liefert eine Liste von Buchungen aus Sammelueberweisungen, die an diese
+   * Adresse ueberweisen wurden.
+   * @return Liste der Buchungen.
+   * @throws RemoteException
+   */
+  public DBIterator getSammelUeberweisungBuchungen() throws RemoteException;
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2005-08-22 12:23:18  willuhn
+ * Revision 1.4  2005-10-03 16:17:58  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.3  2005/08/22 12:23:18  willuhn
  * @N bug 107
  *
  * Revision 1.2  2005/08/16 21:33:13  willuhn
