@@ -306,7 +306,7 @@ public class HBCI extends AbstractPlugin
 			throw new ApplicationException(getResources().getI18N().tr("Fehler beim Erstellen der Datenbank"),e);
     }
   }
-
+  
   /**
    * @see de.willuhn.jameica.plugin.AbstractPlugin#update(double)
    */
@@ -375,7 +375,10 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
- * Revision 1.64  2005-10-17 13:44:55  willuhn
+ * Revision 1.65  2005-10-17 14:15:01  willuhn
+ * @N FirstStart
+ *
+ * Revision 1.64  2005/10/17 13:44:55  willuhn
  * *** empty log message ***
  *
  * Revision 1.63  2005/09/30 00:08:51  willuhn
