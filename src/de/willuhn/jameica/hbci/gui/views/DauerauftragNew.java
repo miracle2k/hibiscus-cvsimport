@@ -46,9 +46,9 @@ public class DauerauftragNew extends AbstractView
 		LabelGroup konten = new LabelGroup(getParent(),i18n.tr("Konten"));
 		
 		konten.addLabelPair(i18n.tr("persönliches Konto"),				control.getKontoAuswahl());		
-		konten.addLabelPair(i18n.tr("Konto des Empfängers"),			control.getEmpfaengerKonto());		
-		konten.addLabelPair(i18n.tr("BLZ des Empfängers"),				control.getEmpfaengerBlz());		
-		konten.addLabelPair(i18n.tr("Name des Empfängers"),			control.getEmpfaengerName());
+    konten.addLabelPair(i18n.tr("Name Empfänger"),            control.getEmpfaengerName());
+		konten.addLabelPair(i18n.tr("Kontonummer Empfänger"),  		control.getEmpfaengerKonto());		
+		konten.addLabelPair(i18n.tr("BLZ Empfänger"),		       		control.getEmpfaengerBlz());		
 		konten.addCheckbox(control.getStoreEmpfaenger(),i18n.tr("Empfängerdaten im Adressbuch speichern"));
 
 		LabelGroup details = new LabelGroup(getParent(),i18n.tr("Details"));
@@ -101,7 +101,10 @@ public class DauerauftragNew extends AbstractView
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2005-08-01 23:27:42  web0
+ * Revision 1.5  2005-10-17 22:00:44  willuhn
+ * @B bug 143
+ *
+ * Revision 1.4  2005/08/01 23:27:42  web0
  * *** empty log message ***
  *
  * Revision 1.3  2005/03/09 01:07:02  web0

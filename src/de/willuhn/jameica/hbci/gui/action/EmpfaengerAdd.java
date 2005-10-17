@@ -107,8 +107,8 @@ public class EmpfaengerAdd implements Action
         if (list.hasNext())
         {
           YesNoDialog d = new YesNoDialog(YesNoDialog.POSITION_CENTER);
-          d.setTitle(i18n.tr("Empfänger existiert"));
-          d.setText(i18n.tr("Ein Empfänger mit Kontonummer {0} und BLZ {1} existiert bereits. " +
+          d.setTitle(i18n.tr("Adresse existiert"));
+          d.setText(i18n.tr("Eine Adresse mit Kontonummer {0} und BLZ {1} existiert bereits.\n" +
               "Möchten Sie den Empfänger dennoch zum Adressbuch hinzufügen?",new String[]{e.getKontonummer(),e.getBLZ()}));
           if (!((Boolean) d.open()).booleanValue()) continue;
         }
@@ -149,7 +149,10 @@ public class EmpfaengerAdd implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2005-06-27 15:58:01  web0
+ * Revision 1.7  2005-10-17 22:00:44  willuhn
+ * @B bug 143
+ *
+ * Revision 1.6  2005/06/27 15:58:01  web0
  * *** empty log message ***
  *
  * Revision 1.5  2005/05/09 12:24:20  web0
