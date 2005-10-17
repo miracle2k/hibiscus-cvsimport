@@ -45,7 +45,7 @@ public class HBCIVersionInput extends SelectInput implements Input
     nameLookup.put("210","HBCI 2.1");
     nameLookup.put("220","HBCI 2.2");
     nameLookup.put("plus","HBCI+");
-    nameLookup.put("300","FinTS 3.0");
+    // nameLookup.put("300","FinTS 3.0");
   }
 
   /**
@@ -240,7 +240,10 @@ public class HBCIVersionInput extends SelectInput implements Input
 
 /*****************************************************************************
  * $Log$
- * Revision 1.8  2005-07-12 23:29:01  web0
+ * Revision 1.9  2005-10-17 11:36:38  willuhn
+ * @B bug 141 FinTS 3 entfernt
+ *
+ * Revision 1.8  2005/07/12 23:29:01  web0
  * *** empty log message ***
  *
  * Revision 1.7  2005/06/27 11:26:30  web0
