@@ -25,6 +25,11 @@ import org.kapott.hbci.callback.HBCICallbackConsole;
 import org.kapott.hbci.manager.HBCIUtils;
 
 import de.willuhn.datasource.db.EmbeddedDatabase;
+import de.willuhn.jameica.gui.extension.Extendable;
+import de.willuhn.jameica.gui.extension.Extension;
+import de.willuhn.jameica.gui.extension.ExtensionRegistry;
+import de.willuhn.jameica.gui.internal.views.Start;
+import de.willuhn.jameica.hbci.gui.views.Welcome;
 import de.willuhn.jameica.hbci.io.IORegistry;
 import de.willuhn.jameica.plugin.AbstractPlugin;
 import de.willuhn.jameica.system.Application;
@@ -246,6 +251,7 @@ public class HBCI extends AbstractPlugin
         Logger.warn("user defined rewriters found: " + rewriters);
         HBCIUtils.setParam("kernel.rewriters",rewriters);
       }
+      
     }
     catch (Exception e)
     {
@@ -255,8 +261,32 @@ public class HBCI extends AbstractPlugin
 
     Application.getCallback().getStartupMonitor().setStatusText("hibiscus: init export filters");
     IORegistry.init();
+
     Application.getCallback().getStartupMonitor().addPercentComplete(3);
-  
+    
+    // Wir erweitern noch die Jameica-Startseite
+    if (!Application.inServerMode())
+    {
+      Extension e = new Extension() {
+        public void extend(Extendable extendable)
+        {
+          try
+          {
+            Start start = (Start) extendable;
+            Welcome welcome = new Welcome();
+            welcome.setParent(start.getParent());
+            welcome.setCurrentObject(start.getCurrentObject());
+            welcome.bind();
+          }
+          catch(Exception ex)
+          {
+            Logger.error("error while extending start page",ex);
+          }
+        }
+      };
+      ExtensionRegistry.register(e,Start.class.getName());
+    }
+    
   }
 
   /**
@@ -345,7 +375,10 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
- * Revision 1.63  2005-09-30 00:08:51  willuhn
+ * Revision 1.64  2005-10-17 13:44:55  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.63  2005/09/30 00:08:51  willuhn
  * @N SammelUeberweisungen (merged with SammelLastschrift)
  *
  * Revision 1.62  2005/08/16 21:33:13  willuhn
