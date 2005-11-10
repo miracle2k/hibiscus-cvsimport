@@ -220,7 +220,14 @@ public interface Konto extends DBObject,Checksum
 	 */
 	public DBIterator getSammelLastschriften() throws RemoteException;
 
-	/**
+  /**
+   * Liefert alle Sammel-Ueberweisungen, die fuer das Konto vorliegen.
+   * @return Liste der Sammelueberweisungen.
+   * @throws RemoteException
+   */
+  public DBIterator getSammelUeberweisungen() throws RemoteException;
+
+  /**
 	 * Liefert die HBCI-Protokollierung des Kontos in Form einer Liste von Protokoll-Objekten.
    * @return Liste von Protokoll-Objekten.
    * @throws RemoteException
@@ -258,7 +265,10 @@ public interface Konto extends DBObject,Checksum
 
 /**********************************************************************
  * $Log$
- * Revision 1.28  2005-10-17 13:01:59  willuhn
+ * Revision 1.29  2005-11-10 23:32:59  willuhn
+ * @B foreign key to sueberweisung when deleting a konto
+ *
+ * Revision 1.28  2005/10/17 13:01:59  willuhn
  * @N Synchronize auf Start-Seite verschoben
  * @N Gesamt-Vermoegensuebersicht auf Start-Seite
  *
