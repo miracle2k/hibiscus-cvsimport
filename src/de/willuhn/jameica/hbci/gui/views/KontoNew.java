@@ -89,8 +89,7 @@ public class KontoNew extends AbstractView {
       group.addLabelPair(i18n.tr("Saldo"),                    control.getSaldo());
 
 			// und noch die Abschicken-Knoepfe
-			ButtonArea buttonArea = group.createButtonArea(5);
-			buttonArea.addButton(i18n.tr("Zurück"),new Back());
+			ButtonArea buttonArea = group.createButtonArea(4);
       buttonArea.addButton(i18n.tr("Sicherheitsmedium konfigurieren"),new Action() {
         public void handleAction(Object context) throws ApplicationException
         {
@@ -137,8 +136,9 @@ public class KontoNew extends AbstractView {
 
 			control.init();
 
-      ButtonArea buttons = new ButtonArea(getParent(),2);
-      buttons.addButton(i18n.tr("Saldo und Umsätze abrufen"), new KontoFetchUmsaetze(),control.getKonto(),true);
+      ButtonArea buttons = new ButtonArea(getParent(),3);
+      buttons.addButton(i18n.tr("Zurück"),new Back(),null,true);
+      buttons.addButton(i18n.tr("Saldo und Umsätze abrufen"), new KontoFetchUmsaetze(),control.getKonto());
       buttons.addButton(i18n.tr("Alle Umsätze anzeigen"),     new UmsatzList(),control.getKonto());
 
 		}
@@ -161,7 +161,10 @@ public class KontoNew extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.10  2005-07-29 16:48:13  web0
+ * Revision 1.11  2005-11-14 21:41:02  willuhn
+ * @B bug 5
+ *
+ * Revision 1.10  2005/07/29 16:48:13  web0
  * @N Synchronize
  *
  * Revision 1.9  2005/07/26 23:00:03  web0
