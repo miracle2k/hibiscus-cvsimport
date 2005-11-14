@@ -13,15 +13,21 @@
 package de.willuhn.jameica.hbci.server.hbci;
 
 import java.rmi.RemoteException;
+import java.util.Date;
+import java.util.Enumeration;
+import java.util.Properties;
 
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.HBCIProperties;
+import de.willuhn.jameica.hbci.PassportRegistry;
 import de.willuhn.jameica.hbci.Settings;
+import de.willuhn.jameica.hbci.passport.Passport;
 import de.willuhn.jameica.hbci.rmi.Adresse;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Protokoll;
 import de.willuhn.jameica.hbci.rmi.Ueberweisung;
 import de.willuhn.jameica.hbci.server.Converter;
+import de.willuhn.jameica.hbci.server.hbci.tests.PreTimeRestriction;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.logging.Logger;
 import de.willuhn.util.ApplicationException;
@@ -82,7 +88,28 @@ public class HBCIUeberweisungJob extends AbstractHBCIJob
 			String zweck2 = ueberweisung.getZweck2();
 			if (zweck2 != null && zweck2.length() > 0)
 				setJobParam("usage_2",zweck2);
-		}
+
+      if (isTermin)
+      {
+        Date d = this.ueberweisung.getTermin();
+        setJobParam("date",d);
+
+        Passport passport = PassportRegistry.findByClass(this.konto.getPassportClass());
+        // BUGZILLA #7 http://www.willuhn.de/bugzilla/show_bug.cgi?id=7
+        passport.init(this.konto);
+
+        Properties p = HBCIFactory.getInstance().getJobRestrictions(this,passport.getHandle());
+        Enumeration keys = p.keys();
+        while (keys.hasMoreElements())
+        {
+          String s = (String) keys.nextElement();
+          Logger.info("[hbci job restriction] name: " + s + ", value: " + p.getProperty(s));
+        }
+        new PreTimeRestriction(d,p).test();
+        throw new ApplicationException("test");
+        // TODO Hier noch checken
+      }
+    }
 		catch (RemoteException e)
 		{
 			throw e;
@@ -140,7 +167,10 @@ public class HBCIUeberweisungJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.24  2005-11-14 13:08:11  willuhn
+ * Revision 1.25  2005-11-14 13:38:43  willuhn
+ * @N Termin-Ueberweisungen
+ *
+ * Revision 1.24  2005/11/14 13:08:11  willuhn
  * @N Termin-Ueberweisungen
  *
  * Revision 1.23  2005/08/01 23:27:42  web0
