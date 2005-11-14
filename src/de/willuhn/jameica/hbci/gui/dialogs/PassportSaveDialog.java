@@ -35,14 +35,17 @@ public class PassportSaveDialog extends NewPasswordDialog {
 
     setTitle(i18n.tr("Passwort-Eingabe"));
     setLabelText(i18n.tr("Ihre Passwort"));
-    setText(i18n.tr("Bitte vergeben Sie ein Passwort, mit dem der exportierte\nSchlüssel geschützt werden soll."));
+    setText(i18n.tr("Bitte vergeben Sie ein Passwort, mit dem der zu speichernde\nSchlüssel geschützt werden soll."));
   }
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2005-02-07 22:06:40  willuhn
+ * Revision 1.4  2005-11-14 11:36:58  willuhn
+ * @B bug 148
+ *
+ * Revision 1.3  2005/02/07 22:06:40  willuhn
  * *** empty log message ***
  *
  **********************************************************************/
