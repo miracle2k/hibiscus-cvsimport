@@ -434,6 +434,12 @@ public class HBCIFactory {
             {
               handler = handle.open();
             }
+            catch (OperationCanceledException oce)
+            {
+              Logger.info("operation cancelled");
+              getMonitor().setStatusText(i18n.tr("Vorgang abgebrochen"));
+              error = true;
+            }
             catch (ApplicationException ae)
             {
               getMonitor().setStatusText(ae.getMessage());
@@ -593,7 +599,10 @@ public class HBCIFactory {
 
 /*******************************************************************************
  * $Log$
- * Revision 1.39  2005-11-14 11:36:58  willuhn
+ * Revision 1.40  2005-11-14 12:46:20  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.39  2005/11/14 11:36:58  willuhn
  * @B bug 148
  *
  * Revision 1.38  2005/08/05 16:33:41  willuhn
