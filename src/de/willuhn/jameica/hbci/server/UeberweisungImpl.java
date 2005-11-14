@@ -54,13 +54,34 @@ public class UeberweisungImpl extends AbstractBaseUeberweisungImpl
     return u;
   }
 
+  /**
+   * @see de.willuhn.jameica.hbci.rmi.Ueberweisung#isTerminUeberweisung()
+   */
+  public boolean isTerminUeberweisung() throws RemoteException
+  {
+    Integer i = (Integer) getAttribute("banktermin");
+    return i != null && i.intValue() == 1;
+    
+  }
+
+  /**
+   * @see de.willuhn.jameica.hbci.rmi.Ueberweisung#setTerminUeberweisung(boolean)
+   */
+  public void setTerminUeberweisung(boolean termin) throws RemoteException
+  {
+    setAttribute("banktermin",termin ? new Integer(1) : null);
+  }
+
 
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.34  2005-03-02 17:59:30  web0
+ * Revision 1.35  2005-11-14 13:08:11  willuhn
+ * @N Termin-Ueberweisungen
+ *
+ * Revision 1.34  2005/03/02 17:59:30  web0
  * @N some refactoring
  *
  * Revision 1.33  2005/02/28 16:28:24  web0

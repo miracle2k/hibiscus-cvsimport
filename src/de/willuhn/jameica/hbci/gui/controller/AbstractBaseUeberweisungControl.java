@@ -149,7 +149,6 @@ public abstract class AbstractBaseUeberweisungControl extends AbstractTransferCo
 		}
 		catch (RemoteException re)
 		{
-			Logger.error("rollback failed",re);
 			Logger.error("error while storing ueberweisung",re);
 			GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Speichern des Auftrags"));
   	}
@@ -257,7 +256,10 @@ public abstract class AbstractBaseUeberweisungControl extends AbstractTransferCo
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2005-07-29 16:48:13  web0
+ * Revision 1.7  2005-11-14 13:08:07  willuhn
+ * @N Termin-Ueberweisungen
+ *
+ * Revision 1.6  2005/07/29 16:48:13  web0
  * @N Synchronize
  *
  * Revision 1.5  2005/03/05 19:11:25  web0

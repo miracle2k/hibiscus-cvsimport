@@ -35,6 +35,7 @@ public class HBCIUeberweisungJob extends AbstractHBCIJob
 
 	private I18N i18n = null;
 	private Ueberweisung ueberweisung = null;
+  private boolean isTermin = false;
 	private Konto konto = null;
 
   /**
@@ -55,8 +56,9 @@ public class HBCIUeberweisungJob extends AbstractHBCIJob
 			if (ueberweisung.isNewObject())
 				ueberweisung.store();
 
-			this.ueberweisung = ueberweisung;
-			this.konto = ueberweisung.getKonto();
+      this.ueberweisung = ueberweisung;
+      this.konto = this.ueberweisung.getKonto();
+      this.isTermin = this.ueberweisung.isTerminUeberweisung();
 
 			setJobParam("src",Converter.HibiscusKonto2HBCIKonto(konto));
 
@@ -99,8 +101,9 @@ public class HBCIUeberweisungJob extends AbstractHBCIJob
   /**
    * @see de.willuhn.jameica.hbci.server.hbci.AbstractHBCIJob#getIdentifier()
    */
-  String getIdentifier() {
-    return "Ueb";
+  String getIdentifier()
+  {
+    return isTermin ? "TermUeb" : "Ueb";
   }
   
   /**
@@ -137,7 +140,10 @@ public class HBCIUeberweisungJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.23  2005-08-01 23:27:42  web0
+ * Revision 1.24  2005-11-14 13:08:11  willuhn
+ * @N Termin-Ueberweisungen
+ *
+ * Revision 1.23  2005/08/01 23:27:42  web0
  * *** empty log message ***
  *
  * Revision 1.22  2005/03/30 23:26:28  web0
