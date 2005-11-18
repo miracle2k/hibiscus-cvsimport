@@ -106,8 +106,6 @@ public class HBCIUeberweisungJob extends AbstractHBCIJob
           Logger.info("[hbci job restriction] name: " + s + ", value: " + p.getProperty(s));
         }
         new PreTimeRestriction(d,p).test();
-        throw new ApplicationException("test");
-        // TODO Hier noch checken
       }
     }
 		catch (RemoteException e)
@@ -167,7 +165,10 @@ public class HBCIUeberweisungJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.25  2005-11-14 13:38:43  willuhn
+ * Revision 1.26  2005-11-18 00:28:20  willuhn
+ * @R removed test code
+ *
+ * Revision 1.25  2005/11/14 13:38:43  willuhn
  * @N Termin-Ueberweisungen
  *
  * Revision 1.24  2005/11/14 13:08:11  willuhn
