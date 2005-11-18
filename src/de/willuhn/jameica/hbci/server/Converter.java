@@ -103,10 +103,49 @@ public class Converter {
 
 		umsatz.setDatum(u.bdate);
 		umsatz.setValuta(u.valuta);
-		if (u.usage.length == 0)
+
+    // BUGZILLA 146
+    // Aus einer Mail von Stefan Palme
+    //    Es geht noch besser. Wenn in "umsline.gvcode" nicht der Wert "999"
+    //    drinsteht, sind die Variablen "text", "primanota", "usage", "other"
+    //    und "addkey" irgendwie sinnvoll gefüllt.  Steht in "gvcode" der Wert
+    //    "999" drin, dann sind diese Variablen alle null, und der ungeparste 
+    //    Inhalt des Feldes :86: steht komplett in "additional".
+    
+
+    // Selberparsen kann ich wohl vergessen, wenn 999 drin steht. Wenn selbst
+    // Stefan das nicht macht, lass ich lieber gleich die Finger davon ;)
+    if (u.usage.length == 0)
 		{
-			// Baeh, eine Buchung ohne Text. Dann schreiben wir selbst 'nen Dummy rein
-			umsatz.setZweck("-");
+      String usage = u.additional;
+      if (usage == null || usage.length() == 0)
+      {
+        // Wir haben ueberhaupt nichts.
+        umsatz.setZweck("-");
+      }
+      else
+      {
+        // Java's Regex-Implementierung ist sowas von daemlich.
+        // String.split() macht nur Rotz, wenn man mit Quantifierern
+        // arbeitet. Also ersetzten wir erst mal alles gegen nen
+        // eigenen String und verwenden den dann zum Splitten.
+        usage = usage.replaceAll("(.{27})","$1--##--##");
+        String[] lines = usage.split("--##--##");
+
+        if (lines.length >= 1) umsatz.setZweck(lines[0]);
+        if (lines.length >= 2) umsatz.setZweck2(lines[1]);
+        if (lines.length >= 3)
+        {
+          // Wenn noch mehr da ist, pappen wir den Rest zusammen in
+          // den Kommentar
+          StringBuffer sb = new StringBuffer();
+          for (int i=2;i<lines.length;++i)
+          {
+            sb.append(lines[i]);
+          }
+          umsatz.setKommentar(sb.toString());
+        }
+      }
 		}
 		else {
 			umsatz.setZweck(u.usage[0]);
@@ -333,7 +372,10 @@ public class Converter {
 
 /**********************************************************************
  * $Log$
- * Revision 1.27  2005-11-02 17:33:31  willuhn
+ * Revision 1.28  2005-11-18 00:19:11  willuhn
+ * @B bug 146
+ *
+ * Revision 1.27  2005/11/02 17:33:31  willuhn
  * @B fataler Bug in Sammellastschrift/Sammelueberweisung
  *
  * Revision 1.26  2005/09/30 00:08:50  willuhn
