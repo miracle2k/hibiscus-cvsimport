@@ -128,12 +128,29 @@ public interface Pattern extends DBObject
    * @throws RemoteException
    */
   public void setIgnoreCase(boolean b) throws RemoteException;
+  
+  /**
+   * Liefert den Namen des Pattern.
+   * @return Name
+   * @throws RemoteException
+   */
+  public String getName() throws RemoteException;
+  
+  /**
+   * Speichert den Namen des Patterns.
+   * @param name Name.
+   * @throws RemoteException
+   */
+  public void setName(String name) throws RemoteException;
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2005-08-01 16:10:41  web0
+ * Revision 1.7  2005-11-18 00:43:29  willuhn
+ * @B bug 21
+ *
+ * Revision 1.6  2005/08/01 16:10:41  web0
  * @N synchronize
  *
  * Revision 1.5  2005/06/28 17:45:41  web0
