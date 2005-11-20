@@ -115,8 +115,13 @@ public class Converter {
 
     // Selberparsen kann ich wohl vergessen, wenn 999 drin steht. Wenn selbst
     // Stefan das nicht macht, lass ich lieber gleich die Finger davon ;)
-    if (u.usage.length == 0)
+    boolean changable = false;
+    if (u.usage == null || u.usage.length == 0)
 		{
+      // Da wir den Umsatz selbst nicht parsen koennen, erlauben wir dem User
+      // Aenderungen
+      changable = true;
+      
       String usage = u.additional;
       if (usage == null || usage.length() == 0)
       {
@@ -166,6 +171,9 @@ public class Converter {
 		{
 		  umsatz.setEmpfaenger(HBCIKonto2HibiscusAdresse(u.other));
 		}
+    
+    if (changable)
+      umsatz.setChangedByUser();
 		return umsatz;
 	}
 
@@ -372,7 +380,10 @@ public class Converter {
 
 /**********************************************************************
  * $Log$
- * Revision 1.28  2005-11-18 00:19:11  willuhn
+ * Revision 1.29  2005-11-20 22:04:19  willuhn
+ * @N umsatz changable by user if usage not parsable
+ *
+ * Revision 1.28  2005/11/18 00:19:11  willuhn
  * @B bug 146
  *
  * Revision 1.27  2005/11/02 17:33:31  willuhn
