@@ -55,26 +55,26 @@ public interface Box extends Part, Comparable
   public int getIndex();
   
   /**
+   * Speichert die Position der Box.
+   * @param index die Position.
+   */
+  public void setIndex(int index);
+
+  /**
    * Liefert die Positon der "Werkseinstellungen".
    * @return Default-Index.
    */
   public int getDefaultIndex();
   
-  /**
-   * Verschiebt die Box um eine Position nach oben.
-   */
-  public void up();
-  
-  /**
-   * Verschiebt die Box um eine Position nach unten.
-   */
-  public void down();
 }
 
 
 /*********************************************************************
  * $Log$
- * Revision 1.1  2005-11-09 01:13:53  willuhn
+ * Revision 1.2  2005-11-20 23:39:11  willuhn
+ * @N box handling
+ *
+ * Revision 1.1  2005/11/09 01:13:53  willuhn
  * @N chipcard modul fuer AMD64 vergessen
  * @N Startseite jetzt frei konfigurierbar
  *
