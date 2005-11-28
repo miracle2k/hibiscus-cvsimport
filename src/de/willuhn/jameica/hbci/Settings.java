@@ -204,6 +204,15 @@ public class Settings
   }
 
   /**
+   * Prueft, ob die MD5-Checksumme der Datenbank geprueft werden soll.
+   * @return true, wenn die Checksumme geprueft werden soll.
+   */
+  public static boolean getCheckDatabase()
+  {
+    return settings.getBoolean("checkdatabase",true);
+  }
+  
+  /**
    * Prueft, ob die TAN waehrend der Eingabe angezeigt werden soll.
    * @return true, wenn die TANs angezeigt werden sollen.
    */
@@ -323,7 +332,10 @@ public class Settings
 
 /*********************************************************************
  * $Log$
- * Revision 1.38  2005-08-22 10:36:37  willuhn
+ * Revision 1.39  2005-11-28 11:15:49  willuhn
+ * @C database check can be disabled
+ *
+ * Revision 1.38  2005/08/22 10:36:37  willuhn
  * @N bug 115, 116
  *
  * Revision 1.37  2005/08/04 22:15:14  willuhn
