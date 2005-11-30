@@ -123,6 +123,28 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob {
 
         Logger.info("checking dauerauftrag order id: " + auftrag.getOrderID());
 
+        // BUGZILLA 87 http://www.willuhn.de/bugzilla/show_bug.cgi?id=87
+        Konto k = null;
+        try
+        {
+          k = auftrag.getKonto();
+          if (k != null && k.isNewObject())
+          {
+            Logger.info("current account is a new one, saving");
+            k.store();
+            auftrag.setKonto(k);
+          }
+        }
+        catch (Exception e)
+        {
+          Logger.error("unable to save account",e);
+        }
+        if (k == null || k.isNewObject())
+        {
+          Logger.warn("bank didn't sending account informations. using current account");
+          auftrag.setKonto(konto);
+        }
+
         // BUGZILLA 22 http://www.willuhn.de/bugzilla/show_bug.cgi?id=22
 				// BEGIN
 				String name = auftrag.getGegenkontoName();
@@ -149,37 +171,17 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob {
             Logger.info("found a local copy. order id: " + auftrag.getOrderID() + ". Checking for modifications");
             if (auftrag.getChecksum() != ex.getChecksum())
             {
-              Logger.info("modifications found, upading local copy");
+              Logger.info("modifications found, updating local copy");
               ex.overwrite(auftrag);
               ex.store();
             }
 						break;
 					}
 				}
-				if (!found)
+
+        if (!found)
 				{
 					Logger.info("no local copy found. adding dauerauftrag order id: " + auftrag.getOrderID());
-          // BUGZILLA 87 http://www.willuhn.de/bugzilla/show_bug.cgi?id=87
-          Konto k = null;
-          try
-          {
-            k = auftrag.getKonto();
-            if (k != null && k.isNewObject())
-            {
-              Logger.info("current account is a new one, saving");
-              k.store();
-              auftrag.setKonto(k);
-            }
-          }
-          catch (Exception e)
-          {
-            Logger.warn("unable to auto assigning account");
-          }
-          if (k == null || k.isNewObject())
-          {
-            Logger.info("bank didn't sending account informations. assigning account by hand");
-            auftrag.setKonto(konto);
-          }
 					auftrag.store();// den hammer nicht gefunden. Neu anlegen
 				}
 				existing.begin();
@@ -224,7 +226,10 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.22  2005-07-24 17:00:04  web0
+ * Revision 1.23  2005-11-30 23:21:06  willuhn
+ * @B ObjectNotFoundException beim Abrufen der Dauerauftraege
+ *
+ * Revision 1.22  2005/07/24 17:00:04  web0
  * *** empty log message ***
  *
  * Revision 1.21  2005/07/20 22:40:56  web0
