@@ -22,7 +22,7 @@ import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Protokoll;
 import de.willuhn.jameica.hbci.rmi.Umsatz;
 import de.willuhn.jameica.hbci.server.Converter;
-import de.willuhn.jameica.hbci.server.filter.FilterEngine;
+import de.willuhn.jameica.hbci.server.FilterEngine;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.logging.Logger;
 import de.willuhn.util.ApplicationException;
@@ -128,7 +128,7 @@ public class HBCIUmsatzJob extends AbstractHBCIJob {
 					umsatz.store(); // den Umsatz haben wir noch nicht, speichern!
           try
           {
-            FilterEngine.getInstance().filter(umsatz);
+            FilterEngine.getInstance().filter(umsatz,lines[i]);
           }
           catch (Exception e)
           {
@@ -150,7 +150,10 @@ public class HBCIUmsatzJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.17  2005-11-22 17:31:31  willuhn
+ * Revision 1.18  2005-12-05 17:20:40  willuhn
+ * @N Umsatz-Filter Refactoring
+ *
+ * Revision 1.17  2005/11/22 17:31:31  willuhn
  * @B NPE
  *
  * Revision 1.16  2005/05/09 23:47:24  web0
