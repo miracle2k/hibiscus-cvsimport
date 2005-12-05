@@ -16,11 +16,12 @@ import java.rmi.RemoteException;
 
 import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.datasource.rmi.DBObject;
+import de.willuhn.jameica.hbci.rmi.filter.UmsatzFilter;
 
 /**
  * Interface zur Einstufung von Umsaetzen in verschiedene Kategorien.
  */
-public interface UmsatzTyp extends DBObject
+public interface UmsatzTyp extends DBObject, UmsatzFilter
 {
 
 	/**
@@ -71,7 +72,10 @@ public interface UmsatzTyp extends DBObject
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2005-12-05 17:20:40  willuhn
+ * Revision 1.4  2005-12-05 20:16:15  willuhn
+ * @N Umsatz-Filter Refactoring
+ *
+ * Revision 1.3  2005/12/05 17:20:40  willuhn
  * @N Umsatz-Filter Refactoring
  *
  * Revision 1.2  2005/11/14 23:47:21  willuhn

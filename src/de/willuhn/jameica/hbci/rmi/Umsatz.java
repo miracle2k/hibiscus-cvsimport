@@ -15,6 +15,7 @@ package de.willuhn.jameica.hbci.rmi;
 import java.rmi.RemoteException;
 import java.util.Date;
 
+import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.datasource.rmi.DBObject;
 
 /**
@@ -249,12 +250,22 @@ public interface Umsatz extends DBObject, Checksum
    * @throws RemoteException
    */
   public void setChangedByUser() throws RemoteException;
+  
+  /**
+   * Liefert die Umsatzzuordnungen.
+   * @return Umsatz-Zuordnungen.
+   * @throws RemoteException
+   */
+  public DBIterator getUmsatzZuordnungen() throws RemoteException;
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.11  2005-11-14 23:47:21  willuhn
+ * Revision 1.12  2005-12-05 20:16:15  willuhn
+ * @N Umsatz-Filter Refactoring
+ *
+ * Revision 1.11  2005/11/14 23:47:21  willuhn
  * @N added first code for umsatz categories
  *
  * Revision 1.10  2005/06/30 21:48:56  web0

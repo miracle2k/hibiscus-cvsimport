@@ -115,7 +115,7 @@ public class FilterEngine
       }
       catch (Throwable t)
       {
-        Logger.error("error while applying umsatz filter " + filter.getClass().getName() + " - skipping");
+        Logger.error("error while applying umsatz filter " + filter.getClass().getName() + " - skipping",t);
       }
     }
     Logger.info("used time: " + (System.currentTimeMillis() - start) + " millis");
@@ -126,7 +126,10 @@ public class FilterEngine
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2005-12-05 17:20:40  willuhn
+ * Revision 1.2  2005-12-05 20:16:15  willuhn
+ * @N Umsatz-Filter Refactoring
+ *
+ * Revision 1.1  2005/12/05 17:20:40  willuhn
  * @N Umsatz-Filter Refactoring
  *
  * Revision 1.5  2005/06/27 22:27:53  web0
