@@ -80,7 +80,7 @@ public class PassportRegistry {
     if (c == null)
       return null;
     Passport p = (Passport) c.newInstance();
-    Logger.info("[" + c.getName() + "][" + p.getName() + "] instantiated successfully");
+    Logger.debug("[" + c.getName() + "][" + p.getName() + "] instantiated successfully");
     return p;
   }
 
@@ -143,7 +143,10 @@ public class PassportRegistry {
 
 /**********************************************************************
  * $Log$
- * Revision 1.12  2005-07-04 21:57:08  web0
+ * Revision 1.13  2005-12-05 10:35:34  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.12  2005/07/04 21:57:08  web0
  * @B bug 80
  *
  * Revision 1.11  2005/05/19 23:31:07  web0
