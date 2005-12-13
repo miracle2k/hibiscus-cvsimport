@@ -472,13 +472,15 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
     list.addFilter("umsatz_id = " + getID());
     return list;
   }
-
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.29  2005-12-05 20:16:15  willuhn
+ * Revision 1.30  2005-12-13 00:06:31  willuhn
+ * @N UmsatzTyp erweitert
+ *
+ * Revision 1.29  2005/12/05 20:16:15  willuhn
  * @N Umsatz-Filter Refactoring
  *
  * Revision 1.28  2005/11/14 23:47:20  willuhn
