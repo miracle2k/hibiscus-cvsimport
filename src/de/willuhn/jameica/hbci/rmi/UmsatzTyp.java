@@ -61,6 +61,13 @@ public interface UmsatzTyp extends DBObject, UmsatzFilter
   public DBIterator getUmsatzZuordnungen() throws RemoteException;
   
   /**
+   * Liefert die Hoehe des Umsatzes, der fuer diesen Umsatztyp auf allen Konten vorliegt.
+   * @return Hoehe des Umsatzes.
+   * @throws RemoteException
+   */
+  public double getUmsatz() throws RemoteException;
+  
+  /**
    * Prueft, ob der Umsatz diesem Typ bereits zugeordnet ist.
    * @param u der zu pruefende Umsatz.
    * @return true, wenn er bereits zugeordnet ist.
@@ -95,7 +102,10 @@ public interface UmsatzTyp extends DBObject, UmsatzFilter
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2005-12-13 00:06:38  willuhn
+ * Revision 1.6  2005-12-20 00:03:27  willuhn
+ * @N Test-Code fuer Tortendiagramm-Auswertungen
+ *
+ * Revision 1.5  2005/12/13 00:06:38  willuhn
  * @N UmsatzTyp erweitert
  *
  * Revision 1.4  2005/12/05 20:16:15  willuhn
