@@ -90,7 +90,7 @@ public class HBCI extends AbstractPlugin
     DBMAPPING.put("NhTl6Nt8RmaRNz49M/SGiA==",new Double(1.2));
     DBMAPPING.put("kwi5vy1fvgOOVtoTYJYjuA==",new Double(1.3));
     DBMAPPING.put("JtkHZYFRtWpxGR6nE8TYFw==",new Double(1.4));
-    DBMAPPING.put("hECEGHJWgN9pCpynEqCCEQ==",new Double(1.5));
+    DBMAPPING.put("qUkr7exKWH+VjNvEaU7jug==",new Double(1.5));
     
   }
 
@@ -358,7 +358,11 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
- * Revision 1.77  2005-12-17 18:59:15  willuhn
+ * Revision 1.78  2005-12-29 01:22:12  willuhn
+ * @R UmsatzZuordnung entfernt
+ * @B Debugging am Pie-Chart
+ *
+ * Revision 1.77  2005/12/17 18:59:15  willuhn
  * *** empty log message ***
  *
  * Revision 1.76  2005/12/13 00:06:31  willuhn

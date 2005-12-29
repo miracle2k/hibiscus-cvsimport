@@ -15,18 +15,15 @@ package de.willuhn.jameica.hbci.gui.parts;
 
 import java.rmi.RemoteException;
 
-import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.Part;
 import de.willuhn.jameica.gui.dialogs.YesNoDialog;
 import de.willuhn.jameica.gui.parts.CheckedContextMenuItem;
 import de.willuhn.jameica.gui.parts.ContextMenu;
-import de.willuhn.jameica.gui.parts.ContextMenuItem;
 import de.willuhn.jameica.gui.parts.TablePart;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
-import de.willuhn.jameica.hbci.rmi.Umsatz;
 import de.willuhn.jameica.hbci.rmi.UmsatzTyp;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.logging.Logger;
@@ -86,28 +83,6 @@ public class UmsatzTypList extends TablePart implements Part
         }
       }
     }));
-    c.addItem(ContextMenuItem.SEPARATOR);
-    c.addItem(new CheckedContextMenuItem(i18n.tr("Umsatz-Filter auf alle Umsätze anwenden"), new Action() {
-      public void handleAction(Object context) throws ApplicationException
-      {
-        try
-        {
-          UmsatzTyp t = (UmsatzTyp) context;
-          DBIterator list = Settings.getDBService().createList(Umsatz.class);
-          int count = 0;
-          while (list.hasNext())
-          {
-            t.filter((Umsatz)list.next(),null);
-            count++;
-          }
-          GUI.getStatusBar().setSuccessText(i18n.tr("Umsatz-Filter auf {0} Umsätze angewendet",""+count));
-        }
-        catch (RemoteException e)
-        {
-          Logger.error("Fehler beim Zuordnen der Umsätze",e);
-        }
-      }
-    }));
     this.setContextMenu(c);
   }
 }
@@ -115,7 +90,11 @@ public class UmsatzTypList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2005-12-05 20:16:15  willuhn
+ * Revision 1.2  2005-12-29 01:22:12  willuhn
+ * @R UmsatzZuordnung entfernt
+ * @B Debugging am Pie-Chart
+ *
+ * Revision 1.1  2005/12/05 20:16:15  willuhn
  * @N Umsatz-Filter Refactoring
  *
  **********************************************************************/
