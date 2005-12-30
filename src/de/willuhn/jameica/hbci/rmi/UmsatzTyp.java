@@ -74,6 +74,20 @@ public interface UmsatzTyp extends DBObject
   public boolean isRegex() throws RemoteException;
   
   /**
+   * Prueft, ob sich der Filter auf Einnahmen oder Ausgaben bezieht.
+   * @return true, wenn es eine Einnahme ist. Sonst false.
+   * @throws RemoteException
+   */
+  public boolean isEinnahme() throws RemoteException;
+  
+  /**
+   * Speichert, ob es sich um eine Einnahme handelt.
+   * @param einnahme true, wenn es eine Einnahme ist, sonst false.
+   * @throws RemoteException
+   */
+  public void setEinnahme(boolean einnahme) throws RemoteException;
+  
+  /**
    * Speichert, ob es sich bei dem Pattern um einen regulaeren Ausdruck handelt.
    * @param regex true, wenn es sich um einen regulaeren Ausdruck handelt.
    * @throws RemoteException
@@ -93,7 +107,10 @@ public interface UmsatzTyp extends DBObject
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2005-12-29 01:22:12  willuhn
+ * Revision 1.8  2005-12-30 00:14:45  willuhn
+ * @N first working pie charts
+ *
+ * Revision 1.7  2005/12/29 01:22:12  willuhn
  * @R UmsatzZuordnung entfernt
  * @B Debugging am Pie-Chart
  *

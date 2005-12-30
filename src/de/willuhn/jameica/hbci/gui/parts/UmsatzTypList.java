@@ -19,6 +19,7 @@ import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.Part;
 import de.willuhn.jameica.gui.dialogs.YesNoDialog;
+import de.willuhn.jameica.gui.formatter.Formatter;
 import de.willuhn.jameica.gui.parts.CheckedContextMenuItem;
 import de.willuhn.jameica.gui.parts.ContextMenu;
 import de.willuhn.jameica.gui.parts.TablePart;
@@ -49,6 +50,15 @@ public class UmsatzTypList extends TablePart implements Part
     this.i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
     addColumn(i18n.tr("Bezeichnung"),"name");
     addColumn(i18n.tr("Zweck, Name oder Konto enthält"),"pattern");
+    addColumn(i18n.tr("Umsatzart"),"iseinnahme",new Formatter() {
+      public String format(Object o)
+      {
+        if (o == null)
+          return i18n.tr("unbekannt");
+        Integer i = (Integer) o;
+        return i.intValue() == 1 ? i18n.tr("Einnahme") : i18n.tr("Ausgabe");
+      }
+    });
     setSummary(false);
     
     ContextMenu c = new ContextMenu();
@@ -90,7 +100,10 @@ public class UmsatzTypList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2005-12-29 01:22:12  willuhn
+ * Revision 1.3  2005-12-30 00:14:45  willuhn
+ * @N first working pie charts
+ *
+ * Revision 1.2  2005/12/29 01:22:12  willuhn
  * @R UmsatzZuordnung entfernt
  * @B Debugging am Pie-Chart
  *

@@ -218,12 +218,32 @@ public class UmsatzTypImpl extends AbstractDBObject implements UmsatzTyp
       return new Double(getUmsatz());
     return super.getAttribute(arg0);
   }
+
+  /**
+   * @see de.willuhn.jameica.hbci.rmi.UmsatzTyp#isEinnahme()
+   */
+  public boolean isEinnahme() throws RemoteException
+  {
+    Integer i = (Integer) getAttribute("iseinnahme");
+    return i != null && i.intValue() == 1;
+  }
+
+  /**
+   * @see de.willuhn.jameica.hbci.rmi.UmsatzTyp#setEinnahme(boolean)
+   */
+  public void setEinnahme(boolean einnahme) throws RemoteException
+  {
+    setAttribute("iseinnahme",new Integer(einnahme ? 1 : 0));
+  }
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.18  2005-12-29 01:22:11  willuhn
+ * Revision 1.19  2005-12-30 00:14:45  willuhn
+ * @N first working pie charts
+ *
+ * Revision 1.18  2005/12/29 01:22:11  willuhn
  * @R UmsatzZuordnung entfernt
  * @B Debugging am Pie-Chart
  *
