@@ -48,25 +48,6 @@ public class VelocityExporter implements Exporter
 
   private I18N i18n = null;
   
-  static
-  {
-    try
-    {
-      // Velocity initialisieren
-      Logger.info("init velocity template engine");
-      Velocity.setProperty(Velocity.RESOURCE_LOADER,"hibiscus");
-      Velocity.setProperty("hibiscus.resource.loader.description","Hibiscus Velocity Loader");
-      Velocity.setProperty("hibiscus.resource.loader.class",VelocityLoader.class.getName());
-
-      Velocity.setProperty(Velocity.RUNTIME_LOG_LOGSYSTEM, new VelocityLogger());
-      Velocity.init();
-    }
-    catch (Throwable t)
-    {
-      Logger.error("velocity init failed",t);
-    }
-  }
-
   /**
    * ct.
    */
@@ -78,7 +59,6 @@ public class VelocityExporter implements Exporter
 
     PluginResources res = Application.getPluginLoader().getPlugin(HBCI.class).getResources();
     this.templateDir = new File(res.getPath() + File.separator + "lib","velocity");
-    Logger.info("velocity template dir: " + this.templateDir.getAbsolutePath());
   }
 
   /**
@@ -214,7 +194,10 @@ public class VelocityExporter implements Exporter
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2005-07-04 12:41:39  web0
+ * Revision 1.3  2006-01-02 17:38:12  willuhn
+ * @N moved Velocity to Jameica
+ *
+ * Revision 1.2  2005/07/04 12:41:39  web0
  * @B bug 90
  *
  * Revision 1.1  2005/06/30 23:52:42  web0

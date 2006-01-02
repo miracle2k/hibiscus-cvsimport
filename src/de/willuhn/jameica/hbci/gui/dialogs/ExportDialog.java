@@ -128,16 +128,19 @@ public class ExportDialog extends AbstractDialog
     if (exp == null || exp.exporter == null)
       throw new ApplicationException(i18n.tr("Bitte wählen Sie ein Export-Format aus"));
 
+    Settings settings = new Settings(this.getClass());
+    settings.setStoreWhenRead(true);
+
     FileDialog fd = new FileDialog(GUI.getShell(),SWT.SAVE);
     fd.setText(i18n.tr("Bitte geben Sie eine Datei ein, in die die Daten exportiert werden sollen."));
     fd.setFileName(i18n.tr("hibiscus-export-{0}." + exp.format.getFileExtension(),HBCI.FASTDATEFORMAT.format(new Date())));
-    String s = fd.open();
-    
-    Settings settings = new Settings(this.getClass());
-    settings.setStoreWhenRead(true);
+
     String path = settings.getString("lastdir",System.getProperty("user.home"));
     if (path != null && path.length() > 0)
       fd.setFilterPath(path);
+
+    String s = fd.open();
+    
 
     if (s == null || s.length() == 0)
     {
@@ -322,7 +325,10 @@ public class ExportDialog extends AbstractDialog
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2005-07-04 12:41:39  web0
+ * Revision 1.2  2006-01-02 17:38:12  willuhn
+ * @N moved Velocity to Jameica
+ *
+ * Revision 1.1  2005/07/04 12:41:39  web0
  * @B bug 90
  *
  * Revision 1.4  2005/06/30 23:52:42  web0
