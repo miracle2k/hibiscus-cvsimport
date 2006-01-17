@@ -36,7 +36,7 @@ import de.willuhn.jameica.gui.input.SelectInput;
 import de.willuhn.jameica.gui.util.ButtonArea;
 import de.willuhn.jameica.gui.util.LabelGroup;
 import de.willuhn.jameica.hbci.HBCI;
-import de.willuhn.jameica.hbci.io.ExportFormat;
+import de.willuhn.jameica.hbci.io.IOFormat;
 import de.willuhn.jameica.hbci.io.Exporter;
 import de.willuhn.jameica.hbci.io.IORegistry;
 import de.willuhn.jameica.system.Application;
@@ -180,7 +180,7 @@ public class ExportDialog extends AbstractDialog
       Exporter exporter = exp.exporter;
 
       os = new BufferedOutputStream(new FileOutputStream(file));
-      exporter.export(exp.format,this.type,objects,os);
+      exporter.doExport(exp.format,objects,os);
 
       // Wir merken uns noch das Verzeichnis vom letzten mal
       settings.setAttribute("lastdir",file.getParent());
@@ -233,7 +233,7 @@ public class ExportDialog extends AbstractDialog
       Exporter exp = exporters[i];
       if (exp == null)
         continue;
-      ExportFormat[] formats = exp.getExportFormats(type);
+      IOFormat[] formats = exp.getIOFormats(type);
       if (formats == null || formats.length == 0)
       {
         Logger.warn("exporter " + exp.getName() + " provides no export formats, skipping");
@@ -270,9 +270,9 @@ public class ExportDialog extends AbstractDialog
   private class Exp implements GenericObject
 	{
 		private Exporter exporter   = null;
-    private ExportFormat format = null;
+    private IOFormat format = null;
 		
-		private Exp(Exporter exporter, ExportFormat format)
+		private Exp(Exporter exporter, IOFormat format)
 		{
 			this.exporter = exporter;
       this.format = format;
@@ -325,7 +325,10 @@ public class ExportDialog extends AbstractDialog
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2006-01-02 17:38:12  willuhn
+ * Revision 1.3  2006-01-17 00:22:37  willuhn
+ * @N erster Code fuer Swift MT940-Import
+ *
+ * Revision 1.2  2006/01/02 17:38:12  willuhn
  * @N moved Velocity to Jameica
  *
  * Revision 1.1  2005/07/04 12:41:39  web0

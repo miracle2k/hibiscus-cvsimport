@@ -33,6 +33,7 @@ public class KontoAuswahlDialog extends AbstractDialog
 {
 
 	private I18N i18n;
+  private String text = null;
 	private Konto choosen = null;
 
   /**
@@ -54,7 +55,9 @@ public class KontoAuswahlDialog extends AbstractDialog
   {
 		LabelGroup group = new LabelGroup(parent,i18n.tr("Verfügbare Konten"));
 			
-		group.addText(i18n.tr("Bitte wählen Sie das gewünschte Konto aus."),true);
+		if (text == null || text.length() == 0)
+      text = i18n.tr("Bitte wählen Sie das gewünschte Konto aus.");
+    group.addText(text,true);
 
     Action a = new Action() {
       public void handleAction(Object context) throws ApplicationException
@@ -102,13 +105,26 @@ public class KontoAuswahlDialog extends AbstractDialog
   {
     return choosen;
   }
+  
+  /**
+   * Optionale Angabe des anzuzeigenden Textes.
+   * Wird hier kein Wert gesetzt, wird ein Standard-Text angezeigt.
+   * @param text
+   */
+  public void setText(String text)
+  {
+    this.text = text;
+  }
 
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2005-06-27 15:35:27  web0
+ * Revision 1.6  2006-01-17 00:22:36  willuhn
+ * @N erster Code fuer Swift MT940-Import
+ *
+ * Revision 1.5  2005/06/27 15:35:27  web0
  * @B bug 84
  *
  * Revision 1.4  2005/06/23 23:03:20  web0
