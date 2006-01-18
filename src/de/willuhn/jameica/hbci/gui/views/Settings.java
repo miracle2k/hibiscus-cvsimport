@@ -79,19 +79,15 @@ public class Settings extends AbstractView {
     });
 
   }
-
-  /**
-   * @see de.willuhn.jameica.gui.AbstractView#unbind()
-   */
-  public void unbind() throws ApplicationException {
-  }
-
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.34  2006-01-08 23:23:19  willuhn
+ * Revision 1.35  2006-01-18 00:51:00  willuhn
+ * @B bug 65
+ *
+ * Revision 1.34  2006/01/08 23:23:19  willuhn
  * *** empty log message ***
  *
  * Revision 1.33  2005/08/22 10:36:37  willuhn

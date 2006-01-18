@@ -93,19 +93,15 @@ public class EmpfaengerNew extends AbstractView {
     },null,true);
 
   }
-
-  /**
-   * @see de.willuhn.jameica.gui.AbstractView#unbind()
-   */
-  public void unbind() throws ApplicationException {
-  }
-
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.8  2005-10-03 16:17:58  willuhn
+ * Revision 1.9  2006-01-18 00:51:00  willuhn
+ * @B bug 65
+ *
+ * Revision 1.8  2005/10/03 16:17:58  willuhn
  * *** empty log message ***
  *
  * Revision 1.7  2005/08/22 12:23:18  willuhn

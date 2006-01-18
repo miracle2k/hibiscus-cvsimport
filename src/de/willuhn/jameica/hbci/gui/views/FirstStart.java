@@ -83,20 +83,15 @@ public class FirstStart extends AbstractView
     buttons.addButton(i18n.tr("Sicherheitsmedium einrichten"),a,null,true);
     buttons.addButton(i18n.tr("Konten-Übersicht"),a2,null);
   }
-
-  /**
-   * @see de.willuhn.jameica.gui.AbstractView#unbind()
-   */
-  public void unbind() throws ApplicationException
-  {
-  }
-
 }
 
 
 /*********************************************************************
  * $Log$
- * Revision 1.3  2005-10-17 15:12:14  willuhn
+ * Revision 1.4  2006-01-18 00:51:00  willuhn
+ * @B bug 65
+ *
+ * Revision 1.3  2005/10/17 15:12:14  willuhn
  * *** empty log message ***
  *
  * Revision 1.2  2005/10/17 15:11:42  willuhn

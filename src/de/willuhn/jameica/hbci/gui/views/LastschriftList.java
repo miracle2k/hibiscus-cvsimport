@@ -21,7 +21,6 @@ import de.willuhn.jameica.hbci.gui.action.LastschriftNew;
 import de.willuhn.jameica.hbci.gui.controller.LastschriftControl;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.logging.Logger;
-import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
 
 /**
@@ -55,19 +54,15 @@ public class LastschriftList extends AbstractView {
 			GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Lesen der Lastschriften."));
 		}
   }
-
-  /**
-   * @see de.willuhn.jameica.gui.AbstractView#unbind()
-   */
-  public void unbind() throws ApplicationException {
-  }
-
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2005-05-02 23:56:45  web0
+ * Revision 1.5  2006-01-18 00:50:59  willuhn
+ * @B bug 65
+ *
+ * Revision 1.4  2005/05/02 23:56:45  web0
  * @B bug 66, 67
  * @C umsatzliste nach vorn verschoben
  * @C protokoll nach hinten verschoben

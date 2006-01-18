@@ -118,18 +118,15 @@ public class UmsatzDetail extends AbstractView {
       }
     });
   }
-
-  /**
-   * @see de.willuhn.jameica.gui.AbstractView#unbind()
-   */
-  public void unbind() throws ApplicationException {
-  }
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.22  2005-06-30 21:48:56  web0
+ * Revision 1.23  2006-01-18 00:51:00  willuhn
+ * @B bug 65
+ *
+ * Revision 1.22  2005/06/30 21:48:56  web0
  * @B bug 75
  *
  * Revision 1.21  2005/06/27 14:18:49  web0

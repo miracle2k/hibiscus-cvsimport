@@ -61,9 +61,9 @@ public class VelocityExporter implements Exporter
   }
 
   /**
-   * @see de.willuhn.jameica.hbci.io.Exporter#doExport(de.willuhn.jameica.hbci.io.IOFormat, de.willuhn.datasource.GenericObject[], java.io.OutputStream)
+   * @see de.willuhn.jameica.hbci.io.Exporter#doExport(de.willuhn.datasource.GenericObject[], de.willuhn.jameica.hbci.io.IOFormat, java.io.OutputStream)
    */
-  public void doExport(IOFormat format, GenericObject[] objects, OutputStream os) throws RemoteException, ApplicationException
+  public void doExport(GenericObject[] objects, IOFormat format, OutputStream os) throws RemoteException, ApplicationException
   {
     if (os == null)
       throw new ApplicationException(i18n.tr("Kein Ausgabe-Ziel für die Datei angegeben"));
@@ -210,7 +210,10 @@ public class VelocityExporter implements Exporter
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2006-01-17 00:22:36  willuhn
+ * Revision 1.5  2006-01-18 00:51:01  willuhn
+ * @B bug 65
+ *
+ * Revision 1.4  2006/01/17 00:22:36  willuhn
  * @N erster Code fuer Swift MT940-Import
  *
  * Revision 1.3  2006/01/02 17:38:12  willuhn

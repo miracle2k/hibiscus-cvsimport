@@ -60,19 +60,15 @@ public class KontoList extends AbstractView {
 			GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Lesen der Bankverbindungen."));
 		}
   }
-
-  /**
-   * @see de.willuhn.jameica.gui.AbstractView#unbind()
-   */
-  public void unbind() throws ApplicationException {
-  }
-
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2005-06-21 21:48:24  web0
+ * Revision 1.4  2006-01-18 00:51:00  willuhn
+ * @B bug 65
+ *
+ * Revision 1.3  2005/06/21 21:48:24  web0
  * @B bug 80
  *
  * Revision 1.2  2005/03/09 01:07:02  web0

@@ -130,19 +130,15 @@ public class KontoNew extends AbstractView {
 		}
 
   }
-
-  /**
-   * @see de.willuhn.jameica.gui.AbstractView#unbind()
-   */
-  public void unbind() throws ApplicationException {
-  }
-
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.13  2005-12-16 16:35:31  willuhn
+ * Revision 1.14  2006-01-18 00:51:00  willuhn
+ * @B bug 65
+ *
+ * Revision 1.13  2005/12/16 16:35:31  willuhn
  * @N Filter UmsatzList width regular expressions
  *
  * Revision 1.12  2005/12/12 15:46:55  willuhn

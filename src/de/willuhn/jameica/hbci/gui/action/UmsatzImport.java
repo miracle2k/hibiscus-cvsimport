@@ -12,10 +12,13 @@
  **********************************************************************/
 package de.willuhn.jameica.hbci.gui.action;
 
+import java.rmi.RemoteException;
+
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.hbci.HBCI;
-import de.willuhn.jameica.hbci.gui.dialogs.ExportDialog;
+import de.willuhn.jameica.hbci.gui.dialogs.ImportDialog;
+import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Umsatz;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.logging.Logger;
@@ -23,40 +26,40 @@ import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
 
 /**
- * Action, ueber die Umsaetze exportieren werden koennen.
- * Als Parameter kann eine einzelnes Umsatz-Objekt oder ein Array uebergeben werden.
+ * Action, ueber die Umsaetze importiert werden koennen.
+ * Als Parameter kann ein Konto oder <code>null</code> uebergeben werden.
  */
-public class UmsatzExport implements Action
+public class UmsatzImport implements Action
 {
 
   /**
-   * Erwartet ein Objekt vom Typ <code>Umsatz</code> oder <code>Umsatz[]</code>.
+   * Erwartet ein Objekt vom Typ <code>Konto</code> oder <code>null</code>.
    * @see de.willuhn.jameica.gui.Action#handleAction(java.lang.Object)
    */
   public void handleAction(Object context) throws ApplicationException
   {
 		I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
-		if (context == null)
-			throw new ApplicationException(i18n.tr("Bitte wählen Sie mindestens einen Umsatz aus"));
-
-		if (!(context instanceof Umsatz) && !(context instanceof Umsatz[]))
-			throw new ApplicationException(i18n.tr("Bitte wählen Sie einen oder mehrere Umsätze aus"));
-
-    Umsatz[] u = null;
-		try {
-
-			if (context instanceof Umsatz)
-			{
-				u = new Umsatz[1];
-        u[0] = (Umsatz) context;
-			}
-      else if (context instanceof Umsatz[])
+    if (context != null && (context instanceof Umsatz))
+    {
+      try
       {
-        u = (Umsatz[]) context;
+        context = ((Umsatz) context).getKonto();
       }
+      catch (RemoteException e)
+      {
+        Logger.error("unable to load konto from umsatz",e);
+        // muessen wir nicht werfen
+      }
+    }
 
-      ExportDialog d = new ExportDialog(u, Umsatz.class);
+    // Nochmal der Check, ob das wirklich ein Konto ist
+    if (context != null && !(context instanceof Konto))
+      context = null;
+    
+    try
+    {
+      ImportDialog d = new ImportDialog((Konto) context, Umsatz.class);
       d.open();
 		}
 		catch (ApplicationException ae)
@@ -65,8 +68,8 @@ public class UmsatzExport implements Action
 		}
 		catch (Exception e)
 		{
-			Logger.error("error while exporting umsaetze",e);
-			GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Exportieren der Umsätze"));
+			Logger.error("error while importing umsaetze",e);
+			GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Importieren der Umsätze"));
 		}
   }
 
@@ -75,13 +78,7 @@ public class UmsatzExport implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2006-01-18 00:51:01  willuhn
+ * Revision 1.1  2006-01-18 00:51:01  willuhn
  * @B bug 65
- *
- * Revision 1.2  2005/07/04 12:41:39  web0
- * @B bug 90
- *
- * Revision 1.1  2005/06/02 22:57:34  web0
- * @N Export von Konto-Umsaetzen
  *
  **********************************************************************/

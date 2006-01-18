@@ -19,7 +19,6 @@ import de.willuhn.jameica.gui.util.ButtonArea;
 import de.willuhn.jameica.hbci.gui.action.Back;
 import de.willuhn.jameica.hbci.gui.controller.LicenseControl;
 import de.willuhn.jameica.system.Application;
-import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
 
 /**
@@ -44,19 +43,15 @@ public class License extends AbstractView {
 		ButtonArea buttons = new ButtonArea(getParent(),1);
 		buttons.addButton(i18n.tr("Zurück"),new Back());
   }
-
-  /**
-   * @see de.willuhn.jameica.gui.AbstractView#unbind()
-   */
-  public void unbind() throws ApplicationException {
-  }
-
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2005-03-09 01:07:02  web0
+ * Revision 1.7  2006-01-18 00:51:00  willuhn
+ * @B bug 65
+ *
+ * Revision 1.6  2005/03/09 01:07:02  web0
  * @D javadoc fixes
  *
  * Revision 1.5  2004/10/20 12:34:02  willuhn

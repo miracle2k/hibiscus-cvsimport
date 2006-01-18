@@ -12,13 +12,12 @@
  **********************************************************************/
 package de.willuhn.jameica.hbci.gui.dialogs;
 
-import java.io.BufferedOutputStream;
+import java.io.BufferedInputStream;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.Date;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
@@ -29,7 +28,6 @@ import de.willuhn.datasource.pseudo.PseudoIterator;
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.dialogs.AbstractDialog;
-import de.willuhn.jameica.gui.dialogs.YesNoDialog;
 import de.willuhn.jameica.gui.input.Input;
 import de.willuhn.jameica.gui.input.LabelInput;
 import de.willuhn.jameica.gui.input.SelectInput;
@@ -37,8 +35,8 @@ import de.willuhn.jameica.gui.util.ButtonArea;
 import de.willuhn.jameica.gui.util.LabelGroup;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.io.IOFormat;
-import de.willuhn.jameica.hbci.io.Exporter;
 import de.willuhn.jameica.hbci.io.IORegistry;
+import de.willuhn.jameica.hbci.io.Importer;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.jameica.system.Settings;
 import de.willuhn.logging.Logger;
@@ -46,28 +44,28 @@ import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
 
 /**
- * Dialog, ueber den Daten exportiert werden koennen.
+ * Dialog, ueber den Daten importiert werden koennen.
  */
-public class ExportDialog extends AbstractDialog
+public class ImportDialog extends AbstractDialog
 {
 
 	private I18N i18n;
 
-  private Input exporterListe     = null;
-  private GenericObject[] objects = null;	
+  private Input importerListe     = null;
+  private GenericObject context   = null;	
   private Class type              = null;
   
   /**
    * ct.
-   * @param objects Liste der zu exportierenden Objekte.
-   * @param type die Art der zu exportierenden Objekte.
+   * @param context Context.
+   * @param type die Art der zu importierenden Objekte.
    */
-  public ExportDialog(GenericObject[] objects, Class type)
+  public ImportDialog(GenericObject context, Class type)
   {
     super(POSITION_CENTER);
 		i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
-		setTitle(i18n.tr("Daten-Export"));
-    this.objects = objects;
+		setTitle(i18n.tr("Daten-Import"));
+    this.context = context;
     this.type = type;
   }
 
@@ -76,26 +74,26 @@ public class ExportDialog extends AbstractDialog
    */
   protected void paint(Composite parent) throws Exception
   {
-		LabelGroup group = new LabelGroup(parent,i18n.tr("Auswahl des Export-Filters"));
-		group.addText(i18n.tr("Bitte wählen Sie das gewünschte Dateiformat aus für den Export aus"),true);
+		LabelGroup group = new LabelGroup(parent,i18n.tr("Auswahl des Import-Filters"));
+		group.addText(i18n.tr("Bitte wählen Sie das gewünschte Dateiformat aus für den Import aus"),true);
 
-		group.addLabelPair(i18n.tr("Verfügbare Formate:"),getExporterList());
+		group.addLabelPair(i18n.tr("Verfügbare Formate:"),getImporterList());
 
 		ButtonArea buttons = new ButtonArea(parent,2);
-		buttons.addButton(i18n.tr("Export starten"),new Action()
+		buttons.addButton(i18n.tr("Import starten"),new Action()
 		{
 			public void handleAction(Object context) throws ApplicationException
 			{
         try
         {
-          if (getExporterList() instanceof LabelInput)
+          if (getImporterList() instanceof LabelInput)
             return;
         }
         catch (Exception e)
         {
-          Logger.error("unable to check export format",e);
+          Logger.error("unable to check import format",e);
         }
-				export();
+				doImport();
 			}
 		},null,true);
 		buttons.addButton(i18n.tr("Schliessen"), new Action()
@@ -108,32 +106,32 @@ public class ExportDialog extends AbstractDialog
   }
 
   /**
-   * Exportiert die Daten.
+   * Importiert die Daten.
    * @throws ApplicationException
    */
-  private void export() throws ApplicationException
+  private void doImport() throws ApplicationException
   {
-    Exp exp = null;
+    Imp imp = null;
 
     try
     {
-      exp = (Exp) getExporterList().getValue();
+      imp = (Imp) getImporterList().getValue();
     }
     catch (Exception e)
     {
-      Logger.error("error while saving export file",e);
-      throw new ApplicationException(i18n.tr("Fehler beim Starten des Exports"),e);
+      Logger.error("error while saving import file",e);
+      throw new ApplicationException(i18n.tr("Fehler beim Starten des Imports"),e);
     }
 
-    if (exp == null || exp.exporter == null)
-      throw new ApplicationException(i18n.tr("Bitte wählen Sie ein Export-Format aus"));
+    if (imp == null || imp.importer == null)
+      throw new ApplicationException(i18n.tr("Bitte wählen Sie ein Import-Format aus"));
 
     Settings settings = new Settings(this.getClass());
     settings.setStoreWhenRead(true);
 
-    FileDialog fd = new FileDialog(GUI.getShell(),SWT.SAVE);
-    fd.setText(i18n.tr("Bitte geben Sie eine Datei ein, in die die Daten exportiert werden sollen."));
-    fd.setFileName(i18n.tr("hibiscus-export-{0}." + exp.format.getFileExtension(),HBCI.FASTDATEFORMAT.format(new Date())));
+    FileDialog fd = new FileDialog(GUI.getShell(),SWT.OPEN);
+    fd.setText(i18n.tr("Bitte wählen Sie die Datei aus, welche für den Import verwendet werden soll."));
+    fd.setFilterNames(new String[]{"*." + imp.format.getFileExtension()});
 
     String path = settings.getString("lastdir",System.getProperty("user.home"));
     if (path != null && path.length() > 0)
@@ -141,6 +139,7 @@ public class ExportDialog extends AbstractDialog
 
     String s = fd.open();
     
+
     if (s == null || s.length() == 0)
     {
       close();
@@ -148,49 +147,27 @@ public class ExportDialog extends AbstractDialog
     }
 
     File file = new File(s);
-    if (file.exists())
-    {
-      try
-      {
-        YesNoDialog d = new YesNoDialog(YesNoDialog.POSITION_CENTER);
-        d.setTitle(i18n.tr("Datei existiert bereits"));
-        d.setText(i18n.tr("Möchten Sie die Datei überschreiben?"));
-        Boolean choice = (Boolean) d.open();
-        if (!choice.booleanValue())
-        {
-          // Dialog schliessem
-          close();
-          return;
-        }
-      }
-      catch (Exception e)
-      {
-        // Dialog schliessem
-        close();
-        Logger.error("error while saving export file",e);
-        throw new ApplicationException(i18n.tr("Fehler beim Speichern der Export-Datei in {0}",s),e);
-      }
-    }
+    if (!file.exists() || !file.isFile())
+      throw new ApplicationException(i18n.tr("Datei existiert nicht oder ist nicht lesbar"));
     
     // Wir merken uns noch das Verzeichnis vom letzten mal
     settings.setAttribute("lastdir",file.getParent());
 
     try
     {
-      Exporter exporter = exp.exporter;
+      Importer importer = imp.importer;
 
-      // Der Exporter schliesst den OutputStream selbst
-      OutputStream os = new BufferedOutputStream(new FileOutputStream(file));
-      exporter.doExport(objects,exp.format,os);
+      InputStream is = new BufferedInputStream(new FileInputStream(file));
+      importer.doImport(context,imp.format,is);
 
       // Dialog schliessen
       close();
-      GUI.getStatusBar().setSuccessText(i18n.tr("Daten exportiert nach {0}",s));
+      GUI.getStatusBar().setSuccessText(i18n.tr("Daten importiert aus {0}",s));
     }
     catch (Exception e)
     {
-      Logger.error("error while writing objects to " + s,e);
-      throw new ApplicationException(i18n.tr("Fehler beim Exportieren der Daten in {0}",s),e);
+      Logger.error("error while reading objects from " + s,e);
+      throw new ApplicationException(i18n.tr("Fehler beim Importieren der Daten aus {0}",s),e);
     }
     finally
     {
@@ -200,47 +177,47 @@ public class ExportDialog extends AbstractDialog
   }
 
 	/**
-	 * Liefert eine Liste der verfuegbaren Exporter.
-   * @return Liste der Exporter.
+	 * Liefert eine Liste der verfuegbaren Importer.
+   * @return Liste der Importer.
 	 * @throws Exception
    */
-  private Input getExporterList() throws Exception
+  private Input getImporterList() throws Exception
 	{
-		if (exporterListe != null)
-			return exporterListe;
+		if (importerListe != null)
+			return importerListe;
 
-    Exporter[] exporters = IORegistry.getExporters();
+    Importer[] importers = IORegistry.getImporters();
 
     ArrayList l = new ArrayList();
 
     int size = 0;
 
-    for (int i=0;i<exporters.length;++i)
+    for (int i=0;i<importers.length;++i)
 		{
-      Exporter exp = exporters[i];
-      if (exp == null)
+      Importer imp = importers[i];
+      if (imp == null)
         continue;
-      IOFormat[] formats = exp.getIOFormats(type);
+      IOFormat[] formats = imp.getIOFormats(type);
       if (formats == null || formats.length == 0)
       {
-        Logger.warn("exporter " + exp.getName() + " provides no export formats, skipping");
+        Logger.warn("importer " + imp.getName() + " provides no import formats, skipping");
       }
       for (int j=0;j<formats.length;++j)
       {
         size++;
-        l.add(new Exp(exp,formats[j]));
+        l.add(new Imp(imp,formats[j]));
       }
 		}
 
 		if (size == 0)
 		{
-			exporterListe = new LabelInput(i18n.tr("Keine Export-Filter verfügbar"));
-			return exporterListe;
+			importerListe = new LabelInput(i18n.tr("Keine Import-Filter verfügbar"));
+			return importerListe;
 		}
 
-		Exp[] exp = (Exp[]) l.toArray(new Exp[size]);
-		exporterListe = new SelectInput(PseudoIterator.fromArray(exp),null);
-		return exporterListe;
+		Imp[] imp = (Imp[]) l.toArray(new Imp[size]);
+		importerListe = new SelectInput(PseudoIterator.fromArray(imp),null);
+		return importerListe;
 	}
 
   /**
@@ -252,16 +229,16 @@ public class ExportDialog extends AbstractDialog
   }
 
 	/**
-	 * Hilfsklasse zur Anzeige der Exporter.
+	 * Hilfsklasse zur Anzeige der Importer.
    */
-  private class Exp implements GenericObject
+  private class Imp implements GenericObject
 	{
-		private Exporter exporter   = null;
-    private IOFormat format = null;
+		private Importer importer = null;
+    private IOFormat format   = null;
 		
-		private Exp(Exporter exporter, IOFormat format)
+		private Imp(Importer importer, IOFormat format)
 		{
-			this.exporter = exporter;
+			this.importer = importer;
       this.format = format;
 		}
 
@@ -286,7 +263,7 @@ public class ExportDialog extends AbstractDialog
      */
     public String getID() throws RemoteException
     {
-      return this.exporter.getClass().getName() + "#" + this.format.getClass().getName();
+      return this.importer.getClass().getName() + "#" + this.format.getClass().getName();
     }
 
     /**
@@ -312,28 +289,7 @@ public class ExportDialog extends AbstractDialog
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2006-01-18 00:51:01  willuhn
+ * Revision 1.1  2006-01-18 00:51:01  willuhn
  * @B bug 65
- *
- * Revision 1.3  2006/01/17 00:22:37  willuhn
- * @N erster Code fuer Swift MT940-Import
- *
- * Revision 1.2  2006/01/02 17:38:12  willuhn
- * @N moved Velocity to Jameica
- *
- * Revision 1.1  2005/07/04 12:41:39  web0
- * @B bug 90
- *
- * Revision 1.4  2005/06/30 23:52:42  web0
- * @N export via velocity
- *
- * Revision 1.3  2005/06/08 16:49:00  web0
- * @N new Import/Export-System
- *
- * Revision 1.2  2005/06/06 10:37:07  web0
- * *** empty log message ***
- *
- * Revision 1.1  2005/06/02 22:57:34  web0
- * @N Export von Konto-Umsaetzen
  *
  **********************************************************************/

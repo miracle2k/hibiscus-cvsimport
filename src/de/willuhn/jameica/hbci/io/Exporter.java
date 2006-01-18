@@ -30,19 +30,23 @@ public interface Exporter extends IO
 {
   /**
    * Exportiert die genannten Objekte in den angegebenen OutputStream.
-   * @param format das vom User ausgewaehlte Export-Format.
    * @param objects die zu exportierenden Objekte.
-   * @param os der Ziel-Ausgabe-Stream
+   * @param format das vom User ausgewaehlte Export-Format.
+   * @param os der Ziel-Ausgabe-Stream.
+   * Der Exporter muss den OutputStream selbst schliessen!
    * @throws RemoteException
    * @throws ApplicationException 
    */
-  public void doExport(IOFormat format, GenericObject[] objects, OutputStream os) throws RemoteException, ApplicationException;
+  public void doExport(GenericObject[] objects, IOFormat format, OutputStream os) throws RemoteException, ApplicationException;
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2006-01-17 00:22:36  willuhn
+ * Revision 1.5  2006-01-18 00:51:01  willuhn
+ * @B bug 65
+ *
+ * Revision 1.4  2006/01/17 00:22:36  willuhn
  * @N erster Code fuer Swift MT940-Import
  *
  * Revision 1.3  2005/07/04 12:41:39  web0

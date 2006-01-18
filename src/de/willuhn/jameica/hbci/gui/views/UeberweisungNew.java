@@ -83,19 +83,15 @@ public class UeberweisungNew extends AbstractView {
       }
     },null);
   }
-
-  /**
-   * @see de.willuhn.jameica.gui.AbstractView#unbind()
-   */
-  public void unbind() throws ApplicationException {
-  }
-
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.8  2005-11-14 13:08:11  willuhn
+ * Revision 1.9  2006-01-18 00:51:00  willuhn
+ * @B bug 65
+ *
+ * Revision 1.8  2005/11/14 13:08:11  willuhn
  * @N Termin-Ueberweisungen
  *
  * Revision 1.7  2005/10/17 22:00:44  willuhn

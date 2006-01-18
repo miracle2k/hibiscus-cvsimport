@@ -84,19 +84,15 @@ public class LastschriftNew extends AbstractView {
       }
     });
   }
-
-  /**
-   * @see de.willuhn.jameica.gui.AbstractView#unbind()
-   */
-  public void unbind() throws ApplicationException {
-  }
-
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2005-10-17 22:00:44  willuhn
+ * Revision 1.7  2006-01-18 00:51:00  willuhn
+ * @B bug 65
+ *
+ * Revision 1.6  2005/10/17 22:00:44  willuhn
  * @B bug 143
  *
  * Revision 1.5  2005/08/01 23:27:42  web0

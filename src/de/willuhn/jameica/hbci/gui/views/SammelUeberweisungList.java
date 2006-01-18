@@ -21,7 +21,6 @@ import de.willuhn.jameica.hbci.gui.action.SammelUeberweisungNew;
 import de.willuhn.jameica.hbci.gui.controller.SammelUeberweisungControl;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.logging.Logger;
-import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
 
 /**
@@ -55,19 +54,15 @@ public class SammelUeberweisungList extends AbstractView {
 			GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Lesen der Sammel-Überweisungen."));
 		}
   }
-
-  /**
-   * @see de.willuhn.jameica.gui.AbstractView#unbind()
-   */
-  public void unbind() throws ApplicationException {
-  }
-
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2005-09-30 00:08:51  willuhn
+ * Revision 1.2  2006-01-18 00:51:00  willuhn
+ * @B bug 65
+ *
+ * Revision 1.1  2005/09/30 00:08:51  willuhn
  * @N SammelUeberweisungen (merged with SammelLastschrift)
  *
  **********************************************************************/

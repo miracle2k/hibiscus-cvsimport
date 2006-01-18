@@ -86,19 +86,15 @@ public class SammelUeberweisungNew extends AbstractView {
     },null,true);
 
   }
-
-  /**
-   * @see de.willuhn.jameica.gui.AbstractView#unbind()
-   */
-  public void unbind() throws ApplicationException {
-  }
-
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2005-09-30 00:08:51  willuhn
+ * Revision 1.2  2006-01-18 00:51:00  willuhn
+ * @B bug 65
+ *
+ * Revision 1.1  2005/09/30 00:08:51  willuhn
  * @N SammelUeberweisungen (merged with SammelLastschrift)
  *
  **********************************************************************/
