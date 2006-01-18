@@ -44,11 +44,6 @@ public class HBCI extends AbstractPlugin
 {
 
   /**
-   * Datums-Format dd.MM.yyyy HH:mm:ss.
-   */
-  public static DateFormat EXTRALONGDATEFORMAT   = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
-
-  /**
    * Datums-Format dd.MM.yyyy HH:mm.
    */
   public static DateFormat LONGDATEFORMAT   = new SimpleDateFormat("dd.MM.yyyy HH:mm");
@@ -379,7 +374,10 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
- * Revision 1.81  2006-01-17 00:22:37  willuhn
+ * Revision 1.82  2006-01-18 18:40:35  willuhn
+ * @N Redesign des Background-Task-Handlings
+ *
+ * Revision 1.81  2006/01/17 00:22:37  willuhn
  * @N erster Code fuer Swift MT940-Import
  *
  * Revision 1.80  2005/12/30 00:27:52  willuhn
