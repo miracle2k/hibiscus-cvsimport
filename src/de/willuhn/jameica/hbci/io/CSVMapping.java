@@ -54,7 +54,7 @@ public class CSVMapping
   /**
    * Liest das Mapping aus der Config-Datei.
    */
-  private void read()
+  private synchronized void read()
   {
     mapping = new Hashtable();
     Enumeration e = names.keys();
@@ -76,6 +76,7 @@ public class CSVMapping
   public void set(int index, String key)
   {
     mapping.put(new Integer(index),key);
+    store();
   }
   
   /**
@@ -95,12 +96,31 @@ public class CSVMapping
   public void remove(int index)
   {
     mapping.remove(new Integer(index));
+    store();
+  }
+  
+  /**
+   * Liefert true, wenn bei dem Mapping die erste Zeile uebersprungen werden soll.
+   * @return true, wenn die erste Zeile uebersprungen werden soll.
+   */
+  public boolean skipFirstLine()
+  {
+    return this.settings.getBoolean(type.getName() + ".skipfirst",false);
+  }
+  
+  /**
+   * Legt fest, ob die erste Zeile uebersprungen werden soll.
+   * @param b true, wenn die erste Zeile uebersprungen werden soll.
+   */
+  public void setSkipFirstLine(boolean b)
+  {
+    this.settings.setAttribute(type.getName() + ".skipfirst",b);
   }
   
   /**
    * Speichert das CSV-Mapping.
    */
-  public void store()
+  private synchronized void store()
   {
     Enumeration e = mapping.keys();
     while (e.hasMoreElements())
@@ -115,7 +135,10 @@ public class CSVMapping
 
 /*********************************************************************
  * $Log$
- * Revision 1.2  2006-01-23 18:16:51  willuhn
+ * Revision 1.3  2006-01-23 23:07:23  willuhn
+ * @N csv import stuff
+ *
+ * Revision 1.2  2006/01/23 18:16:51  willuhn
  * *** empty log message ***
  *
  * Revision 1.1  2006/01/23 18:13:19  willuhn

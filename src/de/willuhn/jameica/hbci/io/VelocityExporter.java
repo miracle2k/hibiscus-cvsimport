@@ -204,11 +204,11 @@ public class VelocityExporter implements Exporter
     }
 
     /**
-     * @see de.willuhn.jameica.hbci.io.IOFormat#getFileExtension()
+     * @see de.willuhn.jameica.hbci.io.IOFormat#getFileExtensions()
      */
-    public String getFileExtension()
+    public String[] getFileExtensions()
     {
-      return extension;
+      return new String[]{"*." + extension};
     }
     
     /**
@@ -226,7 +226,10 @@ public class VelocityExporter implements Exporter
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2006-01-23 00:36:29  willuhn
+ * Revision 1.7  2006-01-23 23:07:23  willuhn
+ * @N csv import stuff
+ *
+ * Revision 1.6  2006/01/23 00:36:29  willuhn
  * @N Import, Export und Chipkartentest laufen jetzt als Background-Task
  *
  * Revision 1.5  2006/01/18 00:51:01  willuhn
