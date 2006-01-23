@@ -187,7 +187,7 @@ public abstract class AbstractHBCIJob
 			Logger.warn("[job parameter] no name given");
 			return;
 		}
-		params.put(name,new Value(value,currency));
+		params.put(name,new Value(String.valueOf(value),currency));
 	}
 
 	/**
@@ -212,7 +212,10 @@ public abstract class AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.18  2005-08-01 23:27:42  web0
+ * Revision 1.19  2006-01-23 12:16:57  willuhn
+ * @N Update auf HBCI4Java 2.5.0-rc5
+ *
+ * Revision 1.18  2005/08/01 23:27:42  web0
  * *** empty log message ***
  *
  * Revision 1.17  2005/06/21 20:11:10  web0
