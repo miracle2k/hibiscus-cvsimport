@@ -186,7 +186,7 @@ public class HBCICallbackSWT extends AbstractHBCICallback
 					retData.replace(0,retData.length(),DialogFactory.getPIN(passport));
 					break;
 				case NEED_PT_TAN:
-					retData.replace(0,retData.length(),DialogFactory.getTAN());
+					retData.replace(0,retData.length(),DialogFactory.getTAN(msg));
 					break;
 
 				case HAVE_HARDPIN:
@@ -492,7 +492,10 @@ public class HBCICallbackSWT extends AbstractHBCICallback
 
 /**********************************************************************
  * $Log$
- * Revision 1.31  2005-11-14 11:37:00  willuhn
+ * Revision 1.32  2006-02-06 15:40:44  willuhn
+ * @B bug 150
+ *
+ * Revision 1.31  2005/11/14 11:37:00  willuhn
  * @B bug 148
  *
  * Revision 1.30  2005/08/01 23:27:42  web0

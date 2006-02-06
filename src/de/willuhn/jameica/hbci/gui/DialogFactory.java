@@ -123,13 +123,15 @@ public class DialogFactory {
 	 * Hinweis: Wirft eine RuntimeException, wenn der TAN-Dialog abgebrochen wurde.
 	 * Hintergrund: Der Dialog wurde aus dem HBCICallBack heraus aufgerufen und soll im
 	 * Fehlerfall den HBCI-Vorgang abbrechen.
+   * @param text anzuzeigender Text.
 	 * @return die eingegebene TAN.
    * @throws Exception
 	 */
-	public static synchronized String getTAN() throws Exception
+	public static synchronized String getTAN(String text) throws Exception
 	{
 		check();
 		dialog = new TANDialog();
+    ((TANDialog)dialog).setText(text);
 		try {
 			return (String) dialog.open();
 		}
@@ -236,7 +238,10 @@ public class DialogFactory {
 
 /**********************************************************************
  * $Log$
- * Revision 1.21  2005-02-07 22:06:40  willuhn
+ * Revision 1.22  2006-02-06 15:40:44  willuhn
+ * @B bug 150
+ *
+ * Revision 1.21  2005/02/07 22:06:40  willuhn
  * *** empty log message ***
  *
  * Revision 1.20  2005/02/02 16:15:52  willuhn
