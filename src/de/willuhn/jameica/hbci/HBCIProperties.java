@@ -45,6 +45,11 @@ public class HBCIProperties
 		); 
 
   /**
+   * Liste der in Bankleitzahlen erlaubten Zeichen.
+   */
+  public final static String HBCI_BLZ_VALIDCHARS = settings.getString("hbci.blz.validchars","0123456789"); 
+
+  /**
    * Maximale Text-Laenge einer Verwendungszweck-Zeile.
    */
   public final static int HBCI_TRANSFER_USAGE_MAXLENGTH =
@@ -93,16 +98,17 @@ public class HBCIProperties
 	/**
    * Prueft die uebergebenen Strings auf Vorhandensein nicht erlaubter Zeichen.
    * @param chars zu testende Zeichen.
+   * @param validChars Liste der gueltigen Zeichen.
    * @throws ApplicationException
    */
-  public final static void checkChars(String chars) throws ApplicationException
+  public final static void checkChars(String chars, String validChars) throws ApplicationException
   {
     if (chars == null || chars.length() == 0)
       return;
     char[] c = chars.toCharArray();
     for (int i=0;i<c.length;++i)
     {
-      if (HBCIProperties.HBCI_DTAUS_VALIDCHARS.indexOf(c[i]) == -1)
+      if (validChars.indexOf(c[i]) == -1)
         throw new ApplicationException(i18n.tr("Das Zeichen \"{0}\" darf nicht verwendet werden",""+c[i])); 
     }
   }
@@ -141,7 +147,10 @@ public class HBCIProperties
 
 /**********************************************************************
  * $Log$
- * Revision 1.13  2005-09-25 23:15:02  willuhn
+ * Revision 1.14  2006-02-06 16:03:50  willuhn
+ * @B bug 163
+ *
+ * Revision 1.13  2005/09/25 23:15:02  willuhn
  * *** empty log message ***
  *
  * Revision 1.11  2005/08/22 10:36:37  willuhn

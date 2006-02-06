@@ -67,13 +67,18 @@ public abstract class AbstractTransferImpl extends AbstractDBObject implements T
 			if (getGegenkontoBLZ() == null || getGegenkontoBLZ().length() == 0)
 				throw new ApplicationException(i18n.tr("Bitte geben Sie die BLZ des Gegenkontos ein"));
 
-			if (getGegenkontoName() == null || getGegenkontoName().length() == 0)
+      HBCIProperties.checkChars(getGegenkontoBLZ(), HBCIProperties.HBCI_BLZ_VALIDCHARS);
+
+      if (getGegenkontoName() == null || getGegenkontoName().length() == 0)
 				throw new ApplicationException(i18n.tr("Bitte geben Sie den Namen des Kontoinhabers des Gegenkontos ein"));
 
 			if (getGegenkontoName().length() > HBCIProperties.HBCI_TRANSFER_NAME_MAXLENGTH)
 				throw new ApplicationException(i18n.tr("Bitte geben Sie maximal {0} Zeichen für den Namen des Kontoinhabers ein",""+HBCIProperties.HBCI_TRANSFER_NAME_MAXLENGTH));
 
-			if (!HBCIProperties.checkAccountCRC(getGegenkontoBLZ(),getGegenkontoNummer()))
+      // BUGZILLA 163
+      HBCIProperties.checkChars(getGegenkontoName(), HBCIProperties.HBCI_DTAUS_VALIDCHARS);
+
+      if (!HBCIProperties.checkAccountCRC(getGegenkontoBLZ(),getGegenkontoNummer()))
 				throw new ApplicationException(i18n.tr("Ungültige BLZ/Kontonummer. Bitte prüfen Sie Ihre Eingaben."));
 				
 			if (getZweck() == null || "".equals(getZweck()))
@@ -85,8 +90,8 @@ public abstract class AbstractTransferImpl extends AbstractDBObject implements T
 			if (getZweck2() != null && getZweck2().length() > HBCIProperties.HBCI_TRANSFER_USAGE_MAXLENGTH)
 				throw new ApplicationException(i18n.tr("Bitten geben Sie als weiteren Verwendungszweck maximal {0} Zeichen an",""+HBCIProperties.HBCI_TRANSFER_USAGE_MAXLENGTH));
 
-			HBCIProperties.checkChars(getZweck());
-      HBCIProperties.checkChars(getZweck2());
+			HBCIProperties.checkChars(getZweck(), HBCIProperties.HBCI_DTAUS_VALIDCHARS);
+      HBCIProperties.checkChars(getZweck2(), HBCIProperties.HBCI_DTAUS_VALIDCHARS);
   	}
   	catch (RemoteException e)
   	{
@@ -267,7 +272,10 @@ public abstract class AbstractTransferImpl extends AbstractDBObject implements T
 
 /**********************************************************************
  * $Log$
- * Revision 1.21  2005-05-19 23:31:07  web0
+ * Revision 1.22  2006-02-06 16:03:50  willuhn
+ * @B bug 163
+ *
+ * Revision 1.21  2005/05/19 23:31:07  web0
  * @B RMI over SSL support
  * @N added handbook
  *
