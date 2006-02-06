@@ -36,6 +36,7 @@ import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.formatter.CurrencyFormatter;
 import de.willuhn.jameica.gui.formatter.DateFormatter;
+import de.willuhn.jameica.gui.formatter.Formatter;
 import de.willuhn.jameica.gui.formatter.TableFormatter;
 import de.willuhn.jameica.gui.input.ButtonInput;
 import de.willuhn.jameica.gui.input.CheckboxInput;
@@ -68,7 +69,7 @@ public class UmsatzList extends TablePart
   private KL kl                 = new KL();
 
   private I18N i18n;
-
+  
   /**
    * @param konto
    * @param action
@@ -127,7 +128,7 @@ public class UmsatzList extends TablePart
 
     // BUGZILLA 23 http://www.willuhn.de/bugzilla/show_bug.cgi?id=23
     // BUGZILLA 86 http://www.willuhn.de/bugzilla/show_bug.cgi?id=86
-    addColumn("#","id");
+    addColumn("#","id-int");
     addColumn(i18n.tr("Gegenkonto"),                "empfaenger");
     addColumn(i18n.tr("Verwendungszweck"),          "zweck");
     addColumn(i18n.tr("Valuta"),                    "valuta", new DateFormatter(HBCI.DATEFORMAT));
@@ -453,7 +454,10 @@ public class UmsatzList extends TablePart
 
 /**********************************************************************
  * $Log$
- * Revision 1.16  2006-02-06 14:53:39  willuhn
+ * Revision 1.17  2006-02-06 23:03:23  willuhn
+ * @B Sortierung der Spalte "#"
+ *
+ * Revision 1.16  2006/02/06 14:53:39  willuhn
  * @N new column "#" in umsatzlist
  *
  * Revision 1.15  2005/12/30 00:14:45  willuhn
