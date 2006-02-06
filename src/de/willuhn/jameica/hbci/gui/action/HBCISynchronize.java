@@ -93,6 +93,7 @@ public class HBCISynchronize implements Action
         list.add(new Job(k));
       }
       this.jobs = (Job[]) list.toArray(new Job[list.size()]);
+      Logger.info("accounts to synchronize: " + this.jobs.length);
       sync();
     }
     catch (RemoteException e)
@@ -111,7 +112,7 @@ public class HBCISynchronize implements Action
     {
       if (index >= jobs.length)
       {
-        Logger.info("syncing finished");
+        Logger.info("synchronize finished");
         GUI.getStatusBar().setStatusText(i18n.tr("Synchronisierung beendet"));
 
 //        // BUGZILLA 178
@@ -147,7 +148,7 @@ public class HBCISynchronize implements Action
 
       GUI.getStatusBar().setStatusText(i18n.tr("Synchronisiere Konto {0} von {1}", new String[]{""+index,""+jobs.length}));
       
-      Logger.info("synchronizing konto: " + k.getKontonummer());
+      Logger.info("synchronizing account: " + k.getKontonummer());
 
       Logger.info("creating hbci factory");
       HBCIFactory factory = HBCIFactory.getInstance();
@@ -250,7 +251,10 @@ public class HBCISynchronize implements Action
 
 /*********************************************************************
  * $Log$
- * Revision 1.1  2006-01-11 00:29:22  willuhn
+ * Revision 1.2  2006-02-06 17:16:11  willuhn
+ * @B Fehler beim Synchronisieren mehrerer Konten (Dead-Lock)
+ *
+ * Revision 1.1  2006/01/11 00:29:22  willuhn
  * @C HBCISynchronizer nach gui.action verschoben
  * @R undo bug 179 (blendet zu zeitig aus, wenn mehrere Jobs (Synchronize) laufen)
  *

@@ -180,17 +180,16 @@ public class Sync extends AbstractBox implements Box
       Logger.error("error while synchronizing",t);
       GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Synchronisieren der Konten"));
     }
-    finally
-    {
-      Logger.info("Synchronize finished");
-    }
   }
 }
 
 
 /*********************************************************************
  * $Log$
- * Revision 1.2  2006-01-11 00:29:21  willuhn
+ * Revision 1.3  2006-02-06 17:16:10  willuhn
+ * @B Fehler beim Synchronisieren mehrerer Konten (Dead-Lock)
+ *
+ * Revision 1.2  2006/01/11 00:29:21  willuhn
  * @C HBCISynchronizer nach gui.action verschoben
  * @R undo bug 179 (blendet zu zeitig aus, wenn mehrere Jobs (Synchronize) laufen)
  *
