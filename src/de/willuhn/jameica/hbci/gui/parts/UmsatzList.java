@@ -36,7 +36,6 @@ import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.formatter.CurrencyFormatter;
 import de.willuhn.jameica.gui.formatter.DateFormatter;
-import de.willuhn.jameica.gui.formatter.Formatter;
 import de.willuhn.jameica.gui.formatter.TableFormatter;
 import de.willuhn.jameica.gui.input.ButtonInput;
 import de.willuhn.jameica.gui.input.CheckboxInput;
@@ -454,7 +453,10 @@ public class UmsatzList extends TablePart
 
 /**********************************************************************
  * $Log$
- * Revision 1.17  2006-02-06 23:03:23  willuhn
+ * Revision 1.18  2006-02-06 23:08:28  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.17  2006/02/06 23:03:23  willuhn
  * @B Sortierung der Spalte "#"
  *
  * Revision 1.16  2006/02/06 14:53:39  willuhn
