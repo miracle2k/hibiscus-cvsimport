@@ -155,7 +155,11 @@ public class DauerauftragImpl extends AbstractTransferImpl
   protected void insertCheck() throws ApplicationException
   {
 		try {
-			if (getTurnus() == null)
+      // BUGZILLA 197
+      if (getBetrag() == 0.0)
+        throw new ApplicationException(i18n.tr("Bitte geben Sie einen gültigen Betrag ein."));
+
+      if (getTurnus() == null)
 				throw new ApplicationException(i18n.tr("Bitte wählen Sie einen Zahlungsturnus aus"));
 
 			if (getErsteZahlung() == null)
@@ -267,7 +271,10 @@ public class DauerauftragImpl extends AbstractTransferImpl
 
 /**********************************************************************
  * $Log$
- * Revision 1.18  2005-05-30 22:55:27  web0
+ * Revision 1.19  2006-02-20 17:33:08  willuhn
+ * @B bug 197
+ *
+ * Revision 1.18  2005/05/30 22:55:27  web0
  * *** empty log message ***
  *
  * Revision 1.17  2005/03/04 00:16:43  web0
