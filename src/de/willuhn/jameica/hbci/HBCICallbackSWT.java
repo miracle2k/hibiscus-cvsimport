@@ -288,7 +288,8 @@ public class HBCICallbackSWT extends AbstractHBCICallback
 					throw new HBCI_Exception("reason not implemented");
 
 				default:
-						throw new HBCI_Exception("no reason given");
+				  Logger.error("unknown reason " + reason + ", datatype: " + datatype + ": " + msg);
+          throw new HBCI_Exception("unknown reason " + reason + ": " + msg);
 	
 			}
 
@@ -492,7 +493,10 @@ public class HBCICallbackSWT extends AbstractHBCICallback
 
 /**********************************************************************
  * $Log$
- * Revision 1.32  2006-02-06 15:40:44  willuhn
+ * Revision 1.33  2006-02-20 11:43:56  willuhn
+ * @B bug 200
+ *
+ * Revision 1.32  2006/02/06 15:40:44  willuhn
  * @B bug 150
  *
  * Revision 1.31  2005/11/14 11:37:00  willuhn
