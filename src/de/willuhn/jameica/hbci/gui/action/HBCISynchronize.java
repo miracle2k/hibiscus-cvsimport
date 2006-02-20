@@ -56,9 +56,6 @@ public class HBCISynchronize implements Action
   private Job[] jobs = null;
   private int index  = 0;
   
-  // Den merken wir uns, damit wir zum Schluss noch eine Zusammenfassung schreiben koennen.
-  private ProgressMonitor monitor = null;
-  
   /**
    * @see de.willuhn.jameica.gui.Action#handleAction(java.lang.Object)
    */
@@ -115,15 +112,6 @@ public class HBCISynchronize implements Action
         Logger.info("synchronize finished");
         GUI.getStatusBar().setStatusText(i18n.tr("Synchronisierung beendet"));
 
-//        // BUGZILLA 178
-//        if (monitor != null)
-//        {
-//          // Zusammenfassung
-//          for (int i=0;i<)
-//        }
-//        monitor.setStatusText(i18n.tr("Synchronisiere Konto {0} [{1}]", new String[]{k.getBezeichnung(),k.getKontonummer()}));
-
-
         // Seite neu laden
         // BUGZILLA 110 http://www.willuhn.de/bugzilla/show_bug.cgi?id=110
         GUI.startView(GUI.getCurrentView().getClass(),GUI.getCurrentView().getCurrentObject());
@@ -143,8 +131,8 @@ public class HBCISynchronize implements Action
         return;
       }
       
-      Job job = jobs[index++];
-      Konto k = job.konto;
+      final Job job = jobs[index++];
+      final Konto k = job.konto;
 
       GUI.getStatusBar().setStatusText(i18n.tr("Synchronisiere Konto {0} von {1}", new String[]{""+index,""+jobs.length}));
       
@@ -152,8 +140,6 @@ public class HBCISynchronize implements Action
 
       Logger.info("creating hbci factory");
       HBCIFactory factory = HBCIFactory.getInstance();
-      monitor = factory.getProgressMonitor();
-      monitor.setStatusText(i18n.tr("Synchronisiere Konto {0} [{1}]", new String[]{k.getBezeichnung(),k.getKontonummer()}));
 
       if (settings.getBoolean("sync.ueb",false))
       {
@@ -223,8 +209,11 @@ public class HBCISynchronize implements Action
       factory.executeJobs(k,new Listener() {
         public void handleEvent(Event event)
         {
-          // Nach Abschluss das naechste syncronisieren
-          sync();
+          if (event.type == ProgressMonitor.STATUS_DONE)
+          {
+            // Nach erfolgreichem Abschluss das naechste syncronisieren
+            sync();
+          }
         }
       });
     }
@@ -239,7 +228,7 @@ public class HBCISynchronize implements Action
    */
   private class Job
   {
-    private Konto konto                 = null;
+    private Konto konto = null;
     
     private Job(Konto k)
     {
@@ -251,7 +240,10 @@ public class HBCISynchronize implements Action
 
 /*********************************************************************
  * $Log$
- * Revision 1.2  2006-02-06 17:16:11  willuhn
+ * Revision 1.3  2006-02-20 22:28:57  willuhn
+ * @B bug 178
+ *
+ * Revision 1.2  2006/02/06 17:16:11  willuhn
  * @B Fehler beim Synchronisieren mehrerer Konten (Dead-Lock)
  *
  * Revision 1.1  2006/01/11 00:29:22  willuhn
