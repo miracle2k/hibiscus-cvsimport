@@ -23,6 +23,7 @@ import de.willuhn.jameica.hbci.gui.dialogs.NewKeysDialog;
 import de.willuhn.jameica.hbci.gui.dialogs.PINDialog;
 import de.willuhn.jameica.hbci.gui.dialogs.PassportLoadDialog;
 import de.willuhn.jameica.hbci.gui.dialogs.PassportSaveDialog;
+import de.willuhn.jameica.hbci.gui.dialogs.PtSechMechDialog;
 import de.willuhn.jameica.hbci.gui.dialogs.TANDialog;
 import de.willuhn.logging.Logger;
 
@@ -141,7 +142,27 @@ public class DialogFactory {
 		}
 	}
 
-	/**
+  /**
+   * BUGZILLA 200
+   * Erzeugt einen Dialog zur Abfrage der PIN/TAN-Scurity-Methode.
+   * @param options die zur Verfuegung stehenden Optionen.
+   * @return die ID der Methode.
+   * @throws Exception
+   */
+  public static synchronized String getPtSechMech(String options) throws Exception
+  {
+    check();
+    dialog = new PtSechMechDialog(options);
+    try {
+      return (String) dialog.open();
+    }
+    finally
+    {
+      close();
+    }
+  }
+
+  /**
 	 * Erzeugt einen Dialog zur Eingabe von Account-Daten.
 	 * Hinweis: Wirft eine RuntimeException, wenn der Dialog abgebrochen wurde.
 	 * Hintergrund: Der Dialog wurde aus dem HBCICallBack heraus aufgerufen und soll im
@@ -238,7 +259,10 @@ public class DialogFactory {
 
 /**********************************************************************
  * $Log$
- * Revision 1.22  2006-02-06 15:40:44  willuhn
+ * Revision 1.23  2006-02-21 22:51:36  willuhn
+ * @B bug 200
+ *
+ * Revision 1.22  2006/02/06 15:40:44  willuhn
  * @B bug 150
  *
  * Revision 1.21  2005/02/07 22:06:40  willuhn
