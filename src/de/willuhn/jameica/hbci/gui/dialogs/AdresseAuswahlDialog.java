@@ -18,7 +18,6 @@ import org.eclipse.swt.widgets.Composite;
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.dialogs.AbstractDialog;
 import de.willuhn.jameica.gui.util.ButtonArea;
-import de.willuhn.jameica.gui.util.LabelGroup;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.gui.parts.EmpfaengerList;
 import de.willuhn.jameica.hbci.rmi.Adresse;
@@ -54,10 +53,6 @@ public class AdresseAuswahlDialog extends AbstractDialog
    */
   protected void paint(Composite parent) throws Exception
   {
-		LabelGroup group = new LabelGroup(parent,i18n.tr("Verfügbare Adressen"));
-			
-		group.addText(i18n.tr("Bitte wählen Sie die gewünschte Adresse aus."),true);
-
     Action a = new Action() {
       public void handleAction(Object context) throws ApplicationException
       {
@@ -110,7 +105,10 @@ public class AdresseAuswahlDialog extends AbstractDialog
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2005-08-16 21:33:13  willuhn
+ * Revision 1.2  2006-02-21 23:55:32  willuhn
+ * @N Update auf hbci4java rc6
+ *
+ * Revision 1.1  2005/08/16 21:33:13  willuhn
  * @N Kommentar-Feld in Adressen
  * @N Neuer Adress-Auswahl-Dialog
  * @B Checkbox "in Adressbuch speichern" in Ueberweisungen
