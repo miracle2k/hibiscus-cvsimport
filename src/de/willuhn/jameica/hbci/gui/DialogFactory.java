@@ -23,7 +23,7 @@ import de.willuhn.jameica.hbci.gui.dialogs.NewKeysDialog;
 import de.willuhn.jameica.hbci.gui.dialogs.PINDialog;
 import de.willuhn.jameica.hbci.gui.dialogs.PassportLoadDialog;
 import de.willuhn.jameica.hbci.gui.dialogs.PassportSaveDialog;
-import de.willuhn.jameica.hbci.gui.dialogs.PtSechMechDialog;
+import de.willuhn.jameica.hbci.gui.dialogs.PtSecMechDialog;
 import de.willuhn.jameica.hbci.gui.dialogs.TANDialog;
 import de.willuhn.logging.Logger;
 
@@ -152,7 +152,7 @@ public class DialogFactory {
   public static synchronized String getPtSechMech(String options) throws Exception
   {
     check();
-    dialog = new PtSechMechDialog(options);
+    dialog = new PtSecMechDialog(options);
     try {
       return (String) dialog.open();
     }
@@ -259,7 +259,10 @@ public class DialogFactory {
 
 /**********************************************************************
  * $Log$
- * Revision 1.23  2006-02-21 22:51:36  willuhn
+ * Revision 1.24  2006-02-23 22:14:58  willuhn
+ * @B bug 200 (Speichern der Auswahl)
+ *
+ * Revision 1.23  2006/02/21 22:51:36  willuhn
  * @B bug 200
  *
  * Revision 1.22  2006/02/06 15:40:44  willuhn
