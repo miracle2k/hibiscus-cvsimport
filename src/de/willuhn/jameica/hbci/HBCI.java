@@ -227,8 +227,17 @@ public class HBCI extends AbstractPlugin
       }
       else
       {
-        Logger.info("init HBCI4Java subsystem with SWT callback");
-        this.callback = new HBCICallbackSWT();
+        String cb = getResources().getSettings().getString("callback.class",HBCICallbackSWT.class.getName());
+        Logger.info("init HBCI4Java subsystem, callback: cb");
+        try
+        {
+          this.callback = (HBCICallback) Application.getClassLoader().load(cb).newInstance();
+        }
+        catch (Throwable t)
+        {
+          Logger.error("unable to load callback " + cb + ", fallback to swt callback");
+          this.callback = new HBCICallbackSWT();
+        }
       }
       HBCIUtils.init(null,null,this.callback);
       HBCIUtils.setParam("log.loglevel.default",""+logLevel);
@@ -374,7 +383,10 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
- * Revision 1.82  2006-01-18 18:40:35  willuhn
+ * Revision 1.83  2006-02-26 18:15:39  willuhn
+ * @N hbcicallback can be customized now
+ *
+ * Revision 1.82  2006/01/18 18:40:35  willuhn
  * @N Redesign des Background-Task-Handlings
  *
  * Revision 1.81  2006/01/17 00:22:37  willuhn
