@@ -70,7 +70,8 @@ public class TurnusRestriction implements Restriction
       return;
 
     String turnusMonths = p.getProperty("turnusmonths");
-		if (turnusMonths == null || turnusMonths.length() == 0)
+    // BUGZILLA 206
+		if (turnusMonths == null || turnusMonths.length() == 0 || turnusMonths.equals("00"))
 			return; // keine Einschraenkung
 
 		int test = turnus.getIntervall();
@@ -99,7 +100,8 @@ public class TurnusRestriction implements Restriction
       return;
 
     String days = p.getProperty("dayspermonth");
-    if (days == null || days.length() == 0)
+    // BUGZILLA 206
+    if (days == null || days.length() == 0 || days.equals("00"))
       return; // keine Einschraenkung
 
     int test = turnus.getTag();
@@ -135,7 +137,10 @@ public class TurnusRestriction implements Restriction
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2005-06-27 11:26:30  web0
+ * Revision 1.4  2006-03-02 13:52:47  willuhn
+ * @B bug 206
+ *
+ * Revision 1.3  2005/06/27 11:26:30  web0
  * @N neuer Test bei Dauerauftraegen (zum Monatsletzten)
  * @N neue DDV-Lib
  *
