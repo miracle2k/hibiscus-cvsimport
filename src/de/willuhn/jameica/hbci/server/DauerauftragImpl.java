@@ -19,6 +19,7 @@ import java.util.zip.CRC32;
 
 import de.willuhn.datasource.GenericObject;
 import de.willuhn.jameica.hbci.HBCI;
+import de.willuhn.jameica.hbci.HBCIProperties;
 import de.willuhn.jameica.hbci.rmi.Checksum;
 import de.willuhn.jameica.hbci.rmi.Dauerauftrag;
 import de.willuhn.jameica.hbci.rmi.Turnus;
@@ -330,7 +331,7 @@ public class DauerauftragImpl extends AbstractTransferImpl
     {
       // Siehe oben. Nur mit Monat statt Woche
       cal.add(Calendar.MONTH,t.getIntervall());
-      if (tag == 99)
+      if (tag == HBCIProperties.HBCI_LAST_OF_MONTH)
         cal.set(Calendar.DAY_OF_MONTH,cal.getActualMaximum(Calendar.DAY_OF_MONTH));
       else
         cal.set(Calendar.DAY_OF_MONTH,tag);
@@ -338,7 +339,7 @@ public class DauerauftragImpl extends AbstractTransferImpl
       if (current.after(test))
       {
         cal.add(Calendar.MONTH,1);
-        if (tag == 99)
+        if (tag == HBCIProperties.HBCI_LAST_OF_MONTH)
           cal.set(Calendar.DAY_OF_MONTH,cal.getActualMaximum(Calendar.DAY_OF_MONTH));
       }
       
@@ -351,7 +352,10 @@ public class DauerauftragImpl extends AbstractTransferImpl
 
 /**********************************************************************
  * $Log$
- * Revision 1.20  2006-02-28 23:05:59  willuhn
+ * Revision 1.21  2006-03-02 13:47:14  willuhn
+ * @C replaced "99" with HBCI_LAST_OF_MONTH
+ *
+ * Revision 1.20  2006/02/28 23:05:59  willuhn
  * @B bug 204
  *
  * Revision 1.19  2006/02/20 17:33:08  willuhn
