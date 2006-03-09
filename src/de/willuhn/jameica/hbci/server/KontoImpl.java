@@ -549,6 +549,7 @@ public class KontoImpl extends AbstractDBObject implements Konto {
     cal.set(Calendar.HOUR_OF_DAY,0);
     cal.set(Calendar.MINUTE,0);
     cal.set(Calendar.SECOND,0);
+    cal.set(Calendar.MILLISECOND,0); // Thanks to Simon Schultze-Florey ;)
     
     Date start = cal.getTime();
     
@@ -579,7 +580,10 @@ public class KontoImpl extends AbstractDBObject implements Konto {
 
 /**********************************************************************
  * $Log$
- * Revision 1.61  2006-03-09 18:24:05  willuhn
+ * Revision 1.62  2006-03-09 23:00:07  willuhn
+ * @B Summen-Berechnung
+ *
+ * Revision 1.61  2006/03/09 18:24:05  willuhn
  * @N Auswahl der Tage in Umsatz-Chart
  *
  * Revision 1.60  2006/02/06 14:53:39  willuhn
