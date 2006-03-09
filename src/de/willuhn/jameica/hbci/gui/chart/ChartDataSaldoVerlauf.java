@@ -33,6 +33,7 @@ public class ChartDataSaldoVerlauf implements ChartData
 
   private Konto konto         = null;
   private Formatter formatter = null;
+  private int days            = -1;
   
   /**
    * ct.
@@ -44,12 +45,29 @@ public class ChartDataSaldoVerlauf implements ChartData
   }
 
   /**
+   * ct.
+   * @param k das Konto, fuer das das Diagramm gemalt werden soll.
+   * @param days Anzahl der Tage, die der Chart in die Vergangenheit reichen soll.
+   */
+  public ChartDataSaldoVerlauf(Konto k, int days)
+  {
+    this.konto = k;
+    this.days = days;
+  }
+
+  /**
    * @see de.willuhn.jameica.hbci.gui.chart.ChartData#getData()
    */
   public GenericIterator getData() throws RemoteException
   {
     DBIterator list = Settings.getDBService().createList(Umsatz.class);
     list.addFilter("konto_id = " + this.konto.getID());
+
+    if (this.days > 0)
+    {
+      long d = days * 24l * 60l * 60l * 1000l;
+      list.addFilter("TONUMBER(valuta) > " + (System.currentTimeMillis() - d));
+    }
     list.setOrder(" ORDER BY TONUMBER(valuta) ASC");
     return list;
   }
@@ -108,7 +126,10 @@ public class ChartDataSaldoVerlauf implements ChartData
 
 /*********************************************************************
  * $Log$
- * Revision 1.2  2005-12-12 18:53:00  willuhn
+ * Revision 1.3  2006-03-09 18:24:05  willuhn
+ * @N Auswahl der Tage in Umsatz-Chart
+ *
+ * Revision 1.2  2005/12/12 18:53:00  willuhn
  * *** empty log message ***
  *
  * Revision 1.1  2005/12/12 15:46:55  willuhn

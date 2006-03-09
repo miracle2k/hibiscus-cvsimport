@@ -87,7 +87,7 @@ public class KontoImpl extends AbstractDBObject implements Konto {
 
       // BUGZILLA 29 http://www.willuhn.de/bugzilla/show_bug.cgi?id=29
       if (getWaehrung() == null || getWaehrung().length() != 3)
-        throw new ApplicationException(i18n.tr("Bitte verwenden Sie einen 3-Buchstaben-Währungscode Z.Bsp. \"EUR\"."));
+        setWaehrung(HBCIProperties.CURRENCY_DEFAULT_DE);
 
 			if (!HBCIProperties.checkAccountCRC(getBLZ(),getKontonummer()))
 				throw new ApplicationException(i18n.tr("Ungültige BLZ/Kontonummer. Bitte prüfen Sie Ihre Eingaben."));
@@ -579,7 +579,10 @@ public class KontoImpl extends AbstractDBObject implements Konto {
 
 /**********************************************************************
  * $Log$
- * Revision 1.60  2006-02-06 14:53:39  willuhn
+ * Revision 1.61  2006-03-09 18:24:05  willuhn
+ * @N Auswahl der Tage in Umsatz-Chart
+ *
+ * Revision 1.60  2006/02/06 14:53:39  willuhn
  * @N new column "#" in umsatzlist
  *
  * Revision 1.59  2006/01/23 11:11:36  willuhn

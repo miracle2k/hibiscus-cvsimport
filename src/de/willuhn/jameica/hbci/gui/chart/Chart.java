@@ -13,6 +13,8 @@
 
 package de.willuhn.jameica.hbci.gui.chart;
 
+import java.rmi.RemoteException;
+
 import de.willuhn.jameica.gui.Part;
 
 /**
@@ -37,12 +39,27 @@ public interface Chart extends Part
    * @param data
    */
   public void addData(ChartData data);
+  
+  /**
+   * Entfernt eine Datenreihe aus dem Chart.
+   * @param data
+   */
+  public void removeData(ChartData data);
+
+  /**
+   * Zeichnet das Chart neu.
+   * @throws RemoteException
+   */
+  public void redraw() throws RemoteException;
 }
 
 
 /*********************************************************************
  * $Log$
- * Revision 1.2  2005-12-20 00:03:27  willuhn
+ * Revision 1.3  2006-03-09 18:24:05  willuhn
+ * @N Auswahl der Tage in Umsatz-Chart
+ *
+ * Revision 1.2  2005/12/20 00:03:27  willuhn
  * @N Test-Code fuer Tortendiagramm-Auswertungen
  *
  * Revision 1.1  2005/12/12 15:46:55  willuhn
