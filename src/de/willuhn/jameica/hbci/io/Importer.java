@@ -6,7 +6,7 @@
  * $Locker$
  * $State$
  *
- * Copyright (c) by  bbv AG
+ * Copyright (c) by willuhn.webdesign
  * All rights reserved
  *
  **********************************************************************/
@@ -45,7 +45,10 @@ public interface Importer extends IO
 
 /*********************************************************************
  * $Log$
- * Revision 1.4  2006-01-23 00:36:29  willuhn
+ * Revision 1.5  2006-03-15 18:01:30  willuhn
+ * @N AbstractHBCIJob#getName
+ *
+ * Revision 1.4  2006/01/23 00:36:29  willuhn
  * @N Import, Export und Chipkartentest laufen jetzt als Background-Task
  *
  * Revision 1.3  2006/01/18 00:51:01  willuhn

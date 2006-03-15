@@ -79,7 +79,16 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob {
   {
     return "DauerList";
   }
-  
+
+  /**
+   * @see de.willuhn.jameica.hbci.server.hbci.AbstractHBCIJob#getName()
+   */
+  public String getName() throws RemoteException
+  {
+    String name = konto.getBezeichnung();
+    return i18n.tr("Abrufen der Daueraufträge von Konto {0}",name);
+  }
+
   /**
    * Prueft, ob das Abrufen der Dauerauftraege erfolgreich war und aktualisiert
    * die lokalen Kopien.
@@ -240,7 +249,10 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.26  2006-03-15 17:28:41  willuhn
+ * Revision 1.27  2006-03-15 18:01:30  willuhn
+ * @N AbstractHBCIJob#getName
+ *
+ * Revision 1.26  2006/03/15 17:28:41  willuhn
  * @C Refactoring der Anzeige der HBCI-Fehlermeldungen
  *
  * Revision 1.25  2005/12/05 16:07:17  willuhn

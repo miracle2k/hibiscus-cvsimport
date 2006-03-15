@@ -108,6 +108,15 @@ public class HBCILastschriftJob extends AbstractHBCIJob
   }
   
   /**
+   * @see de.willuhn.jameica.hbci.server.hbci.AbstractHBCIJob#getName()
+   */
+  public String getName() throws RemoteException
+  {
+    String empfName = lastschrift.getGegenkontoName();
+    return i18n.tr("Absenden der Lastschrift an {0}",empfName);
+  }
+
+  /**
    * Prueft, ob die lastschrift erfolgreich war und markiert diese im Erfolgsfall als "ausgefuehrt".
    * @see de.willuhn.jameica.hbci.server.hbci.AbstractHBCIJob#handleResult()
    */
@@ -138,7 +147,10 @@ public class HBCILastschriftJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2006-03-15 17:28:41  willuhn
+ * Revision 1.8  2006-03-15 18:01:30  willuhn
+ * @N AbstractHBCIJob#getName
+ *
+ * Revision 1.7  2006/03/15 17:28:41  willuhn
  * @C Refactoring der Anzeige der HBCI-Fehlermeldungen
  *
  * Revision 1.6  2005/03/30 23:26:28  web0

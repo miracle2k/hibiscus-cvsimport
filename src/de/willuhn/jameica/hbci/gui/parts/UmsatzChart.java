@@ -6,7 +6,7 @@
  * $Locker$
  * $State$
  *
- * Copyright (c) by  bbv AG
+ * Copyright (c) by willuhn.webdesign
  * All rights reserved
  *
  **********************************************************************/
@@ -139,7 +139,10 @@ public class UmsatzChart implements Part
 
 /*********************************************************************
  * $Log$
- * Revision 1.1  2006-03-09 18:24:05  willuhn
+ * Revision 1.2  2006-03-15 18:01:30  willuhn
+ * @N AbstractHBCIJob#getName
+ *
+ * Revision 1.1  2006/03/09 18:24:05  willuhn
  * @N Auswahl der Tage in Umsatz-Chart
  *
  *********************************************************************/

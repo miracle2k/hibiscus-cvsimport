@@ -80,6 +80,15 @@ public class HBCISaldoJob extends AbstractHBCIJob {
   }
 
   /**
+   * @see de.willuhn.jameica.hbci.server.hbci.AbstractHBCIJob#getName()
+   */
+  public String getName() throws RemoteException
+  {
+    String name = konto.getBezeichnung();
+    return i18n.tr("Abrufen des Saldos von Konto {0}",name);
+  }
+
+  /**
    * Prueft, ob das Abrufen des Saldo erfolgreich war.
    * @see de.willuhn.jameica.hbci.server.hbci.AbstractHBCIJob#handleResult()
    */
@@ -109,7 +118,10 @@ public class HBCISaldoJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.19  2006-03-15 17:28:41  willuhn
+ * Revision 1.20  2006-03-15 18:01:30  willuhn
+ * @N AbstractHBCIJob#getName
+ *
+ * Revision 1.19  2006/03/15 17:28:41  willuhn
  * @C Refactoring der Anzeige der HBCI-Fehlermeldungen
  *
  * Revision 1.18  2006/01/23 12:16:57  willuhn

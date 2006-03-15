@@ -81,6 +81,15 @@ public class HBCIUmsatzJob extends AbstractHBCIJob {
   }
 
   /**
+   * @see de.willuhn.jameica.hbci.server.hbci.AbstractHBCIJob#getName()
+   */
+  public String getName() throws RemoteException
+  {
+    String name = konto.getBezeichnung();
+    return i18n.tr("Abrufen der Umsätze von Konto {0}",name);
+  }
+  
+  /**
    * Prueft, ob das Abrufen der Umsaetze erfolgreich war und speichert die
    * neu hinzugekommenen.
    * @see de.willuhn.jameica.hbci.server.hbci.AbstractHBCIJob#handleResult()
@@ -147,7 +156,10 @@ public class HBCIUmsatzJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.19  2006-03-15 17:28:41  willuhn
+ * Revision 1.20  2006-03-15 18:01:30  willuhn
+ * @N AbstractHBCIJob#getName
+ *
+ * Revision 1.19  2006/03/15 17:28:41  willuhn
  * @C Refactoring der Anzeige der HBCI-Fehlermeldungen
  *
  * Revision 1.18  2005/12/05 17:20:40  willuhn

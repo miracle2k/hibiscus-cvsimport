@@ -153,6 +153,18 @@ public class HBCIDauerauftragStoreJob extends AbstractHBCIJob {
   }
 
   /**
+   * @see de.willuhn.jameica.hbci.server.hbci.AbstractHBCIJob#getName()
+   */
+  public String getName() throws RemoteException
+  {
+    String empfName = dauerauftrag.getGegenkontoName();
+    if (active)
+      return i18n.tr("Aktualisieren des Dauerauftrages an {0}",empfName);
+    else
+      return i18n.tr("Absenden des Dauerauftrages an {0}",empfName);
+  }
+
+  /**
 	 * Prueft, ob das Senden des Dauerauftrags erfolgreich war und speichert im
 	 * Erfolgsfall die Order-ID.
    * @see de.willuhn.jameica.hbci.server.hbci.AbstractHBCIJob#handleResult()
@@ -202,7 +214,10 @@ public class HBCIDauerauftragStoreJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.14  2006-03-15 17:28:41  willuhn
+ * Revision 1.15  2006-03-15 18:01:30  willuhn
+ * @N AbstractHBCIJob#getName
+ *
+ * Revision 1.14  2006/03/15 17:28:41  willuhn
  * @C Refactoring der Anzeige der HBCI-Fehlermeldungen
  *
  * Revision 1.13  2005/11/14 13:38:43  willuhn
