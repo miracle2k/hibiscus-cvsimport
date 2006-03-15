@@ -89,14 +89,11 @@ public class HBCIUmsatzJob extends AbstractHBCIJob {
   {
 		GVRKUms result = (GVRKUms) getJobResult();
 
-		String statusText = getStatusText();
 		if (!result.isOK())
 		{
-			String msg = (statusText != null) ?
-										i18n.tr("Fehlermeldung der Bank") + ": " + statusText :
-										i18n.tr("Fehler beim Abrufen der Umsätze");
+			String msg = getStatusText();
 
-			konto.addToProtokoll(i18n.tr("Fehler beim Abrufen der Umsätze") + " ("+ msg +")",Protokoll.TYP_ERROR);
+			konto.addToProtokoll(i18n.tr("Fehler beim Abrufen der Umsätze: {0}",msg),Protokoll.TYP_ERROR);
 			throw new ApplicationException(msg);
 		}
 
@@ -150,7 +147,10 @@ public class HBCIUmsatzJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.18  2005-12-05 17:20:40  willuhn
+ * Revision 1.19  2006-03-15 17:28:41  willuhn
+ * @C Refactoring der Anzeige der HBCI-Fehlermeldungen
+ *
+ * Revision 1.18  2005/12/05 17:20:40  willuhn
  * @N Umsatz-Filter Refactoring
  *
  * Revision 1.17  2005/11/22 17:31:31  willuhn

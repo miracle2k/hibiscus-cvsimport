@@ -159,28 +159,24 @@ public class HBCIDauerauftragStoreJob extends AbstractHBCIJob {
 	 */
 	void handleResult() throws ApplicationException, RemoteException
 	{
-		String statusText = getStatusText();
-
-		String empfName = i18n.tr("an") + " " + dauerauftrag.getGegenkontoName();
+		String empfName = dauerauftrag.getGegenkontoName();
 
 		if (!getJobResult().isOK())
 		{
 
-			String msg = i18n.tr("Fehler beim Ausführen des Dauerauftrages") + " " + empfName;
+			String msg = i18n.tr("Fehler beim Ausführen des Dauerauftrages an {0}",empfName);
 
 
-			String error = (statusText != null) ?
-										i18n.tr("Fehlermeldung der Bank") + ": " + statusText :
-										i18n.tr("Unbekannter Fehler");
+			String error = getStatusText();
 
-			konto.addToProtokoll(msg + " ("+error+")",Protokoll.TYP_ERROR);
-			throw new ApplicationException(msg + " ("+error+")");
+			konto.addToProtokoll(msg + ": " + error,Protokoll.TYP_ERROR);
+			throw new ApplicationException(msg + ": " + error);
 		}
 
 		if (dauerauftrag.isActive())
-			konto.addToProtokoll(i18n.tr("Dauerauftrag aktualisiert") + " " + empfName,Protokoll.TYP_SUCCESS);
+			konto.addToProtokoll(i18n.tr("Dauerauftrag aktualisiert an {0}",empfName),Protokoll.TYP_SUCCESS);
 		else
-			konto.addToProtokoll(i18n.tr("Dauerauftrag ausgeführt") + " " + empfName,Protokoll.TYP_SUCCESS);
+			konto.addToProtokoll(i18n.tr("Dauerauftrag ausgeführt an {0} ",empfName),Protokoll.TYP_SUCCESS);
 
 		// jetzt muessen wir noch die Order-ID speichern, wenn er neu eingereicht wurde
 		String orderID = null;
@@ -206,7 +202,10 @@ public class HBCIDauerauftragStoreJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.13  2005-11-14 13:38:43  willuhn
+ * Revision 1.14  2006-03-15 17:28:41  willuhn
+ * @C Refactoring der Anzeige der HBCI-Fehlermeldungen
+ *
+ * Revision 1.13  2005/11/14 13:38:43  willuhn
  * @N Termin-Ueberweisungen
  *
  * Revision 1.12  2005/05/19 23:31:07  web0

@@ -157,28 +157,22 @@ public class HBCIDauerauftragDeleteJob extends AbstractHBCIJob
    */
 	void handleResult() throws ApplicationException, RemoteException
 	{
-		String statusText = getStatusText();
-
-		String empfName = i18n.tr("an") + " " + dauerauftrag.getGegenkontoName();
+		String empfName = dauerauftrag.getGegenkontoName();
 
 		if (!getJobResult().isOK())
 		{
 
-			String msg = i18n.tr("Fehler beim Löschen des Dauerauftrages") + " " + empfName;
+			String msg = i18n.tr("Fehler beim Löschen des Dauerauftrages an {0}",empfName);
 
 
-			String error = (statusText != null) ?
-										i18n.tr("Fehlermeldung der Bank") + ": " + statusText :
-										i18n.tr("Unbekannter Fehler");
+			String error = getStatusText();
 
-			konto.addToProtokoll(msg + " ("+error+")",Protokoll.TYP_ERROR);
-			throw new ApplicationException(msg + " ("+error+")");
+			konto.addToProtokoll(msg + ": " + error,Protokoll.TYP_ERROR);
+			throw new ApplicationException(msg + ": " + error);
 		}
 
-		konto.addToProtokoll(i18n.tr("Dauerauftrag gelöscht") + " " + empfName,Protokoll.TYP_SUCCESS);
-
+		konto.addToProtokoll(i18n.tr("Dauerauftrag gelöscht an {0}",empfName),Protokoll.TYP_SUCCESS);
 		dauerauftrag.delete();
-
 		Logger.info("dauerauftrag deleted successfully");
 	}
 
@@ -187,7 +181,10 @@ public class HBCIDauerauftragDeleteJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.11  2005-07-20 22:40:56  web0
+ * Revision 1.12  2006-03-15 17:28:41  willuhn
+ * @C Refactoring der Anzeige der HBCI-Fehlermeldungen
+ *
+ * Revision 1.11  2005/07/20 22:40:56  web0
  * *** empty log message ***
  *
  * Revision 1.10  2005/05/19 23:31:07  web0
