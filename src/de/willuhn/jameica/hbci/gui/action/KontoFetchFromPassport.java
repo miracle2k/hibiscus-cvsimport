@@ -52,7 +52,7 @@ public class KontoFetchFromPassport implements Action
 				try {
 
 					GUI.getStatusBar().startProgress();
-					GUI.getStatusBar().setStatusText(i18n.tr("Medium wird ausgelesen..."));
+					GUI.getStatusBar().setSuccessText(i18n.tr("Medium wird ausgelesen..."));
 
 					DBIterator existing = Settings.getDBService().createList(Konto.class);
 					Konto check = null;
@@ -125,7 +125,6 @@ public class KontoFetchFromPassport implements Action
 				finally
 				{
 					GUI.getStatusBar().stopProgress();
-					GUI.getStatusBar().setStatusText("");
 				}
 			}
 		});
@@ -135,7 +134,10 @@ public class KontoFetchFromPassport implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.11  2005-08-01 23:27:42  web0
+ * Revision 1.12  2006-03-15 16:25:48  willuhn
+ * @N Statusbar refactoring
+ *
+ * Revision 1.11  2005/08/01 23:27:42  web0
  * *** empty log message ***
  *
  * Revision 1.10  2005/06/21 21:48:24  web0
