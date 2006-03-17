@@ -50,7 +50,7 @@ public class SynchronizeDauerauftragListJob extends AbstractSynchronizeJob
   public String getName() throws RemoteException
   {
     Konto k = (Konto) getContext();
-    return i18n.tr("Konto {0}: Daeueraufträge abrufen",k.getLongName());
+    return i18n.tr("Konto {0}: Daueraufträge abrufen",k.getLongName());
   }
 
   /**
@@ -65,7 +65,10 @@ public class SynchronizeDauerauftragListJob extends AbstractSynchronizeJob
 
 /*********************************************************************
  * $Log$
- * Revision 1.1  2006-03-17 00:51:24  willuhn
+ * Revision 1.2  2006-03-17 00:58:49  willuhn
+ * @B typo
+ *
+ * Revision 1.1  2006/03/17 00:51:24  willuhn
  * @N bug 209 Neues Synchronisierungs-Subsystem
  *
  **********************************************************************/
