@@ -160,8 +160,7 @@ public class HBCIDauerauftragStoreJob extends AbstractHBCIJob {
     String empfName = dauerauftrag.getGegenkontoName();
     if (active)
       return i18n.tr("Aktualisieren des Dauerauftrages an {0}",empfName);
-    else
-      return i18n.tr("Absenden des Dauerauftrages an {0}",empfName);
+    return i18n.tr("Absenden des Dauerauftrages an {0}",empfName);
   }
 
   /**
@@ -214,7 +213,10 @@ public class HBCIDauerauftragStoreJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.15  2006-03-15 18:01:30  willuhn
+ * Revision 1.16  2006-03-17 00:51:25  willuhn
+ * @N bug 209 Neues Synchronisierungs-Subsystem
+ *
+ * Revision 1.15  2006/03/15 18:01:30  willuhn
  * @N AbstractHBCIJob#getName
  *
  * Revision 1.14  2006/03/15 17:28:41  willuhn

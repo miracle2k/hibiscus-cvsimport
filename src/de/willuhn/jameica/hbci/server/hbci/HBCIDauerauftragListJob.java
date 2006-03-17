@@ -85,7 +85,7 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob {
    */
   public String getName() throws RemoteException
   {
-    String name = konto.getBezeichnung();
+    String name = konto.getLongName();
     return i18n.tr("Abrufen der Daueraufträge von Konto {0}",name);
   }
 
@@ -249,7 +249,10 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.27  2006-03-15 18:01:30  willuhn
+ * Revision 1.28  2006-03-17 00:51:25  willuhn
+ * @N bug 209 Neues Synchronisierungs-Subsystem
+ *
+ * Revision 1.27  2006/03/15 18:01:30  willuhn
  * @N AbstractHBCIJob#getName
  *
  * Revision 1.26  2006/03/15 17:28:41  willuhn

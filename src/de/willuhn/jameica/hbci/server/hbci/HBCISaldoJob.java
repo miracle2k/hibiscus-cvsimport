@@ -84,7 +84,7 @@ public class HBCISaldoJob extends AbstractHBCIJob {
    */
   public String getName() throws RemoteException
   {
-    String name = konto.getBezeichnung();
+    String name = konto.getLongName();
     return i18n.tr("Abrufen des Saldos von Konto {0}",name);
   }
 
@@ -118,7 +118,10 @@ public class HBCISaldoJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.20  2006-03-15 18:01:30  willuhn
+ * Revision 1.21  2006-03-17 00:51:24  willuhn
+ * @N bug 209 Neues Synchronisierungs-Subsystem
+ *
+ * Revision 1.20  2006/03/15 18:01:30  willuhn
  * @N AbstractHBCIJob#getName
  *
  * Revision 1.19  2006/03/15 17:28:41  willuhn

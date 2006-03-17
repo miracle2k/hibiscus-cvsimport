@@ -17,6 +17,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.zip.CRC32;
 
+import org.kapott.hbci.manager.HBCIUtils;
+
 import de.willuhn.datasource.db.AbstractDBObject;
 import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.jameica.hbci.HBCI;
@@ -445,7 +447,25 @@ public class KontoImpl extends AbstractDBObject implements Konto {
   public Object getAttribute(String arg0) throws RemoteException
   {
   	if ("longname".equals(arg0))
-  		return "[" + getKontonummer() + "] " + getBezeichnung();
+    {
+      String bez = getBezeichnung();
+      String blz = getBLZ();
+      String kto = getKontonummer();
+      try
+      {
+        String name = HBCIUtils.getNameForBLZ(blz);
+        if (name != null && name.length() > 0)
+          blz = name;
+      }
+      catch (Exception e)
+      {
+        // ignore
+      }
+
+      if (bez != null && bez.length() > 0)
+        return i18n.tr("{0} {1} [{2}]", new String[]{kto,bez,blz});
+      return i18n.tr("{0} [{1}]", new String[]{kto,blz});
+    }
 
     return super.getAttribute(arg0);
   }
@@ -575,12 +595,23 @@ public class KontoImpl extends AbstractDBObject implements Konto {
     return sum;
     
   }
+
+  /**
+   * @see de.willuhn.jameica.hbci.rmi.Konto#getLongName()
+   */
+  public String getLongName() throws RemoteException
+  {
+    return (String) getAttribute("longname");
+  }
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.62  2006-03-09 23:00:07  willuhn
+ * Revision 1.63  2006-03-17 00:51:25  willuhn
+ * @N bug 209 Neues Synchronisierungs-Subsystem
+ *
+ * Revision 1.62  2006/03/09 23:00:07  willuhn
  * @B Summen-Berechnung
  *
  * Revision 1.61  2006/03/09 18:24:05  willuhn

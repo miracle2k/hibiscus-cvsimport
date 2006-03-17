@@ -44,6 +44,13 @@ public interface Konto extends DBObject,Checksum
    * @throws RemoteException
    */
   public String getName() throws RemoteException;
+  
+  /**
+   * Liefert eine ausfuehrliche Bezeichnung des Kontos bestehend aus Bezeichnung, Kto und BLZ.
+   * @return ausfuehrliche Bezeichnung.
+   * @throws RemoteException
+   */
+  public String getLongName() throws RemoteException;
 	
 	/**
 	 * Liefert die Bezeichnung des Kontos.
@@ -265,7 +272,10 @@ public interface Konto extends DBObject,Checksum
 
 /**********************************************************************
  * $Log$
- * Revision 1.29  2005-11-10 23:32:59  willuhn
+ * Revision 1.30  2006-03-17 00:51:25  willuhn
+ * @N bug 209 Neues Synchronisierungs-Subsystem
+ *
+ * Revision 1.29  2005/11/10 23:32:59  willuhn
  * @B foreign key to sueberweisung when deleting a konto
  *
  * Revision 1.28  2005/10/17 13:01:59  willuhn
