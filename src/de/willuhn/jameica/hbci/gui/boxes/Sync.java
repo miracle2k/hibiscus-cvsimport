@@ -60,7 +60,8 @@ public class Sync extends AbstractBox implements Box
    */
   public void paint(Composite parent) throws RemoteException
   {
-    LabelGroup sync = new LabelGroup(parent,getName());
+    // BUGZILLA 209
+    LabelGroup sync = new LabelGroup(parent,getName(),true);
     getSynchronizeList().paint(sync.getComposite());
 
     ButtonArea b = sync.createButtonArea(1);
@@ -121,7 +122,10 @@ public class Sync extends AbstractBox implements Box
 
 /*********************************************************************
  * $Log$
- * Revision 1.4  2006-03-17 00:51:25  willuhn
+ * Revision 1.5  2006-03-19 23:04:49  willuhn
+ * @B bug 209
+ *
+ * Revision 1.4  2006/03/17 00:51:25  willuhn
  * @N bug 209 Neues Synchronisierungs-Subsystem
  *
  * Revision 1.3  2006/02/06 17:16:10  willuhn

@@ -41,7 +41,7 @@ public class SynchronizeList extends TablePart
   {
     super(SynchronizeEngine.getInstance().getSynchronizeJobs(),new MyAction());
     addColumn(i18n.tr("Aufgabe"),"name");
-}
+  }
   
   /**
    * Hilfsklasse zum Reagieren auf Doppelklicks in der Liste.
@@ -77,7 +77,10 @@ public class SynchronizeList extends TablePart
 
 /*********************************************************************
  * $Log$
- * Revision 1.1  2006-03-17 00:51:25  willuhn
+ * Revision 1.2  2006-03-19 23:04:49  willuhn
+ * @B bug 209
+ *
+ * Revision 1.1  2006/03/17 00:51:25  willuhn
  * @N bug 209 Neues Synchronisierungs-Subsystem
  *
  **********************************************************************/
