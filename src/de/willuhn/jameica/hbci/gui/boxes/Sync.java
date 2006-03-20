@@ -89,7 +89,7 @@ public class Sync extends AbstractBox implements Box
    */
   public int getDefaultIndex()
   {
-    return 1;
+    return 2;
   }
 
   /**
@@ -122,7 +122,10 @@ public class Sync extends AbstractBox implements Box
 
 /*********************************************************************
  * $Log$
- * Revision 1.5  2006-03-19 23:04:49  willuhn
+ * Revision 1.6  2006-03-20 00:35:53  willuhn
+ * @N new box "Konten-Übersicht"
+ *
+ * Revision 1.5  2006/03/19 23:04:49  willuhn
  * @B bug 209
  *
  * Revision 1.4  2006/03/17 00:51:25  willuhn

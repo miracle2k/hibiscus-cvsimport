@@ -65,7 +65,7 @@ public class UmsatzTyp extends AbstractBox
    */
   public int getDefaultIndex()
   {
-    return 4;
+    return 5;
   }
 
   /**
@@ -103,7 +103,10 @@ public class UmsatzTyp extends AbstractBox
 
 /*********************************************************************
  * $Log$
- * Revision 1.2  2005-12-30 00:14:45  willuhn
+ * Revision 1.3  2006-03-20 00:35:53  willuhn
+ * @N new box "Konten-Übersicht"
+ *
+ * Revision 1.2  2005/12/30 00:14:45  willuhn
  * @N first working pie charts
  *
  * Revision 1.1  2005/12/20 00:03:27  willuhn

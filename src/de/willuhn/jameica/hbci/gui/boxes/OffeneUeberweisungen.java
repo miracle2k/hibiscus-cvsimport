@@ -70,7 +70,7 @@ public class OffeneUeberweisungen extends AbstractBox implements Box
    */
   public int getDefaultIndex()
   {
-    return 3;
+    return 4;
   }
 
   /**
@@ -113,7 +113,10 @@ public class OffeneUeberweisungen extends AbstractBox implements Box
 
 /*********************************************************************
  * $Log$
- * Revision 1.2  2006-01-18 10:08:21  willuhn
+ * Revision 1.3  2006-03-20 00:35:53  willuhn
+ * @N new box "Konten-Übersicht"
+ *
+ * Revision 1.2  2006/01/18 10:08:21  willuhn
  * @N Termin-Ueberweisungen werden immer auf der Startseite angezeigt
  *
  * Revision 1.1  2005/11/09 01:13:53  willuhn
