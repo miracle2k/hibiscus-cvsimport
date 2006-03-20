@@ -456,6 +456,8 @@ public class KontoImpl extends AbstractDBObject implements Konto {
         String name = HBCIUtils.getNameForBLZ(blz);
         if (name != null && name.length() > 0)
           blz = name;
+        else
+          blz = i18n.tr("BLZ") + ": " + blz;
       }
       catch (Exception e)
       {
@@ -463,8 +465,8 @@ public class KontoImpl extends AbstractDBObject implements Konto {
       }
 
       if (bez != null && bez.length() > 0)
-        return i18n.tr("{0} {1} [{2}]", new String[]{kto,bez,blz});
-      return i18n.tr("{0} [{1}]", new String[]{kto,blz});
+        return i18n.tr("{0}, Kto. {1} [{2}]", new String[]{bez,kto,blz});
+      return i18n.tr("Kto. {0} [BLZ: {1}]", new String[]{kto,blz});
     }
 
     return super.getAttribute(arg0);
@@ -608,7 +610,10 @@ public class KontoImpl extends AbstractDBObject implements Konto {
 
 /**********************************************************************
  * $Log$
- * Revision 1.63  2006-03-17 00:51:25  willuhn
+ * Revision 1.64  2006-03-20 17:49:01  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.63  2006/03/17 00:51:25  willuhn
  * @N bug 209 Neues Synchronisierungs-Subsystem
  *
  * Revision 1.62  2006/03/09 23:00:07  willuhn
