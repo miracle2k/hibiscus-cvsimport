@@ -21,7 +21,6 @@ import de.willuhn.datasource.pseudo.PseudoIterator;
 import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
-import de.willuhn.jameica.hbci.gui.dialogs.SynchronizeOptionsDialog;
 import de.willuhn.jameica.hbci.rmi.Dauerauftrag;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Lastschrift;
@@ -206,7 +205,10 @@ public class SynchronizeEngine
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2006-03-21 00:43:14  willuhn
+ * Revision 1.4  2006-03-21 00:44:40  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.3  2006/03/21 00:43:14  willuhn
  * @B bug 209
  *
  * Revision 1.2  2006/03/17 00:51:25  willuhn
