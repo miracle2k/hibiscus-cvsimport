@@ -15,7 +15,7 @@ package de.willuhn.jameica.hbci.server.hbci.synchronize;
 
 import java.rmi.RemoteException;
 
-import de.willuhn.jameica.hbci.gui.action.DauerauftragNew;
+import de.willuhn.jameica.hbci.gui.action.DauerauftragList;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.server.hbci.AbstractHBCIJob;
 import de.willuhn.jameica.hbci.server.hbci.HBCIDauerauftragListJob;
@@ -58,14 +58,17 @@ public class SynchronizeDauerauftragListJob extends AbstractSynchronizeJob
    */
   public void configure() throws RemoteException, ApplicationException
   {
-    new DauerauftragNew().handleAction(getContext());
+    new DauerauftragList().handleAction(getContext());
   }
 }
 
 
 /*********************************************************************
  * $Log$
- * Revision 1.2  2006-03-17 00:58:49  willuhn
+ * Revision 1.3  2006-03-21 00:43:14  willuhn
+ * @B bug 209
+ *
+ * Revision 1.2  2006/03/17 00:58:49  willuhn
  * @B typo
  *
  * Revision 1.1  2006/03/17 00:51:24  willuhn
