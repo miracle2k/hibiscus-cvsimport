@@ -86,11 +86,12 @@ public class NachrichtList extends TablePart implements Part
         if (o == null)
           return null;
         String s = (String) o;
-        // TODO Ist das eine Sparkassen-Eigenart, dass die Nachrichten Festbreite haben?
-        // Na gut, wir brechen hart nach 100 Zeichen um, wenn keine Zeilenumbrueche drin sind
         if (s.indexOf('\n') != -1)
           return s;
-        s = s.replaceAll("(.{100})","$1\n");
+        // TODO Ist das eine Sparkassen-Eigenart, dass die Nachrichten Festbreite haben?
+        // Na gut, dann nehmen wir die alle ueberfluessigen Leerzeichen raus und brechen hart um.
+        s = s.replaceAll("( {1,})"," ");
+        s = s.replaceAll("(.{77})","$1\n");
         return s;
       }
     });
@@ -115,7 +116,10 @@ public class NachrichtList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2005-11-09 01:13:53  willuhn
+ * Revision 1.3  2006-03-23 23:44:58  willuhn
+ * @N Umbruch der System-Nachrichten
+ *
+ * Revision 1.2  2005/11/09 01:13:53  willuhn
  * @N chipcard modul fuer AMD64 vergessen
  * @N Startseite jetzt frei konfigurierbar
  *
