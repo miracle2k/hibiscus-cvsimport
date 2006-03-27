@@ -46,10 +46,10 @@ public class LastschriftNew extends AbstractView {
 		
 		LabelGroup konten = new LabelGroup(getParent(),i18n.tr("Konten"));
 		
-		konten.addLabelPair(i18n.tr("persönliches Konto (Empfänger)"),	control.getKontoAuswahl());		
-    konten.addLabelPair(i18n.tr("Name Zahlungspflichtiger"),        control.getEmpfaengerName());
-		konten.addLabelPair(i18n.tr("Kontonummer Zahlungspflichtiger"),	control.getEmpfaengerKonto());		
-		konten.addLabelPair(i18n.tr("BLZ Zahlungspflichtiger"),			    control.getEmpfaengerBlz());
+		konten.addLabelPair(i18n.tr("persönliches Konto (Empfänger)"),	    control.getKontoAuswahl());		
+    konten.addLabelPair(i18n.tr("Kontonummer des Zahlungspflichtigen"), control.getEmpfaengerKonto());    
+		konten.addLabelPair(i18n.tr("BLZ des Zahlungspflichtigen"),			    control.getEmpfaengerBlz());
+    konten.addLabelPair(i18n.tr("Name des Zahlungspflichtigen"),        control.getEmpfaengerName());
 		konten.addCheckbox(control.getStoreEmpfaenger(),i18n.tr("Adressdaten im Adressbuch speichern"));
 
 		LabelGroup details = new LabelGroup(getParent(),i18n.tr("Details"));
@@ -89,7 +89,10 @@ public class LastschriftNew extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2006-01-18 00:51:00  willuhn
+ * Revision 1.8  2006-03-27 16:46:21  willuhn
+ * @N GUI polish
+ *
+ * Revision 1.7  2006/01/18 00:51:00  willuhn
  * @B bug 65
  *
  * Revision 1.6  2005/10/17 22:00:44  willuhn

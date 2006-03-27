@@ -46,9 +46,9 @@ public class SammelUeberweisungBuchungNew extends AbstractView {
 		
 		LabelGroup group = new LabelGroup(getParent(),i18n.tr("Empfänger"));
 		
-		group.addLabelPair(i18n.tr("Konto"),		control.getGegenKonto());
-		group.addLabelPair(i18n.tr("BLZ"),			control.getGegenkontoBLZ());		
-		group.addLabelPair(i18n.tr("Name"),			control.getGegenkontoName());
+		group.addLabelPair(i18n.tr("Kontonummer des Empfängers"), control.getGegenKonto());
+		group.addLabelPair(i18n.tr("BLZ des Empfängers"),			    control.getGegenkontoBLZ());		
+		group.addLabelPair(i18n.tr("Name des Empfängers"),			  control.getGegenkontoName());
 		group.addCheckbox(control.getStoreAddress(),i18n.tr("Adressdaten im Adressbuch speichern"));
 
 		LabelGroup details = new LabelGroup(getParent(),i18n.tr("Details"));
@@ -81,7 +81,10 @@ public class SammelUeberweisungBuchungNew extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2006-01-18 00:51:00  willuhn
+ * Revision 1.3  2006-03-27 16:46:21  willuhn
+ * @N GUI polish
+ *
+ * Revision 1.2  2006/01/18 00:51:00  willuhn
  * @B bug 65
  *
  * Revision 1.1  2005/09/30 00:08:51  willuhn
