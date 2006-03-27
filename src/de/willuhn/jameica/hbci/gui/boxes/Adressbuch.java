@@ -72,6 +72,7 @@ public class Adressbuch extends AbstractBox implements Box
   {
     new Headline(parent,getName());
     EmpfaengerList l = new EmpfaengerList(new EmpfaengerNew());
+    l.setSummary(false);
     l.paint(parent);
   }
 
@@ -80,7 +81,10 @@ public class Adressbuch extends AbstractBox implements Box
 
 /*********************************************************************
  * $Log$
- * Revision 1.3  2006-03-20 00:35:53  willuhn
+ * Revision 1.4  2006-03-27 21:34:16  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.3  2006/03/20 00:35:53  willuhn
  * @N new box "Konten-Übersicht"
  *
  * Revision 1.2  2005/11/09 01:14:14  willuhn
