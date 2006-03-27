@@ -208,7 +208,7 @@ public class VelocityExporter implements Exporter
      */
     public String[] getFileExtensions()
     {
-      return new String[]{"*." + extension};
+      return new String[]{extension};
     }
     
     /**
@@ -226,7 +226,10 @@ public class VelocityExporter implements Exporter
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2006-01-23 23:07:23  willuhn
+ * Revision 1.8  2006-03-27 22:36:04  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.7  2006/01/23 23:07:23  willuhn
  * @N csv import stuff
  *
  * Revision 1.6  2006/01/23 00:36:29  willuhn
