@@ -360,6 +360,7 @@ public class Settings
       wallet = Application.getSSLFactory().getWallet(HBCI.class);
 
       // BUGZILLA 109 http://www.willuhn.de/bugzilla/show_bug.cgi?id=109
+      // TODO Altes Wallet-Format kann mal raus
       if (wallet.get("migration") == null)
         wallet.set("migration",new Date().toString());
     }
@@ -369,7 +370,10 @@ public class Settings
 
 /*********************************************************************
  * $Log$
- * Revision 1.41  2006-03-28 17:52:23  willuhn
+ * Revision 1.42  2006-03-28 22:53:19  willuhn
+ * @B bug 218
+ *
+ * Revision 1.41  2006/03/28 17:52:23  willuhn
  * @B bug 218
  *
  * Revision 1.40  2006/03/24 00:15:35  willuhn
