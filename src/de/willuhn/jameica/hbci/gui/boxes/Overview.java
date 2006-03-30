@@ -87,6 +87,7 @@ public class Overview extends AbstractBox implements Box
     group.addLabelPair(i18n.tr("Ausgaben") + ":", getAusgaben());
     group.addSeparator();
     group.addLabelPair(i18n.tr("Bilanz") + ":", getBilanz());
+    refresh();
   }
 
   /**
@@ -125,7 +126,6 @@ public class Overview extends AbstractBox implements Box
         refresh();
       }
     });
-    refresh();
     return this.kontoAuswahl;
   }
 
@@ -321,7 +321,10 @@ public class Overview extends AbstractBox implements Box
 
 /*********************************************************************
  * $Log$
- * Revision 1.2  2006-03-20 16:59:01  willuhn
+ * Revision 1.3  2006-03-30 20:56:28  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.2  2006/03/20 16:59:01  willuhn
  * @N Overview ueber alle Konten
  *
  * Revision 1.1  2005/11/09 01:13:53  willuhn
