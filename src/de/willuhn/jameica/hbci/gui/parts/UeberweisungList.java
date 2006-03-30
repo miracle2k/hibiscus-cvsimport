@@ -27,6 +27,7 @@ import de.willuhn.jameica.gui.formatter.Formatter;
 import de.willuhn.jameica.gui.formatter.TableFormatter;
 import de.willuhn.jameica.gui.parts.TablePart;
 import de.willuhn.jameica.hbci.HBCI;
+import de.willuhn.jameica.hbci.HBCIProperties;
 import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.rmi.Ueberweisung;
 import de.willuhn.jameica.system.Application;
@@ -66,7 +67,7 @@ public class UeberweisungList extends TablePart implements Part
     addColumn(i18n.tr("Empfängername"),"empfaenger_name");
     addColumn(i18n.tr("Empfängerkonto"),"empfaenger_konto");
     addColumn(i18n.tr("Verwendungszweck"),"zweck");
-    addColumn(i18n.tr("Betrag"),"betrag", new CurrencyFormatter("",HBCI.DECIMALFORMAT));
+    addColumn(i18n.tr("Betrag"),"betrag", new CurrencyFormatter(HBCIProperties.CURRENCY_DEFAULT_DE,HBCI.DECIMALFORMAT));
     addColumn(i18n.tr("Termin"),"termin", new DateFormatter(HBCI.LONGDATEFORMAT));
     addColumn(i18n.tr("Status"),"ausgefuehrt",new Formatter() {
       public String format(Object o) {
@@ -100,7 +101,10 @@ public class UeberweisungList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2005-06-27 15:35:27  web0
+ * Revision 1.4  2006-03-30 21:00:11  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.3  2005/06/27 15:35:27  web0
  * @B bug 84
  *
  * Revision 1.2  2005/06/23 21:13:03  web0
