@@ -211,7 +211,7 @@ public class EmpfaengerList extends TablePart implements Part
               if (empty)
               {
                 // ne
-                addItem(a);
+                EmpfaengerList.this.addItem(a);
                 continue;
               }
 
@@ -225,9 +225,10 @@ public class EmpfaengerList extends TablePart implements Part
 
               if (s1.indexOf(text) != -1 || s2.indexOf(text) != -1 || s3.indexOf(text) != -1)
               {
-                addItem(a);
+                EmpfaengerList.this.addItem(a);
               }
             }
+            EmpfaengerList.this.sort();
           }
           catch (Exception e)
           {
@@ -244,7 +245,10 @@ public class EmpfaengerList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2006-02-20 22:57:22  willuhn
+ * Revision 1.7  2006-03-30 22:22:32  willuhn
+ * @B bug 217
+ *
+ * Revision 1.6  2006/02/20 22:57:22  willuhn
  * @N Suchfeld in Adress-Liste
  *
  * Revision 1.5  2006/02/06 15:31:00  willuhn
