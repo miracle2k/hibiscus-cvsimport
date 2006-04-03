@@ -60,12 +60,28 @@ public interface UmsatzTyp extends DBObject
   public GenericIterator getUmsaetze() throws RemoteException;
   
   /**
+   * Liefert eine Liste von Umsaetzen der letzten Tage, die diesem Umsatz-Typ entsprechen.
+   * @param days Anzahl der Tage.
+   * @return Umsatz-Liste.
+   * @throws RemoteException
+   */
+  public GenericIterator getUmsaetze(int days) throws RemoteException;
+
+  /**
    * Liefert die Hoehe des Umsatzes, der fuer diesen Umsatztyp auf allen Konten vorliegt.
    * @return Hoehe des Umsatzes.
    * @throws RemoteException
    */
   public double getUmsatz() throws RemoteException;
   
+  /**
+   * Liefert die Hoehe des Umsatzes der letzten Tage, der fuer diesen Umsatztyp auf allen Konten vorliegt.
+   * @param days Anzahl der Tage.
+   * @return Hoehe des Umsatzes.
+   * @throws RemoteException
+   */
+  public double getUmsatz(int days) throws RemoteException;
+
   /**
    * Prueft, ob es sich bei dem Pattern um einen regulaeren Ausdruck handelt.
    * @return true, wenn es sich um einen regulaeren Ausdruck handelt.
@@ -107,7 +123,10 @@ public interface UmsatzTyp extends DBObject
 
 /**********************************************************************
  * $Log$
- * Revision 1.8  2005-12-30 00:14:45  willuhn
+ * Revision 1.9  2006-04-03 21:39:07  willuhn
+ * @N UmsatzChart
+ *
+ * Revision 1.8  2005/12/30 00:14:45  willuhn
  * @N first working pie charts
  *
  * Revision 1.7  2005/12/29 01:22:12  willuhn

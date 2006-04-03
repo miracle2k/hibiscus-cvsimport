@@ -31,6 +31,7 @@ public class ChartDataUmsatzTyp implements ChartData
 {
   private I18N i18n = null;
   private boolean einnahmen = true;
+  private int days = -1;
   
   /**
    * @param einnahmen legt fest, ob es sich um Einnahmen oder Ausgaben handelt.
@@ -40,6 +41,18 @@ public class ChartDataUmsatzTyp implements ChartData
   {
     this.i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
     this.einnahmen = einnahmen;
+  }
+
+  /**
+   * @param einnahmen legt fest, ob es sich um Einnahmen oder Ausgaben handelt.
+   * @param days Anzahl der Tage.
+   * ct.
+   */
+  public ChartDataUmsatzTyp(boolean einnahmen, int days)
+  {
+    this.i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
+    this.einnahmen = einnahmen;
+    this.days = days;
   }
 
   /**
@@ -65,6 +78,8 @@ public class ChartDataUmsatzTyp implements ChartData
    */
   public String getDataAttribute() throws RemoteException
   {
+    if (days > 0)
+      return "umsatz:" + days; 
     return "umsatz";
   }
 
@@ -89,7 +104,10 @@ public class ChartDataUmsatzTyp implements ChartData
 
 /*********************************************************************
  * $Log$
- * Revision 1.2  2005-12-30 00:14:45  willuhn
+ * Revision 1.3  2006-04-03 21:39:07  willuhn
+ * @N UmsatzChart
+ *
+ * Revision 1.2  2005/12/30 00:14:45  willuhn
  * @N first working pie charts
  *
  * Revision 1.1  2005/12/20 00:03:27  willuhn
