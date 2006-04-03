@@ -17,7 +17,9 @@ import org.kapott.hbci.passport.HBCIPassport;
 import de.willuhn.jameica.gui.dialogs.AbstractDialog;
 import de.willuhn.jameica.gui.dialogs.SimpleDialog;
 import de.willuhn.jameica.hbci.AccountContainer;
+import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.gui.dialogs.AccountContainerDialog;
+import de.willuhn.jameica.hbci.gui.dialogs.InternetConnectionDialog;
 import de.willuhn.jameica.hbci.gui.dialogs.NewInstKeysDialog;
 import de.willuhn.jameica.hbci.gui.dialogs.NewKeysDialog;
 import de.willuhn.jameica.hbci.gui.dialogs.PINDialog;
@@ -56,6 +58,26 @@ public class DialogFactory {
 			close();
 		}
 	}
+
+  /**
+   * Zeigt einen Hinweis-Dialog an, der den User bittet, eine Internet-Verbindung herzustellen.
+   * @throws Exception
+   */
+  public static synchronized void getConnection() throws Exception
+  {
+    if (Settings.getOnlineMode())
+      return;
+
+    check();
+    dialog = new InternetConnectionDialog(AbstractDialog.POSITION_CENTER);
+    try {
+      dialog.open();
+    }
+    finally
+    {
+      close();
+    }
+  }
 
   /**
 	 * Erzeugt den PIN-Dialog.
@@ -259,7 +281,10 @@ public class DialogFactory {
 
 /**********************************************************************
  * $Log$
- * Revision 1.24  2006-02-23 22:14:58  willuhn
+ * Revision 1.25  2006-04-03 12:30:18  willuhn
+ * @N new InternetConnectionDialog
+ *
+ * Revision 1.24  2006/02/23 22:14:58  willuhn
  * @B bug 200 (Speichern der Auswahl)
  *
  * Revision 1.23  2006/02/21 22:51:36  willuhn

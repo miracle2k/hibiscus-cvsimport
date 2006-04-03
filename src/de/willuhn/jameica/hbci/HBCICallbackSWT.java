@@ -215,8 +215,7 @@ public class HBCICallbackSWT extends AbstractHBCICallback
 					break;
 
 				case NEED_CONNECTION:
-					if (!Settings.getOnlineMode())
-						DialogFactory.openSimple(i18n.tr("Internet-Verbindung"),i18n.tr("Bitte stellen Sie sicher, dass eine Internetverbindung verfügbar ist."));
+				  DialogFactory.getConnection();
 					break;
 				case CLOSE_CONNECTION:
 					if (!Settings.getOnlineMode())
@@ -506,7 +505,10 @@ public class HBCICallbackSWT extends AbstractHBCICallback
 
 /**********************************************************************
  * $Log$
- * Revision 1.36  2006-03-28 17:52:23  willuhn
+ * Revision 1.37  2006-04-03 12:30:18  willuhn
+ * @N new InternetConnectionDialog
+ *
+ * Revision 1.36  2006/03/28 17:52:23  willuhn
  * @B bug 218
  *
  * Revision 1.35  2006/02/23 22:14:58  willuhn
