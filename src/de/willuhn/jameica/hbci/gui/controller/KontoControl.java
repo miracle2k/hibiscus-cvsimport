@@ -221,6 +221,10 @@ public class KontoControl extends AbstractControl {
           SynchronizeOptionsDialog d = new SynchronizeOptionsDialog(getKonto(),SynchronizeOptionsDialog.POSITION_CENTER);
           d.open();
         }
+        catch (OperationCanceledException oce)
+        {
+          // ignore
+        }
         catch (ApplicationException ae)
         {
           throw ae;
@@ -453,7 +457,10 @@ public class KontoControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.66  2006-03-30 22:22:32  willuhn
+ * Revision 1.67  2006-04-18 22:38:16  willuhn
+ * @N bug 227
+ *
+ * Revision 1.66  2006/03/30 22:22:32  willuhn
  * @B bug 217
  *
  * Revision 1.65  2006/03/21 00:43:14  willuhn
