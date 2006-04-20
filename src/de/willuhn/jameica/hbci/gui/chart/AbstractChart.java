@@ -147,7 +147,7 @@ public abstract class AbstractChart implements Chart, PaintListener
     else
     {
       Logger.debug("dispose old chart");
-      SWTUtil.disposeChilds(this.canvas);
+      SWTUtil.disposeChildren(this.canvas);
     }
     
     GridData gd = new GridData(GridData.FILL_BOTH);
@@ -191,7 +191,10 @@ public abstract class AbstractChart implements Chart, PaintListener
 
 /*********************************************************************
  * $Log$
- * Revision 1.2  2006-03-09 18:24:05  willuhn
+ * Revision 1.3  2006-04-20 08:44:21  willuhn
+ * @C s/Childs/Children/
+ *
+ * Revision 1.2  2006/03/09 18:24:05  willuhn
  * @N Auswahl der Tage in Umsatz-Chart
  *
  * Revision 1.1  2005/12/20 00:03:27  willuhn
