@@ -84,7 +84,7 @@ public class KontoList extends TablePart implements Part
       }
     });
     addColumn(i18n.tr("Bezeichnung"),"bezeichnung");
-    addColumn(i18n.tr("Kontoinhaber"),"name");
+    //addColumn(i18n.tr("Kontoinhaber"),"name");
     addColumn(i18n.tr("HBCI-Medium"),"passport_class", new Formatter() {
       public String format(Object o)
       {
@@ -110,7 +110,7 @@ public class KontoList extends TablePart implements Part
       {
         Konto k = (Konto) item.getData();
         try {
-          item.setText(5,HBCI.DECIMALFORMAT.format(k.getSaldo()) + " " + k.getWaehrung());
+          item.setText(4,HBCI.DECIMALFORMAT.format(k.getSaldo()) + " " + k.getWaehrung());
           if (k.getSaldo() < 0)
             item.setForeground(Settings.getBuchungSollForeground());
         }
@@ -144,7 +144,10 @@ public class KontoList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2005-08-01 16:10:41  web0
+ * Revision 1.8  2006-04-25 23:25:12  willuhn
+ * @N bug 81
+ *
+ * Revision 1.7  2005/08/01 16:10:41  web0
  * @N synchronize
  *
  * Revision 1.6  2005/06/27 15:35:27  web0

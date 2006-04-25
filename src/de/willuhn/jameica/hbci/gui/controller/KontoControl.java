@@ -348,6 +348,8 @@ public class KontoControl extends AbstractControl {
     kontoList = new de.willuhn.jameica.hbci.gui.parts.KontoList(new KontoNew());
     // BUGZILLA 108 http://www.willuhn.de/bugzilla/show_bug.cgi?id=108
     kontoList.addColumn(i18n.tr("Saldo aktualisiert am"),"saldo_datum", new DateFormatter(HBCI.LONGDATEFORMAT));
+    // BUGZILLA 81 http://www.willuhn.de/bugzilla/show_bug.cgi?id=81
+    kontoList.addColumn(i18n.tr("Umsätze"),"numumsaetze");
 		return kontoList;
 	}
 
@@ -457,7 +459,10 @@ public class KontoControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.67  2006-04-18 22:38:16  willuhn
+ * Revision 1.68  2006-04-25 23:25:12  willuhn
+ * @N bug 81
+ *
+ * Revision 1.67  2006/04/18 22:38:16  willuhn
  * @N bug 227
  *
  * Revision 1.66  2006/03/30 22:22:32  willuhn
