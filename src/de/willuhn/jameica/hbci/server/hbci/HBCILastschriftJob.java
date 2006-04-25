@@ -55,6 +55,9 @@ public class HBCILastschriftJob extends AbstractHBCIJob
 			if (lastschrift.isNewObject())
 				lastschrift.store();
 
+      if (lastschrift.ausgefuehrt())
+        throw new ApplicationException(i18n.tr("Lastschrift wurde bereits ausgeführt"));
+
 			this.lastschrift = lastschrift;
 			this.konto = lastschrift.getKonto();
 
@@ -147,7 +150,10 @@ public class HBCILastschriftJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.8  2006-03-15 18:01:30  willuhn
+ * Revision 1.9  2006-04-25 16:39:06  willuhn
+ * @N Konstruktoren von HBCI-Jobs werfen nun eine ApplicationException, wenn der Auftrag bereits ausgefuehrt wurde
+ *
+ * Revision 1.8  2006/03/15 18:01:30  willuhn
  * @N AbstractHBCIJob#getName
  *
  * Revision 1.7  2006/03/15 17:28:41  willuhn
