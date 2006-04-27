@@ -146,31 +146,31 @@ public class HBCI extends AbstractPlugin
     try {
 			Application.getCallback().getStartupMonitor().setStatusText("hibiscus: checking database integrity");
 
-//      ////////////////////////////////////////////////////////////////////////////
-//      // Damit wir die Updates nicht immer haendisch nachziehen muessen, rufen wir
-//      // bei einem Fehler das letzte Update-Script nochmal auf.
-//			if (!Application.inClientMode())
-//      {
-//        try
-//        {
-//          de.willuhn.jameica.system.Settings s = getResources().getSettings();
-//          double size = s.getDouble("sql-update-size",-1);
-//          
-//          File f = new File(getResources().getPath() + "/sql/update_1.4-1.5.sql");
-//          
-//          long length = f.length();
-//          if (length != size)
-//          {
-//            getDatabase().executeSQLScript(f);
-//            s.setAttribute("sql-update-size",(double)f.length());
-//          }
-//        }
-//        catch (Exception e2)
-//        {
-//          e2.printStackTrace();
-//        }
-//      }
-//      ////////////////////////////////////////////////////////////////////////////
+      ////////////////////////////////////////////////////////////////////////////
+      // Damit wir die Updates nicht immer haendisch nachziehen muessen, rufen wir
+      // bei einem Fehler das letzte Update-Script nochmal auf.
+			if (!Application.inClientMode())
+      {
+        try
+        {
+          de.willuhn.jameica.system.Settings s = getResources().getSettings();
+          double size = s.getDouble("sql-update-size",-1);
+          
+          File f = new File(getResources().getPath() + "/sql/update_1.5-1.6.sql");
+          
+          long length = f.length();
+          if (length != size)
+          {
+            getDatabase().executeSQLScript(f);
+            s.setAttribute("sql-update-size",(double)f.length());
+          }
+        }
+        catch (Exception e2)
+        {
+          e2.printStackTrace();
+        }
+      }
+      ////////////////////////////////////////////////////////////////////////////
 
       checkConsistency();
 		}
@@ -382,7 +382,10 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
- * Revision 1.88  2006-04-03 21:39:07  willuhn
+ * Revision 1.89  2006-04-27 22:26:16  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.88  2006/04/03 21:39:07  willuhn
  * @N UmsatzChart
  *
  * Revision 1.87  2006/04/03 20:37:52  willuhn
