@@ -62,7 +62,7 @@ public class KontoNew extends AbstractView {
       String s2 = k.getKontonummer();
       if (s2 == null) s2 = "";
 
-      GUI.getView().setTitle(i18n.tr("Konto-Details: {0} [Ktr.-Nr.: {1}]",new String[]{s1,s2}));
+      GUI.getView().setTitle(i18n.tr("Konto-Details: {0} [Kto.-Nr.: {1}]",new String[]{s1,s2}));
     }
     else
   		GUI.getView().setTitle(i18n.tr("Konto-Details"));
@@ -125,7 +125,10 @@ public class KontoNew extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.16  2006-03-21 00:43:14  willuhn
+ * Revision 1.17  2006-05-10 12:51:37  willuhn
+ * @B typo s/Ktr/Kto/
+ *
+ * Revision 1.16  2006/03/21 00:43:14  willuhn
  * @B bug 209
  *
  * Revision 1.15  2006/03/09 18:24:05  willuhn

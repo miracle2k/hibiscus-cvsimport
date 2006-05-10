@@ -66,9 +66,9 @@ public class UmsatzList extends AbstractView
       s3 = HBCI.DECIMALFORMAT.format(d) + " " + k.getWaehrung(); // Saldo wurde schonmal abgerufen
 
     if (s3 == null)
-  		GUI.getView().setTitle(i18n.tr("Kontoauszüge: {0} [Ktr.-Nr.: {1}]",new String[]{s1,s2}));
+  		GUI.getView().setTitle(i18n.tr("Kontoauszüge: {0} [Kto.-Nr.: {1}]",new String[]{s1,s2}));
     else
-      GUI.getView().setTitle(i18n.tr("Kontoauszüge: {0} [Ktr.-Nr.: {1}, Saldo: {2}]",new String[]{s1,s2,s3}));
+      GUI.getView().setTitle(i18n.tr("Kontoauszüge: {0} [Kto.-Nr.: {1}, Saldo: {2}]",new String[]{s1,s2,s3}));
 		
 
 		try {
@@ -101,7 +101,10 @@ public class UmsatzList extends AbstractView
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2006-01-18 00:51:00  willuhn
+ * Revision 1.7  2006-05-10 12:51:37  willuhn
+ * @B typo s/Ktr/Kto/
+ *
+ * Revision 1.6  2006/01/18 00:51:00  willuhn
  * @B bug 65
  *
  * Revision 1.5  2005/06/07 22:41:09  web0

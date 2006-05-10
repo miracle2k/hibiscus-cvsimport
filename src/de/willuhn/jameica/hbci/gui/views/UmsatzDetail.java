@@ -55,9 +55,9 @@ public class UmsatzDetail extends AbstractView {
       s3 = HBCI.DECIMALFORMAT.format(d) + " " + k.getWaehrung(); // Saldo wurde schonmal abgerufen
 
     if (s3 == null)
-      GUI.getView().setTitle(i18n.tr("Buchungsdetails. Konto: {0} [Ktr.-Nr.: {1}]",new String[]{s1,s2}));
+      GUI.getView().setTitle(i18n.tr("Buchungsdetails. Konto: {0} [Kto.-Nr.: {1}]",new String[]{s1,s2}));
     else
-      GUI.getView().setTitle(i18n.tr("Buchungsdetails. Konto: {0} [Ktr.-Nr.: {1}, Saldo: {2}]",new String[]{s1,s2,s3}));
+      GUI.getView().setTitle(i18n.tr("Buchungsdetails. Konto: {0} [Kto.-Nr.: {1}, Saldo: {2}]",new String[]{s1,s2,s3}));
 
     LabelGroup detail = new LabelGroup(getParent(),i18n.tr("Details"));
 
@@ -123,7 +123,10 @@ public class UmsatzDetail extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.23  2006-01-18 00:51:00  willuhn
+ * Revision 1.24  2006-05-10 12:51:37  willuhn
+ * @B typo s/Ktr/Kto/
+ *
+ * Revision 1.23  2006/01/18 00:51:00  willuhn
  * @B bug 65
  *
  * Revision 1.22  2005/06/30 21:48:56  web0
