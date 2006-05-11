@@ -81,6 +81,10 @@ public class UeberweisungList extends TablePart implements Part
     });
     // BUGZILLA 84 http://www.willuhn.de/bugzilla/show_bug.cgi?id=84
     setRememberOrder(true);
+
+    // BUGZILLA 233 http://www.willuhn.de/bugzilla/show_bug.cgi?id=233
+    setRememberColWidths(true);
+
     setContextMenu(new de.willuhn.jameica.hbci.gui.menus.UeberweisungList());
   }
   
@@ -101,7 +105,10 @@ public class UeberweisungList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2006-03-30 21:00:11  willuhn
+ * Revision 1.5  2006-05-11 16:53:09  willuhn
+ * @B bug 233
+ *
+ * Revision 1.4  2006/03/30 21:00:11  willuhn
  * *** empty log message ***
  *
  * Revision 1.3  2005/06/27 15:35:27  web0

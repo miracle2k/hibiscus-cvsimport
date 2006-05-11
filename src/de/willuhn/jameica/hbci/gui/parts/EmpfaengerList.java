@@ -109,6 +109,9 @@ public class EmpfaengerList extends TablePart implements Part
 
     // BUGZILLA 84 http://www.willuhn.de/bugzilla/show_bug.cgi?id=84
     setRememberOrder(true);
+    
+    // BUGZILLA 233 http://www.willuhn.de/bugzilla/show_bug.cgi?id=233
+    setRememberColWidths(true);
 
   }
 
@@ -245,7 +248,10 @@ public class EmpfaengerList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2006-03-30 22:22:32  willuhn
+ * Revision 1.8  2006-05-11 16:53:09  willuhn
+ * @B bug 233
+ *
+ * Revision 1.7  2006/03/30 22:22:32  willuhn
  * @B bug 217
  *
  * Revision 1.6  2006/02/20 22:57:22  willuhn
