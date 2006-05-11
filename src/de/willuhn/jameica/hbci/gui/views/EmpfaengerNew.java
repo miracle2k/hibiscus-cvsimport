@@ -61,6 +61,17 @@ public class EmpfaengerNew extends AbstractView {
 			GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Lesen der Adresse."));
 		}
 
+    // und noch die Abschicken-Knoepfe
+    ButtonArea buttonArea = new ButtonArea(getParent(),3);
+    buttonArea.addButton(i18n.tr("Zurück"),new Back());
+    buttonArea.addButton(i18n.tr("Löschen"), new EmpfaengerDelete(), control.getEmpfaenger());
+    buttonArea.addButton(i18n.tr("Speichern"), new Action()
+    {
+      public void handleAction(Object context) throws ApplicationException
+      {
+        control.handleStore();
+      }
+    },null,true);
     
     new Headline(getParent(),i18n.tr("Buchungen von/an diese Adresse"));
     control.getUmsatzListe().paint(getParent());
@@ -78,27 +89,19 @@ public class EmpfaengerNew extends AbstractView {
       new Headline(getParent(),i18n.tr("Sammel-Überweisungen"));
       control.getSammelUeberweisungListe().paint(getParent());
     }
-
-
-    // und noch die Abschicken-Knoepfe
-		ButtonArea buttonArea = new ButtonArea(getParent(),3);
-		buttonArea.addButton(i18n.tr("Zurück"),new Back());
-		buttonArea.addButton(i18n.tr("Löschen"), new EmpfaengerDelete(), control.getEmpfaenger());
-		buttonArea.addButton(i18n.tr("Speichern"), new Action()
-    {
-      public void handleAction(Object context) throws ApplicationException
-      {
-      	control.handleStore();
-      }
-    },null,true);
-
   }
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2006-01-18 00:51:00  willuhn
+ * Revision 1.10  2006-05-11 10:55:49  willuhn
+ * @C Buttons nach oben verschoben
+ *
+ * Revision 1.9.2.1  2006/05/11 10:44:43  willuhn
+ * @B bug 232
+ *
+ * Revision 1.9  2006/01/18 00:51:00  willuhn
  * @B bug 65
  *
  * Revision 1.8  2005/10/03 16:17:58  willuhn
