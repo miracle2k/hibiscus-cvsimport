@@ -22,13 +22,28 @@ import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.rmi.Umsatz;
 
+/**
+ * Konto-Auszug.
+ */
 public class KontoauszugReport extends Report
 {
+  /**
+   * ct.
+   * 
+   * @param subtitle Titel des Reports.
+   */
   public KontoauszugReport(String subtitle)
   {
     super("Kontoauszug", subtitle);
   }
 
+  /**
+   * Erstellt den Report.
+   * 
+   * @param umslist
+   * @throws DocumentException
+   * @throws RemoteException
+   */
   public void generate(DBIterator umslist) throws DocumentException,
       RemoteException
   {
@@ -64,7 +79,12 @@ public class KontoauszugReport extends Report
 }
 /*******************************************************************************
  * $Log$
- * Revision 1.1  2006-05-14 19:52:46  jost
+ * Revision 1.2  2006-05-15 12:05:22  willuhn
+ * @N FileDialog zur Auswahl von Pfad und Datei beim Speichern
+ * @N YesNoDialog falls Datei bereits existiert
+ * @C KontoImpl#getUmsaetze mit tonumber() statt dateob()
+ *
+ * Revision 1.1  2006/05/14 19:52:46  jost
  * Prerelease Kontoauszug-Report
  * 
  ******************************************************************************/
