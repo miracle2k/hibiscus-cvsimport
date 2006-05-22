@@ -182,7 +182,7 @@ public class UmsatzList extends TablePart
 
       // Eingabe-Feld fuer die Suche mit Button hinten dran.
       this.search = new SearchInput();
-      group.addLabelPair(i18n.tr("Zweck, Name oder Konto enthält"), this.search);
+      group.addLabelPair(i18n.tr("Zweck, Konto oder Kommentar enthält"), this.search);
 
       // Checkbox zur Aktivierung von regulaeren Ausdruecken
       this.regex = new CheckboxInput(false);
@@ -507,7 +507,10 @@ public class UmsatzList extends TablePart
 
 /**********************************************************************
  * $Log$
- * Revision 1.22  2006-05-11 16:53:09  willuhn
+ * Revision 1.23  2006-05-22 12:55:54  willuhn
+ * @N bug 235 (thanks to Markus)
+ *
+ * Revision 1.22  2006/05/11 16:53:09  willuhn
  * @B bug 233
  *
  * Revision 1.21  2006/03/30 22:22:32  willuhn

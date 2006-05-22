@@ -154,16 +154,19 @@ public class UmsatzTypImpl extends AbstractDBObject implements UmsatzTyp
     String vwz2 = umsatz.getZweck2();
     String name = umsatz.getEmpfaengerName();
     String kto  = umsatz.getEmpfaengerKonto();
+    String kom  = umsatz.getKommentar();
 
     if (vwz1 == null) vwz1 = "";
     if (vwz2 == null) vwz2 = "";
     if (name == null) name = "";
-    if (kto == null)   kto = "";
+    if (kto  == null) kto  = "";
+    if (kom  == null) kom  = "";
 
     vwz1 = vwz1.toLowerCase();
     vwz2 = vwz2.toLowerCase();
     name = name.toLowerCase();
     kto  = kto.toLowerCase();
+    kom  = kom.toLowerCase();
     
     String s = this.getPattern();
     if (s != null)
@@ -180,13 +183,14 @@ public class UmsatzTypImpl extends AbstractDBObject implements UmsatzTyp
       Matcher mVwz2 = pattern.matcher(vwz2);
       Matcher mName = pattern.matcher(name);
       Matcher mKto  = pattern.matcher(kto);
+      Matcher mKom  = pattern.matcher(kom);
       
-      return (mVwz1.matches() || mVwz2.matches() || mName.matches() || mKto.matches());
+      return (mVwz1.matches() || mVwz2.matches() || mName.matches() || mKto.matches() || mKom.matches());
     }
 
     if (s == null)
       s = "";
-    return (vwz1.indexOf(s) != -1 || vwz2.indexOf(s) != -1 || name.indexOf(s) != -1 || kto.indexOf(s) != -1);
+    return (vwz1.indexOf(s) != -1 || vwz2.indexOf(s) != -1 || name.indexOf(s) != -1 || kto.indexOf(s) != -1 || kom.indexOf(s) != -1);
   }
 
   /**
@@ -277,7 +281,10 @@ public class UmsatzTypImpl extends AbstractDBObject implements UmsatzTyp
 
 /**********************************************************************
  * $Log$
- * Revision 1.21  2006-04-25 23:25:09  willuhn
+ * Revision 1.22  2006-05-22 12:54:52  willuhn
+ * @N bug 235 (thanks to Markus)
+ *
+ * Revision 1.21  2006/04/25 23:25:09  willuhn
  * @N bug 81
  *
  * Revision 1.20  2006/04/03 21:39:07  willuhn
