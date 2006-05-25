@@ -227,6 +227,7 @@ public class ImportDialog extends AbstractDialog
       if (formats == null || formats.length == 0)
       {
         Logger.warn("importer " + imp.getName() + " provides no import formats, skipping");
+        continue;
       }
       for (int j=0;j<formats.length;++j)
       {
@@ -315,7 +316,10 @@ public class ImportDialog extends AbstractDialog
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2006-04-21 09:26:35  willuhn
+ * Revision 1.7  2006-05-25 13:47:03  willuhn
+ * @N Skeleton for DTAUS-Import
+ *
+ * Revision 1.6  2006/04/21 09:26:35  willuhn
  * *** empty log message ***
  *
  * Revision 1.5  2006/04/20 08:44:21  willuhn
