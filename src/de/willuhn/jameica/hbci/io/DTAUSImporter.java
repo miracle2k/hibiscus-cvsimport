@@ -17,10 +17,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.rmi.RemoteException;
 
-import de.jost_net.OBanToo.Dtaus.CSatz;
-import de.jost_net.OBanToo.Dtaus.DtausDateiParser;
-import de.jost_net.OBanToo.Dtaus.DtausException;
-import de.jost_net.OBanToo.Dtaus.ESatz;
 import de.willuhn.datasource.GenericObject;
 import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.datasource.rmi.DBService;
@@ -202,7 +198,10 @@ public class DTAUSImporter implements Importer
 
 /*********************************************************************
  * $Log$
- * Revision 1.1  2006-05-25 13:47:03  willuhn
+ * Revision 1.2  2006-05-25 13:54:38  willuhn
+ * @R removed imports (occurs compile errors in nightly build)
+ *
+ * Revision 1.1  2006/05/25 13:47:03  willuhn
  * @N Skeleton for DTAUS-Import
  *
  **********************************************************************/
