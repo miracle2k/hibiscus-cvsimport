@@ -17,6 +17,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.rmi.RemoteException;
 
+import de.jost_net.OBanToo.Dtaus.CSatz;
+import de.jost_net.OBanToo.Dtaus.DtausDateiParser;
+import de.jost_net.OBanToo.Dtaus.ESatz;
 import de.willuhn.datasource.GenericObject;
 import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.datasource.rmi.DBService;
@@ -56,7 +59,7 @@ public class DTAUSImporter implements Importer
       ProgressMonitor monitor) throws RemoteException, ApplicationException
   {
     //TODO:[Heiner] Hier den DTAUS-Import vornehmen.
-    /*
+    /** /
     try
     {
       DtausDateiParser parser = new DtausDateiParser(is);
@@ -78,8 +81,7 @@ public class DTAUSImporter implements Importer
         {
           // Mit diesem Factor sollte sich der Fortschrittsbalken
           // bis zum Ende der DTAUS-Datei genau auf 100% bewegen
-          if (++count % factor == 1)
-            monitor.addPercentComplete(1);
+          monitor.addPercentComplete((int)(++count % factor));
           
           monitor.log(i18n.tr("Importiere Überweisung an {0}",c.getNameEmpfaenger()));
          
@@ -153,7 +155,7 @@ public class DTAUSImporter implements Importer
         }
       }
     }
-    */
+    /**/
   }
 
   /**
@@ -198,7 +200,10 @@ public class DTAUSImporter implements Importer
 
 /*********************************************************************
  * $Log$
- * Revision 1.2  2006-05-25 13:54:38  willuhn
+ * Revision 1.3  2006-05-29 09:16:12  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.2  2006/05/25 13:54:38  willuhn
  * @R removed imports (occurs compile errors in nightly build)
  *
  * Revision 1.1  2006/05/25 13:47:03  willuhn
