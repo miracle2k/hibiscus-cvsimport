@@ -144,7 +144,7 @@ public class DTAUSImporter implements Importer
             u.setGegenkontoBLZ(Long.toString(c.getBlzEndbeguenstigt()));
             u.setGegenkontoName(c.getNameEmpfaenger());
             u.setGegenkontoNummer(Long.toString(c.getKontonummer()));
-            u.setZweck(c.getVerwendungszweck());
+            u.setZweck(c.getVerwendungszweck(1));
             
             // TODO: Hier fehlen noch die weiteren Verwendungszwecke.
             // Die koennen aber ohnehin erst vollstaendig gelesen werden,
@@ -250,7 +250,10 @@ public class DTAUSImporter implements Importer
 
 /*********************************************************************
  * $Log$
- * Revision 1.6  2006-05-31 09:04:21  willuhn
+ * Revision 1.7  2006-06-05 09:55:50  jost
+ * Anpassung an obantoo 0.5
+ *
+ * Revision 1.6  2006/05/31 09:04:21  willuhn
  * @C Wir merken uns die vom User bereits ausgewaehlten Konten
  *
  * Revision 1.5  2006/05/29 21:20:07  willuhn
