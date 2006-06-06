@@ -22,7 +22,6 @@ import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Protokoll;
 import de.willuhn.jameica.hbci.rmi.Umsatz;
 import de.willuhn.jameica.hbci.server.Converter;
-import de.willuhn.jameica.hbci.server.FilterEngine;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.logging.Logger;
 import de.willuhn.util.ApplicationException;
@@ -132,14 +131,6 @@ public class HBCIUmsatzJob extends AbstractHBCIJob {
 				try
 				{
 					umsatz.store(); // den Umsatz haben wir noch nicht, speichern!
-          try
-          {
-            FilterEngine.getInstance().filter(umsatz,lines[i]);
-          }
-          catch (Exception e)
-          {
-            Logger.error("error while filtering umsatz",e);
-          }
 				}
 				catch (Exception e2)
 				{
@@ -156,7 +147,10 @@ public class HBCIUmsatzJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.21  2006-03-17 00:51:24  willuhn
+ * Revision 1.22  2006-06-06 21:37:55  willuhn
+ * @R FilternEngine entfernt. Wird jetzt ueber das Jameica-Messaging-System abgewickelt
+ *
+ * Revision 1.21  2006/03/17 00:51:24  willuhn
  * @N bug 209 Neues Synchronisierungs-Subsystem
  *
  * Revision 1.20  2006/03/15 18:01:30  willuhn
