@@ -83,7 +83,7 @@ public class DonateDialog extends AbstractDialog
     group.addText(i18n.tr("Möchten Sie die Weiterentwicklung von Hibiscus mit einer Spende unterstützen?\n" +
                           "Dann wählen Sie einfach Ihr Konto aus und geben Sie den gewünschten Betrag ein.\n" +
                           "Wenn Sie die Option \"Spendenquittung\" aktivieren und Ihre eMail-Adresse eingeben,\n" +
-                          "erhalten Sie eine Rechnung in Höhre des Spendenbetrages für Ihre Buchhaltung."),true);
+                          "erhalten Sie eine Rechnung in Höhe des Spendenbetrages für Ihre Buchhaltung."),true);
     
     group.addLabelPair(i18n.tr("Ihr Konto"), getKontoauswahl());
     group.addLabelPair(i18n.tr("Betrag"), getBetrag());
@@ -239,7 +239,10 @@ public class DonateDialog extends AbstractDialog
 
 /*********************************************************************
  * $Log$
- * Revision 1.4  2006-06-06 13:52:58  willuhn
+ * Revision 1.5  2006-06-06 18:02:45  jost
+ * Tippfehler beseitigt.
+ *
+ * Revision 1.4  2006/06/06 13:52:58  willuhn
  * @N Linewraps in DonateDialog (sucking windows SWT behaviour)
  *
  * Revision 1.3  2005/06/27 22:25:43  web0
