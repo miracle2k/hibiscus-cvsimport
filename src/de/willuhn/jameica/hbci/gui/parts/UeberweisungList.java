@@ -84,6 +84,8 @@ public class UeberweisungList extends TablePart implements Part
 
     // BUGZILLA 233 http://www.willuhn.de/bugzilla/show_bug.cgi?id=233
     setRememberColWidths(true);
+    
+    setMulti(true);
 
     setContextMenu(new de.willuhn.jameica.hbci.gui.menus.UeberweisungList());
   }
@@ -105,7 +107,12 @@ public class UeberweisungList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2006-05-11 16:53:09  willuhn
+ * Revision 1.6  2006-06-06 22:41:26  willuhn
+ * @N Generische Loesch-Action fuer DBObjects (DBObjectDelete)
+ * @N Live-Aktualisierung der Tabelle mit den importierten Ueberweisungen
+ * @B Korrekte Berechnung des Fortschrittsbalken bei Import
+ *
+ * Revision 1.5  2006/05/11 16:53:09  willuhn
  * @B bug 233
  *
  * Revision 1.4  2006/03/30 21:00:11  willuhn

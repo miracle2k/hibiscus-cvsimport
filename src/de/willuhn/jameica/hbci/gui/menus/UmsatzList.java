@@ -18,8 +18,8 @@ import de.willuhn.jameica.gui.parts.CheckedContextMenuItem;
 import de.willuhn.jameica.gui.parts.ContextMenu;
 import de.willuhn.jameica.gui.parts.ContextMenuItem;
 import de.willuhn.jameica.hbci.HBCI;
+import de.willuhn.jameica.hbci.gui.action.DBObjectDelete;
 import de.willuhn.jameica.hbci.gui.action.EmpfaengerAdd;
-import de.willuhn.jameica.hbci.gui.action.UmsatzDelete;
 import de.willuhn.jameica.hbci.gui.action.UmsatzDetail;
 import de.willuhn.jameica.hbci.gui.action.UmsatzExport;
 import de.willuhn.jameica.hbci.rmi.Umsatz;
@@ -47,7 +47,7 @@ public class UmsatzList extends ContextMenu implements Extendable
 		addItem(new CheckedContextMenuItem(i18n.tr("Gegenkonto in Adressbuch übernehmen"),new EmpfaengerAdd()));
 
     // BUGZILLA #70 http://www.willuhn.de/bugzilla/show_bug.cgi?id=70
-    addItem(new CheckedContextMenuItem(i18n.tr("Löschen..."), new UmsatzDelete()));
+    addItem(new CheckedContextMenuItem(i18n.tr("Löschen..."), new DBObjectDelete()));
     addItem(ContextMenuItem.SEPARATOR);
     addItem(new CheckedContextMenuItem(i18n.tr("Umsätze exportieren..."),new UmsatzExport()));
     // addItem(new ContextMenuItem(i18n.tr("Umsätze importieren..."),new UmsatzImport()));
@@ -88,7 +88,12 @@ public class UmsatzList extends ContextMenu implements Extendable
 
 /**********************************************************************
  * $Log$
- * Revision 1.17  2006-04-20 08:44:21  willuhn
+ * Revision 1.18  2006-06-06 22:41:26  willuhn
+ * @N Generische Loesch-Action fuer DBObjects (DBObjectDelete)
+ * @N Live-Aktualisierung der Tabelle mit den importierten Ueberweisungen
+ * @B Korrekte Berechnung des Fortschrittsbalken bei Import
+ *
+ * Revision 1.17  2006/04/20 08:44:21  willuhn
  * @C s/Childs/Children/
  *
  * Revision 1.16  2006/04/04 21:57:57  willuhn
