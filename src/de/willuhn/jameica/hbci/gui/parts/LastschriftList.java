@@ -85,6 +85,8 @@ public class LastschriftList extends TablePart implements Part
 
     // BUGZILLA 233 http://www.willuhn.de/bugzilla/show_bug.cgi?id=233
     setRememberColWidths(true);
+    
+    setMulti(true);
 
     setContextMenu(new de.willuhn.jameica.hbci.gui.menus.LastschriftList());
   }
@@ -107,7 +109,11 @@ public class LastschriftList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2006-05-11 16:53:09  willuhn
+ * Revision 1.6  2006-06-07 17:26:40  willuhn
+ * @N DTAUS-Import fuer Lastschriften
+ * @B Satusbar-Update in DTAUSImport gefixt
+ *
+ * Revision 1.5  2006/05/11 16:53:09  willuhn
  * @B bug 233
  *
  * Revision 1.4  2006/03/30 21:00:11  willuhn

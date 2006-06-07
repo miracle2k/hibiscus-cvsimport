@@ -16,7 +16,7 @@ import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.gui.dialogs.ImportDialog;
-import de.willuhn.jameica.hbci.rmi.Ueberweisung;
+import de.willuhn.jameica.hbci.rmi.Lastschrift;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.jameica.system.OperationCanceledException;
 import de.willuhn.logging.Logger;
@@ -24,10 +24,10 @@ import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
 
 /**
- * Action, ueber die Ueberweisungen importiert werden koennen.
+ * Action, ueber die Lastschriften importiert werden koennen.
  * Der Context-Parameter wird ignoriert. 
  */
-public class UeberweisungImport implements Action
+public class LastschriftImport implements Action
 {
 
   /**
@@ -39,7 +39,7 @@ public class UeberweisungImport implements Action
 
     try
     {
-      ImportDialog d = new ImportDialog(null, Ueberweisung.class);
+      ImportDialog d = new ImportDialog(null, Lastschrift.class);
       d.open();
 		}
     catch (OperationCanceledException oce)
@@ -53,7 +53,7 @@ public class UeberweisungImport implements Action
 		catch (Exception e)
 		{
 			Logger.error("error while importing transfers",e);
-			GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Importieren der Überweisungen"));
+			GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Importieren der Lastschriften"));
 		}
   }
 
@@ -62,11 +62,8 @@ public class UeberweisungImport implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2006-06-07 17:26:40  willuhn
+ * Revision 1.1  2006-06-07 17:26:40  willuhn
  * @N DTAUS-Import fuer Lastschriften
  * @B Satusbar-Update in DTAUSImport gefixt
- *
- * Revision 1.1  2006/05/25 13:47:03  willuhn
- * @N Skeleton for DTAUS-Import
  *
  **********************************************************************/

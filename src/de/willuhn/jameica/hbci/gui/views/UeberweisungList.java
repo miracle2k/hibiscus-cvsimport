@@ -65,7 +65,7 @@ public class UeberweisungList extends AbstractView {
       buttons.addButton(i18n.tr("Zurück"),new Back());
       buttons.addButton(i18n.tr("Importieren..."),new UeberweisungImport());
 			buttons.addButton(i18n.tr("neue Überweisung"),new UeberweisungNew());
-      
+
       // Wir erstellen noch einen Message-Consumer, damit wir ueber neu eintreffende
       // Uebweiseungen informiert werden.
       Application.getMessagingFactory().registerMessageConsumer(this.mc);
@@ -149,7 +149,11 @@ public class UeberweisungList extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2006-06-06 22:41:26  willuhn
+ * Revision 1.7  2006-06-07 17:26:40  willuhn
+ * @N DTAUS-Import fuer Lastschriften
+ * @B Satusbar-Update in DTAUSImport gefixt
+ *
+ * Revision 1.6  2006/06/06 22:41:26  willuhn
  * @N Generische Loesch-Action fuer DBObjects (DBObjectDelete)
  * @N Live-Aktualisierung der Tabelle mit den importierten Ueberweisungen
  * @B Korrekte Berechnung des Fortschrittsbalken bei Import
