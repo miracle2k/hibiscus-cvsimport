@@ -41,8 +41,7 @@ public class SammelUeberweisungBuchungNew extends AbstractView {
 		I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
     SammelTransfer l = control.getBuchung().getSammelTransfer();
-    Integer i = (Integer) l.getAttribute("anzahl");
-    GUI.getView().setTitle(i18n.tr("Buchung bearbeiten [Nr. {0}]",String.valueOf(i.intValue() + 1)));
+    GUI.getView().setTitle(i18n.tr("Buchung bearbeiten [{0}]",l.getBezeichnung()));
 		
 		LabelGroup group = new LabelGroup(getParent(),i18n.tr("Empfänger"));
 		
@@ -81,7 +80,12 @@ public class SammelUeberweisungBuchungNew extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2006-03-27 16:46:21  willuhn
+ * Revision 1.4  2006-06-08 22:29:47  willuhn
+ * @N DTAUS-Import fuer Sammel-Lastschriften und Sammel-Ueberweisungen
+ * @B Eine Reihe kleinerer Bugfixes in Sammeltransfers
+ * @B Bug 197 besser geloest
+ *
+ * Revision 1.3  2006/03/27 16:46:21  willuhn
  * @N GUI polish
  *
  * Revision 1.2  2006/01/18 00:51:00  willuhn

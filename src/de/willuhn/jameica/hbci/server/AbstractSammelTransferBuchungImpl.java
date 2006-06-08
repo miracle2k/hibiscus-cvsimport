@@ -15,8 +15,10 @@ import de.willuhn.datasource.db.AbstractDBObject;
 import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.HBCIProperties;
+import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.rmi.Adresse;
 import de.willuhn.jameica.hbci.rmi.Duplicatable;
+import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.SammelTransferBuchung;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.logging.Logger;
@@ -55,8 +57,19 @@ public abstract class AbstractSammelTransferBuchungImpl extends AbstractDBObject
   protected void insertCheck() throws ApplicationException
   {
     try {
+      if (getSammelTransfer() == null)
+        throw new ApplicationException(i18n.tr("Bitte wählen Sie den zugehörigen Sammel-Transfer aus."));
+
       if (getBetrag() == 0.0)
         throw new ApplicationException(i18n.tr("Bitte geben Sie einen gültigen Betrag ein."));
+
+      if (getBetrag() > Settings.getUeberweisungLimit())
+      {
+        Konto k = getSammelTransfer().getKonto();
+        String w = k != null ? k.getWaehrung() : HBCIProperties.CURRENCY_DEFAULT_DE;
+        throw new ApplicationException(i18n.tr("Auftragslimit überschritten: {0} ", 
+            HBCI.DECIMALFORMAT.format(Settings.getUeberweisungLimit()) + " " + w));
+      }
 
       if (getGegenkontoNummer() == null || getGegenkontoNummer().length() == 0)
         throw new ApplicationException(i18n.tr("Bitte geben Sie die Kontonummer des Gegenkontos ein"));
@@ -283,7 +296,12 @@ public abstract class AbstractSammelTransferBuchungImpl extends AbstractDBObject
 
 /*****************************************************************************
  * $Log$
- * Revision 1.3  2006-05-11 10:57:35  willuhn
+ * Revision 1.4  2006-06-08 22:29:47  willuhn
+ * @N DTAUS-Import fuer Sammel-Lastschriften und Sammel-Ueberweisungen
+ * @B Eine Reihe kleinerer Bugfixes in Sammeltransfers
+ * @B Bug 197 besser geloest
+ *
+ * Revision 1.3  2006/05/11 10:57:35  willuhn
  * @C merged Bug 232 into HEAD
  *
  * Revision 1.2.2.1  2006/05/11 10:44:43  willuhn

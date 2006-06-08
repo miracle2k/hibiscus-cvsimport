@@ -226,7 +226,7 @@ public class ImportDialog extends AbstractDialog
       IOFormat[] formats = imp.getIOFormats(type);
       if (formats == null || formats.length == 0)
       {
-        Logger.warn("importer " + imp.getName() + " provides no import formats, skipping");
+        Logger.debug("importer " + imp.getName() + " provides no import formats for " + type.getName() + ", skipping");
         continue;
       }
       for (int j=0;j<formats.length;++j)
@@ -316,7 +316,12 @@ public class ImportDialog extends AbstractDialog
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2006-05-25 13:47:03  willuhn
+ * Revision 1.8  2006-06-08 22:29:47  willuhn
+ * @N DTAUS-Import fuer Sammel-Lastschriften und Sammel-Ueberweisungen
+ * @B Eine Reihe kleinerer Bugfixes in Sammeltransfers
+ * @B Bug 197 besser geloest
+ *
+ * Revision 1.7  2006/05/25 13:47:03  willuhn
  * @N Skeleton for DTAUS-Import
  *
  * Revision 1.6  2006/04/21 09:26:35  willuhn

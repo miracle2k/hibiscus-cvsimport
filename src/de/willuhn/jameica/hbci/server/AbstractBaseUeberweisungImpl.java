@@ -16,7 +16,6 @@ import java.rmi.RemoteException;
 import java.util.Date;
 
 import de.willuhn.jameica.hbci.HBCI;
-import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.rmi.Terminable;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.logging.Logger;
@@ -45,28 +44,6 @@ public abstract class AbstractBaseUeberweisungImpl extends AbstractTransferImpl
    */
   public String getPrimaryAttribute() throws RemoteException {
     return "zweck";
-  }
-
-  /**
-   * @see de.willuhn.datasource.db.AbstractDBObject#insertCheck()
-   */
-  protected void insertCheck() throws ApplicationException
-  {
-    try
-    {
-      // BUGZILLA 197
-      if (getBetrag() == 0.0)
-        throw new ApplicationException(i18n.tr("Bitte geben Sie einen gültigen Betrag ein."));
-      if (getBetrag() > Settings.getUeberweisungLimit())
-        throw new ApplicationException(i18n.tr("Auftragslimit überschritten: {0} ", 
-          HBCI.DECIMALFORMAT.format(Settings.getUeberweisungLimit()) + " " + getKonto().getWaehrung()));
-    }
-    catch (RemoteException e)
-    {
-      Logger.error("error while checking ueberweisung",e);
-      throw new ApplicationException(i18n.tr("Fehler beim Prüfen der Überweisung."));
-    }
-    super.insertCheck();
   }
 
   /**
@@ -158,7 +135,12 @@ public abstract class AbstractBaseUeberweisungImpl extends AbstractTransferImpl
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2006-02-20 17:33:08  willuhn
+ * Revision 1.8  2006-06-08 22:29:47  willuhn
+ * @N DTAUS-Import fuer Sammel-Lastschriften und Sammel-Ueberweisungen
+ * @B Eine Reihe kleinerer Bugfixes in Sammeltransfers
+ * @B Bug 197 besser geloest
+ *
+ * Revision 1.7  2006/02/20 17:33:08  willuhn
  * @B bug 197
  *
  * Revision 1.6  2005/06/23 21:13:03  web0
