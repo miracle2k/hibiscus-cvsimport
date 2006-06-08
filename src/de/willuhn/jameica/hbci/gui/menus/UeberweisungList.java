@@ -24,6 +24,7 @@ import de.willuhn.jameica.hbci.gui.action.DBObjectDelete;
 import de.willuhn.jameica.hbci.gui.action.TerminableMarkExecuted;
 import de.willuhn.jameica.hbci.gui.action.UeberweisungDuplicate;
 import de.willuhn.jameica.hbci.gui.action.UeberweisungExecute;
+import de.willuhn.jameica.hbci.gui.action.UeberweisungImport;
 import de.willuhn.jameica.hbci.gui.action.UeberweisungNew;
 import de.willuhn.jameica.hbci.rmi.Terminable;
 import de.willuhn.jameica.hbci.rmi.Ueberweisung;
@@ -85,6 +86,7 @@ public class UeberweisungList extends ContextMenu
         }
       }
     });
+    addItem(new ContextMenuItem(i18n.tr("Überweisungen importieren..."),new UeberweisungImport()));
 		addItem(ContextMenuItem.SEPARATOR);
 		addItem(new ContextMenuItem(i18n.tr("Neue Überweisung..."), new UNeu()));
 		
@@ -172,7 +174,10 @@ public class UeberweisungList extends ContextMenu
 
 /**********************************************************************
  * $Log$
- * Revision 1.11  2006-06-06 22:41:26  willuhn
+ * Revision 1.12  2006-06-08 17:40:59  willuhn
+ * @N Vorbereitungen fuer DTAUS-Import von Sammellastschriften und Umsaetzen
+ *
+ * Revision 1.11  2006/06/06 22:41:26  willuhn
  * @N Generische Loesch-Action fuer DBObjects (DBObjectDelete)
  * @N Live-Aktualisierung der Tabelle mit den importierten Ueberweisungen
  * @B Korrekte Berechnung des Fortschrittsbalken bei Import

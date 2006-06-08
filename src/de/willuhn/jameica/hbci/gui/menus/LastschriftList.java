@@ -23,6 +23,7 @@ import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.gui.action.DBObjectDelete;
 import de.willuhn.jameica.hbci.gui.action.LastschriftDuplicate;
 import de.willuhn.jameica.hbci.gui.action.LastschriftExecute;
+import de.willuhn.jameica.hbci.gui.action.LastschriftImport;
 import de.willuhn.jameica.hbci.gui.action.LastschriftNew;
 import de.willuhn.jameica.hbci.gui.action.TerminableMarkExecuted;
 import de.willuhn.jameica.hbci.rmi.Lastschrift;
@@ -85,6 +86,7 @@ public class LastschriftList extends ContextMenu
         }
       }
     });
+    addItem(new ContextMenuItem(i18n.tr("Lastschriften importieren..."),new LastschriftImport()));
 		addItem(ContextMenuItem.SEPARATOR);
 		addItem(new ContextMenuItem(i18n.tr("Neue Lastschrift..."), new UNeu()));
 		
@@ -172,7 +174,10 @@ public class LastschriftList extends ContextMenu
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2006-06-07 17:26:40  willuhn
+ * Revision 1.7  2006-06-08 17:40:59  willuhn
+ * @N Vorbereitungen fuer DTAUS-Import von Sammellastschriften und Umsaetzen
+ *
+ * Revision 1.6  2006/06/07 17:26:40  willuhn
  * @N DTAUS-Import fuer Lastschriften
  * @B Satusbar-Update in DTAUSImport gefixt
  *

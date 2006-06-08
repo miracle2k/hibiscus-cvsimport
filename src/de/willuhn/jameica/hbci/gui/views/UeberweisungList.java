@@ -89,6 +89,10 @@ public class UeberweisungList extends AbstractView {
   
 
   /**
+   * TODO: Das Ueberwachen sollte eigentlich die Tabelle direkt machen.
+   * Allerdings fehlt mir dort noch ein dispose-Event, bei dem ich
+   * den Message-Consumer wieder entfernen kann. Muss in Jameica
+   * noch nachgeruestet werden.
    * Hilfsklasse damit wir ueber importierte Ueberweisungen informiert werden.
    */
   public class UebMessageConsumer implements MessageConsumer
@@ -149,7 +153,10 @@ public class UeberweisungList extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2006-06-07 17:26:40  willuhn
+ * Revision 1.8  2006-06-08 17:40:59  willuhn
+ * @N Vorbereitungen fuer DTAUS-Import von Sammellastschriften und Umsaetzen
+ *
+ * Revision 1.7  2006/06/07 17:26:40  willuhn
  * @N DTAUS-Import fuer Lastschriften
  * @B Satusbar-Update in DTAUSImport gefixt
  *
