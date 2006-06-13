@@ -53,7 +53,7 @@ public class SammelUeberweisungNew extends AbstractView {
 		
 		group.addSeparator();
     group.addLabelPair(i18n.tr("Summe der Buchungen"),control.getSumme());
-		group.addLabelPair(i18n.tr("Bemerkung"),control.getComment());
+		group.addLabelPair("",control.getComment());
 
     new Headline(getParent(),i18n.tr("Enthaltene Buchungen"));
     control.getBuchungen().paint(getParent());
@@ -100,7 +100,10 @@ public class SammelUeberweisungNew extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2006-06-08 22:29:47  willuhn
+ * Revision 1.4  2006-06-13 20:09:05  willuhn
+ * @R Text "Bemerkung" entfernt
+ *
+ * Revision 1.3  2006/06/08 22:29:47  willuhn
  * @N DTAUS-Import fuer Sammel-Lastschriften und Sammel-Ueberweisungen
  * @B Eine Reihe kleinerer Bugfixes in Sammeltransfers
  * @B Bug 197 besser geloest
