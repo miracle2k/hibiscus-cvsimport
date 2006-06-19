@@ -19,6 +19,7 @@ import java.rmi.RemoteException;
 
 import org.eclipse.swt.SWTException;
 
+import de.jost_net.OBanToo.Dtaus.ASatz;
 import de.jost_net.OBanToo.Dtaus.CSatz;
 import de.jost_net.OBanToo.Dtaus.DtausDateiParser;
 import de.jost_net.OBanToo.Dtaus.ESatz;
@@ -71,6 +72,7 @@ public abstract class AbstractDTAUSImporter extends AbstractDTAUSIO implements I
         
         // Im E-Satz steht die Anzahl der Datensaetze. Die brauchen wir, um
         // den Fortschrittsbalken mit sinnvollen Daten fuettern zu koennen.
+        ASatz a = parser.getASatz();
         ESatz e = parser.getESatz();
 
         double factor = 100d / e.getAnzahlDatensaetze();
@@ -100,7 +102,7 @@ public abstract class AbstractDTAUSImporter extends AbstractDTAUSIO implements I
             final DBObject skel = service.createObject(((MyIOFormat)format).type,null);
             
             // Mit Daten befuellen lassen
-            fill(skel,context,c);
+            fill(skel,context,c,a);
 
             // Und speichern
             skel.store();
@@ -178,10 +180,11 @@ public abstract class AbstractDTAUSImporter extends AbstractDTAUSIO implements I
    * @param skel das schon vorbereitete Hibiscus-Fachobjekt.
    * @param context der Kontext. Kann zB ein Konto sein.
    * @param csatz der C-Satz mit den auszulesenden Daten.
+   * @param asatz der A-Satz.
    * @throws RemoteException
    * @throws ApplicationException
    */
-  abstract void fill(DBObject skel, GenericObject context, CSatz csatz)
+  abstract void fill(DBObject skel, GenericObject context, CSatz csatz, ASatz asatz)
     throws RemoteException, ApplicationException;
 
 }
@@ -189,7 +192,11 @@ public abstract class AbstractDTAUSImporter extends AbstractDTAUSIO implements I
 
 /*********************************************************************
  * $Log$
- * Revision 1.2  2006-06-08 22:29:47  willuhn
+ * Revision 1.3  2006-06-19 12:57:31  willuhn
+ * @N DTAUS-Import fuer Umsaetze
+ * @B Formatierungsfehler in Umsatzliste
+ *
+ * Revision 1.2  2006/06/08 22:29:47  willuhn
  * @N DTAUS-Import fuer Sammel-Lastschriften und Sammel-Ueberweisungen
  * @B Eine Reihe kleinerer Bugfixes in Sammeltransfers
  * @B Bug 197 besser geloest
