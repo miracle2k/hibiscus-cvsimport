@@ -193,10 +193,7 @@ public class PassportInput extends AbstractInput
    */
   public void disable()
   {
-    this.enabled = false;
-    this.auswahl.disable();
-    if (this.button != null && !this.button.isDisposed())
-      this.button.setEnabled(false);
+    this.setEnabled(false);
   }
 
   /**
@@ -204,10 +201,7 @@ public class PassportInput extends AbstractInput
    */
   public void enable()
   {
-    this.enabled = true;
-    this.auswahl.enable();
-    if (this.button != null && !this.button.isDisposed())
-      this.button.setEnabled(true);
+    this.setEnabled(true);
   }
 
   /**
@@ -218,12 +212,26 @@ public class PassportInput extends AbstractInput
     return this.auswahl.isEnabled();
   }
 
+  /**
+   * @see de.willuhn.jameica.gui.input.Input#setEnabled(boolean)
+   */
+  public void setEnabled(boolean enabled)
+  {
+    this.enabled = enabled;
+    this.auswahl.setEnabled(this.enabled);
+    if (this.button != null && !this.button.isDisposed())
+      this.button.setEnabled(this.enabled);
+  }
+
 }
 
 
 /*********************************************************************
  * $Log$
- * Revision 1.1  2006-03-21 00:43:14  willuhn
+ * Revision 1.2  2006-06-19 10:57:04  willuhn
+ * @N neue Methode setEnabled(boolean) in Input
+ *
+ * Revision 1.1  2006/03/21 00:43:14  willuhn
  * @B bug 209
  *
  **********************************************************************/
