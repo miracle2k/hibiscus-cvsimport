@@ -157,7 +157,7 @@ public class UmsatzList extends TablePart
     // Uebweiseungen informiert werden.
     this.mc = new UmsMessageConsumer();
     Application.getMessagingFactory().registerMessageConsumer(this.mc);
-}
+  }
   
   /**
    * Schaltet die Anzeige der Umsatzfilter an oder aus.
@@ -582,7 +582,10 @@ public class UmsatzList extends TablePart
 
 /**********************************************************************
  * $Log$
- * Revision 1.24  2006-06-19 12:57:31  willuhn
+ * Revision 1.25  2006-06-19 16:05:13  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.24  2006/06/19 12:57:31  willuhn
  * @N DTAUS-Import fuer Umsaetze
  * @B Formatierungsfehler in Umsatzliste
  *
