@@ -48,8 +48,7 @@ public class HBCISammelLastschriftJob extends AbstractHBCISammelTransferJob
    */
   public String getName() throws RemoteException
   {
-    String name = getSammelTransfer().getBezeichnung();
-    return i18n.tr("Absenden der Sammel-Lastschrift {0}",name);
+    return i18n.tr("Sammel-Lastschrift {0}",getSammelTransfer().getBezeichnung());
   }
 
 }
@@ -57,7 +56,10 @@ public class HBCISammelLastschriftJob extends AbstractHBCISammelTransferJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2006-03-15 18:01:30  willuhn
+ * Revision 1.5  2006-06-19 11:52:15  willuhn
+ * @N Update auf hbci4java 2.5.0rc9
+ *
+ * Revision 1.4  2006/03/15 18:01:30  willuhn
  * @N AbstractHBCIJob#getName
  *
  * Revision 1.3  2005/11/02 17:33:31  willuhn

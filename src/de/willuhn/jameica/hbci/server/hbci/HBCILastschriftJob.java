@@ -115,8 +115,7 @@ public class HBCILastschriftJob extends AbstractHBCIJob
    */
   public String getName() throws RemoteException
   {
-    String empfName = lastschrift.getGegenkontoName();
-    return i18n.tr("Absenden der Lastschrift an {0}",empfName);
+    return i18n.tr("Lastschrift an {0}",lastschrift.getGegenkontoName());
   }
 
   /**
@@ -150,7 +149,10 @@ public class HBCILastschriftJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2006-04-25 16:39:06  willuhn
+ * Revision 1.10  2006-06-19 11:52:15  willuhn
+ * @N Update auf hbci4java 2.5.0rc9
+ *
+ * Revision 1.9  2006/04/25 16:39:06  willuhn
  * @N Konstruktoren von HBCI-Jobs werfen nun eine ApplicationException, wenn der Auftrag bereits ausgefuehrt wurde
  *
  * Revision 1.8  2006/03/15 18:01:30  willuhn

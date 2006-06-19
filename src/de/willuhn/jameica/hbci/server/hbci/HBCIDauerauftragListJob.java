@@ -86,8 +86,7 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob {
    */
   public String getName() throws RemoteException
   {
-    String name = konto.getLongName();
-    return i18n.tr("Abrufen der Daueraufträge von Konto {0}",name);
+    return i18n.tr("Abruf Daueraufträge {0}",konto.getLongName());
   }
 
   /**
@@ -261,7 +260,10 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.29  2006-06-08 22:29:47  willuhn
+ * Revision 1.30  2006-06-19 11:52:15  willuhn
+ * @N Update auf hbci4java 2.5.0rc9
+ *
+ * Revision 1.29  2006/06/08 22:29:47  willuhn
  * @N DTAUS-Import fuer Sammel-Lastschriften und Sammel-Ueberweisungen
  * @B Eine Reihe kleinerer Bugfixes in Sammeltransfers
  * @B Bug 197 besser geloest

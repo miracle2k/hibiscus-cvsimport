@@ -21,6 +21,7 @@ import de.willuhn.jameica.gui.util.ButtonArea;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.gui.action.Back;
 import de.willuhn.jameica.hbci.gui.action.KontoFetchUmsaetze;
+import de.willuhn.jameica.hbci.gui.action.UmsatzImport;
 import de.willuhn.jameica.hbci.gui.controller.UmsatzControl;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.system.Application;
@@ -76,8 +77,9 @@ public class UmsatzList extends AbstractView
 			Part list = control.getUmsatzListe();
 			list.paint(getParent());
 			
-			ButtonArea buttons = new ButtonArea(getParent(),2);
+			ButtonArea buttons = new ButtonArea(getParent(),3);
 			buttons.addButton(i18n.tr("Zurück"),new Back(),null,true);
+      buttons.addButton(i18n.tr("Umsätze importieren..."), new UmsatzImport(),control.getKonto());
 			buttons.addButton(i18n.tr("Umsätze abrufen"), new KontoFetchUmsaetze(),control.getKonto());
 		}
 		catch (RemoteException e)
@@ -101,7 +103,10 @@ public class UmsatzList extends AbstractView
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2006-05-10 12:51:37  willuhn
+ * Revision 1.8  2006-06-19 11:52:17  willuhn
+ * @N Update auf hbci4java 2.5.0rc9
+ *
+ * Revision 1.7  2006/05/10 12:51:37  willuhn
  * @B typo s/Ktr/Kto/
  *
  * Revision 1.6  2006/01/18 00:51:00  willuhn

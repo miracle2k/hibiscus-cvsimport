@@ -84,8 +84,7 @@ public class HBCIUmsatzJob extends AbstractHBCIJob {
    */
   public String getName() throws RemoteException
   {
-    String name = konto.getLongName();
-    return i18n.tr("Abrufen der Umsätze von Konto {0}",name);
+    return i18n.tr("Umsatzabruf {0}",konto.getLongName());
   }
   
   /**
@@ -147,7 +146,10 @@ public class HBCIUmsatzJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.22  2006-06-06 21:37:55  willuhn
+ * Revision 1.23  2006-06-19 11:52:15  willuhn
+ * @N Update auf hbci4java 2.5.0rc9
+ *
+ * Revision 1.22  2006/06/06 21:37:55  willuhn
  * @R FilternEngine entfernt. Wird jetzt ueber das Jameica-Messaging-System abgewickelt
  *
  * Revision 1.21  2006/03/17 00:51:24  willuhn
