@@ -17,7 +17,6 @@ import java.rmi.RemoteException;
 import de.willuhn.datasource.db.AbstractDBObject;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.HBCIProperties;
-import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.rmi.Adresse;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Protokoll;
@@ -64,10 +63,6 @@ public abstract class AbstractTransferImpl extends AbstractDBObject implements T
 
       if (getBetrag() == 0.0)
         throw new ApplicationException(i18n.tr("Bitte geben Sie einen gültigen Betrag ein."));
-
-      if (getBetrag() > Settings.getUeberweisungLimit())
-        throw new ApplicationException(i18n.tr("Auftragslimit überschritten: {0} ", 
-          HBCI.DECIMALFORMAT.format(Settings.getUeberweisungLimit()) + " " + getKonto().getWaehrung()));
 
       if (getGegenkontoName() == null || getGegenkontoName().length() == 0)
 				throw new ApplicationException(i18n.tr("Bitte geben Sie den Namen des Kontoinhabers des Gegenkontos ein"));
@@ -268,7 +263,10 @@ public abstract class AbstractTransferImpl extends AbstractDBObject implements T
 
 /**********************************************************************
  * $Log$
- * Revision 1.25  2006-06-08 22:29:47  willuhn
+ * Revision 1.26  2006-06-26 13:25:20  willuhn
+ * @N Franks eBay-Parser
+ *
+ * Revision 1.25  2006/06/08 22:29:47  willuhn
  * @N DTAUS-Import fuer Sammel-Lastschriften und Sammel-Ueberweisungen
  * @B Eine Reihe kleinerer Bugfixes in Sammeltransfers
  * @B Bug 197 besser geloest

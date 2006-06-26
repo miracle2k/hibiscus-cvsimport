@@ -73,7 +73,15 @@ public class HBCIDauerauftragStoreJob extends AbstractHBCIJob {
 			this.konto        = auftrag.getKonto();
 			this.active				= auftrag.isActive();
 
-			if (active)
+			if (!active)
+      {
+			  // Limit pruefen wir nur bei neuen Dauerauftraegen
+        if (this.dauerauftrag.getBetrag() > Settings.getUeberweisungLimit())
+          throw new ApplicationException(i18n.tr("Auftragslimit überschritten: {0} ", 
+            HBCI.DECIMALFORMAT.format(Settings.getUeberweisungLimit()) + " " + this.konto.getWaehrung()));
+      }
+
+      if (active)
 				setJobParam("orderid",auftrag.getOrderID());
 
 			setJobParam("src",Converter.HibiscusKonto2HBCIKonto(konto));
@@ -213,7 +221,10 @@ public class HBCIDauerauftragStoreJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.17  2006-06-19 11:52:15  willuhn
+ * Revision 1.18  2006-06-26 13:25:20  willuhn
+ * @N Franks eBay-Parser
+ *
+ * Revision 1.17  2006/06/19 11:52:15  willuhn
  * @N Update auf hbci4java 2.5.0rc9
  *
  * Revision 1.16  2006/03/17 00:51:25  willuhn

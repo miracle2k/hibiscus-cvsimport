@@ -61,7 +61,11 @@ public class HBCILastschriftJob extends AbstractHBCIJob
 			this.lastschrift = lastschrift;
 			this.konto = lastschrift.getKonto();
 
-			setJobParam("my",Converter.HibiscusKonto2HBCIKonto(konto));
+      if (this.lastschrift.getBetrag() > Settings.getUeberweisungLimit())
+        throw new ApplicationException(i18n.tr("Auftragslimit überschritten: {0} ", 
+          HBCI.DECIMALFORMAT.format(Settings.getUeberweisungLimit()) + " " + this.konto.getWaehrung()));
+
+      setJobParam("my",Converter.HibiscusKonto2HBCIKonto(konto));
 
       // BUGZILLA 29 http://www.willuhn.de/bugzilla/show_bug.cgi?id=29
       String curr = konto.getWaehrung();
@@ -149,7 +153,10 @@ public class HBCILastschriftJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.10  2006-06-19 11:52:15  willuhn
+ * Revision 1.11  2006-06-26 13:25:20  willuhn
+ * @N Franks eBay-Parser
+ *
+ * Revision 1.10  2006/06/19 11:52:15  willuhn
  * @N Update auf hbci4java 2.5.0rc9
  *
  * Revision 1.9  2006/04/25 16:39:06  willuhn

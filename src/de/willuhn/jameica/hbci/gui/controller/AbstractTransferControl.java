@@ -286,7 +286,12 @@ public abstract class AbstractTransferControl extends AbstractControl
 				GUI.getStatusBar().setSuccessText(i18n.tr("Auftrag gespeichert"));
 			}
 			getTransfer().transactionCommit();
-			return true;
+
+      if (getTransfer().getBetrag() > Settings.getUeberweisungLimit())
+        GUI.getView().setErrorText(i18n.tr("Warnung: Auftragslimit überschritten: {0} ", 
+          HBCI.DECIMALFORMAT.format(Settings.getUeberweisungLimit()) + " " + getKonto().getWaehrung()));
+      
+      return true;
 		}
 		catch (ApplicationException e)
 		{
@@ -393,7 +398,10 @@ public abstract class AbstractTransferControl extends AbstractControl
 
 /**********************************************************************
  * $Log$
- * Revision 1.29  2006-02-06 16:03:50  willuhn
+ * Revision 1.30  2006-06-26 13:25:20  willuhn
+ * @N Franks eBay-Parser
+ *
+ * Revision 1.29  2006/02/06 16:03:50  willuhn
  * @B bug 163
  *
  * Revision 1.28  2005/08/16 21:33:13  willuhn

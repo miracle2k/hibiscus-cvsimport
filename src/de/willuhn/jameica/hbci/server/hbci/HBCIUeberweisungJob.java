@@ -69,6 +69,10 @@ public class HBCIUeberweisungJob extends AbstractHBCIJob
       this.konto = this.ueberweisung.getKonto();
       this.isTermin = this.ueberweisung.isTerminUeberweisung();
 
+      if (this.ueberweisung.getBetrag() > Settings.getUeberweisungLimit())
+        throw new ApplicationException(i18n.tr("Auftragslimit überschritten: {0} ", 
+          HBCI.DECIMALFORMAT.format(Settings.getUeberweisungLimit()) + " " + this.konto.getWaehrung()));
+
 			setJobParam("src",Converter.HibiscusKonto2HBCIKonto(konto));
 
       // BUGZILLA 29 http://www.willuhn.de/bugzilla/show_bug.cgi?id=29
@@ -172,7 +176,10 @@ public class HBCIUeberweisungJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.30  2006-06-19 11:52:15  willuhn
+ * Revision 1.31  2006-06-26 13:25:20  willuhn
+ * @N Franks eBay-Parser
+ *
+ * Revision 1.30  2006/06/19 11:52:15  willuhn
  * @N Update auf hbci4java 2.5.0rc9
  *
  * Revision 1.29  2006/04/25 16:39:07  willuhn
