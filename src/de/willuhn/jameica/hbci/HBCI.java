@@ -25,12 +25,6 @@ import org.kapott.hbci.callback.HBCICallbackConsole;
 import org.kapott.hbci.manager.HBCIUtils;
 
 import de.willuhn.datasource.db.EmbeddedDatabase;
-import de.willuhn.jameica.gui.GUI;
-import de.willuhn.jameica.gui.extension.Extendable;
-import de.willuhn.jameica.gui.extension.Extension;
-import de.willuhn.jameica.gui.extension.ExtensionRegistry;
-import de.willuhn.jameica.gui.internal.views.Start;
-import de.willuhn.jameica.hbci.gui.action.Welcome;
 import de.willuhn.jameica.plugin.AbstractPlugin;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.logging.Level;
@@ -141,6 +135,7 @@ public class HBCI extends AbstractPlugin
     DBMAPPING.put("kwi5vy1fvgOOVtoTYJYjuA==",new Double(1.3));
     DBMAPPING.put("JtkHZYFRtWpxGR6nE8TYFw==",new Double(1.4));
     DBMAPPING.put("a4VHFRr69c+LynZiczIICg==",new Double(1.5));
+    DBMAPPING.put("a4VHFRr69c+LynZiczIICg==",new Double(1.6));
     
 
     try {
@@ -256,26 +251,6 @@ public class HBCI extends AbstractPlugin
       throw new ApplicationException(getResources().getI18N().tr("Fehler beim Initialisieren des HBCI-Subsystems"),e);
     }
     Application.getCallback().getStartupMonitor().addPercentComplete(5);
-
-    // Wir erweitern noch die Jameica-Startseite
-    if (!Application.inServerMode())
-    {
-      Extension e = new Extension() {
-        public void extend(Extendable extendable)
-        {
-          try
-          {
-            new Welcome().handleAction(extendable);
-          }
-          catch (ApplicationException e)
-          {
-            GUI.getStatusBar().setErrorText(e.getMessage());
-          }
-        }
-      };
-      ExtensionRegistry.register(e,Start.class.getName());
-    }
-    
   }
 
   /**
@@ -382,7 +357,11 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
- * Revision 1.90  2006-05-11 20:34:16  willuhn
+ * Revision 1.91  2006-06-29 23:10:34  willuhn
+ * @R Box-System aus Hibiscus in Jameica-Source verschoben
+ * @C keine eigene Startseite mehr, jetzt alles ueber Jameica-Boxsystem geregelt
+ *
+ * Revision 1.90  2006/05/11 20:34:16  willuhn
  * @B fehleranfaellige SQL-Updates entfernt
  *
  * Revision 1.89  2006/04/27 22:26:16  willuhn

@@ -20,6 +20,8 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.TableItem;
 
 import de.willuhn.datasource.rmi.DBIterator;
+import de.willuhn.jameica.gui.boxes.AbstractBox;
+import de.willuhn.jameica.gui.boxes.Box;
 import de.willuhn.jameica.gui.formatter.CurrencyFormatter;
 import de.willuhn.jameica.gui.formatter.DateFormatter;
 import de.willuhn.jameica.gui.formatter.TableFormatter;
@@ -50,15 +52,15 @@ public class OffeneUeberweisungen extends AbstractBox implements Box
   }
 
   /**
-   * @see de.willuhn.jameica.hbci.gui.boxes.Box#getName()
+   * @see de.willuhn.jameica.gui.boxes.Box#getName()
    */
   public String getName()
   {
-    return i18n.tr("Offene und fällige Überweisungen");
+    return "Hibiscus: " + i18n.tr("Offene und fällige Überweisungen");
   }
 
   /**
-   * @see de.willuhn.jameica.hbci.gui.boxes.Box#getDefaultEnabled()
+   * @see de.willuhn.jameica.gui.boxes.Box#getDefaultEnabled()
    */
   public boolean getDefaultEnabled()
   {
@@ -66,7 +68,7 @@ public class OffeneUeberweisungen extends AbstractBox implements Box
   }
 
   /**
-   * @see de.willuhn.jameica.hbci.gui.boxes.Box#getDefaultIndex()
+   * @see de.willuhn.jameica.gui.boxes.Box#getDefaultIndex()
    */
   public int getDefaultIndex()
   {
@@ -108,12 +110,24 @@ public class OffeneUeberweisungen extends AbstractBox implements Box
     offeneUeberweisungen.paint(parent);
   }
 
+  /**
+   * @see de.willuhn.jameica.gui.boxes.Box#isActive()
+   */
+  public boolean isActive()
+  {
+    return super.isActive() && !Settings.isFirstStart();
+  }
+
 }
 
 
 /*********************************************************************
  * $Log$
- * Revision 1.3  2006-03-20 00:35:53  willuhn
+ * Revision 1.4  2006-06-29 23:10:33  willuhn
+ * @R Box-System aus Hibiscus in Jameica-Source verschoben
+ * @C keine eigene Startseite mehr, jetzt alles ueber Jameica-Boxsystem geregelt
+ *
+ * Revision 1.3  2006/03/20 00:35:53  willuhn
  * @N new box "Konten-Übersicht"
  *
  * Revision 1.2  2006/01/18 10:08:21  willuhn
