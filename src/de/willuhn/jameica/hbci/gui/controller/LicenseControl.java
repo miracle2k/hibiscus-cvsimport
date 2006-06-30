@@ -61,7 +61,7 @@ public class LicenseControl extends AbstractControl {
 
     Manifest manifest = null;
     try {
-      manifest = Application.getPluginLoader().getPluginContainer(HBCI.class).getManifest();
+      manifest = Application.getPluginLoader().getManifest(HBCI.class);
     }
     catch (Exception e)
     {
@@ -116,7 +116,10 @@ public class LicenseControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.12  2005-03-09 01:07:02  web0
+ * Revision 1.13  2006-06-30 13:51:54  willuhn
+ * @N Pluginloader Redesign in HEAD uebernommen
+ *
+ * Revision 1.12  2005/03/09 01:07:02  web0
  * @D javadoc fixes
  *
  * Revision 1.11  2004/11/12 18:25:07  willuhn
