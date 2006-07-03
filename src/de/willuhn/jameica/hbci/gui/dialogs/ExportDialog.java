@@ -33,12 +33,14 @@ import de.willuhn.jameica.gui.dialogs.YesNoDialog;
 import de.willuhn.jameica.gui.input.Input;
 import de.willuhn.jameica.gui.input.LabelInput;
 import de.willuhn.jameica.gui.input.SelectInput;
+import de.willuhn.jameica.gui.internal.action.Program;
 import de.willuhn.jameica.gui.util.ButtonArea;
 import de.willuhn.jameica.gui.util.LabelGroup;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.io.Exporter;
 import de.willuhn.jameica.hbci.io.IOFormat;
 import de.willuhn.jameica.hbci.io.IORegistry;
+import de.willuhn.jameica.messaging.StatusBarMessage;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.jameica.system.BackgroundTask;
 import de.willuhn.jameica.system.Settings;
@@ -197,6 +199,19 @@ public class ExportDialog extends AbstractDialog
           monitor.setStatus(ProgressMonitor.STATUS_DONE);
           GUI.getStatusBar().setSuccessText(i18n.tr("Daten exportiert nach {0}",s));
           monitor.setStatusText(i18n.tr("Daten exportiert nach {0}",s));
+          GUI.getDisplay().asyncExec(new Runnable() {
+            public void run()
+            {
+              try
+              {
+                new Program().handleAction(file);
+              }
+              catch (ApplicationException ae)
+              {
+                Application.getMessagingFactory().sendMessage(new StatusBarMessage(ae.getLocalizedMessage(),StatusBarMessage.TYPE_ERROR));
+              }
+            }
+          });
         }
         catch (ApplicationException ae)
         {
@@ -338,7 +353,10 @@ public class ExportDialog extends AbstractDialog
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2006-06-08 22:29:47  willuhn
+ * Revision 1.8  2006-07-03 23:04:32  willuhn
+ * @N PDF-Reportwriter in IO-API gepresst, damit er auch an anderen Stellen (z.Bsp. in der Umsatzliste) mitverwendet werden kann.
+ *
+ * Revision 1.7  2006/06/08 22:29:47  willuhn
  * @N DTAUS-Import fuer Sammel-Lastschriften und Sammel-Ueberweisungen
  * @B Eine Reihe kleinerer Bugfixes in Sammeltransfers
  * @B Bug 197 besser geloest

@@ -30,14 +30,13 @@ public class KontoauszugList extends AbstractView
 {
   private I18N i18n = null;
 
-  private KontoauszugControl control = null;
-
+  /**
+   * ct.
+   */
   public KontoauszugList()
   {
     super();
-    this.i18n = Application.getPluginLoader().getPlugin(HBCI.class)
-        .getResources().getI18N();
-
+    this.i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
   }
 
   /**
@@ -47,7 +46,7 @@ public class KontoauszugList extends AbstractView
   {
     GUI.getView().setTitle(i18n.tr("Kontoauszug"));
 
-    control = new KontoauszugControl(this);
+    final KontoauszugControl control = new KontoauszugControl(this);
 
     LabelGroup settings = new LabelGroup(getParent(), i18n.tr("Filter"));
 
@@ -56,11 +55,11 @@ public class KontoauszugList extends AbstractView
     settings.addLabelPair(i18n.tr("Ende-Datum"), control.getEnd());
 
     ButtonArea buttons = new ButtonArea(getParent(), 1);
-    buttons.addButton(i18n.tr("PDF-Ausgabe"), new Action()
+    buttons.addButton(i18n.tr("Kontoauszug erstellen"), new Action()
     {
       public void handleAction(Object context) throws ApplicationException
       {
-        control.startReport();
+        control.handleStart();
       }
     });
 
@@ -70,7 +69,10 @@ public class KontoauszugList extends AbstractView
 
 /*******************************************************************************
  * $Log$
- * Revision 1.3  2006-06-19 16:20:25  willuhn
+ * Revision 1.4  2006-07-03 23:04:32  willuhn
+ * @N PDF-Reportwriter in IO-API gepresst, damit er auch an anderen Stellen (z.Bsp. in der Umsatzliste) mitverwendet werden kann.
+ *
+ * Revision 1.3  2006/06/19 16:20:25  willuhn
  * *** empty log message ***
  *
  * Revision 1.2  2006/05/15 20:14:51  jost
