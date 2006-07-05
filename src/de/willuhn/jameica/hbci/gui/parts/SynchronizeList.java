@@ -43,6 +43,7 @@ public class SynchronizeList extends TablePart
     addColumn(i18n.tr("Offene Synchronisierungsaufgaben"),"name");
     
     this.setSummary(false);
+    this.setCheckable(true);
   }
   
   /**
@@ -79,7 +80,10 @@ public class SynchronizeList extends TablePart
 
 /*********************************************************************
  * $Log$
- * Revision 1.4  2006-04-18 22:38:16  willuhn
+ * Revision 1.5  2006-07-05 22:18:16  willuhn
+ * @N Einzelne Sync-Jobs koennen nun selektiv auch einmalig direkt in der Sync-Liste deaktiviert werden
+ *
+ * Revision 1.4  2006/04/18 22:38:16  willuhn
  * @N bug 227
  *
  * Revision 1.3  2006/03/21 00:43:14  willuhn
