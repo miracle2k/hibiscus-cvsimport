@@ -141,7 +141,7 @@ public class HBCISynchronize implements Action
 
       if (count == 0)
       {
-        Logger.info("nothing to do for account " + k.getAttribute("longname") + " - skipping");
+        Logger.info("nothing to do for account " + k.getLongName() + " - skipping");
         sync();
       }
       else
@@ -181,7 +181,10 @@ public class HBCISynchronize implements Action
 
 /*********************************************************************
  * $Log$
- * Revision 1.6  2006-07-05 22:18:16  willuhn
+ * Revision 1.7  2006-07-13 00:21:15  willuhn
+ * @N Neue Auswertung "Sparquote"
+ *
+ * Revision 1.6  2006/07/05 22:18:16  willuhn
  * @N Einzelne Sync-Jobs koennen nun selektiv auch einmalig direkt in der Sync-Liste deaktiviert werden
  *
  * Revision 1.5  2006/03/17 00:51:25  willuhn
