@@ -87,9 +87,11 @@ public class HBCICallbackSWT extends AbstractHBCICallback
 			default:
 				Logger.warn(msg);
   	}
+    
     if (log && HBCIFactory.getInstance().inProgress())
     {
       ProgressMonitor monitor = HBCIFactory.getInstance().getProgressMonitor();
+      monitor.log(msg);
       monitor.addPercentComplete(1);
     }
   }
@@ -505,7 +507,10 @@ public class HBCICallbackSWT extends AbstractHBCICallback
 
 /**********************************************************************
  * $Log$
- * Revision 1.37  2006-04-03 12:30:18  willuhn
+ * Revision 1.38  2006-07-13 22:10:24  willuhn
+ * @B bug 249
+ *
+ * Revision 1.37  2006/04/03 12:30:18  willuhn
  * @N new InternetConnectionDialog
  *
  * Revision 1.36  2006/03/28 17:52:23  willuhn
