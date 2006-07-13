@@ -156,6 +156,8 @@ public class SparQuote implements Part
       TabGroup tab2 = new TabGroup(folder,i18n.tr("Grafische Auswertung"));
 
       this.chart = new LineChart();
+      this.chart.setCurve(true);
+      this.chart.setShowMarker(true);
       this.chart.addData(new ChartDataSparQuote());
       this.chart.setTitle(i18n.tr("Sparquote im zeitlichen Verlauf"));
       this.chart.paint(tab2.getComposite());
@@ -381,7 +383,10 @@ public class SparQuote implements Part
 
 /*********************************************************************
  * $Log$
- * Revision 1.2  2006-07-13 22:34:06  willuhn
+ * Revision 1.3  2006-07-13 23:09:36  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.2  2006/07/13 22:34:06  willuhn
  * *** empty log message ***
  *
  * Revision 1.1  2006/07/13 00:21:15  willuhn
