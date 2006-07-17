@@ -98,13 +98,15 @@ public class ChartDataUmsatzTyp implements ChartData
   {
     return null;
   }
-
 }
 
 
 /*********************************************************************
  * $Log$
- * Revision 1.3  2006-04-03 21:39:07  willuhn
+ * Revision 1.4  2006-07-17 15:50:49  willuhn
+ * @N Sparquote
+ *
+ * Revision 1.3  2006/04/03 21:39:07  willuhn
  * @N UmsatzChart
  *
  * Revision 1.2  2005/12/30 00:14:45  willuhn

@@ -81,11 +81,11 @@ public class TANDialog extends PasswordDialog
 		return true;
 	}
 
-	/**
+  /**
    * BUGZILLA 150
-	 * @see de.willuhn.jameica.gui.dialogs.SimpleDialog#setText(java.lang.String)
-	 */
-	public void setText(String text)
+   * @see PasswordDialog#setText(String)
+   */
+  public void setText(String text)
   {
     ////////////////////////////////////////////////////////////////////////////
     // Bezeichnung des Kontos ermitteln
@@ -137,7 +137,10 @@ public class TANDialog extends PasswordDialog
 
 /**********************************************************************
  * $Log$
- * Revision 1.11  2006-04-13 10:36:13  willuhn
+ * Revision 1.12  2006-07-17 15:50:49  willuhn
+ * @N Sparquote
+ *
+ * Revision 1.11  2006/04/13 10:36:13  willuhn
  * @B bug 150
  *
  * Revision 1.10  2006/02/06 15:40:44  willuhn
