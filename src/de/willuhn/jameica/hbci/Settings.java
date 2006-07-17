@@ -203,7 +203,7 @@ public class Settings
    */
   public static boolean getCheckPin()
   {
-    return settings.getBoolean("checkpin",true);
+    return settings.getBoolean("checkpin",false);
   }
   
   /**
@@ -402,7 +402,10 @@ public class Settings
 
 /*********************************************************************
  * $Log$
- * Revision 1.44  2006-06-29 23:10:33  willuhn
+ * Revision 1.45  2006-07-17 22:01:58  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.44  2006/06/29 23:10:33  willuhn
  * @R Box-System aus Hibiscus in Jameica-Source verschoben
  * @C keine eigene Startseite mehr, jetzt alles ueber Jameica-Boxsystem geregelt
  *
