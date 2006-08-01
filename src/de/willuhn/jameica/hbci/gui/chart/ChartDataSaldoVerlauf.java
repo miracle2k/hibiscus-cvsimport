@@ -18,8 +18,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.eclipse.swt.graphics.Color;
-
 import de.willuhn.datasource.GenericIterator;
 import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.jameica.gui.formatter.Formatter;
@@ -124,14 +122,6 @@ public class ChartDataSaldoVerlauf implements LineChartData
   }
 
   /**
-   * @see de.willuhn.jameica.hbci.gui.chart.LineChartData#getColor()
-   */
-  public Color getColor() throws RemoteException
-  {
-    return de.willuhn.jameica.gui.util.Color.LINK.getSWTColor();
-  }
-
-  /**
    * @see de.willuhn.jameica.hbci.gui.chart.LineChartData#getCurve()
    */
   public boolean getCurve()
@@ -152,7 +142,10 @@ public class ChartDataSaldoVerlauf implements LineChartData
 
 /*********************************************************************
  * $Log$
- * Revision 1.4  2006-07-17 15:50:49  willuhn
+ * Revision 1.5  2006-08-01 21:29:12  willuhn
+ * @N Geaenderte LineCharts
+ *
+ * Revision 1.4  2006/07/17 15:50:49  willuhn
  * @N Sparquote
  *
  * Revision 1.3  2006/03/09 18:24:05  willuhn

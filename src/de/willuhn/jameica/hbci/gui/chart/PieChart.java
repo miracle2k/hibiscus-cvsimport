@@ -141,7 +141,7 @@ public class PieChart extends AbstractChart
       //Min Slice
       chart.setMinSlice(10);
       chart.setMinSlicePercent(false);
-      chart.setMinSliceLabel("Sonstige");
+      chart.setMinSliceLabel(i18n.tr("Sonstige"));
     }
     return chart;
   }
@@ -150,7 +150,10 @@ public class PieChart extends AbstractChart
 
 /*********************************************************************
  * $Log$
- * Revision 1.4  2005-12-30 00:28:14  willuhn
+ * Revision 1.5  2006-08-01 21:29:12  willuhn
+ * @N Geaenderte LineCharts
+ *
+ * Revision 1.4  2005/12/30 00:28:14  willuhn
  * @C piechart layout
  *
  * Revision 1.3  2005/12/30 00:14:45  willuhn
