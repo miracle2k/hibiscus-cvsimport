@@ -44,7 +44,6 @@ public class Settings extends AbstractView {
 		// Einstellungen
 		settings.addCheckbox(control.getOnlineMode(),i18n.tr("Bei Kommunikation mit der Bank Internetverbindung ohne Nachfrage herstellen"));
 		settings.addCheckbox(control.getCheckPin(),i18n.tr("PIN-Eingabe via Check-Summe prüfen"));
-    settings.addCheckbox(control.getShowTan(),i18n.tr("TANs während der Eingabe anzeigen"));
     settings.addCheckbox(control.getDecimalGrouping(),i18n.tr("Tausender-Trennzeichen bei Geld-Beträgen verwenden"));
     settings.addCheckbox(control.getKontoCheck(),i18n.tr("Kontonummern via Prüfsumme der Bank testen"));
 		
@@ -84,7 +83,10 @@ public class Settings extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.35  2006-01-18 00:51:00  willuhn
+ * Revision 1.36  2006-08-03 15:32:35  willuhn
+ * @N Bug 62
+ *
+ * Revision 1.35  2006/01/18 00:51:00  willuhn
  * @B bug 65
  *
  * Revision 1.34  2006/01/08 23:23:19  willuhn
