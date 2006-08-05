@@ -141,31 +141,31 @@ public class HBCI extends AbstractPlugin
     try {
 			Application.getCallback().getStartupMonitor().setStatusText("hibiscus: checking database integrity");
 
-//      ////////////////////////////////////////////////////////////////////////////
-//      // Damit wir die Updates nicht immer haendisch nachziehen muessen, rufen wir
-//      // bei einem Fehler das letzte Update-Script nochmal auf.
-//			if (!Application.inClientMode())
-//      {
-//        try
-//        {
-//          de.willuhn.jameica.system.Settings s = getResources().getSettings();
-//          double size = s.getDouble("sql-update-size",-1);
-//          
-//          File f = new File(getResources().getPath() + "/sql/update_1.5-1.6.sql");
-//          
-//          long length = f.length();
-//          if (length != size)
-//          {
-//            s.setAttribute("sql-update-size",(double)f.length());
-//            getDatabase().executeSQLScript(f);
-//          }
-//        }
-//        catch (Exception e2)
-//        {
-//          Logger.error("unable to execute sql update script",e2);
-//        }
-//      }
-//      ////////////////////////////////////////////////////////////////////////////
+      ////////////////////////////////////////////////////////////////////////////
+      // Damit wir die Updates nicht immer haendisch nachziehen muessen, rufen wir
+      // bei einem Fehler das letzte Update-Script nochmal auf.
+			if (!Application.inClientMode())
+      {
+        try
+        {
+          de.willuhn.jameica.system.Settings s = getResources().getSettings();
+          double size = s.getDouble("sql-update-size",-1);
+          
+          File f = new File(getResources().getPath() + "/sql/update_1.5-1.6.sql");
+          
+          long length = f.length();
+          if (length != size)
+          {
+            s.setAttribute("sql-update-size",(double)f.length());
+            getDatabase().executeSQLScript(f);
+          }
+        }
+        catch (Exception e2)
+        {
+          Logger.error("unable to execute sql update script",e2);
+        }
+      }
+      ////////////////////////////////////////////////////////////////////////////
 
       checkConsistency();
 		}
@@ -357,7 +357,10 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
- * Revision 1.91  2006-06-29 23:10:34  willuhn
+ * Revision 1.92  2006-08-05 22:00:51  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.91  2006/06/29 23:10:34  willuhn
  * @R Box-System aus Hibiscus in Jameica-Source verschoben
  * @C keine eigene Startseite mehr, jetzt alles ueber Jameica-Boxsystem geregelt
  *
