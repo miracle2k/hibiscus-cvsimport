@@ -97,9 +97,8 @@ public class UmsatzDetail extends AbstractView {
       }
     }
    
-
-    LabelGroup comment = new LabelGroup(getParent(),i18n.tr("Kommentar"));
-    comment.addLabelPair(i18n.tr("Kommentar zu dieser Buchung"),  control.getKommentar());
+    LabelGroup comment = new LabelGroup(getParent(),i18n.tr("Kommentar zu dieser Buchung"),true);
+    comment.addPart(control.getKommentar());
 
     ButtonArea buttons = new ButtonArea(getParent(),3);
 		buttons.addButton(i18n.tr("Zurück"),new Back(),null,true);
@@ -123,7 +122,10 @@ public class UmsatzDetail extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.24  2006-05-10 12:51:37  willuhn
+ * Revision 1.25  2006-08-05 20:44:39  willuhn
+ * @B Bug 256
+ *
+ * Revision 1.24  2006/05/10 12:51:37  willuhn
  * @B typo s/Ktr/Kto/
  *
  * Revision 1.23  2006/01/18 00:51:00  willuhn
