@@ -107,8 +107,11 @@ public class HBCICallbackSWT extends AbstractHBCICallback
 		try {
       
       PassportHandle handle = HBCIFactory.getInstance().getCurrentPassportHandle();
-      if (handle != null)
-        handle.callback(passport,reason,msg,datatype,retData);
+      if (handle != null && handle.callback(passport,reason,msg,datatype,retData))
+      {
+        Logger.info("callback [reason " + reason + "] handled by " + handle.getClass());
+        return;
+      }
 
 			AccountContainer container = (AccountContainer) accountCache.get(passport);
 
@@ -475,7 +478,10 @@ public class HBCICallbackSWT extends AbstractHBCICallback
 
 /**********************************************************************
  * $Log$
- * Revision 1.39  2006-08-03 15:32:35  willuhn
+ * Revision 1.40  2006-08-06 13:26:48  willuhn
+ * @B bug 257
+ *
+ * Revision 1.39  2006/08/03 15:32:35  willuhn
  * @N Bug 62
  *
  * Revision 1.38  2006/07/13 22:10:24  willuhn

@@ -84,16 +84,20 @@ public interface PassportHandle extends Remote {
    * @param datatype
    * @param retData
    * @see org.kapott.hbci.callback.HBCICallback#callback(org.kapott.hbci.passport.HBCIPassport, int, java.lang.String, int, java.lang.StringBuffer)
+   * @return true, wenn der Handler den Callback behandeln konnte.
    * @throws Exception
    */
-  public void callback(HBCIPassport passport, int reason, String msg, int datatype, StringBuffer retData) throws Exception;
+  public boolean callback(HBCIPassport passport, int reason, String msg, int datatype, StringBuffer retData) throws Exception;
 
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2006-08-03 15:32:35  willuhn
+ * Revision 1.5  2006-08-06 13:26:48  willuhn
+ * @B bug 257
+ *
+ * Revision 1.4  2006/08/03 15:32:35  willuhn
  * @N Bug 62
  *
  * Revision 1.3  2005/06/21 20:11:10  web0
