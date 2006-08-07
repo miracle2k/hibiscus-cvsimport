@@ -45,7 +45,7 @@ public class EmpfaengerList extends AbstractView {
 
 			ButtonArea buttons = new ButtonArea(getParent(),2);
       buttons.addButton(i18n.tr("Zurück"),new Back());
-			buttons.addButton(i18n.tr("neuer Adressbuch-Eintrag"),new EmpfaengerNew(),null,true);
+			buttons.addButton(i18n.tr("Neuer Adressbuch-Eintrag"),new EmpfaengerNew(),null,true);
 
 		}
 		catch (Exception e)
@@ -59,7 +59,10 @@ public class EmpfaengerList extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2006-01-18 00:51:00  willuhn
+ * Revision 1.6  2006-08-07 14:45:18  willuhn
+ * @B typos
+ *
+ * Revision 1.5  2006/01/18 00:51:00  willuhn
  * @B bug 65
  *
  * Revision 1.4  2005/05/02 23:56:45  web0

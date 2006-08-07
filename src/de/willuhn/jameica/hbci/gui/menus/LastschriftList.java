@@ -52,7 +52,6 @@ public class LastschriftList extends ContextMenu
 		addItem(new SingleItem(i18n.tr("Öffnen"), new LastschriftNew()));
 		addItem(new NotActiveMenuItem(i18n.tr("Jetzt ausführen..."), new LastschriftExecute()));
 		addItem(new SingleItem(i18n.tr("Duplizieren"), new LastschriftDuplicate()));
-		addItem(ContextMenuItem.SEPARATOR);
 		addItem(new CheckedContextMenuItem(i18n.tr("Löschen..."), new DBObjectDelete()));
     addItem(new SingleItem(i18n.tr("Als \"ausgeführt\" markieren..."), new Action() {
       public void handleAction(Object context) throws ApplicationException
@@ -86,9 +85,10 @@ public class LastschriftList extends ContextMenu
         }
       }
     });
-    addItem(new ContextMenuItem(i18n.tr("Lastschriften importieren..."),new LastschriftImport()));
-		addItem(ContextMenuItem.SEPARATOR);
-		addItem(new ContextMenuItem(i18n.tr("Neue Lastschrift..."), new UNeu()));
+    addItem(ContextMenuItem.SEPARATOR);
+    addItem(new ContextMenuItem(i18n.tr("Neue Lastschrift..."), new UNeu()));
+    addItem(ContextMenuItem.SEPARATOR);
+    addItem(new ContextMenuItem(i18n.tr("Importieren..."),new LastschriftImport()));
 		
 	}
 
@@ -174,7 +174,10 @@ public class LastschriftList extends ContextMenu
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2006-06-08 17:40:59  willuhn
+ * Revision 1.8  2006-08-07 14:45:18  willuhn
+ * @B typos
+ *
+ * Revision 1.7  2006/06/08 17:40:59  willuhn
  * @N Vorbereitungen fuer DTAUS-Import von Sammellastschriften und Umsaetzen
  *
  * Revision 1.6  2006/06/07 17:26:40  willuhn

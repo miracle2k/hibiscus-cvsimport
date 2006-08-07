@@ -47,7 +47,7 @@ public class LastschriftList extends AbstractView {
 			ButtonArea buttons = new ButtonArea(getParent(),3);
       buttons.addButton(i18n.tr("Zurück"),new Back());
       buttons.addButton(i18n.tr("Importieren..."),new LastschriftImport());
-			buttons.addButton(i18n.tr("neue Lastschrift"),new LastschriftNew());
+			buttons.addButton(i18n.tr("Neue Lastschrift"),new LastschriftNew());
 
 		}
 		catch (Exception e)
@@ -61,7 +61,10 @@ public class LastschriftList extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.8  2006-06-08 22:29:47  willuhn
+ * Revision 1.9  2006-08-07 14:45:18  willuhn
+ * @B typos
+ *
+ * Revision 1.8  2006/06/08 22:29:47  willuhn
  * @N DTAUS-Import fuer Sammel-Lastschriften und Sammel-Ueberweisungen
  * @B Eine Reihe kleinerer Bugfixes in Sammeltransfers
  * @B Bug 197 besser geloest

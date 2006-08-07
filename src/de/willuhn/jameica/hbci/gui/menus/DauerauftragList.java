@@ -38,7 +38,6 @@ public class DauerauftragList extends ContextMenu
 		i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
 		addItem(new CheckedContextMenuItem(i18n.tr("Öffnen"), new DauerauftragNew()));
-		addItem(ContextMenuItem.SEPARATOR);
 		addItem(new CheckedContextMenuItem(i18n.tr("Löschen..."), new DauerauftragDelete()));
 		addItem(ContextMenuItem.SEPARATOR);
 		addItem(new ContextMenuItem(i18n.tr("Neuer Dauerauftrag..."), new DNeu()));
@@ -64,7 +63,10 @@ public class DauerauftragList extends ContextMenu
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2004-11-13 17:02:04  willuhn
+ * Revision 1.3  2006-08-07 14:45:18  willuhn
+ * @B typos
+ *
+ * Revision 1.2  2004/11/13 17:02:04  willuhn
  * @N Bearbeiten des Zahlungsturnus
  *
  * Revision 1.1  2004/10/25 17:58:56  willuhn
