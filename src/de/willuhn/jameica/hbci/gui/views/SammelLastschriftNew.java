@@ -22,7 +22,6 @@ import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.gui.action.Back;
 import de.willuhn.jameica.hbci.gui.action.SammelLastBuchungNew;
 import de.willuhn.jameica.hbci.gui.action.SammelLastschriftExecute;
-import de.willuhn.jameica.hbci.gui.action.SammelTransferBuchungImport;
 import de.willuhn.jameica.hbci.gui.action.SammelTransferDelete;
 import de.willuhn.jameica.hbci.gui.controller.SammelLastschriftControl;
 import de.willuhn.jameica.hbci.rmi.SammelLastschrift;
@@ -60,17 +59,9 @@ public class SammelLastschriftNew extends AbstractView {
 
 		final SammelLastschrift l = (SammelLastschrift) control.getTransfer();
 
-    ButtonArea buttons = new ButtonArea(getParent(),6);
+    ButtonArea buttons = new ButtonArea(getParent(),5);
     buttons.addButton(i18n.tr("Zurück"),new Back());
     buttons.addButton(i18n.tr("Löschen"),new SammelTransferDelete(),control.getTransfer());
-    buttons.addButton(i18n.tr("Buchungen importieren..."), new Action() {
-      public void handleAction(Object context) throws ApplicationException
-      {
-        // Erst speichern
-        if (control.handleStore())
-          new SammelTransferBuchungImport().handleAction(context);
-      }
-    },control.getTransfer());
     buttons.addButton(i18n.tr("Neue Buchungen hinzufügen"), new Action() {
       public void handleAction(Object context) throws ApplicationException
       {
@@ -100,7 +91,11 @@ public class SammelLastschriftNew extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.12  2006-06-13 20:09:06  willuhn
+ * Revision 1.13  2006-08-07 14:31:59  willuhn
+ * @B misc bugfixing
+ * @C Redesign des DTAUS-Imports fuer Sammeltransfers
+ *
+ * Revision 1.12  2006/06/13 20:09:06  willuhn
  * @R Text "Bemerkung" entfernt
  *
  * Revision 1.11  2006/06/08 22:29:47  willuhn

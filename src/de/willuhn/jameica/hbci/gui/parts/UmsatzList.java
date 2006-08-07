@@ -153,7 +153,7 @@ public class UmsatzList extends TablePart
     setRememberColWidths(true);
 
     // Wir erstellen noch einen Message-Consumer, damit wir ueber neu eintreffende
-    // Uebweiseungen informiert werden.
+    // Umsaetze informiert werden.
     this.mc = new UmsMessageConsumer();
     Application.getMessagingFactory().registerMessageConsumer(this.mc);
   }
@@ -583,7 +583,11 @@ public class UmsatzList extends TablePart
 
 /**********************************************************************
  * $Log$
- * Revision 1.26  2006-08-02 17:49:44  willuhn
+ * Revision 1.27  2006-08-07 14:31:59  willuhn
+ * @B misc bugfixing
+ * @C Redesign des DTAUS-Imports fuer Sammeltransfers
+ *
+ * Revision 1.26  2006/08/02 17:49:44  willuhn
  * @B Bug 255
  * @N Erkennung des Kontos beim Import von Umsaetzen aus dem Kontextmenu heraus
  *

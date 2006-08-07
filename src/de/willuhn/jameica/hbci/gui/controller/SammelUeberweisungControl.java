@@ -23,8 +23,6 @@ import de.willuhn.jameica.gui.parts.TablePart;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.gui.action.SammelTransferBuchungDelete;
-import de.willuhn.jameica.hbci.gui.action.SammelTransferBuchungImport;
-import de.willuhn.jameica.hbci.gui.action.SammelUeberweisungBuchungExport;
 import de.willuhn.jameica.hbci.gui.action.SammelUeberweisungBuchungNew;
 import de.willuhn.jameica.hbci.gui.action.SammelUeberweisungNew;
 import de.willuhn.jameica.hbci.gui.parts.SammelTransferBuchungList;
@@ -137,41 +135,6 @@ public class SammelUeberweisungControl extends AbstractSammelTransferControl
         }
       }
     }));
-    ctx.addItem(ContextMenuItem.SEPARATOR);
-    ctx.addItem(new ContextMenuItem(i18n.tr("Buchungen importieren..."),new Action() {
-      public void handleAction(Object context) throws ApplicationException
-      {
-        if (handleStore())
-        {
-          try
-          {
-            new SammelTransferBuchungImport().handleAction(getTransfer());
-          }
-          catch (RemoteException e)
-          {
-            Logger.error("unable to load sammellastschrift",e);
-            throw new ApplicationException(i18n.tr("Fehler beim Laden der Sammellastschrift"));
-          }
-        }
-      }
-    }));
-    ctx.addItem(new ContextMenuItem(i18n.tr("Buchungen exportieren..."),new Action() {
-      public void handleAction(Object context) throws ApplicationException
-      {
-        try
-        {
-          SammelTransfer transfer = getTransfer();
-          if (transfer == null || transfer.getBuchungen().size() == 0)
-            return;
-          new SammelUeberweisungBuchungExport().handleAction(transfer);
-        }
-        catch (RemoteException e)
-        {
-          Logger.error("unable to load sammelueberweisung",e);
-          throw new ApplicationException(i18n.tr("Fehler beim Laden der Sammel-Überweisung"));
-        }
-      }
-    }));
     buchungen.setContextMenu(ctx);
     return buchungen;
   }
@@ -243,7 +206,11 @@ public class SammelUeberweisungControl extends AbstractSammelTransferControl
 
 /*****************************************************************************
  * $Log$
- * Revision 1.2  2006-06-08 22:29:47  willuhn
+ * Revision 1.3  2006-08-07 14:31:59  willuhn
+ * @B misc bugfixing
+ * @C Redesign des DTAUS-Imports fuer Sammeltransfers
+ *
+ * Revision 1.2  2006/06/08 22:29:47  willuhn
  * @N DTAUS-Import fuer Sammel-Lastschriften und Sammel-Ueberweisungen
  * @B Eine Reihe kleinerer Bugfixes in Sammeltransfers
  * @B Bug 197 besser geloest

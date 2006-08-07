@@ -17,6 +17,7 @@ import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.util.ButtonArea;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.gui.action.Back;
+import de.willuhn.jameica.hbci.gui.action.SammelLastschriftImport;
 import de.willuhn.jameica.hbci.gui.action.SammelLastschriftNew;
 import de.willuhn.jameica.hbci.gui.controller.SammelLastschriftControl;
 import de.willuhn.jameica.system.Application;
@@ -43,8 +44,9 @@ public class SammelLastschriftList extends AbstractView {
 
 			control.getListe().paint(getParent());
 
-			ButtonArea buttons = new ButtonArea(getParent(),2);
+			ButtonArea buttons = new ButtonArea(getParent(),3);
       buttons.addButton(i18n.tr("Zurück"),new Back());
+      buttons.addButton(i18n.tr("Importieren..."),new SammelLastschriftImport());
 			buttons.addButton(i18n.tr("Neue Sammel-Lastschrift"),new SammelLastschriftNew(),null,true);
 
 		}
@@ -59,7 +61,11 @@ public class SammelLastschriftList extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2006-01-18 00:51:00  willuhn
+ * Revision 1.6  2006-08-07 14:31:59  willuhn
+ * @B misc bugfixing
+ * @C Redesign des DTAUS-Imports fuer Sammeltransfers
+ *
+ * Revision 1.5  2006/01/18 00:51:00  willuhn
  * @B bug 65
  *
  * Revision 1.4  2005/05/02 23:56:45  web0

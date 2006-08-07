@@ -16,6 +16,7 @@ import java.rmi.RemoteException;
 
 import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.datasource.rmi.DBObject;
+import de.willuhn.util.ApplicationException;
 
 /**
  * Interface fuer Sammellastschriften und -ueberweisungen.
@@ -64,12 +65,24 @@ public interface SammelTransfer extends DBObject, Terminable, Duplicatable
    * @throws RemoteException
    */
   public void setBezeichnung(String bezeichnung) throws RemoteException;
+  
+  /**
+   * Erzeugt eine neue Buchung auf dem Sammeltransfer.
+   * @return die neu erzeugte Buchung.
+   * @throws RemoteException
+   * @throws ApplicationException
+   */
+  public SammelTransferBuchung createBuchung() throws RemoteException, ApplicationException;
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2005-09-30 00:08:50  willuhn
+ * Revision 1.2  2006-08-07 14:31:59  willuhn
+ * @B misc bugfixing
+ * @C Redesign des DTAUS-Imports fuer Sammeltransfers
+ *
+ * Revision 1.1  2005/09/30 00:08:50  willuhn
  * @N SammelUeberweisungen (merged with SammelLastschrift)
  *
  **********************************************************************/

@@ -167,8 +167,9 @@ public class HBCIUeberweisungJob extends AbstractHBCIJob
 		}
 
 		// Wir markieren die Ueberweisung als "ausgefuehrt"
+    Logger.info("mark ueberweisung as \"ausgefuehrt\"");
 		ueberweisung.setAusgefuehrt();
-    konto.addToProtokoll(i18n.tr("Überweisung ausgeführt") + " " + empfName,Protokoll.TYP_SUCCESS);
+    konto.addToProtokoll(i18n.tr("Überweisung ausgeführt an: ") + " " + empfName,Protokoll.TYP_SUCCESS);
 		Logger.info("ueberweisung submitted successfully");
   }
 }
@@ -176,7 +177,11 @@ public class HBCIUeberweisungJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.31  2006-06-26 13:25:20  willuhn
+ * Revision 1.32  2006-08-07 14:31:59  willuhn
+ * @B misc bugfixing
+ * @C Redesign des DTAUS-Imports fuer Sammeltransfers
+ *
+ * Revision 1.31  2006/06/26 13:25:20  willuhn
  * @N Franks eBay-Parser
  *
  * Revision 1.30  2006/06/19 11:52:15  willuhn

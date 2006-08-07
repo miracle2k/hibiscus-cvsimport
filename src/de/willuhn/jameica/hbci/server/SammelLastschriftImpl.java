@@ -14,6 +14,8 @@ import java.rmi.RemoteException;
 import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.jameica.hbci.rmi.SammelLastBuchung;
 import de.willuhn.jameica.hbci.rmi.SammelLastschrift;
+import de.willuhn.jameica.hbci.rmi.SammelTransferBuchung;
+import de.willuhn.util.ApplicationException;
 
 /**
  * Implementierung des Containers fuer Sammellastschrift-Buchungen.
@@ -49,11 +51,27 @@ public class SammelLastschriftImpl extends AbstractSammelTransferImpl
     list.addFilter("slastschrift_id = " + this.getID());
     return list;
   }
+
+  /**
+   * @see de.willuhn.jameica.hbci.rmi.SammelTransfer#createBuchung()
+   */
+  public SammelTransferBuchung createBuchung() throws RemoteException, ApplicationException
+  {
+    SammelLastBuchung b = (SammelLastBuchung) this.getService().createObject(SammelLastBuchung.class,null);
+    if (this.isNewObject())
+      store();
+    b.setSammelTransfer(this);
+    return b;
+  }
 }
 
 /*****************************************************************************
  * $Log$
- * Revision 1.11  2005-09-30 00:08:50  willuhn
+ * Revision 1.12  2006-08-07 14:31:59  willuhn
+ * @B misc bugfixing
+ * @C Redesign des DTAUS-Imports fuer Sammeltransfers
+ *
+ * Revision 1.11  2005/09/30 00:08:50  willuhn
  * @N SammelUeberweisungen (merged with SammelLastschrift)
  *
  * Revision 1.10  2005/08/22 10:36:38  willuhn
