@@ -89,15 +89,6 @@ public class ImportDialog extends AbstractDialog
 		{
 			public void handleAction(Object context) throws ApplicationException
 			{
-        try
-        {
-          if (getImporterList() instanceof LabelInput)
-            return;
-        }
-        catch (Exception e)
-        {
-          Logger.error("unable to check import format",e);
-        }
 				doImport();
 			}
 		},null,true);
@@ -320,7 +311,10 @@ public class ImportDialog extends AbstractDialog
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2006-08-07 14:45:18  willuhn
+ * Revision 1.10  2006-08-07 21:51:43  willuhn
+ * @N Erste Version des DTAUS-Exporters
+ *
+ * Revision 1.9  2006/08/07 14:45:18  willuhn
  * @B typos
  *
  * Revision 1.8  2006/06/08 22:29:47  willuhn
