@@ -17,8 +17,12 @@ import java.io.OutputStream;
 import java.rmi.RemoteException;
 
 import de.jost_net.OBanToo.Dtaus.DtausDateiWriter;
+import de.willuhn.datasource.GenericIterator;
 import de.willuhn.datasource.GenericObject;
-import de.willuhn.jameica.hbci.rmi.Transfer;
+import de.willuhn.jameica.hbci.rmi.Konto;
+import de.willuhn.jameica.hbci.rmi.SammelTransfer;
+import de.willuhn.jameica.hbci.rmi.SammelTransferBuchung;
+import de.willuhn.jameica.hbci.rmi.SammelUeberweisung;
 import de.willuhn.jameica.system.OperationCanceledException;
 import de.willuhn.logging.Logger;
 import de.willuhn.util.ApplicationException;
@@ -27,16 +31,8 @@ import de.willuhn.util.ProgressMonitor;
 /**
  * Implementierung eines Exporters fuer DTAUS-Dateien.
  */
-public class DTAUSExporter extends AbstractDTAUSIO implements Exporter
+public class DTAUSSammelTransferExporter extends AbstractDTAUSIO implements Exporter
 {
-
-  /**
-   * ct.
-   */
-  public DTAUSExporter()
-  {
-    super();
-  }
 
   /**
    * @see de.willuhn.jameica.hbci.io.Exporter#doExport(de.willuhn.datasource.GenericObject[], de.willuhn.jameica.hbci.io.IOFormat, java.io.OutputStream, de.willuhn.util.ProgressMonitor)
@@ -52,22 +48,61 @@ public class DTAUSExporter extends AbstractDTAUSIO implements Exporter
     if (objects == null || objects.length == 0)
       throw new ApplicationException(i18n.tr("Keine zu exportierenden Daten angegeben"));
 
-    if (!(objects instanceof Transfer[]))
-      throw new ApplicationException(i18n.tr("Die zu exportierenden Daten enthalten keine HBCI-Aufträge"));
+    if (!(objects instanceof SammelTransfer[]))
+      throw new ApplicationException(i18n.tr("Die zu exportierenden Daten enthalten keine Sammel-Aufträge"));
       
     try
     {
-      int success = 0;
-      
-      // TODO
       DtausDateiWriter writer = new DtausDateiWriter(os);
-      writer.writeASatz();
       for (int i=0;i<objects.length;++i)
       {
-        writer.writeCSatz();
+        SammelTransfer transfer   = (SammelTransfer) objects[i];
+        Konto konto               = transfer.getKonto();
+        GenericIterator buchungen = transfer.getBuchungen();
+
+        monitor.setPercentComplete(0);
+        monitor.setStatusText(i18n.tr("Exportiere logische Datei Nr. {0}",""+(i+1)));
+
+        double factor = 100d / buchungen.size();
+        int count = 0;
+        int success = 0;
+        
+        writer.open();
+        writer.setAAusfuehrungsdatum(transfer.getTermin());
+        writer.setABLZBank(Long.parseLong(konto.getBLZ()));
+
+        // TODO Ist das richtig rum?
+        String type = (transfer instanceof SammelUeberweisung) ? "LK" : "GK";
+        writer.setAGutschriftLastschrift(type);
+        
+        writer.setAKonto(Long.parseLong(konto.getKontonummer()));
+        writer.writeASatz();
+        
+        while (buchungen.hasNext())
+        {
+          // Mit diesem Factor sollte sich der Fortschrittsbalken
+          // bis zum Ende der DTAUS-Datei genau auf 100% bewegen
+          monitor.setPercentComplete((int)((++count) * factor));
+
+          SammelTransferBuchung buchung = (SammelTransferBuchung) buchungen.next();
+
+          monitor.log(i18n.tr("Exportiere Datensatz {0}",buchung.getGegenkontoName()));
+          
+          writer.setCBetragInEuro(buchung.getBetrag());
+          writer.setCBLZEndbeguenstigt(Long.parseLong(buchung.getGegenkontoBLZ()));
+          writer.setCBLZErstbeteiligtesInstitut(Long.parseLong(konto.getBLZ()));
+          writer.setCKonto(Long.parseLong(buchung.getGegenkontoNummer()));
+          writer.setCName(buchung.getGegenkontoName());
+          writer.addCVerwendungszweck(buchung.getZweck());
+          String zweck2 = buchung.getZweck2();
+          if (zweck2 != null && zweck2.length() > 0)
+            writer.addCVerwendungszweck(zweck2);
+          writer.writeCSatz();
+          success++;
+        }
+        monitor.setStatusText(i18n.tr("{0} Aufträge erfolgreich exportiert",""+success));
       }
       writer.writeESatz();
-      monitor.setStatusText(i18n.tr("{0} Aufträge erfolgreich exportiert",""+success));
       os = null; // wird vokm DTAUSWriter geschlossen
     }
     catch (OperationCanceledException oce)
@@ -102,15 +137,17 @@ public class DTAUSExporter extends AbstractDTAUSIO implements Exporter
    */
   Class[] getSupportedObjectTypes()
   {
-    // TODO
-    return null;
+    return new Class[]{SammelTransfer.class};
   }
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2006-06-08 17:40:59  willuhn
+ * Revision 1.1  2006-08-07 15:19:32  willuhn
+ * @N DTAUS-Export
+ *
+ * Revision 1.2  2006/06/08 17:40:59  willuhn
  * @N Vorbereitungen fuer DTAUS-Import von Sammellastschriften und Umsaetzen
  *
  * Revision 1.1  2006/06/07 22:42:00  willuhn
