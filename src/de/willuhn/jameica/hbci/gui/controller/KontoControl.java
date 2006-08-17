@@ -251,7 +251,9 @@ public class KontoControl extends AbstractControl {
 			return blz;
 		blz = new TextInput(getKonto().getBLZ(),HBCIProperties.HBCI_BLZ_LENGTH);
 		blz.setComment("");
-		blz.addListener(new BLZListener());
+    BLZListener l = new BLZListener();
+		blz.addListener(l);
+    l.handleEvent(null); // Einmal initial ausfuehren
 		return blz;
 	}
 
@@ -353,14 +355,6 @@ public class KontoControl extends AbstractControl {
 		return kontoList;
 	}
 
-	/**
-   * Initialisiert den Dialog und loest die EventHandler aus.
-   */
-  public void init()
-	{
-		new BLZListener().handleEvent(null);
-	}
-
   /**
    * Speichert das Konto.
    */
@@ -459,7 +453,10 @@ public class KontoControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.68  2006-04-25 23:25:12  willuhn
+ * Revision 1.69  2006-08-17 21:46:16  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.68  2006/04/25 23:25:12  willuhn
  * @N bug 81
  *
  * Revision 1.67  2006/04/18 22:38:16  willuhn
