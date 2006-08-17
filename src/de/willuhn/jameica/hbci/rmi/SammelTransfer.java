@@ -32,6 +32,14 @@ public interface SammelTransfer extends DBObject, Terminable, Duplicatable
   public DBIterator getBuchungen() throws RemoteException;
 
   /**
+   * Liefert die Buchungen des Sammeltransfers als Array.
+   * @return Liste der Buchungen.
+   * TODO: Das ist nicht schoen. Aber Velocity (fuer den Export) versteht leider nur Arrays.
+   * @throws RemoteException
+   */
+  public SammelTransferBuchung[] getBuchungenAsArray() throws RemoteException;
+  
+  /**
    * Liefert die Summe der enthaltenen Buchungen.
    * @return Summe der enthaltenen Buchungen.
    * @throws RemoteException
@@ -78,7 +86,10 @@ public interface SammelTransfer extends DBObject, Terminable, Duplicatable
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2006-08-07 14:31:59  willuhn
+ * Revision 1.3  2006-08-17 10:06:32  willuhn
+ * @B Fehler in HTML-Export von Sammeltransfers
+ *
+ * Revision 1.2  2006/08/07 14:31:59  willuhn
  * @B misc bugfixing
  * @C Redesign des DTAUS-Imports fuer Sammeltransfers
  *

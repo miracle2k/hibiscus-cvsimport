@@ -10,6 +10,7 @@
 package de.willuhn.jameica.hbci.server;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.Date;
 
 import de.willuhn.datasource.db.AbstractDBObject;
@@ -371,11 +372,30 @@ public abstract class AbstractSammelTransferImpl extends AbstractDBObject implem
     }
   }
 
+
+  /**
+   * @see de.willuhn.jameica.hbci.rmi.SammelTransfer#getBuchungenAsArray()
+   */
+  public SammelTransferBuchung[] getBuchungenAsArray() throws RemoteException
+  {
+    ArrayList buchungen = new ArrayList();
+    DBIterator list = getBuchungen();
+    while (list.hasNext())
+    {
+      buchungen.add(list.next());
+    }
+    return (SammelTransferBuchung[]) buchungen.toArray(new SammelTransferBuchung[buchungen.size()]);
+  }
+
+
 }
 
 /*****************************************************************************
  * $Log$
- * Revision 1.1  2005-09-30 00:08:50  willuhn
+ * Revision 1.2  2006-08-17 10:06:32  willuhn
+ * @B Fehler in HTML-Export von Sammeltransfers
+ *
+ * Revision 1.1  2005/09/30 00:08:50  willuhn
  * @N SammelUeberweisungen (merged with SammelLastschrift)
  *
 *****************************************************************************/
