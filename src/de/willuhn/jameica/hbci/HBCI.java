@@ -348,7 +348,7 @@ public class HBCI extends AbstractPlugin
    * pro ThreadGroup und damit ggf. mehrfach initialisieren.
    * @return liefert den verwendeten HBCICallback.
    */
-  HBCICallback getHBCICallback()
+  public HBCICallback getHBCICallback()
   {
     return this.callback;
   }
@@ -357,7 +357,10 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
- * Revision 1.92  2006-08-05 22:00:51  willuhn
+ * Revision 1.93  2006-08-21 12:29:54  willuhn
+ * @N HBCICallbackSWT.setCurrentHandle
+ *
+ * Revision 1.92  2006/08/05 22:00:51  willuhn
  * *** empty log message ***
  *
  * Revision 1.91  2006/06/29 23:10:34  willuhn
