@@ -22,7 +22,6 @@ import de.jost_net.OBanToo.Dtaus.DtausException;
 import de.willuhn.datasource.GenericIterator;
 import de.willuhn.datasource.GenericObject;
 import de.willuhn.jameica.hbci.rmi.Konto;
-import de.willuhn.jameica.hbci.rmi.SammelLastschrift;
 import de.willuhn.jameica.hbci.rmi.SammelTransfer;
 import de.willuhn.jameica.hbci.rmi.SammelTransferBuchung;
 import de.willuhn.jameica.hbci.rmi.SammelUeberweisung;
@@ -191,7 +190,10 @@ public class DTAUSSammelTransferExporter extends AbstractDTAUSIO implements Expo
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2006-08-21 23:15:01  willuhn
+ * Revision 1.4  2006-08-21 23:15:18  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.3  2006/08/21 23:15:01  willuhn
  * @N Bug 184 (CSV-Import)
  *
  * Revision 1.2  2006/08/07 21:51:43  willuhn
