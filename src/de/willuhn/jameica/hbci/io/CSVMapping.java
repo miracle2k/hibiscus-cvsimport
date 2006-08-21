@@ -100,24 +100,6 @@ public class CSVMapping
   }
   
   /**
-   * Liefert true, wenn bei dem Mapping die erste Zeile uebersprungen werden soll.
-   * @return true, wenn die erste Zeile uebersprungen werden soll.
-   */
-  public boolean skipFirstLine()
-  {
-    return this.settings.getBoolean(type.getName() + ".skipfirst",false);
-  }
-  
-  /**
-   * Legt fest, ob die erste Zeile uebersprungen werden soll.
-   * @param b true, wenn die erste Zeile uebersprungen werden soll.
-   */
-  public void setSkipFirstLine(boolean b)
-  {
-    this.settings.setAttribute(type.getName() + ".skipfirst",b);
-  }
-  
-  /**
    * Speichert das CSV-Mapping.
    */
   private synchronized void store()
@@ -135,7 +117,10 @@ public class CSVMapping
 
 /*********************************************************************
  * $Log$
- * Revision 1.3  2006-01-23 23:07:23  willuhn
+ * Revision 1.4  2006-08-21 23:15:00  willuhn
+ * @N Bug 184 (CSV-Import)
+ *
+ * Revision 1.3  2006/01/23 23:07:23  willuhn
  * @N csv import stuff
  *
  * Revision 1.2  2006/01/23 18:16:51  willuhn

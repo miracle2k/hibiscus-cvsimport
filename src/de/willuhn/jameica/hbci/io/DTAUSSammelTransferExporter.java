@@ -106,7 +106,7 @@ public class DTAUSSammelTransferExporter extends AbstractDTAUSIO implements Expo
         writer.setAKundenname(konto.getName());
         writer.writeASatz();
         
-        // TODO Nicht schon. Ausserdem werden die beiden Lastschrift-Typen (Abbuchung:04, Einzugserm. 05) noch nicht unterschieden
+        // TODO Nicht schoen. Ausserdem werden die beiden Lastschrift-Typen (Abbuchung:04, Einzugserm. 05) noch nicht unterschieden
         int textSchluessel = (transfer instanceof SammelUeberweisung) ? CSatz.TS_UEBERWEISUNGSGUTSCHRIFT : CSatz.TS_LASTSCHRIFT_EINZUGSERMAECHTIGUNGSVERFAHREN;
 
         while (buchungen.hasNext())
@@ -180,17 +180,21 @@ public class DTAUSSammelTransferExporter extends AbstractDTAUSIO implements Expo
    */
   Class[] getSupportedObjectTypes()
   {
-    return new Class[]{
-        SammelUeberweisung.class,
-        SammelLastschrift.class
-    };
+    return new Class[0];
+//    return new Class[]{
+//        SammelUeberweisung.class,
+//        SammelLastschrift.class
+//    };
   }
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2006-08-07 21:51:43  willuhn
+ * Revision 1.3  2006-08-21 23:15:01  willuhn
+ * @N Bug 184 (CSV-Import)
+ *
+ * Revision 1.2  2006/08/07 21:51:43  willuhn
  * @N Erste Version des DTAUS-Exporters
  *
  * Revision 1.1  2006/08/07 15:19:32  willuhn
