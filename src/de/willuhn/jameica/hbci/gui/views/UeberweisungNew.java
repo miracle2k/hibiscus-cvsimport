@@ -74,21 +74,24 @@ public class UeberweisungNew extends AbstractView {
 				control.handleStore();
 				new UeberweisungExecute().handleAction(transfer);
       }
-    },null,true);
+    },null);
 		buttonArea.addButton(i18n.tr("Speichern"), 			     new Action()
     {
       public void handleAction(Object context) throws ApplicationException
       {
       	control.handleStore();
       }
-    },null);
+    },null,true);
   }
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.12  2006-06-13 20:09:06  willuhn
+ * Revision 1.13  2006-08-23 09:57:23  willuhn
+ * @C Changed default button
+ *
+ * Revision 1.12  2006/06/13 20:09:06  willuhn
  * @R Text "Bemerkung" entfernt
  *
  * Revision 1.11  2006/06/06 22:41:26  willuhn
