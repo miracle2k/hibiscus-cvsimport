@@ -47,6 +47,7 @@ public class TurnusHelper
 		if ("W".equalsIgnoreCase(d.timeunit)) ze = Turnus.ZEITEINHEIT_WOECHENTLICH;
 
 		DBIterator list = Settings.getDBService().createList(Turnus.class);
+    // TODO Auf PreparedStatement umstellen
 		list.addFilter("zeiteinheit = " + ze);
 		list.addFilter("intervall = " + d.turnus);
 		list.addFilter("tag = " + d.execday);
@@ -185,7 +186,10 @@ public class TurnusHelper
 
 /**********************************************************************
  * $Log$
- * Revision 1.11  2005-06-07 22:19:57  web0
+ * Revision 1.12  2006-08-23 09:45:13  willuhn
+ * @N Restliche DBIteratoren auf PreparedStatements umgestellt
+ *
+ * Revision 1.11  2005/06/07 22:19:57  web0
  * @B bug 49
  *
  * Revision 1.10  2005/03/09 01:07:02  web0

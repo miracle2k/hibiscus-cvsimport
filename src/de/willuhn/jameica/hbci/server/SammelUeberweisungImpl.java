@@ -48,7 +48,7 @@ public class SammelUeberweisungImpl extends AbstractSammelTransferImpl
   public DBIterator getBuchungen() throws RemoteException
   {
     DBIterator list = this.getService().createList(SammelUeberweisungBuchung.class);
-    list.addFilter("sueberweisung_id = " + this.getID());
+    list.addFilter("sueberweisung_id = ?", new Object[]{this.getID()});
     return list;
   }
 
@@ -67,7 +67,10 @@ public class SammelUeberweisungImpl extends AbstractSammelTransferImpl
 
 /*****************************************************************************
  * $Log$
- * Revision 1.2  2006-08-07 14:31:59  willuhn
+ * Revision 1.3  2006-08-23 09:45:13  willuhn
+ * @N Restliche DBIteratoren auf PreparedStatements umgestellt
+ *
+ * Revision 1.2  2006/08/07 14:31:59  willuhn
  * @B misc bugfixing
  * @C Redesign des DTAUS-Imports fuer Sammeltransfers
  *

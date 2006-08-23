@@ -77,8 +77,8 @@ public class DTAUSUmsatzImporter extends AbstractDTAUSImporter
     String kontonummer = Long.toString(csatz.getKontoAuftraggeber());
     String blz         = Long.toString(csatz.getBlzErstbeteiligt());
     DBIterator konten = service.createList(Konto.class);
-    konten.addFilter("kontonummer = '" + kontonummer + "'");
-    konten.addFilter("blz = '" + blz + "'");
+    konten.addFilter("kontonummer = ?", new Object[]{kontonummer});
+    konten.addFilter("blz = ?",         new Object[]{blz});
 
     Konto k = null;
     if (!konten.hasNext())
@@ -159,7 +159,10 @@ public class DTAUSUmsatzImporter extends AbstractDTAUSImporter
 
 /*********************************************************************
  * $Log$
- * Revision 1.2  2006-08-07 14:31:59  willuhn
+ * Revision 1.3  2006-08-23 09:45:14  willuhn
+ * @N Restliche DBIteratoren auf PreparedStatements umgestellt
+ *
+ * Revision 1.2  2006/08/07 14:31:59  willuhn
  * @B misc bugfixing
  * @C Redesign des DTAUS-Imports fuer Sammeltransfers
  *

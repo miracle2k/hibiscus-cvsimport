@@ -48,7 +48,7 @@ public class SammelLastschriftImpl extends AbstractSammelTransferImpl
   public DBIterator getBuchungen() throws RemoteException
   {
     DBIterator list = this.getService().createList(SammelLastBuchung.class);
-    list.addFilter("slastschrift_id = " + this.getID());
+    list.addFilter("slastschrift_id = ?", new Object[]{this.getID()});
     return list;
   }
 
@@ -68,7 +68,10 @@ public class SammelLastschriftImpl extends AbstractSammelTransferImpl
 
 /*****************************************************************************
  * $Log$
- * Revision 1.13  2006-08-17 10:06:32  willuhn
+ * Revision 1.14  2006-08-23 09:45:14  willuhn
+ * @N Restliche DBIteratoren auf PreparedStatements umgestellt
+ *
+ * Revision 1.13  2006/08/17 10:06:32  willuhn
  * @B Fehler in HTML-Export von Sammeltransfers
  *
  * Revision 1.12  2006/08/07 14:31:59  willuhn

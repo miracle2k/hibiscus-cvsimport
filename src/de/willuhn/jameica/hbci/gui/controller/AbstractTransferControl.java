@@ -265,8 +265,8 @@ public abstract class AbstractTransferControl extends AbstractControl
 
 				// wir checken erstmal, ob wir den schon haben.
 				DBIterator list = Settings.getDBService().createList(Adresse.class);
-				list.addFilter("kontonummer = '" + kto + "'");
-				list.addFilter("blz = '" + blz + "'");
+				list.addFilter("kontonummer = ?", new Object[]{kto});
+				list.addFilter("blz = ?",         new Object[]{blz});
 				if (list.hasNext())
 				{
 					YesNoDialog d = new YesNoDialog(YesNoDialog.POSITION_CENTER);
@@ -398,7 +398,10 @@ public abstract class AbstractTransferControl extends AbstractControl
 
 /**********************************************************************
  * $Log$
- * Revision 1.30  2006-06-26 13:25:20  willuhn
+ * Revision 1.31  2006-08-23 09:45:14  willuhn
+ * @N Restliche DBIteratoren auf PreparedStatements umgestellt
+ *
+ * Revision 1.30  2006/06/26 13:25:20  willuhn
  * @N Franks eBay-Parser
  *
  * Revision 1.29  2006/02/06 16:03:50  willuhn

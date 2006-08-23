@@ -92,8 +92,8 @@ public class SammelUeberweisungBuchungControl extends AbstractSammelTransferBuch
 
 				// wir checken erstmal, ob wir den schon haben.
 				DBIterator list = Settings.getDBService().createList(Adresse.class);
-				list.addFilter("kontonummer = '" + kto + "'");
-				list.addFilter("blz = '" + blz + "'");
+				list.addFilter("kontonummer = ?", new Object[]{kto});
+				list.addFilter("blz = ?", new Object[]{blz});
 				if (list.hasNext())
 				{
 					YesNoDialog d = new YesNoDialog(YesNoDialog.POSITION_CENTER);
@@ -155,7 +155,10 @@ public class SammelUeberweisungBuchungControl extends AbstractSammelTransferBuch
 
 /*****************************************************************************
  * $Log$
- * Revision 1.2  2006-06-26 13:25:20  willuhn
+ * Revision 1.3  2006-08-23 09:45:14  willuhn
+ * @N Restliche DBIteratoren auf PreparedStatements umgestellt
+ *
+ * Revision 1.2  2006/06/26 13:25:20  willuhn
  * @N Franks eBay-Parser
  *
  * Revision 1.1  2005/09/30 00:08:51  willuhn

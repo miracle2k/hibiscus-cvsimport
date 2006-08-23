@@ -93,6 +93,7 @@ public class UmsatzTypImpl extends AbstractDBObject implements UmsatzTyp
     if (days > 0)
     {
       long d = days * 24l * 60l * 60l * 1000l;
+      // TODO Auf PreparedStatement umstellen
       list.addFilter("TONUMBER(valuta) > " + (System.currentTimeMillis() - d));
     }
     ArrayList result = new ArrayList();
@@ -281,7 +282,10 @@ public class UmsatzTypImpl extends AbstractDBObject implements UmsatzTyp
 
 /**********************************************************************
  * $Log$
- * Revision 1.22  2006-05-22 12:54:52  willuhn
+ * Revision 1.23  2006-08-23 09:45:14  willuhn
+ * @N Restliche DBIteratoren auf PreparedStatements umgestellt
+ *
+ * Revision 1.22  2006/05/22 12:54:52  willuhn
  * @N bug 235 (thanks to Markus)
  *
  * Revision 1.21  2006/04/25 23:25:09  willuhn

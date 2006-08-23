@@ -167,6 +167,7 @@ public class KontoauszugControl extends AbstractControl
       {
         // Alle Konten
         umsaetze = Settings.getDBService().createList(Umsatz.class);
+        // TODO: Auf PreparedStatement umstellen
         if (start != null) umsaetze.addFilter("TONUMBER(valuta) >= " + start.getTime());
         if (end != null) umsaetze.addFilter("TONUMBER(valuta) <= " + end.getTime());
         umsaetze.setOrder("ORDER BY TONUMBER(valuta), id DESC");
@@ -209,7 +210,10 @@ public class KontoauszugControl extends AbstractControl
 
 /*******************************************************************************
  * $Log$
- * Revision 1.4  2006-07-03 23:04:32  willuhn
+ * Revision 1.5  2006-08-23 09:45:14  willuhn
+ * @N Restliche DBIteratoren auf PreparedStatements umgestellt
+ *
+ * Revision 1.4  2006/07/03 23:04:32  willuhn
  * @N PDF-Reportwriter in IO-API gepresst, damit er auch an anderen Stellen (z.Bsp. in der Umsatzliste) mitverwendet werden kann.
  *
  * Revision 1.3  2006/05/15 20:12:38  jost

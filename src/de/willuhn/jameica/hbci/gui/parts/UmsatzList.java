@@ -266,7 +266,7 @@ public class UmsatzList extends TablePart
                 
                 // Mal schauen, obs den Typ schon gibt
                 DBIterator existing = Settings.getDBService().createList(UmsatzTyp.class);
-                existing.addFilter("pattern = '" + text + "'");
+                existing.addFilter("pattern = ?", new Object[]{text});
                 UmsatzTyp typ = null; 
                 if (existing.size() > 0)
                 {
@@ -591,7 +591,10 @@ public class UmsatzList extends TablePart
 
 /**********************************************************************
  * $Log$
- * Revision 1.28  2006-08-08 21:18:21  willuhn
+ * Revision 1.29  2006-08-23 09:45:13  willuhn
+ * @N Restliche DBIteratoren auf PreparedStatements umgestellt
+ *
+ * Revision 1.28  2006/08/08 21:18:21  willuhn
  * @B Bug 258
  *
  * Revision 1.27  2006/08/07 14:31:59  willuhn

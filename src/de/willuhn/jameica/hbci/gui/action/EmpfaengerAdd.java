@@ -102,8 +102,8 @@ public class EmpfaengerAdd implements Action
 
         seen.put(e.getKontonummer() + "-" + e.getBLZ(),e);
         DBIterator list = Settings.getDBService().createList(Adresse.class);
-        list.addFilter("kontonummer = '" + e.getKontonummer() + "'");
-        list.addFilter("blz = '" + e.getBLZ() + "'");
+        list.addFilter("kontonummer = ?", new Object[]{e.getKontonummer()});
+        list.addFilter("blz = ?",         new Object[]{e.getBLZ()});
         if (list.hasNext())
         {
           YesNoDialog d = new YesNoDialog(YesNoDialog.POSITION_CENTER);
@@ -149,7 +149,10 @@ public class EmpfaengerAdd implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2005-10-17 22:00:44  willuhn
+ * Revision 1.8  2006-08-23 09:45:13  willuhn
+ * @N Restliche DBIteratoren auf PreparedStatements umgestellt
+ *
+ * Revision 1.7  2005/10/17 22:00:44  willuhn
  * @B bug 143
  *
  * Revision 1.6  2005/06/27 15:58:01  web0
