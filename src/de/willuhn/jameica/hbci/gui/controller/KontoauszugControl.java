@@ -167,9 +167,8 @@ public class KontoauszugControl extends AbstractControl
       {
         // Alle Konten
         umsaetze = Settings.getDBService().createList(Umsatz.class);
-        // TODO: Auf PreparedStatement umstellen
-        if (start != null) umsaetze.addFilter("TONUMBER(valuta) >= " + start.getTime());
-        if (end != null) umsaetze.addFilter("TONUMBER(valuta) <= " + end.getTime());
+        if (start != null) umsaetze.addFilter("valuta >= ?", new Object[]{new java.sql.Date(start.getTime())});
+        if (end != null) umsaetze.addFilter("valuta <= ?", new Object[]{new java.sql.Date(end.getTime())});
         umsaetze.setOrder("ORDER BY TONUMBER(valuta), id DESC");
       }
       else if (start == null || end == null)
@@ -210,7 +209,10 @@ public class KontoauszugControl extends AbstractControl
 
 /*******************************************************************************
  * $Log$
- * Revision 1.5  2006-08-23 09:45:14  willuhn
+ * Revision 1.6  2006-08-25 10:13:43  willuhn
+ * @B Fremdschluessel NICHT mittels PreparedStatement, da die sonst gequotet und von McKoi nicht gefunden werden. BUGZILLA 278
+ *
+ * Revision 1.5  2006/08/23 09:45:14  willuhn
  * @N Restliche DBIteratoren auf PreparedStatements umgestellt
  *
  * Revision 1.4  2006/07/03 23:04:32  willuhn

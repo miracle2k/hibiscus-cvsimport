@@ -81,9 +81,8 @@ public class OffeneUeberweisungen extends AbstractBox implements Box
   public void paint(Composite parent) throws RemoteException
   {
     DBIterator list = Settings.getDBService().createList(Ueberweisung.class);
-    // TODO Auf PreparedStatement umstellen
     list.addFilter("ausgefuehrt = 0");
-    list.addFilter("(banktermin = 1 OR tonumber(termin) <= " + new Date().getTime() + ")");
+    list.addFilter("(banktermin = 1 OR termin <= ?)", new Object[]{new java.sql.Date(new Date().getTime())});
 
     TablePart offeneUeberweisungen = new TablePart(list,new de.willuhn.jameica.hbci.gui.action.UeberweisungNew());
     offeneUeberweisungen.setFormatter(new TableFormatter() {
@@ -124,7 +123,10 @@ public class OffeneUeberweisungen extends AbstractBox implements Box
 
 /*********************************************************************
  * $Log$
- * Revision 1.5  2006-08-23 09:45:14  willuhn
+ * Revision 1.6  2006-08-25 10:13:43  willuhn
+ * @B Fremdschluessel NICHT mittels PreparedStatement, da die sonst gequotet und von McKoi nicht gefunden werden. BUGZILLA 278
+ *
+ * Revision 1.5  2006/08/23 09:45:14  willuhn
  * @N Restliche DBIteratoren auf PreparedStatements umgestellt
  *
  * Revision 1.4  2006/06/29 23:10:33  willuhn

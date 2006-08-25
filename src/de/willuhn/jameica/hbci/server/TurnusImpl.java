@@ -216,7 +216,6 @@ public class TurnusImpl extends AbstractDBObject implements Turnus
   public void insert() throws RemoteException, ApplicationException
   {
 		DBIterator existing = getService().createList(Turnus.class);
-    // TODO Auf PreparedStatement umstellen
 		existing.addFilter("zeiteinheit = " + this.getZeiteinheit());
 		existing.addFilter("intervall = " + this.getIntervall());
 		existing.addFilter("tag = " + this.getTag());
@@ -233,7 +232,10 @@ public class TurnusImpl extends AbstractDBObject implements Turnus
 
 /**********************************************************************
  * $Log$
- * Revision 1.13  2006-08-23 09:45:13  willuhn
+ * Revision 1.14  2006-08-25 10:13:43  willuhn
+ * @B Fremdschluessel NICHT mittels PreparedStatement, da die sonst gequotet und von McKoi nicht gefunden werden. BUGZILLA 278
+ *
+ * Revision 1.13  2006/08/23 09:45:13  willuhn
  * @N Restliche DBIteratoren auf PreparedStatements umgestellt
  *
  * Revision 1.12  2005/06/07 22:19:57  web0
