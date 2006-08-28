@@ -561,7 +561,7 @@ public class KontoImpl extends AbstractDBObject implements Konto
   {
     Integer i = (Integer) getAttribute("synchronize");
     if (i == null)
-      return true;
+      return false;
     return i.intValue() == 1;
   }
 
@@ -689,7 +689,10 @@ public class KontoImpl extends AbstractDBObject implements Konto
 
 /*******************************************************************************
  * $Log$
- * Revision 1.71  2006-08-25 10:13:43  willuhn
+ * Revision 1.72  2006-08-28 10:22:32  willuhn
+ * @B Default-Wert fuer Konto-Synchronisierung
+ *
+ * Revision 1.71  2006/08/25 10:13:43  willuhn
  * @B Fremdschluessel NICHT mittels PreparedStatement, da die sonst gequotet und von McKoi nicht gefunden werden. BUGZILLA 278
  *
  * Revision 1.70  2006/08/23 09:45:13  willuhn
