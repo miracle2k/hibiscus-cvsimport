@@ -165,7 +165,7 @@ public class SettingsControl extends AbstractControl {
 	{
 		if (buchungSollFg != null)
 			return buchungSollFg;
-		buchungSollFg = new ColorInput(Settings.getBuchungSollForeground());
+		buchungSollFg = new ColorInput(Settings.getBuchungSollForeground(),false);
 		return buchungSollFg;
 	}
 
@@ -177,7 +177,7 @@ public class SettingsControl extends AbstractControl {
 	{
 		if (buchungHabenFg != null)
 			return buchungHabenFg;
-		buchungHabenFg = new ColorInput(Settings.getBuchungHabenForeground());
+		buchungHabenFg = new ColorInput(Settings.getBuchungHabenForeground(),true);
 		return buchungHabenFg;
 	}
 
@@ -189,7 +189,7 @@ public class SettingsControl extends AbstractControl {
 	{
 		if (ueberfaelligFg != null)
 			return ueberfaelligFg;
-		ueberfaelligFg = new ColorInput(Settings.getUeberfaelligForeground());
+		ueberfaelligFg = new ColorInput(Settings.getUeberfaelligForeground(),true);
 		return ueberfaelligFg;
 	}
 
@@ -248,7 +248,10 @@ public class SettingsControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.45  2006-08-03 15:32:35  willuhn
+ * Revision 1.46  2006-08-28 23:41:44  willuhn
+ * @N ColorInput verbessert
+ *
+ * Revision 1.45  2006/08/03 15:32:35  willuhn
  * @N Bug 62
  *
  * Revision 1.44  2005/08/22 10:38:47  willuhn
