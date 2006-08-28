@@ -42,7 +42,7 @@ public class UmsatzDaysInput extends SelectInput
   public UmsatzDaysInput() throws RemoteException
   {
     // BUGZILLA 258
-    super(init(),new DayObject(settings.getInt("days",HBCIProperties.UMSATZ_DEFAULT_DAYS)));
+    super(init(),new DayObject(getDefaultDays()));
   }
 
   /**
@@ -62,6 +62,15 @@ public class UmsatzDaysInput extends SelectInput
     return PseudoIterator.fromArray((DayObject[])l.toArray(new DayObject[l.size()]));
   }
 
+  /**
+   * Liefert die Anzahl der standardmaessig anzuzeigenden Tage.
+   * @return Standardmaessig anzuzeigende Tage.
+   */
+  public final static int getDefaultDays()
+  {
+    return settings.getInt("days",HBCIProperties.UMSATZ_DEFAULT_DAYS);    
+  }
+  
   /**
    * @see de.willuhn.jameica.gui.input.Input#getValue()
    */
@@ -154,7 +163,10 @@ public class UmsatzDaysInput extends SelectInput
 
 /*********************************************************************
  * $Log$
- * Revision 1.4  2006-08-08 21:18:21  willuhn
+ * Revision 1.5  2006-08-28 22:03:27  willuhn
+ * @B UmsatzChart - Anzahl der Default-Tage
+ *
+ * Revision 1.4  2006/08/08 21:18:21  willuhn
  * @B Bug 258
  *
  * Revision 1.3  2006/03/30 22:22:32  willuhn

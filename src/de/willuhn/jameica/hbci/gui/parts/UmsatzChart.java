@@ -27,7 +27,6 @@ import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.Part;
 import de.willuhn.jameica.gui.util.Color;
 import de.willuhn.jameica.hbci.HBCI;
-import de.willuhn.jameica.hbci.HBCIProperties;
 import de.willuhn.jameica.hbci.gui.chart.ChartData;
 import de.willuhn.jameica.hbci.gui.chart.ChartDataSaldoVerlauf;
 import de.willuhn.jameica.hbci.gui.chart.LineChart;
@@ -46,7 +45,8 @@ public class UmsatzChart implements Part
   
   private I18N i18n   = null;
   private Konto konto = null;
-  private int start   = HBCIProperties.UMSATZ_DEFAULT_DAYS;
+  
+  private int start = UmsatzDaysInput.getDefaultDays();
 
   /**
    * ct.
@@ -142,7 +142,10 @@ public class UmsatzChart implements Part
 
 /*********************************************************************
  * $Log$
- * Revision 1.3  2006-04-03 21:39:07  willuhn
+ * Revision 1.4  2006-08-28 22:03:26  willuhn
+ * @B UmsatzChart - Anzahl der Default-Tage
+ *
+ * Revision 1.3  2006/04/03 21:39:07  willuhn
  * @N UmsatzChart
  *
  * Revision 1.2  2006/03/15 18:01:30  willuhn
