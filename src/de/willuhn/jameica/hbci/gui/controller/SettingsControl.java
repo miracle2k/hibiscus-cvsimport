@@ -165,7 +165,7 @@ public class SettingsControl extends AbstractControl {
 	{
 		if (buchungSollFg != null)
 			return buchungSollFg;
-		buchungSollFg = new ColorInput(Settings.getBuchungSollForeground(),false);
+		buchungSollFg = new ColorInput(Settings.getBuchungSollForeground(),true);
 		return buchungSollFg;
 	}
 
@@ -248,7 +248,10 @@ public class SettingsControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.46  2006-08-28 23:41:44  willuhn
+ * Revision 1.47  2006-08-29 11:16:56  willuhn
+ * @B Bug 269
+ *
+ * Revision 1.46  2006/08/28 23:41:44  willuhn
  * @N ColorInput verbessert
  *
  * Revision 1.45  2006/08/03 15:32:35  willuhn
