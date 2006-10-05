@@ -90,8 +90,8 @@ public class SammelUeberweisungList extends ContextMenu
     addItem(ContextMenuItem.SEPARATOR);
     addItem(new ContextMenuItem(i18n.tr("Neue Sammel-Überweisung..."), new SNeu()));
     addItem(ContextMenuItem.SEPARATOR);
-    addItem(new ContextMenuItem(i18n.tr("Importieren..."),new SammelUeberweisungImport()));
     addItem(new CheckedContextMenuItem(i18n.tr("Exportieren..."),new SammelUeberweisungExport()));
+    addItem(new ContextMenuItem(i18n.tr("Importieren..."),new SammelUeberweisungImport()));
 		
 	}
 
@@ -151,7 +151,10 @@ public class SammelUeberweisungList extends ContextMenu
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2006-08-07 14:45:18  willuhn
+ * Revision 1.5  2006-10-05 16:42:28  willuhn
+ * @N CSV-Import/Export fuer Adressen
+ *
+ * Revision 1.4  2006/08/07 14:45:18  willuhn
  * @B typos
  *
  * Revision 1.3  2006/08/07 14:31:59  willuhn
