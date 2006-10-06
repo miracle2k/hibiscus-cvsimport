@@ -130,7 +130,8 @@ public abstract class AbstractTransferControl extends AbstractControl
     AdresseAuswahlDialog d = new AdresseAuswahlDialog(AdresseAuswahlDialog.POSITION_MOUSE);
 		d.addCloseListener(new EmpfaengerListener());
 		empfkto = new DialogInput(getTransfer().getGegenkontoNummer(),d);
-
+    // BUGZILLA 280
+    empfkto.setValidChars(HBCIProperties.HBCI_KTO_VALIDCHARS);
 		return empfkto;
 	}
 
@@ -398,7 +399,10 @@ public abstract class AbstractTransferControl extends AbstractControl
 
 /**********************************************************************
  * $Log$
- * Revision 1.31  2006-08-23 09:45:14  willuhn
+ * Revision 1.32  2006-10-06 16:00:42  willuhn
+ * @B Bug 280
+ *
+ * Revision 1.31  2006/08/23 09:45:14  willuhn
  * @N Restliche DBIteratoren auf PreparedStatements umgestellt
  *
  * Revision 1.30  2006/06/26 13:25:20  willuhn

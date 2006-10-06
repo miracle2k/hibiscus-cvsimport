@@ -71,6 +71,10 @@ public class AdresseImpl extends AbstractDBObject implements Adresse {
 			if (getKontonummer() == null || getKontonummer().length() == 0)
 				throw new ApplicationException(i18n.tr("Bitte geben Sie eine Kontonummer ein."));
 
+      // BUGZILLA 280
+      HBCIProperties.checkChars(getBLZ(), HBCIProperties.HBCI_BLZ_VALIDCHARS);
+      HBCIProperties.checkChars(getKontonummer(), HBCIProperties.HBCI_KTO_VALIDCHARS);
+
 			if (!HBCIProperties.checkAccountCRC(getBLZ(),getKontonummer()))
 				throw new ApplicationException(i18n.tr("Ungültige BLZ/Kontonummer. Bitte prüfen Sie Ihre Eingaben."));
 
@@ -199,7 +203,10 @@ public class AdresseImpl extends AbstractDBObject implements Adresse {
 
 /**********************************************************************
  * $Log$
- * Revision 1.12  2006-10-05 16:42:28  willuhn
+ * Revision 1.13  2006-10-06 16:00:42  willuhn
+ * @B Bug 280
+ *
+ * Revision 1.12  2006/10/05 16:42:28  willuhn
  * @N CSV-Import/Export fuer Adressen
  *
  * Revision 1.11  2006/08/23 09:45:14  willuhn

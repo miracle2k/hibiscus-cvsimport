@@ -59,6 +59,8 @@ public abstract class AbstractTransferImpl extends AbstractDBObject implements T
 			if (getGegenkontoBLZ() == null || getGegenkontoBLZ().length() == 0)
 				throw new ApplicationException(i18n.tr("Bitte geben Sie die BLZ des Gegenkontos ein"));
 
+      // BUGZILLA 280
+      HBCIProperties.checkChars(getGegenkontoNummer(), HBCIProperties.HBCI_KTO_VALIDCHARS);
       HBCIProperties.checkChars(getGegenkontoBLZ(), HBCIProperties.HBCI_BLZ_VALIDCHARS);
 
       if (getBetrag() == 0.0)
@@ -263,7 +265,10 @@ public abstract class AbstractTransferImpl extends AbstractDBObject implements T
 
 /**********************************************************************
  * $Log$
- * Revision 1.26  2006-06-26 13:25:20  willuhn
+ * Revision 1.27  2006-10-06 16:00:42  willuhn
+ * @B Bug 280
+ *
+ * Revision 1.26  2006/06/26 13:25:20  willuhn
  * @N Franks eBay-Parser
  *
  * Revision 1.25  2006/06/08 22:29:47  willuhn

@@ -84,6 +84,8 @@ public abstract class AbstractSammelTransferBuchungControl extends AbstractContr
     AdresseAuswahlDialog d = new AdresseAuswahlDialog(AdresseAuswahlDialog.POSITION_MOUSE);
     d.addCloseListener(new GegenkontoListener());
     gkNummer = new DialogInput(getBuchung().getGegenkontoNummer(),d);
+    // BUGZILLA 280
+    gkNummer.setValidChars(HBCIProperties.HBCI_KTO_VALIDCHARS);
 		return gkNummer;
 	}
 
@@ -247,7 +249,10 @@ public abstract class AbstractSammelTransferBuchungControl extends AbstractContr
 
 /*****************************************************************************
  * $Log$
- * Revision 1.3  2006-03-27 16:46:21  willuhn
+ * Revision 1.4  2006-10-06 16:00:42  willuhn
+ * @B Bug 280
+ *
+ * Revision 1.3  2006/03/27 16:46:21  willuhn
  * @N GUI polish
  *
  * Revision 1.2  2006/02/06 16:03:50  willuhn

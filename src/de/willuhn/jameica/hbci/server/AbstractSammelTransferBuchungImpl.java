@@ -67,6 +67,8 @@ public abstract class AbstractSammelTransferBuchungImpl extends AbstractDBObject
       if (getGegenkontoBLZ() == null || getGegenkontoBLZ().length() == 0)
         throw new ApplicationException(i18n.tr("Bitte geben Sie die BLZ des Gegenkontos ein"));
 
+      // BUGZILLA 280
+      HBCIProperties.checkChars(getGegenkontoNummer(), HBCIProperties.HBCI_KTO_VALIDCHARS);
       HBCIProperties.checkChars(getGegenkontoBLZ(), HBCIProperties.HBCI_BLZ_VALIDCHARS);
 
       if (getGegenkontoName() == null || getGegenkontoName().length() == 0)
@@ -268,7 +270,10 @@ public abstract class AbstractSammelTransferBuchungImpl extends AbstractDBObject
 
 /*****************************************************************************
  * $Log$
- * Revision 1.6  2006-08-23 09:45:13  willuhn
+ * Revision 1.7  2006-10-06 16:00:42  willuhn
+ * @B Bug 280
+ *
+ * Revision 1.6  2006/08/23 09:45:13  willuhn
  * @N Restliche DBIteratoren auf PreparedStatements umgestellt
  *
  * Revision 1.5  2006/06/26 13:25:20  willuhn
