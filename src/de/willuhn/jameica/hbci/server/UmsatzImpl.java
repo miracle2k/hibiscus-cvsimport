@@ -450,7 +450,7 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
   }
 
   /**
-   * @see de.willuhn.jameica.hbci.rmi.Umsatz#setAttribute(java.lang.String, java.lang.String)
+   * @see de.willuhn.jameica.hbci.rmi.Umsatz#setGenericAttribute(java.lang.String, java.lang.String)
    */
   public void setGenericAttribute(String name, String value) throws RemoteException, ApplicationException
   {
@@ -506,7 +506,10 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
 
 /**********************************************************************
  * $Log$
- * Revision 1.33  2006-08-21 23:15:01  willuhn
+ * Revision 1.34  2006-10-07 19:50:08  willuhn
+ * @D javadoc
+ *
+ * Revision 1.33  2006/08/21 23:15:01  willuhn
  * @N Bug 184 (CSV-Import)
  *
  * Revision 1.32  2006/02/06 23:03:23  willuhn

@@ -188,7 +188,7 @@ public class AdresseImpl extends AbstractDBObject implements Adresse {
   }
 
   /**
-   * @see de.willuhn.jameica.hbci.rmi.Umsatz#setAttribute(java.lang.String, java.lang.String)
+   * @see de.willuhn.jameica.hbci.rmi.Adresse#setGenericAttribute(java.lang.String, java.lang.String)
    */
   public void setGenericAttribute(String name, String value) throws RemoteException, ApplicationException
   {
@@ -203,7 +203,10 @@ public class AdresseImpl extends AbstractDBObject implements Adresse {
 
 /**********************************************************************
  * $Log$
- * Revision 1.13  2006-10-06 16:00:42  willuhn
+ * Revision 1.14  2006-10-07 19:50:08  willuhn
+ * @D javadoc
+ *
+ * Revision 1.13  2006/10/06 16:00:42  willuhn
  * @B Bug 280
  *
  * Revision 1.12  2006/10/05 16:42:28  willuhn
