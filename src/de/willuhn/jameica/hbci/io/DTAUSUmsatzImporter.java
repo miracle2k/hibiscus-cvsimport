@@ -74,8 +74,8 @@ public class DTAUSUmsatzImporter extends AbstractDTAUSImporter
     DBService service = Settings.getDBService();
 
     // Konto suchen
-    String kontonummer = Long.toString(csatz.getKontoAuftraggeber());
-    String blz         = Long.toString(csatz.getBlzErstbeteiligt());
+    String kontonummer = Long.toString(asatz.getKonto());
+    String blz         = Long.toString(asatz.getBlz());
     DBIterator konten = service.createList(Konto.class);
     konten.addFilter("kontonummer = ?", new Object[]{kontonummer});
     konten.addFilter("blz = ?",         new Object[]{blz});
@@ -159,7 +159,10 @@ public class DTAUSUmsatzImporter extends AbstractDTAUSImporter
 
 /*********************************************************************
  * $Log$
- * Revision 1.3  2006-08-23 09:45:14  willuhn
+ * Revision 1.4  2006-10-08 19:11:37  jost
+ * Bugfix: Trotz korrekter Bankverbindung in der DTAUS-Datei kam der Kontenauswahldialog
+ *
+ * Revision 1.3  2006/08/23 09:45:14  willuhn
  * @N Restliche DBIteratoren auf PreparedStatements umgestellt
  *
  * Revision 1.2  2006/08/07 14:31:59  willuhn
