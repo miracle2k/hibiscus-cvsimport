@@ -13,6 +13,7 @@
 package de.willuhn.jameica.hbci.server.hbci;
 
 import java.rmi.RemoteException;
+import java.util.Date;
 
 import org.kapott.hbci.GV_Result.GVRKUms;
 
@@ -56,6 +57,10 @@ public class HBCIUmsatzJob extends AbstractHBCIJob {
 			this.konto = konto;
 
 			setJobParam("my",Converter.HibiscusKonto2HBCIKonto(konto));
+      if (konto.getSaldoDatum() != null)
+      {
+        setJobParam("startdate", konto.getSaldoDatum());
+      }
 		}
 		catch (RemoteException e)
 		{
@@ -146,7 +151,10 @@ public class HBCIUmsatzJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.23  2006-06-19 11:52:15  willuhn
+ * Revision 1.24  2006-10-09 16:55:31  jost
+ * Bug #284
+ *
+ * Revision 1.23  2006/06/19 11:52:15  willuhn
  * @N Update auf hbci4java 2.5.0rc9
  *
  * Revision 1.22  2006/06/06 21:37:55  willuhn

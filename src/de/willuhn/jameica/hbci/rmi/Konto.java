@@ -180,6 +180,13 @@ public interface Konto extends DBObject, Checksum
 	 * @throws RemoteException
 	 */
 	public Date getSaldoDatum() throws RemoteException;
+  
+  /**
+   * Setzt das SaldoDatum zurück
+   * 
+   * @throws RemoteException
+   */
+  public void resetSaldoDatum() throws RemoteException;
 
 	/**
 	 * Liefert true, wenn das Konto beim Synchronisieren mit einbezogen werden
@@ -332,7 +339,10 @@ public interface Konto extends DBObject, Checksum
 
 /*******************************************************************************
  * $Log$
- * Revision 1.33  2006-07-13 00:21:15  willuhn
+ * Revision 1.34  2006-10-09 16:56:32  jost
+ * Bug #284
+ *
+ * Revision 1.33  2006/07/13 00:21:15  willuhn
  * @N Neue Auswertung "Sparquote"
  *
  * Revision 1.32  2006/05/14 19:53:23  jost

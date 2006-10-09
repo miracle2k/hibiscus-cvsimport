@@ -329,6 +329,14 @@ public class KontoImpl extends AbstractDBObject implements Konto
   {
     return (Date) getAttribute("saldo_datum");
   }
+  
+  /**
+   * @see de.willuhn.jameica.hbci.rmi.Konto#resetSaldoDatum()
+   */
+  public void resetSaldoDatum() throws RemoteException
+  {
+    setAttribute("saldo_datum", null);
+  }
 
   /**
    * @see de.willuhn.jameica.hbci.rmi.Konto#getUmsaetze()
@@ -686,7 +694,10 @@ public class KontoImpl extends AbstractDBObject implements Konto
 
 /*******************************************************************************
  * $Log$
- * Revision 1.74  2006-10-06 16:00:42  willuhn
+ * Revision 1.75  2006-10-09 16:56:55  jost
+ * Bug #284
+ *
+ * Revision 1.74  2006/10/06 16:00:42  willuhn
  * @B Bug 280
  *
  * Revision 1.73  2006/08/28 21:28:26  willuhn
