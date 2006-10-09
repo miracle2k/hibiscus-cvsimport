@@ -57,15 +57,13 @@ public class SynchronizeOptionsDialog extends AbstractDialog
     
     final SynchronizeOptions options = new SynchronizeOptions(konto);
 
-    final CheckboxInput saldo  = new CheckboxInput(options.getSyncSaldo());
-    final CheckboxInput umsatz = new CheckboxInput(options.getSyncUmsatz());
+    final CheckboxInput auszug = new CheckboxInput(options.getSyncKontoauszuege());
     final CheckboxInput ueb    = new CheckboxInput(options.getSyncUeberweisungen());
     final CheckboxInput last   = new CheckboxInput(options.getSyncLastschriften());
     final CheckboxInput dauer  = new CheckboxInput(options.getSyncDauerauftraege());
 
     group.addText(i18n.tr("Bitte wählen Sie aus, welche Geschäftsvorfälle bei\nder Synchronisierung des Kontos ausgeführt werden sollen."),false);
-    group.addCheckbox(saldo ,i18n.tr("Saldo abrufen"));
-    group.addCheckbox(umsatz,i18n.tr("Umsätze abrufen"));
+    group.addCheckbox(auszug,i18n.tr("Kontoauszüge (Umsätze + Saldo)  abrufen"));
     group.addCheckbox(ueb   ,i18n.tr("Überfällige Überweisungen absenden"));
     group.addCheckbox(last  ,i18n.tr("Überfällige Lastschriften einziehen"));
     group.addCheckbox(dauer ,i18n.tr("Daueraufträge synchronisieren"));
@@ -74,8 +72,7 @@ public class SynchronizeOptionsDialog extends AbstractDialog
     buttons.addButton(i18n.tr("Übernehmen"),new Action() {
       public void handleAction(Object context) throws ApplicationException
       {
-        options.setSyncSaldo(((Boolean)saldo.getValue()).booleanValue());
-        options.setSyncUmsatz(((Boolean)umsatz.getValue()).booleanValue());
+        options.setSyncKontoauszuege(((Boolean)auszug.getValue()).booleanValue());
         options.setSyncUeberweisungen(((Boolean)ueb.getValue()).booleanValue());
         options.setSyncLastschriften(((Boolean)last.getValue()).booleanValue());
         options.setSyncDauerauftraege(((Boolean)dauer.getValue()).booleanValue());
@@ -103,7 +100,10 @@ public class SynchronizeOptionsDialog extends AbstractDialog
 
 /*********************************************************************
  * $Log$
- * Revision 1.3  2006-04-18 22:38:16  willuhn
+ * Revision 1.4  2006-10-09 21:43:26  willuhn
+ * @N Zusammenfassung der Geschaeftsvorfaelle "Umsaetze abrufen" und "Saldo abrufen" zu "Kontoauszuege abrufen" bei der Konto-Synchronisation
+ *
+ * Revision 1.3  2006/04/18 22:38:16  willuhn
  * @N bug 227
  *
  * Revision 1.2  2006/03/27 21:34:16  willuhn

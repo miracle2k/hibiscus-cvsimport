@@ -38,11 +38,11 @@ public class SynchronizeSammelUeberweisungJob extends AbstractSynchronizeJob
   }
   
   /**
-   * @see de.willuhn.jameica.hbci.rmi.SynchronizeJob#createHBCIJob()
+   * @see de.willuhn.jameica.hbci.rmi.SynchronizeJob#createHBCIJobs()
    */
-  public AbstractHBCIJob createHBCIJob() throws RemoteException, ApplicationException
+  public AbstractHBCIJob[] createHBCIJobs() throws RemoteException, ApplicationException
   {
-    return new HBCISammelUeberweisungJob((SammelUeberweisung)getContext());
+    return new AbstractHBCIJob[]{new HBCISammelUeberweisungJob((SammelUeberweisung)getContext())};
   }
 
   /**
@@ -67,7 +67,10 @@ public class SynchronizeSammelUeberweisungJob extends AbstractSynchronizeJob
 
 /*********************************************************************
  * $Log$
- * Revision 1.1  2006-03-17 00:51:24  willuhn
+ * Revision 1.2  2006-10-09 21:43:26  willuhn
+ * @N Zusammenfassung der Geschaeftsvorfaelle "Umsaetze abrufen" und "Saldo abrufen" zu "Kontoauszuege abrufen" bei der Konto-Synchronisation
+ *
+ * Revision 1.1  2006/03/17 00:51:24  willuhn
  * @N bug 209 Neues Synchronisierungs-Subsystem
  *
  **********************************************************************/

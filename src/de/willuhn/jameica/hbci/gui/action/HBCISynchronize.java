@@ -28,6 +28,7 @@ import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.SynchronizeJob;
 import de.willuhn.jameica.hbci.server.SynchronizeEngine;
+import de.willuhn.jameica.hbci.server.hbci.AbstractHBCIJob;
 import de.willuhn.jameica.hbci.server.hbci.HBCIFactory;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.logging.Logger;
@@ -135,7 +136,14 @@ public class HBCISynchronize implements Action
           Logger.info("skipping job " + sj.getName() + " - not selected");
           continue;
         }
-        factory.addExclusiveJob(sj.createHBCIJob());
+        AbstractHBCIJob[] currentJobs = sj.createHBCIJobs();
+        if (currentJobs != null)
+        {
+          for (int i=0;i<currentJobs.length;++i)
+          {
+            factory.addExclusiveJob(currentJobs[i]);
+          }
+        }
         count++;
       }
 
@@ -181,7 +189,10 @@ public class HBCISynchronize implements Action
 
 /*********************************************************************
  * $Log$
- * Revision 1.7  2006-07-13 00:21:15  willuhn
+ * Revision 1.8  2006-10-09 21:43:26  willuhn
+ * @N Zusammenfassung der Geschaeftsvorfaelle "Umsaetze abrufen" und "Saldo abrufen" zu "Kontoauszuege abrufen" bei der Konto-Synchronisation
+ *
+ * Revision 1.7  2006/07/13 00:21:15  willuhn
  * @N Neue Auswertung "Sparquote"
  *
  * Revision 1.6  2006/07/05 22:18:16  willuhn

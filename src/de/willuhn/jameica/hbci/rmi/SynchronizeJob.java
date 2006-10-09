@@ -26,12 +26,12 @@ import de.willuhn.util.ApplicationException;
 public interface SynchronizeJob extends GenericObject
 {
   /**
-   * Erzeugt einen HBCI-Job basierend auf dem SynchronizeJob.
-   * @return der erzeugte HBCI-Job.
+   * Erzeugt einen oder mehrere HBCI-Jobs basierend auf dem SynchronizeJob.
+   * @return der/die erzeugten HBCI-Jobs.
    * @throws RemoteException
    * @throws ApplicationException
    */
-  public AbstractHBCIJob createHBCIJob() throws RemoteException, ApplicationException;
+  public AbstractHBCIJob[] createHBCIJobs() throws RemoteException, ApplicationException;
   
   /**
    * Liefert einen sprechenden Namen fuer den Job.
@@ -51,7 +51,10 @@ public interface SynchronizeJob extends GenericObject
 
 /*********************************************************************
  * $Log$
- * Revision 1.2  2006-03-17 00:51:25  willuhn
+ * Revision 1.3  2006-10-09 21:43:26  willuhn
+ * @N Zusammenfassung der Geschaeftsvorfaelle "Umsaetze abrufen" und "Saldo abrufen" zu "Kontoauszuege abrufen" bei der Konto-Synchronisation
+ *
+ * Revision 1.2  2006/03/17 00:51:25  willuhn
  * @N bug 209 Neues Synchronisierungs-Subsystem
  *
  * Revision 1.1  2006/03/16 18:23:36  willuhn

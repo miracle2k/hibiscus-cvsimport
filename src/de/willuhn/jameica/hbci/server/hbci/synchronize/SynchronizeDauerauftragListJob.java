@@ -37,11 +37,11 @@ public class SynchronizeDauerauftragListJob extends AbstractSynchronizeJob
   }
   
   /**
-   * @see de.willuhn.jameica.hbci.rmi.SynchronizeJob#createHBCIJob()
+   * @see de.willuhn.jameica.hbci.rmi.SynchronizeJob#createHBCIJobs()
    */
-  public AbstractHBCIJob createHBCIJob() throws RemoteException, ApplicationException
+  public AbstractHBCIJob[] createHBCIJobs() throws RemoteException, ApplicationException
   {
-    return new HBCIDauerauftragListJob((Konto)getContext());
+    return new AbstractHBCIJob[]{new HBCIDauerauftragListJob((Konto)getContext())};
   }
 
   /**
@@ -65,7 +65,10 @@ public class SynchronizeDauerauftragListJob extends AbstractSynchronizeJob
 
 /*********************************************************************
  * $Log$
- * Revision 1.3  2006-03-21 00:43:14  willuhn
+ * Revision 1.4  2006-10-09 21:43:26  willuhn
+ * @N Zusammenfassung der Geschaeftsvorfaelle "Umsaetze abrufen" und "Saldo abrufen" zu "Kontoauszuege abrufen" bei der Konto-Synchronisation
+ *
+ * Revision 1.3  2006/03/21 00:43:14  willuhn
  * @B bug 209
  *
  * Revision 1.2  2006/03/17 00:58:49  willuhn
