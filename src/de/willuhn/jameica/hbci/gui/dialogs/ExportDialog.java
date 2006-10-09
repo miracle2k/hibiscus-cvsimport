@@ -111,7 +111,7 @@ public class ExportDialog extends AbstractDialog
 		},null,true);
     button.setEnabled(exportEnabled);
     buttons.addButton(button);
-		buttons.addButton(i18n.tr("Schliessen"), new Action()
+		buttons.addButton(i18n.tr("Abbrechen"), new Action()
 		{
 			public void handleAction(Object context) throws ApplicationException
 			{
@@ -377,7 +377,10 @@ public class ExportDialog extends AbstractDialog
 
 /**********************************************************************
  * $Log$
- * Revision 1.10  2006-08-07 21:51:43  willuhn
+ * Revision 1.11  2006-10-09 10:10:27  willuhn
+ * @C s/schliessen/abbrechen/
+ *
+ * Revision 1.10  2006/08/07 21:51:43  willuhn
  * @N Erste Version des DTAUS-Exporters
  *
  * Revision 1.9  2006/08/07 14:31:59  willuhn
