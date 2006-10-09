@@ -39,6 +39,8 @@ import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.datasource.rmi.DBService;
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
+import de.willuhn.jameica.gui.extension.Extendable;
+import de.willuhn.jameica.gui.extension.ExtensionRegistry;
 import de.willuhn.jameica.gui.formatter.CurrencyFormatter;
 import de.willuhn.jameica.gui.formatter.DateFormatter;
 import de.willuhn.jameica.gui.formatter.TableFormatter;
@@ -65,7 +67,7 @@ import de.willuhn.util.I18N;
 /**
  * Implementierung einer fix und fertig vorkonfigurierten Liste mit Umsaetzen.
  */
-public class UmsatzList extends TablePart
+public class UmsatzList extends TablePart implements Extendable
 {
   private MessageConsumer mc    = null;
 
@@ -158,6 +160,9 @@ public class UmsatzList extends TablePart
     // Umsaetze informiert werden.
     this.mc = new UmsMessageConsumer();
     Application.getMessagingFactory().registerMessageConsumer(this.mc);
+
+    // Wir geben die Tabelle jetzt noch zur Erweiterung frei.
+    ExtensionRegistry.extend(this);
   }
   
   /**
@@ -584,6 +589,15 @@ public class UmsatzList extends TablePart
       return false;
     }
   }
+
+
+  /**
+   * @see de.willuhn.jameica.gui.extension.Extendable#getExtendableID()
+   */
+  public String getExtendableID()
+  {
+    return this.getClass().getName();
+  }
   
   
 }
@@ -591,7 +605,10 @@ public class UmsatzList extends TablePart
 
 /**********************************************************************
  * $Log$
- * Revision 1.29  2006-08-23 09:45:13  willuhn
+ * Revision 1.30  2006-10-09 23:50:00  willuhn
+ * @N extendable
+ *
+ * Revision 1.29  2006/08/23 09:45:13  willuhn
  * @N Restliche DBIteratoren auf PreparedStatements umgestellt
  *
  * Revision 1.28  2006/08/08 21:18:21  willuhn

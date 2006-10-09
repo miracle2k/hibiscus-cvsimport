@@ -72,6 +72,7 @@ public class UmsatzList extends ContextMenu implements Extendable
       
     }
     ));
+    
     // Wir geben das Context-Menu jetzt noch zur Erweiterung frei.
     ExtensionRegistry.extend(this);
 
@@ -109,7 +110,10 @@ public class UmsatzList extends ContextMenu implements Extendable
 
 /**********************************************************************
  * $Log$
- * Revision 1.21  2006-10-05 16:42:28  willuhn
+ * Revision 1.22  2006-10-09 23:49:39  willuhn
+ * @N extendable
+ *
+ * Revision 1.21  2006/10/05 16:42:28  willuhn
  * @N CSV-Import/Export fuer Adressen
  *
  * Revision 1.20  2006/08/02 17:49:44  willuhn
