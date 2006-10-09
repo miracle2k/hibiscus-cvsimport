@@ -41,8 +41,8 @@ public class DauerauftragControl extends AbstractTransferControl {
 
 	private Input orderID				      = null;
 	private DialogInput turnus	      = null;
-	private DialogInput ersteZahlung	= null;
-	private DialogInput letzteZahlung	= null;
+	private DialogInput ersteZahlung	= null; // TODO DateInput verwenden
+	private DialogInput letzteZahlung	= null; // TODO DateInput verwenden
 
   private Dauerauftrag transfer     = null;
 
@@ -242,7 +242,10 @@ public class DauerauftragControl extends AbstractTransferControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.21  2005-05-02 23:56:45  web0
+ * Revision 1.22  2006-10-09 23:56:13  willuhn
+ * @N TODO-Tags
+ *
+ * Revision 1.21  2005/05/02 23:56:45  web0
  * @B bug 66, 67
  * @C umsatzliste nach vorn verschoben
  * @C protokoll nach hinten verschoben

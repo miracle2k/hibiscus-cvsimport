@@ -45,7 +45,7 @@ public abstract class AbstractSammelTransferControl extends AbstractControl
 
   private DialogInput kontoAuswahl				= null;
   private Input name                    	= null;
-  private DialogInput termin            	= null;
+  private DialogInput termin            	= null; // TODO: DateInput verwenden!
   private Input comment                 	= null;
   private Input summe                     = null;
 
@@ -230,7 +230,10 @@ public abstract class AbstractSammelTransferControl extends AbstractControl
 
 /*****************************************************************************
  * $Log$
- * Revision 1.2  2006-06-08 22:29:47  willuhn
+ * Revision 1.3  2006-10-09 23:56:13  willuhn
+ * @N TODO-Tags
+ *
+ * Revision 1.2  2006/06/08 22:29:47  willuhn
  * @N DTAUS-Import fuer Sammel-Lastschriften und Sammel-Ueberweisungen
  * @B Eine Reihe kleinerer Bugfixes in Sammeltransfers
  * @B Bug 197 besser geloest
