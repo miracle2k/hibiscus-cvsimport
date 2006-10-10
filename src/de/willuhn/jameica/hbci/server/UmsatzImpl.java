@@ -335,7 +335,7 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
     if (n != null && n.longValue() != 0)
       return n.longValue();
 
-    // BUGZILLA 148
+    // BUGZILLA 184
     Date datum   = getDatum();
     Date valuta  = getValuta();
     String s = (""+getArt()).toUpperCase() +
@@ -509,7 +509,10 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
 
 /**********************************************************************
  * $Log$
- * Revision 1.35  2006-10-10 22:05:32  willuhn
+ * Revision 1.36  2006-10-10 22:06:59  willuhn
+ * @C s/48/84/
+ *
+ * Revision 1.35  2006/10/10 22:05:32  willuhn
  * @B Bug 148
  *
  * Revision 1.34  2006/10/07 19:50:08  willuhn
