@@ -19,6 +19,7 @@ import java.rmi.RemoteException;
 import de.willuhn.datasource.GenericObject;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.ProgressMonitor;
+import de.willuhn.util.Session;
 
 /**
  * Basis-Interface aller Exporter.
@@ -29,6 +30,11 @@ import de.willuhn.util.ProgressMonitor;
  */
 public interface Exporter extends IO
 {
+  /**
+   * Eine Session fuer zusaetzliche Parameter.
+   */
+  public final static Session SESSION = new Session();
+  
   /**
    * Exportiert die genannten Objekte in den angegebenen OutputStream.
    * @param objects die zu exportierenden Objekte.
@@ -46,7 +52,10 @@ public interface Exporter extends IO
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2006-01-23 00:36:29  willuhn
+ * Revision 1.7  2006-10-16 12:51:32  willuhn
+ * @B Uebernahme des originalen Datums aus dem Kontoauszug
+ *
+ * Revision 1.6  2006/01/23 00:36:29  willuhn
  * @N Import, Export und Chipkartentest laufen jetzt als Background-Task
  *
  * Revision 1.5  2006/01/18 00:51:01  willuhn

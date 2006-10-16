@@ -107,6 +107,12 @@ public class PDFUmsatzExporter implements Exporter
       list.add(u);
     }
 
+    // Falls wir die Datumsfelder als optionale Parameter erhalten haben,
+    // nehmen wir die.
+    Date d = (Date) Exporter.SESSION.get("pdf.start");
+    if (d != null) startDate = d;
+    d = (Date) Exporter.SESSION.get("pdf.end");
+    if (d != null) endDate = d;
     
     // Der Export
     Document rpt = null;
@@ -325,7 +331,10 @@ public class PDFUmsatzExporter implements Exporter
 
 /*********************************************************************
  * $Log$
- * Revision 1.1  2006-07-03 23:04:32  willuhn
+ * Revision 1.2  2006-10-16 12:51:32  willuhn
+ * @B Uebernahme des originalen Datums aus dem Kontoauszug
+ *
+ * Revision 1.1  2006/07/03 23:04:32  willuhn
  * @N PDF-Reportwriter in IO-API gepresst, damit er auch an anderen Stellen (z.Bsp. in der Umsatzliste) mitverwendet werden kann.
  *
  **********************************************************************/

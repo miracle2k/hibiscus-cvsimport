@@ -13,6 +13,7 @@
 
 package de.willuhn.jameica.hbci.io;
 
+
 /**
  * Basis-Interface aller Importer und Exporter.
  */
@@ -41,7 +42,10 @@ public interface IO
 
 /*********************************************************************
  * $Log$
- * Revision 1.3  2006-03-15 18:01:30  willuhn
+ * Revision 1.4  2006-10-16 12:51:32  willuhn
+ * @B Uebernahme des originalen Datums aus dem Kontoauszug
+ *
+ * Revision 1.3  2006/03/15 18:01:30  willuhn
  * @N AbstractHBCIJob#getName
  *
  * Revision 1.2  2006/01/17 00:22:36  willuhn

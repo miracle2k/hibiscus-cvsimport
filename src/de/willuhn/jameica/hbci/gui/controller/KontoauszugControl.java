@@ -30,6 +30,7 @@ import de.willuhn.jameica.gui.input.SelectInput;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.gui.action.UmsatzExport;
+import de.willuhn.jameica.hbci.io.Exporter;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Umsatz;
 import de.willuhn.jameica.messaging.StatusBarMessage;
@@ -160,6 +161,9 @@ public class KontoauszugControl extends AbstractControl
       Konto k    = (Konto) getKontoAuswahl().getValue();
       Date start = (Date) getStart().getValue();
       Date end   = (Date) getEnd().getValue();
+      
+      Exporter.SESSION.put("pdf.start",start);
+      Exporter.SESSION.put("pdf.end",end);
 
       DBIterator umsaetze = null;
       
@@ -209,7 +213,10 @@ public class KontoauszugControl extends AbstractControl
 
 /*******************************************************************************
  * $Log$
- * Revision 1.6  2006-08-25 10:13:43  willuhn
+ * Revision 1.7  2006-10-16 12:51:32  willuhn
+ * @B Uebernahme des originalen Datums aus dem Kontoauszug
+ *
+ * Revision 1.6  2006/08/25 10:13:43  willuhn
  * @B Fremdschluessel NICHT mittels PreparedStatement, da die sonst gequotet und von McKoi nicht gefunden werden. BUGZILLA 278
  *
  * Revision 1.5  2006/08/23 09:45:14  willuhn
