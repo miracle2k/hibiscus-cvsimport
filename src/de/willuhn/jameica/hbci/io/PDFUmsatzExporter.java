@@ -95,8 +95,8 @@ public class PDFUmsatzExporter implements Exporter
       Date date = u.getDatum();
       if (date != null)
       {
-        if (date.after(endDate))    endDate = date;
-        if (date.before(startDate)) startDate = date;
+        if (endDate != null && date.after(endDate))    endDate = date;
+        if (startDate != null && date.before(startDate)) startDate = date;
       }
 
       // Wir gruppieren die Umsaetze nach Konto.
@@ -128,7 +128,7 @@ public class PDFUmsatzExporter implements Exporter
         monitor.setStatusText(i18n.tr("Erzeuge PDF-Datei"));
         monitor.addPercentComplete(1);
       }
-      String subTitle = i18n.tr("Kontoauszug {0} - {1}", new String[]{HBCI.DATEFORMAT.format(startDate),HBCI.DATEFORMAT.format(endDate)});
+      String subTitle = i18n.tr("Kontoauszug {0} - {1}", new String[]{startDate == null ? "" : HBCI.DATEFORMAT.format(startDate),endDate == null ? "" : HBCI.DATEFORMAT.format(endDate)});
 
       rpt = new Document();
 
@@ -333,7 +333,10 @@ public class PDFUmsatzExporter implements Exporter
 
 /*********************************************************************
  * $Log$
- * Revision 1.4  2006-10-16 17:34:08  jost
+ * Revision 1.5  2006-10-16 22:53:54  willuhn
+ * @N noch Checks auf Nullpointer hinzugefuegt
+ *
+ * Revision 1.4  2006/10/16 17:34:08  jost
  * Nochmals Randkorrektur
  *
  * Revision 1.3  2006/10/16 17:12:14  jost
