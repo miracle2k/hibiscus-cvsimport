@@ -13,7 +13,6 @@
 package de.willuhn.jameica.hbci.server.hbci;
 
 import java.rmi.RemoteException;
-import java.util.Date;
 
 import org.kapott.hbci.GV_Result.GVRKUms;
 
@@ -151,7 +150,10 @@ public class HBCIUmsatzJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.24  2006-10-09 16:55:31  jost
+ * Revision 1.25  2006-10-16 23:36:25  willuhn
+ * @R unused import
+ *
+ * Revision 1.24  2006/10/09 16:55:31  jost
  * Bug #284
  *
  * Revision 1.23  2006/06/19 11:52:15  willuhn
