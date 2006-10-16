@@ -23,6 +23,7 @@ import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.gui.action.DBObjectDelete;
 import de.willuhn.jameica.hbci.gui.action.LastschriftDuplicate;
 import de.willuhn.jameica.hbci.gui.action.LastschriftExecute;
+import de.willuhn.jameica.hbci.gui.action.LastschriftExport;
 import de.willuhn.jameica.hbci.gui.action.LastschriftImport;
 import de.willuhn.jameica.hbci.gui.action.LastschriftNew;
 import de.willuhn.jameica.hbci.gui.action.TerminableMarkExecuted;
@@ -88,6 +89,7 @@ public class LastschriftList extends ContextMenu
     addItem(ContextMenuItem.SEPARATOR);
     addItem(new ContextMenuItem(i18n.tr("Neue Lastschrift..."), new UNeu()));
     addItem(ContextMenuItem.SEPARATOR);
+    addItem(new CheckedContextMenuItem(i18n.tr("Exportieren..."),new LastschriftExport()));
     addItem(new ContextMenuItem(i18n.tr("Importieren..."),new LastschriftImport()));
 		
 	}
@@ -174,7 +176,10 @@ public class LastschriftList extends ContextMenu
 
 /**********************************************************************
  * $Log$
- * Revision 1.8  2006-08-07 14:45:18  willuhn
+ * Revision 1.9  2006-10-16 14:46:30  willuhn
+ * @N CSV-Export von Ueberweisungen und Lastschriften
+ *
+ * Revision 1.8  2006/08/07 14:45:18  willuhn
  * @B typos
  *
  * Revision 1.7  2006/06/08 17:40:59  willuhn
