@@ -14,7 +14,6 @@
 package de.willuhn.jameica.hbci.gui.parts;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -65,7 +64,6 @@ public abstract class AbstractTransferList extends TablePart implements Part
   private Input to            = null;
   
   private GenericIterator list  = null;
-  private ArrayList transfers   = null;
 
   private de.willuhn.jameica.system.Settings settings = null;
   
@@ -236,16 +234,6 @@ public abstract class AbstractTransferList extends TablePart implements Part
    
     super.paint(parent);
 
-    // Wir kopieren den ganzen Kram in eine ArrayList, damit die
-    // Objekte beim Filter geladen bleiben
-    transfers = new ArrayList();
-    list.begin();
-    while (list.hasNext())
-    {
-      Terminable t = (Terminable) list.next();
-      transfers.add(t);
-    }
-    
     // einmal ausloesen
     l.handleEvent(null);
 
@@ -275,10 +263,11 @@ public abstract class AbstractTransferList extends TablePart implements Part
         GUI.getView().setErrorText("");
         
         AbstractTransferList.this.removeAll();
-        
-        for (int i=0;i<transfers.size();++i)
+
+        list.begin();
+        while (list.hasNext())
         {
-          Terminable t = (Terminable) transfers.get(i);
+          Terminable t = (Terminable) list.next();
           Date termin = t.getTermin();
           if (termin == null || (dfrom == null && dto == null))
           {
@@ -383,7 +372,10 @@ public abstract class AbstractTransferList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2006-10-17 01:01:21  willuhn
+ * Revision 1.3  2006-10-17 23:50:20  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.2  2006/10/17 01:01:21  willuhn
  * @N Filter fuer Ueberweisungen und Lastschriften
  *
  * Revision 1.1  2006/10/17 00:04:31  willuhn
