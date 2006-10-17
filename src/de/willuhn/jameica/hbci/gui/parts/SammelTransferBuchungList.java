@@ -19,6 +19,7 @@ import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.TableItem;
+import org.kapott.hbci.manager.HBCIUtils;
 
 import de.willuhn.datasource.GenericObject;
 import de.willuhn.datasource.rmi.DBIterator;
@@ -82,7 +83,22 @@ public class SammelTransferBuchungList extends TablePart
     addColumn(i18n.tr("Verwendungszweck"),"zweck");
     addColumn(i18n.tr("Kontoinhaber"),"gegenkonto_name");
     addColumn(i18n.tr("Kontonummer"),"gegenkonto_nr");
-    addColumn(i18n.tr("Bankleitzahl"),"gegenkonto_blz");
+    addColumn(i18n.tr("Bankleitzahl"),"gegenkonto_blz", new Formatter() {
+      /**
+       * @see de.willuhn.jameica.gui.formatter.Formatter#format(java.lang.Object)
+       */
+      public String format(Object o)
+      {
+        if (o == null)
+          return null;
+        String blz = o.toString();
+        String name = HBCIUtils.getNameForBLZ(blz);
+        if (name != null && name.length() > 0)
+          blz += " [" + name + "]";
+        return blz;
+      }
+    
+    });
     addColumn(i18n.tr("Betrag"),"this",new Formatter() {
       public String format(Object o)
       {
@@ -133,7 +149,22 @@ public class SammelTransferBuchungList extends TablePart
     addColumn(i18n.tr("Verwendungszweck"),"zweck");
     addColumn(i18n.tr("Kontoinhaber"),"gegenkonto_name");
     addColumn(i18n.tr("Kontonummer"),"gegenkonto_nr");
-    addColumn(i18n.tr("Bankleitzahl"),"gegenkonto_blz");
+    addColumn(i18n.tr("Bankleitzahl"),"gegenkonto_blz", new Formatter() {
+      /**
+       * @see de.willuhn.jameica.gui.formatter.Formatter#format(java.lang.Object)
+       */
+      public String format(Object o)
+      {
+        if (o == null)
+          return null;
+        String blz = o.toString();
+        String name = HBCIUtils.getNameForBLZ(blz);
+        if (name != null && name.length() > 0)
+          blz += " [" + name + "]";
+        return blz;
+      }
+    
+    });
     Konto k = a.getKonto();
     String curr = k != null ? k.getWaehrung() : "";
     addColumn(i18n.tr("Betrag"),"betrag",new CurrencyFormatter(curr,HBCI.DECIMALFORMAT));
@@ -232,7 +263,11 @@ public class SammelTransferBuchungList extends TablePart
 
 /*********************************************************************
  * $Log$
- * Revision 1.2  2006-06-08 22:29:47  willuhn
+ * Revision 1.3  2006-10-17 00:04:31  willuhn
+ * @N new Formatters in Transfer-Listen
+ * @N merged UeberweisungList + LastschriftList into AbstractTransferList
+ *
+ * Revision 1.2  2006/06/08 22:29:47  willuhn
  * @N DTAUS-Import fuer Sammel-Lastschriften und Sammel-Ueberweisungen
  * @B Eine Reihe kleinerer Bugfixes in Sammeltransfers
  * @B Bug 197 besser geloest
