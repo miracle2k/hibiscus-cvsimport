@@ -349,8 +349,8 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
 		           getSaldo() +
 		           (""+getZweck()).toUpperCase() +
 		           (""+getZweck2()).toUpperCase() +
-		           datum == null ? "" : HBCI.DATEFORMAT.format(datum) +
-							 valuta == null ? "" : HBCI.DATEFORMAT.format(valuta);
+		           (datum == null ? "" : HBCI.DATEFORMAT.format(datum)) +
+							 (valuta == null ? "" : HBCI.DATEFORMAT.format(valuta));
 		CRC32 crc = new CRC32();
 		crc.update(s.getBytes());
     return crc.getValue();
@@ -509,7 +509,10 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
 
 /**********************************************************************
  * $Log$
- * Revision 1.36  2006-10-10 22:06:59  willuhn
+ * Revision 1.37  2006-10-18 17:28:32  willuhn
+ * @B Bug 299
+ *
+ * Revision 1.36  2006/10/10 22:06:59  willuhn
  * @C s/48/84/
  *
  * Revision 1.35  2006/10/10 22:05:32  willuhn
