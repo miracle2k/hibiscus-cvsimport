@@ -90,8 +90,8 @@ public class SammelLastschriftList extends ContextMenu
     addItem(ContextMenuItem.SEPARATOR);
     addItem(new ContextMenuItem(i18n.tr("Neue Sammel-Lastschrift..."), new SNeu()));
     addItem(ContextMenuItem.SEPARATOR);
-    addItem(new ContextMenuItem(i18n.tr("Importieren..."),new SammelLastschriftImport()));
     addItem(new CheckedContextMenuItem(i18n.tr("Exportieren..."),new SammelLastschriftExport()));
+    addItem(new ContextMenuItem(i18n.tr("Importieren..."),new SammelLastschriftImport()));
 		
 	}
 
@@ -151,7 +151,10 @@ public class SammelLastschriftList extends ContextMenu
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2006-08-07 14:45:18  willuhn
+ * Revision 1.10  2006-10-23 21:16:51  willuhn
+ * @N eBaykontoParser umbenannt und ueberarbeitet
+ *
+ * Revision 1.9  2006/08/07 14:45:18  willuhn
  * @B typos
  *
  * Revision 1.8  2006/08/07 14:31:59  willuhn
