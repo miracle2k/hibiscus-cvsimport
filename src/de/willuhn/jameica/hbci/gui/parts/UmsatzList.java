@@ -218,7 +218,9 @@ public class UmsatzList extends TablePart implements Extendable
       });
       group.addCheckbox(this.regex,i18n.tr("Suchbegriff ist ein regulärer Ausdruck"));
     }
+    long start = System.currentTimeMillis();
     super.paint(parent);
+    System.out.println("used time: " + (System.currentTimeMillis() - start));
 
     // Und einmal starten bitte
     if (this.filter)
@@ -594,7 +596,10 @@ public class UmsatzList extends TablePart implements Extendable
 
 /**********************************************************************
  * $Log$
- * Revision 1.31  2006-10-17 23:50:20  willuhn
+ * Revision 1.32  2006-10-23 22:30:43  willuhn
+ * @C recompile ($LANG)
+ *
+ * Revision 1.31  2006/10/17 23:50:20  willuhn
  * *** empty log message ***
  *
  * Revision 1.30  2006/10/09 23:50:00  willuhn
