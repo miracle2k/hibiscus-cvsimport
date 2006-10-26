@@ -68,7 +68,10 @@ public class UmsatzChart implements Part
       final ChartData data = new ChartDataSaldoVerlauf(konto,start);
       final LineChart chart = new LineChart();
       chart.addData(data);
-      chart.setTitle(i18n.tr("Saldo im Verlauf der letzten {0} Tage",""+start));
+      if (start < 0)
+        chart.setTitle(i18n.tr("Saldo im Verlauf (alle Umsätze)"));
+      else
+        chart.setTitle(i18n.tr("Saldo im Verlauf der letzten {0} Tage",""+start));
       
       final UmsatzDaysInput i = new UmsatzDaysInput();
       i.addListener(new Listener()
@@ -142,7 +145,10 @@ public class UmsatzChart implements Part
 
 /*********************************************************************
  * $Log$
- * Revision 1.4  2006-08-28 22:03:26  willuhn
+ * Revision 1.5  2006-10-26 22:41:14  willuhn
+ * @B bug 311
+ *
+ * Revision 1.4  2006/08/28 22:03:26  willuhn
  * @B UmsatzChart - Anzahl der Default-Tage
  *
  * Revision 1.3  2006/04/03 21:39:07  willuhn
