@@ -298,7 +298,7 @@ public abstract class AbstractTransferList extends TablePart implements Part
         cal.set(Calendar.MINUTE,0);
         cal.set(Calendar.SECOND,0);
         cal.set(Calendar.MILLISECOND,0);
-        if (dto != null && cal.getTime().after(dto))
+        if (dto != null && !cal.getTime().equals(dto))
           settings.setAttribute("transferlist.filter.to",HBCI.DATEFORMAT.format(dto));
         else
           settings.setAttribute("transferlist.filter.to",(String)null);
@@ -375,7 +375,10 @@ public abstract class AbstractTransferList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2006-10-31 22:54:46  willuhn
+ * Revision 1.5  2006-10-31 22:59:03  willuhn
+ * @B Bis-Datum wurde nicht korrekt uebernommen
+ *
+ * Revision 1.4  2006/10/31 22:54:46  willuhn
  * @N Ausgefuehrte Transfers eingrauen
  *
  * Revision 1.3  2006/10/17 23:50:20  willuhn
