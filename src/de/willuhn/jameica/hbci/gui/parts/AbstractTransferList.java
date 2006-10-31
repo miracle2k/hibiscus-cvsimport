@@ -37,6 +37,7 @@ import de.willuhn.jameica.gui.formatter.TableFormatter;
 import de.willuhn.jameica.gui.input.DateInput;
 import de.willuhn.jameica.gui.input.Input;
 import de.willuhn.jameica.gui.parts.TablePart;
+import de.willuhn.jameica.gui.util.Color;
 import de.willuhn.jameica.gui.util.LabelGroup;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.HBCIProperties;
@@ -91,6 +92,8 @@ public abstract class AbstractTransferList extends TablePart implements Part
           {
             item.setForeground(Settings.getUeberfaelligForeground());
           }
+          if (l.ausgefuehrt())
+            item.setForeground(Color.COMMENT.getSWTColor());
         }
         catch (RemoteException e) { /*ignore */}
       }
@@ -372,7 +375,10 @@ public abstract class AbstractTransferList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2006-10-17 23:50:20  willuhn
+ * Revision 1.4  2006-10-31 22:54:46  willuhn
+ * @N Ausgefuehrte Transfers eingrauen
+ *
+ * Revision 1.3  2006/10/17 23:50:20  willuhn
  * *** empty log message ***
  *
  * Revision 1.2  2006/10/17 01:01:21  willuhn
