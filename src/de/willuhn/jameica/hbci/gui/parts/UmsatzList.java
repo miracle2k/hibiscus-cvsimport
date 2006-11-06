@@ -579,7 +579,13 @@ public class UmsatzList extends TablePart implements Extendable
           try
           {
             umsaetze.add(o);
-            sort(); // Neues Element einsortieren
+            if (filter && kl != null)
+              kl.process();
+            else
+            {
+              addItem(o);
+              sort();
+            }
           }
           catch (Exception e)
           {
@@ -613,7 +619,10 @@ public class UmsatzList extends TablePart implements Extendable
 
 /**********************************************************************
  * $Log$
- * Revision 1.34  2006-11-06 23:12:38  willuhn
+ * Revision 1.35  2006-11-06 23:19:45  willuhn
+ * @B Fehler bei Aktualisierung der Elemente nach Insert, Delete, Sort
+ *
+ * Revision 1.34  2006/11/06 23:12:38  willuhn
  * @B Fehler bei Aktualisierung der Elemente nach Insert, Delete, Sort
  *
  * Revision 1.33  2006/10/23 22:31:15  willuhn
