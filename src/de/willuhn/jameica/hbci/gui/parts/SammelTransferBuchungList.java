@@ -240,6 +240,7 @@ public class SammelTransferBuchungList extends TablePart
           try
           {
             addItem(o);
+            sort();
           }
           catch (Exception e)
           {
@@ -263,7 +264,10 @@ public class SammelTransferBuchungList extends TablePart
 
 /*********************************************************************
  * $Log$
- * Revision 1.3  2006-10-17 00:04:31  willuhn
+ * Revision 1.4  2006-11-06 23:12:38  willuhn
+ * @B Fehler bei Aktualisierung der Elemente nach Insert, Delete, Sort
+ *
+ * Revision 1.3  2006/10/17 00:04:31  willuhn
  * @N new Formatters in Transfer-Listen
  * @N merged UeberweisungList + LastschriftList into AbstractTransferList
  *

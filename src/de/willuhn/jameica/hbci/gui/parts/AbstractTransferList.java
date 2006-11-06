@@ -14,6 +14,7 @@
 package de.willuhn.jameica.hbci.gui.parts;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -65,6 +66,7 @@ public abstract class AbstractTransferList extends TablePart implements Part
   private Input to            = null;
   
   private GenericIterator list  = null;
+  private ArrayList transfers   = null;
 
   private de.willuhn.jameica.system.Settings settings = null;
   
@@ -237,6 +239,16 @@ public abstract class AbstractTransferList extends TablePart implements Part
    
     super.paint(parent);
 
+    // Wir kopieren den ganzen Kram in eine ArrayList, damit die
+    // Objekte beim Filter geladen bleiben
+    transfers = new ArrayList();
+    list.begin();
+    while (list.hasNext())
+    {
+      Terminable t = (Terminable) list.next();
+      transfers.add(t);
+    }
+    
     // einmal ausloesen
     l.handleEvent(null);
 
@@ -267,10 +279,15 @@ public abstract class AbstractTransferList extends TablePart implements Part
         
         AbstractTransferList.this.removeAll();
 
-        list.begin();
-        while (list.hasNext())
+        for (int i=0;i<transfers.size();++i)
         {
-          Terminable t = (Terminable) list.next();
+          Terminable t = (Terminable) transfers.get(i);
+          if (((GenericObject)t).getID() == null) // Wurde zwischenzeitlich geloescht
+          {
+            transfers.remove(i);
+            i--;
+            continue;
+          }
           Date termin = t.getTermin();
           if (termin == null || (dfrom == null && dto == null))
           {
@@ -351,7 +368,8 @@ public abstract class AbstractTransferList extends TablePart implements Part
         {
           try
           {
-            addItem(o);
+            transfers.add(o);
+            sort();
           }
           catch (Exception e)
           {
@@ -375,7 +393,10 @@ public abstract class AbstractTransferList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2006-10-31 22:59:03  willuhn
+ * Revision 1.6  2006-11-06 23:12:38  willuhn
+ * @B Fehler bei Aktualisierung der Elemente nach Insert, Delete, Sort
+ *
+ * Revision 1.5  2006/10/31 22:59:03  willuhn
  * @B Bis-Datum wurde nicht korrekt uebernommen
  *
  * Revision 1.4  2006/10/31 22:54:46  willuhn
