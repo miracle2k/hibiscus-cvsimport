@@ -100,8 +100,7 @@ public class DTAUSSammelTransferExporter extends AbstractDTAUSIO implements Expo
         writer.setAAusfuehrungsdatum(transfer.getTermin());
         writer.setABLZBank(blz);
 
-        // TODO Ist das richtig rum?
-        String type = (transfer instanceof SammelUeberweisung) ? "LK" : "GK";
+        String type = (transfer instanceof SammelUeberweisung) ? "GK" : "LK";
         writer.setAGutschriftLastschrift(type);
         
         writer.setAKonto(Long.parseLong(konto.getKontonummer()));
@@ -204,7 +203,10 @@ public class DTAUSSammelTransferExporter extends AbstractDTAUSIO implements Expo
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2006-11-07 14:31:14  willuhn
+ * Revision 1.7  2006-11-12 22:35:30  willuhn
+ * @B LK/GK-Kennzeichen verkehrtrum
+ *
+ * Revision 1.6  2006/11/07 14:31:14  willuhn
  * @B DtausDateiwriter wurde nicht geschlossen
  *
  * Revision 1.5  2006/10/23 21:16:51  willuhn
