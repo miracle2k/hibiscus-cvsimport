@@ -84,6 +84,7 @@ public class VelocityExporter implements Exporter
     VelocityContext context = new VelocityContext();
 
     context.put("datum",        new Date());
+    context.put("charset",      System.getProperty("file.encoding")); // BUGZILLA 328
     context.put("dateformat",   HBCI.DATEFORMAT);
     context.put("decimalformat",HBCI.DECIMALFORMAT);
     context.put("objects",      objects);
@@ -226,7 +227,10 @@ public class VelocityExporter implements Exporter
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2006-09-05 13:56:33  willuhn
+ * Revision 1.10  2006-11-15 00:36:59  willuhn
+ * @B Bug 326
+ *
+ * Revision 1.9  2006/09/05 13:56:33  willuhn
  * @B Class#getClass() allways returns "java.lang.Class" ;)
  *
  * Revision 1.8  2006/03/27 22:36:04  willuhn
