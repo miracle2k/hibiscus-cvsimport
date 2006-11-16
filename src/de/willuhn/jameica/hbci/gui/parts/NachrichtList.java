@@ -18,6 +18,7 @@ import java.rmi.RemoteException;
 import org.eclipse.swt.widgets.TableItem;
 import org.kapott.hbci.manager.HBCIUtils;
 
+import de.willuhn.datasource.GenericIterator;
 import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.Part;
@@ -40,12 +41,23 @@ public class NachrichtList extends TablePart implements Part
   private I18N i18n = null;
 
   /**
+   * ct.
    * @param action
    * @throws RemoteException
    */
   public NachrichtList(Action action) throws RemoteException
   {
-    super(init(), action);
+    this(init(), action);
+  }
+
+  /**
+   * ct.
+   * @param list Liste der Nachrichten.
+   * @param action
+   */
+  public NachrichtList(GenericIterator list, Action action)
+  {
+    super(list,action);
     this.setMulti(true);
     this.i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
     setFormatter(new TableFormatter()
@@ -116,7 +128,10 @@ public class NachrichtList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2006-03-23 23:44:58  willuhn
+ * Revision 1.4  2006-11-16 22:29:46  willuhn
+ * @N Bug 331
+ *
+ * Revision 1.3  2006/03/23 23:44:58  willuhn
  * @N Umbruch der System-Nachrichten
  *
  * Revision 1.2  2005/11/09 01:13:53  willuhn
