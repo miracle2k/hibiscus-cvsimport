@@ -222,7 +222,6 @@ public abstract class AbstractTransferList extends TablePart implements Part
     if (dFrom == null)
     {
       Calendar cal = Calendar.getInstance();
-      cal.setTime(dTo);
       cal.set(Calendar.DAY_OF_MONTH,1);
       dFrom = cal.getTime();
     }
@@ -393,7 +392,10 @@ public abstract class AbstractTransferList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2006-11-15 00:47:39  willuhn
+ * Revision 1.8  2006-11-16 12:21:02  willuhn
+ * @B NPE
+ *
+ * Revision 1.7  2006/11/15 00:47:39  willuhn
  * @C Bug 325
  *
  * Revision 1.6  2006/11/06 23:12:38  willuhn
