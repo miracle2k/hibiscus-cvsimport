@@ -34,7 +34,7 @@ import de.willuhn.jameica.gui.parts.TablePart;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.HBCIProperties;
 import de.willuhn.jameica.hbci.Settings;
-import de.willuhn.jameica.hbci.io.ImportMessage;
+import de.willuhn.jameica.hbci.messaging.ImportMessage;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.SammelTransfer;
 import de.willuhn.jameica.hbci.rmi.SammelTransferBuchung;
@@ -204,7 +204,11 @@ public abstract class AbstractSammelTransferList extends TablePart implements Pa
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2006-11-06 23:12:38  willuhn
+ * Revision 1.5  2006-11-20 23:07:54  willuhn
+ * @N new package "messaging"
+ * @C moved ImportMessage into new package
+ *
+ * Revision 1.4  2006/11/06 23:12:38  willuhn
  * @B Fehler bei Aktualisierung der Elemente nach Insert, Delete, Sort
  *
  * Revision 1.3  2006/10/17 00:04:31  willuhn

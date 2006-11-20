@@ -27,6 +27,7 @@ import de.willuhn.io.CSVFile;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.gui.dialogs.CSVImportDialog;
+import de.willuhn.jameica.hbci.messaging.ImportMessage;
 import de.willuhn.jameica.hbci.rmi.Adresse;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.jameica.system.OperationCanceledException;
@@ -226,7 +227,11 @@ public class CSVEmpfaengerImporter implements Importer
 
 /*******************************************************************************
  * $Log$
- * Revision 1.1  2006-10-05 16:42:28  willuhn
+ * Revision 1.2  2006-11-20 23:07:54  willuhn
+ * @N new package "messaging"
+ * @C moved ImportMessage into new package
+ *
+ * Revision 1.1  2006/10/05 16:42:28  willuhn
  * @N CSV-Import/Export fuer Adressen
  *
  ******************************************************************************/

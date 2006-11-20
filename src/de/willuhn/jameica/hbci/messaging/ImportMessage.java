@@ -11,7 +11,7 @@
  *
  **********************************************************************/
 
-package de.willuhn.jameica.hbci.io;
+package de.willuhn.jameica.hbci.messaging;
 
 import java.rmi.RemoteException;
 
@@ -37,7 +37,11 @@ public interface ImportMessage extends Message
 
 /*********************************************************************
  * $Log$
- * Revision 1.1  2006-06-06 21:37:55  willuhn
+ * Revision 1.1  2006-11-20 23:07:54  willuhn
+ * @N new package "messaging"
+ * @C moved ImportMessage into new package
+ *
+ * Revision 1.1  2006/06/06 21:37:55  willuhn
  * @R FilternEngine entfernt. Wird jetzt ueber das Jameica-Messaging-System abgewickelt
  *
  **********************************************************************/

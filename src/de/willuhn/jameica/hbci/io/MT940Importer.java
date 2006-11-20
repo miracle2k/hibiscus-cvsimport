@@ -27,6 +27,7 @@ import org.kapott.hbci.swift.Swift;
 
 import de.willuhn.datasource.GenericObject;
 import de.willuhn.jameica.hbci.HBCI;
+import de.willuhn.jameica.hbci.messaging.ImportMessage;
 import de.willuhn.jameica.hbci.rmi.Protokoll;
 import de.willuhn.jameica.hbci.rmi.Umsatz;
 import de.willuhn.jameica.hbci.server.Converter;
@@ -305,7 +306,11 @@ public class MT940Importer implements Importer
 
 /*******************************************************************************
  * $Log$
- * Revision 1.9  2006-08-21 23:15:01  willuhn
+ * Revision 1.10  2006-11-20 23:07:54  willuhn
+ * @N new package "messaging"
+ * @C moved ImportMessage into new package
+ *
+ * Revision 1.9  2006/08/21 23:15:01  willuhn
  * @N Bug 184 (CSV-Import)
  *
  * Revision 1.8  2006/08/02 17:49:44  willuhn

@@ -54,7 +54,7 @@ import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.gui.action.UmsatzTypEdit;
 import de.willuhn.jameica.hbci.gui.dialogs.UmsatzTypNewDialog;
 import de.willuhn.jameica.hbci.gui.input.UmsatzDaysInput;
-import de.willuhn.jameica.hbci.io.ImportMessage;
+import de.willuhn.jameica.hbci.messaging.ImportMessage;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Umsatz;
 import de.willuhn.jameica.hbci.rmi.UmsatzTyp;
@@ -619,7 +619,11 @@ public class UmsatzList extends TablePart implements Extendable
 
 /**********************************************************************
  * $Log$
- * Revision 1.35  2006-11-06 23:19:45  willuhn
+ * Revision 1.36  2006-11-20 23:07:54  willuhn
+ * @N new package "messaging"
+ * @C moved ImportMessage into new package
+ *
+ * Revision 1.35  2006/11/06 23:19:45  willuhn
  * @B Fehler bei Aktualisierung der Elemente nach Insert, Delete, Sort
  *
  * Revision 1.34  2006/11/06 23:12:38  willuhn

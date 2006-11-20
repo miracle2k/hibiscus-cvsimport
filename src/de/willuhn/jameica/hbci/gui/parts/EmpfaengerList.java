@@ -33,7 +33,7 @@ import de.willuhn.jameica.gui.parts.TablePart;
 import de.willuhn.jameica.gui.util.LabelGroup;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
-import de.willuhn.jameica.hbci.io.ImportMessage;
+import de.willuhn.jameica.hbci.messaging.ImportMessage;
 import de.willuhn.jameica.hbci.rmi.Adresse;
 import de.willuhn.jameica.messaging.Message;
 import de.willuhn.jameica.messaging.MessageConsumer;
@@ -320,7 +320,11 @@ public class EmpfaengerList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.11  2006-10-17 23:50:20  willuhn
+ * Revision 1.12  2006-11-20 23:07:54  willuhn
+ * @N new package "messaging"
+ * @C moved ImportMessage into new package
+ *
+ * Revision 1.11  2006/10/17 23:50:20  willuhn
  * *** empty log message ***
  *
  * Revision 1.10  2006/10/05 16:42:28  willuhn

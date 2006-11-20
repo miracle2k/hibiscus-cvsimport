@@ -27,6 +27,7 @@ import de.willuhn.datasource.GenericObject;
 import de.willuhn.datasource.rmi.DBObject;
 import de.willuhn.datasource.rmi.DBService;
 import de.willuhn.jameica.hbci.HBCI;
+import de.willuhn.jameica.hbci.messaging.ImportMessage;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.jameica.system.OperationCanceledException;
 import de.willuhn.jameica.system.Settings;
@@ -197,7 +198,11 @@ public abstract class AbstractDTAUSImporter extends AbstractDTAUSIO implements I
 
 /*********************************************************************
  * $Log$
- * Revision 1.5  2006-10-06 14:18:01  willuhn
+ * Revision 1.6  2006-11-20 23:07:54  willuhn
+ * @N new package "messaging"
+ * @C moved ImportMessage into new package
+ *
+ * Revision 1.5  2006/10/06 14:18:01  willuhn
  * @N neuer Parameter "dtaus.fehlertoleranz" in de.willuhn.jameica.hbci.HBCI.properties
  *
  * Revision 1.4  2006/08/07 14:31:59  willuhn

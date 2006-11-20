@@ -25,6 +25,7 @@ import de.willuhn.datasource.rmi.DBService;
 import de.willuhn.io.CSVFile;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.gui.dialogs.CSVImportDialog;
+import de.willuhn.jameica.hbci.messaging.ImportMessage;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Umsatz;
 import de.willuhn.jameica.system.Application;
@@ -226,7 +227,11 @@ public class CSVUmsatzImporter implements Importer
 
 /*******************************************************************************
  * $Log$
- * Revision 1.1  2006-08-21 23:15:01  willuhn
+ * Revision 1.2  2006-11-20 23:07:54  willuhn
+ * @N new package "messaging"
+ * @C moved ImportMessage into new package
+ *
+ * Revision 1.1  2006/08/21 23:15:01  willuhn
  * @N Bug 184 (CSV-Import)
  *
  * Revision 1.3  2006/06/08 17:40:59  willuhn
