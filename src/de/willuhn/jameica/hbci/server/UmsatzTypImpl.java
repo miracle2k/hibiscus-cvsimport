@@ -304,32 +304,30 @@ public class UmsatzTypImpl extends AbstractDBObjectNode implements UmsatzTyp
       super.delete();
       return;
     }
-    else
+
+    try
     {
-      try
+      // Wir haben zugeordnete Umsaetze. Dort muessen wir uns entfernen
+      Logger.info("removing assignments to existing umsatz objects");
+      transactionBegin();
+      while (list.hasNext())
       {
-        // Wir haben zugeordnete Umsaetze. Dort muessen wir uns entfernen
-        Logger.info("removing assignments to existing umsatz objects");
-        transactionBegin();
-        while (list.hasNext())
-        {
-          Umsatz u = (Umsatz) list.next();
-          u.setUmsatzTyp(null);
-          u.store();
-        }
-        super.delete();
-        transactionCommit();
+        Umsatz u = (Umsatz) list.next();
+        u.setUmsatzTyp(null);
+        u.store();
       }
-      catch (RemoteException e)
-      {
-        this.transactionRollback();
-        throw e;
-      }
-      catch (ApplicationException e2)
-      {
-        this.transactionRollback();
-        throw e2;
-      }
+      super.delete();
+      transactionCommit();
+    }
+    catch (RemoteException e)
+    {
+      this.transactionRollback();
+      throw e;
+    }
+    catch (ApplicationException e2)
+    {
+      this.transactionRollback();
+      throw e2;
     }
   }
   
@@ -339,7 +337,10 @@ public class UmsatzTypImpl extends AbstractDBObjectNode implements UmsatzTyp
 
 /**********************************************************************
  * $Log$
- * Revision 1.25  2006-11-23 17:25:38  willuhn
+ * Revision 1.26  2006-11-23 23:24:17  willuhn
+ * @N Umsatz-Kategorien: DB-Update, Edit
+ *
+ * Revision 1.25  2006/11/23 17:25:38  willuhn
  * @N Umsatz-Kategorien - in PROGRESS!
  *
  * Revision 1.24  2006/08/25 10:13:43  willuhn
