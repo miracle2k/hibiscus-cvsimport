@@ -18,7 +18,7 @@ import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.util.ButtonArea;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.gui.action.Back;
-import de.willuhn.jameica.hbci.gui.action.UmsatzTypEdit;
+import de.willuhn.jameica.hbci.gui.action.UmsatzTypList;
 import de.willuhn.jameica.hbci.gui.parts.UmsatzTypChart;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.util.I18N;
@@ -42,7 +42,7 @@ public class UmsatzVerteilung extends AbstractView
     chart.paint(getParent());
     
     ButtonArea buttons = new ButtonArea(getParent(),2);
-    buttons.addButton(i18n.tr("Umsatz-Filter bearbeiten..."), new UmsatzTypEdit());
+    buttons.addButton(i18n.tr("Umsatz-Kategorien bearbeiten..."), new UmsatzTypList());
     buttons.addButton(i18n.tr("Zurück"),new Back(),null,true);
   }
 
@@ -51,7 +51,10 @@ public class UmsatzVerteilung extends AbstractView
 
 /*********************************************************************
  * $Log$
- * Revision 1.1  2006-08-05 22:00:51  willuhn
+ * Revision 1.2  2006-11-23 17:25:38  willuhn
+ * @N Umsatz-Kategorien - in PROGRESS!
+ *
+ * Revision 1.1  2006/08/05 22:00:51  willuhn
  * *** empty log message ***
  *
  **********************************************************************/

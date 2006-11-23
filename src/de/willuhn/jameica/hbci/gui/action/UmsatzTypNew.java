@@ -14,14 +14,15 @@
 package de.willuhn.jameica.hbci.gui.action;
 
 import de.willuhn.jameica.gui.Action;
-import de.willuhn.jameica.hbci.gui.dialogs.UmsatzTypDialog;
-import de.willuhn.logging.Logger;
+import de.willuhn.jameica.gui.GUI;
+import de.willuhn.jameica.hbci.gui.views.UmsatzTypDetail;
 import de.willuhn.util.ApplicationException;
 
 /**
- * Action zum Bearbeiten existierender Umsatz-Typen.
+ * Action zum Erstellen einer neuen Umsatz-Kategorie.
+ * @author willuhn
  */
-public class UmsatzTypEdit implements Action
+public class UmsatzTypNew implements Action
 {
 
   /**
@@ -29,15 +30,7 @@ public class UmsatzTypEdit implements Action
    */
   public void handleAction(Object context) throws ApplicationException
   {
-    UmsatzTypDialog d = new UmsatzTypDialog(UmsatzTypDialog.POSITION_CENTER);
-    try
-    {
-      d.open();
-    }
-    catch (Exception e)
-    {
-      Logger.error("unable to open umsatz type dialog",e);
-    }
+    GUI.startView(UmsatzTypDetail.class,context);
   }
 
 }
@@ -45,7 +38,7 @@ public class UmsatzTypEdit implements Action
 
 /*********************************************************************
  * $Log$
- * Revision 1.1  2005-12-05 20:16:15  willuhn
- * @N Umsatz-Filter Refactoring
+ * Revision 1.1  2006-11-23 17:25:37  willuhn
+ * @N Umsatz-Kategorien - in PROGRESS!
  *
- **********************************************************************/
+ *********************************************************************/

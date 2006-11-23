@@ -259,12 +259,36 @@ public interface Umsatz extends DBObject, Checksum
    * @throws ApplicationException
    */
   public void setGenericAttribute(String name, String value) throws RemoteException, ApplicationException;
+  
+  /**
+   * Liefert einen ggf manuell zugeordneten Umsatz-Typ oder <code>null</code> wenn keiner zugeordnet ist.
+   * @return Umsatz-Typ.
+   * @throws RemoteException
+   */
+  public UmsatzTyp getUmsatzTyp() throws RemoteException;
+  
+  /**
+   * Speichert einen manuell zugeordneten Umsatz-Typ.
+   * @param ut zugeordneter Umsatztyp oder <code>null</code> zum Entfernen der Zuordnung.
+   * @throws RemoteException
+   */
+  public void setUmsatzTyp(UmsatzTyp ut) throws RemoteException;
+  
+  /**
+   * Liefert true, wenn der Umsatz einer Kategorie zugeordnet ist.
+   * @return true, wenn der Umsatz einer Kategorie zugeordnet ist.
+   * @throws RemoteException
+   */
+  public boolean isAssigned() throws RemoteException;
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.14  2006-08-21 23:15:01  willuhn
+ * Revision 1.15  2006-11-23 17:25:37  willuhn
+ * @N Umsatz-Kategorien - in PROGRESS!
+ *
+ * Revision 1.14  2006/08/21 23:15:01  willuhn
  * @N Bug 184 (CSV-Import)
  *
  * Revision 1.13  2005/12/29 01:22:12  willuhn
