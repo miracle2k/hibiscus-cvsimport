@@ -78,6 +78,7 @@ public class UmsatzDetail extends AbstractView {
     detail.addLabelPair(i18n.tr("Art der Buchung"),               control.getArt());
     detail.addLabelPair(i18n.tr("Kundenreferenz"),                control.getCustomerRef());
     detail.addLabelPair(i18n.tr("Primanota-Kennzeichen"),         control.getPrimanota());
+    detail.addLabelPair(i18n.tr("Umsatz-Kategorie"),              control.getUmsatzTyp());
 
     // BUGZILLA 30 http://www.willuhn.de/bugzilla/show_bug.cgi?id=30
     LabelGroup zweck = new LabelGroup(getParent(),i18n.tr("Verwendungszweck"));
@@ -135,7 +136,10 @@ public class UmsatzDetail extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.26  2006-10-06 15:14:38  willuhn
+ * Revision 1.27  2006-11-30 23:48:40  willuhn
+ * @N Erste Version der Umsatz-Kategorien drin
+ *
+ * Revision 1.26  2006/10/06 15:14:38  willuhn
  * @B bug 263
  *
  * Revision 1.25  2006/08/05 20:44:39  willuhn

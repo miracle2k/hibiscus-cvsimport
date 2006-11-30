@@ -25,15 +25,18 @@ import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.input.DialogInput;
 import de.willuhn.jameica.gui.input.Input;
 import de.willuhn.jameica.gui.input.LabelInput;
+import de.willuhn.jameica.gui.input.SelectInput;
 import de.willuhn.jameica.gui.input.TextAreaInput;
 import de.willuhn.jameica.gui.input.TextInput;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.HBCIProperties;
 import de.willuhn.jameica.hbci.gui.dialogs.AdresseAuswahlDialog;
+import de.willuhn.jameica.hbci.gui.input.UmsatzTypInput;
 import de.willuhn.jameica.hbci.rmi.Adresse;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Protokoll;
 import de.willuhn.jameica.hbci.rmi.Umsatz;
+import de.willuhn.jameica.hbci.rmi.UmsatzTyp;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.logging.Logger;
 import de.willuhn.util.ApplicationException;
@@ -65,6 +68,8 @@ public class UmsatzDetailControl extends AbstractControl {
 	private Input customerRef			= null;
   
   private Input kommentar       = null;
+  
+  private SelectInput umsatzTyp = null;
 
   private boolean changeEN = false;
   private boolean changeEK = false;
@@ -146,6 +151,19 @@ public class UmsatzDetailControl extends AbstractControl {
       empfaengerName = new LabelInput(name);
     }
     return empfaengerName;
+  }
+  
+  /**
+   * Liefert eine Auswahlbox fuer die Umsatz-Kategorie.
+   * @return Umsatz-Kategorie.
+   * @throws RemoteException
+   */
+  public SelectInput getUmsatzTyp() throws RemoteException
+  {
+    if (this.umsatzTyp != null)
+      return this.umsatzTyp;
+    this.umsatzTyp = new UmsatzTypInput(getUmsatz());
+    return this.umsatzTyp;
   }
 
   /**
@@ -339,6 +357,7 @@ public class UmsatzDetailControl extends AbstractControl {
       
       u.transactionBegin();
       u.setKommentar((String)getKommentar().getValue());
+      u.setUmsatzTyp((UmsatzTyp)getUmsatzTyp().getValue());
       
       boolean b = (changeEB || changeEK || changeEN || changeZ1);
 
@@ -439,7 +458,10 @@ public class UmsatzDetailControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.24  2006-08-03 23:12:57  willuhn
+ * Revision 1.25  2006-11-30 23:48:40  willuhn
+ * @N Erste Version der Umsatz-Kategorien drin
+ *
+ * Revision 1.24  2006/08/03 23:12:57  willuhn
  * @N Bug 132
  *
  * Revision 1.23  2005/06/30 21:48:56  web0

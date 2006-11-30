@@ -19,6 +19,7 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.kapott.hbci.manager.HBCIUtils;
 
+import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.jameica.gui.AbstractControl;
 import de.willuhn.jameica.gui.AbstractView;
 import de.willuhn.jameica.gui.Action;
@@ -427,9 +428,34 @@ public class KontoControl extends AbstractControl {
 			Logger.error("error while reading passport from select box",e);
 			GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Auslesen der Konto-Informationen"));
 		}
-
 	}
 
+  /**
+   * Laedt die Tabelle mit den Umsaetzen neu.
+   */
+  public void handleReload()
+  {
+    GUI.startSync(new Runnable() {
+      public void run()
+      {
+        try
+        {
+          UmsatzList list = ((UmsatzList)getUmsatzList());
+          list.removeAll();
+          Konto k = getKonto();
+          DBIterator i = k.getUmsaetze(HBCIProperties.UMSATZ_DEFAULT_DAYS);
+          while (i.hasNext())
+            list.addItem(i.next());
+          list.sort();
+        }
+        catch (RemoteException e)
+        {
+          Logger.error("error while reloading umsatz list",e);
+        }
+      }
+    });
+  }
+  
 	/**
 	 * Sucht das Geldinstitut zur eingegebenen BLZ und zeigt es als Kommentar
 	 * hinter dem BLZ-Feld an.
@@ -457,7 +483,10 @@ public class KontoControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.70  2006-10-06 16:00:42  willuhn
+ * Revision 1.71  2006-11-30 23:48:40  willuhn
+ * @N Erste Version der Umsatz-Kategorien drin
+ *
+ * Revision 1.70  2006/10/06 16:00:42  willuhn
  * @B Bug 280
  *
  * Revision 1.69  2006/08/17 21:46:16  willuhn

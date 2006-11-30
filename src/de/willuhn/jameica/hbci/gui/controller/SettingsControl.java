@@ -26,6 +26,7 @@ import de.willuhn.jameica.gui.input.DecimalInput;
 import de.willuhn.jameica.gui.input.Input;
 import de.willuhn.jameica.gui.parts.TablePart;
 import de.willuhn.jameica.hbci.HBCI;
+import de.willuhn.jameica.hbci.HBCIProperties;
 import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.gui.action.PassportDetail;
 import de.willuhn.jameica.hbci.gui.action.UmsatzTypNew;
@@ -164,7 +165,7 @@ public class SettingsControl extends AbstractControl {
 		if (ueberweisungLimit != null)
 			return ueberweisungLimit;
 		ueberweisungLimit = new DecimalInput(Settings.getUeberweisungLimit(),HBCI.DECIMALFORMAT);
-		ueberweisungLimit.setComment(i18n.tr("in der Währung des jeweiligen Kontos"));
+		ueberweisungLimit.setComment(HBCIProperties.CURRENCY_DEFAULT_DE);
 		return ueberweisungLimit;
 	}
 
@@ -260,7 +261,10 @@ public class SettingsControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.49  2006-11-24 00:07:09  willuhn
+ * Revision 1.50  2006-11-30 23:48:40  willuhn
+ * @N Erste Version der Umsatz-Kategorien drin
+ *
+ * Revision 1.49  2006/11/24 00:07:09  willuhn
  * @C Konfiguration der Umsatz-Kategorien in View Einstellungen verschoben
  * @N Redesign View Einstellungen
  *
