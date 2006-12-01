@@ -31,7 +31,7 @@ import de.willuhn.util.I18N;
 public class TurnusImpl extends AbstractDBObject implements Turnus
 {
 
-	private I18N i18n = null;
+	private transient I18N i18n = null;
 
   /**
    * ct.
@@ -232,7 +232,10 @@ public class TurnusImpl extends AbstractDBObject implements Turnus
 
 /**********************************************************************
  * $Log$
- * Revision 1.14  2006-08-25 10:13:43  willuhn
+ * Revision 1.15  2006-12-01 00:02:34  willuhn
+ * @C made unserializable members transient
+ *
+ * Revision 1.14  2006/08/25 10:13:43  willuhn
  * @B Fremdschluessel NICHT mittels PreparedStatement, da die sonst gequotet und von McKoi nicht gefunden werden. BUGZILLA 278
  *
  * Revision 1.13  2006/08/23 09:45:13  willuhn

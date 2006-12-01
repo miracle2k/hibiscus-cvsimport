@@ -29,7 +29,8 @@ import de.willuhn.util.I18N;
  */
 public class ProtokollImpl extends AbstractDBObject implements Protokoll {
 
-	private I18N i18n;
+  private transient I18N i18n = null;
+
   /**
    * ct.
    * @throws java.rmi.RemoteException
@@ -156,7 +157,10 @@ public class ProtokollImpl extends AbstractDBObject implements Protokoll {
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2005-05-30 22:55:27  web0
+ * Revision 1.10  2006-12-01 00:02:34  willuhn
+ * @C made unserializable members transient
+ *
+ * Revision 1.9  2005/05/30 22:55:27  web0
  * *** empty log message ***
  *
  * Revision 1.8  2004/11/12 18:25:07  willuhn

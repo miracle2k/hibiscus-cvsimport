@@ -30,7 +30,7 @@ import de.willuhn.util.I18N;
 public class NachrichtImpl extends AbstractDBObject implements Nachricht
 {
 
-  private I18N i18n;
+  private transient I18N i18n = null;
 
   /**
    * @throws java.rmi.RemoteException
@@ -168,7 +168,10 @@ public class NachrichtImpl extends AbstractDBObject implements Nachricht
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2005-05-30 22:55:27  web0
+ * Revision 1.3  2006-12-01 00:02:34  willuhn
+ * @C made unserializable members transient
+ *
+ * Revision 1.2  2005/05/30 22:55:27  web0
  * *** empty log message ***
  *
  * Revision 1.1  2005/05/09 17:26:56  web0

@@ -31,7 +31,8 @@ import de.willuhn.util.I18N;
  */
 public class AdresseImpl extends AbstractDBObject implements Adresse {
 
-  private I18N i18n = null;
+  private transient I18N i18n = null;
+
   /**
    * @throws RemoteException
    */
@@ -203,7 +204,10 @@ public class AdresseImpl extends AbstractDBObject implements Adresse {
 
 /**********************************************************************
  * $Log$
- * Revision 1.14  2006-10-07 19:50:08  willuhn
+ * Revision 1.15  2006-12-01 00:02:34  willuhn
+ * @C made unserializable members transient
+ *
+ * Revision 1.14  2006/10/07 19:50:08  willuhn
  * @D javadoc
  *
  * Revision 1.13  2006/10/06 16:00:42  willuhn

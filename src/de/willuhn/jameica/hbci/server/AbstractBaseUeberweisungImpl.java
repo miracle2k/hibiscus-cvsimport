@@ -29,7 +29,7 @@ public abstract class AbstractBaseUeberweisungImpl extends AbstractTransferImpl
   implements Terminable
 {
 
-	private I18N i18n;
+  private transient I18N i18n = null;
 
   /**
    * @throws RemoteException
@@ -135,7 +135,10 @@ public abstract class AbstractBaseUeberweisungImpl extends AbstractTransferImpl
 
 /**********************************************************************
  * $Log$
- * Revision 1.8  2006-06-08 22:29:47  willuhn
+ * Revision 1.9  2006-12-01 00:02:34  willuhn
+ * @C made unserializable members transient
+ *
+ * Revision 1.8  2006/06/08 22:29:47  willuhn
  * @N DTAUS-Import fuer Sammel-Lastschriften und Sammel-Ueberweisungen
  * @B Eine Reihe kleinerer Bugfixes in Sammeltransfers
  * @B Bug 197 besser geloest

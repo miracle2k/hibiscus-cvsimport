@@ -30,7 +30,7 @@ import de.willuhn.util.I18N;
 public abstract class AbstractSammelTransferBuchungImpl extends AbstractDBObject implements SammelTransferBuchung, Duplicatable
 {
 
-  private I18N i18n;
+  private transient I18N i18n = null;
 
   /**
    * @throws java.rmi.RemoteException
@@ -270,7 +270,10 @@ public abstract class AbstractSammelTransferBuchungImpl extends AbstractDBObject
 
 /*****************************************************************************
  * $Log$
- * Revision 1.7  2006-10-06 16:00:42  willuhn
+ * Revision 1.8  2006-12-01 00:02:34  willuhn
+ * @C made unserializable members transient
+ *
+ * Revision 1.7  2006/10/06 16:00:42  willuhn
  * @B Bug 280
  *
  * Revision 1.6  2006/08/23 09:45:13  willuhn

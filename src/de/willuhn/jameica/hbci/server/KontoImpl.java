@@ -46,7 +46,7 @@ import de.willuhn.util.I18N;
 public class KontoImpl extends AbstractDBObject implements Konto
 {
 
-  private I18N i18n;
+  private transient I18N i18n = null;
 
   /**
    * ct.
@@ -694,7 +694,10 @@ public class KontoImpl extends AbstractDBObject implements Konto
 
 /*******************************************************************************
  * $Log$
- * Revision 1.76  2006-10-20 08:22:48  willuhn
+ * Revision 1.77  2006-12-01 00:02:34  willuhn
+ * @C made unserializable members transient
+ *
+ * Revision 1.76  2006/10/20 08:22:48  willuhn
  * @B bug 297
  *
  * Revision 1.75  2006/10/09 16:56:55  jost

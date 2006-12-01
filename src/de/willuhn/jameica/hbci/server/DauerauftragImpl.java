@@ -35,7 +35,7 @@ public class DauerauftragImpl extends AbstractTransferImpl
   implements Dauerauftrag
 {
 
-	private I18N i18n;
+  private transient I18N i18n = null;
   
 	// Hilfsmapping, um die Tages-Konstanten aus java.util.Calendar in
   // integer von 1 (montag) - 7 (sonntag) umrechnen zu koennen
@@ -352,7 +352,10 @@ public class DauerauftragImpl extends AbstractTransferImpl
 
 /**********************************************************************
  * $Log$
- * Revision 1.21  2006-03-02 13:47:14  willuhn
+ * Revision 1.22  2006-12-01 00:02:34  willuhn
+ * @C made unserializable members transient
+ *
+ * Revision 1.21  2006/03/02 13:47:14  willuhn
  * @C replaced "99" with HBCI_LAST_OF_MONTH
  *
  * Revision 1.20  2006/02/28 23:05:59  willuhn

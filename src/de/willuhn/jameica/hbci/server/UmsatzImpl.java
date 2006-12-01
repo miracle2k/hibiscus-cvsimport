@@ -42,7 +42,7 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
   /**
    * Cache fuer die Umsatz-Kategorien.
    */
-  public final transient static Hashtable UMSATZTYP_CACHE = new Hashtable();
+  public final static Hashtable UMSATZTYP_CACHE = new Hashtable();
 
   /**
    * @throws RemoteException
@@ -553,7 +553,10 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
 
 /**********************************************************************
  * $Log$
- * Revision 1.39  2006-11-30 23:48:40  willuhn
+ * Revision 1.40  2006-12-01 00:02:34  willuhn
+ * @C made unserializable members transient
+ *
+ * Revision 1.39  2006/11/30 23:48:40  willuhn
  * @N Erste Version der Umsatz-Kategorien drin
  *
  * Revision 1.38  2006/11/23 17:25:38  willuhn
