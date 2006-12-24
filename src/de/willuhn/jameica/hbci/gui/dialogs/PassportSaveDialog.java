@@ -34,7 +34,7 @@ public class PassportSaveDialog extends NewPasswordDialog {
 		i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
     setTitle(i18n.tr("Passwort-Eingabe"));
-    setLabelText(i18n.tr("Ihre Passwort"));
+    setLabelText(i18n.tr("Ihr Passwort"));
     setText(i18n.tr("Bitte vergeben Sie ein Passwort, mit dem der zu speichernde\nSchlüssel geschützt werden soll."));
   }
 }
@@ -42,7 +42,10 @@ public class PassportSaveDialog extends NewPasswordDialog {
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2005-11-14 11:36:58  willuhn
+ * Revision 1.5  2006-12-24 10:28:16  jost
+ * Korrektur Tippfehler
+ *
+ * Revision 1.4  2005/11/14 11:36:58  willuhn
  * @B bug 148
  *
  * Revision 1.3  2005/02/07 22:06:40  willuhn

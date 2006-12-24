@@ -34,7 +34,7 @@ public class PassportLoadDialog extends PasswordDialog {
 		i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
     setTitle(i18n.tr("Passwort-Eingabe"));
-    setLabelText(i18n.tr("Ihre Passwort"));
+    setLabelText(i18n.tr("Ihr Passwort"));
     setText(i18n.tr("Bitte geben Sie das von Ihnen vergebene Passwort für dieses\nSicherheitsmedium ein."));
   }
 
@@ -66,7 +66,10 @@ public class PassportLoadDialog extends PasswordDialog {
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2005-02-07 22:06:40  willuhn
+ * Revision 1.5  2006-12-24 10:28:06  jost
+ * Korrektur Tippfehler
+ *
+ * Revision 1.4  2005/02/07 22:06:40  willuhn
  * *** empty log message ***
  *
  * Revision 1.3  2005/02/06 19:03:36  willuhn
