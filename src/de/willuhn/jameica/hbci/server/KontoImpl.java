@@ -611,16 +611,10 @@ public class KontoImpl extends AbstractDBObject implements Konto
       return 0.0d;
 
     // Zuruecksetzen der Uhrzeit auf 0:00
-    Calendar cal = Calendar.getInstance();
-    cal.setTime(from);
-    cal.set(Calendar.HOUR_OF_DAY, 0);
-    cal.set(Calendar.MINUTE, 0);
-    cal.set(Calendar.SECOND, 0);
-    cal.set(Calendar.MILLISECOND, 0); // Thanks to Simon Schultze-Florey ;)
-
-    Date start = cal.getTime();
+    HBCIProperties.resetTime(from);
 
     // Setzen der Uhrzeit auf 23:59:59
+    Calendar cal = Calendar.getInstance();
     cal.setTime(to);
     cal.set(Calendar.HOUR_OF_DAY, 23);
     cal.set(Calendar.MINUTE, 59);
@@ -647,8 +641,7 @@ public class KontoImpl extends AbstractDBObject implements Konto
       }
     };
 
-    Double d = (Double) service.execute(sql, new Object[] { this.getID(),
-        start, end }, rs);
+    Double d = (Double) service.execute(sql, new Object[] {this.getID(),from, end}, rs);
     return d == null ? 0.0d : d.doubleValue();
   }
 
@@ -693,7 +686,10 @@ public class KontoImpl extends AbstractDBObject implements Konto
 
 /*******************************************************************************
  * $Log$
- * Revision 1.80  2006-12-27 11:52:36  willuhn
+ * Revision 1.81  2006-12-27 17:56:49  willuhn
+ * @B Bug 341
+ *
+ * Revision 1.80  2006/12/27 11:52:36  willuhn
  * @C ResultsetExtractor moved into datasource
  *
  * Revision 1.79  2006/12/20 13:16:02  willuhn

@@ -309,12 +309,9 @@ public abstract class AbstractTransferList extends TablePart implements Part
           settings.setAttribute("transferlist.filter.from",HBCI.DATEFORMAT.format(dfrom));
         
         // Das End-Datum speichern wir nur, wenn es nicht das aktuelle Datum ist
-        Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.HOUR_OF_DAY,0);
-        cal.set(Calendar.MINUTE,0);
-        cal.set(Calendar.SECOND,0);
-        cal.set(Calendar.MILLISECOND,0);
-        if (dto != null && !cal.getTime().equals(dto))
+        Date date = new Date();
+        HBCIProperties.resetTime(date);
+        if (dto != null && !date.equals(dto))
           settings.setAttribute("transferlist.filter.to",HBCI.DATEFORMAT.format(dto));
         else
           settings.setAttribute("transferlist.filter.to",(String)null);
@@ -392,7 +389,10 @@ public abstract class AbstractTransferList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2006-11-20 23:07:54  willuhn
+ * Revision 1.10  2006-12-27 17:56:49  willuhn
+ * @B Bug 341
+ *
+ * Revision 1.9  2006/11/20 23:07:54  willuhn
  * @N new package "messaging"
  * @C moved ImportMessage into new package
  *

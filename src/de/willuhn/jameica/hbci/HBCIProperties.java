@@ -12,6 +12,9 @@
  **********************************************************************/
 package de.willuhn.jameica.hbci;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import org.kapott.hbci.manager.HBCIUtils;
 
 import de.willuhn.jameica.system.Application;
@@ -173,7 +176,24 @@ public class HBCIProperties
     }
   }
 
-	// disabled
+  /**
+   * Resettet die Uhrzeit eines Datums.
+   * @param date das Datum.
+   */
+  public static void resetTime(Date date)
+  {
+    if (date != null)
+    {
+      Calendar cal = Calendar.getInstance();
+      cal.setTime(date);
+      cal.set(Calendar.HOUR_OF_DAY,0);
+      cal.set(Calendar.MINUTE,0);
+      cal.set(Calendar.SECOND,0);
+      cal.set(Calendar.MILLISECOND,0);
+    }
+  }
+
+  // disabled
 	private HBCIProperties()
 	{
 	}
@@ -183,7 +203,10 @@ public class HBCIProperties
 
 /**********************************************************************
  * $Log$
- * Revision 1.17  2006-10-06 16:00:42  willuhn
+ * Revision 1.18  2006-12-27 17:56:49  willuhn
+ * @B Bug 341
+ *
+ * Revision 1.17  2006/10/06 16:00:42  willuhn
  * @B Bug 280
  *
  * Revision 1.16  2006/05/11 10:57:35  willuhn
