@@ -158,6 +158,7 @@ public class EmpfaengerControl extends AbstractControl {
 		kontonummer = new TextInput(getEmpfaenger().getKontonummer());
     // BUGZILLA 280
     kontonummer.setValidChars(HBCIProperties.HBCI_KTO_VALIDCHARS);
+    kontonummer.setMandatory(true);
     return kontonummer;
 	}
 
@@ -187,6 +188,7 @@ public class EmpfaengerControl extends AbstractControl {
     // BUGZILLA 280
     blz.setValidChars(HBCIProperties.HBCI_BLZ_VALIDCHARS);
 		blz.setComment("");
+    blz.setMandatory(true);
     BLZListener l = new BLZListener();
 		blz.addListener(l);
     // einmal ausfuehren
@@ -204,6 +206,7 @@ public class EmpfaengerControl extends AbstractControl {
 		if (name != null)
 			return name;
 		name = new TextInput(getEmpfaenger().getName(),HBCIProperties.HBCI_TRANSFER_NAME_MAXLENGTH);
+    name.setMandatory(true);
 		return name;
 	}
 
@@ -258,7 +261,10 @@ public class EmpfaengerControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.39  2006-10-06 16:00:42  willuhn
+ * Revision 1.40  2006-12-28 15:38:43  willuhn
+ * @N Farbige Pflichtfelder
+ *
+ * Revision 1.39  2006/10/06 16:00:42  willuhn
  * @B Bug 280
  *
  * Revision 1.38  2006/08/17 21:46:16  willuhn

@@ -86,6 +86,7 @@ public abstract class AbstractSammelTransferBuchungControl extends AbstractContr
     gkNummer = new DialogInput(getBuchung().getGegenkontoNummer(),d);
     // BUGZILLA 280
     gkNummer.setValidChars(HBCIProperties.HBCI_KTO_VALIDCHARS);
+    gkNummer.setMandatory(true);
 		return gkNummer;
 	}
 
@@ -102,6 +103,7 @@ public abstract class AbstractSammelTransferBuchungControl extends AbstractContr
     gkBLZ.setValidChars(HBCIProperties.HBCI_BLZ_VALIDCHARS);
 		gkBLZ.setComment("");
 		gkBLZ.addListener(new BLZListener());
+    gkBLZ.setMandatory(true);
 		return gkBLZ;
 	}
 
@@ -117,6 +119,7 @@ public abstract class AbstractSammelTransferBuchungControl extends AbstractContr
 		gkName = new TextInput(getBuchung().getGegenkontoName(),HBCIProperties.HBCI_TRANSFER_NAME_MAXLENGTH);
     // BUGZILLA 163
     gkName.setValidChars(HBCIProperties.HBCI_DTAUS_VALIDCHARS);
+    gkName.setMandatory(true);
 		return gkName;
 	}
 
@@ -131,6 +134,7 @@ public abstract class AbstractSammelTransferBuchungControl extends AbstractContr
 			return zweck;
 		zweck = new TextInput(getBuchung().getZweck(),HBCIProperties.HBCI_TRANSFER_USAGE_MAXLENGTH);
 		zweck.setValidChars(HBCIProperties.HBCI_DTAUS_VALIDCHARS);
+    zweck.setMandatory(true);
 		return zweck;
 	}
 
@@ -159,6 +163,7 @@ public abstract class AbstractSammelTransferBuchungControl extends AbstractContr
 		if (betrag != null)
 			return betrag;
 		betrag = new DecimalInput(getBuchung().getBetrag(),HBCI.DECIMALFORMAT);
+    betrag.setMandatory(true);
 
 		// wir loesen den KontoListener aus, um die Waehrung sofort anzuzeigen
 		
@@ -249,7 +254,10 @@ public abstract class AbstractSammelTransferBuchungControl extends AbstractContr
 
 /*****************************************************************************
  * $Log$
- * Revision 1.4  2006-10-06 16:00:42  willuhn
+ * Revision 1.5  2006-12-28 15:38:43  willuhn
+ * @N Farbige Pflichtfelder
+ *
+ * Revision 1.4  2006/10/06 16:00:42  willuhn
  * @B Bug 280
  *
  * Revision 1.3  2006/03/27 16:46:21  willuhn

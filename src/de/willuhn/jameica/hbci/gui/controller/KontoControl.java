@@ -173,6 +173,7 @@ public class KontoControl extends AbstractControl {
 		kontonummer = new TextInput(getKonto().getKontonummer());
     // BUGZILLA 280
     kontonummer.setValidChars(HBCIProperties.HBCI_KTO_VALIDCHARS);
+    kontonummer.setMandatory(true);
 		return kontonummer;
 	}
 
@@ -255,6 +256,7 @@ public class KontoControl extends AbstractControl {
 		blz = new TextInput(getKonto().getBLZ(),HBCIProperties.HBCI_BLZ_LENGTH);
     // BUGZILLA 280
     blz.setValidChars(HBCIProperties.HBCI_BLZ_VALIDCHARS);
+    blz.setMandatory(true);
 		blz.setComment("");
     BLZListener l = new BLZListener();
 		blz.addListener(l);
@@ -272,6 +274,7 @@ public class KontoControl extends AbstractControl {
 		if (name != null)
 			return name;
 		name = new TextInput(getKonto().getName(),HBCIProperties.HBCI_TRANSFER_NAME_MAXLENGTH);
+    name.setMandatory(true);
 		return name;
 	}
 
@@ -298,6 +301,7 @@ public class KontoControl extends AbstractControl {
 		if (kundennummer != null)
 			return kundennummer;
 		kundennummer = new TextInput(getKonto().getKundennummer());
+    kundennummer.setMandatory(true);
 		return kundennummer;
 	}
 
@@ -483,7 +487,10 @@ public class KontoControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.71  2006-11-30 23:48:40  willuhn
+ * Revision 1.72  2006-12-28 15:38:43  willuhn
+ * @N Farbige Pflichtfelder
+ *
+ * Revision 1.71  2006/11/30 23:48:40  willuhn
  * @N Erste Version der Umsatz-Kategorien drin
  *
  * Revision 1.70  2006/10/06 16:00:42  willuhn

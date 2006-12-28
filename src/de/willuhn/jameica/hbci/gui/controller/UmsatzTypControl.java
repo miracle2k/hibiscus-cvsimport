@@ -97,7 +97,10 @@ public class UmsatzTypControl extends AbstractControl
   public TextInput getName() throws RemoteException
   {
     if (this.name == null)
+    {
       this.name = new TextInput(getUmsatzTyp().getName());
+      this.name.setMandatory(true);
+    }
     return this.name;
   }
   
@@ -170,7 +173,10 @@ public class UmsatzTypControl extends AbstractControl
 
 /*********************************************************************
  * $Log$
- * Revision 1.2  2006-11-23 23:24:17  willuhn
+ * Revision 1.3  2006-12-28 15:38:43  willuhn
+ * @N Farbige Pflichtfelder
+ *
+ * Revision 1.2  2006/11/23 23:24:17  willuhn
  * @N Umsatz-Kategorien: DB-Update, Edit
  *
  * Revision 1.1  2006/11/23 17:25:37  willuhn
