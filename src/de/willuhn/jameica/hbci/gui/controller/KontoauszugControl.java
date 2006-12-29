@@ -88,7 +88,7 @@ public class KontoauszugControl extends AbstractControl
     Calendar cal = Calendar.getInstance();
     cal.setTime(new Date());
     cal.set(Calendar.DAY_OF_MONTH, 1);
-    Date dStart = cal.getTime();
+    Date dStart = HBCIProperties.startOfDay(cal.getTime());
 
     this.start = new DateInput(dStart, HBCI.DATEFORMAT);
     return this.start;
@@ -106,7 +106,7 @@ public class KontoauszugControl extends AbstractControl
     Calendar cal = Calendar.getInstance();
     cal.setTime(new Date());
     cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
-    Date dEnd = cal.getTime();
+    Date dEnd = HBCIProperties.endOfDay(cal.getTime());
     
     this.end = new DateInput(dEnd, HBCI.DATEFORMAT);
     return this.end;
@@ -135,13 +135,11 @@ public class KontoauszugControl extends AbstractControl
         umsaetze = Settings.getDBService().createList(Umsatz.class);
         if (start != null)
         {
-          HBCIProperties.resetTime(start);
-          umsaetze.addFilter("valuta >= ?", new Object[]{new java.sql.Date(start.getTime())});
+          umsaetze.addFilter("valuta >= ?", new Object[]{new java.sql.Date(HBCIProperties.startOfDay(start).getTime())});
         }
         if (end != null) 
         {
-          HBCIProperties.resetTime(end);
-          umsaetze.addFilter("valuta <= ?", new Object[]{new java.sql.Date(end.getTime())});
+          umsaetze.addFilter("valuta <= ?", new Object[]{new java.sql.Date(HBCIProperties.endOfDay(end).getTime())});
         }
         umsaetze.setOrder("ORDER BY TONUMBER(valuta), id DESC");
       }
@@ -184,7 +182,11 @@ public class KontoauszugControl extends AbstractControl
 
 /*******************************************************************************
  * $Log$
- * Revision 1.8  2006-12-27 17:56:49  willuhn
+ * Revision 1.9  2006-12-29 14:28:47  willuhn
+ * @B Bug 345
+ * @B jede Menge Bugfixes bei SQL-Statements mit Valuta
+ *
+ * Revision 1.8  2006/12/27 17:56:49  willuhn
  * @B Bug 341
  *
  * Revision 1.7  2006/10/16 12:51:32  willuhn
