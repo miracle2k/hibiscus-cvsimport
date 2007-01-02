@@ -17,13 +17,16 @@ import java.rmi.RemoteException;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 
+import de.willuhn.jameica.gui.AbstractView;
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
+import de.willuhn.jameica.gui.View;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.server.hbci.HBCIFactory;
 import de.willuhn.jameica.hbci.server.hbci.HBCISaldoJob;
 import de.willuhn.jameica.hbci.server.hbci.HBCIUmsatzJob;
+import de.willuhn.jameica.messaging.StatusBarMessage;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.logging.Logger;
 import de.willuhn.util.ApplicationException;
@@ -53,6 +56,7 @@ public class KontoFetchUmsaetze implements Action
 			if (k.isNewObject())
 				k.store();
 
+      final AbstractView currentView = GUI.getCurrentView();
 			HBCIFactory factory = HBCIFactory.getInstance();
 			factory.addJob(new HBCIUmsatzJob(k));
 
@@ -62,7 +66,14 @@ public class KontoFetchUmsaetze implements Action
 			factory.executeJobs(k, new Listener() {
         public void handleEvent(Event event)
         {
-          GUI.startView(GUI.getCurrentView().getClass(),k);
+          try
+          {
+            currentView.reload();
+          }
+          catch (ApplicationException e)
+          {
+            Application.getMessagingFactory().sendMessage(new StatusBarMessage(e.getMessage(),StatusBarMessage.TYPE_ERROR));
+          }
         }
       });
 			
@@ -79,7 +90,10 @@ public class KontoFetchUmsaetze implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.13  2005-07-26 23:57:18  web0
+ * Revision 1.14  2007-01-02 11:32:14  willuhn
+ * @B reload current view
+ *
+ * Revision 1.13  2005/07/26 23:57:18  web0
  * @N Restliche HBCI-Jobs umgestellt
  *
  * Revision 1.12  2005/07/26 23:00:03  web0
