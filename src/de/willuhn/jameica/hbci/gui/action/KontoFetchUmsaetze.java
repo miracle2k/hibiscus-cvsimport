@@ -20,7 +20,6 @@ import org.eclipse.swt.widgets.Listener;
 import de.willuhn.jameica.gui.AbstractView;
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
-import de.willuhn.jameica.gui.View;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.server.hbci.HBCIFactory;
@@ -90,7 +89,10 @@ public class KontoFetchUmsaetze implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.14  2007-01-02 11:32:14  willuhn
+ * Revision 1.15  2007-01-02 11:44:47  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.14  2007/01/02 11:32:14  willuhn
  * @B reload current view
  *
  * Revision 1.13  2005/07/26 23:57:18  web0
