@@ -80,7 +80,11 @@ public class HBCICallbackSWT extends AbstractHBCICallback
 				break;
 
 			case HBCIUtils.LOG_WARN:
-				Logger.warn(msg);
+        // Die logge ich mit DEBUG - die nerven sonst
+        if (msg != null && msg.startsWith("konnte folgenden nutzerdefinierten Wert nicht in Nachricht einsetzen:"))
+          Logger.debug(msg);
+        else
+          Logger.warn(msg);
 				break;
 
   		case HBCIUtils.LOG_ERR:
@@ -483,7 +487,10 @@ public class HBCICallbackSWT extends AbstractHBCICallback
 
 /**********************************************************************
  * $Log$
- * Revision 1.48  2006-10-23 15:16:12  willuhn
+ * Revision 1.49  2007-01-03 11:14:20  willuhn
+ * @Nachrichten "konnte folgenden nutzerdefinierten Wert nicht in Nachricht einsetzen:.*" werden nur noch mit DEBUG geloggt
+ *
+ * Revision 1.48  2006/10/23 15:16:12  willuhn
  * @B Passwort-Handling ueberarbeitet
  *
  * Revision 1.47  2006/10/23 11:38:57  willuhn
