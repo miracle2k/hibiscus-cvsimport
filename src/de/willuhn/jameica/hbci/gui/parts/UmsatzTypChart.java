@@ -65,11 +65,19 @@ public class UmsatzTypChart implements Part
       final ChartData aData = new ChartDataUmsatzTyp(false,start);
       
       final PieChart einnahmen = new PieChart();
-      einnahmen.setTitle(i18n.tr("Einnahmen ({0} Tage)",""+start));
+      final PieChart ausgaben  = new PieChart();
+      
+      if (start < 0)
+      {
+        einnahmen.setTitle(i18n.tr("Einnahmen (alle Umsätze)"));
+        ausgaben.setTitle(i18n.tr("Ausgaben (alle Umsätze)"));
+      }
+      else
+      {
+        einnahmen.setTitle(i18n.tr("Einnahmen ({0} Tage)",""+start));
+        ausgaben.setTitle(i18n.tr("Ausgaben ({0} Tage)",""+start));
+      }
       einnahmen.addData(eData);
-
-      final PieChart ausgaben = new PieChart();
-      ausgaben.setTitle(i18n.tr("Ausgaben ({0} Tage)",""+start));
       ausgaben.addData(aData);
 
       final UmsatzDaysInput i = new UmsatzDaysInput();
@@ -152,7 +160,10 @@ public class UmsatzTypChart implements Part
 
 /*********************************************************************
  * $Log$
- * Revision 1.3  2006-10-31 23:04:48  willuhn
+ * Revision 1.4  2007-01-16 12:35:43  willuhn
+ * @B "-1 Tage"
+ *
+ * Revision 1.3  2006/10/31 23:04:48  willuhn
  * @B Wurde mit der falschen Anzahl Default-Tage initialisiert
  *
  * Revision 1.2  2006/08/05 22:00:51  willuhn
