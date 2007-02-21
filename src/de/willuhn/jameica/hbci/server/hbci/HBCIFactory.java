@@ -26,6 +26,7 @@ import org.kapott.hbci.manager.HBCIUtils;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.PassportRegistry;
+import de.willuhn.jameica.hbci.gui.DialogFactory;
 import de.willuhn.jameica.hbci.passport.Passport;
 import de.willuhn.jameica.hbci.passport.PassportHandle;
 import de.willuhn.jameica.hbci.rmi.Konto;
@@ -560,6 +561,7 @@ public class HBCIFactory {
           {
             status = ProgressMonitor.STATUS_ERROR;
             msg = "HBCI-Übertragung mit Fehlern beendet";
+            DialogFactory.clearPINCache();
           }
           else if (interrupted)
           {
@@ -635,7 +637,10 @@ public class HBCIFactory {
 
 /*******************************************************************************
  * $Log$
- * Revision 1.48  2007-02-21 10:20:08  willuhn
+ * Revision 1.49  2007-02-21 12:10:36  willuhn
+ * Bug 349
+ *
+ * Revision 1.48  2007/02/21 10:20:08  willuhn
  * @N Log-Ausgabe, wenn HBCI-Session abgebrochen wurde
  *
  * Revision 1.47  2007/02/21 10:02:27  willuhn

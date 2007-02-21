@@ -354,6 +354,15 @@ public class DialogFactory {
   }
   
   /**
+   * Loescht den PIN-Cache.
+   * BUGZILLA 349
+   */
+  public static void clearPINCache()
+  {
+    pinCache.clear();
+  }
+  
+  /**
    * Hilfsfunktion zum Ermitteln des Keys, zu dem die PIN gespeichert ist.
    * @param passport
    * @return die PIN oder null.
@@ -406,7 +415,10 @@ public class DialogFactory {
 
 /**********************************************************************
  * $Log$
- * Revision 1.28  2006-11-16 22:57:33  willuhn
+ * Revision 1.29  2007-02-21 12:10:36  willuhn
+ * Bug 349
+ *
+ * Revision 1.28  2006/11/16 22:57:33  willuhn
  * @N gecachte PINs/Passwoerte werden nun nur noch einmal verwendet. Stimmen sie nicht, muss der User entscheiden
  *
  * Revision 1.27  2006/10/23 15:16:12  willuhn
