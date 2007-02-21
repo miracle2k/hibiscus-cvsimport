@@ -22,6 +22,7 @@ import de.willuhn.jameica.gui.parts.ContextMenuItem;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.gui.action.DBObjectDelete;
 import de.willuhn.jameica.hbci.gui.action.EmpfaengerAdd;
+import de.willuhn.jameica.hbci.gui.action.UeberweisungNew;
 import de.willuhn.jameica.hbci.gui.action.UmsatzAssign;
 import de.willuhn.jameica.hbci.gui.action.UmsatzDetail;
 import de.willuhn.jameica.hbci.gui.action.UmsatzExport;
@@ -60,6 +61,8 @@ public class UmsatzList extends ContextMenu implements Extendable
 		addItem(new OpenItem());
 
 		addItem(new CheckedContextMenuItem(i18n.tr("Gegenkonto in Adressbuch übernehmen"),new EmpfaengerAdd()));
+    // BUGZILLA 315
+    addItem(new CheckedContextMenuItem(i18n.tr("Als neue Überweisung anlegen..."),new UeberweisungNew()));
     addItem(new CheckedContextMenuItem(i18n.tr("Umsatz-Kategorie zuordnen..."),new Action() {
     
       public void handleAction(Object context) throws ApplicationException
@@ -122,7 +125,10 @@ public class UmsatzList extends ContextMenu implements Extendable
 
 /**********************************************************************
  * $Log$
- * Revision 1.23  2006-11-30 23:48:40  willuhn
+ * Revision 1.24  2007-02-21 11:58:52  willuhn
+ * @N Bug 315
+ *
+ * Revision 1.23  2006/11/30 23:48:40  willuhn
  * @N Erste Version der Umsatz-Kategorien drin
  *
  * Revision 1.22  2006/10/09 23:49:39  willuhn
