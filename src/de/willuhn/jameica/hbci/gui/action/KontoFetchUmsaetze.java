@@ -60,7 +60,9 @@ public class KontoFetchUmsaetze implements Action
 			factory.addJob(new HBCIUmsatzJob(k));
 
 			// BUGZILLA #3 http://www.willuhn.de/bugzilla/show_bug.cgi?id=3
-			factory.addExclusiveJob(new HBCISaldoJob(k));
+      HBCISaldoJob saldo = new HBCISaldoJob(k);
+      saldo.setExclusive(true);
+			factory.addJob(saldo);
 
 			factory.executeJobs(k, new Listener() {
         public void handleEvent(Event event)
@@ -89,7 +91,10 @@ public class KontoFetchUmsaetze implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.15  2007-01-02 11:44:47  willuhn
+ * Revision 1.16  2007-02-21 10:02:27  willuhn
+ * @C Code zum Ausfuehren exklusiver Jobs redesigned
+ *
+ * Revision 1.15  2007/01/02 11:44:47  willuhn
  * *** empty log message ***
  *
  * Revision 1.14  2007/01/02 11:32:14  willuhn

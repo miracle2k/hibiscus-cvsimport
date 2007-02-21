@@ -40,8 +40,8 @@ public abstract class AbstractHBCIJob
 {
 
 	private org.kapott.hbci.GV.HBCIJob job = null;
-
-	private Hashtable params 			= new Hashtable(); 
+  private boolean exclusive              = false;
+	private Hashtable params 			         = new Hashtable(); 
 
 	/**
 	 * HBCI4Java verwendet intern eindeutige Job-Namen.
@@ -238,12 +238,35 @@ public abstract class AbstractHBCIJob
 		}
 		params.put(name,date);
 	}
+  
+  /**
+   * Legt fest, ob der HBCI-Job exclusive (also in einer einzelnen HBCI-Nachricht) gesendet werden soll.
+   * Standardmaessig ist ein Job nicht exclusiv.
+   * @return true, wenn er exclusiv gesendet werden soll.
+   */
+  public boolean isExclusive()
+  {
+    return this.exclusive;
+  }
+  
+  /**
+   * Legt fest, ob der HBCI-Job exclusive (also in einer einzelnen HBCI-Nachricht) gesendet werden soll.
+   * Standardmaessig ist ein Job nicht exclusiv.
+   * @param exclusive
+   */
+  public void setExclusive(boolean exclusive)
+  {
+    this.exclusive = exclusive;
+  }
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.24  2006-11-15 00:13:07  willuhn
+ * Revision 1.25  2007-02-21 10:02:27  willuhn
+ * @C Code zum Ausfuehren exklusiver Jobs redesigned
+ *
+ * Revision 1.24  2006/11/15 00:13:07  willuhn
  * @B Bug 327
  *
  * Revision 1.23  2006/03/17 00:51:24  willuhn

@@ -97,7 +97,9 @@ public class DauerauftragDelete implements Action
 				// Uh, der wird auch online geloescht
         // BUGZILLA #15 http://www.willuhn.de/bugzilla/show_bug.cgi?id=15
         HBCIFactory factory = HBCIFactory.getInstance();
-        factory.addExclusiveJob(new HBCIDauerauftragListJob(da.getKonto()));
+        HBCIDauerauftragListJob job = new HBCIDauerauftragListJob(da.getKonto());
+        job.setExclusive(true);
+        factory.addJob(job);
         factory.addJob(new HBCIDauerauftragDeleteJob(da,date));
         factory.executeJobs(da.getKonto(), new Listener() {
           public void handleEvent(Event event)
@@ -141,7 +143,10 @@ public class DauerauftragDelete implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.16  2005-07-26 23:57:18  web0
+ * Revision 1.17  2007-02-21 10:02:27  willuhn
+ * @C Code zum Ausfuehren exklusiver Jobs redesigned
+ *
+ * Revision 1.16  2005/07/26 23:57:18  web0
  * @N Restliche HBCI-Jobs umgestellt
  *
  * Revision 1.15  2005/06/23 17:07:38  web0
