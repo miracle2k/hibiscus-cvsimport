@@ -588,6 +588,8 @@ public class HBCIFactory {
      */
     public void interrupt()
     {
+      monitor.setStatusText(i18n.tr("Breche HBCI-Übertragung ab"));
+      Logger.warn("mark hbci session as interrupted");
       this.interrupted = true;
     }
 
@@ -633,7 +635,10 @@ public class HBCIFactory {
 
 /*******************************************************************************
  * $Log$
- * Revision 1.47  2007-02-21 10:02:27  willuhn
+ * Revision 1.48  2007-02-21 10:20:08  willuhn
+ * @N Log-Ausgabe, wenn HBCI-Session abgebrochen wurde
+ *
+ * Revision 1.47  2007/02/21 10:02:27  willuhn
  * @C Code zum Ausfuehren exklusiver Jobs redesigned
  *
  * Revision 1.46  2006/11/15 00:13:07  willuhn
