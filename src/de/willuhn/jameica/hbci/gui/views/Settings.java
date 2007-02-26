@@ -72,7 +72,7 @@ public class Settings extends AbstractView {
 		
 		// Grund-Einstellungen
     TabGroup system = new TabGroup(getTabFolder(),i18n.tr("Grundeinstellungen"));
-		system.addCheckbox(control.getOnlineMode(),i18n.tr("Bei Kommunikation mit der Bank Internetverbindung ohne Nachfrage herstellen"));
+		system.addCheckbox(control.getOnlineMode(),i18n.tr("Dauerhafte Internetverbindung, Aufforderung zum Verbinden nicht erforderlich"));
     system.addCheckbox(control.getCheckPin(),i18n.tr("PIN-Eingaben via Check-Summe prüfen"));
     system.addCheckbox(control.getCachePin(),i18n.tr("PIN-Eingaben für die aktuelle Sitzung zwischenspeichern"));
     system.addCheckbox(control.getDecimalGrouping(),i18n.tr("Tausender-Trennzeichen bei Geld-Beträgen verwenden"));
@@ -167,7 +167,10 @@ public class Settings extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.38  2006-11-24 00:07:09  willuhn
+ * Revision 1.39  2007-02-26 11:40:06  willuhn
+ * @C Ergonomie-Vorschlag von Gottfried
+ *
+ * Revision 1.38  2006/11/24 00:07:09  willuhn
  * @C Konfiguration der Umsatz-Kategorien in View Einstellungen verschoben
  * @N Redesign View Einstellungen
  *
