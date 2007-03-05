@@ -146,16 +146,7 @@ public class HBCIProperties
     
     // Erstmal schauen, ob der Text ohne Codierung vielleicht schon zu lang ist.
     if (chars.length() > maxLength)
-    {
       throw new ApplicationException(i18n.tr("Der Text \"{0}\" ist zu lang. Bitte geben Sie maximal {1} Zeichen ein", new String[]{chars,""+maxLength}));
-    }
-
-    // Jetzt schauen wir, ob die Laenge vielleicht nach dem Escaping zu lang wird.
-    String s = chars.replaceAll("\\?","??");
-    s = s.replaceAll("\\+","?+");
-
-    if (s.length() > maxLength)
-      throw new ApplicationException(i18n.tr("Der Text \"{0}\" wird nach der HBCI-Kodierung zu lang. Entfernen Sie ggf. \"+\" oder \"?\"",chars));
   }
 
   /**
@@ -224,7 +215,10 @@ public class HBCIProperties
 
 /**********************************************************************
  * $Log$
- * Revision 1.20  2007-02-26 12:48:23  willuhn
+ * Revision 1.21  2007-03-05 14:57:16  willuhn
+ * @B zusaetzlichen Laengen-Check (Workaround zu Bug 232) entfernt (ist inzwischen in HBCI4Java gefixt)
+ *
+ * Revision 1.20  2007/02/26 12:48:23  willuhn
  * @N Spezial-PSD-Parser von Michael Lambers
  *
  * Revision 1.19  2006/12/29 14:28:47  willuhn
