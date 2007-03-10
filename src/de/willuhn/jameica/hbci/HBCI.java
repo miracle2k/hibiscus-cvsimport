@@ -136,7 +136,7 @@ public class HBCI extends AbstractPlugin
     DBMAPPING.put("JtkHZYFRtWpxGR6nE8TYFw==",new Double(1.4));
     DBMAPPING.put("a4VHFRr69c+LynZiczIICg==",new Double(1.5));
     DBMAPPING.put("a4VHFRr69c+LynZiczIICg==",new Double(1.6));
-    DBMAPPING.put("W20zxD8/jDgK30A/I1NE7w==",new Double(1.7));
+    DBMAPPING.put("EdG6qLQ0SXRgJ8QBtz5Vrg==", new Double(1.7));
 
     try {
 			Application.getCallback().getStartupMonitor().setStatusText("hibiscus: checking database integrity");
@@ -360,7 +360,10 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
- * Revision 1.95  2006-11-23 23:24:17  willuhn
+ * Revision 1.96  2007-03-10 07:16:10  jost
+ * Neue Checksumme für die aktuelle DB-Version
+ *
+ * Revision 1.95  2006/11/23 23:24:17  willuhn
  * @N Umsatz-Kategorien: DB-Update, Edit
  *
  * Revision 1.94  2006/11/17 00:06:48  willuhn
