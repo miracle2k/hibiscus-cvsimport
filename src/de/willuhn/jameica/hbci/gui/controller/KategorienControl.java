@@ -155,6 +155,7 @@ public class KategorienControl extends AbstractControl
 
     DBService service = Settings.getDBService();
     DBIterator list = service.createList(UmsatzTyp.class);
+    list.setOrder("order by nummer");
     while (list.hasNext())
       rootItems.add(new KategorieItem((UmsatzTyp)list.next(),von,bis));
     
@@ -167,7 +168,10 @@ public class KategorienControl extends AbstractControl
 
 /*******************************************************************************
  * $Log$
- * Revision 1.3  2007-03-08 18:56:39  willuhn
+ * Revision 1.4  2007-03-10 07:16:37  jost
+ * Neu: Nummer für die Sortierung der Umsatz-Kategorien
+ *
+ * Revision 1.3  2007/03/08 18:56:39  willuhn
  * @N Mehrere Spalten in Kategorie-Baum
  *
  * Revision 1.2  2007/03/07 10:29:41  willuhn

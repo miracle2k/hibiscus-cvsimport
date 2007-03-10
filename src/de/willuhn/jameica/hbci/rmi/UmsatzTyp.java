@@ -51,6 +51,21 @@ public interface UmsatzTyp extends DBObject
   public void setName(String name) throws RemoteException;
 	
   /**
+   * Liefert die Nummer des Umsatz-Typs. Die Nummer wird f�r die Sortierung bei der Auswertung
+   * eingesetzt.
+   * @return Nummer des Umsatz-Typs.
+   * @throws RemoteException
+   */
+  public String getNummer() throws RemoteException;
+  
+  /**
+   * Speichert die Nummer des Umsatz-Typs. 
+   * @param nummer Nummer des Umsatz-Typs
+   * @throws RemoteException
+   */
+  public void setNummer(String nummer) throws RemoteException;
+  
+  /**
    * Liefert das Suchmuster fuer den Umsatztyp.
    * @return Suchmuster.
    * @throws RemoteException
@@ -155,7 +170,10 @@ public interface UmsatzTyp extends DBObject
 
 /**********************************************************************
  * $Log$
- * Revision 1.12  2007-03-06 20:06:40  jost
+ * Revision 1.13  2007-03-10 07:18:36  jost
+ * Neu: Nummer für die Sortierung der Umsatz-Kategorien
+ *
+ * Revision 1.12  2007/03/06 20:06:40  jost
  * Neu: Umsatz-Kategorien-Übersicht
  *
  * Revision 1.11  2006/11/29 00:40:37  willuhn
