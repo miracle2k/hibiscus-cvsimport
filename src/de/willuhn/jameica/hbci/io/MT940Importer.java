@@ -132,13 +132,7 @@ public class MT940Importer implements Importer
           created++;
           try
           {
-            ImportMessage im = new ImportMessage() {
-              public GenericObject getImportedObject() throws RemoteException
-              {
-                return umsatz;
-              }
-            };
-            Application.getMessagingFactory().sendMessage(im);
+            Application.getMessagingFactory().sendMessage(new ImportMessage(umsatz));
           }
           catch (Exception ex)
           {
@@ -306,7 +300,11 @@ public class MT940Importer implements Importer
 
 /*******************************************************************************
  * $Log$
- * Revision 1.10  2006-11-20 23:07:54  willuhn
+ * Revision 1.11  2007-03-16 14:40:02  willuhn
+ * @C Redesign ImportMessage
+ * @N Aktualisierung der Umsatztabelle nach Kategorie-Zuordnung
+ *
+ * Revision 1.10  2006/11/20 23:07:54  willuhn
  * @N new package "messaging"
  * @C moved ImportMessage into new package
  *

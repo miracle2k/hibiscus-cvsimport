@@ -352,7 +352,7 @@ public abstract class AbstractTransferList extends TablePart implements Part
     {
       if (message == null || !(message instanceof ImportMessage))
         return;
-      final GenericObject o = ((ImportMessage)message).getImportedObject();
+      final GenericObject o = ((ImportMessage)message).getObject();
       
       if (o == null || !(o instanceof Transfer))
         return;
@@ -387,7 +387,11 @@ public abstract class AbstractTransferList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.12  2006-12-29 16:09:21  willuhn
+ * Revision 1.13  2007-03-16 14:40:02  willuhn
+ * @C Redesign ImportMessage
+ * @N Aktualisierung der Umsatztabelle nach Kategorie-Zuordnung
+ *
+ * Revision 1.12  2006/12/29 16:09:21  willuhn
  * @R Uhrzeit aus Termin entfernt
  *
  * Revision 1.11  2006/12/29 14:28:47  willuhn

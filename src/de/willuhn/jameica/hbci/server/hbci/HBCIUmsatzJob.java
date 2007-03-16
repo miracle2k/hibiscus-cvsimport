@@ -16,7 +16,6 @@ import java.rmi.RemoteException;
 
 import org.kapott.hbci.GV_Result.GVRKUms;
 
-import de.willuhn.datasource.GenericObject;
 import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.messaging.ImportMessage;
@@ -135,13 +134,7 @@ public class HBCIUmsatzJob extends AbstractHBCIJob {
 				try
 				{
 					umsatz.store(); // den Umsatz haben wir noch nicht, speichern!
-          Application.getMessagingFactory().sendMessage(new ImportMessage() {
-            public GenericObject getImportedObject() throws RemoteException
-            {
-              return umsatz;
-            }
-          
-          });
+          Application.getMessagingFactory().sendMessage(new ImportMessage(umsatz));
 				}
 				catch (Exception e2)
 				{
@@ -158,7 +151,11 @@ public class HBCIUmsatzJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.26  2006-12-29 15:26:56  willuhn
+ * Revision 1.27  2007-03-16 14:40:02  willuhn
+ * @C Redesign ImportMessage
+ * @N Aktualisierung der Umsatztabelle nach Kategorie-Zuordnung
+ *
+ * Revision 1.26  2006/12/29 15:26:56  willuhn
  * @N ImportMessageConsumer
  *
  * Revision 1.25  2006/10/16 23:36:25  willuhn

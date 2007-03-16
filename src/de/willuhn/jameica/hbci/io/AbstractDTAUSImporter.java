@@ -126,13 +126,7 @@ public abstract class AbstractDTAUSImporter extends AbstractDTAUSIO implements I
             // Jetzt noch ggf. andere ueber das neue Objekt informieren
             try
             {
-              ImportMessage im = new ImportMessage() {
-                public GenericObject getImportedObject() throws RemoteException
-                {
-                  return skel;
-                }
-              };
-              Application.getMessagingFactory().sendMessage(im);
+              Application.getMessagingFactory().sendMessage(new ImportMessage(skel));
             }
             catch (Exception ex)
             {
@@ -295,7 +289,11 @@ public abstract class AbstractDTAUSImporter extends AbstractDTAUSIO implements I
 
 /*********************************************************************
  * $Log$
- * Revision 1.7  2007-03-05 15:38:43  willuhn
+ * Revision 1.8  2007-03-16 14:40:02  willuhn
+ * @C Redesign ImportMessage
+ * @N Aktualisierung der Umsatztabelle nach Kategorie-Zuordnung
+ *
+ * Revision 1.7  2007/03/05 15:38:43  willuhn
  * @B Bug 365
  *
  * Revision 1.6  2006/11/20 23:07:54  willuhn

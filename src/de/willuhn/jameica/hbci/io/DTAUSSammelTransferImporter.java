@@ -94,13 +94,7 @@ public class DTAUSSammelTransferImporter extends AbstractDTAUSImporter
     // von den einzelnen Buchungen weiss.
     try
     {
-      ImportMessage im = new ImportMessage() {
-        public GenericObject getImportedObject() throws RemoteException
-        {
-          return b;
-        }
-      };
-      Application.getMessagingFactory().sendMessage(im);
+      Application.getMessagingFactory().sendMessage(new ImportMessage(b));
     }
     catch (Exception ex)
     {
@@ -125,7 +119,11 @@ public class DTAUSSammelTransferImporter extends AbstractDTAUSImporter
 
 /*********************************************************************
  * $Log$
- * Revision 1.6  2007-03-05 15:38:43  willuhn
+ * Revision 1.7  2007-03-16 14:40:02  willuhn
+ * @C Redesign ImportMessage
+ * @N Aktualisierung der Umsatztabelle nach Kategorie-Zuordnung
+ *
+ * Revision 1.6  2007/03/05 15:38:43  willuhn
  * @B Bug 365
  *
  * Revision 1.5  2006/11/20 23:07:54  willuhn
