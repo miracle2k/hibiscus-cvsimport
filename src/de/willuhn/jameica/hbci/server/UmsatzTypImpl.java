@@ -169,7 +169,7 @@ public class UmsatzTypImpl extends AbstractDBObjectNode implements UmsatzTyp
    */
   public String getPrimaryAttribute() throws RemoteException
   {
-    return "id";
+    return "name";
   }
 
   /**
@@ -445,7 +445,10 @@ public class UmsatzTypImpl extends AbstractDBObjectNode implements UmsatzTyp
 
 /*******************************************************************************
  * $Log$
- * Revision 1.33  2007-03-12 13:58:56  willuhn
+ * Revision 1.34  2007-03-16 12:55:26  jost
+ * Bugfix: Kategorie wurde in der Kontenliste nicht korrekt angezeigt.
+ *
+ * Revision 1.33  2007/03/12 13:58:56  willuhn
  * @C Eindeutigkeit des Namens trotz UNIQUE-Key vorher in insertCheck pruefen - das spart das Parsen der SQLException
  *
  * Revision 1.32  2007/03/10 07:18:50  jost
