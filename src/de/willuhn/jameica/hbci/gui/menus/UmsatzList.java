@@ -43,25 +43,22 @@ public class UmsatzList extends ContextMenu implements Extendable
 
 	private I18N i18n;
   
-  private TablePart table;
-
   /**
    * Erzeugt ein Kontext-Menu fuer eine Liste von Umsaetzen.
    */
   public UmsatzList(TablePart table)
   {
-//    this(null);
-    this.table = table;
+    this(null, table);
   }
 
   /**
 	 * Erzeugt ein Kontext-Menu fuer eine Liste von Umsaetzen.
    * @param konto optionale Angabe des Kontos.
 	 */
-	public UmsatzList(final Konto konto)
+	public UmsatzList(final Konto konto, final TablePart table)
 	{
 		i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
-
+		
 		addItem(new OpenItem());
 
 		addItem(new CheckedContextMenuItem(i18n.tr("Gegenkonto in Adressbuch übernehmen"),new EmpfaengerAdd()));
@@ -129,7 +126,10 @@ public class UmsatzList extends ContextMenu implements Extendable
 
 /**********************************************************************
  * $Log$
- * Revision 1.25  2007-03-16 13:14:28  jost
+ * Revision 1.26  2007-03-16 14:35:56  jost
+ * Austausch der Tabellenzeile nach Umsattyp-Zuordnung
+ *
+ * Revision 1.25  2007/03/16 13:14:28  jost
  * Austausch der Tabellenzeile nach Umsattyp-Zuordnung
  *
  * Revision 1.24  2007/02/21 11:58:52  willuhn
