@@ -15,11 +15,13 @@ package de.willuhn.jameica.hbci.gui.dialogs;
 
 import org.eclipse.swt.widgets.Composite;
 
+import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.dialogs.AbstractDialog;
 import de.willuhn.jameica.gui.util.ButtonArea;
 import de.willuhn.jameica.gui.util.SimpleContainer;
 import de.willuhn.jameica.hbci.HBCI;
+import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.gui.input.UmsatzTypInput;
 import de.willuhn.jameica.hbci.rmi.UmsatzTyp;
 import de.willuhn.jameica.system.Application;
@@ -75,7 +77,10 @@ public class UmsatzTypAuswahlDialog extends AbstractDialog
     SimpleContainer group = new SimpleContainer(parent);
     group.addText(i18n.tr("Bitte wählen Sie die zu verwendende Kategorie aus."),true);
 
-    final UmsatzTypInput input = new UmsatzTypInput(this.choosen);
+    DBIterator list = Settings.getDBService().createList(UmsatzTyp.class);
+    list.setOrder("ORDER BY nummer");
+    final UmsatzTypInput input = new UmsatzTypInput(list,this.choosen);
+    
     input.setComment(null); // Hier keine Umsatz-Zahlen anzeigen. Das macht den Dialog haesslich
     
     group.addLabelPair(i18n.tr("Bezeichnung"),input);
@@ -103,7 +108,10 @@ public class UmsatzTypAuswahlDialog extends AbstractDialog
 
 /*********************************************************************
  * $Log$
- * Revision 1.2  2006-12-29 14:28:47  willuhn
+ * Revision 1.3  2007-03-18 08:13:40  jost
+ * Sortierte Anzeige der Umsatz-Kategorien.
+ *
+ * Revision 1.2  2006/12/29 14:28:47  willuhn
  * @B Bug 345
  * @B jede Menge Bugfixes bei SQL-Statements mit Valuta
  *

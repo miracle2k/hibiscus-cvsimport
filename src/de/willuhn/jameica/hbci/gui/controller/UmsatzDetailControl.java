@@ -19,6 +19,7 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.kapott.hbci.manager.HBCIUtils;
 
+import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.jameica.gui.AbstractControl;
 import de.willuhn.jameica.gui.AbstractView;
 import de.willuhn.jameica.gui.GUI;
@@ -30,6 +31,7 @@ import de.willuhn.jameica.gui.input.TextAreaInput;
 import de.willuhn.jameica.gui.input.TextInput;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.HBCIProperties;
+import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.gui.dialogs.AdresseAuswahlDialog;
 import de.willuhn.jameica.hbci.gui.input.UmsatzTypInput;
 import de.willuhn.jameica.hbci.rmi.Adresse;
@@ -162,7 +164,9 @@ public class UmsatzDetailControl extends AbstractControl {
   {
     if (this.umsatzTyp != null)
       return this.umsatzTyp;
-    this.umsatzTyp = new UmsatzTypInput(getUmsatz());
+    DBIterator list = Settings.getDBService().createList(UmsatzTyp.class);
+    list.setOrder("ORDER BY nummer");
+    this.umsatzTyp = new UmsatzTypInput(list,getUmsatz());
     return this.umsatzTyp;
   }
 
@@ -458,7 +462,10 @@ public class UmsatzDetailControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.25  2006-11-30 23:48:40  willuhn
+ * Revision 1.26  2007-03-18 08:13:28  jost
+ * Sortierte Anzeige der Umsatz-Kategorien.
+ *
+ * Revision 1.25  2006/11/30 23:48:40  willuhn
  * @N Erste Version der Umsatz-Kategorien drin
  *
  * Revision 1.24  2006/08/03 23:12:57  willuhn
