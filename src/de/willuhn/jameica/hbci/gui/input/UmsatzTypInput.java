@@ -40,15 +40,16 @@ public class UmsatzTypInput extends SelectInput
   
   /**
    * ct.
-   * @throws RemoteException
+   * @param list Liste der Umsatz-Typen.
    */
-  public UmsatzTypInput(DBIterator list) throws RemoteException
+  public UmsatzTypInput(DBIterator list)
   {
     this(list, (UmsatzTyp)null);
   }
 
   /**
    * ct.
+   * @param list Liste der Umsatz-Typen.
    * @param umsatz der vorselektierte Typ dieses Umsatzes.
    * @throws RemoteException
    */
@@ -59,10 +60,10 @@ public class UmsatzTypInput extends SelectInput
 
   /**
    * ct.
+   * @param list Liste der Umsatz-Typen.
    * @param umsatzTyp der vorselectierte Umsatz-Typ.
-   * @throws RemoteException
    */
-  public UmsatzTypInput(DBIterator list, UmsatzTyp umsatzTyp) throws RemoteException
+  public UmsatzTypInput(DBIterator list, UmsatzTyp umsatzTyp)
   {
     super(list, umsatzTyp);
     this.i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
@@ -108,7 +109,12 @@ public class UmsatzTypInput extends SelectInput
 
 /*********************************************************************
  * $Log$
- * Revision 1.2  2007-03-18 08:13:55  jost
+ * Revision 1.3  2007-03-21 18:47:36  willuhn
+ * @N Neue Spalte in Kategorie-Tree
+ * @N Sortierung des Kontoauszuges wie in Tabelle angezeigt
+ * @C Code cleanup
+ *
+ * Revision 1.2  2007/03/18 08:13:55  jost
  * Sortierte Anzeige der Umsatz-Kategorien.
  *
  * Revision 1.1  2006/11/30 23:48:40  willuhn
