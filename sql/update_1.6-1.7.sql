@@ -44,7 +44,7 @@ ALTER CREATE TABLE umsatztyp (
   id NUMERIC default UNIQUEKEY('umsatztyp'),
   name varchar(255) NOT NULL,
   nummer varchar(5) NULL,
-  pattern varchar(255) NOT NULL,
+  pattern varchar(255) NULL,
   isregex int(1) NULL,
   iseinnahme int(1) NULL,
   parent_id int(5) NULL,
@@ -68,7 +68,10 @@ ALTER TABLE umsatztyp ADD CONSTRAINT fk_umsatztyp2 FOREIGN KEY (parent_id) REFER
 
 ------------------------------------------------------------------------
 -- $Log$
--- Revision 1.3  2007-03-12 14:38:28  willuhn
+-- Revision 1.4  2007-03-21 00:41:48  willuhn
+-- @N Pattern kann null sein
+--
+-- Revision 1.3  2007/03/12 14:38:28  willuhn
 -- @C unique-Key auf "name" wieder entfernt (Abwaertskompatibilitaet)
 --
 -- Revision 1.2  2007/03/10 07:19:12  jost
