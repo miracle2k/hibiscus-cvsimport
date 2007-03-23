@@ -169,12 +169,12 @@ public class SynchronizeEngine
     }
 
 
-    if (options.getSyncKontoauszuege())
+    if (options.getSyncKontoauszuege() || options.getSyncSaldo())
     {
       // Umsaetze und Salden werden zum Schluss ausgefuehrt,
       // damit die oben gesendeten Ueberweisungen gleich mit
       // erscheinen, insofern die Bank das unterstuetzt.
-      Logger.info("adding kontoauszug job");
+      Logger.info("adding kontoauszug/saldo job");
       list.add(new SynchronizeKontoauszugJob(k));
     }
   }
@@ -207,7 +207,10 @@ public class SynchronizeEngine
 
 /**********************************************************************
  * $Log$
- * Revision 1.8  2006-10-09 21:43:26  willuhn
+ * Revision 1.9  2007-03-23 00:11:51  willuhn
+ * @N Bug 346
+ *
+ * Revision 1.8  2006/10/09 21:43:26  willuhn
  * @N Zusammenfassung der Geschaeftsvorfaelle "Umsaetze abrufen" und "Saldo abrufen" zu "Kontoauszuege abrufen" bei der Konto-Synchronisation
  *
  * Revision 1.7  2006/08/28 21:28:26  willuhn
