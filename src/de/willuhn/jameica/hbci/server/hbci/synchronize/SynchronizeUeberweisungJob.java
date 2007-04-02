@@ -38,7 +38,7 @@ public class SynchronizeUeberweisungJob extends AbstractSynchronizeJob
   }
   
   /**
-   * @see de.willuhn.jameica.hbci.rmi.SynchronizeJob#createHBCIJob()
+   * @see de.willuhn.jameica.hbci.rmi.SynchronizeJob#createHBCIJobs()
    */
   public AbstractHBCIJob[] createHBCIJobs() throws RemoteException, ApplicationException
   {
@@ -67,7 +67,11 @@ public class SynchronizeUeberweisungJob extends AbstractSynchronizeJob
 
 /*********************************************************************
  * $Log$
- * Revision 1.2  2006-10-09 21:43:26  willuhn
+ * Revision 1.3  2007-04-02 23:01:17  willuhn
+ * @D diverse Javadoc-Warnings
+ * @C Umstellung auf neues SelectInput
+ *
+ * Revision 1.2  2006/10/09 21:43:26  willuhn
  * @N Zusammenfassung der Geschaeftsvorfaelle "Umsaetze abrufen" und "Saldo abrufen" zu "Kontoauszuege abrufen" bei der Konto-Synchronisation
  *
  * Revision 1.1  2006/03/17 00:51:24  willuhn
