@@ -13,9 +13,9 @@
 package de.willuhn.jameica.hbci.gui.controller;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
@@ -216,11 +216,7 @@ public class KontoauszugControl extends AbstractControl
       // Damit werden genau die ausgegeben, die gerade
       // angezeigt werden und wir sparen uns das erneute
       // Laden aus der Datenbank
-      GenericIterator items = getUmsatzList().getItems();
-
-      ArrayList list = new ArrayList();
-      while (items.hasNext())
-        list.add(items.next());
+      List list = getUmsatzList().getItems();
 
       // Wir sortieren jetzt nicht mehr um sondern uebernehmen die
       // Daten in der Reihenfolge, wie sie in der Tabelle angezeigt
@@ -333,7 +329,10 @@ public class KontoauszugControl extends AbstractControl
 
 /*******************************************************************************
  * $Log$
- * Revision 1.13  2007-03-21 18:47:36  willuhn
+ * Revision 1.14  2007-04-10 23:28:03  willuhn
+ * @N TablePart Redesign (removed dependencies from GenericIterator/GenericObject)
+ *
+ * Revision 1.13  2007/03/21 18:47:36  willuhn
  * @N Neue Spalte in Kategorie-Tree
  * @N Sortierung des Kontoauszuges wie in Tabelle angezeigt
  * @C Code cleanup
