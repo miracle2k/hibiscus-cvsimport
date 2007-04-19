@@ -121,6 +121,8 @@ public class LineChart extends AbstractChart
       }
       else
       {
+        // Wir machen vorher nochmal ein Reset
+        gi.begin();
         while (gi.hasNext())
         {
           GenericObject o = gi.next();
@@ -194,7 +196,10 @@ public class LineChart extends AbstractChart
 
 /*********************************************************************
  * $Log$
- * Revision 1.5  2006-08-01 21:29:12  willuhn
+ * Revision 1.6  2007-04-19 18:10:12  willuhn
+ * @B fehlendes Reset des Iterators vor der Verwendung
+ *
+ * Revision 1.5  2006/08/01 21:29:12  willuhn
  * @N Geaenderte LineCharts
  *
  * Revision 1.4  2006/07/17 15:50:49  willuhn
