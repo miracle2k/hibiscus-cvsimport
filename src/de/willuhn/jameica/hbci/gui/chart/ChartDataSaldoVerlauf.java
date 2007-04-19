@@ -23,6 +23,7 @@ import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.jameica.gui.formatter.Formatter;
 import de.willuhn.jameica.hbci.HBCIProperties;
 import de.willuhn.jameica.hbci.Settings;
+import de.willuhn.jameica.hbci.rmi.HBCIDBService;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Umsatz;
 
@@ -61,7 +62,9 @@ public class ChartDataSaldoVerlauf implements LineChartData
    */
   public GenericIterator getData() throws RemoteException
   {
-    DBIterator list = Settings.getDBService().createList(Umsatz.class);
+    HBCIDBService service = (HBCIDBService) Settings.getDBService();
+
+    DBIterator list = service.createList(Umsatz.class);
     list.addFilter("konto_id = " + this.konto.getID());
 
     if (this.days > 0)
@@ -70,7 +73,7 @@ public class ChartDataSaldoVerlauf implements LineChartData
       Date start = HBCIProperties.startOfDay(new Date(System.currentTimeMillis() - d));
       list.addFilter("valuta >= ?", new Object[]{new java.sql.Date(start.getTime())});
     }
-    list.setOrder(" ORDER BY TONUMBER(valuta) ASC");
+    list.setOrder(" ORDER BY " + service.getSQLTimestamp("valuta") + " ASC");
     return list;
   }
 
@@ -144,7 +147,10 @@ public class ChartDataSaldoVerlauf implements LineChartData
 
 /*********************************************************************
  * $Log$
- * Revision 1.8  2006-12-29 14:28:47  willuhn
+ * Revision 1.9  2007-04-19 18:12:21  willuhn
+ * @N MySQL-Support (GUI zum Konfigurieren fehlt noch)
+ *
+ * Revision 1.8  2006/12/29 14:28:47  willuhn
  * @B Bug 345
  * @B jede Menge Bugfixes bei SQL-Statements mit Valuta
  *

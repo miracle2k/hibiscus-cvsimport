@@ -18,6 +18,7 @@ import java.rmi.RemoteException;
 import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.hbci.Settings;
+import de.willuhn.jameica.hbci.rmi.HBCIDBService;
 import de.willuhn.jameica.hbci.rmi.Lastschrift;
 
 /**
@@ -44,8 +45,10 @@ public class LastschriftList extends AbstractTransferList
    */
   private static DBIterator init() throws RemoteException
   {
-    DBIterator list = Settings.getDBService().createList(Lastschrift.class);
-    list.setOrder("ORDER BY TONUMBER(termin) DESC");
+    HBCIDBService service = (HBCIDBService) Settings.getDBService();
+
+    DBIterator list = service.createList(Lastschrift.class);
+    list.setOrder("ORDER BY " + service.getSQLTimestamp("termin") + " DESC");
     return list;
   }
 }
@@ -53,7 +56,10 @@ public class LastschriftList extends AbstractTransferList
 
 /**********************************************************************
  * $Log$
- * Revision 1.8  2006-10-17 00:04:31  willuhn
+ * Revision 1.9  2007-04-19 18:12:21  willuhn
+ * @N MySQL-Support (GUI zum Konfigurieren fehlt noch)
+ *
+ * Revision 1.8  2006/10/17 00:04:31  willuhn
  * @N new Formatters in Transfer-Listen
  * @N merged UeberweisungList + LastschriftList into AbstractTransferList
  *

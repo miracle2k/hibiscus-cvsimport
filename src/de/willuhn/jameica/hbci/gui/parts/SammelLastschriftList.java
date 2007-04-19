@@ -19,6 +19,7 @@ import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.Part;
 import de.willuhn.jameica.hbci.Settings;
+import de.willuhn.jameica.hbci.rmi.HBCIDBService;
 import de.willuhn.jameica.hbci.rmi.SammelLastschrift;
 
 /**
@@ -45,8 +46,10 @@ public class SammelLastschriftList extends AbstractSammelTransferList implements
    */
   private static DBIterator init() throws RemoteException
   {
-    DBIterator list = Settings.getDBService().createList(SammelLastschrift.class);
-    list.setOrder("ORDER BY TONUMBER(termin) DESC");
+    HBCIDBService service = (HBCIDBService) Settings.getDBService();
+
+    DBIterator list = service.createList(SammelLastschrift.class);
+    list.setOrder("ORDER BY " + service.getSQLTimestamp("termin") + " DESC");
     return list;
   }
 }
@@ -54,7 +57,10 @@ public class SammelLastschriftList extends AbstractSammelTransferList implements
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2006-08-07 14:31:59  willuhn
+ * Revision 1.7  2007-04-19 18:12:21  willuhn
+ * @N MySQL-Support (GUI zum Konfigurieren fehlt noch)
+ *
+ * Revision 1.6  2006/08/07 14:31:59  willuhn
  * @B misc bugfixing
  * @C Redesign des DTAUS-Imports fuer Sammeltransfers
  *
