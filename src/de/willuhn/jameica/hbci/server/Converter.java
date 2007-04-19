@@ -181,18 +181,27 @@ public class Converter {
       }
 		}
 		else {
+      // erste Zeile in den ersten Verwendungszweck
 			umsatz.setZweck(u.usage[0]);
+      
+      // Noch eine Zeile?
+      // Die kommt in den zweiten Verwendungszweck
+      if (u.usage.length > 1)
+        umsatz.setZweck2(u.usage[1]);
+      
+      // Noch mehr Zeilen?
+      // Die kommen in den Kommentar
+      if (u.usage.length > 2)
+      {
+        StringBuffer sb = new StringBuffer();
+        for (int i=2;i<u.usage.length;++i)
+        {
+          sb.append(u.usage[i]);
+        }
+        umsatz.setKommentar(sb.toString());
+      }
 		}
 
-		if (u.usage.length > 1)
-		{
-			String merged = "";
-			for (int i=1;i<u.usage.length;++i)
-			{
-				merged += (u.usage[i] + " - ");
-			}
-			umsatz.setZweck2(merged);
-		}
 
 		// und jetzt noch der Empfaenger (wenn er existiert)
 		if (u.other != null) 
@@ -410,7 +419,10 @@ public class Converter {
 
 /**********************************************************************
  * $Log$
- * Revision 1.37  2007-04-15 22:23:16  willuhn
+ * Revision 1.38  2007-04-19 17:47:27  willuhn
+ * @B Zeile 2 des Verwendungszwecks konnte ggf. zu lang werden
+ *
+ * Revision 1.37  2007/04/15 22:23:16  willuhn
  * @B Bug 338
  *
  * Revision 1.36  2007/02/26 12:48:23  willuhn
