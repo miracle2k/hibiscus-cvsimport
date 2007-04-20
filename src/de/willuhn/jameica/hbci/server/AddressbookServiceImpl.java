@@ -47,16 +47,16 @@ public class AddressbookServiceImpl extends UnicastRemoteObject implements Addre
   }
 
   /**
-   * @see de.willuhn.jameica.hbci.rmi.Addressbook#findAddress(java.lang.String)
+   * @see de.willuhn.jameica.hbci.rmi.Addressbook#findAddresses(java.lang.String)
    */
-  public GenericIterator findAddress(String text) throws RemoteException
+  public GenericIterator findAddresses(String text) throws RemoteException
   {
     ArrayList result = new ArrayList();
     for (int i=0;i<this.books.length;++i)
     {
       if (books[i].getClass().equals(this.getClass()))
         continue; // WICHTIG: Uns selbst ueberspringen wir, um eine Rekursion zu vermeiden
-      GenericIterator list = this.books[i].findAddress(text);
+      GenericIterator list = this.books[i].findAddresses(text);
       if (list == null || list.size() == 0)
         continue;
       result.addAll(PseudoIterator.asList(list));
@@ -198,7 +198,10 @@ public class AddressbookServiceImpl extends UnicastRemoteObject implements Addre
 
 /*********************************************************************
  * $Log$
- * Revision 1.1  2007-04-20 14:49:05  willuhn
+ * Revision 1.2  2007-04-20 14:55:31  willuhn
+ * @C s/findAddress/findAddresses/
+ *
+ * Revision 1.1  2007/04/20 14:49:05  willuhn
  * @N Support fuer externe Adressbuecher
  * @N Action "EmpfaengerAdd" "aufgebohrt"
  *
