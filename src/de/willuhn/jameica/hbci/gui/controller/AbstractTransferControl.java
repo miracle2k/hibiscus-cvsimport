@@ -17,11 +17,9 @@ import java.rmi.RemoteException;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 
-import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.jameica.gui.AbstractControl;
 import de.willuhn.jameica.gui.AbstractView;
 import de.willuhn.jameica.gui.GUI;
-import de.willuhn.jameica.gui.dialogs.YesNoDialog;
 import de.willuhn.jameica.gui.input.CheckboxInput;
 import de.willuhn.jameica.gui.input.DecimalInput;
 import de.willuhn.jameica.gui.input.DialogInput;
@@ -30,6 +28,7 @@ import de.willuhn.jameica.gui.input.TextInput;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.HBCIProperties;
 import de.willuhn.jameica.hbci.Settings;
+import de.willuhn.jameica.hbci.gui.action.EmpfaengerAdd;
 import de.willuhn.jameica.hbci.gui.dialogs.AdresseAuswahlDialog;
 import de.willuhn.jameica.hbci.gui.dialogs.KontoAuswahlDialog;
 import de.willuhn.jameica.hbci.gui.input.BLZInput;
@@ -266,29 +265,15 @@ public abstract class AbstractTransferControl extends AbstractControl
 			Boolean store = (Boolean) getStoreEmpfaenger().getValue();
 			if (store.booleanValue())
 			{
-
-				// wir checken erstmal, ob wir den schon haben.
-				DBIterator list = Settings.getDBService().createList(Adresse.class);
-				list.addFilter("kontonummer = ?", new Object[]{kto});
-				list.addFilter("blz = ?",         new Object[]{blz});
-				if (list.hasNext())
-				{
-					YesNoDialog d = new YesNoDialog(YesNoDialog.POSITION_CENTER);
-					d.setTitle(i18n.tr("Empfänger existiert"));
-					d.setText(i18n.tr("Ein Empfänger mit dieser Kontonummer und BLZ existiert bereits. " +
-							"Möchten Sie den Empfänger dennoch zum Adressbuch hinzufügen?"));
-					if (!((Boolean) d.open()).booleanValue()) return false;
-				}
 				Adresse e = (Adresse) Settings.getDBService().createObject(Adresse.class,null);
 				e.setBLZ(blz);
 				e.setKontonummer(kto);
 				e.setName(name);
-				e.store();
-				GUI.getStatusBar().setSuccessText(i18n.tr("Auftrag und Adresse gespeichert"));
+        
+        // Zu schauen, ob die Adresse bereits existiert, ueberlassen wir der Action
+        new EmpfaengerAdd().handleAction(e);
 			}
-			else {
-				GUI.getStatusBar().setSuccessText(i18n.tr("Auftrag gespeichert"));
-			}
+  		GUI.getStatusBar().setSuccessText(i18n.tr("Auftrag gespeichert"));
 			getTransfer().transactionCommit();
 
       if (getTransfer().getBetrag() > Settings.getUeberweisungLimit())
@@ -385,7 +370,11 @@ public abstract class AbstractTransferControl extends AbstractControl
 
 /**********************************************************************
  * $Log$
- * Revision 1.34  2007-04-09 22:45:12  willuhn
+ * Revision 1.35  2007-04-20 14:49:05  willuhn
+ * @N Support fuer externe Adressbuecher
+ * @N Action "EmpfaengerAdd" "aufgebohrt"
+ *
+ * Revision 1.34  2007/04/09 22:45:12  willuhn
  * @N Bug 380
  *
  * Revision 1.33  2006/12/28 15:38:43  willuhn

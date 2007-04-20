@@ -93,7 +93,7 @@ public class DBSupportMcKoiImpl extends AbstractDBSupportImpl
 
     try
     {
-      ProgressMonitor monitor = Application.getController().getApplicationCallback().getStartupMonitor();
+      ProgressMonitor monitor = Application.getCallback().getStartupMonitor();
       monitor.setStatusText(i18n.tr("Prüfe Datenbank-Integrität"));
 
       String checkSum = CheckSum.md5(conn,null,"APP");
@@ -126,7 +126,7 @@ public class DBSupportMcKoiImpl extends AbstractDBSupportImpl
       if (!db.exists())
       {
         I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
-        ProgressMonitor monitor = Application.getController().getApplicationCallback().getStartupMonitor();
+        ProgressMonitor monitor = Application.getCallback().getStartupMonitor();
         monitor.setStatusText(i18n.tr("Erstelle Hibiscus-Datenbank"));
         db.create();
       }
@@ -149,7 +149,11 @@ public class DBSupportMcKoiImpl extends AbstractDBSupportImpl
 
 /*********************************************************************
  * $Log$
- * Revision 1.2  2007-04-19 18:12:21  willuhn
+ * Revision 1.3  2007-04-20 14:49:05  willuhn
+ * @N Support fuer externe Adressbuecher
+ * @N Action "EmpfaengerAdd" "aufgebohrt"
+ *
+ * Revision 1.2  2007/04/19 18:12:21  willuhn
  * @N MySQL-Support (GUI zum Konfigurieren fehlt noch)
  *
  * Revision 1.1  2007/04/18 17:03:06  willuhn

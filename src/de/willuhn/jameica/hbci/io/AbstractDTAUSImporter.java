@@ -218,6 +218,7 @@ public abstract class AbstractDTAUSImporter extends AbstractDTAUSIO implements I
         DBService service = de.willuhn.jameica.hbci.Settings.getDBService();
         DBIterator konten = service.createList(Konto.class);
         konten.addFilter("kontonummer like '%" + kontonummer + "'");
+        // konten.addFilter("kontonummer like ?", new Object[]{"%" + kontonummer}); TODO: PreparedStatment mit LIKE testen
         konten.addFilter("blz = ?", new Object[]{blz});
         while (konten.hasNext())
         {
@@ -289,7 +290,11 @@ public abstract class AbstractDTAUSImporter extends AbstractDTAUSIO implements I
 
 /*********************************************************************
  * $Log$
- * Revision 1.8  2007-03-16 14:40:02  willuhn
+ * Revision 1.9  2007-04-20 14:49:05  willuhn
+ * @N Support fuer externe Adressbuecher
+ * @N Action "EmpfaengerAdd" "aufgebohrt"
+ *
+ * Revision 1.8  2007/03/16 14:40:02  willuhn
  * @C Redesign ImportMessage
  * @N Aktualisierung der Umsatztabelle nach Kategorie-Zuordnung
  *
