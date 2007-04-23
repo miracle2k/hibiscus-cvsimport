@@ -76,7 +76,7 @@ public class AddressbookHibiscusImpl extends UnicastRemoteObject implements Addr
                      " LOWER(name) LIKE ? OR " +
                      " LOWER(kommentar) LIKE ?)",new Object[]{text,text,text,text});
     }
-    list.setOrder("ORDER by LOWER(name) DESC");
+    list.setOrder("ORDER by LOWER(name)");
     return PseudoIterator.asList(list);
   }
 
@@ -93,7 +93,10 @@ public class AddressbookHibiscusImpl extends UnicastRemoteObject implements Addr
 
 /*********************************************************************
  * $Log$
- * Revision 1.1  2007-04-23 18:07:15  willuhn
+ * Revision 1.2  2007-04-23 18:17:12  willuhn
+ * @B Falsche Standardreihenfolge
+ *
+ * Revision 1.1  2007/04/23 18:07:15  willuhn
  * @C Redesign: "Adresse" nach "HibiscusAddress" umbenannt
  * @C Redesign: "Transfer" nach "HibiscusTransfer" umbenannt
  * @C Redesign: Neues Interface "Transfer", welches von Ueberweisungen, Lastschriften UND Umsaetzen implementiert wird
