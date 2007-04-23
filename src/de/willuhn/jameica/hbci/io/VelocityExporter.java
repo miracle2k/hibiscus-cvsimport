@@ -26,7 +26,6 @@ import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
 
-import de.willuhn.datasource.GenericObject;
 import de.willuhn.io.FileFinder;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.plugin.PluginResources;
@@ -62,9 +61,9 @@ public class VelocityExporter implements Exporter
   }
 
   /**
-   * @see de.willuhn.jameica.hbci.io.Exporter#doExport(de.willuhn.datasource.GenericObject[], de.willuhn.jameica.hbci.io.IOFormat, java.io.OutputStream, de.willuhn.util.ProgressMonitor)
+   * @see de.willuhn.jameica.hbci.io.Exporter#doExport(java.lang.Object[], de.willuhn.jameica.hbci.io.IOFormat, java.io.OutputStream, de.willuhn.util.ProgressMonitor)
    */
-  public void doExport(GenericObject[] objects, IOFormat format, OutputStream os, ProgressMonitor monitor) throws RemoteException, ApplicationException
+  public void doExport(Object[] objects, IOFormat format, OutputStream os, ProgressMonitor monitor) throws RemoteException, ApplicationException
   {
     if (os == null)
       throw new ApplicationException(i18n.tr("Kein Ausgabe-Ziel für die Datei angegeben"));
@@ -227,7 +226,13 @@ public class VelocityExporter implements Exporter
 
 /**********************************************************************
  * $Log$
- * Revision 1.10  2006-11-15 00:36:59  willuhn
+ * Revision 1.11  2007-04-23 18:07:14  willuhn
+ * @C Redesign: "Adresse" nach "HibiscusAddress" umbenannt
+ * @C Redesign: "Transfer" nach "HibiscusTransfer" umbenannt
+ * @C Redesign: Neues Interface "Transfer", welches von Ueberweisungen, Lastschriften UND Umsaetzen implementiert wird
+ * @N Anbindung externer Adressbuecher
+ *
+ * Revision 1.10  2006/11/15 00:36:59  willuhn
  * @B Bug 326
  *
  * Revision 1.9  2006/09/05 13:56:33  willuhn

@@ -19,7 +19,7 @@ import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.rmi.RemoteException;
 
-import de.willuhn.datasource.GenericObject;
+import de.willuhn.datasource.BeanUtil;
 import de.willuhn.datasource.db.AbstractDBObject;
 import de.willuhn.datasource.rmi.DBService;
 import de.willuhn.jameica.hbci.Settings;
@@ -34,9 +34,9 @@ public class HibiscusImporter extends AbstractHibiscusIO implements Importer
 {
 
   /**
-   * @see de.willuhn.jameica.hbci.io.Importer#doImport(de.willuhn.datasource.GenericObject, de.willuhn.jameica.hbci.io.IOFormat, java.io.InputStream, de.willuhn.util.ProgressMonitor)
+   * @see de.willuhn.jameica.hbci.io.Importer#doImport(java.lang.Object, de.willuhn.jameica.hbci.io.IOFormat, java.io.InputStream, de.willuhn.util.ProgressMonitor)
    */
-  public void doImport(GenericObject context, IOFormat format, InputStream is,
+  public void doImport(Object context, IOFormat format, InputStream is,
       ProgressMonitor monitor) throws RemoteException, ApplicationException
   {
     ObjectInputStream ois = null;
@@ -60,7 +60,7 @@ public class HibiscusImporter extends AbstractHibiscusIO implements Importer
           }
           if (current == null)
             break;
-          Object name = current.getAttribute(current.getPrimaryAttribute());
+          Object name = BeanUtil.toString(current);
           if (name != null && monitor != null)
             monitor.log(i18n.tr("Importiere Datensatz {0}",name.toString()));
           monitor.addPercentComplete(1);
@@ -103,7 +103,13 @@ public class HibiscusImporter extends AbstractHibiscusIO implements Importer
 
 /*********************************************************************
  * $Log$
- * Revision 1.1  2006-12-01 01:28:16  willuhn
+ * Revision 1.2  2007-04-23 18:07:14  willuhn
+ * @C Redesign: "Adresse" nach "HibiscusAddress" umbenannt
+ * @C Redesign: "Transfer" nach "HibiscusTransfer" umbenannt
+ * @C Redesign: Neues Interface "Transfer", welches von Ueberweisungen, Lastschriften UND Umsaetzen implementiert wird
+ * @N Anbindung externer Adressbuecher
+ *
+ * Revision 1.1  2006/12/01 01:28:16  willuhn
  * @N Experimenteller Import-Export-Code
  *
  **********************************************************************/

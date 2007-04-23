@@ -17,7 +17,7 @@ import java.rmi.RemoteException;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.HBCIProperties;
 import de.willuhn.jameica.hbci.Settings;
-import de.willuhn.jameica.hbci.rmi.Adresse;
+import de.willuhn.jameica.hbci.rmi.HibiscusAddress;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Lastschrift;
 import de.willuhn.jameica.hbci.rmi.Protokoll;
@@ -78,12 +78,12 @@ public class HBCILastschriftJob extends AbstractHBCIJob
 			if (lastschrift.getTyp() != null)
 				setJobParam("type",lastschrift.getTyp());
 
-			Adresse empfaenger = (Adresse) Settings.getDBService().createObject(Adresse.class,null);
+			HibiscusAddress empfaenger = (HibiscusAddress) Settings.getDBService().createObject(HibiscusAddress.class,null);
 			empfaenger.setBLZ(lastschrift.getGegenkontoBLZ());
 			empfaenger.setKontonummer(lastschrift.getGegenkontoNummer());
 			empfaenger.setName(lastschrift.getGegenkontoName());
 
-			setJobParam("other",Converter.HibiscusAdresse2HBCIKonto(empfaenger));
+			setJobParam("other",Converter.Address2HBCIKonto(empfaenger));
 			setJobParam("name",empfaenger.getName());
 
 			setJobParam("usage",lastschrift.getZweck());
@@ -153,7 +153,13 @@ public class HBCILastschriftJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.11  2006-06-26 13:25:20  willuhn
+ * Revision 1.12  2007-04-23 18:07:14  willuhn
+ * @C Redesign: "Adresse" nach "HibiscusAddress" umbenannt
+ * @C Redesign: "Transfer" nach "HibiscusTransfer" umbenannt
+ * @C Redesign: Neues Interface "Transfer", welches von Ueberweisungen, Lastschriften UND Umsaetzen implementiert wird
+ * @N Anbindung externer Adressbuecher
+ *
+ * Revision 1.11  2006/06/26 13:25:20  willuhn
  * @N Franks eBay-Parser
  *
  * Revision 1.10  2006/06/19 11:52:15  willuhn

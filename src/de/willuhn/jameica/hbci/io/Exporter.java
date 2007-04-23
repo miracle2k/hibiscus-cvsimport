@@ -16,7 +16,6 @@ package de.willuhn.jameica.hbci.io;
 import java.io.OutputStream;
 import java.rmi.RemoteException;
 
-import de.willuhn.datasource.GenericObject;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.ProgressMonitor;
 import de.willuhn.util.Session;
@@ -46,13 +45,19 @@ public interface Exporter extends IO
    * @throws RemoteException
    * @throws ApplicationException 
    */
-  public void doExport(GenericObject[] objects, IOFormat format, OutputStream os, ProgressMonitor monitor) throws RemoteException, ApplicationException;
+  public void doExport(Object[] objects, IOFormat format, OutputStream os, ProgressMonitor monitor) throws RemoteException, ApplicationException;
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2006-10-16 12:51:32  willuhn
+ * Revision 1.8  2007-04-23 18:07:14  willuhn
+ * @C Redesign: "Adresse" nach "HibiscusAddress" umbenannt
+ * @C Redesign: "Transfer" nach "HibiscusTransfer" umbenannt
+ * @C Redesign: Neues Interface "Transfer", welches von Ueberweisungen, Lastschriften UND Umsaetzen implementiert wird
+ * @N Anbindung externer Adressbuecher
+ *
+ * Revision 1.7  2006/10/16 12:51:32  willuhn
  * @B Uebernahme des originalen Datums aus dem Kontoauszug
  *
  * Revision 1.6  2006/01/23 00:36:29  willuhn

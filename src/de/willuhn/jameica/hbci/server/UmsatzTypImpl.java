@@ -234,8 +234,8 @@ public class UmsatzTypImpl extends AbstractDBObjectNode implements UmsatzTyp
 
     String vwz1 = umsatz.getZweck();
     String vwz2 = umsatz.getZweck2();
-    String name = umsatz.getEmpfaengerName();
-    String kto = umsatz.getEmpfaengerKonto();
+    String name = umsatz.getGegenkontoName();
+    String kto = umsatz.getGegenkontoNummer();
     String kom = umsatz.getKommentar();
 
     if (vwz1 == null)
@@ -442,7 +442,13 @@ public class UmsatzTypImpl extends AbstractDBObjectNode implements UmsatzTyp
 
 /*******************************************************************************
  * $Log$
- * Revision 1.35  2007-03-22 14:23:56  willuhn
+ * Revision 1.36  2007-04-23 18:07:15  willuhn
+ * @C Redesign: "Adresse" nach "HibiscusAddress" umbenannt
+ * @C Redesign: "Transfer" nach "HibiscusTransfer" umbenannt
+ * @C Redesign: Neues Interface "Transfer", welches von Ueberweisungen, Lastschriften UND Umsaetzen implementiert wird
+ * @N Anbindung externer Adressbuecher
+ *
+ * Revision 1.35  2007/03/22 14:23:56  willuhn
  * @N Redesign Kategorie-Tree - ist jetzt erheblich schneller und enthaelt eine Pseudo-Kategorie "Nicht zugeordnet"
  *
  * Revision 1.34  2007/03/16 12:55:26  jost

@@ -26,7 +26,7 @@ import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.HBCIProperties;
 import de.willuhn.jameica.hbci.gui.dialogs.AdresseAuswahlDialog;
 import de.willuhn.jameica.hbci.gui.input.BLZInput;
-import de.willuhn.jameica.hbci.rmi.Adresse;
+import de.willuhn.jameica.hbci.rmi.Address;
 import de.willuhn.jameica.hbci.rmi.SammelTransferBuchung;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.logging.Logger;
@@ -40,7 +40,7 @@ public abstract class AbstractSammelTransferBuchungControl extends AbstractContr
 {
 
 	// Fach-Objekte
-	private Adresse gegenKonto							= null;
+	private Address gegenKonto							= null;
 	
 	// Eingabe-Felder
 	private Input betrag										= null;
@@ -212,7 +212,7 @@ public abstract class AbstractSammelTransferBuchungControl extends AbstractContr
 		public void handleEvent(Event event) {
 			if (event == null)
 				return;
-			gegenKonto = (Adresse) event.data;
+			gegenKonto = (Address) event.data;
 			if (gegenKonto == null)
 				return;
 			try {
@@ -234,7 +234,13 @@ public abstract class AbstractSammelTransferBuchungControl extends AbstractContr
 
 /*****************************************************************************
  * $Log$
- * Revision 1.6  2007-04-09 22:45:12  willuhn
+ * Revision 1.7  2007-04-23 18:07:15  willuhn
+ * @C Redesign: "Adresse" nach "HibiscusAddress" umbenannt
+ * @C Redesign: "Transfer" nach "HibiscusTransfer" umbenannt
+ * @C Redesign: Neues Interface "Transfer", welches von Ueberweisungen, Lastschriften UND Umsaetzen implementiert wird
+ * @N Anbindung externer Adressbuecher
+ *
+ * Revision 1.6  2007/04/09 22:45:12  willuhn
  * @N Bug 380
  *
  * Revision 1.5  2006/12/28 15:38:43  willuhn

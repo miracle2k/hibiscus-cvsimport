@@ -20,7 +20,7 @@ import de.willuhn.jameica.gui.input.CheckboxInput;
 import de.willuhn.jameica.gui.parts.TablePart;
 import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.gui.action.UeberweisungNew;
-import de.willuhn.jameica.hbci.rmi.Transfer;
+import de.willuhn.jameica.hbci.rmi.HibiscusTransfer;
 import de.willuhn.jameica.hbci.rmi.Ueberweisung;
 import de.willuhn.logging.Logger;
 
@@ -49,7 +49,7 @@ public class UeberweisungControl extends AbstractBaseUeberweisungControl
 	 * Ueberschrieben, damit wir bei Bedarf eine neue Ueberweisung erzeugen koennen.
    * @see de.willuhn.jameica.hbci.gui.controller.AbstractTransferControl#getTransfer()
    */
-  public Transfer getTransfer() throws RemoteException
+  public HibiscusTransfer getTransfer() throws RemoteException
 	{
     if (transfer != null)
       return transfer;
@@ -117,7 +117,13 @@ public class UeberweisungControl extends AbstractBaseUeberweisungControl
 
 /**********************************************************************
  * $Log$
- * Revision 1.42  2006-06-06 22:41:25  willuhn
+ * Revision 1.43  2007-04-23 18:07:15  willuhn
+ * @C Redesign: "Adresse" nach "HibiscusAddress" umbenannt
+ * @C Redesign: "Transfer" nach "HibiscusTransfer" umbenannt
+ * @C Redesign: Neues Interface "Transfer", welches von Ueberweisungen, Lastschriften UND Umsaetzen implementiert wird
+ * @N Anbindung externer Adressbuecher
+ *
+ * Revision 1.42  2006/06/06 22:41:25  willuhn
  * @N Generische Loesch-Action fuer DBObjects (DBObjectDelete)
  * @N Live-Aktualisierung der Tabelle mit den importierten Ueberweisungen
  * @B Korrekte Berechnung des Fortschrittsbalken bei Import

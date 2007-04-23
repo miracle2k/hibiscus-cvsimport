@@ -20,7 +20,6 @@ import java.util.Hashtable;
 
 import org.eclipse.swt.SWTException;
 
-import de.willuhn.datasource.GenericObject;
 import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.datasource.rmi.DBService;
 import de.willuhn.io.CSVFile;
@@ -72,13 +71,13 @@ public class CSVUmsatzImporter implements Importer
   }
 
   /**
-   * @see de.willuhn.jameica.hbci.io.Importer#doImport(de.willuhn.datasource.GenericObject, de.willuhn.jameica.hbci.io.IOFormat, java.io.InputStream, de.willuhn.util.ProgressMonitor)
+   * @see de.willuhn.jameica.hbci.io.Importer#doImport(java.lang.Object, de.willuhn.jameica.hbci.io.IOFormat, java.io.InputStream, de.willuhn.util.ProgressMonitor)
    */
-  public void doImport(GenericObject context, IOFormat format, InputStream is, ProgressMonitor monitor) throws RemoteException, ApplicationException
+  public void doImport(Object context, IOFormat format, InputStream is, ProgressMonitor monitor) throws RemoteException, ApplicationException
   {
     try
     {
-      if (context == null)
+      if (context == null || !(context instanceof Konto))
         throw new ApplicationException(i18n.tr("Bitte wählen Sie ein Konto aus"));
       
       if (is == null)
@@ -281,7 +280,13 @@ public class CSVUmsatzImporter implements Importer
 
 /*******************************************************************************
  * $Log$
- * Revision 1.4  2007-03-21 00:45:32  willuhn
+ * Revision 1.5  2007-04-23 18:07:14  willuhn
+ * @C Redesign: "Adresse" nach "HibiscusAddress" umbenannt
+ * @C Redesign: "Transfer" nach "HibiscusTransfer" umbenannt
+ * @C Redesign: Neues Interface "Transfer", welches von Ueberweisungen, Lastschriften UND Umsaetzen implementiert wird
+ * @N Anbindung externer Adressbuecher
+ *
+ * Revision 1.4  2007/03/21 00:45:32  willuhn
  * @N Bug 373 - Export/Import der Umsatzkategorien zusammen mit den Umsatzen bei CSV-Format
  *
  * Revision 1.3  2007/03/16 14:40:02  willuhn

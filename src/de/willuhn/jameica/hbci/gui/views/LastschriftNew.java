@@ -22,7 +22,7 @@ import de.willuhn.jameica.hbci.gui.action.Back;
 import de.willuhn.jameica.hbci.gui.action.DBObjectDelete;
 import de.willuhn.jameica.hbci.gui.action.LastschriftExecute;
 import de.willuhn.jameica.hbci.gui.controller.LastschriftControl;
-import de.willuhn.jameica.hbci.rmi.Transfer;
+import de.willuhn.jameica.hbci.rmi.HibiscusTransfer;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
@@ -38,7 +38,7 @@ public class LastschriftNew extends AbstractView {
   public void bind() throws Exception {
 
 		final LastschriftControl control = new LastschriftControl(this);
-    final Transfer tranfer = control.getTransfer();
+    final HibiscusTransfer tranfer = control.getTransfer();
 
 		I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
@@ -89,7 +89,13 @@ public class LastschriftNew extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.11  2006-08-23 09:57:23  willuhn
+ * Revision 1.12  2007-04-23 18:07:15  willuhn
+ * @C Redesign: "Adresse" nach "HibiscusAddress" umbenannt
+ * @C Redesign: "Transfer" nach "HibiscusTransfer" umbenannt
+ * @C Redesign: Neues Interface "Transfer", welches von Ueberweisungen, Lastschriften UND Umsaetzen implementiert wird
+ * @N Anbindung externer Adressbuecher
+ *
+ * Revision 1.11  2006/08/23 09:57:23  willuhn
  * @C Changed default button
  *
  * Revision 1.10  2006/06/13 20:09:06  willuhn

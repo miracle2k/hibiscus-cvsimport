@@ -25,7 +25,7 @@ import de.willuhn.util.I18N;
 /**
  * Abstrakte Basis-Klasse fuer Ueberweisungen und Lastschriften.
  */
-public abstract class AbstractBaseUeberweisungImpl extends AbstractTransferImpl
+public abstract class AbstractBaseUeberweisungImpl extends AbstractHibiscusTransferImpl
   implements Terminable
 {
 
@@ -135,7 +135,13 @@ public abstract class AbstractBaseUeberweisungImpl extends AbstractTransferImpl
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2006-12-01 00:02:34  willuhn
+ * Revision 1.10  2007-04-23 18:07:15  willuhn
+ * @C Redesign: "Adresse" nach "HibiscusAddress" umbenannt
+ * @C Redesign: "Transfer" nach "HibiscusTransfer" umbenannt
+ * @C Redesign: Neues Interface "Transfer", welches von Ueberweisungen, Lastschriften UND Umsaetzen implementiert wird
+ * @N Anbindung externer Adressbuecher
+ *
+ * Revision 1.9  2006/12/01 00:02:34  willuhn
  * @C made unserializable members transient
  *
  * Revision 1.8  2006/06/08 22:29:47  willuhn

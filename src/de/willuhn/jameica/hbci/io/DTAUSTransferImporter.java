@@ -17,10 +17,9 @@ import java.rmi.RemoteException;
 
 import de.jost_net.OBanToo.Dtaus.ASatz;
 import de.jost_net.OBanToo.Dtaus.CSatz;
-import de.willuhn.datasource.GenericObject;
 import de.willuhn.datasource.rmi.DBObject;
+import de.willuhn.jameica.hbci.rmi.HibiscusTransfer;
 import de.willuhn.jameica.hbci.rmi.Lastschrift;
-import de.willuhn.jameica.hbci.rmi.Transfer;
 import de.willuhn.jameica.hbci.rmi.Ueberweisung;
 import de.willuhn.util.ApplicationException;
 
@@ -38,15 +37,15 @@ public class DTAUSTransferImporter extends AbstractDTAUSImporter
   }
   
   /**
-   * @see de.willuhn.jameica.hbci.io.AbstractDTAUSImporter#create(de.willuhn.datasource.rmi.DBObject, de.willuhn.datasource.GenericObject, de.jost_net.OBanToo.Dtaus.CSatz, de.jost_net.OBanToo.Dtaus.ASatz)
+   * @see de.willuhn.jameica.hbci.io.AbstractDTAUSImporter#create(de.willuhn.datasource.rmi.DBObject, java.lang.Object, de.jost_net.OBanToo.Dtaus.CSatz, de.jost_net.OBanToo.Dtaus.ASatz)
    */
-  void create(DBObject skel, GenericObject context, CSatz csatz, ASatz asatz)
+  void create(DBObject skel, Object context, CSatz csatz, ASatz asatz)
     throws RemoteException, ApplicationException
   {
     // Wir verlassen uns hier einfach drauf, dass es sich bei dem
-    // Skelet um einen Transfer handelt. Schliesslich haben wir
+    // Skelet um einen HibiscusTransfer handelt. Schliesslich haben wir
     // in getSupportedObjectTypes nur solche angegeben
-    Transfer t = (Transfer) skel;
+    HibiscusTransfer t = (HibiscusTransfer) skel;
 
     // Konto suchen
     String kontonummer = Long.toString(asatz.getKonto());
@@ -82,7 +81,13 @@ public class DTAUSTransferImporter extends AbstractDTAUSImporter
 
 /*********************************************************************
  * $Log$
- * Revision 1.8  2007-03-05 15:38:43  willuhn
+ * Revision 1.9  2007-04-23 18:07:14  willuhn
+ * @C Redesign: "Adresse" nach "HibiscusAddress" umbenannt
+ * @C Redesign: "Transfer" nach "HibiscusTransfer" umbenannt
+ * @C Redesign: Neues Interface "Transfer", welches von Ueberweisungen, Lastschriften UND Umsaetzen implementiert wird
+ * @N Anbindung externer Adressbuecher
+ *
+ * Revision 1.8  2007/03/05 15:38:43  willuhn
  * @B Bug 365
  *
  * Revision 1.7  2006/10/09 10:10:09  willuhn

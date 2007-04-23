@@ -17,7 +17,7 @@ import java.rmi.RemoteException;
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.hbci.Settings;
-import de.willuhn.jameica.hbci.rmi.Adresse;
+import de.willuhn.jameica.hbci.rmi.Address;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Lastschrift;
 import de.willuhn.util.ApplicationException;
@@ -55,10 +55,10 @@ public class LastschriftNew implements Action
 				// Dann halt nicht
 			}
 		}
-		else if (context instanceof Adresse)
+		else if (context instanceof Address)
 		{
 			try {
-				Adresse e = (Adresse) context;
+				Address e = (Address) context;
 				u = (Lastschrift) Settings.getDBService().createObject(Lastschrift.class,null);
 				u.setGegenkonto(e);
 			}
@@ -76,7 +76,13 @@ public class LastschriftNew implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2005-03-02 17:59:30  web0
+ * Revision 1.4  2007-04-23 18:07:14  willuhn
+ * @C Redesign: "Adresse" nach "HibiscusAddress" umbenannt
+ * @C Redesign: "Transfer" nach "HibiscusTransfer" umbenannt
+ * @C Redesign: Neues Interface "Transfer", welches von Ueberweisungen, Lastschriften UND Umsaetzen implementiert wird
+ * @N Anbindung externer Adressbuecher
+ *
+ * Revision 1.3  2005/03/02 17:59:30  web0
  * @N some refactoring
  *
  * Revision 1.2  2005/02/27 17:11:49  web0

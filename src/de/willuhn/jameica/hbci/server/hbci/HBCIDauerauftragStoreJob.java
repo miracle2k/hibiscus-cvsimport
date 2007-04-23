@@ -25,7 +25,7 @@ import de.willuhn.jameica.hbci.HBCIProperties;
 import de.willuhn.jameica.hbci.PassportRegistry;
 import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.passport.Passport;
-import de.willuhn.jameica.hbci.rmi.Adresse;
+import de.willuhn.jameica.hbci.rmi.HibiscusAddress;
 import de.willuhn.jameica.hbci.rmi.Dauerauftrag;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Protokoll;
@@ -93,11 +93,11 @@ public class HBCIDauerauftragStoreJob extends AbstractHBCIJob {
 
 			setJobParam("btg",dauerauftrag.getBetrag(),curr);
 
-			Adresse empfaenger = (Adresse) Settings.getDBService().createObject(Adresse.class,null);
+			HibiscusAddress empfaenger = (HibiscusAddress) Settings.getDBService().createObject(HibiscusAddress.class,null);
 			empfaenger.setBLZ(dauerauftrag.getGegenkontoBLZ());
 			empfaenger.setKontonummer(dauerauftrag.getGegenkontoNummer());
 			empfaenger.setName(dauerauftrag.getGegenkontoName());
-			setJobParam("dst",Converter.HibiscusAdresse2HBCIKonto(empfaenger));
+			setJobParam("dst",Converter.Address2HBCIKonto(empfaenger));
 
 			setJobParam("name",empfaenger.getName());
 
@@ -221,7 +221,13 @@ public class HBCIDauerauftragStoreJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.18  2006-06-26 13:25:20  willuhn
+ * Revision 1.19  2007-04-23 18:07:14  willuhn
+ * @C Redesign: "Adresse" nach "HibiscusAddress" umbenannt
+ * @C Redesign: "Transfer" nach "HibiscusTransfer" umbenannt
+ * @C Redesign: Neues Interface "Transfer", welches von Ueberweisungen, Lastschriften UND Umsaetzen implementiert wird
+ * @N Anbindung externer Adressbuecher
+ *
+ * Revision 1.18  2006/06/26 13:25:20  willuhn
  * @N Franks eBay-Parser
  *
  * Revision 1.17  2006/06/19 11:52:15  willuhn

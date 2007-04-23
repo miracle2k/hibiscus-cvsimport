@@ -80,13 +80,28 @@ public interface DBSupport extends Serializable
    * @return Name der SQL-Funktion samt Parameter. Also zum Beispiel "TONUMBER(datum)".
    * @throws RemoteException
    */
-  public String getSQLTimestamp(String content) throws RemoteException;  
+  public String getSQLTimestamp(String content) throws RemoteException;
+  
+  /**
+   * Legt fest, ob SQL-Insert-Queries mit oder ohne ID erzeugt werden sollen.
+   * @return true, wenn die Insert-Queries mit ID erzeugt werden.
+   * @throws RemoteException
+   * @see de.willuhn.datasource.db.DBServiceImpl#getInsertWithID()
+   */
+  public boolean getInsertWithID() throws RemoteException;
+
 }
 
 
 /*********************************************************************
  * $Log$
- * Revision 1.2  2007-04-19 18:12:21  willuhn
+ * Revision 1.3  2007-04-23 18:07:14  willuhn
+ * @C Redesign: "Adresse" nach "HibiscusAddress" umbenannt
+ * @C Redesign: "Transfer" nach "HibiscusTransfer" umbenannt
+ * @C Redesign: Neues Interface "Transfer", welches von Ueberweisungen, Lastschriften UND Umsaetzen implementiert wird
+ * @N Anbindung externer Adressbuecher
+ *
+ * Revision 1.2  2007/04/19 18:12:21  willuhn
  * @N MySQL-Support (GUI zum Konfigurieren fehlt noch)
  *
  * Revision 1.1  2007/04/18 17:03:06  willuhn

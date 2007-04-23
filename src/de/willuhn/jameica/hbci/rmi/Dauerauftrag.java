@@ -20,7 +20,7 @@ import de.willuhn.util.ApplicationException;
 /**
  * Bildet einen Dauerauftrag in Hibiscus ab.
  */
-public interface Dauerauftrag extends Transfer, Checksum
+public interface Dauerauftrag extends HibiscusTransfer, Checksum
 {
 
 	/**
@@ -116,7 +116,13 @@ public interface Dauerauftrag extends Transfer, Checksum
 
 /**********************************************************************
  * $Log$
- * Revision 1.11  2006-02-28 23:05:59  willuhn
+ * Revision 1.12  2007-04-23 18:07:14  willuhn
+ * @C Redesign: "Adresse" nach "HibiscusAddress" umbenannt
+ * @C Redesign: "Transfer" nach "HibiscusTransfer" umbenannt
+ * @C Redesign: Neues Interface "Transfer", welches von Ueberweisungen, Lastschriften UND Umsaetzen implementiert wird
+ * @N Anbindung externer Adressbuecher
+ *
+ * Revision 1.11  2006/02/28 23:05:59  willuhn
  * @B bug 204
  *
  * Revision 1.10  2005/03/04 00:50:16  web0
