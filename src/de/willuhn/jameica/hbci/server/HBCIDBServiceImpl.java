@@ -41,20 +41,30 @@ public class HBCIDBServiceImpl extends DBServiceImpl implements HBCIDBService
    */
   public HBCIDBServiceImpl() throws RemoteException
   {
+    this(SETTINGS.getString("database.driver",DBSupportMcKoiImpl.class.getName()));
+  }
+  
+  /**
+   * Konstruktor mit expliziter Angabe des Treibers.
+   * @param driverClass der zu verwendende Treiber.
+   * @throws RemoteException
+   */
+  protected HBCIDBServiceImpl(String driverClass) throws RemoteException
+  {
     super();
     this.setClassloader(Application.getClassLoader());
     this.setClassFinder(Application.getClassLoader().getClassFinder());
-    
-    String s = SETTINGS.getString("database.driver",DBSupportMcKoiImpl.class.getName());
-    Logger.info("loading database driver: " + s);
+    if (driverClass == null)
+      throw new RemoteException("no driver given");
+    Logger.info("loading database driver: " + driverClass);
     try
     {
-      Class c = Application.getClassLoader().load(s);
+      Class c = Application.getClassLoader().load(driverClass);
       this.driver = (DBSupport) c.newInstance();
     }
     catch (Throwable t)
     {
-      throw new RemoteException("unable to load database driver " + s,t);
+      throw new RemoteException("unable to load database driver " + driverClass,t);
     }
   }
 
@@ -201,7 +211,10 @@ public class HBCIDBServiceImpl extends DBServiceImpl implements HBCIDBService
 
 /*********************************************************************
  * $Log$
- * Revision 1.17  2007-04-23 18:07:15  willuhn
+ * Revision 1.18  2007-04-24 19:31:25  willuhn
+ * @N Neuer Konstruktor
+ *
+ * Revision 1.17  2007/04/23 18:07:15  willuhn
  * @C Redesign: "Adresse" nach "HibiscusAddress" umbenannt
  * @C Redesign: "Transfer" nach "HibiscusTransfer" umbenannt
  * @C Redesign: Neues Interface "Transfer", welches von Ueberweisungen, Lastschriften UND Umsaetzen implementiert wird
