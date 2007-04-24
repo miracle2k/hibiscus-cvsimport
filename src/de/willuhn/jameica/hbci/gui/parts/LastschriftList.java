@@ -15,10 +15,7 @@ package de.willuhn.jameica.hbci.gui.parts;
 
 import java.rmi.RemoteException;
 
-import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.jameica.gui.Action;
-import de.willuhn.jameica.hbci.Settings;
-import de.willuhn.jameica.hbci.rmi.HBCIDBService;
 import de.willuhn.jameica.hbci.rmi.Lastschrift;
 
 /**
@@ -33,30 +30,26 @@ public class LastschriftList extends AbstractTransferList
    */
   public LastschriftList(Action action) throws RemoteException
   {
-    super(init(), action);
+    super(action);
     setContextMenu(new de.willuhn.jameica.hbci.gui.menus.LastschriftList());
   }
 
-  // BUGZILLA 84 http://www.willuhn.de/bugzilla/show_bug.cgi?id=84
   /**
-   * Initialisiert die Liste der Lastschriften.
-   * @return Initialisiert die Liste der Lastschriften.
-   * @throws RemoteException
+   * @see de.willuhn.jameica.hbci.gui.parts.AbstractTransferList#getObjectType()
    */
-  private static DBIterator init() throws RemoteException
+  protected Class getObjectType()
   {
-    HBCIDBService service = (HBCIDBService) Settings.getDBService();
-
-    DBIterator list = service.createList(Lastschrift.class);
-    list.setOrder("ORDER BY " + service.getSQLTimestamp("termin") + " DESC");
-    return list;
+    return Lastschrift.class;
   }
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2007-04-19 18:12:21  willuhn
+ * Revision 1.10  2007-04-24 16:55:00  willuhn
+ * @N Aktualisierte Daten nur bei geaendertem Datum laden
+ *
+ * Revision 1.9  2007/04/19 18:12:21  willuhn
  * @N MySQL-Support (GUI zum Konfigurieren fehlt noch)
  *
  * Revision 1.8  2006/10/17 00:04:31  willuhn
