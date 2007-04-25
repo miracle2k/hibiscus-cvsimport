@@ -85,9 +85,15 @@ public class HBCICallbackSWT extends AbstractHBCICallback
         {
           Logger.debug(msg);
           log = false;
+          break;
         }
-        else
-          Logger.warn(msg);
+        if (msg != null && msg.matches("Algorithmus .* nicht implementiert"))
+        {
+          Logger.debug(msg);
+          log = false;
+          break;
+        }
+        Logger.warn(msg);
 				break;
 
   		case HBCIUtils.LOG_ERR:
@@ -490,7 +496,10 @@ public class HBCICallbackSWT extends AbstractHBCICallback
 
 /**********************************************************************
  * $Log$
- * Revision 1.50  2007-02-27 10:20:34  willuhn
+ * Revision 1.51  2007-04-25 16:11:39  willuhn
+ * @C Nachricht "Algorithmus * nicht implementiert" unterdruecken
+ *
+ * Revision 1.50  2007/02/27 10:20:34  willuhn
  * @C "konnte folgenden nutzerdef..." nicht in Progressmonitor anzeigen
  *
  * Revision 1.49  2007/01/03 11:14:20  willuhn
