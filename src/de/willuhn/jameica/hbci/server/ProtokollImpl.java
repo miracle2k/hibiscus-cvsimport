@@ -71,7 +71,8 @@ public class ProtokollImpl extends AbstractDBObject implements Protokoll {
 
 			// beim Insert fuegen wir das Datum ein. Somit muss
 			// es nicht von aussen gesetzt werden.
-			setAttribute("datum", new Date());
+      if (getDatum() == null)
+        setAttribute("datum", new Date());
 
 		}
 		catch (RemoteException e)
@@ -157,7 +158,10 @@ public class ProtokollImpl extends AbstractDBObject implements Protokoll {
 
 /**********************************************************************
  * $Log$
- * Revision 1.10  2006-12-01 00:02:34  willuhn
+ * Revision 1.11  2007-04-25 15:06:47  willuhn
+ * @N Datum nur ueberschreiben, wenn noch nicht gesetzt
+ *
+ * Revision 1.10  2006/12/01 00:02:34  willuhn
  * @C made unserializable members transient
  *
  * Revision 1.9  2005/05/30 22:55:27  web0
