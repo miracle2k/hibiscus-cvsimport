@@ -202,7 +202,6 @@ public abstract class AbstractFromToList extends TablePart implements Part
           }
           while (sleep); // Wir warten ggf. nochmal
 
-          // Fehlertext ggf. entfernen
           GUI.getView().setLogoText(i18n.tr("Aktualisiere Daten..."));
           GUI.startSync(new Runnable()
           {
@@ -287,7 +286,10 @@ public abstract class AbstractFromToList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2007-04-26 15:02:36  willuhn
+ * Revision 1.5  2007-04-26 18:27:38  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.4  2007/04/26 15:02:36  willuhn
  * @N Optisches Feedback beim Neuladen der Daten
  *
  * Revision 1.3  2007/04/26 13:59:31  willuhn
