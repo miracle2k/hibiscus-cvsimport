@@ -178,6 +178,7 @@ public abstract class AbstractFromToList extends TablePart implements Part
       }
     }
     
+    GUI.getView().setErrorText("");
 
     // Wenn ein Timeout existiert, verlaengern wir einfach
     // nur dessen Wartezeit
@@ -188,8 +189,6 @@ public abstract class AbstractFromToList extends TablePart implements Part
     }
     
     // Ein neuer Timer
-    GUI.getStatusBar().startProgress();
-    GUI.getView().setLogoText(i18n.tr("Aktualisiere Daten..."));
     timeout = new Thread("TransferList Reload")
     {
       public void run()
@@ -203,15 +202,14 @@ public abstract class AbstractFromToList extends TablePart implements Part
           }
           while (sleep); // Wir warten ggf. nochmal
 
-          GUI.getDisplay().syncExec(new Runnable()
+          // Fehlertext ggf. entfernen
+          GUI.getView().setLogoText(i18n.tr("Aktualisiere Daten..."));
+          GUI.startSync(new Runnable()
           {
             public void run()
             {
               try
               {
-                // Fehlertext ggf. entfernen
-                GUI.getView().setErrorText("");
-                
                 // Ne, wir wurden nicht gekillt. Also machen wir uns ans Werk
                 // erstmal alles entfernen.
                 removeAll();
@@ -248,7 +246,6 @@ public abstract class AbstractFromToList extends TablePart implements Part
               finally
               {
                 GUI.getView().setLogoText("");
-                GUI.getStatusBar().stopProgress();
               }
             }
           });
@@ -290,7 +287,10 @@ public abstract class AbstractFromToList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2007-04-26 13:59:31  willuhn
+ * Revision 1.4  2007-04-26 15:02:36  willuhn
+ * @N Optisches Feedback beim Neuladen der Daten
+ *
+ * Revision 1.3  2007/04/26 13:59:31  willuhn
  * @N Besseres Reload-Verhalten in Transfer-Listen
  *
  * Revision 1.2  2007/04/24 17:15:51  willuhn
