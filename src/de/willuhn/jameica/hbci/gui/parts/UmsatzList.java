@@ -14,6 +14,7 @@
 package de.willuhn.jameica.hbci.gui.parts;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -122,7 +123,10 @@ public class UmsatzList extends TablePart implements Extendable
   public UmsatzList(GenericIterator list, Action action) throws RemoteException
   {
     super(list,action);
-    this.umsaetze = PseudoIterator.asList(list);
+    if (list != null)
+      this.umsaetze = PseudoIterator.asList(list);
+    else
+      this.umsaetze = new ArrayList();
     
     this.i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
     setMulti(true);
@@ -685,7 +689,10 @@ public class UmsatzList extends TablePart implements Extendable
 
 /**********************************************************************
  * $Log$
- * Revision 1.51  2007-04-26 23:08:13  willuhn
+ * Revision 1.52  2007-04-27 15:30:44  willuhn
+ * @N Kontoauszug-Liste in TablePart verschoben
+ *
+ * Revision 1.51  2007/04/26 23:08:13  willuhn
  * @C Umstellung auf DelayedListener
  *
  * Revision 1.50  2007/04/26 18:27:58  willuhn
