@@ -129,27 +129,28 @@ public class KontoauszugList extends UmsatzList
       addItem(list.next());
     
     super.paint(parent);
-    
-    parent.addDisposeListener(new DisposeListener() {
-      public void widgetDisposed(DisposeEvent e)
-      {
-        try
-        {
-          // Wir speichern hier alle eingegebenen Suchbegriffe fuer's naechste mal
-          Date from = (Date) getStart().getValue();
-          Date to   = (Date) getEnd().getValue();
-          Konto k   = (Konto) getKontoAuswahl().getValue();
-          mySettings.setAttribute("kontoauszug.list.from",from == null ? null : HBCI.DATEFORMAT.format(from));
-          mySettings.setAttribute("kontoauszug.list.to",to == null ? null : HBCI.DATEFORMAT.format(to));
-          mySettings.setAttribute("kontoauszug.list.konto",k == null ? null : k.getID());
-        }
-        catch (RemoteException re)
-        {
-          Logger.error("error while saving last filter settings",re);
-        }
-      }
-    
-    });
+
+    // TODO
+//    parent.addDisposeListener(new DisposeListener() {
+//      public void widgetDisposed(DisposeEvent e)
+//      {
+//        try
+//        {
+//          // Wir speichern hier alle eingegebenen Suchbegriffe fuer's naechste mal
+//          Date from = (Date) getStart().getValue();
+//          Date to   = (Date) getEnd().getValue();
+//          Konto k   = (Konto) getKontoAuswahl().getValue();
+//          mySettings.setAttribute("kontoauszug.list.from",from == null ? null : HBCI.DATEFORMAT.format(from));
+//          mySettings.setAttribute("kontoauszug.list.to",to == null ? null : HBCI.DATEFORMAT.format(to));
+//          mySettings.setAttribute("kontoauszug.list.konto",k == null ? null : k.getID());
+//        }
+//        catch (RemoteException re)
+//        {
+//          Logger.error("error while saving last filter settings",re);
+//        }
+//      }
+//    
+//    });
 
     // Zum Schluss Sortierung aktualisieren
     sort();
@@ -383,7 +384,10 @@ public class KontoauszugList extends UmsatzList
 
 /*********************************************************************
  * $Log$
- * Revision 1.1  2007-04-27 15:30:44  willuhn
+ * Revision 1.2  2007-04-27 15:33:03  willuhn
+ * @C Hier sind noch Nacharbeiten noetig
+ *
+ * Revision 1.1  2007/04/27 15:30:44  willuhn
  * @N Kontoauszug-Liste in TablePart verschoben
  *
  **********************************************************************/
