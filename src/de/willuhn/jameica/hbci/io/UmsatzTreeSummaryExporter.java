@@ -116,6 +116,10 @@ public class UmsatzTreeSummaryExporter implements Exporter
    */
   public IOFormat[] getIOFormats(Class objectType)
   {
+    // Wir unterstuetzen nur Umsatz-Trees
+    if (!UmsatzTree.class.equals(objectType))
+      return null;
+
     IOFormat myFormat = new IOFormat() {
     
       /**
@@ -146,7 +150,11 @@ public class UmsatzTreeSummaryExporter implements Exporter
 
 /*******************************************************************************
  * $Log$
- * Revision 1.1  2007-05-02 11:18:04  willuhn
+ * Revision 1.2  2007-05-02 12:40:18  willuhn
+ * @C UmsatzTree*-Exporter nur fuer Objekte des Typs "UmsatzTree" anbieten
+ * @C Start- und End-Datum in Kontoauszug speichern und an PDF-Export via Session uebergeben
+ *
+ * Revision 1.1  2007/05/02 11:18:04  willuhn
  * @C PDF-Export von Umsatz-Trees in IO-API gepresst ;)
  *
  * Revision 1.1  2007/04/29 10:22:11  jost

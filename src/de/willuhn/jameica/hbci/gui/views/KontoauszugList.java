@@ -12,6 +12,8 @@
  **********************************************************************/
 package de.willuhn.jameica.hbci.gui.views;
 
+import java.rmi.RemoteException;
+
 import de.willuhn.jameica.gui.AbstractView;
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
@@ -19,7 +21,9 @@ import de.willuhn.jameica.gui.util.ButtonArea;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.gui.action.Back;
 import de.willuhn.jameica.hbci.gui.controller.KontoauszugControl;
+import de.willuhn.jameica.messaging.StatusBarMessage;
 import de.willuhn.jameica.system.Application;
+import de.willuhn.logging.Logger;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
 
@@ -50,30 +54,41 @@ public class KontoauszugList extends AbstractView
     control.getKontoauszugList().paint(getParent());
 
 
-    ButtonArea buttons = new ButtonArea(getParent(), 2);
+    ButtonArea buttons = new ButtonArea(getParent(), 3);
     buttons.addButton(i18n.tr("Zurück"),new Back());
-    // TODO
-//    buttons.addButton(i18n.tr("Aktualisieren"), new Action()
-//    {
-//      public void handleAction(Object context) throws ApplicationException
-//      {
-//        control.handleReload();
-//      }
-//    },null,true);
-    buttons.addButton(i18n.tr("Kontoauszug exportieren..."), new Action()
+    buttons.addButton(i18n.tr("Exportieren..."), new Action()
     {
       public void handleAction(Object context) throws ApplicationException
       {
         control.handlePrint();
       }
     });
+    buttons.addButton(i18n.tr("Aktualisieren"), new Action()
+    {
+      public void handleAction(Object context) throws ApplicationException
+      {
+        try
+        {
+          control.getKontoauszugList().handleReload();
+        }
+        catch (RemoteException re)
+        {
+          Logger.error("unable to reload list",re);
+          Application.getMessagingFactory().sendMessage(new StatusBarMessage(i18n.tr("Fehler beim Aktualisieren der Liste"), StatusBarMessage.TYPE_ERROR));
+        }
+      }
+    },null,true);
   }
 
 }
 
 /*******************************************************************************
  * $Log$
- * Revision 1.8  2007-04-27 15:30:44  willuhn
+ * Revision 1.9  2007-05-02 12:40:18  willuhn
+ * @C UmsatzTree*-Exporter nur fuer Objekte des Typs "UmsatzTree" anbieten
+ * @C Start- und End-Datum in Kontoauszug speichern und an PDF-Export via Session uebergeben
+ *
+ * Revision 1.8  2007/04/27 15:30:44  willuhn
  * @N Kontoauszug-Liste in TablePart verschoben
  *
  * Revision 1.7  2007/04/26 15:02:19  willuhn
