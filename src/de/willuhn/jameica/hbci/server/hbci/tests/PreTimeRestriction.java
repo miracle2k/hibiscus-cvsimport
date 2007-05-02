@@ -104,11 +104,9 @@ public class PreTimeRestriction implements Restriction
 		}
 		
 		Calendar cal = Calendar.getInstance(Application.getConfig().getLocale());
-		cal.setTime(new Date());
-		cal.set(Calendar.HOUR_OF_DAY,23);
-		cal.set(Calendar.MINUTE,59);
 		cal.add(Calendar.DATE, i);
-		if (!cal.getTime().after(date))
+    Date test = HBCIProperties.endOfDay(cal.getTime());
+		if (!date.before(test))
 		{
 			throw new ApplicationException(i18n.tr("Das Datum der Zahlung darf höchstens {0} Tag(e) in der Zukunft liegen",max));
 		}
@@ -119,7 +117,10 @@ public class PreTimeRestriction implements Restriction
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2007-05-02 12:03:40  willuhn
+ * Revision 1.6  2007-05-02 12:05:23  willuhn
+ * @B Uhrzeit bei Vorlaufzeit nicht beruecksichtigen
+ *
+ * Revision 1.5  2007/05/02 12:03:40  willuhn
  * @B Uhrzeit bei Vorlaufzeit nicht beruecksichtigen
  *
  * Revision 1.4  2005/11/14 13:38:43  willuhn
