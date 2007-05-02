@@ -30,6 +30,7 @@ import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.HBCIProperties;
 import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.gui.parts.UmsatzTypTree;
+import de.willuhn.jameica.hbci.io.UmsatzTree;
 import de.willuhn.jameica.hbci.rmi.HBCIDBService;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Umsatz;
@@ -145,7 +146,23 @@ public class UmsatzTypTreeControl extends AbstractControl
     this.end = new DateInput(d, HBCI.DATEFORMAT);
     return this.end;
   }
+  
+  /**
+   * Liefert ein Container-Objekt zum Export des Umsatz-Tree samt Metadaten.
+   * @return Umsatztree.
+   * @throws RemoteException
+   */
+  public UmsatzTree getUmsatzTree() throws RemoteException
+  {
+    UmsatzTree tree = new UmsatzTree();
+    tree.setEnd((Date) getEnd().getValue());
+    tree.setStart((Date) getStart().getValue());
+    tree.setKonto((Konto) getKontoAuswahl().getValue());
+    tree.setUmsatzTree(getTree().getItems());
+    return tree;
+  }
 
+  
   /**
    * Liefert einen Baum von Umsatzkategorien mit den Umsaetzen.
    * @return Baum mit Umsatz-Kategorien.
@@ -214,7 +231,10 @@ public class UmsatzTypTreeControl extends AbstractControl
 
 /*******************************************************************************
  * $Log$
- * Revision 1.3  2007-04-29 10:19:35  jost
+ * Revision 1.4  2007-05-02 11:18:04  willuhn
+ * @C PDF-Export von Umsatz-Trees in IO-API gepresst ;)
+ *
+ * Revision 1.3  2007/04/29 10:19:35  jost
  * Sortierung umgekehrt.
  *
  * Revision 1.1  2007/03/22 22:36:42  willuhn

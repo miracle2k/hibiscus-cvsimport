@@ -14,9 +14,8 @@
 package de.willuhn.jameica.hbci.io;
 
 import java.awt.Color;
-import java.io.IOException;
 import java.io.OutputStream;
-import java.util.Date;
+import java.rmi.RemoteException;
 import java.util.List;
 
 import com.lowagie.text.DocumentException;
@@ -35,40 +34,54 @@ import de.willuhn.util.I18N;
 import de.willuhn.util.ProgressMonitor;
 
 /**
- * Liste der Umsaetze nach Kategorien im PDF-Format.
+ * Exporter fuer einen Tree von Umsaetzen im PDF-Format.
+ * Hierbei werden alle Kategorien samt deren Umsaetzen exportiert.
  */
-public class UmsatzKategorieKomplettliste
+public class UmsatzTreeCompleteExporter implements Exporter
 {
-  private Reporter reporter;
-
   private I18N i18n = null;
 
-  public UmsatzKategorieKomplettliste(OutputStream out, ProgressMonitor monitor,
-      List list, Konto k, Date start, Date end) throws DocumentException,
-      IOException, ApplicationException
+  /**
+   * ct.
+   */
+  public UmsatzTreeCompleteExporter()
   {
-    this.i18n = Application.getPluginLoader().getPlugin(HBCI.class)
-        .getResources().getI18N();
+    this.i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
+  }
+  
+  /**
+   * @see de.willuhn.jameica.hbci.io.Exporter#doExport(java.lang.Object[], de.willuhn.jameica.hbci.io.IOFormat, java.io.OutputStream, de.willuhn.util.ProgressMonitor)
+   */
+  public void doExport(Object[] objects, IOFormat format, OutputStream os, ProgressMonitor monitor) throws RemoteException, ApplicationException
+  {
+    if (objects == null || !(objects instanceof UmsatzTree[]))
+      throw new ApplicationException(i18n.tr("Bitte wählen Sie die zu exportierenden Umsätze aus"));
+
+    UmsatzTree[] t = (UmsatzTree[]) objects;
+    if (t.length == 0)
+      throw new ApplicationException(i18n.tr("Bitte wählen Sie die zu exportierenden Umsätze aus"));
+
+    UmsatzTree tree = t[0];
+    List list = tree.getUmsatzTree();
+    Konto k = tree.getKonto();
+
     String subTitle = i18n.tr("Zeitraum {0} - {1}, {2}", new String[] {
-        HBCI.DATEFORMAT.format(start), HBCI.DATEFORMAT.format(end),
+        HBCI.DATEFORMAT.format(tree.getStart()), HBCI.DATEFORMAT.format(tree.getEnd()),
         k == null ? "alle Konten" : k.getBezeichnung() });
-    reporter = new Reporter(out, monitor, "Umsatzkategorien", subTitle, list
-        .size());
-
-    reporter.addHeaderColumn("Valuta / Buchungs- datum", Element.ALIGN_CENTER,
-        30, Color.LIGHT_GRAY);
-    reporter.addHeaderColumn("Empfänger/Einzahler", Element.ALIGN_CENTER, 100,
-        Color.LIGHT_GRAY);
-    reporter.addHeaderColumn("Zahlungsgrund", Element.ALIGN_CENTER, 120,
-        Color.LIGHT_GRAY);
-    reporter.addHeaderColumn("Betrag", Element.ALIGN_CENTER, 30,
-        Color.LIGHT_GRAY);
-    reporter.createHeader();
-
-    // Iteration ueber Umsaetze
-
+    
+    Reporter reporter = null;
+    
     try
     {
+      reporter = new Reporter(os, monitor, "Umsatzkategorien", subTitle, list.size());
+
+      reporter.addHeaderColumn("Valuta / Buchungs- datum", Element.ALIGN_CENTER,30, Color.LIGHT_GRAY);
+      reporter.addHeaderColumn("Empfänger/Einzahler", Element.ALIGN_CENTER, 100,Color.LIGHT_GRAY);
+      reporter.addHeaderColumn("Zahlungsgrund", Element.ALIGN_CENTER, 120,Color.LIGHT_GRAY);
+      reporter.addHeaderColumn("Betrag", Element.ALIGN_CENTER, 30,Color.LIGHT_GRAY);
+      reporter.createHeader();
+
+      // Iteration ueber Umsaetze
       for (int i = 0; i < list.size(); i++)
       {
         UmsatzGroup ug = (UmsatzGroup) list.get(i);
@@ -101,6 +114,7 @@ public class UmsatzKategorieKomplettliste
               + "\n" + reporter.notNull(u.getZweck2()), Element.ALIGN_LEFT));
           reporter.addColumn(reporter.getDetailCell(u.getBetrag()));
         }
+        reporter.setNextRecord();
 
         reporter.addColumn(reporter.getDetailCell("", Element.ALIGN_LEFT));
         reporter.addColumn(reporter.getDetailCell("Summe "
@@ -109,23 +123,70 @@ public class UmsatzKategorieKomplettliste
         reporter.addColumn(reporter.getDetailCell((Double) ug
             .getAttribute("betrag")));
       }
-      reporter.close();
-
+      if (monitor != null) monitor.setStatus(ProgressMonitor.STATUS_DONE);
     }
     catch (DocumentException e)
     {
+      if (monitor != null) monitor.setStatus(ProgressMonitor.STATUS_ERROR);
       Logger.error("error while creating report", e);
-      throw new ApplicationException(i18n
-          .tr("Fehler beim Erzeugen des Reports"), e);
+      throw new ApplicationException(i18n.tr("Fehler beim Erzeugen des Reports"), e);
     }
+    finally
+    {
+      if (reporter != null)
+      {
+        try
+        {
+          reporter.close();
+        }
+        catch (Exception e)
+        {
+          Logger.error("unable to close report",e);
+        }
+      }
+    }
+  }
 
+  /**
+   * @see de.willuhn.jameica.hbci.io.IO#getIOFormats(java.lang.Class)
+   */
+  public IOFormat[] getIOFormats(Class objectType)
+  {
+    IOFormat myFormat = new IOFormat() {
+    
+      /**
+       * @see de.willuhn.jameica.hbci.io.IOFormat#getName()
+       */
+      public String getName()
+      {
+        return i18n.tr("PDF-Format: Kategorien mit Umsätzen");
+      }
+    
+      public String[] getFileExtensions()
+      {
+        return new String[]{"pdf"};
+      }
+    
+    };
+    return new IOFormat[]{myFormat};
+  }
+
+  /**
+   * @see de.willuhn.jameica.hbci.io.IO#getName()
+   */
+  public String getName()
+  {
+    return i18n.tr("PDF-Format: Kategorien mit Umsätzen");
   }
 
 }
 
 /*******************************************************************************
  * $Log$
- * Revision 1.1  2007-04-29 10:22:28  jost
+ * Revision 1.1  2007-05-02 11:18:04  willuhn
+ * @C PDF-Export von Umsatz-Trees in IO-API gepresst ;)
+ *
+ * Revision 1.1  2007/04/29 10:22:28  jost
  * Neu: PDF-Ausgabe der UmsÃ¤tze nach Kategorien
  *
  ******************************************************************************/
