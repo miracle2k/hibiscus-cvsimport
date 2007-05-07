@@ -15,6 +15,8 @@ package de.willuhn.jameica.hbci.server;
 
 import java.io.File;
 import java.rmi.RemoteException;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.Locale;
 
@@ -204,6 +206,22 @@ public class HBCIDBServiceImpl extends DBServiceImpl implements HBCIDBService
   {
     return this.driver.getInsertWithID();
   }
+
+  /**
+   * @see de.willuhn.datasource.db.DBServiceImpl#checkConnection(java.sql.Connection)
+   */
+  protected void checkConnection(Connection conn) throws SQLException
+  {
+    try
+    {
+      this.driver.checkConnection(conn);
+    }
+    catch (RemoteException re)
+    {
+      throw new SQLException(re.getMessage());
+    }
+    super.checkConnection(conn);
+  }
   
   
 }
@@ -211,7 +229,10 @@ public class HBCIDBServiceImpl extends DBServiceImpl implements HBCIDBService
 
 /*********************************************************************
  * $Log$
- * Revision 1.18  2007-04-24 19:31:25  willuhn
+ * Revision 1.19  2007-05-07 09:27:25  willuhn
+ * @N Automatisches Neuerstellen der JDBC-Connection bei MySQL
+ *
+ * Revision 1.18  2007/04/24 19:31:25  willuhn
  * @N Neuer Konstruktor
  *
  * Revision 1.17  2007/04/23 18:07:15  willuhn
