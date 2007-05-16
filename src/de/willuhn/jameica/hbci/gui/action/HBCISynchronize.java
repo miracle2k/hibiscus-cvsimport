@@ -30,9 +30,9 @@ import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.SynchronizeJob;
-import de.willuhn.jameica.hbci.server.SynchronizeEngine;
 import de.willuhn.jameica.hbci.server.hbci.AbstractHBCIJob;
 import de.willuhn.jameica.hbci.server.hbci.HBCIFactory;
+import de.willuhn.jameica.hbci.server.hbci.synchronize.SynchronizeEngine;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.logging.Logger;
 import de.willuhn.util.ApplicationException;
@@ -207,7 +207,10 @@ public class HBCISynchronize implements Action
 
 /*********************************************************************
  * $Log$
- * Revision 1.10  2007-05-14 12:50:41  willuhn
+ * Revision 1.11  2007-05-16 11:32:30  willuhn
+ * @N Redesign der SynchronizeEngine. Ermittelt die HBCI-Jobs jetzt ueber generische "SynchronizeJobProvider". Damit ist die Liste der Sync-Jobs erweiterbar
+ *
+ * Revision 1.10  2007/05/14 12:50:41  willuhn
  * @B wrong list format
  *
  * Revision 1.9  2007/02/21 10:02:27  willuhn

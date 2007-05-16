@@ -20,7 +20,7 @@ import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.parts.TablePart;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.rmi.SynchronizeJob;
-import de.willuhn.jameica.hbci.server.SynchronizeEngine;
+import de.willuhn.jameica.hbci.server.hbci.synchronize.SynchronizeEngine;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.logging.Logger;
 import de.willuhn.util.ApplicationException;
@@ -80,7 +80,10 @@ public class SynchronizeList extends TablePart
 
 /*********************************************************************
  * $Log$
- * Revision 1.5  2006-07-05 22:18:16  willuhn
+ * Revision 1.6  2007-05-16 11:32:30  willuhn
+ * @N Redesign der SynchronizeEngine. Ermittelt die HBCI-Jobs jetzt ueber generische "SynchronizeJobProvider". Damit ist die Liste der Sync-Jobs erweiterbar
+ *
+ * Revision 1.5  2006/07/05 22:18:16  willuhn
  * @N Einzelne Sync-Jobs koennen nun selektiv auch einmalig direkt in der Sync-Liste deaktiviert werden
  *
  * Revision 1.4  2006/04/18 22:38:16  willuhn
