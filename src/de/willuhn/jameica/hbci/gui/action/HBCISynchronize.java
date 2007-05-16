@@ -119,7 +119,7 @@ public class HBCISynchronize implements Action
     // Fall abbrechen sollen, dann tun wir das
     if (!success && Settings.getCancelSyncOnError())
     {
-      Logger.info("synchronize with errors finished");
+      Logger.warn("synchronize finished with errors");
       GUI.getStatusBar().setErrorText(i18n.tr("Synchronisierung mit Fehlern beendet"));
       return;
     }
@@ -137,7 +137,7 @@ public class HBCISynchronize implements Action
         }
         else
         {
-          Logger.info("synchronize with errors finished");
+          Logger.warn("synchronize finished with errors");
           GUI.getStatusBar().setErrorText(i18n.tr("Synchronisierung mit Fehlern beendet"));
         }
 
@@ -202,7 +202,10 @@ public class HBCISynchronize implements Action
 
 /*********************************************************************
  * $Log$
- * Revision 1.13  2007-05-16 14:44:47  willuhn
+ * Revision 1.14  2007-05-16 14:49:42  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.13  2007/05/16 14:44:47  willuhn
  * @C Parallele Ausfuehrung mehrerer Synchronisierungen unterbinden
  *
  * Revision 1.12  2007/05/16 13:59:53  willuhn
