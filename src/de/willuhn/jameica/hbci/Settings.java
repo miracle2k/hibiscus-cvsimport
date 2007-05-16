@@ -300,6 +300,26 @@ public class Settings
   {
     return settings.getBoolean("online",false);
   }
+  
+  /**
+   * BUGZILLA 227
+   * Prueft, ob die HBCI-Synchronisierung im Fehlerfall abgebrochen werden soll.
+   * @return true, wenn die Synchronisierung im Fehlerfall abbrechen soll.
+   */
+  public static boolean getCancelSyncOnError()
+  {
+    return settings.getBoolean("sync.cancelonerror",true);
+  }
+
+  /**
+   * Prueft, ob die HBCI-Synchronisierung im Fehlerfall abgebrochen werden soll.
+   * @param cancel true wenn die Synchronisierung im Fehlerfall abbrechen soll.
+   */
+  public static void setCancelSyncOnError(boolean cancel)
+  {
+    settings.setAttribute("sync.cancelonerror",cancel);
+  }
+
 
   /**
 	 * Liefert das Limit bei Ueberweisungen.
@@ -385,7 +405,12 @@ public class Settings
 
 /*********************************************************************
  * $Log$
- * Revision 1.49  2007-04-23 21:03:48  willuhn
+ * Revision 1.50  2007-05-16 13:59:53  willuhn
+ * @N Bug 227 HBCI-Synchronisierung auch im Fehlerfall fortsetzen
+ * @C Synchronizer ueberarbeitet
+ * @B HBCIFactory hat globalen Status auch bei Abbruch auf Error gesetzt
+ *
+ * Revision 1.49  2007/04/23 21:03:48  willuhn
  * @R "getTransfers" aus Address entfernt - hat im Adressbuch eigentlich nichts zu suchen
  *
  * Revision 1.48  2007/03/29 15:30:31  willuhn
