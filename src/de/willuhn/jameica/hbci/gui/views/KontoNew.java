@@ -58,7 +58,7 @@ public class KontoNew extends AbstractView {
 		
 
     Konto k = control.getKonto();
-    if (k != null)
+    if (k != null && !k.isNewObject())
     {
       String s1 = k.getBezeichnung();
       if (s1 == null) s1 = "";
@@ -69,7 +69,7 @@ public class KontoNew extends AbstractView {
       GUI.getView().setTitle(i18n.tr("Konto-Details: {0} [Kto.-Nr.: {1}]",new String[]{s1,s2}));
     }
     else
-  		GUI.getView().setTitle(i18n.tr("Konto-Details"));
+  		GUI.getView().setTitle(i18n.tr("Konto-Details: Neues Konto"));
 
     // BUGZILLA 273
     TabFolder kontofolder = new TabFolder(getParent(), SWT.NONE);
@@ -133,7 +133,10 @@ public class KontoNew extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.20  2006-11-30 23:48:40  willuhn
+ * Revision 1.21  2007-05-16 14:12:33  willuhn
+ * @B Bug 400 Titel des Dialogs bei Neuanlage eines Kontos korrekt anzeigen
+ *
+ * Revision 1.20  2006/11/30 23:48:40  willuhn
  * @N Erste Version der Umsatz-Kategorien drin
  *
  * Revision 1.19  2006/11/06 14:19:14  willuhn
