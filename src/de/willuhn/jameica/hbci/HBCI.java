@@ -160,6 +160,18 @@ public class HBCI extends AbstractPlugin
     Application.getCallback().getStartupMonitor().setStatusText("hibiscus: init hbci4java subsystem");
     try
     {
+      if (this.callback != null)
+      {
+        try
+        {
+          // Wir wurden schonmal initialisiert
+          HBCIUtils.done();
+        }
+        catch (Throwable t)
+        {
+          // ignore
+        }
+      }
 
       //////////////////////////////////
       // Callback erzeugen
@@ -187,9 +199,7 @@ public class HBCI extends AbstractPlugin
       }
       //////////////////////////////////
 
-
       HBCIUtils.init(null,null,this.callback);
-
 
       //////////////////////////////////
       // Log-Level
@@ -217,7 +227,6 @@ public class HBCI extends AbstractPlugin
         HBCIUtils.setParam("kernel.rewriters",rewriters);
       }
       //////////////////////////////////
-      
     }
     catch (Exception e)
     {
@@ -290,7 +299,10 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
- * Revision 1.98  2007-05-16 13:59:53  willuhn
+ * Revision 1.99  2007-05-16 16:25:57  willuhn
+ * @C Sauberes Re-Init des HBCI-Subsystem
+ *
+ * Revision 1.98  2007/05/16 13:59:53  willuhn
  * @N Bug 227 HBCI-Synchronisierung auch im Fehlerfall fortsetzen
  * @C Synchronizer ueberarbeitet
  * @B HBCIFactory hat globalen Status auch bei Abbruch auf Error gesetzt
