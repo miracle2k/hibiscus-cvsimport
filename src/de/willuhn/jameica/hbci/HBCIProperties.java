@@ -166,8 +166,9 @@ public class HBCIProperties
     }
     catch (Exception e)
     {
-      Logger.info("HBCI4Java subsystem not initialized for this thread, skip crc check");
-      return true;
+      Logger.warn("HBCI4Java subsystem seems to be not initialized for this thread group, adding thread group");
+      HBCIUtils.initThread(null,null);
+      return HBCIUtils.checkAccountCRC(blz, kontonummer);
     }
   }
 
@@ -213,7 +214,10 @@ public class HBCIProperties
 
 /**********************************************************************
  * $Log$
- * Revision 1.22  2007-05-16 13:59:53  willuhn
+ * Revision 1.23  2007-06-01 15:20:52  willuhn
+ * @B reinit hbci kernel on other threads
+ *
+ * Revision 1.22  2007/05/16 13:59:53  willuhn
  * @N Bug 227 HBCI-Synchronisierung auch im Fehlerfall fortsetzen
  * @C Synchronizer ueberarbeitet
  * @B HBCIFactory hat globalen Status auch bei Abbruch auf Error gesetzt
