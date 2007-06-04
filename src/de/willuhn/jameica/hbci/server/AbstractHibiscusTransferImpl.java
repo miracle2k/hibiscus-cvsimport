@@ -69,6 +69,10 @@ public abstract class AbstractHibiscusTransferImpl extends AbstractDBObject impl
       if (getGegenkontoName() == null || getGegenkontoName().length() == 0)
 				throw new ApplicationException(i18n.tr("Bitte geben Sie den Namen des Kontoinhabers des Gegenkontos ein"));
 
+      int blzLen = getGegenkontoBLZ().length();
+      if (blzLen != HBCIProperties.HBCI_BLZ_LENGTH)
+        throw new ApplicationException(i18n.tr("Ungültige BLZ \"{0}\". Muss {1} Stellen lang sein.", new String[]{getGegenkontoBLZ(),""+HBCIProperties.HBCI_BLZ_LENGTH}));
+      
       HBCIProperties.checkLength(getGegenkontoName(), HBCIProperties.HBCI_TRANSFER_NAME_MAXLENGTH);
 
       // BUGZILLA 163
@@ -264,7 +268,10 @@ public abstract class AbstractHibiscusTransferImpl extends AbstractDBObject impl
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2007-04-23 18:07:15  willuhn
+ * Revision 1.2  2007-06-04 16:38:33  willuhn
+ * @N Pruefung der BLZ-Laenge
+ *
+ * Revision 1.1  2007/04/23 18:07:15  willuhn
  * @C Redesign: "Adresse" nach "HibiscusAddress" umbenannt
  * @C Redesign: "Transfer" nach "HibiscusTransfer" umbenannt
  * @C Redesign: Neues Interface "Transfer", welches von Ueberweisungen, Lastschriften UND Umsaetzen implementiert wird
