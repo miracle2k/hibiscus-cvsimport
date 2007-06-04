@@ -166,12 +166,18 @@ public interface Konto extends DBObject, Checksum
   /**
    * Liefert den Anfangssaldo eines Tages bzw. des 1. Tages nach diesem Datum mit Umsätzen
    * oder <code>0.0</code> wenn er noch nie abgefragt wurde.
+   * @param datum Datum.
+   * @return der Saldo.
+   * @throws RemoteException 
    */
   public double getAnfangsSaldo(Date datum) throws RemoteException;
   
   /**
    * Liefert den Endsaldo eines Tages bzw. des 1. Tages vor diesem Datum mit Umsätzen oder
    * <code>0.0</code> wenn er noch nie abgefragt wurde.
+   * @param datum Datum.
+   * @return der Saldo.
+   * @throws RemoteException 
    */
   public double getEndSaldo(Date datum) throws RemoteException;
   
@@ -352,7 +358,12 @@ public interface Konto extends DBObject, Checksum
 
 /*******************************************************************************
  * $Log$
- * Revision 1.35  2007-06-04 15:59:03  jost
+ * Revision 1.36  2007-06-04 17:37:00  willuhn
+ * @D javadoc
+ * @C java 1.4 compatibility
+ * @N table colorized
+ *
+ * Revision 1.35  2007/06/04 15:59:03  jost
  * Neue Auswertung: Einnahmen/Ausgaben
  *
  * Revision 1.34  2006/10/09 16:56:32  jost

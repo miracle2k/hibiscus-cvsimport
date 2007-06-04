@@ -34,6 +34,9 @@ public class EinnahmeAusgabeExporter implements Exporter
 {
   private I18N i18n = null;
 
+  /**
+   * ct.
+   */
   public EinnahmeAusgabeExporter()
   {
     this.i18n = Application.getPluginLoader().getPlugin(HBCI.class)
@@ -159,7 +162,12 @@ public class EinnahmeAusgabeExporter implements Exporter
 
 /*******************************************************************************
  * $Log$
- * Revision 1.1  2007-06-04 15:58:45  jost
+ * Revision 1.2  2007-06-04 17:37:00  willuhn
+ * @D javadoc
+ * @C java 1.4 compatibility
+ * @N table colorized
+ *
+ * Revision 1.1  2007/06/04 15:58:45  jost
  * Neue Auswertung: Einnahmen/Ausgaben
  *
  ******************************************************************************/
