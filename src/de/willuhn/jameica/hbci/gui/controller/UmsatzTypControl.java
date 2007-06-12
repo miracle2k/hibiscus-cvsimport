@@ -115,6 +115,7 @@ public class UmsatzTypControl extends AbstractControl
     if (this.nummer == null)
     {
       this.nummer = new TextInput(getUmsatzTyp().getNummer(),5);
+      this.nummer.setComment(i18n.tr("Wird für die Sortierung verwendet"));
       this.nummer.setMandatory(false);
     }
     return this.nummer;
@@ -128,7 +129,10 @@ public class UmsatzTypControl extends AbstractControl
   public TextInput getPattern() throws RemoteException
   {
     if (this.pattern == null)
+    {
       this.pattern = new TextInput(getUmsatzTyp().getPattern());
+      this.pattern.setComment(i18n.tr("Für automatische Zuordnung anhand von Suchbegriffen"));
+    }
     return this.pattern;
   }
   
@@ -190,7 +194,10 @@ public class UmsatzTypControl extends AbstractControl
 
 /*********************************************************************
  * $Log$
- * Revision 1.5  2007-03-12 13:58:56  willuhn
+ * Revision 1.6  2007-06-12 08:56:01  willuhn
+ * @B Bug 410
+ *
+ * Revision 1.5  2007/03/12 13:58:56  willuhn
  * @C Eindeutigkeit des Namens trotz UNIQUE-Key vorher in insertCheck pruefen - das spart das Parsen der SQLException
  *
  * Revision 1.4  2007/03/10 07:17:40  jost
