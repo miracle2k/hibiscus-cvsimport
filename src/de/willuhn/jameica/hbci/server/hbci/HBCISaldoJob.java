@@ -18,6 +18,7 @@ import org.kapott.hbci.GV_Result.GVRSaldoReq;
 import org.kapott.hbci.structures.Saldo;
 
 import de.willuhn.jameica.hbci.HBCI;
+import de.willuhn.jameica.hbci.messaging.SaldoMessage;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Protokoll;
 import de.willuhn.jameica.hbci.server.Converter;
@@ -110,6 +111,7 @@ public class HBCISaldoJob extends AbstractHBCIJob {
     konto.setSaldo(saldo.value.getDoubleValue());
 
 		konto.store();
+    Application.getMessagingFactory().sendMessage(new SaldoMessage(konto));
 		Logger.info("saldo fetched successfully");
   }
 }
@@ -117,7 +119,12 @@ public class HBCISaldoJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.22  2006-06-19 11:52:15  willuhn
+ * Revision 1.23  2007-06-15 11:20:32  willuhn
+ * @N Saldo in Kontodetails via Messaging sofort aktualisieren
+ * @N Mehr Details in den Namen der Synchronize-Jobs
+ * @N Layout der Umsatzdetail-Anzeige ueberarbeitet
+ *
+ * Revision 1.22  2006/06/19 11:52:15  willuhn
  * @N Update auf hbci4java 2.5.0rc9
  *
  * Revision 1.21  2006/03/17 00:51:24  willuhn

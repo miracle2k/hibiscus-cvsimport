@@ -50,7 +50,7 @@ public class SynchronizeDauerauftragListJob extends AbstractSynchronizeJob
   public String getName() throws RemoteException
   {
     Konto k = (Konto) getContext();
-    return i18n.tr("Konto {0}: Daueraufträge abrufen",k.getLongName());
+    return i18n.tr("{0}: Daueraufträge abrufen",k.getLongName());
   }
 
   /**
@@ -65,7 +65,12 @@ public class SynchronizeDauerauftragListJob extends AbstractSynchronizeJob
 
 /*********************************************************************
  * $Log$
- * Revision 1.4  2006-10-09 21:43:26  willuhn
+ * Revision 1.5  2007-06-15 11:20:32  willuhn
+ * @N Saldo in Kontodetails via Messaging sofort aktualisieren
+ * @N Mehr Details in den Namen der Synchronize-Jobs
+ * @N Layout der Umsatzdetail-Anzeige ueberarbeitet
+ *
+ * Revision 1.4  2006/10/09 21:43:26  willuhn
  * @N Zusammenfassung der Geschaeftsvorfaelle "Umsaetze abrufen" und "Saldo abrufen" zu "Kontoauszuege abrufen" bei der Konto-Synchronisation
  *
  * Revision 1.3  2006/03/21 00:43:14  willuhn

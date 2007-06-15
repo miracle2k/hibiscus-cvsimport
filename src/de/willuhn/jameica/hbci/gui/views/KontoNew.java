@@ -127,13 +127,26 @@ public class KontoNew extends AbstractView {
     control.handleReload();
     super.reload();
   }
+  
+  /**
+   * @see de.willuhn.jameica.gui.AbstractView#unbind()
+   */
+  public void unbind() throws ApplicationException
+  {
+    Application.getMessagingFactory().unRegisterMessageConsumer(control.getSaldoMessageConsumer());
+  }
 
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.21  2007-05-16 14:12:33  willuhn
+ * Revision 1.22  2007-06-15 11:20:31  willuhn
+ * @N Saldo in Kontodetails via Messaging sofort aktualisieren
+ * @N Mehr Details in den Namen der Synchronize-Jobs
+ * @N Layout der Umsatzdetail-Anzeige ueberarbeitet
+ *
+ * Revision 1.21  2007/05/16 14:12:33  willuhn
  * @B Bug 400 Titel des Dialogs bei Neuanlage eines Kontos korrekt anzeigen
  *
  * Revision 1.20  2006/11/30 23:48:40  willuhn
