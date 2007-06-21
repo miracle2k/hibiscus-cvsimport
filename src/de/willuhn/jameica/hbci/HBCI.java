@@ -104,20 +104,6 @@ public class HBCI extends AbstractPlugin
     if (!f.exists()) f.mkdirs();
     /////////////////////////////////////////////////////////////////
 
-    /////////////////////////////////////////////////////////////////
-    // Passports im Server-Mode nicht aktivieren - nicht remote-tauglich
-    if (!Application.inServerMode())
-    {
-      Application.getCallback().getStartupMonitor().setStatusText("hibiscus: init passport registry");
-      PassportRegistry.init();
-      Application.getCallback().getStartupMonitor().addPercentComplete(3);
-    }
-    else
-    {
-      Logger.warn("server-mode: passport registry will not be initialized!");
-    }
-    /////////////////////////////////////////////////////////////////
-
     initHBCI(getResources().getSettings().getString("hbcicallback.class",HBCICallbackSWT.class.getName()));
     Application.getCallback().getStartupMonitor().addPercentComplete(5);
   }
@@ -315,7 +301,10 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
- * Revision 1.101  2007-06-05 00:41:53  willuhn
+ * Revision 1.102  2007-06-21 11:33:13  willuhn
+ * @N PassportRegistry erst bei Bedarf initialisieren
+ *
+ * Revision 1.101  2007/06/05 00:41:53  willuhn
  * @N send product identifier in HKVVB
  *
  * Revision 1.100  2007/05/30 09:34:55  willuhn
