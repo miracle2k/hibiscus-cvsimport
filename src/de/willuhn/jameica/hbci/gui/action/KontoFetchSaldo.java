@@ -14,9 +14,6 @@ package de.willuhn.jameica.hbci.gui.action;
 
 import java.rmi.RemoteException;
 
-import org.eclipse.swt.widgets.Event;
-import org.eclipse.swt.widgets.Listener;
-
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.hbci.HBCI;
@@ -54,12 +51,9 @@ public class KontoFetchSaldo implements Action
 
 			HBCIFactory factory = HBCIFactory.getInstance();
 			factory.addJob(new HBCISaldoJob(k));
-      factory.executeJobs(k, new Listener() {
-        public void handleEvent(Event event)
-        {
-          GUI.startView(GUI.getCurrentView().getClass(),k);
-        }
-      });
+      // Listener nicht mehr noetig, da die Aktualisierung ueber
+      // die SaldoMessage in HBCISaldoJob geschieht
+      factory.executeJobs(k,null);
 
 		}
 		catch (RemoteException e)
@@ -74,7 +68,10 @@ public class KontoFetchSaldo implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.11  2006-06-19 12:57:31  willuhn
+ * Revision 1.12  2007-07-04 09:16:23  willuhn
+ * @B Aktuelle View nach Ausfuehrung eines HBCI-Jobs nur noch dann aktualisieren, wenn sie sich zwischenzeitlich nicht geaendert hat
+ *
+ * Revision 1.11  2006/06/19 12:57:31  willuhn
  * @N DTAUS-Import fuer Umsaetze
  * @B Formatierungsfehler in Umsatzliste
  *

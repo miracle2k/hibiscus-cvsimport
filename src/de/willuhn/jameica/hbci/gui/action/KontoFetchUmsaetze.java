@@ -69,7 +69,9 @@ public class KontoFetchUmsaetze implements Action
         {
           try
           {
-            currentView.reload();
+            AbstractView newView = GUI.getCurrentView();
+            if (newView == currentView)
+              currentView.reload();
           }
           catch (ApplicationException e)
           {
@@ -91,7 +93,10 @@ public class KontoFetchUmsaetze implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.16  2007-02-21 10:02:27  willuhn
+ * Revision 1.17  2007-07-04 09:16:23  willuhn
+ * @B Aktuelle View nach Ausfuehrung eines HBCI-Jobs nur noch dann aktualisieren, wenn sie sich zwischenzeitlich nicht geaendert hat
+ *
+ * Revision 1.16  2007/02/21 10:02:27  willuhn
  * @C Code zum Ausfuehren exklusiver Jobs redesigned
  *
  * Revision 1.15  2007/01/02 11:44:47  willuhn
