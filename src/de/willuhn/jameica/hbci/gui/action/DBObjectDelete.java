@@ -128,6 +128,9 @@ public class DBObjectDelete implements Action
       return this.cancel;
     }
 
+    /**
+     * @see de.willuhn.jameica.system.BackgroundTask#run(de.willuhn.util.ProgressMonitor)
+     */
     public void run(ProgressMonitor monitor) throws ApplicationException
     {
       try
@@ -194,7 +197,10 @@ public class DBObjectDelete implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2007-04-25 14:07:26  willuhn
+ * Revision 1.4  2007-07-16 12:51:15  willuhn
+ * @D javadoc
+ *
+ * Revision 1.3  2007/04/25 14:07:26  willuhn
  * @N Loeschen von mehr als 100 Datensaetzen gleichzeitig im Hintergrund ausfuehren
  *
  * Revision 1.2  2007/04/23 18:07:14  willuhn

@@ -29,6 +29,7 @@ public class UmsatzTypTreeExport implements Action
 {
   /**
    * Erwartet ein Objekt vom Typ <code>GenericIterator</code>
+   * @see de.willuhn.jameica.gui.Action#handleAction(java.lang.Object)
    */
   public void handleAction(Object context) throws ApplicationException
   {
@@ -60,7 +61,10 @@ public class UmsatzTypTreeExport implements Action
 
 /*******************************************************************************
  * $Log$
- * Revision 1.1  2007-05-02 11:18:04  willuhn
+ * Revision 1.2  2007-07-16 12:51:15  willuhn
+ * @D javadoc
+ *
+ * Revision 1.1  2007/05/02 11:18:04  willuhn
  * @C PDF-Export von Umsatz-Trees in IO-API gepresst ;)
  *
  * Revision 1.1  2007/04/29 10:18:46  jost

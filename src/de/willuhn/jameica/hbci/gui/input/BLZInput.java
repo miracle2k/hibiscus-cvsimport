@@ -70,6 +70,9 @@ public class BLZInput extends TextInput
    */
   private class BLZListener implements Listener
   {
+    /**
+     * @see org.eclipse.swt.widgets.Listener#handleEvent(org.eclipse.swt.widgets.Event)
+     */
     public void handleEvent(Event arg0)
     {
       try
@@ -92,7 +95,10 @@ public class BLZInput extends TextInput
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2007-04-09 22:45:12  willuhn
+ * Revision 1.2  2007-07-16 12:51:15  willuhn
+ * @D javadoc
+ *
+ * Revision 1.1  2007/04/09 22:45:12  willuhn
  * @N Bug 380
  *
  **********************************************************************/

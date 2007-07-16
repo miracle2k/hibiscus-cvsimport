@@ -176,6 +176,11 @@ public class PsdBankParser implements UmsatzParser
 	 */
 	/**
 	 */
+	/**
+	 * @param lines die Umsatzzeile.
+	 * @param umsatz das Umsatz-Template.
+	 * @throws RemoteException 
+	 */
 	public void parse(String[] lines, Umsatz umsatz) throws RemoteException
 	{
 		try {
@@ -303,7 +308,10 @@ public class PsdBankParser implements UmsatzParser
 
 /*********************************************************************
  * $Log$
- * Revision 1.4  2007-04-23 18:07:15  willuhn
+ * Revision 1.5  2007-07-16 12:51:15  willuhn
+ * @D javadoc
+ *
+ * Revision 1.4  2007/04/23 18:07:15  willuhn
  * @C Redesign: "Adresse" nach "HibiscusAddress" umbenannt
  * @C Redesign: "Transfer" nach "HibiscusTransfer" umbenannt
  * @C Redesign: Neues Interface "Transfer", welches von Ueberweisungen, Lastschriften UND Umsaetzen implementiert wird

@@ -29,6 +29,7 @@ public class EinnahmeAusgabeExport implements Action
 {
   /**
    * Erwartet ein Objekt vom Typ <code>GenericIterator</code>
+   * @see de.willuhn.jameica.gui.Action#handleAction(java.lang.Object)
    */
   public void handleAction(Object context) throws ApplicationException
   {
@@ -66,7 +67,10 @@ public class EinnahmeAusgabeExport implements Action
 
 /*******************************************************************************
  * $Log$
- * Revision 1.1  2007-06-04 15:57:25  jost
+ * Revision 1.2  2007-07-16 12:51:15  willuhn
+ * @D javadoc
+ *
+ * Revision 1.1  2007/06/04 15:57:25  jost
  * Neue Auswertung: Einnahmen/Ausgaben
  *
  ******************************************************************************/
