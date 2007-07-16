@@ -347,8 +347,6 @@ public class EinnahmeAusgabeControl extends AbstractControl
 
   /**
    * Aktualisiert die Tabelle.
-   * 
-   * @param comp
    * @throws RemoteException
    */
   public void handleReload() throws RemoteException
@@ -358,7 +356,7 @@ public class EinnahmeAusgabeControl extends AbstractControl
     Date t_end = (Date) end.getValue();
     if (t_start != null && t_end != null && t_start.after(t_end))
     {
-      GUI.getView().setErrorText(i18n.tr("Das Anfangsdatum muss End-Datum liegen"));
+      GUI.getView().setErrorText(i18n.tr("Das Anfangsdatum muss vor dem Enddatum liegen"));
       return;
     }
     GUI.getView().setErrorText(""); // ggf. vorher angezeigten Fehler loeschen
@@ -373,7 +371,10 @@ public class EinnahmeAusgabeControl extends AbstractControl
 
 /*******************************************************************************
  * $Log$
- * Revision 1.5  2007-06-19 17:55:09  jost
+ * Revision 1.6  2007-07-16 12:01:48  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.5  2007/06/19 17:55:09  jost
  * Sichtbarkeit der Members eingeschränkt.
  *
  * Revision 1.4  2007/06/05 08:40:06  willuhn
