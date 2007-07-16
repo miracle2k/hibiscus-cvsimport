@@ -43,7 +43,8 @@ public class EmpfaengerExport implements Action
     // Der Check hier ist bewusst mit "isAssignable" weil das Array bei der
     // Existenz von externen Adressbuechern ggf. nicht Typsicher ist und
     // ein "(context instanceof Address[])" fehlschlagen wuerde
-		if (!(context instanceof Address) && !(context.getClass().isAssignableFrom(Address[].class)))
+		if (!(context instanceof Address) &&
+        !(Address[].class.isAssignableFrom(context.getClass())))
 			throw new ApplicationException(i18n.tr("Bitte wählen Sie einen oder mehrere Adressen aus"));
 
     Object[] u = null;
@@ -78,7 +79,10 @@ public class EmpfaengerExport implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2007-04-23 18:07:14  willuhn
+ * Revision 1.3  2007-07-16 12:48:32  willuhn
+ * @B Fehler beim CSV-Import/Export von Adressen
+ *
+ * Revision 1.2  2007/04/23 18:07:14  willuhn
  * @C Redesign: "Adresse" nach "HibiscusAddress" umbenannt
  * @C Redesign: "Transfer" nach "HibiscusTransfer" umbenannt
  * @C Redesign: Neues Interface "Transfer", welches von Ueberweisungen, Lastschriften UND Umsaetzen implementiert wird
