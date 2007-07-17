@@ -247,7 +247,7 @@ public class EinnahmeAusgabeControl extends AbstractControl
         HBCIProperties.CURRENCY_DEFAULT_DE, HBCI.DECIMALFORMAT));
     table.addColumn(i18n.tr("Endsaldo"), "endsaldo", new CurrencyFormatter(
         HBCIProperties.CURRENCY_DEFAULT_DE, HBCI.DECIMALFORMAT));
-    table.addColumn(i18n.tr("Bemerkung"), "bemerkung");
+//    table.addColumn(i18n.tr("Bemerkung"), "bemerkung");
 
     table.setFormatter(new TableFormatter()
     {
@@ -371,7 +371,10 @@ public class EinnahmeAusgabeControl extends AbstractControl
 
 /*******************************************************************************
  * $Log$
- * Revision 1.6  2007-07-16 12:01:48  willuhn
+ * Revision 1.7  2007-07-17 12:36:44  willuhn
+ * @C Spalte "Bemerkung" fuer RELEASE auskommentiert. Deren Bedeutung verstehen die User irgendwie nicht - hatte schon mehrere Anfragen von Usern erhalten. Daher entferne ich sie fuer das Release und nehm sie danach wieder rein ;)
+ *
+ * Revision 1.6  2007/07/16 12:01:48  willuhn
  * *** empty log message ***
  *
  * Revision 1.5  2007/06/19 17:55:09  jost
