@@ -47,6 +47,7 @@ public class DBSupportH2Impl extends AbstractDBSupportImpl
   static
   {
     DBMAPPING.put("n3baqzmjyysHSvpJZ98i6g==",new Double(1.7));
+    DBMAPPING.put("n3baqzmjyysHSvpJZ98i6g==",new Double(1.8));
   }
   
   /**
@@ -261,7 +262,10 @@ public class DBSupportH2Impl extends AbstractDBSupportImpl
 
 /*********************************************************************
  * $Log$
- * Revision 1.1  2007-06-25 11:21:19  willuhn
+ * Revision 1.2  2007-07-18 09:45:18  willuhn
+ * @B Neue Version 1.8 in DB-Checks nachgezogen
+ *
+ * Revision 1.1  2007/06/25 11:21:19  willuhn
  * @N Support fuer H2-Datenbank (http://www.h2database.com/)
  *
  **********************************************************************/

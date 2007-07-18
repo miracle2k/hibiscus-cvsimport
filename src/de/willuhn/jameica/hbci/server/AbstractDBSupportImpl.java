@@ -45,9 +45,10 @@ public abstract class AbstractDBSupportImpl implements DBSupport
     if (sqlScript == null)
       return;
 
-    Logger.info("executing sql script: " + sqlScript.getAbsolutePath());
     if (!sqlScript.canRead() || !sqlScript.exists())
-      throw new RemoteException("SQL file does not exist or is not readable");
+      return;
+
+    Logger.info("executing sql script: " + sqlScript.getAbsolutePath());
     
     FileReader reader = null;
 
@@ -91,7 +92,10 @@ public abstract class AbstractDBSupportImpl implements DBSupport
 
 /*********************************************************************
  * $Log$
- * Revision 1.1  2007-04-19 18:12:21  willuhn
+ * Revision 1.2  2007-07-18 09:45:18  willuhn
+ * @B Neue Version 1.8 in DB-Checks nachgezogen
+ *
+ * Revision 1.1  2007/04/19 18:12:21  willuhn
  * @N MySQL-Support (GUI zum Konfigurieren fehlt noch)
  *
  **********************************************************************/
