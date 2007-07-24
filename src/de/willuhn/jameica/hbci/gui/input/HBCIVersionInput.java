@@ -236,11 +236,32 @@ public class HBCIVersionInput extends SelectInput implements Input
       return null;
     }
   }
+
+  /**
+   * @see de.willuhn.jameica.gui.input.SelectInput#setPreselected(java.lang.Object)
+   */
+  public void setPreselected(Object preselected)
+  {
+    super.setPreselected(preselected == null ? null : new HBCIVersionObject(preselected.toString()));
+  }
+
+  /**
+   * @see de.willuhn.jameica.gui.input.SelectInput#setValue(java.lang.Object)
+   */
+  public void setValue(Object o)
+  {
+    super.setValue(o == null ? null : new HBCIVersionObject(o.toString()));
+  }
+  
+  
 }
 
 /*****************************************************************************
  * $Log$
- * Revision 1.10  2005-11-01 22:53:44  willuhn
+ * Revision 1.11  2007-07-24 13:51:25  willuhn
+ * @N BUGZILLA 61
+ *
+ * Revision 1.10  2005/11/01 22:53:44  willuhn
  * @N hbci4java updated to 2.5.0 rc1
  * @N added "FinTS 3.0" to HBCIVersionInput
  *
