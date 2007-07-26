@@ -223,13 +223,25 @@ public class HBCIDBServiceImpl extends DBServiceImpl implements HBCIDBService
     super.checkConnection(conn);
   }
   
-  
+  /**
+   * @see de.willuhn.datasource.db.DBServiceImpl#getTransactionIsolationLevel()
+   */
+  protected int getTransactionIsolationLevel() throws RemoteException
+  {
+    // damit sehen wir Datenbank-Updates durch andere
+    // ohne vorher ein COMMIT machen zu muessen
+    // Insbesondere bei MySQL sinnvoll.
+    return Connection.TRANSACTION_READ_COMMITTED;
+  }
 }
 
 
 /*********************************************************************
  * $Log$
- * Revision 1.19  2007-05-07 09:27:25  willuhn
+ * Revision 1.20  2007-07-26 23:55:21  willuhn
+ * @B Changed transaction isolation level
+ *
+ * Revision 1.19  2007/05/07 09:27:25  willuhn
  * @N Automatisches Neuerstellen der JDBC-Connection bei MySQL
  *
  * Revision 1.18  2007/04/24 19:31:25  willuhn
