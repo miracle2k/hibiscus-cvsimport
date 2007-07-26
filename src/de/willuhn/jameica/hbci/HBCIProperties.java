@@ -166,9 +166,17 @@ public class HBCIProperties
     }
     catch (Exception e)
     {
-      Logger.warn("HBCI4Java subsystem seems to be not initialized for this thread group, adding thread group");
-      HBCIUtils.initThread(null,null,((HBCI)Application.getPluginLoader().getPlugin(HBCI.class)).getHBCICallback());
-      return HBCIUtils.checkAccountCRC(blz, kontonummer);
+      try
+      {
+        Logger.warn("HBCI4Java subsystem seems to be not initialized for this thread group, adding thread group");
+        HBCIUtils.initThread(null,null,((HBCI)Application.getPluginLoader().getPlugin(HBCI.class)).getHBCICallback());
+        return HBCIUtils.checkAccountCRC(blz, kontonummer);
+      }
+      catch (Exception e2)
+      {
+        Logger.error("unable to verify account crc number",e2);
+        return true;
+      }
     }
   }
 
@@ -214,7 +222,10 @@ public class HBCIProperties
 
 /**********************************************************************
  * $Log$
- * Revision 1.24  2007-06-21 14:06:30  willuhn
+ * Revision 1.25  2007-07-26 18:26:05  willuhn
+ * @B HBCIUtils.checkAccountCRCByAlg wirft eine ArrayIndexOutOfBoundsException bei Kontonummern mit mehr als 10 Stellen. Wir schreiben das nur in's Log, tolerieren es aber (nocht)
+ *
+ * Revision 1.24  2007/06/21 14:06:30  willuhn
  * @B reinit von HBCI4Java mit aktuellem Callback
  *
  * Revision 1.23  2007/06/01 15:20:52  willuhn
