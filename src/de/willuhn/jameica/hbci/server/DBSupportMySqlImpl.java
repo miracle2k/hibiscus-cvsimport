@@ -149,12 +149,27 @@ public class DBSupportMySqlImpl extends AbstractDBSupportImpl
       }
     }
   }
+
+  /**
+   * @see de.willuhn.datasource.db.DBServiceImpl#getTransactionIsolationLevel()
+   */
+  public int getTransactionIsolationLevel() throws RemoteException
+  {
+    // damit sehen wir Datenbank-Updates durch andere
+    // ohne vorher ein COMMIT machen zu muessen
+    // Insbesondere bei MySQL sinnvoll.
+    return Connection.TRANSACTION_READ_COMMITTED;
+  }
+
 }
 
 
 /*********************************************************************
  * $Log$
- * Revision 1.4  2007-06-14 18:02:47  willuhn
+ * Revision 1.5  2007-07-28 15:51:26  willuhn
+ * @B Bug 447
+ *
+ * Revision 1.4  2007/06/14 18:02:47  willuhn
  * @B s/suffix/prefix/
  *
  * Revision 1.3  2007/05/07 09:27:25  willuhn

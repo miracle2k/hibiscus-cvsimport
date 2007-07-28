@@ -228,17 +228,18 @@ public class HBCIDBServiceImpl extends DBServiceImpl implements HBCIDBService
    */
   protected int getTransactionIsolationLevel() throws RemoteException
   {
-    // damit sehen wir Datenbank-Updates durch andere
-    // ohne vorher ein COMMIT machen zu muessen
-    // Insbesondere bei MySQL sinnvoll.
-    return Connection.TRANSACTION_READ_COMMITTED;
+    // BUGZILLA 447
+    return this.driver.getTransactionIsolationLevel();
   }
 }
 
 
 /*********************************************************************
  * $Log$
- * Revision 1.20  2007-07-26 23:55:21  willuhn
+ * Revision 1.21  2007-07-28 15:51:26  willuhn
+ * @B Bug 447
+ *
+ * Revision 1.20  2007/07/26 23:55:21  willuhn
  * @B Changed transaction isolation level
  *
  * Revision 1.19  2007/05/07 09:27:25  willuhn
