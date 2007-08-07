@@ -22,10 +22,8 @@ import de.willuhn.datasource.GenericIterator;
 import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.jameica.gui.formatter.Formatter;
 import de.willuhn.jameica.hbci.HBCIProperties;
-import de.willuhn.jameica.hbci.Settings;
-import de.willuhn.jameica.hbci.rmi.HBCIDBService;
 import de.willuhn.jameica.hbci.rmi.Konto;
-import de.willuhn.jameica.hbci.rmi.Umsatz;
+import de.willuhn.jameica.hbci.server.UmsatzUtil;
 
 /**
  * Implementierung eines Datensatzes fuer die Darstellung des Saldenverlaufs.
@@ -62,9 +60,7 @@ public class ChartDataSaldoVerlauf implements LineChartData
    */
   public GenericIterator getData() throws RemoteException
   {
-    HBCIDBService service = (HBCIDBService) Settings.getDBService();
-
-    DBIterator list = service.createList(Umsatz.class);
+    DBIterator list = UmsatzUtil.getUmsaetze();
     list.addFilter("konto_id = " + this.konto.getID());
 
     if (this.days > 0)
@@ -73,7 +69,6 @@ public class ChartDataSaldoVerlauf implements LineChartData
       Date start = HBCIProperties.startOfDay(new Date(System.currentTimeMillis() - d));
       list.addFilter("valuta >= ?", new Object[]{new java.sql.Date(start.getTime())});
     }
-    list.setOrder(" ORDER BY " + service.getSQLTimestamp("valuta") + " ASC");
     return list;
   }
 
@@ -147,7 +142,10 @@ public class ChartDataSaldoVerlauf implements LineChartData
 
 /*********************************************************************
  * $Log$
- * Revision 1.9  2007-04-19 18:12:21  willuhn
+ * Revision 1.10  2007-08-07 23:54:16  willuhn
+ * @B Bug 394 - Erster Versuch. An einigen Stellen (z.Bsp. konto.getAnfangsSaldo) war ich mir noch nicht sicher. Heiner?
+ *
+ * Revision 1.9  2007/04/19 18:12:21  willuhn
  * @N MySQL-Support (GUI zum Konfigurieren fehlt noch)
  *
  * Revision 1.8  2006/12/29 14:28:47  willuhn

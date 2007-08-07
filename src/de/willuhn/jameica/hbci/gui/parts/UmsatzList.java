@@ -155,11 +155,11 @@ public class UmsatzList extends TablePart implements Extendable
     addColumn("#","id-int");
     addColumn(i18n.tr("Gegenkonto"),                "empfaenger");
     addColumn(i18n.tr("Verwendungszweck"),          "zweck");
-    addColumn(i18n.tr("Valuta"),                    "valuta", new DateFormatter(HBCI.DATEFORMAT));
+    addColumn(i18n.tr("Datum"),                     "datum_pseudo", new DateFormatter(HBCI.DATEFORMAT));
     addColumn(i18n.tr("Betrag"),                    "betrag",new CurrencyFormatter(HBCIProperties.CURRENCY_DEFAULT_DE,HBCI.DECIMALFORMAT));
     addColumn(i18n.tr("Kategorie"),                 "umsatztyp");
     // BUGZILLA 66 http://www.willuhn.de/bugzilla/show_bug.cgi?id=66
-    addColumn(i18n.tr("Saldo zu diesem Zeitpunkt"), "saldo",new CurrencyFormatter(HBCIProperties.CURRENCY_DEFAULT_DE,HBCI.DECIMALFORMAT));
+    addColumn(i18n.tr("Zwischensumme"), "saldo",new CurrencyFormatter(HBCIProperties.CURRENCY_DEFAULT_DE,HBCI.DECIMALFORMAT));
 
     // BUGZILLA 84 http://www.willuhn.de/bugzilla/show_bug.cgi?id=84
     setRememberOrder(true);
@@ -689,7 +689,10 @@ public class UmsatzList extends TablePart implements Extendable
 
 /**********************************************************************
  * $Log$
- * Revision 1.52  2007-04-27 15:30:44  willuhn
+ * Revision 1.53  2007-08-07 23:54:15  willuhn
+ * @B Bug 394 - Erster Versuch. An einigen Stellen (z.Bsp. konto.getAnfangsSaldo) war ich mir noch nicht sicher. Heiner?
+ *
+ * Revision 1.52  2007/04/27 15:30:44  willuhn
  * @N Kontoauszug-Liste in TablePart verschoben
  *
  * Revision 1.51  2007/04/26 23:08:13  willuhn
