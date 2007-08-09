@@ -403,7 +403,7 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
     if ("valuta_pseudo".equals(arg0))
       return getPseudoDate(getValuta());
     if ("datum_pseudo".equals(arg0))
-      return getPseudoDate(getValuta());
+      return getPseudoDate(getDatum());
 
     // Casten der ID nach INT, damit die Sortierung
     // numerisch statt alphanumerisch erfolgt
@@ -655,7 +655,10 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
 
 /**********************************************************************
  * $Log$
- * Revision 1.48  2007-08-07 23:54:15  willuhn
+ * Revision 1.49  2007-08-09 12:23:14  willuhn
+ * @B Bug 394 Typo
+ *
+ * Revision 1.48  2007/08/07 23:54:15  willuhn
  * @B Bug 394 - Erster Versuch. An einigen Stellen (z.Bsp. konto.getAnfangsSaldo) war ich mir noch nicht sicher. Heiner?
  *
  * Revision 1.47  2007/05/11 17:26:45  willuhn
