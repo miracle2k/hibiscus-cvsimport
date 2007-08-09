@@ -139,6 +139,7 @@ public class KontoauszugList extends UmsatzList
     parent.addDisposeListener(new DisposeListener() {
       public void widgetDisposed(DisposeEvent e)
       {
+        GUI.getView().setLogoText(""); // Hinweis-Test wieder ausblenden BUGZILLA 449
         disposed = true;
       }
     });
@@ -498,7 +499,10 @@ public class KontoauszugList extends UmsatzList
 
 /*********************************************************************
  * $Log$
- * Revision 1.7  2007-08-09 11:38:59  willuhn
+ * Revision 1.8  2007-08-09 12:04:39  willuhn
+ * @N Bug 302
+ *
+ * Revision 1.7  2007/08/09 11:38:59  willuhn
  * @N Bug 449
  *
  * Revision 1.6  2007/08/09 11:01:24  willuhn

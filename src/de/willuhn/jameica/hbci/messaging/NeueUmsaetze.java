@@ -83,13 +83,26 @@ public class NeueUmsaetze implements MessageConsumer
       first = null; // Wenn nichts gefunden wurde, resetten wir uns
     return list;
   }
+  
+  /**
+   * Liefert die ID des ersten in der aktuellen Sitzung eingetroffenen
+   * Umsatzes oder <code>null</code>, wenn noch keine neuen Umsaetze hinzugekommen sind.
+   * @return die ID des ersten neuen Umsatzes (alle Folge-Umsaetze haben groessere IDs) oder <code>null</code>.
+   */
+  public static String getID()
+  {
+    return first;
+  }
 
 }
 
 
 /*********************************************************************
  * $Log$
- * Revision 1.4  2007-08-07 23:54:15  willuhn
+ * Revision 1.5  2007-08-09 12:04:39  willuhn
+ * @N Bug 302
+ *
+ * Revision 1.4  2007/08/07 23:54:15  willuhn
  * @B Bug 394 - Erster Versuch. An einigen Stellen (z.Bsp. konto.getAnfangsSaldo) war ich mir noch nicht sicher. Heiner?
  *
  * Revision 1.3  2007/04/19 18:12:21  willuhn
