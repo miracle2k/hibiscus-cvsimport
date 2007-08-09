@@ -89,7 +89,7 @@ public class UmsatzList extends TablePart implements Extendable
   private KL kl                 = null;
   private boolean filter        = true;
   
-  private static de.willuhn.jameica.system.Settings mySettings = new de.willuhn.jameica.system.Settings(UmsatzList.class);
+  protected static de.willuhn.jameica.system.Settings mySettings = new de.willuhn.jameica.system.Settings(UmsatzList.class);
 
   private I18N i18n;
   
@@ -689,7 +689,10 @@ public class UmsatzList extends TablePart implements Extendable
 
 /**********************************************************************
  * $Log$
- * Revision 1.53  2007-08-07 23:54:15  willuhn
+ * Revision 1.54  2007-08-09 11:01:38  willuhn
+ * @B Bug 462
+ *
+ * Revision 1.53  2007/08/07 23:54:15  willuhn
  * @B Bug 394 - Erster Versuch. An einigen Stellen (z.Bsp. konto.getAnfangsSaldo) war ich mir noch nicht sicher. Heiner?
  *
  * Revision 1.52  2007/04/27 15:30:44  willuhn
