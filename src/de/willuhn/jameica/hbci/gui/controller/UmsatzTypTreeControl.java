@@ -28,12 +28,10 @@ import de.willuhn.jameica.gui.parts.TreePart;
 import de.willuhn.jameica.gui.util.SWTUtil;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.HBCIProperties;
-import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.gui.parts.UmsatzTypTree;
 import de.willuhn.jameica.hbci.io.UmsatzTree;
-import de.willuhn.jameica.hbci.rmi.HBCIDBService;
 import de.willuhn.jameica.hbci.rmi.Konto;
-import de.willuhn.jameica.hbci.rmi.Umsatz;
+import de.willuhn.jameica.hbci.server.UmsatzUtil;
 import de.willuhn.jameica.messaging.StatusBarMessage;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.logging.Logger;
@@ -183,20 +181,11 @@ public class UmsatzTypTreeControl extends AbstractControl
 
     ////////////////////////////////////////////////////////////////
     // wir laden erstmal alle relevanten Umsaetze.
-    DBIterator umsaetze = null;
+    DBIterator umsaetze = UmsatzUtil.getUmsaetze();
     if (konto != null)
-    {
-      umsaetze = konto.getUmsaetze(von,bis);
-    }
-    else
-    {
-      HBCIDBService service = (HBCIDBService) Settings.getDBService();
-
-      umsaetze = service.createList(Umsatz.class);
-      if (von != null) umsaetze.addFilter("valuta >= ?", new Object[]{new java.sql.Date(HBCIProperties.startOfDay(von).getTime())});
-      if (bis != null) umsaetze.addFilter("valuta <= ?", new Object[]{new java.sql.Date(HBCIProperties.endOfDay(bis).getTime())});
-      umsaetze.setOrder("ORDER BY " + service.getSQLTimestamp("valuta") + " asc, id desc");
-    }
+      umsaetze.addFilter("konto_id = " + konto.getID());
+    if (von != null) umsaetze.addFilter("datum >= ?", new Object[]{new java.sql.Date(HBCIProperties.startOfDay(von).getTime())});
+    if (bis != null) umsaetze.addFilter("datum <= ?", new Object[]{new java.sql.Date(HBCIProperties.endOfDay(bis).getTime())});
     ////////////////////////////////////////////////////////////////
     
     this.tree = new UmsatzTypTree(umsaetze);
@@ -231,7 +220,10 @@ public class UmsatzTypTreeControl extends AbstractControl
 
 /*******************************************************************************
  * $Log$
- * Revision 1.4  2007-05-02 11:18:04  willuhn
+ * Revision 1.5  2007-08-12 22:02:10  willuhn
+ * @C BUGZILLA 394 - restliche Umstellungen von Valuta auf Buchungsdatum
+ *
+ * Revision 1.4  2007/05/02 11:18:04  willuhn
  * @C PDF-Export von Umsatz-Trees in IO-API gepresst ;)
  *
  * Revision 1.3  2007/04/29 10:19:35  jost

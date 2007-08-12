@@ -335,28 +335,23 @@ public class KontoImpl extends AbstractDBObject implements Konto
    */
   public double getAnfangsSaldo(Date datum) throws RemoteException
   {
-    HBCIDBService service = (HBCIDBService) getService();
-
-    DBIterator list = service.createList(Umsatz.class);
+    DBIterator list = UmsatzUtil.getUmsaetze();
     list.addFilter("konto_id = " + getID());
+
     Date start = HBCIProperties.startOfDay(datum);
-    list.addFilter("valuta >= ?", new Object[] { new java.sql.Date(start
-        .getTime()) });
-    list.setOrder("ORDER BY " + service.getSQLTimestamp("valuta")
-        + " asc, id asc");
+    list.addFilter("datum >= ?", new Object[] {new java.sql.Date(start.getTime())});
+
     if (list.size() > 0)
     {
       Umsatz u = (Umsatz) list.next();
       return u.getSaldo() + u.getBetrag() * -1;
     }
-    list = service.createList(Umsatz.class);
+
     // Im angegebenen Zeitraum waren keine Umsätze zu finden. Deshalb suchen wir
     // frühere Umsätze.
+    list = UmsatzUtil.getUmsaetzeBackwards();
     list.addFilter("konto_id = " + getID());
-    list.addFilter("valuta < ?", new Object[] { new java.sql.Date(start
-        .getTime()) });
-    list.setOrder("ORDER BY " + service.getSQLTimestamp("valuta")
-        + " desc, id desc");
+    list.addFilter("datum < ?", new Object[] { new java.sql.Date(start.getTime())});
     if (list.size() > 0)
     {
       Umsatz u = (Umsatz) list.next();
@@ -370,15 +365,10 @@ public class KontoImpl extends AbstractDBObject implements Konto
    */
   public double getEndSaldo(Date datum) throws RemoteException
   {
-    HBCIDBService service = (HBCIDBService) getService();
-
-    DBIterator list = service.createList(Umsatz.class);
+    DBIterator list = UmsatzUtil.getUmsaetzeBackwards();
     list.addFilter("konto_id = " + getID());
     Date end = HBCIProperties.endOfDay(datum);
-    list.addFilter("valuta <= ?", new Object[] { new java.sql.Date(end
-        .getTime()) });
-    list.setOrder("ORDER BY " + service.getSQLTimestamp("valuta")
-        + " desc, id desc");
+    list.addFilter("datum <= ?", new Object[] { new java.sql.Date(end.getTime())});
     if (list.size() > 0)
     {
       Umsatz u = (Umsatz) list.next();
@@ -688,8 +678,7 @@ public class KontoImpl extends AbstractDBObject implements Konto
 
     ArrayList params = new ArrayList();
 
-    String sql = "select SUM(betrag) from umsatz where konto_id = "
-        + this.getID() + " and betrag " + (ausgaben ? "<" : ">") + " 0";
+    String sql = "select SUM(betrag) from umsatz where konto_id = " + this.getID() + " and betrag " + (ausgaben ? "<" : ">") + " 0";
     if (from != null)
     {
       params.add(new java.sql.Date(HBCIProperties.startOfDay(from).getTime()));
@@ -756,7 +745,10 @@ public class KontoImpl extends AbstractDBObject implements Konto
 
 /*******************************************************************************
  * $Log$
- * Revision 1.87  2007-08-07 23:54:15  willuhn
+ * Revision 1.88  2007-08-12 22:02:10  willuhn
+ * @C BUGZILLA 394 - restliche Umstellungen von Valuta auf Buchungsdatum
+ *
+ * Revision 1.87  2007/08/07 23:54:15  willuhn
  * @B Bug 394 - Erster Versuch. An einigen Stellen (z.Bsp. konto.getAnfangsSaldo) war ich mir noch nicht sicher. Heiner?
  *
  * Revision 1.86  2007/07/16 12:51:15  willuhn
