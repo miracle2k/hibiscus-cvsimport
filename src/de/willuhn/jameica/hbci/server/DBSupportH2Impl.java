@@ -56,8 +56,8 @@ public class DBSupportH2Impl extends AbstractDBSupportImpl
   public DBSupportH2Impl()
   {
     // H2-Datenbank verwendet uppercase Identifier
-    Logger.info("switching datasource to uppercase");
-    System.setProperty("de.willuhn.datasource.db.uppercase","true");    
+    Logger.info("switching dbservice to uppercase");
+    System.setProperty(HBCIDBServiceImpl.class.getName() + ".uppercase","true");    
   }
   
   /**
@@ -262,7 +262,10 @@ public class DBSupportH2Impl extends AbstractDBSupportImpl
 
 /*********************************************************************
  * $Log$
- * Revision 1.2  2007-07-18 09:45:18  willuhn
+ * Revision 1.3  2007-08-23 13:07:38  willuhn
+ * @C Uppercase-Verhalten nicht global sondern pro DBService konfigurierbar. Verhindert Fehler, wenn mehrere Plugins installiert sind
+ *
+ * Revision 1.2  2007/07/18 09:45:18  willuhn
  * @B Neue Version 1.8 in DB-Checks nachgezogen
  *
  * Revision 1.1  2007/06/25 11:21:19  willuhn
