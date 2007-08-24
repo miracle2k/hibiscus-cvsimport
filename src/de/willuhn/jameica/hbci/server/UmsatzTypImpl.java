@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 import de.willuhn.datasource.GenericIterator;
 import de.willuhn.datasource.db.AbstractDBObjectNode;
@@ -68,8 +69,20 @@ public class UmsatzTypImpl extends AbstractDBObjectNode implements UmsatzTyp
     {
       String name = getName();
       if (name == null || name.length() == 0)
-        throw new ApplicationException(i18n
-            .tr("Bitte geben Sie eine Bezeichnung ein."));
+        throw new ApplicationException(i18n.tr("Bitte geben Sie eine Bezeichnung ein."));
+      
+      String pattern = getPattern();
+      if (isRegex() && pattern != null && pattern.length() > 0)
+      {
+        try
+        {
+          Pattern.compile(pattern);
+        }
+        catch (PatternSyntaxException pse)
+        {
+          throw new ApplicationException(i18n.tr("Regulärer Ausdruck ungültig: {0}",pse.getDescription()));
+        }
+      }
 
       // Wir pruefen, ob es bereits eine Kategorie mit diesem Namen gibt
       // willuhn: In der Datenbank ist das Feld zwar bereits als UNIQUE
@@ -442,7 +455,10 @@ public class UmsatzTypImpl extends AbstractDBObjectNode implements UmsatzTyp
 
 /*******************************************************************************
  * $Log$
- * Revision 1.37  2007-08-07 23:54:15  willuhn
+ * Revision 1.38  2007-08-24 22:22:00  willuhn
+ * @N Regulaere Ausdruecke vorm Speichern testen
+ *
+ * Revision 1.37  2007/08/07 23:54:15  willuhn
  * @B Bug 394 - Erster Versuch. An einigen Stellen (z.Bsp. konto.getAnfangsSaldo) war ich mir noch nicht sicher. Heiner?
  *
  * Revision 1.36  2007/04/23 18:07:15  willuhn
