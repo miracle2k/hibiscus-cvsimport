@@ -55,7 +55,6 @@ public class UmsatzTypTree extends TreePart
   public UmsatzTypTree(GenericIterator list) throws RemoteException
   {
     super(init(list), new UmsatzDetail());
-
     this.setRememberColWidths(true);
     this.setContextMenu(new UmsatzList());
     this.setFormatter(new TreeFormatter() {
@@ -136,7 +135,10 @@ public class UmsatzTypTree extends TreePart
 
 /*******************************************************************************
  * $Log$
- * Revision 1.4  2007-08-12 22:02:10  willuhn
+ * Revision 1.5  2007-08-28 09:47:09  willuhn
+ * @N Bug 395
+ *
+ * Revision 1.4  2007/08/12 22:02:10  willuhn
  * @C BUGZILLA 394 - restliche Umstellungen von Valuta auf Buchungsdatum
  *
  * Revision 1.3  2007/04/20 09:50:11  willuhn

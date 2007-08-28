@@ -64,9 +64,16 @@ public class UmsatzTypTree extends AbstractView
     TreePart tree = control.getTree();
     tree.paint(comp);
 
-    ButtonArea buttons = new ButtonArea(getParent(), 3);
+    ButtonArea buttons = new ButtonArea(getParent(), 4);
     buttons.addButton(i18n.tr("Zurück"), new Back());
 
+    buttons.addButton(i18n.tr("Alle aufklappen/zuklappen"), new Action() {
+    
+      public void handleAction(Object context) throws ApplicationException
+      {
+        control.handleExpand();
+      }
+    });
     buttons.addButton(i18n.tr("Exportieren..."), new UmsatzTypTreeExport(),control.getUmsatzTree());
     buttons.addButton(i18n.tr("Aktualisieren"), new Action()
     {
@@ -80,7 +87,10 @@ public class UmsatzTypTree extends AbstractView
 }
 /*******************************************************************************
  * $Log$
- * Revision 1.3  2007-05-02 11:18:04  willuhn
+ * Revision 1.4  2007-08-28 09:47:09  willuhn
+ * @N Bug 395
+ *
+ * Revision 1.3  2007/05/02 11:18:04  willuhn
  * @C PDF-Export von Umsatz-Trees in IO-API gepresst ;)
  *
  * Revision 1.2  2007/04/29 10:20:50  jost
