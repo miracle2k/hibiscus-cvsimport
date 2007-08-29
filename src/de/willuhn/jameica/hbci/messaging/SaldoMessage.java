@@ -13,40 +13,31 @@
 
 package de.willuhn.jameica.hbci.messaging;
 
-import de.willuhn.jameica.hbci.rmi.Konto;
-import de.willuhn.jameica.messaging.Message;
+import de.willuhn.datasource.GenericObject;
 
 /**
  * Wird versendet, wenn sich von einem Konto der Saldo geaendert hat.
  */
-public class SaldoMessage implements Message
+public class SaldoMessage extends ObjectMessage
 {
-  private Konto konto = null;
 
   /**
    * ct.
-   * @param konto das betroffene Konto.
+   * @param object
    */
-  public SaldoMessage(Konto konto)
+  public SaldoMessage(GenericObject object)
   {
-    this.konto = konto;
+    super(object);
   }
-  
-  /**
-   * Liefert das betroffene Konto.
-   * @return das Konto.
-   */
-  public Konto getKonto()
-  {
-    return this.konto;
-  }
-
 }
 
 
 /*********************************************************************
  * $Log$
- * Revision 1.1  2007-06-15 11:20:32  willuhn
+ * Revision 1.2  2007-08-29 10:04:42  willuhn
+ * @N Bug 476
+ *
+ * Revision 1.1  2007/06/15 11:20:32  willuhn
  * @N Saldo in Kontodetails via Messaging sofort aktualisieren
  * @N Mehr Details in den Namen der Synchronize-Jobs
  * @N Layout der Umsatzdetail-Anzeige ueberarbeitet
