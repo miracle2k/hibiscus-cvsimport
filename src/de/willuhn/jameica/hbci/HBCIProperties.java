@@ -95,7 +95,7 @@ public class HBCIProperties
 	 * Maximale Laenge fuer PINs.
 	 */
 	public final static int HBCI_PIN_MAXLENGTH =
-		settings.getInt("hbci.pin.maxlength",6);
+		settings.getInt("hbci.pin.maxlength",10);
 	
   /**
    * Ein ggf vorhandener Spezialparser fuer Umsaetze 
@@ -222,7 +222,10 @@ public class HBCIProperties
 
 /**********************************************************************
  * $Log$
- * Revision 1.25  2007-07-26 18:26:05  willuhn
+ * Revision 1.26  2007-09-11 15:10:35  willuhn
+ * @N Default-Wert fuer maximale PIN-Laenge auf 10 erhoeht
+ *
+ * Revision 1.25  2007/07/26 18:26:05  willuhn
  * @B HBCIUtils.checkAccountCRCByAlg wirft eine ArrayIndexOutOfBoundsException bei Kontonummern mit mehr als 10 Stellen. Wir schreiben das nur in's Log, tolerieren es aber (nocht)
  *
  * Revision 1.24  2007/06/21 14:06:30  willuhn
