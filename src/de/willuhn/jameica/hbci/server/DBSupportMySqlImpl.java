@@ -89,13 +89,15 @@ public class DBSupportMySqlImpl extends AbstractDBSupportImpl
 
     String prefix = HBCIDBService.SETTINGS.getString("database.driver.mysql.scriptprefix","mysql-");
     File f = new File(sqlScript.getParent(),prefix + sqlScript.getName());
-    
-    I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
-    
-    String text = i18n.tr("Bei der Verwendung von MySQL werden Datenbank-Updates " +
-        "nicht automatisch ausgeführt. Bitte führen Sie das folgende SQL-Script " +
-        "manuell aus:\n{0}",f.getAbsolutePath());
-    Application.addWelcomeMessage(text);
+    if (f.exists())
+    {
+      I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
+      
+      String text = i18n.tr("Bei der Verwendung von MySQL werden Datenbank-Updates " +
+          "nicht automatisch ausgeführt. Bitte führen Sie das folgende SQL-Script " +
+          "manuell aus:\n{0}",f.getAbsolutePath());
+      Application.addWelcomeMessage(text);
+    }
   }
   
   /**
@@ -166,7 +168,10 @@ public class DBSupportMySqlImpl extends AbstractDBSupportImpl
 
 /*********************************************************************
  * $Log$
- * Revision 1.6  2007-08-20 15:30:28  willuhn
+ * Revision 1.7  2007-09-11 09:26:08  willuhn
+ * @N SQL-Update-Hinweis nur anzeigen, wenn Datei existiert
+ *
+ * Revision 1.6  2007/08/20 15:30:28  willuhn
  * @N PostGreSqlSupport von Ralf Burger
  *
  * Revision 1.5  2007/07/28 15:51:26  willuhn
