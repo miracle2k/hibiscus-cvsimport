@@ -47,7 +47,7 @@ public class DBSupportH2Impl extends AbstractDBSupportImpl
   static
   {
     DBMAPPING.put("n3baqzmjyysHSvpJZ98i6g==",new Double(1.7));
-    DBMAPPING.put("n3baqzmjyysHSvpJZ98i6g==",new Double(1.8));
+    DBMAPPING.put("VhQ1ZlEHcFY+9Nwg+wWtYw==",new Double(1.8));
   }
   
   /**
@@ -262,7 +262,10 @@ public class DBSupportH2Impl extends AbstractDBSupportImpl
 
 /*********************************************************************
  * $Log$
- * Revision 1.3  2007-08-23 13:07:38  willuhn
+ * Revision 1.4  2007-10-01 09:37:42  willuhn
+ * @B H2: Felder vom Typ "TEXT" werden von H2 als InputStreamReader geliefert. Felder umsatz.kommentar und protokoll.nachricht auf "VARCHAR(1000)" geaendert und fuer Migration in den Gettern beides beruecksichtigt
+ *
+ * Revision 1.3  2007/08/23 13:07:38  willuhn
  * @C Uppercase-Verhalten nicht global sondern pro DBService konfigurierbar. Verhindert Fehler, wenn mehrere Plugins installiert sind
  *
  * Revision 1.2  2007/07/18 09:45:18  willuhn

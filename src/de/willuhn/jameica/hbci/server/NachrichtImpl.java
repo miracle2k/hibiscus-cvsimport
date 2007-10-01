@@ -13,6 +13,7 @@
 
 package de.willuhn.jameica.hbci.server;
 
+import java.io.Reader;
 import java.rmi.RemoteException;
 import java.util.Date;
 
@@ -116,7 +117,34 @@ public class NachrichtImpl extends AbstractDBObject implements Nachricht
    */
   public String getNachricht() throws RemoteException
   {
-    return (String) getAttribute("nachricht");
+    Object o = getAttribute("nachricht");
+    if (o == null)
+      return null;
+    if (o instanceof String)
+      return (String) o;
+
+    try
+    {
+      Reader reader = (Reader) o;
+      
+      StringBuffer sb = new StringBuffer();
+      int read = 0;
+      char[] buf = new char[8192];
+
+      do
+      {
+        read = reader.read(buf);
+        if (read > 0)
+          sb.append(buf,0,read);
+      }
+      while (read != -1);
+      reader.close();
+      return sb.toString();
+    }
+    catch (Exception e)
+    {
+      throw new RemoteException("unable to read message",e);
+    }
   }
 
   /**
@@ -168,7 +196,10 @@ public class NachrichtImpl extends AbstractDBObject implements Nachricht
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2006-12-01 00:02:34  willuhn
+ * Revision 1.4  2007-10-01 09:37:42  willuhn
+ * @B H2: Felder vom Typ "TEXT" werden von H2 als InputStreamReader geliefert. Felder umsatz.kommentar und protokoll.nachricht auf "VARCHAR(1000)" geaendert und fuer Migration in den Gettern beides beruecksichtigt
+ *
+ * Revision 1.3  2006/12/01 00:02:34  willuhn
  * @C made unserializable members transient
  *
  * Revision 1.2  2005/05/30 22:55:27  web0
