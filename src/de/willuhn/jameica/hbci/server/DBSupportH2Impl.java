@@ -163,8 +163,10 @@ public class DBSupportH2Impl extends AbstractDBSupportImpl
         double version    = Application.getPluginLoader().getManifest(HBCI.class).getVersion();
         double oldVersion = version - 0.1d;
 
-        File f = new File(res.getPath() + File.separator + "sql",
+        File _f = new File(res.getPath() + File.separator + "sql",
             "update_" + df.format(oldVersion) + "-" + df.format(version) + ".sql");
+
+        File f = new File(_f.getParent(),HBCIDBService.SETTINGS.getString("database.driver.h2.scriptprefix","h2-") + _f.getName());
 
         if (f.exists())
         {
@@ -172,7 +174,7 @@ public class DBSupportH2Impl extends AbstractDBSupportImpl
           if (length != size)
           {
             s.setAttribute("sql-update-size",(double)f.length());
-            execute(conn, f);
+            execute(conn, _f); // wir uebergeben den Original-Namen weil execute den Prefix selbst davorschreibt
           }
           else
             Logger.info("database up to date");
@@ -262,7 +264,10 @@ public class DBSupportH2Impl extends AbstractDBSupportImpl
 
 /*********************************************************************
  * $Log$
- * Revision 1.4  2007-10-01 09:37:42  willuhn
+ * Revision 1.5  2007-10-02 16:08:55  willuhn
+ * @C Bugfix mit dem falschen Spaltentyp nochmal ueberarbeitet
+ *
+ * Revision 1.4  2007/10/01 09:37:42  willuhn
  * @B H2: Felder vom Typ "TEXT" werden von H2 als InputStreamReader geliefert. Felder umsatz.kommentar und protokoll.nachricht auf "VARCHAR(1000)" geaendert und fuer Migration in den Gettern beides beruecksichtigt
  *
  * Revision 1.3  2007/08/23 13:07:38  willuhn
