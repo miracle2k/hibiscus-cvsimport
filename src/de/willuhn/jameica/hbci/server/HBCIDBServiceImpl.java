@@ -51,7 +51,7 @@ public class HBCIDBServiceImpl extends DBServiceImpl implements HBCIDBService
    * @param driverClass der zu verwendende Treiber.
    * @throws RemoteException
    */
-  protected HBCIDBServiceImpl(String driverClass) throws RemoteException
+  public HBCIDBServiceImpl(String driverClass) throws RemoteException
   {
     super();
     this.setClassloader(Application.getClassLoader());
@@ -236,7 +236,10 @@ public class HBCIDBServiceImpl extends DBServiceImpl implements HBCIDBService
 
 /*********************************************************************
  * $Log$
- * Revision 1.22  2007-08-23 12:43:07  willuhn
+ * Revision 1.23  2007-10-04 23:39:49  willuhn
+ * @N Datenmigration McKoi->H2 (in progress)
+ *
+ * Revision 1.22  2007/08/23 12:43:07  willuhn
  * @C BUGZILLA 275 - Umstellung der Default-Datenbank auf H2
  *
  * Revision 1.21  2007/07/28 15:51:26  willuhn
