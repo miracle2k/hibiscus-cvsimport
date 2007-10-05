@@ -46,7 +46,8 @@ public class McKoiToH2MigrationTask extends DatabaseMigrationTask
     {
       setSource(Settings.getDBService());
       
-      HBCIDBService target = new HBCIDBServiceImpl(DBSupportH2Impl.class.getName());
+
+      H2DBServiceImpl target = new H2DBServiceImpl();
       target.start();
       target.install();
       
@@ -80,12 +81,39 @@ public class McKoiToH2MigrationTask extends DatabaseMigrationTask
     // Hibiscus beenden
     new FileClose().handleAction(null);
   }
+
+  /**
+   * Wrapper des DB-Service, damit die Identifier gross geschrieben werden.
+   */
+  public static class H2DBServiceImpl extends HBCIDBServiceImpl
+  {
+    /**
+     * ct.
+     * @throws RemoteException
+     */
+    public H2DBServiceImpl() throws RemoteException
+    {
+      super(DBSupportH2Impl.class.getName());
+      
+      // Der Konstruktor von DBSupportH2Impl hat bereits Gross-Schreibung
+      // fuer HBCIDBService aktiviert - nochmal fuer die Migration
+      // deaktivieren
+      System.setProperty(HBCIDBServiceImpl.class.getName() + ".uppercase","false");    
+
+      // Fuer uns selbst aktivieren wir es jedoch
+      System.setProperty(H2DBServiceImpl.class.getName() + ".uppercase","true");    
+    }
+  }
 }
+
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2007-10-04 23:39:49  willuhn
+ * Revision 1.2  2007-10-05 15:27:14  willuhn
+ * @N Migration auf H2 laeuft! ;)
+ *
+ * Revision 1.1  2007/10/04 23:39:49  willuhn
  * @N Datenmigration McKoi->H2 (in progress)
  *
  **********************************************************************/
