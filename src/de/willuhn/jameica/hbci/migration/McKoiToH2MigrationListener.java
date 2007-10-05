@@ -37,7 +37,7 @@ public class McKoiToH2MigrationListener implements MessageConsumer
    */
   public boolean autoRegister()
   {
-    return true;
+    return false; // TODO temporaer noch deaktiviert, bis hinreichend getestet
   }
 
   /**
@@ -53,6 +53,9 @@ public class McKoiToH2MigrationListener implements MessageConsumer
    */
   public void handleMessage(Message message) throws Exception
   {
+    if (true)
+      return; // TODO temporaer noch deaktiviert, bis hinreichend getestet
+    
     if (message == null || !(message instanceof SystemMessage))
       return;
     
@@ -83,7 +86,10 @@ public class McKoiToH2MigrationListener implements MessageConsumer
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2007-10-05 15:27:14  willuhn
+ * Revision 1.3  2007-10-05 16:16:58  willuhn
+ * @C temporaer noch deaktiviert, bis hinreichend getestet
+ *
+ * Revision 1.2  2007/10/05 15:27:14  willuhn
  * @N Migration auf H2 laeuft! ;)
  *
  * Revision 1.1  2007/10/04 23:39:49  willuhn

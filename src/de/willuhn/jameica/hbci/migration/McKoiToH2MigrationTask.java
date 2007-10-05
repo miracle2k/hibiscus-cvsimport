@@ -101,7 +101,7 @@ public class McKoiToH2MigrationTask extends DatabaseMigrationTask
       String zweck2 = u.getZweck2();
       if (zweck2 == null || zweck2.length() <= 35)
         return; // Muss nicht korrigiert werden
-      Logger.info(i18n.tr("  Korrigiere Verwendungszweck 2 von Umsatz [ID: {0}]",u.getID()));
+      monitor.log(i18n.tr("  Korrigiere Verwendungszweck 2 von Umsatz [ID: {0}]",u.getID()));
       
       u.setZweck2(zweck2.substring(0,35)); // verkuerzen auf die ersten 35 Zeichen
       String rest = zweck2.substring(36);  // Der ueberhaengende Rest
@@ -148,7 +148,10 @@ public class McKoiToH2MigrationTask extends DatabaseMigrationTask
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2007-10-05 15:55:26  willuhn
+ * Revision 1.4  2007-10-05 16:16:58  willuhn
+ * @C temporaer noch deaktiviert, bis hinreichend getestet
+ *
+ * Revision 1.3  2007/10/05 15:55:26  willuhn
  * @B Korrigieren ueberlanger Verwendungszwecke
  *
  * Revision 1.2  2007/10/05 15:27:14  willuhn
