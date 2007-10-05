@@ -20,6 +20,7 @@ import de.willuhn.jameica.messaging.Message;
 import de.willuhn.jameica.messaging.MessageConsumer;
 import de.willuhn.jameica.messaging.SystemMessage;
 import de.willuhn.jameica.system.Application;
+import de.willuhn.jameica.system.Settings;
 import de.willuhn.logging.Logger;
 import de.willuhn.util.I18N;
 
@@ -37,7 +38,8 @@ public class McKoiToH2MigrationListener implements MessageConsumer
    */
   public boolean autoRegister()
   {
-    return false; // TODO temporaer noch deaktiviert, bis hinreichend getestet
+    Settings s = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getSettings();
+    return s.getBoolean("migration.h2",false);
   }
 
   /**
@@ -53,9 +55,6 @@ public class McKoiToH2MigrationListener implements MessageConsumer
    */
   public void handleMessage(Message message) throws Exception
   {
-    if (true)
-    return; // TODO temporaer noch deaktiviert, bis hinreichend getestet
-
     if (message == null || !(message instanceof SystemMessage))
       return;
     
@@ -71,6 +70,10 @@ public class McKoiToH2MigrationListener implements MessageConsumer
     if (driver == null || !driver.equals(DBSupportMcKoiImpl.class.getName()))
       return;
     
+    Settings s = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getSettings();
+    if (!s.getBoolean("migration.h2",false))
+      return;
+
     I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
     
     String text = i18n.tr("Das Datenbank-Format von Hibiscus wurde umgestellt.\nMöchten Sie jetzt die Übernahme der Daten in das neue Format durchführen?");
@@ -86,7 +89,10 @@ public class McKoiToH2MigrationListener implements MessageConsumer
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2007-10-05 17:07:05  willuhn
+ * Revision 1.5  2007-10-05 17:14:18  willuhn
+ * @N Start der Migration konfigurierbar gemacht
+ *
+ * Revision 1.4  2007/10/05 17:07:05  willuhn
  * @N Jetzt aber - Migration fertig ;) ..temporaer aber noch in McKoiToH2MigrationListener deaktiviert
  *
  * Revision 1.3  2007/10/05 16:16:58  willuhn
