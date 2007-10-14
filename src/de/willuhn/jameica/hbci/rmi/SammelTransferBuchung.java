@@ -76,13 +76,30 @@ public interface SammelTransferBuchung extends Transfer, DBObject
 	 * @throws RemoteException
 	 */
 	public void setZweck2(String zweck2) throws RemoteException;
+  
+  /**
+   * Liefert den Textschluessel der Buchung.
+   * @return Textschluessel.
+   * @throws RemoteException
+   */
+  public String getTextSchluessel() throws RemoteException;
+  
+  /**
+   * Speichert den Textschluessel der Buchung.
+   * @param schluessel Textschluessel.
+   * @throws RemoteException
+   */
+  public void setTextSchluessel(String schluessel) throws RemoteException;
 
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2007-04-23 18:07:14  willuhn
+ * Revision 1.4  2007-10-14 23:26:59  willuhn
+ * @N Textschluessel in Sammelauftraegen - wird noch nicht persistiert
+ *
+ * Revision 1.3  2007/04/23 18:07:14  willuhn
  * @C Redesign: "Adresse" nach "HibiscusAddress" umbenannt
  * @C Redesign: "Transfer" nach "HibiscusTransfer" umbenannt
  * @C Redesign: Neues Interface "Transfer", welches von Ueberweisungen, Lastschriften UND Umsaetzen implementiert wird
