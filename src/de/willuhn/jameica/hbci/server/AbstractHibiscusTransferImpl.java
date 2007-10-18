@@ -110,7 +110,7 @@ public abstract class AbstractHibiscusTransferImpl extends AbstractDBObject impl
   protected Class getForeignObject(String field) throws RemoteException {
 		if ("konto_id".equals(field))
 			return Konto.class;
-    return null;
+    return super.getForeignObject(field);
   }
 
   /**
@@ -268,7 +268,11 @@ public abstract class AbstractHibiscusTransferImpl extends AbstractDBObject impl
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2007-06-04 16:38:33  willuhn
+ * Revision 1.3  2007-10-18 10:24:49  willuhn
+ * @B Foreign-Objects in AbstractDBObject auch dann korrekt behandeln, wenn sie noch nicht gespeichert wurden
+ * @C Beim Abrufen der Dauerauftraege nicht mehr nach Konten suchen sondern hart dem Konto zuweisen, ueber das sie abgerufen wurden
+ *
+ * Revision 1.2  2007/06/04 16:38:33  willuhn
  * @N Pruefung der BLZ-Laenge
  *
  * Revision 1.1  2007/04/23 18:07:15  willuhn
