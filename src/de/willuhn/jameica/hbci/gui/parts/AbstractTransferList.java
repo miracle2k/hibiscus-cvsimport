@@ -36,6 +36,8 @@ import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.HBCIProperties;
 import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.messaging.ImportMessage;
+import de.willuhn.jameica.hbci.messaging.ObjectChangedMessage;
+import de.willuhn.jameica.hbci.messaging.ObjectMessage;
 import de.willuhn.jameica.hbci.rmi.HBCIDBService;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Terminable;
@@ -200,7 +202,10 @@ public abstract class AbstractTransferList extends AbstractFromToList
      */
     public Class[] getExpectedMessageTypes()
     {
-      return new Class[]{ImportMessage.class};
+      return new Class[]{
+        ImportMessage.class,
+        ObjectChangedMessage.class
+      };
     }
 
     /**
@@ -208,10 +213,10 @@ public abstract class AbstractTransferList extends AbstractFromToList
      */
     public void handleMessage(Message message) throws Exception
     {
-      if (message == null || !(message instanceof ImportMessage))
+      if (message == null)
         return;
       
-      final GenericObject o = ((ImportMessage)message).getObject();
+      final GenericObject o = ((ObjectMessage)message).getObject();
       
       if (o == null)
         return;
@@ -241,7 +246,10 @@ public abstract class AbstractTransferList extends AbstractFromToList
 
 /**********************************************************************
  * $Log$
- * Revision 1.21  2007-06-04 23:23:47  willuhn
+ * Revision 1.22  2007-10-25 15:47:21  willuhn
+ * @N Einzelauftraege zu Sammel-Auftraegen zusammenfassen (BUGZILLA 402)
+ *
+ * Revision 1.21  2007/06/04 23:23:47  willuhn
  * @B error while saving transfer list date
  *
  * Revision 1.20  2007/04/26 23:08:13  willuhn

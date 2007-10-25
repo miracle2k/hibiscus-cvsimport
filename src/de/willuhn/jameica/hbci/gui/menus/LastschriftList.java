@@ -15,7 +15,6 @@ package de.willuhn.jameica.hbci.gui.menus;
 import java.rmi.RemoteException;
 
 import de.willuhn.jameica.gui.Action;
-import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.parts.CheckedContextMenuItem;
 import de.willuhn.jameica.gui.parts.ContextMenu;
 import de.willuhn.jameica.gui.parts.ContextMenuItem;
@@ -25,10 +24,10 @@ import de.willuhn.jameica.hbci.gui.action.LastschriftDuplicate;
 import de.willuhn.jameica.hbci.gui.action.LastschriftExecute;
 import de.willuhn.jameica.hbci.gui.action.LastschriftExport;
 import de.willuhn.jameica.hbci.gui.action.LastschriftImport;
+import de.willuhn.jameica.hbci.gui.action.LastschriftMerge;
 import de.willuhn.jameica.hbci.gui.action.LastschriftNew;
 import de.willuhn.jameica.hbci.gui.action.TerminableMarkExecuted;
 import de.willuhn.jameica.hbci.rmi.Lastschrift;
-import de.willuhn.jameica.hbci.rmi.Terminable;
 import de.willuhn.jameica.messaging.StatusBarMessage;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.logging.Logger;
@@ -51,41 +50,11 @@ public class LastschriftList extends ContextMenu
 		i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
 		addItem(new SingleItem(i18n.tr("Öffnen"), new LastschriftNew()));
-		addItem(new NotActiveMenuItem(i18n.tr("Jetzt ausführen..."), new LastschriftExecute()));
+		addItem(new NotActiveSingleMenuItem(i18n.tr("Jetzt ausführen..."), new LastschriftExecute()));
 		addItem(new SingleItem(i18n.tr("Duplizieren"), new LastschriftDuplicate()));
 		addItem(new CheckedContextMenuItem(i18n.tr("Löschen..."), new DBObjectDelete()));
-    addItem(new SingleItem(i18n.tr("Als \"ausgeführt\" markieren..."), new Action() {
-      public void handleAction(Object context) throws ApplicationException
-      {
-        new TerminableMarkExecuted().handleAction(context);
-        GUI.startView(GUI.getCurrentView().getClass(),GUI.getCurrentView().getCurrentObject());
-      }
-    }){
-      public boolean isEnabledFor(Object o)
-      {
-        if (o == null || (!(o instanceof Terminable) && !(o instanceof Terminable[])))
-          return false;
-        try
-        {
-          if (o instanceof Terminable)
-            return !((Terminable)o).ausgefuehrt();
-
-          Terminable[] t = (Terminable[]) o;
-          for (int i=0;i<t.length;++i)
-          {
-            if (t[i].ausgefuehrt())
-              return false;
-          }
-          return true;
-        }
-        catch (RemoteException e)
-        {
-          Logger.error("unable to check if terminable is allready executed",e);
-          Application.getMessagingFactory().sendMessage(new StatusBarMessage(i18n.tr("Fehler beim Prüfen, ob Auftrag bereits ausgeführt wurde"),StatusBarMessage.TYPE_ERROR));
-          return false;
-        }
-      }
-    });
+    addItem(new NotActiveMultiMenuItem(i18n.tr("Als \"ausgeführt\" markieren..."), new TerminableMarkExecuted()));
+    addItem(new NotActiveMultiMenuItem(i18n.tr("Zu Sammel-Lastschrift zusammenfassen..."), new LastschriftMerge()));
     addItem(ContextMenuItem.SEPARATOR);
     addItem(new ContextMenuItem(i18n.tr("Neue Lastschrift..."), new UNeu()));
     addItem(ContextMenuItem.SEPARATOR);
@@ -137,7 +106,7 @@ public class LastschriftList extends ContextMenu
 	 * Ueberschreiben wir, damit das Item nur dann aktiv ist, wenn die
 	 * Lastschrift noch nicht ausgefuehrt wurde.
    */
-  private class NotActiveMenuItem extends ContextMenuItem
+  private class NotActiveSingleMenuItem extends ContextMenuItem
 	{
 		
     /**
@@ -145,7 +114,7 @@ public class LastschriftList extends ContextMenu
      * @param text anzuzeigender Text.
      * @param a auszufuehrende Action.
      */
-    public NotActiveMenuItem(String text, Action a)
+    public NotActiveSingleMenuItem(String text, Action a)
     {
       super(text, a);
     }
@@ -166,17 +135,68 @@ public class LastschriftList extends ContextMenu
     	}
     	catch (Exception e)
     	{
+        Application.getMessagingFactory().sendMessage(new StatusBarMessage(i18n.tr("Fehler beim Prüfen, ob Auftrag bereits ausgeführt wurde"),StatusBarMessage.TYPE_ERROR));
     		Logger.error("error while enable check in menu item",e);
     	}
     	return false;
     }
 	}
+  
+  /**
+   * Liefert nur dann true, wenn alle uebergebenen Lastschriften noch nicht
+   * ausgefuehrt wurden.
+   */
+  private class NotActiveMultiMenuItem extends CheckedContextMenuItem
+  {
+    
+    /**
+     * ct.
+     * @param text anzuzeigender Text.
+     * @param a auszufuehrende Action.
+     */
+    public NotActiveMultiMenuItem(String text, Action a)
+    {
+      super(text, a);
+    }
+
+    /**
+     * @see de.willuhn.jameica.gui.parts.ContextMenuItem#isEnabledFor(java.lang.Object)
+     */
+    public boolean isEnabledFor(Object o)
+    {
+      if (o == null || (!(o instanceof Lastschrift) && !(o instanceof Lastschrift[])))
+        return false;
+      try
+      {
+        if (o instanceof Lastschrift)
+          return !((Lastschrift)o).ausgefuehrt();
+
+        Lastschrift[] t = (Lastschrift[]) o;
+        for (int i=0;i<t.length;++i)
+        {
+          if (t[i].ausgefuehrt())
+            return false;
+        }
+        return true;
+      }
+      catch (RemoteException e)
+      {
+        Logger.error("unable to check if terminable is allready executed",e);
+        Application.getMessagingFactory().sendMessage(new StatusBarMessage(i18n.tr("Fehler beim Prüfen, ob Auftrag bereits ausgeführt wurde"),StatusBarMessage.TYPE_ERROR));
+      }
+      return false;
+    }
+  }
+
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2006-10-16 14:46:30  willuhn
+ * Revision 1.10  2007-10-25 15:47:21  willuhn
+ * @N Einzelauftraege zu Sammel-Auftraegen zusammenfassen (BUGZILLA 402)
+ *
+ * Revision 1.9  2006/10/16 14:46:30  willuhn
  * @N CSV-Export von Ueberweisungen und Lastschriften
  *
  * Revision 1.8  2006/08/07 14:45:18  willuhn
