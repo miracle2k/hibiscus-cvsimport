@@ -410,7 +410,10 @@ public class Converter {
       tr.otherAccount = other;
 			tr.value = new Value(String.valueOf(b.getBetrag()));
 			tr.addUsage(b.getZweck());
-      tr.key = b.getTextSchluessel();
+      
+      String key = b.getTextSchluessel();
+      if (key != null && key.length() > 0)
+        tr.key = key; // Nur setzen, wenn in der Buchung definiert. Gibt sonst in DTAUS#toString eine NPE
 			String z2 = b.getZweck2();
 			if (z2 != null && z2.length() > 0)
 				tr.addUsage(z2);
@@ -424,7 +427,10 @@ public class Converter {
 
 /**********************************************************************
  * $Log$
- * Revision 1.41  2007-10-14 23:26:59  willuhn
+ * Revision 1.42  2007-10-26 22:56:56  willuhn
+ * @B Textschluessel nur dann angeben, wenn einer festgelegt wurde - erzeugt sonst eine NPE in DTAUS#toString
+ *
+ * Revision 1.41  2007/10/14 23:26:59  willuhn
  * @N Textschluessel in Sammelauftraegen - wird noch nicht persistiert
  *
  * Revision 1.40  2007/04/23 18:07:15  willuhn
