@@ -24,8 +24,6 @@ import org.kapott.hbci.callback.HBCICallback;
 import org.kapott.hbci.callback.HBCICallbackConsole;
 import org.kapott.hbci.manager.HBCIUtils;
 
-import de.willuhn.jameica.hbci.messaging.QueryAccountCRCMessageConsumer;
-import de.willuhn.jameica.hbci.messaging.QueryBanknameMessageConsumer;
 import de.willuhn.jameica.hbci.rmi.HBCIDBService;
 import de.willuhn.jameica.hbci.server.HBCIDBServiceImpl;
 import de.willuhn.jameica.plugin.AbstractPlugin;
@@ -105,9 +103,6 @@ public class HBCI extends AbstractPlugin
     File f = new File(path);
     if (!f.exists()) f.mkdirs();
     /////////////////////////////////////////////////////////////////
-
-    Application.getMessagingFactory().getMessagingQueue("hibiscus.query.bankname").registerMessageConsumer(new QueryBanknameMessageConsumer());
-    Application.getMessagingFactory().getMessagingQueue("hibiscus.query.accountcrc").registerMessageConsumer(new QueryAccountCRCMessageConsumer());
 
     initHBCI(getResources().getSettings().getString("hbcicallback.class",HBCICallbackSWT.class.getName()));
     Application.getCallback().getStartupMonitor().addPercentComplete(5);
@@ -306,7 +301,10 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
- * Revision 1.103  2007-11-12 00:08:02  willuhn
+ * Revision 1.104  2007-11-27 16:41:48  willuhn
+ * @C MessageConsumers fuer Query-Lookups wurden zu frueh registriert
+ *
+ * Revision 1.103  2007/11/12 00:08:02  willuhn
  * @N Query-Messages fuer Bankname-Lookup und CRC-Account-Check fuer JVerein
  *
  * Revision 1.102  2007/06/21 11:33:13  willuhn
