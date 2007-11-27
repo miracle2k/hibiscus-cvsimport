@@ -194,7 +194,7 @@ public class HBCI extends AbstractPlugin
       }
       //////////////////////////////////
 
-      HBCIUtils.init(null,null,this.callback);
+      HBCIUtils.init(getResources().getClassLoader(),null,this.callback);
 
       //////////////////////////////////
       // Log-Level
@@ -301,7 +301,10 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
- * Revision 1.104  2007-11-27 16:41:48  willuhn
+ * Revision 1.105  2007-11-27 17:15:57  willuhn
+ * @C HBCI4Java mit Classloader des Plugins initialisieren
+ *
+ * Revision 1.104  2007/11/27 16:41:48  willuhn
  * @C MessageConsumers fuer Query-Lookups wurden zu frueh registriert
  *
  * Revision 1.103  2007/11/12 00:08:02  willuhn
