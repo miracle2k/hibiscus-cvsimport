@@ -120,7 +120,7 @@ public class HBCISynchronize implements Action
     // Fall abbrechen sollen, dann tun wir das
     if (!success && Settings.getCancelSyncOnError())
     {
-      Logger.warn("synchronize finished with errors");
+      Logger.warn("synchronize finished with errors. status: " + lastStatus);
       GUI.getStatusBar().setErrorText(i18n.tr("Synchronisierung mit Fehlern beendet"));
       return;
     }
@@ -218,7 +218,10 @@ public class HBCISynchronize implements Action
 
 /*********************************************************************
  * $Log$
- * Revision 1.15  2007-11-30 18:37:08  willuhn
+ * Revision 1.16  2007-12-03 13:17:54  willuhn
+ * @N Debugging-Infos
+ *
+ * Revision 1.15  2007/11/30 18:37:08  willuhn
  * @B Bug 509
  *
  * Revision 1.14  2007/05/16 14:49:42  willuhn
