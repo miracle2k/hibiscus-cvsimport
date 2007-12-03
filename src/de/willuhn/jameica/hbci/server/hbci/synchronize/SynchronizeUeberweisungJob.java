@@ -53,6 +53,18 @@ public class SynchronizeUeberweisungJob extends AbstractSynchronizeJob
   {
     Ueberweisung ueb = (Ueberweisung) getContext();
     Konto k = ueb.getKonto();
+    if (ueb.isTerminUeberweisung())
+    {
+      String[] params = new String[] {
+          k.getLongName(),
+          ueb.getZweck(),
+          HBCI.DECIMALFORMAT.format(ueb.getBetrag()),
+          k.getWaehrung(),
+          HBCI.DATEFORMAT.format(ueb.getTermin()),
+          ueb.getGegenkontoName()
+         };
+      return i18n.tr("{0}: ({1}) {2} {3} per {4} an {5} überweisen",params);
+    }
     String[] params = new String[] {
         k.getLongName(),
         ueb.getZweck(),
@@ -75,7 +87,10 @@ public class SynchronizeUeberweisungJob extends AbstractSynchronizeJob
 
 /*********************************************************************
  * $Log$
- * Revision 1.4  2007-06-15 11:20:32  willuhn
+ * Revision 1.5  2007-12-03 13:14:09  willuhn
+ * @N Bei Termin-Ueberweisungen Termin mit anzeigen
+ *
+ * Revision 1.4  2007/06/15 11:20:32  willuhn
  * @N Saldo in Kontodetails via Messaging sofort aktualisieren
  * @N Mehr Details in den Namen der Synchronize-Jobs
  * @N Layout der Umsatzdetail-Anzeige ueberarbeitet
