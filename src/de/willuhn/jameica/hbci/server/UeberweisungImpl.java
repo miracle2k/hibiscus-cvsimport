@@ -52,8 +52,7 @@ public class UeberweisungImpl extends AbstractBaseUeberweisungImpl
     u.setZweck(getZweck());
     u.setZweck2(getZweck2());
     
-    // Als Termin nehmen wir aber das aktuelle Datum
-    u.setTermin(new Date());
+    u.setTermin(isTerminUeberweisung() ? getTermin() : new Date());
     u.setTerminUeberweisung(isTerminUeberweisung());
     return u;
   }
@@ -96,7 +95,10 @@ public class UeberweisungImpl extends AbstractBaseUeberweisungImpl
 
 /**********************************************************************
  * $Log$
- * Revision 1.38  2007-11-30 18:37:08  willuhn
+ * Revision 1.39  2007-12-04 11:24:38  willuhn
+ * @B Bug 509
+ *
+ * Revision 1.38  2007/11/30 18:37:08  willuhn
  * @B Bug 509
  *
  * Revision 1.37  2007/03/05 09:49:53  willuhn
