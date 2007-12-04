@@ -47,6 +47,15 @@ public class UmsatzGroup implements GenericObjectNode, Comparable
   }
   
   /**
+   * Liefert den zugehoerigen Umsatztyp.
+   * @return
+   */
+  public UmsatzTyp getUmsatzTyp()
+  {
+    return this.typ;
+  }
+  
+  /**
    * Fuegt der Gruppe einen neuen Umsatz hinzu.
    * @param umsatz
    */
@@ -200,7 +209,10 @@ public class UmsatzGroup implements GenericObjectNode, Comparable
 
 /*********************************************************************
  * $Log$
- * Revision 1.1  2007-04-18 08:54:21  willuhn
+ * Revision 1.2  2007-12-04 23:59:00  willuhn
+ * @N Bug 512
+ *
+ * Revision 1.1  2007/04/18 08:54:21  willuhn
  * @N UmsatzGroup to fetch items from UmsatzTypTree
  *
  **********************************************************************/

@@ -16,6 +16,7 @@ package de.willuhn.jameica.hbci.gui.action;
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.hbci.gui.views.UmsatzTypDetail;
+import de.willuhn.jameica.hbci.server.UmsatzGroup;
 import de.willuhn.util.ApplicationException;
 
 /**
@@ -30,7 +31,10 @@ public class UmsatzTypNew implements Action
    */
   public void handleAction(Object context) throws ApplicationException
   {
-    GUI.startView(UmsatzTypDetail.class,context);
+    Object o = context;
+    if (context != null && (context instanceof UmsatzGroup))
+      o = ((UmsatzGroup)context).getUmsatzTyp();
+    GUI.startView(UmsatzTypDetail.class,o);
   }
 
 }
@@ -38,7 +42,10 @@ public class UmsatzTypNew implements Action
 
 /*********************************************************************
  * $Log$
- * Revision 1.1  2006-11-23 17:25:37  willuhn
+ * Revision 1.2  2007-12-04 23:59:00  willuhn
+ * @N Bug 512
+ *
+ * Revision 1.1  2006/11/23 17:25:37  willuhn
  * @N Umsatz-Kategorien - in PROGRESS!
  *
  *********************************************************************/
