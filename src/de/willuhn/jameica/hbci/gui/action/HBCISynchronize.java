@@ -89,6 +89,7 @@ public class HBCISynchronize implements Action
     try
     {
       this.konten = SynchronizeEngine.getInstance().getSynchronizeKonten();
+      Logger.info("Accounts to synchronize: " + this.konten.size());
       success = true;
       sync(ProgressMonitor.STATUS_NONE);
     }
@@ -226,7 +227,10 @@ public class HBCISynchronize implements Action
 
 /*********************************************************************
  * $Log$
- * Revision 1.17  2007-12-04 11:24:38  willuhn
+ * Revision 1.18  2007-12-05 22:45:59  willuhn
+ * @N Bug 513 Debug-Ausgaben eingebaut
+ *
+ * Revision 1.17  2007/12/04 11:24:38  willuhn
  * @B Bug 509
  *
  * Revision 1.16  2007/12/03 13:17:54  willuhn

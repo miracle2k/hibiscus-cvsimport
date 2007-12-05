@@ -214,6 +214,7 @@ public class HBCIFactory {
 
     if (this.listener != null)
     {
+      Logger.info("init listener");
       Runnable r = new Runnable()
       {
         public void run()
@@ -664,7 +665,10 @@ public class HBCIFactory {
 
 /*******************************************************************************
  * $Log$
- * Revision 1.55  2007-12-05 22:42:57  willuhn
+ * Revision 1.56  2007-12-05 22:45:59  willuhn
+ * @N Bug 513 Debug-Ausgaben eingebaut
+ *
+ * Revision 1.55  2007/12/05 22:42:57  willuhn
  * *** empty log message ***
  *
  * Revision 1.54  2007/12/04 11:24:38  willuhn
