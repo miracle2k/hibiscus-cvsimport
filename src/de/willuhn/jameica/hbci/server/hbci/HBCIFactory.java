@@ -222,7 +222,6 @@ public class HBCIFactory {
           e.type = status;
           Logger.info("executing listener");
           listener.handleEvent(e);
-          listener = null;
         }
       };
       if (Application.inServerMode()) r.run();
@@ -665,7 +664,10 @@ public class HBCIFactory {
 
 /*******************************************************************************
  * $Log$
- * Revision 1.54  2007-12-04 11:24:38  willuhn
+ * Revision 1.55  2007-12-05 22:42:57  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.54  2007/12/04 11:24:38  willuhn
  * @B Bug 509
  *
  * Revision 1.53  2007/12/03 13:17:54  willuhn
