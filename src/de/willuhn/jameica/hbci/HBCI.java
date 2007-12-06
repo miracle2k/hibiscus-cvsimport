@@ -65,11 +65,10 @@ public class HBCI extends AbstractPlugin
   
   /**
    * ct.
-   * @param file
    */
-  public HBCI(File file)
+  public HBCI()
   {
-    super(file);
+    super();
   }
 
   /**
@@ -301,7 +300,10 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
- * Revision 1.105  2007-11-27 17:15:57  willuhn
+ * Revision 1.106  2007-12-06 09:24:26  willuhn
+ * @C neuer Jameica-Konstruktor
+ *
+ * Revision 1.105  2007/11/27 17:15:57  willuhn
  * @C HBCI4Java mit Classloader des Plugins initialisieren
  *
  * Revision 1.104  2007/11/27 16:41:48  willuhn
