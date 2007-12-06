@@ -74,12 +74,10 @@ public class HBCICallbackSWT extends AbstractHBCICallback
 			case HBCIUtils.LOG_DEBUG:
   			Logger.debug(msg);
         log = false;
-        type ="debug";
   			break;
 
 			case HBCIUtils.LOG_INFO:
 				Logger.info(msg);
-        type = "info";
 				break;
 
 			case HBCIUtils.LOG_WARN:
@@ -504,7 +502,10 @@ public class HBCICallbackSWT extends AbstractHBCICallback
 
 /**********************************************************************
  * $Log$
- * Revision 1.53  2007-12-05 10:58:43  willuhn
+ * Revision 1.54  2007-12-06 23:53:56  willuhn
+ * @B Bug 490
+ *
+ * Revision 1.53  2007/12/05 10:58:43  willuhn
  * @N Lesbarere und ausfuehrlichere Fehlermeldungen beim Testen des Sicherheitsmediums
  *
  * Revision 1.52  2007/05/22 15:50:17  willuhn
