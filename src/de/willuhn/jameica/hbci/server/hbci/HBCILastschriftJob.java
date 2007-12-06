@@ -17,6 +17,7 @@ import java.rmi.RemoteException;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.HBCIProperties;
 import de.willuhn.jameica.hbci.Settings;
+import de.willuhn.jameica.hbci.messaging.ObjectChangedMessage;
 import de.willuhn.jameica.hbci.rmi.HibiscusAddress;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Lastschrift;
@@ -134,6 +135,7 @@ public class HBCILastschriftJob extends AbstractHBCIJob
 		{
       // Wir markieren die Ueberweisung als "ausgefuehrt"
       lastschrift.setAusgefuehrt();
+      Application.getMessagingFactory().sendMessage(new ObjectChangedMessage(lastschrift)); // BUGZILLA 480
       konto.addToProtokoll(i18n.tr("Lastschrift eingezogen von {0}",empfName),Protokoll.TYP_SUCCESS);
       Logger.info("lastschrift submitted successfully");
       return;
@@ -148,7 +150,10 @@ public class HBCILastschriftJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.13  2007-12-06 14:25:32  willuhn
+ * Revision 1.14  2007-12-06 14:42:26  willuhn
+ * @B Bug 480
+ *
+ * Revision 1.13  2007/12/06 14:25:32  willuhn
  * @B Bug 494
  *
  * Revision 1.12  2007/04/23 18:07:14  willuhn
