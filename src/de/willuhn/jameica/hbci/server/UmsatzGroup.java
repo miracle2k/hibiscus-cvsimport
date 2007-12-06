@@ -48,7 +48,7 @@ public class UmsatzGroup implements GenericObjectNode, Comparable
   
   /**
    * Liefert den zugehoerigen Umsatztyp.
-   * @return
+   * @return der zugehoerige Umsatztyp.
    */
   public UmsatzTyp getUmsatzTyp()
   {
@@ -218,7 +218,10 @@ public class UmsatzGroup implements GenericObjectNode, Comparable
 
 /*********************************************************************
  * $Log$
- * Revision 1.3  2007-12-05 00:09:28  willuhn
+ * Revision 1.4  2007-12-06 09:29:45  willuhn
+ * @D javadoc
+ *
+ * Revision 1.3  2007/12/05 00:09:28  willuhn
  * @N Bug 512 - Sortierung der Kategorien auch nach Name und Typ (Einnahmen vor Ausgaben)
  *
  * Revision 1.2  2007/12/04 23:59:00  willuhn
