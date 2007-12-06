@@ -233,15 +233,6 @@ public class Settings
   }
 
   /**
-   * Prueft, ob die MD5-Checksumme der Datenbank geprueft werden soll.
-   * @return true, wenn die Checksumme geprueft werden soll.
-   */
-  public static boolean getCheckDatabase()
-  {
-    return settings.getBoolean("checkdatabase",true);
-  }
-  
-  /**
    * Prueft, ob Tausender-Punkte bei Betraegen verwendet werden sollen.
    * @return true, wenn Tausender-Punkte verwendet werden sollen.
    */
@@ -404,7 +395,10 @@ public class Settings
 
 /*********************************************************************
  * $Log$
- * Revision 1.51  2007-06-21 11:02:44  willuhn
+ * Revision 1.52  2007-12-06 17:57:21  willuhn
+ * @N Erster Code fuer das neue Versionierungs-System
+ *
+ * Revision 1.51  2007/06/21 11:02:44  willuhn
  * @C ServiceSettings in ServiceFactory verschoben
  * @N Aenderungen an Service-Bindings sofort uebernehmen
  * @C Moeglichkeit, Service-Bindings wieder entfernen zu koennen
