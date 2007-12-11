@@ -18,7 +18,6 @@ import org.kapott.hbci.GV_Result.GVRSaldoReq;
 import org.kapott.hbci.structures.Saldo;
 
 import de.willuhn.jameica.hbci.HBCI;
-import de.willuhn.jameica.hbci.HBCIProperties;
 import de.willuhn.jameica.hbci.messaging.SaldoMessage;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Protokoll;
@@ -58,11 +57,13 @@ public class HBCISaldoJob extends AbstractHBCIJob {
 
 			setJobParam("my",Converter.HibiscusKonto2HBCIKonto(konto));
       
-      String curr = konto.getWaehrung();
-      if (curr == null || curr.length() == 0)
-        curr = HBCIProperties.CURRENCY_DEFAULT_DE;
 
-      setJobParam("my.curr",curr);
+// TODO Wieder aktivieren
+//      String curr = konto.getWaehrung();
+//      if (curr == null || curr.length() == 0)
+//        curr = HBCIProperties.CURRENCY_DEFAULT_DE;
+//
+//      setJobParam("my.curr",curr);
 		}
 		catch (RemoteException e)
 		{
@@ -125,7 +126,10 @@ public class HBCISaldoJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.25  2007-12-11 11:59:40  willuhn
+ * Revision 1.26  2007-12-11 12:23:26  willuhn
+ * @N Bug 355
+ *
+ * Revision 1.25  2007/12/11 11:59:40  willuhn
  * @N Waehrung bei Saldo-Job mit uebertragen. Siehe http://www.onlinebanking-forum.de/phpBB2/viewtopic.php?p=43610#43610
  *
  * Revision 1.24  2007/12/06 14:25:32  willuhn

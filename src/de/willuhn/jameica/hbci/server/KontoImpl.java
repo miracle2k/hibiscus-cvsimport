@@ -741,11 +741,30 @@ public class KontoImpl extends AbstractDBObject implements Konto
     return (String) getAttribute("longname");
   }
 
+  /**
+   * @see de.willuhn.jameica.hbci.rmi.Konto#getUnterkonto()
+   */
+  public String getUnterkonto() throws RemoteException
+  {
+    return (String) getAttribute("unterkonto");
+  }
+
+  /**
+   * @see de.willuhn.jameica.hbci.rmi.Konto#setUnterkonto(java.lang.String)
+   */
+  public void setUnterkonto(String unterkonto) throws RemoteException
+  {
+    setAttribute("unterkonto",unterkonto);
+  }
+
 }
 
 /*******************************************************************************
  * $Log$
- * Revision 1.88  2007-08-12 22:02:10  willuhn
+ * Revision 1.89  2007-12-11 12:23:26  willuhn
+ * @N Bug 355
+ *
+ * Revision 1.88  2007/08/12 22:02:10  willuhn
  * @C BUGZILLA 394 - restliche Umstellungen von Valuta auf Buchungsdatum
  *
  * Revision 1.87  2007/08/07 23:54:15  willuhn

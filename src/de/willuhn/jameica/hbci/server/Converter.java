@@ -274,6 +274,7 @@ public class Converter {
 		k.customerid = konto.getKundennummer();
     k.type = konto.getBezeichnung(); // BUGZILLA 338
 		k.name = konto.getName();
+    k.subnumber = konto.getUnterkonto(); // BUGZILLA 355
 		return k;  	
 	}
 
@@ -294,6 +295,10 @@ public class Converter {
 		list.addFilter("blz = ?",         new Object[]{konto.blz});
     if (passportClass != null)
       list.addFilter("passport_class = ?", new Object[]{passportClass.getName()});
+
+    // BUGZILLA 355
+    if (konto.subnumber != null && konto.subnumber.length() > 0)
+      list.addFilter("unterkonto = ?",new Object[]{konto.subnumber});
     
     // BUGZILLA 338: Wenn das Konto eine Bezeichnung hat, muss sie uebereinstimmen
     if (konto.type != null && konto.type.length() > 0)
@@ -307,6 +312,7 @@ public class Converter {
 			(de.willuhn.jameica.hbci.rmi.Konto) Settings.getDBService().createObject(de.willuhn.jameica.hbci.rmi.Konto.class,null);
 		k.setBLZ(konto.blz);
 		k.setKontonummer(konto.number);
+    k.setUnterkonto(konto.subnumber); // BUGZILLA 355
 		k.setKundennummer(konto.customerid);
 		k.setName(konto.name);
 		k.setBezeichnung(konto.type);
@@ -427,7 +433,10 @@ public class Converter {
 
 /**********************************************************************
  * $Log$
- * Revision 1.42  2007-10-26 22:56:56  willuhn
+ * Revision 1.43  2007-12-11 12:23:26  willuhn
+ * @N Bug 355
+ *
+ * Revision 1.42  2007/10/26 22:56:56  willuhn
  * @B Textschluessel nur dann angeben, wenn einer festgelegt wurde - erzeugt sonst eine NPE in DTAUS#toString
  *
  * Revision 1.41  2007/10/14 23:26:59  willuhn

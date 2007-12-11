@@ -31,6 +31,14 @@ public interface Konto extends DBObject, Checksum
 	 * @throws RemoteException
 	 */
 	public String getKontonummer() throws RemoteException;
+  
+  /**
+   * Liefert die Unterkonto-Nummer.
+   * BUGZILLA 355
+   * @return Unterkonto-Nummer.
+   * @throws RemoteException
+   */
+  public String getUnterkonto() throws RemoteException;
 
 	/**
 	 * Liefert die Bankleitzahl fuer diese Bankverbindung.
@@ -100,6 +108,13 @@ public interface Konto extends DBObject, Checksum
 	 */
 	public void setKontonummer(String kontonummer) throws RemoteException;
 
+  /**
+   * Speichert das Unterkonto.
+   * @param unterkonto
+   * @throws RemoteException
+   */
+  public void setUnterkonto(String unterkonto) throws RemoteException;
+  
 	/**
 	 * Speichert die Bankleitzahl der Bankverbindung.
 	 * 
@@ -358,7 +373,10 @@ public interface Konto extends DBObject, Checksum
 
 /*******************************************************************************
  * $Log$
- * Revision 1.36  2007-06-04 17:37:00  willuhn
+ * Revision 1.37  2007-12-11 12:23:26  willuhn
+ * @N Bug 355
+ *
+ * Revision 1.36  2007/06/04 17:37:00  willuhn
  * @D javadoc
  * @C java 1.4 compatibility
  * @N table colorized
