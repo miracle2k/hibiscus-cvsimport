@@ -122,13 +122,25 @@ public class HBCIUpdateProvider implements UpdateProvider
       throw new ApplicationException(res.getI18N().tr("Fehler beim Ermitteln der aktuellen Versionsnummer"));
     }
   }
+  
+  /**
+   * Liefert die Plugin-Ressourcen.
+   * @return die Plugin-Ressourcen.
+   */
+  public PluginResources getResources()
+  {
+    return this.res;
+  }
 
 }
 
 
 /*********************************************************************
  * $Log$
- * Revision 1.1  2007-12-11 00:33:35  willuhn
+ * Revision 1.2  2007-12-11 15:23:53  willuhn
+ * @N Class-Update fuer neue Tabellen "op" und "op_buchung"
+ *
+ * Revision 1.1  2007/12/11 00:33:35  willuhn
  * @N Scharfschaltung des neuen Update-Prozesses
  *
  * Revision 1.2  2007/12/07 00:48:05  willuhn

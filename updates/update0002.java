@@ -46,7 +46,7 @@ public class update0002 implements Update
         "    id IDENTITY," +
         "    name varchar(255) not NULL," +
         "    betrag double NOT NULL," +
-        "    termin date NOT NULL," +
+        "    termin date NULL," +
         "    kommentar varchar(1000) NULL," +
         "    UNIQUE (id)," +
         "    PRIMARY KEY (id)" +
@@ -65,7 +65,7 @@ public class update0002 implements Update
         "    id NUMERIC default UNIQUEKEY('op')," +
         "    name varchar(255) not NULL," +
         "    betrag double NOT NULL," +
-        "    termin date NOT NULL," +
+        "    termin date NULL," +
         "    kommentar varchar(1000) NULL," +
         "    UNIQUE (id)," +
         "    PRIMARY KEY (id)" +
@@ -84,7 +84,7 @@ public class update0002 implements Update
         "    id int(10) AUTO_INCREMENT," +
         "    name varchar(255) not NULL," +
         "    betrag double NOT NULL," +
-        "    termin date NOT NULL," +
+        "    termin date NULL," +
         "    kommentar varchar(1000) NULL," +
         "    UNIQUE (id)," +
         "    PRIMARY KEY (id)" +
@@ -143,7 +143,10 @@ public class update0002 implements Update
 
 /*********************************************************************
  * $Log$
- * Revision 1.1  2007-12-11 15:23:53  willuhn
+ * Revision 1.2  2007-12-11 15:25:18  willuhn
+ * @N Class-Update fuer neue Tabellen "op" und "op_buchung"
+ *
+ * Revision 1.1  2007/12/11 15:23:53  willuhn
  * @N Class-Update fuer neue Tabellen "op" und "op_buchung"
  *
  **********************************************************************/
