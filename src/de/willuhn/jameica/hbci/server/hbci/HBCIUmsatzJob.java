@@ -64,9 +64,7 @@ public class HBCIUmsatzJob extends AbstractHBCIJob {
       String curr = konto.getWaehrung();
       if (curr == null || curr.length() == 0)
         curr = HBCIProperties.CURRENCY_DEFAULT_DE;
-
       setJobParam("my.curr",curr);
-    
     }
 		catch (RemoteException e)
 		{
@@ -157,7 +155,10 @@ public class HBCIUmsatzJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.28  2007-12-11 13:17:26  willuhn
+ * Revision 1.29  2007-12-11 13:46:48  willuhn
+ * @N Waehrung auch bei Saldo-Abfrage - siehe http://www.onlinebanking-forum.de/phpBB2/viewtopic.php?p=43618#43618
+ *
+ * Revision 1.28  2007/12/11 13:17:26  willuhn
  * @N Waehrung bei Umsatzabfrage - siehe http://www.onlinebanking-forum.de/phpBB2/viewtopic.php?p=43618#43618
  *
  * Revision 1.27  2007/03/16 14:40:02  willuhn
