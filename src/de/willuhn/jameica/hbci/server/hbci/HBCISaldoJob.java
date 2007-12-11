@@ -56,14 +56,6 @@ public class HBCISaldoJob extends AbstractHBCIJob {
 			this.konto = konto;
 
 			setJobParam("my",Converter.HibiscusKonto2HBCIKonto(konto));
-      
-
-// TODO Wieder aktivieren
-//      String curr = konto.getWaehrung();
-//      if (curr == null || curr.length() == 0)
-//        curr = HBCIProperties.CURRENCY_DEFAULT_DE;
-//
-//      setJobParam("my.curr",curr);
 		}
 		catch (RemoteException e)
 		{
@@ -126,7 +118,10 @@ public class HBCISaldoJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.26  2007-12-11 12:23:26  willuhn
+ * Revision 1.27  2007-12-11 13:17:26  willuhn
+ * @N Waehrung bei Umsatzabfrage - siehe http://www.onlinebanking-forum.de/phpBB2/viewtopic.php?p=43618#43618
+ *
+ * Revision 1.26  2007/12/11 12:23:26  willuhn
  * @N Bug 355
  *
  * Revision 1.25  2007/12/11 11:59:40  willuhn

@@ -18,6 +18,7 @@ import org.kapott.hbci.GV_Result.GVRKUms;
 
 import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.jameica.hbci.HBCI;
+import de.willuhn.jameica.hbci.HBCIProperties;
 import de.willuhn.jameica.hbci.messaging.ImportMessage;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Protokoll;
@@ -58,10 +59,15 @@ public class HBCIUmsatzJob extends AbstractHBCIJob {
 
 			setJobParam("my",Converter.HibiscusKonto2HBCIKonto(konto));
       if (konto.getSaldoDatum() != null)
-      {
         setJobParam("startdate", konto.getSaldoDatum());
-      }
-		}
+
+      String curr = konto.getWaehrung();
+      if (curr == null || curr.length() == 0)
+        curr = HBCIProperties.CURRENCY_DEFAULT_DE;
+
+      setJobParam("my.curr",curr);
+    
+    }
 		catch (RemoteException e)
 		{
 			throw e;
@@ -151,7 +157,10 @@ public class HBCIUmsatzJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.27  2007-03-16 14:40:02  willuhn
+ * Revision 1.28  2007-12-11 13:17:26  willuhn
+ * @N Waehrung bei Umsatzabfrage - siehe http://www.onlinebanking-forum.de/phpBB2/viewtopic.php?p=43618#43618
+ *
+ * Revision 1.27  2007/03/16 14:40:02  willuhn
  * @C Redesign ImportMessage
  * @N Aktualisierung der Umsatztabelle nach Kategorie-Zuordnung
  *
