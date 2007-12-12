@@ -94,14 +94,14 @@ public class update0002 implements Update
         "    kommentar varchar(1000) NULL," +
         "    UNIQUE (id)," +
         "    PRIMARY KEY (id)" +
-        ");\n" +
+        ")TYPE=InnoDB;\n" +
         "CREATE TABLE op_buchung (" +
         "    id int(10) AUTO_INCREMENT," +
         "    umsatz_id int(10) NOT NULL," +
         "    op_id int(10) NOT NULL," +
         "    UNIQUE (id)," +
         "    PRIMARY KEY (id)" +
-        ");\n");
+        ")TYPE=InnoDB;\n");
   }
 
   /**
@@ -149,7 +149,10 @@ public class update0002 implements Update
 
 /*********************************************************************
  * $Log$
- * Revision 1.3  2007-12-11 16:10:11  willuhn
+ * Revision 1.4  2007-12-12 10:02:44  willuhn
+ * @N Datenbank-Updates auch in Create-Scripts nachziehen
+ *
+ * Revision 1.3  2007/12/11 16:10:11  willuhn
  * @N Erster Code fuer "Offene Posten-Verwaltung"
  *
  * Revision 1.2  2007/12/11 15:25:18  willuhn
