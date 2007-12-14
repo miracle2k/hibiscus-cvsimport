@@ -226,10 +226,9 @@ public class UmsatzDetailControl extends AbstractControl {
       try
       {
         String name = HBCIUtils.getNameForBLZ(blz);
+        blz = i18n.tr("[BLZ: {0}]",blz);
         if (name != null && name.length() > 0)
-          blz = name;
-        else
-          blz = i18n.tr("BLZ") + ": " + blz;
+          blz = name + " " + blz; // BUGZILLA 518
       }
       catch (Exception e)
       {
@@ -258,8 +257,7 @@ public class UmsatzDetailControl extends AbstractControl {
     }
     else
     {
-      empfaengerBlz= new LabelInput(blz);
-      empfaengerBlz.setComment(HBCIUtils.getNameForBLZ(blz));
+      empfaengerBlz = new LabelInput(blz);
     }
     return empfaengerBlz;
   }
@@ -510,7 +508,10 @@ public class UmsatzDetailControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.31  2007-12-03 10:00:27  willuhn
+ * Revision 1.32  2007-12-14 17:06:36  willuhn
+ * @B Bug 518
+ *
+ * Revision 1.31  2007/12/03 10:00:27  willuhn
  * @N Umsatz-Kategorien nach Name sortieren, wenn keine Nummer angegeben
  *
  * Revision 1.30  2007/06/15 11:20:32  willuhn
