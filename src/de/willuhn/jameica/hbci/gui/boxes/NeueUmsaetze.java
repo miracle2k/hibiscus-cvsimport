@@ -19,7 +19,6 @@ import org.eclipse.swt.widgets.Composite;
 
 import de.willuhn.datasource.GenericIterator;
 import de.willuhn.jameica.gui.boxes.AbstractBox;
-import de.willuhn.jameica.gui.util.Headline;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.gui.action.UmsatzDetail;
@@ -73,7 +72,6 @@ public class NeueUmsaetze extends AbstractBox
    */
   public void paint(Composite parent) throws RemoteException
   {
-    new Headline(parent,getName());
     GenericIterator list = de.willuhn.jameica.hbci.messaging.NeueUmsaetze.getNeueUmsaetze();
     UmsatzList umsaetze = new UmsatzList(list,new UmsatzDetail());
     umsaetze.setFilterVisible(false);
@@ -92,7 +90,11 @@ public class NeueUmsaetze extends AbstractBox
 
 /*********************************************************************
  * $Log$
- * Revision 1.2  2007-03-02 14:49:14  willuhn
+ * Revision 1.3  2007-12-18 17:10:22  willuhn
+ * @N Neues ExpandPart
+ * @N Boxen auf der Startseite koennen jetzt zusammengeklappt werden
+ *
+ * Revision 1.2  2007/03/02 14:49:14  willuhn
  * @R removed old firststart view
  * @C do not show boxes on first start
  *
