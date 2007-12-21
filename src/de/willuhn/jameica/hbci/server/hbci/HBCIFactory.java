@@ -491,7 +491,7 @@ public class HBCIFactory {
           HBCIJob j = handler.newJob(job.getIdentifier());
           dumpJob(j);
           job.setJob(j);
-          handler.addJob(j);
+          j.addToQueue();
           if (job.isExclusive())
           {
             Logger.info("job will be executed in seperate hbci message");
@@ -672,7 +672,10 @@ public class HBCIFactory {
 
 /*******************************************************************************
  * $Log$
- * Revision 1.57  2007-12-06 23:53:56  willuhn
+ * Revision 1.58  2007-12-21 17:37:29  willuhn
+ * @N Update auf HBCI4Java 2.5.6
+ *
+ * Revision 1.57  2007/12/06 23:53:56  willuhn
  * @B Bug 490
  *
  * Revision 1.56  2007/12/05 22:45:59  willuhn

@@ -389,7 +389,7 @@ public class DialogFactory {
     // handelt und nehmen in dem Fall direkt den kompletten
     // Dateinamen als Key. Der ist eindeutig.
     if (passport != null && (passport instanceof HBCIPassportRDHNew))
-      key = ((HBCIPassportRDHNew)passport).getFileName();
+      key = ((HBCIPassportRDHNew)passport).getFilename();
     
     if (key != null && key.length() > 0)
       return key;
@@ -438,7 +438,10 @@ public class DialogFactory {
 
 /**********************************************************************
  * $Log$
- * Revision 1.30  2007-03-22 23:43:37  willuhn
+ * Revision 1.31  2007-12-21 17:37:39  willuhn
+ * @N Update auf HBCI4Java 2.5.6
+ *
+ * Revision 1.30  2007/03/22 23:43:37  willuhn
  * @B Bug 322
  *
  * Revision 1.29  2007/02/21 12:10:36  willuhn
