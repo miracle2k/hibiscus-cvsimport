@@ -190,7 +190,7 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob {
         auftrag.setKonto(this.konto);
         if (auftrag.getOrderID() != null && 
             auftrag.getOrderID().equals(ex.getOrderID()) &&
-            auftrag.getKonto().equals(ex.getKonto())
+            this.konto.getID().equals(ex.getKonto().getID())
            )
         {
           found = true;
@@ -212,7 +212,10 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob {
 
 /**********************************************************************
  * $Log$
- * Revision 1.32  2007-10-18 10:24:49  willuhn
+ * Revision 1.33  2008-01-03 13:26:08  willuhn
+ * @B Test-Bugfix - Dauerauftraege wurden doppelt angelegt
+ *
+ * Revision 1.32  2007/10/18 10:24:49  willuhn
  * @B Foreign-Objects in AbstractDBObject auch dann korrekt behandeln, wenn sie noch nicht gespeichert wurden
  * @C Beim Abrufen der Dauerauftraege nicht mehr nach Konten suchen sondern hart dem Konto zuweisen, ueber das sie abgerufen wurden
  *
