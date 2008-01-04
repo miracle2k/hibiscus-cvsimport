@@ -69,6 +69,14 @@ public class Konten extends AbstractBox implements Box
   }
 
   /**
+   * @see de.willuhn.jameica.gui.boxes.AbstractBox#getHeight()
+   */
+  public int getHeight()
+  {
+    return 150;
+  }
+
+  /**
    * @see de.willuhn.jameica.gui.Part#paint(org.eclipse.swt.widgets.Composite)
    */
   public void paint(Composite parent) throws RemoteException
@@ -92,7 +100,10 @@ public class Konten extends AbstractBox implements Box
 
 /*********************************************************************
  * $Log$
- * Revision 1.5  2007-12-18 17:10:22  willuhn
+ * Revision 1.6  2008-01-04 16:39:31  willuhn
+ * @N Weitere Hoehen-Angaben von Komponenten
+ *
+ * Revision 1.5  2007/12/18 17:10:22  willuhn
  * @N Neues ExpandPart
  * @N Boxen auf der Startseite koennen jetzt zusammengeklappt werden
  *

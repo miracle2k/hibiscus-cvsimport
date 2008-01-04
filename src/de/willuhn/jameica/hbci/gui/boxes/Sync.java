@@ -143,6 +143,14 @@ public class Sync extends AbstractBox implements Box
   }
 
   /**
+   * @see de.willuhn.jameica.gui.boxes.AbstractBox#getHeight()
+   */
+  public int getHeight()
+  {
+    return 200;
+  }
+
+  /**
    * Startet die Synchronisierung der Konten.
    */
   private void handleStart()
@@ -173,7 +181,10 @@ public class Sync extends AbstractBox implements Box
 
 /*********************************************************************
  * $Log$
- * Revision 1.14  2007-12-18 17:10:22  willuhn
+ * Revision 1.15  2008-01-04 16:39:31  willuhn
+ * @N Weitere Hoehen-Angaben von Komponenten
+ *
+ * Revision 1.14  2007/12/18 17:10:22  willuhn
  * @N Neues ExpandPart
  * @N Boxen auf der Startseite koennen jetzt zusammengeklappt werden
  *
