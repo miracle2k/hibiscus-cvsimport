@@ -34,9 +34,18 @@ public interface Address extends Remote
    * Liefert die BLZ.
    * @return BLZ.
    * @throws RemoteException
+   * @depricated Bitte stattdessen getBlz() verwenden.
    */
   public String getBLZ() throws RemoteException;
-  
+
+  /**
+   * Liefert die BLZ.
+   * @return BLZ.
+   * @throws RemoteException
+   * BUGZILLA 534
+   */
+  public String getBlz() throws RemoteException;
+
   /**
    * Liefert den Namen.
    * @return Name.
@@ -55,7 +64,10 @@ public interface Address extends Remote
 
 /*********************************************************************
  * $Log$
- * Revision 1.3  2007-04-23 21:03:48  willuhn
+ * Revision 1.4  2008-01-09 23:32:54  willuhn
+ * @B Bug 534
+ *
+ * Revision 1.3  2007/04/23 21:03:48  willuhn
  * @R "getTransfers" aus Address entfernt - hat im Adressbuch eigentlich nichts zu suchen
  *
  * Revision 1.2  2007/04/23 18:07:14  willuhn
