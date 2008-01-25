@@ -13,10 +13,15 @@
 
 package de.willuhn.jameica.hbci.messaging;
 
+import org.kapott.hbci.manager.HBCIUtils;
+
+import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.messaging.Message;
 import de.willuhn.jameica.messaging.MessageConsumer;
+import de.willuhn.jameica.messaging.SettingsChangedMessage;
 import de.willuhn.jameica.messaging.SystemMessage;
 import de.willuhn.jameica.system.Application;
+import de.willuhn.logging.Level;
 import de.willuhn.logging.Logger;
 
 /**
@@ -54,6 +59,32 @@ public class StartupMessageConsumer implements MessageConsumer
     if (msg.getStatusCode() != SystemMessage.SYSTEM_STARTED)
       return;
 
+    Application.getMessagingFactory().registerMessageConsumer(new MessageConsumer() {
+      public void handleMessage(Message message) throws Exception
+      {
+        try
+        {
+          int ll = ((Integer) HBCI.LOGMAPPING.get(Logger.getLevel())).intValue();
+          Logger.info("changing hbci4java loglevel to " + ll);
+          HBCIUtils.setParam("log.loglevel.default",""+ ll);
+        }
+        catch (Exception e)
+        {
+          Logger.write(Level.INFO,"unable to update hbci4java log level",e);
+        }
+      }
+      public Class[] getExpectedMessageTypes()
+      {
+        return new Class[]{SettingsChangedMessage.class};
+      }
+    
+      public boolean autoRegister()
+      {
+        return false;
+      }
+    
+    });
+
     Logger.info("register message consumers for query lookups");
     Application.getMessagingFactory().getMessagingQueue("hibiscus.query.bankname").registerMessageConsumer(new QueryBanknameMessageConsumer());
     Application.getMessagingFactory().getMessagingQueue("hibiscus.query.accountcrc").registerMessageConsumer(new QueryAccountCRCMessageConsumer());
@@ -64,7 +95,10 @@ public class StartupMessageConsumer implements MessageConsumer
 
 /*********************************************************************
  * $Log$
- * Revision 1.1  2007-11-27 16:41:48  willuhn
+ * Revision 1.2  2008-01-25 12:24:05  willuhn
+ * @B Messaging-Consumer zu frueh registriert
+ *
+ * Revision 1.1  2007/11/27 16:41:48  willuhn
  * @C MessageConsumers fuer Query-Lookups wurden zu frueh registriert
  *
  **********************************************************************/
