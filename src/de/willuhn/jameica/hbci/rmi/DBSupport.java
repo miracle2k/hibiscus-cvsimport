@@ -99,7 +99,8 @@ public interface DBSupport extends Serializable
 
   /**
    * Liefert das Transaction-Isolation-Level.
-   * @see de.willuhn.datasource.db.DBServiceImpl#getTransactionIsolationLevel()
+   * @return das Transaction-Isolation-Level.
+   * @throws RemoteException
    */
   public int getTransactionIsolationLevel() throws RemoteException;
 
@@ -108,7 +109,10 @@ public interface DBSupport extends Serializable
 
 /*********************************************************************
  * $Log$
- * Revision 1.6  2007-07-28 15:51:26  willuhn
+ * Revision 1.7  2008-02-04 18:48:18  willuhn
+ * @D javadoc
+ *
+ * Revision 1.6  2007/07/28 15:51:26  willuhn
  * @B Bug 447
  *
  * Revision 1.5  2007/07/16 12:51:15  willuhn
