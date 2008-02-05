@@ -18,6 +18,7 @@ import java.util.Map;
 
 import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.datasource.rmi.DBService;
+import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.gui.action.LastschriftNew;
 import de.willuhn.jameica.hbci.rmi.Konto;
@@ -101,6 +102,7 @@ public class TransferLastschriftMessageConsumer implements MessageConsumer
       // ueber das der Auftrag abgewickelt werden soll.
       String konto = (String) params.get("my.account");
       String blz   = (String) params.get("my.blz");
+      boolean stored = false;
       if (konto != null && blz != null)
       {
         DBIterator list = service.createList(Konto.class);
@@ -114,8 +116,11 @@ public class TransferLastschriftMessageConsumer implements MessageConsumer
           // Nur, wenn wir das Konto haben, koennen wir
           // versuchen, den Auftrag zu speichern
           ls.store();
+          stored = true;
         }
       }
+      if (!stored)
+        throw new ApplicationException(Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N().tr("Bitte vervollständigen Sie die Angaben in Ihrer Lastschrift"));
     }
     catch (ApplicationException ae)
     {
@@ -147,7 +152,10 @@ public class TransferLastschriftMessageConsumer implements MessageConsumer
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2008-02-05 00:51:03  willuhn
+ * Revision 1.3  2008-02-05 10:28:17  willuhn
+ * @B
+ *
+ * Revision 1.2  2008/02/05 00:51:03  willuhn
  * @C NPE-Checks
  *
  * Revision 1.1  2008/02/05 00:48:43  willuhn
