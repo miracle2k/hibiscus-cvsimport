@@ -361,7 +361,7 @@ public class ExportDialog extends AbstractDialog
      */
     public String getID() throws RemoteException
     {
-      return this.exporter.getClass().getName() + "#" + this.format.getClass().getName();
+      return this.exporter.getClass().getName() + "#" + this.format.getName();
     }
 
     /**
@@ -405,7 +405,10 @@ public class ExportDialog extends AbstractDialog
 
 /**********************************************************************
  * $Log$
- * Revision 1.15  2008-02-13 23:15:29  willuhn
+ * Revision 1.16  2008-02-13 23:22:24  willuhn
+ * @B http://www.onlinebanking-forum.de/phpBB2/viewtopic.php?t=8175 (Nachtrag)
+ *
+ * Revision 1.15  2008/02/13 23:15:29  willuhn
  * @B http://www.onlinebanking-forum.de/phpBB2/viewtopic.php?t=8175
  *
  * Revision 1.14  2007/04/23 18:40:44  jost
