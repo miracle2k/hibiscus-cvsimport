@@ -142,7 +142,7 @@ public class ExportDialog extends AbstractDialog
     if (exp == null || exp.exporter == null)
       throw new ApplicationException(i18n.tr("Bitte wählen Sie ein Export-Format aus"));
 
-    settings.setAttribute("lastformat",exp.format.getClass().getName());
+    settings.setAttribute("lastformat",exp.format.getName());
 
     FileDialog fd = new FileDialog(GUI.getShell(),SWT.SAVE);
     fd.setText(i18n.tr("Bitte geben Sie eine Datei ein, in die die Daten exportiert werden sollen."));
@@ -300,7 +300,8 @@ public class ExportDialog extends AbstractDialog
         Exp e = new Exp(exp,formats[j]);
         l.add(e);
         
-        if (lastFormat != null && formats[j].getClass().getName().equals(lastFormat))
+        String lf = e.format.getName();
+        if (lastFormat != null && lf != null && lf.equals(lastFormat))
           selected = e;
       }
 		}
@@ -404,7 +405,10 @@ public class ExportDialog extends AbstractDialog
 
 /**********************************************************************
  * $Log$
- * Revision 1.14  2007-04-23 18:40:44  jost
+ * Revision 1.15  2008-02-13 23:15:29  willuhn
+ * @B http://www.onlinebanking-forum.de/phpBB2/viewtopic.php?t=8175
+ *
+ * Revision 1.14  2007/04/23 18:40:44  jost
  * Javadoc Tippfehler
  *
  * Revision 1.13  2007/04/23 18:07:15  willuhn
