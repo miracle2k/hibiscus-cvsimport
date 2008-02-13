@@ -19,6 +19,8 @@ import de.willuhn.jameica.gui.parts.ContextMenu;
 import de.willuhn.jameica.gui.parts.ContextMenuItem;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.gui.action.DBObjectDelete;
+import de.willuhn.jameica.hbci.gui.action.UmsatzTypExport;
+import de.willuhn.jameica.hbci.gui.action.UmsatzTypImport;
 import de.willuhn.jameica.hbci.gui.action.UmsatzTypNew;
 import de.willuhn.jameica.hbci.rmi.UmsatzTyp;
 import de.willuhn.jameica.system.Application;
@@ -45,6 +47,9 @@ public class UmsatzTypList extends ContextMenu implements Extendable
     addItem(new CheckedContextMenuItem(i18n.tr("Löschen..."), new DBObjectDelete()));
     addItem(ContextMenuItem.SEPARATOR);
     addItem(new ContextMenuItem(i18n.tr("Neue Umsatz-Kategorie..."), new UNeu()));
+    addItem(ContextMenuItem.SEPARATOR);
+    addItem(new CheckedContextMenuItem(i18n.tr("Exportieren..."),new UmsatzTypExport()));
+    addItem(new ContextMenuItem(i18n.tr("Importieren..."),new UmsatzTypImport()));
     // Wir geben das Context-Menu jetzt noch zur Erweiterung frei.
     ExtensionRegistry.extend(this);
 
@@ -98,7 +103,12 @@ public class UmsatzTypList extends ContextMenu implements Extendable
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2007-04-26 12:20:42  willuhn
+ * Revision 1.3  2008-02-13 23:44:27  willuhn
+ * @R Hibiscus-Eigenformat (binaer-serialisierte Objekte) bei Export und Import abgeklemmt
+ * @N Import und Export von Umsatz-Kategorien im XML-Format
+ * @B Verzaehler bei XML-Import
+ *
+ * Revision 1.2  2007/04/26 12:20:42  willuhn
  * @N Menu-Eintrag "Neue Umsatz-Kategorie..."
  *
  * Revision 1.1  2006/11/23 17:25:38  willuhn

@@ -94,7 +94,7 @@ public class XMLImporter implements Importer
         try
         {
           object.store();
-          created++;
+          Application.getMessagingFactory().sendMessage(new ImportMessage(object));
           created++;
           try
           {
@@ -182,7 +182,12 @@ public class XMLImporter implements Importer
 
 /*******************************************************************************
  * $Log$
- * Revision 1.1  2008-01-22 13:34:45  willuhn
+ * Revision 1.2  2008-02-13 23:44:27  willuhn
+ * @R Hibiscus-Eigenformat (binaer-serialisierte Objekte) bei Export und Import abgeklemmt
+ * @N Import und Export von Umsatz-Kategorien im XML-Format
+ * @B Verzaehler bei XML-Import
+ *
+ * Revision 1.1  2008/01/22 13:34:45  willuhn
  * @N Neuer XML-Import/-Export
  *
  ******************************************************************************/

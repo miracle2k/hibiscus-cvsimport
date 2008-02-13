@@ -37,22 +37,23 @@ public abstract class AbstractHibiscusIO implements IO
    */
   public IOFormat[] getIOFormats(Class objectType)
   {
-    return new IOFormat[]{new IOFormat() {
-    
-      public String getName()
-      {
-        return i18n.tr("Hibiscus-Format (experimentell!)");
-      }
-    
-      /**
-       * @see de.willuhn.jameica.hbci.io.IOFormat#getFileExtensions()
-       */
-      public String[] getFileExtensions()
-      {
-        return new String[]{"hib"};
-      }
-    
-    }};
+    return new IOFormat[0];
+//    return new IOFormat[]{new IOFormat() {
+//    
+//      public String getName()
+//      {
+//        return i18n.tr("Hibiscus-Format (experimentell!)");
+//      }
+//    
+//      /**
+//       * @see de.willuhn.jameica.hbci.io.IOFormat#getFileExtensions()
+//       */
+//      public String[] getFileExtensions()
+//      {
+//        return new String[]{"hib"};
+//      }
+//    
+//    }};
   }
 
   /**
@@ -68,7 +69,12 @@ public abstract class AbstractHibiscusIO implements IO
 
 /*********************************************************************
  * $Log$
- * Revision 1.1  2006-12-01 01:28:16  willuhn
+ * Revision 1.2  2008-02-13 23:44:27  willuhn
+ * @R Hibiscus-Eigenformat (binaer-serialisierte Objekte) bei Export und Import abgeklemmt
+ * @N Import und Export von Umsatz-Kategorien im XML-Format
+ * @B Verzaehler bei XML-Import
+ *
+ * Revision 1.1  2006/12/01 01:28:16  willuhn
  * @N Experimenteller Import-Export-Code
  *
  **********************************************************************/
