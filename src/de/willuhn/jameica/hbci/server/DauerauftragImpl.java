@@ -22,6 +22,7 @@ import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.HBCIProperties;
 import de.willuhn.jameica.hbci.rmi.Checksum;
 import de.willuhn.jameica.hbci.rmi.Dauerauftrag;
+import de.willuhn.jameica.hbci.rmi.Transfer;
 import de.willuhn.jameica.hbci.rmi.Turnus;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.logging.Logger;
@@ -335,12 +336,23 @@ public class DauerauftragImpl extends AbstractHibiscusTransferImpl
     return cal.getTime();
   }
 
+  /**
+   * @see de.willuhn.jameica.hbci.rmi.Transfer#getTransferTyp()
+   */
+  public int getTransferTyp() throws RemoteException
+  {
+    return Transfer.TYP_DAUERAUFTRAG;
+  }
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.26  2008-01-04 23:42:33  willuhn
+ * Revision 1.27  2008-02-15 17:39:10  willuhn
+ * @N BUGZILLA 188 Basis-API fuer weitere Zeilen Verwendungszweck. GUI fehlt noch
+ * @N DB-Update 0005. Speichern des Textschluessels bei Sammelauftragsbuchungen in der Datenbank
+ *
+ * Revision 1.26  2008/01/04 23:42:33  willuhn
  * @N Bemaengeltes Datum in Dauerauftraegen mit ausgeben (Debugging)
  *
  * Revision 1.25  2007/10/18 10:24:49  willuhn

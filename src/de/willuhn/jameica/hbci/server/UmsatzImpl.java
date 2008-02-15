@@ -19,6 +19,7 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.zip.CRC32;
 
+import de.willuhn.datasource.GenericIterator;
 import de.willuhn.datasource.GenericObject;
 import de.willuhn.datasource.db.AbstractDBObject;
 import de.willuhn.datasource.rmi.DBIterator;
@@ -27,6 +28,7 @@ import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.rmi.Address;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Protokoll;
+import de.willuhn.jameica.hbci.rmi.Transfer;
 import de.willuhn.jameica.hbci.rmi.Umsatz;
 import de.willuhn.jameica.hbci.rmi.UmsatzTyp;
 import de.willuhn.jameica.system.Application;
@@ -650,12 +652,32 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
   {
     return super.getAttribute("umsatztyp_id") != null;
   }
+
+  /**
+   * @see de.willuhn.jameica.hbci.rmi.Transfer#getTransferTyp()
+   */
+  public int getTransferTyp() throws RemoteException
+  {
+    return Transfer.TYP_UMSATZ;
+  }
+
+  /**
+   * @see de.willuhn.jameica.hbci.rmi.Transfer#getWeitereVerwendungszwecke()
+   */
+  public GenericIterator getWeitereVerwendungszwecke() throws RemoteException
+  {
+    return VerwendungszweckUtil.get(this);
+  }
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.51  2007-10-02 16:08:55  willuhn
+ * Revision 1.52  2008-02-15 17:39:10  willuhn
+ * @N BUGZILLA 188 Basis-API fuer weitere Zeilen Verwendungszweck. GUI fehlt noch
+ * @N DB-Update 0005. Speichern des Textschluessels bei Sammelauftragsbuchungen in der Datenbank
+ *
+ * Revision 1.51  2007/10/02 16:08:55  willuhn
  * @C Bugfix mit dem falschen Spaltentyp nochmal ueberarbeitet
  *
  * Revision 1.50  2007/10/01 09:37:42  willuhn
