@@ -283,6 +283,8 @@ public class HBCICallbackSWT extends AbstractHBCICallback
 					break;
 
 				case HAVE_CRC_ERROR:
+          Logger.error("NOT IMPLEMENTED: " + msg+ " ["+retData.toString()+"]: ");
+          break;
 				case HAVE_ERROR:
 					Logger.error("NOT IMPLEMENTED: " + msg+ " ["+retData.toString()+"]: ");
 					throw new HBCI_Exception("reason not implemented");
@@ -502,7 +504,10 @@ public class HBCICallbackSWT extends AbstractHBCICallback
 
 /**********************************************************************
  * $Log$
- * Revision 1.54  2007-12-06 23:53:56  willuhn
+ * Revision 1.55  2008-02-25 22:17:18  willuhn
+ * @C keine Exception werfen bei CRC-Error
+ *
+ * Revision 1.54  2007/12/06 23:53:56  willuhn
  * @B Bug 490
  *
  * Revision 1.53  2007/12/05 10:58:43  willuhn
