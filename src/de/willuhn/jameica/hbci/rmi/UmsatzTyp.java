@@ -165,12 +165,31 @@ public interface UmsatzTyp extends DBObject
    * @throws PatternSyntaxException wird geworden, wenn es ein regulaerer Ausdruck mit Fehlern ist.
    */
   public boolean matches(Umsatz umsatz) throws RemoteException, PatternSyntaxException;
+  
+  /**
+   * Liefert die fuer diese Kategorie zu verwendende Farbe.
+   * @return Farbe oder null, wenn noch keine definiert wurde.
+   * @throws RemoteException
+   */
+  public int[] getColor() throws RemoteException;
+  
+  /**
+   * Speichert die Farbe fuer die Umsatz-Kategorie.
+   * @param rgb Farbe.
+   * @throws RemoteException
+   */
+  public void setColor(int[] rgb) throws RemoteException;
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.13  2007-03-10 07:18:36  jost
+ * Revision 1.14  2008-02-26 01:01:16  willuhn
+ * @N Update auf Birt 2 (bessere Zeichen-Qualitaet, u.a. durch Anti-Aliasing)
+ * @N Neuer Chart "Umsatz-Kategorien im Verlauf"
+ * @N Charts erst beim ersten Paint-Event zeichnen. Dadurch laesst sich z.Bsp. die Konto-View schneller oeffnen, da der Saldo-Verlauf nicht berechnet werden muss
+ *
+ * Revision 1.13  2007/03/10 07:18:36  jost
  * Neu: Nummer für die Sortierung der Umsatz-Kategorien
  *
  * Revision 1.12  2007/03/06 20:06:40  jost

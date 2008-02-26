@@ -451,11 +451,31 @@ public class UmsatzTypImpl extends AbstractDBObjectNode implements UmsatzTyp
     UmsatzImpl.UMSATZTYP_CACHE.put(this.getID(), this);
   }
 
+  /**
+   * @see de.willuhn.jameica.hbci.rmi.UmsatzTyp#getColor()
+   */
+  public int[] getColor() throws RemoteException
+  {
+    return null;
+  }
+
+  /**
+   * @see de.willuhn.jameica.hbci.rmi.UmsatzTyp#setColor(int[])
+   */
+  public void setColor(int[] rgb) throws RemoteException
+  {
+  }
+
 }
 
 /*******************************************************************************
  * $Log$
- * Revision 1.38  2007-08-24 22:22:00  willuhn
+ * Revision 1.39  2008-02-26 01:01:16  willuhn
+ * @N Update auf Birt 2 (bessere Zeichen-Qualitaet, u.a. durch Anti-Aliasing)
+ * @N Neuer Chart "Umsatz-Kategorien im Verlauf"
+ * @N Charts erst beim ersten Paint-Event zeichnen. Dadurch laesst sich z.Bsp. die Konto-View schneller oeffnen, da der Saldo-Verlauf nicht berechnet werden muss
+ *
+ * Revision 1.38  2007/08/24 22:22:00  willuhn
  * @N Regulaere Ausdruecke vorm Speichern testen
  *
  * Revision 1.37  2007/08/07 23:54:15  willuhn
