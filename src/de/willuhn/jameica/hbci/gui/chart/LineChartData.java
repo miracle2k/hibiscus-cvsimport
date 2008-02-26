@@ -34,19 +34,15 @@ public interface LineChartData extends ChartData
    * @throws RemoteException
    */
   public int[] getColor() throws RemoteException;
-  
-  /**
-   * Legt fest, ob auf der Linie fuer jeden Messwert noch ein kleines Kaestchen eingezeichnet wird.
-   * @return true, wenn Kaestchen auf die Linie sollen.
-   * @throws RemoteException
-   */
-  public boolean getShowMarker() throws RemoteException;
 }
 
 
 /*********************************************************************
  * $Log$
- * Revision 1.3  2008-02-26 01:01:16  willuhn
+ * Revision 1.4  2008-02-26 01:12:30  willuhn
+ * @R nicht mehr benoetigte Funktion entfernt
+ *
+ * Revision 1.3  2008/02/26 01:01:16  willuhn
  * @N Update auf Birt 2 (bessere Zeichen-Qualitaet, u.a. durch Anti-Aliasing)
  * @N Neuer Chart "Umsatz-Kategorien im Verlauf"
  * @N Charts erst beim ersten Paint-Event zeichnen. Dadurch laesst sich z.Bsp. die Konto-View schneller oeffnen, da der Saldo-Verlauf nicht berechnet werden muss
