@@ -355,6 +355,24 @@ public class UmsatzTypImpl extends AbstractDBObjectNode implements UmsatzTyp
    */
   public Object getAttribute(String arg0) throws RemoteException
   {
+    // BUGZILLA 554
+    if ("nummer-int".equals(arg0))
+    {
+      String n = getNummer();
+      if (n == null || n.length() == 0)
+        return null;
+      try
+      {
+        Integer i = new Integer(n);
+        return i;
+      }
+      catch (Exception e)
+      {
+        Logger.warn("unable to parse " + n + " as number");
+        return null;
+      }
+    }
+    
     if ("umsatz".equals(arg0))
       return new Double(getUmsatz());
 
@@ -470,7 +488,10 @@ public class UmsatzTypImpl extends AbstractDBObjectNode implements UmsatzTyp
 
 /*******************************************************************************
  * $Log$
- * Revision 1.39  2008-02-26 01:01:16  willuhn
+ * Revision 1.40  2008-02-27 10:31:20  willuhn
+ * @B Bug 554
+ *
+ * Revision 1.39  2008/02/26 01:01:16  willuhn
  * @N Update auf Birt 2 (bessere Zeichen-Qualitaet, u.a. durch Anti-Aliasing)
  * @N Neuer Chart "Umsatz-Kategorien im Verlauf"
  * @N Charts erst beim ersten Paint-Event zeichnen. Dadurch laesst sich z.Bsp. die Konto-View schneller oeffnen, da der Saldo-Verlauf nicht berechnet werden muss
