@@ -91,14 +91,17 @@ public class NeueUmsaetze extends AbstractBox
    */
   public int getHeight()
   {
-    return 150;
+    return 220;
   }
 }
 
 
 /*********************************************************************
  * $Log$
- * Revision 1.4  2007-12-29 18:45:37  willuhn
+ * Revision 1.5  2008-03-04 10:36:41  willuhn
+ * @N Default-Hoehe vergroessert
+ *
+ * Revision 1.4  2007/12/29 18:45:37  willuhn
  * @N Hoehe von Boxen explizit konfigurierbar
  *
  * Revision 1.3  2007/12/18 17:10:22  willuhn
