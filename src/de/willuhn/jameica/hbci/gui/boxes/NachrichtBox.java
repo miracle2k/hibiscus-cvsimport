@@ -110,7 +110,6 @@ public class NachrichtBox extends AbstractBox implements Box
       sb.append("</p>");
     }
     sb.append("</form>");
-    System.out.println(sb.toString());
     text.setText(sb.toString());
     text.paint(parent);
   }
@@ -147,7 +146,10 @@ public class NachrichtBox extends AbstractBox implements Box
 
 /*********************************************************************
  * $Log$
- * Revision 1.3  2007-12-18 17:10:22  willuhn
+ * Revision 1.4  2008-04-01 09:46:15  willuhn
+ * @R removed debug output
+ *
+ * Revision 1.3  2007/12/18 17:10:22  willuhn
  * @N Neues ExpandPart
  * @N Boxen auf der Startseite koennen jetzt zusammengeklappt werden
  *
