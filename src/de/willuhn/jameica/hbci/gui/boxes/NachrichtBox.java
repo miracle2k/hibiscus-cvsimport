@@ -91,6 +91,9 @@ public class NachrichtBox extends AbstractBox implements Box
       // Formatieren der Nachrichten - die haben Festbreite
       s = s.replaceAll("( {2,})","<br/>");
       s = s.replaceAll("\n","<br/>");
+      s = s.replaceAll("&", "&amp;");
+      s = s.replaceAll("\"","&quot;");
+
       sb.append("<p>");
       
       sb.append("<b>");
@@ -146,7 +149,10 @@ public class NachrichtBox extends AbstractBox implements Box
 
 /*********************************************************************
  * $Log$
- * Revision 1.4  2008-04-01 09:46:15  willuhn
+ * Revision 1.5  2008-04-01 09:50:17  willuhn
+ * @B Fehlendes XML-Escaping
+ *
+ * Revision 1.4  2008/04/01 09:46:15  willuhn
  * @R removed debug output
  *
  * Revision 1.3  2007/12/18 17:10:22  willuhn
