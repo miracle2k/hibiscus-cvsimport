@@ -103,6 +103,7 @@ public class CSVUmsatzImporter implements Importer
       int created = 0;
       int error   = 0;
       boolean first = true;
+      Umsatz u = null;
 
       DBService service = (DBService) Application.getServiceFactory().lookup(HBCI.class,"database");
       do
@@ -117,7 +118,7 @@ public class CSVUmsatzImporter implements Importer
 
         try
         {
-          final Umsatz u = (Umsatz) service.createObject(Umsatz.class,null);
+          u = (Umsatz) service.createObject(Umsatz.class,null);
           u.setKonto((Konto) context);
           
           for (int i=0;i<line.length;++i)
@@ -280,7 +281,10 @@ public class CSVUmsatzImporter implements Importer
 
 /*******************************************************************************
  * $Log$
- * Revision 1.5  2007-04-23 18:07:14  willuhn
+ * Revision 1.6  2008-04-06 23:29:42  willuhn
+ * @B koennte ggf. beim Import grosser Datenmengen einen OutOfMemoryError ausloesen
+ *
+ * Revision 1.5  2007/04/23 18:07:14  willuhn
  * @C Redesign: "Adresse" nach "HibiscusAddress" umbenannt
  * @C Redesign: "Transfer" nach "HibiscusTransfer" umbenannt
  * @C Redesign: Neues Interface "Transfer", welches von Ueberweisungen, Lastschriften UND Umsaetzen implementiert wird
