@@ -84,12 +84,23 @@ public class SynchronizeKontoauszugJob extends AbstractSynchronizeJob
   {
     new KontoNew().handleAction(getContext());
   }
+  
+  /**
+   * @see de.willuhn.jameica.hbci.rmi.SynchronizeJob#isRecurring()
+   */
+  public boolean isRecurring() throws RemoteException
+  {
+    return true;
+  }
 }
 
 
 /*********************************************************************
  * $Log$
- * Revision 1.3  2007-06-15 11:20:32  willuhn
+ * Revision 1.4  2008-04-13 04:20:41  willuhn
+ * @N Bug 583
+ *
+ * Revision 1.3  2007/06/15 11:20:32  willuhn
  * @N Saldo in Kontodetails via Messaging sofort aktualisieren
  * @N Mehr Details in den Namen der Synchronize-Jobs
  * @N Layout der Umsatzdetail-Anzeige ueberarbeitet

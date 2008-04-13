@@ -15,9 +15,13 @@ package de.willuhn.jameica.hbci.gui.parts;
 
 import java.rmi.RemoteException;
 
+import org.eclipse.swt.widgets.TableItem;
+
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
+import de.willuhn.jameica.gui.formatter.TableFormatter;
 import de.willuhn.jameica.gui.parts.TablePart;
+import de.willuhn.jameica.gui.util.Font;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.rmi.SynchronizeJob;
 import de.willuhn.jameica.hbci.server.hbci.synchronize.SynchronizeEngine;
@@ -44,6 +48,26 @@ public class SynchronizeList extends TablePart
     
     this.setSummary(false);
     this.setCheckable(true);
+
+    // BUGZILLA 583
+    this.setFormatter(new TableFormatter() {
+      public void format(TableItem item)
+      {
+        try
+        {
+          if (item == null)
+            return;
+          SynchronizeJob job = (SynchronizeJob) item.getData();
+          if (job == null)
+            return;
+          item.setFont(job.isRecurring() ? Font.DEFAULT.getSWTFont() : Font.BOLD.getSWTFont());
+        }
+        catch (Exception e)
+        {
+          Logger.error("unable to format text",e);
+        }
+      }
+    });
   }
   
   /**
@@ -80,7 +104,10 @@ public class SynchronizeList extends TablePart
 
 /*********************************************************************
  * $Log$
- * Revision 1.6  2007-05-16 11:32:30  willuhn
+ * Revision 1.7  2008-04-13 04:20:41  willuhn
+ * @N Bug 583
+ *
+ * Revision 1.6  2007/05/16 11:32:30  willuhn
  * @N Redesign der SynchronizeEngine. Ermittelt die HBCI-Jobs jetzt ueber generische "SynchronizeJobProvider". Damit ist die Liste der Sync-Jobs erweiterbar
  *
  * Revision 1.5  2006/07/05 22:18:16  willuhn
