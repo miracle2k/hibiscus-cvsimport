@@ -29,14 +29,13 @@ public abstract class AbstractBaseUeberweisungImpl extends AbstractHibiscusTrans
   implements Terminable
 {
 
-  private transient I18N i18n = null;
+  private final static transient I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
   /**
    * @throws RemoteException
    */
   public AbstractBaseUeberweisungImpl() throws RemoteException {
     super();
-    i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
   }
 
   /**
@@ -135,7 +134,10 @@ public abstract class AbstractBaseUeberweisungImpl extends AbstractHibiscusTrans
 
 /**********************************************************************
  * $Log$
- * Revision 1.10  2007-04-23 18:07:15  willuhn
+ * Revision 1.11  2008-04-27 22:22:56  willuhn
+ * @C I18N-Referenzen statisch
+ *
+ * Revision 1.10  2007/04/23 18:07:15  willuhn
  * @C Redesign: "Adresse" nach "HibiscusAddress" umbenannt
  * @C Redesign: "Transfer" nach "HibiscusTransfer" umbenannt
  * @C Redesign: Neues Interface "Transfer", welches von Ueberweisungen, Lastschriften UND Umsaetzen implementiert wird

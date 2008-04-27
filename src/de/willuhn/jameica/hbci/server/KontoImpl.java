@@ -46,7 +46,7 @@ import de.willuhn.util.I18N;
 public class KontoImpl extends AbstractDBObject implements Konto
 {
 
-  private transient I18N i18n = null;
+  private final static transient I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
   /**
    * ct.
@@ -56,8 +56,6 @@ public class KontoImpl extends AbstractDBObject implements Konto
   public KontoImpl() throws RemoteException
   {
     super();
-    i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources()
-        .getI18N();
   }
 
   /**
@@ -761,7 +759,10 @@ public class KontoImpl extends AbstractDBObject implements Konto
 
 /*******************************************************************************
  * $Log$
- * Revision 1.89  2007-12-11 12:23:26  willuhn
+ * Revision 1.90  2008-04-27 22:22:56  willuhn
+ * @C I18N-Referenzen statisch
+ *
+ * Revision 1.89  2007/12/11 12:23:26  willuhn
  * @N Bug 355
  *
  * Revision 1.88  2007/08/12 22:02:10  willuhn

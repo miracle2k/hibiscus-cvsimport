@@ -34,7 +34,7 @@ import de.willuhn.util.I18N;
 public abstract class AbstractSammelTransferImpl extends AbstractDBObject implements SammelTransfer, Duplicatable, Terminable
 {
 
-  private transient I18N i18n = null;
+  private final static transient I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
   /**
    * ct.
@@ -43,7 +43,6 @@ public abstract class AbstractSammelTransferImpl extends AbstractDBObject implem
   public AbstractSammelTransferImpl() throws RemoteException
   {
     super();
-    i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
   }
 
   /**
@@ -392,7 +391,10 @@ public abstract class AbstractSammelTransferImpl extends AbstractDBObject implem
 
 /*****************************************************************************
  * $Log$
- * Revision 1.3  2006-12-01 00:02:34  willuhn
+ * Revision 1.4  2008-04-27 22:22:56  willuhn
+ * @C I18N-Referenzen statisch
+ *
+ * Revision 1.3  2006/12/01 00:02:34  willuhn
  * @C made unserializable members transient
  *
  * Revision 1.2  2006/08/17 10:06:32  willuhn

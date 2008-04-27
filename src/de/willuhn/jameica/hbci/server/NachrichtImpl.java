@@ -30,7 +30,7 @@ import de.willuhn.util.I18N;
 public class NachrichtImpl extends AbstractDBObject implements Nachricht
 {
 
-  private transient I18N i18n = null;
+  private final static transient I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
   /**
    * @throws java.rmi.RemoteException
@@ -38,7 +38,6 @@ public class NachrichtImpl extends AbstractDBObject implements Nachricht
   public NachrichtImpl() throws RemoteException
   {
     super();
-    this.i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
   }
 
   /**
@@ -168,7 +167,10 @@ public class NachrichtImpl extends AbstractDBObject implements Nachricht
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2007-10-02 16:08:55  willuhn
+ * Revision 1.6  2008-04-27 22:22:56  willuhn
+ * @C I18N-Referenzen statisch
+ *
+ * Revision 1.5  2007/10/02 16:08:55  willuhn
  * @C Bugfix mit dem falschen Spaltentyp nochmal ueberarbeitet
  *
  * Revision 1.4  2007/10/01 09:37:42  willuhn

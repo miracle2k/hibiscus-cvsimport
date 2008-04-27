@@ -29,7 +29,7 @@ import de.willuhn.util.I18N;
 public abstract class AbstractSammelTransferBuchungImpl extends AbstractDBObject implements SammelTransferBuchung, Duplicatable
 {
 
-  private transient I18N i18n = null;
+  private final static transient I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
   
   /**
    * @throws java.rmi.RemoteException
@@ -37,7 +37,6 @@ public abstract class AbstractSammelTransferBuchungImpl extends AbstractDBObject
   public AbstractSammelTransferBuchungImpl() throws RemoteException
   {
     super();
-    this.i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
   }
 
   /**
@@ -258,7 +257,10 @@ public abstract class AbstractSammelTransferBuchungImpl extends AbstractDBObject
 
 /*****************************************************************************
  * $Log$
- * Revision 1.12  2008-02-15 17:39:10  willuhn
+ * Revision 1.13  2008-04-27 22:22:56  willuhn
+ * @C I18N-Referenzen statisch
+ *
+ * Revision 1.12  2008/02/15 17:39:10  willuhn
  * @N BUGZILLA 188 Basis-API fuer weitere Zeilen Verwendungszweck. GUI fehlt noch
  * @N DB-Update 0005. Speichern des Textschluessels bei Sammelauftragsbuchungen in der Datenbank
  *

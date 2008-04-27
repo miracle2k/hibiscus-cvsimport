@@ -37,8 +37,7 @@ import de.willuhn.util.I18N;
  */
 public class UmsatzTypImpl extends AbstractDBObjectNode implements UmsatzTyp
 {
-
-  private transient I18N i18n = null;
+  private final static transient I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
   /**
    * ct.
@@ -48,8 +47,6 @@ public class UmsatzTypImpl extends AbstractDBObjectNode implements UmsatzTyp
   public UmsatzTypImpl() throws RemoteException
   {
     super();
-    this.i18n = Application.getPluginLoader().getPlugin(HBCI.class)
-        .getResources().getI18N();
   }
 
   /**
@@ -488,7 +485,10 @@ public class UmsatzTypImpl extends AbstractDBObjectNode implements UmsatzTyp
 
 /*******************************************************************************
  * $Log$
- * Revision 1.40  2008-02-27 10:31:20  willuhn
+ * Revision 1.41  2008-04-27 22:22:56  willuhn
+ * @C I18N-Referenzen statisch
+ *
+ * Revision 1.40  2008/02/27 10:31:20  willuhn
  * @B Bug 554
  *
  * Revision 1.39  2008/02/26 01:01:16  willuhn

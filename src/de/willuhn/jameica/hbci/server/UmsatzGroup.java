@@ -32,7 +32,7 @@ import de.willuhn.util.I18N;
  */
 public class UmsatzGroup implements GenericObjectNode, Comparable
 {
-  private static I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
+  private final static transient I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
   private UmsatzTyp typ = null;
   private ArrayList umsaetze = new ArrayList();
@@ -218,7 +218,10 @@ public class UmsatzGroup implements GenericObjectNode, Comparable
 
 /*********************************************************************
  * $Log$
- * Revision 1.4  2007-12-06 09:29:45  willuhn
+ * Revision 1.5  2008-04-27 22:22:56  willuhn
+ * @C I18N-Referenzen statisch
+ *
+ * Revision 1.4  2007/12/06 09:29:45  willuhn
  * @D javadoc
  *
  * Revision 1.3  2007/12/05 00:09:28  willuhn

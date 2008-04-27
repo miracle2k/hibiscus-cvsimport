@@ -31,7 +31,7 @@ import de.willuhn.util.I18N;
 public class TurnusImpl extends AbstractDBObject implements Turnus
 {
 
-	private transient I18N i18n = null;
+  private final static transient I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
   /**
    * ct.
@@ -40,7 +40,6 @@ public class TurnusImpl extends AbstractDBObject implements Turnus
   public TurnusImpl() throws RemoteException
   {
     super();
-    i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
   }
 
   /**
@@ -232,7 +231,10 @@ public class TurnusImpl extends AbstractDBObject implements Turnus
 
 /**********************************************************************
  * $Log$
- * Revision 1.15  2006-12-01 00:02:34  willuhn
+ * Revision 1.16  2008-04-27 22:22:56  willuhn
+ * @C I18N-Referenzen statisch
+ *
+ * Revision 1.15  2006/12/01 00:02:34  willuhn
  * @C made unserializable members transient
  *
  * Revision 1.14  2006/08/25 10:13:43  willuhn

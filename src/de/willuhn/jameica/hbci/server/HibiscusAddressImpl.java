@@ -27,14 +27,13 @@ import de.willuhn.util.I18N;
  */
 public class HibiscusAddressImpl extends AbstractDBObject implements HibiscusAddress {
 
-  private transient I18N i18n = null;
+  private final static transient I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
   /**
    * @throws RemoteException
    */
   public HibiscusAddressImpl() throws RemoteException {
     super();
-    i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
   }
 
   /**
@@ -178,7 +177,10 @@ public class HibiscusAddressImpl extends AbstractDBObject implements HibiscusAdd
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2008-02-04 18:48:18  willuhn
+ * Revision 1.5  2008-04-27 22:22:56  willuhn
+ * @C I18N-Referenzen statisch
+ *
+ * Revision 1.4  2008/02/04 18:48:18  willuhn
  * @D javadoc
  *
  * Revision 1.3  2008/01/09 23:32:54  willuhn
