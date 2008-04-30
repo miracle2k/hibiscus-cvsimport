@@ -66,7 +66,14 @@ public class BackupRestore implements Action
       GenericObject o = null;
       while ((o = reader.read()) != null)
       {
-        ((AbstractDBObject)o).insert();
+        try
+        {
+          ((AbstractDBObject)o).insert();
+        }
+        catch (Exception e)
+        {
+          Logger.error("unable to import " + o.getClass().getName() + ":" + o.getID() + ", skipping",e);
+        }
       }
     }
     catch (Exception e)
@@ -92,7 +99,10 @@ public class BackupRestore implements Action
 
 /*********************************************************************
  * $Log$
- * Revision 1.1  2008-01-22 13:34:45  willuhn
+ * Revision 1.2  2008-04-30 09:01:23  willuhn
+ * @C Fehlerhafte Objekte beim Restore ueberspringen
+ *
+ * Revision 1.1  2008/01/22 13:34:45  willuhn
  * @N Neuer XML-Import/-Export
  *
  **********************************************************************/
