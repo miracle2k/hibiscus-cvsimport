@@ -48,6 +48,13 @@ public interface HBCIDBService extends DBService
   public void checkConsistency() throws RemoteException, ApplicationException;
   
   /**
+   * Liefert den verwendeten Treiber.
+   * @return der Treiber.
+   * @throws RemoteException
+   */
+  public DBSupport getDriver() throws RemoteException;
+  
+  /**
    * Liefert den Namen der SQL-Funktion, mit der die Datenbank aus einem DATE-Feld einen UNIX-Timestamp macht.
    * Bei MySQL ist das z.Bsp. "UNIX_TIMESTAMP" und bei McKoi schlicht "TONUMBER".
    * @param content der Feld-Name.
@@ -60,7 +67,10 @@ public interface HBCIDBService extends DBService
 
 /*****************************************************************************
  * $Log$
- * Revision 1.4  2007-04-19 18:12:21  willuhn
+ * Revision 1.5  2008-05-06 10:10:56  willuhn
+ * @N Diagnose-Dialog, mit dem man die JDBC-Verbindungsdaten (u.a. auch das JDBC-Passwort) ausgeben kann
+ *
+ * Revision 1.4  2007/04/19 18:12:21  willuhn
  * @N MySQL-Support (GUI zum Konfigurieren fehlt noch)
  *
  * Revision 1.3  2006/12/27 11:52:36  willuhn
