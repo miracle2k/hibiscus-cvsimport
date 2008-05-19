@@ -86,6 +86,7 @@ public abstract class AbstractSammelTransferBuchungControl extends AbstractContr
     d.addCloseListener(new GegenkontoListener());
     gkNummer = new DialogInput(getBuchung().getGegenkontoNummer(),d);
     // BUGZILLA 280
+    gkNummer.setMaxLength(HBCIProperties.HBCI_KTO_MAXLENGTH_HARD);
     gkNummer.setValidChars(HBCIProperties.HBCI_KTO_VALIDCHARS);
     gkNummer.setMandatory(true);
 		return gkNummer;
@@ -261,7 +262,11 @@ public abstract class AbstractSammelTransferBuchungControl extends AbstractContr
 
 /*****************************************************************************
  * $Log$
- * Revision 1.8  2007-11-01 22:04:24  willuhn
+ * Revision 1.9  2008-05-19 22:35:53  willuhn
+ * @N Maximale Laenge von Kontonummern konfigurierbar (Soft- und Hardlimit)
+ * @N Laengenpruefungen der Kontonummer in Dialogen und Fachobjekten
+ *
+ * Revision 1.8  2007/11/01 22:04:24  willuhn
  * @N Bugzilla 408
  *
  * Revision 1.7  2007/04/23 18:07:15  willuhn

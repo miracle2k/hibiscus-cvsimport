@@ -85,8 +85,7 @@ public class KontoImpl extends AbstractDBObject implements Konto
         throw new ApplicationException(i18n
             .tr("Bitten geben Sie den Namen des Kontoinhabers ein."));
 
-      HBCIProperties.checkLength(getName(),
-          HBCIProperties.HBCI_TRANSFER_NAME_MAXLENGTH);
+      HBCIProperties.checkLength(getName(), HBCIProperties.HBCI_TRANSFER_NAME_MAXLENGTH);
 
       if (getKontonummer() == null || getKontonummer().length() == 0)
         throw new ApplicationException(i18n
@@ -98,8 +97,9 @@ public class KontoImpl extends AbstractDBObject implements Konto
 
       // BUGZILLA 280
       HBCIProperties.checkChars(getBLZ(), HBCIProperties.HBCI_BLZ_VALIDCHARS);
-      HBCIProperties.checkChars(getKontonummer(),
-          HBCIProperties.HBCI_KTO_VALIDCHARS);
+      HBCIProperties.checkChars(getKontonummer(),HBCIProperties.HBCI_KTO_VALIDCHARS);
+      HBCIProperties.checkLength(getKontonummer(), HBCIProperties.HBCI_KTO_MAXLENGTH_HARD);
+      HBCIProperties.checkLength(getUnterkonto(), HBCIProperties.HBCI_KTO_MAXLENGTH_HARD);
 
       if (getKundennummer() == null || getKundennummer().length() == 0)
         throw new ApplicationException(i18n
@@ -759,7 +759,11 @@ public class KontoImpl extends AbstractDBObject implements Konto
 
 /*******************************************************************************
  * $Log$
- * Revision 1.90  2008-04-27 22:22:56  willuhn
+ * Revision 1.91  2008-05-19 22:35:53  willuhn
+ * @N Maximale Laenge von Kontonummern konfigurierbar (Soft- und Hardlimit)
+ * @N Laengenpruefungen der Kontonummer in Dialogen und Fachobjekten
+ *
+ * Revision 1.90  2008/04/27 22:22:56  willuhn
  * @C I18N-Referenzen statisch
  *
  * Revision 1.89  2007/12/11 12:23:26  willuhn

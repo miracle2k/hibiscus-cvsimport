@@ -182,7 +182,7 @@ public class EmpfaengerControl extends AbstractControl {
 	{
 		if (kontonummer != null)
 			return kontonummer;
-		kontonummer = new TextInput(getAddress().getKontonummer());
+		kontonummer = new TextInput(getAddress().getKontonummer(),HBCIProperties.HBCI_KTO_MAXLENGTH_SOFT);
     // BUGZILLA 280
     kontonummer.setValidChars(HBCIProperties.HBCI_KTO_VALIDCHARS);
     kontonummer.setEnabled(isHibiscusAdresse());
@@ -267,7 +267,11 @@ public class EmpfaengerControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.44  2007-08-07 23:54:15  willuhn
+ * Revision 1.45  2008-05-19 22:35:53  willuhn
+ * @N Maximale Laenge von Kontonummern konfigurierbar (Soft- und Hardlimit)
+ * @N Laengenpruefungen der Kontonummer in Dialogen und Fachobjekten
+ *
+ * Revision 1.44  2007/08/07 23:54:15  willuhn
  * @B Bug 394 - Erster Versuch. An einigen Stellen (z.Bsp. konto.getAnfangsSaldo) war ich mir noch nicht sicher. Heiner?
  *
  * Revision 1.43  2007/04/23 21:03:48  willuhn
