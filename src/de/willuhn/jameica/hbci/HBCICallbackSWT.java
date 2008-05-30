@@ -121,6 +121,8 @@ public class HBCICallbackSWT extends AbstractHibiscusHBCICallback
    * @see org.kapott.hbci.callback.HBCICallback#callback(org.kapott.hbci.passport.HBCIPassport, int, java.lang.String, int, java.lang.StringBuffer)
    */
   public void callback(HBCIPassport passport, int reason, String msg, int datatype, StringBuffer retData) {
+    
+    cacheData(passport);
 
 		try {
       
@@ -501,7 +503,10 @@ public class HBCICallbackSWT extends AbstractHibiscusHBCICallback
 
 /**********************************************************************
  * $Log$
- * Revision 1.57  2008-05-30 12:01:37  willuhn
+ * Revision 1.58  2008-05-30 12:31:41  willuhn
+ * @N Erster Code fuer gecachte BPD/UPD
+ *
+ * Revision 1.57  2008/05/30 12:01:37  willuhn
  * @N Gemeinsame Basisimplementierung des HBCICallback in Hibiscus und Payment-Server
  *
  * Revision 1.56  2008/02/25 22:21:15  willuhn
