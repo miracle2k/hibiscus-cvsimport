@@ -62,6 +62,11 @@ public class HBCIProperties
   public final static int HBCI_TRANSFER_USAGE_MAXLENGTH = settings.getInt("hbci.transfer.usage.maxlength",27);
 
   /**
+   * Maximale Anzahl von Verwendungszwecken.
+   */
+  public final static int HBCI_TRANSFER_USAGE_MAXNUM = settings.getInt("hbci.transfer.usage.maxnum",10);
+
+  /**
    * Maximale Laenge einer Kontonummer.
    * Sollte eigentlich 10-stellig sein, da die CRC-Pruefungen ohnehin
    * nur bis dahin gelten. Aber fuer den Fall, dass auch mal noch
@@ -255,7 +260,10 @@ public class HBCIProperties
 
 /**********************************************************************
  * $Log$
- * Revision 1.29  2008-05-20 22:47:06  willuhn
+ * Revision 1.30  2008-05-30 12:02:08  willuhn
+ * @N Erster Code fuer erweiterte Verwendungszwecke - NOCH NICHT FREIGESCHALTET!
+ *
+ * Revision 1.29  2008/05/20 22:47:06  willuhn
  * @B "ß" wird bei Umwandlung in Grossbuchstaben zu "SS" und muss bei der Laengenpruefung daher doppelt gezaehlt werden
  *
  * Revision 1.28  2008/05/19 22:35:53  willuhn

@@ -15,6 +15,7 @@ package de.willuhn.jameica.hbci.gui.dialogs;
 import org.eclipse.swt.widgets.Composite;
 import org.kapott.hbci.manager.HBCIUtils;
 
+import de.willuhn.datasource.GenericIterator;
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.dialogs.AbstractDialog;
 import de.willuhn.jameica.gui.input.Input;
@@ -23,6 +24,7 @@ import de.willuhn.jameica.gui.util.ButtonArea;
 import de.willuhn.jameica.gui.util.LabelGroup;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.rmi.Ueberweisung;
+import de.willuhn.jameica.hbci.rmi.Verwendungszweck;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
@@ -95,12 +97,19 @@ public class UeberweisungDialog extends AbstractDialog {
     }
     // BUGZILLA 32 http://www.willuhn.de/bugzilla/show_bug.cgi?id=32
     LabelGroup zweck = new LabelGroup(parent,i18n.tr("Verwendungszweck"));
-    zweck.addText(ueb.getZweck(),true);
+    zweck.addText(ueb.getZweck(),false);
     String z2 = ueb.getZweck2();
     if (z2 != null && z2.length() > 0)
+      zweck.addText(z2,false);
+    
+    GenericIterator moreUsages = ueb.getWeitereVerwendungszwecke();
+    while (moreUsages != null && moreUsages.hasNext())
     {
-      zweck.addSeparator();
-      zweck.addText(z2,true);
+      Verwendungszweck z = (Verwendungszweck) moreUsages.next();
+      String text = z.getText();
+      if (text == null || text.length() == 0)
+        continue;
+      zweck.addText(text,false);
     }
 
 
@@ -128,7 +137,10 @@ public class UeberweisungDialog extends AbstractDialog {
 
 /**********************************************************************
  * $Log$
- * Revision 1.13  2005-11-14 13:38:43  willuhn
+ * Revision 1.14  2008-05-30 12:02:08  willuhn
+ * @N Erster Code fuer erweiterte Verwendungszwecke - NOCH NICHT FREIGESCHALTET!
+ *
+ * Revision 1.13  2005/11/14 13:38:43  willuhn
  * @N Termin-Ueberweisungen
  *
  * Revision 1.12  2005/04/05 22:49:02  web0
