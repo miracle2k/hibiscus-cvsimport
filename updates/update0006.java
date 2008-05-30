@@ -47,6 +47,7 @@ public class update0006 implements Update
         "    name varchar(255) NOT NULL," +
         "    content varchar(255) NULL," +
         "    UNIQUE (id)," +
+        "    UNIQUE (name)," +
         "    PRIMARY KEY (id)" +
         ");\n");
 
@@ -57,6 +58,7 @@ public class update0006 implements Update
         "    name varchar(255) NOT NULL," +
         "    content varchar(255) NULL," +
         "    UNIQUE (id)," +
+        "    UNIQUE (name)," +
         "    PRIMARY KEY (id)" +
         ");\n");
     
@@ -67,6 +69,7 @@ public class update0006 implements Update
         "    name varchar(255) NOT NULL," +
         "    content varchar(255) NULL," +
         "    UNIQUE (id)," +
+        "    UNIQUE (name)," +
         "    PRIMARY KEY (id)" +
         ")TYPE=InnoDB;\n");
   }
@@ -116,7 +119,10 @@ public class update0006 implements Update
 
 /*********************************************************************
  * $Log$
- * Revision 1.1  2008-05-30 12:34:04  willuhn
+ * Revision 1.2  2008-05-30 12:37:50  willuhn
+ * @C Feld "name" unique
+ *
+ * Revision 1.1  2008/05/30 12:34:04  willuhn
  * @N Neue Tabelle "property" in der allgemein alle moeglichen Parameter datenbank-gestuetzt gespeichert werden koennen.
  *
  * Revision 1.1  2008/02/15 17:39:10  willuhn
