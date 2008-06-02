@@ -239,7 +239,6 @@ public abstract class AbstractBaseUeberweisungControl extends AbstractTransferCo
 		DialogInput i = super.getZweck2();
     if (((Terminable)getTransfer()).ausgefuehrt())
       i.disableClientControl();
-    i.disableButton(); // TODO EVZ - Freischalten, wenn alles implementiert ist
 		return i;
   }
 
@@ -248,7 +247,10 @@ public abstract class AbstractBaseUeberweisungControl extends AbstractTransferCo
 
 /**********************************************************************
  * $Log$
- * Revision 1.10  2008-05-30 12:02:08  willuhn
+ * Revision 1.11  2008-06-02 08:06:29  willuhn
+ * @C Button fuer weitere Verwendungszwecke vorerst gesperrt
+ *
+ * Revision 1.10  2008/05/30 12:02:08  willuhn
  * @N Erster Code fuer erweiterte Verwendungszwecke - NOCH NICHT FREIGESCHALTET!
  *
  * Revision 1.9  2006/09/10 12:12:41  willuhn
