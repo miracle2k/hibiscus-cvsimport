@@ -15,11 +15,8 @@ package de.willuhn.jameica.hbci.gui.parts;
 
 import java.rmi.RemoteException;
 
-import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.Part;
-import de.willuhn.jameica.hbci.Settings;
-import de.willuhn.jameica.hbci.rmi.HBCIDBService;
 import de.willuhn.jameica.hbci.rmi.SammelUeberweisung;
 
 /**
@@ -34,30 +31,26 @@ public class SammelUeberweisungList extends AbstractSammelTransferList implement
    */
   public SammelUeberweisungList(Action action) throws RemoteException
   {
-    super(init(), action);
+    super(action);
     setContextMenu(new de.willuhn.jameica.hbci.gui.menus.SammelUeberweisungList());
   }
 
   /**
-   * Initialisiert die Liste der Sammel-Ueberweisungen.
-   * @return Initialisiert die Liste der Sammel-Ueberweisungen.
-   * @throws RemoteException
+   * @see de.willuhn.jameica.hbci.gui.parts.AbstractSammelTransferList#getObjectType()
    */
-  private static DBIterator init() throws RemoteException
+  protected Class getObjectType()
   {
-    HBCIDBService service = (HBCIDBService) Settings.getDBService();
-
-    DBIterator list = service.createList(SammelUeberweisung.class);
-    list.setOrder("ORDER BY " + service.getSQLTimestamp("termin") + " DESC");
-    return list;
+    return SammelUeberweisung.class;
   }
-
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2007-04-19 18:12:21  willuhn
+ * Revision 1.3  2008-06-30 13:04:10  willuhn
+ * @N Von-Bis-Filter auch in Sammel-Auftraegen
+ *
+ * Revision 1.2  2007/04/19 18:12:21  willuhn
  * @N MySQL-Support (GUI zum Konfigurieren fehlt noch)
  *
  * Revision 1.1  2005/09/30 00:08:50  willuhn

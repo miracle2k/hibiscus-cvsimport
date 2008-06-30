@@ -75,6 +75,14 @@ public class DTAUSSammelTransferImporter extends AbstractDTAUSImporter
       t.setTermin(asatz.getAusfuehrungsdatum());
       t.setBezeichnung(asatz.getKundenname());
       t.store();
+      try
+      {
+        Application.getMessagingFactory().sendMessage(new ImportMessage(t));
+      }
+      catch (Exception ex)
+      {
+        Logger.error("error while sending import message",ex);
+      }
     }
 
     final SammelTransferBuchung b = t.createBuchung();
@@ -118,7 +126,10 @@ public class DTAUSSammelTransferImporter extends AbstractDTAUSImporter
 
 /*********************************************************************
  * $Log$
- * Revision 1.8  2007-04-23 18:07:14  willuhn
+ * Revision 1.9  2008-06-30 13:04:10  willuhn
+ * @N Von-Bis-Filter auch in Sammel-Auftraegen
+ *
+ * Revision 1.8  2007/04/23 18:07:14  willuhn
  * @C Redesign: "Adresse" nach "HibiscusAddress" umbenannt
  * @C Redesign: "Transfer" nach "HibiscusTransfer" umbenannt
  * @C Redesign: Neues Interface "Transfer", welches von Ueberweisungen, Lastschriften UND Umsaetzen implementiert wird
