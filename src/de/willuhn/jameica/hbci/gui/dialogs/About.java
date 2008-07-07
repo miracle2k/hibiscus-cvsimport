@@ -85,7 +85,7 @@ public class About extends AbstractDialog
     container.addPart(text);
 
     ButtonArea buttons = container.createButtonArea(2);
-    buttons.addButton(i18n.tr("Diaognose-Informationen"), new Action() {
+    buttons.addButton(i18n.tr("Diagnose-Informationen"), new Action() {
       public void handleAction(Object context) throws ApplicationException
       {
         try
@@ -122,7 +122,10 @@ public class About extends AbstractDialog
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2008-05-06 10:10:56  willuhn
+ * Revision 1.7  2008-07-07 15:37:17  willuhn
+ * @B Typo
+ *
+ * Revision 1.6  2008/05/06 10:10:56  willuhn
  * @N Diagnose-Dialog, mit dem man die JDBC-Verbindungsdaten (u.a. auch das JDBC-Passwort) ausgeben kann
  *
  * Revision 1.5  2008/04/15 16:16:34  willuhn
