@@ -17,6 +17,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.rmi.RemoteException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -57,6 +59,7 @@ import de.willuhn.util.ProgressMonitor;
  */
 public class ExportDialog extends AbstractDialog
 {
+  private static DateFormat DATEFORMAT = new SimpleDateFormat("yyyyMMdd");
 
 	private I18N i18n;
 
@@ -149,7 +152,7 @@ public class ExportDialog extends AbstractDialog
     String[] se = exp.format.getFileExtensions();
     String ext = se == null ? "" : se[0];
     ext = ext.replaceAll("\\*.",""); // "*." entfernen
-    fd.setFileName(i18n.tr("hibiscus-export-{0}." + ext,HBCI.FASTDATEFORMAT.format(new Date())));
+    fd.setFileName(i18n.tr("hibiscus-export-{0}." + ext,DATEFORMAT.format(new Date())));
 
     String path = settings.getString("lastdir",System.getProperty("user.home"));
     if (path != null && path.length() > 0)
@@ -405,7 +408,10 @@ public class ExportDialog extends AbstractDialog
 
 /**********************************************************************
  * $Log$
- * Revision 1.16  2008-02-13 23:22:24  willuhn
+ * Revision 1.17  2008-07-11 12:28:02  willuhn
+ * @N BUGZILLA 609
+ *
+ * Revision 1.16  2008/02/13 23:22:24  willuhn
  * @B http://www.onlinebanking-forum.de/phpBB2/viewtopic.php?t=8175 (Nachtrag)
  *
  * Revision 1.15  2008/02/13 23:15:29  willuhn
