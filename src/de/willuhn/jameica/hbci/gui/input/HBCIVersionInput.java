@@ -90,7 +90,8 @@ public class HBCIVersionInput extends SelectInput implements Input
       Arrays.sort(s); // Sortieren
 
       ArrayList l = new ArrayList();
-      l.add(new HBCIVersionObject(null)); // Default-Wert (ohne Versionsnummer)
+      if (passport != null)
+        l.add(new HBCIVersionObject(null)); // Default-Wert (ohne Versionsnummer) - nur, wenn Passport da
       for (int i=0;i<s.length;++i)
       {
         l.add(new HBCIVersionObject(s[i]));
@@ -229,7 +230,10 @@ public class HBCIVersionInput extends SelectInput implements Input
 
 /*****************************************************************************
  * $Log$
- * Revision 1.12  2008-07-25 11:06:44  willuhn
+ * Revision 1.13  2008-07-25 13:31:06  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.12  2008/07/25 11:06:44  willuhn
  * @N Auswahl-Dialog fuer HBCI-Version
  * @N Code-Cleanup
  *
