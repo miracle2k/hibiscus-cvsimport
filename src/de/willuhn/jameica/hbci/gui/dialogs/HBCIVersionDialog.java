@@ -79,13 +79,15 @@ public class HBCIVersionDialog extends AbstractDialog
     
     });
   }
-
 }
 
 
 /*********************************************************************
  * $Log$
- * Revision 1.2  2008-07-25 13:31:06  willuhn
+ * Revision 1.3  2008-07-28 09:31:10  willuhn
+ * @N Abfrage der HBCI-Version via Messaging
+ *
+ * Revision 1.2  2008/07/25 13:31:06  willuhn
  * *** empty log message ***
  *
  * Revision 1.1  2008/07/25 11:06:44  willuhn

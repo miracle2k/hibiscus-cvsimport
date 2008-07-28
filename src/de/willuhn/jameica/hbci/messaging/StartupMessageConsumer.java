@@ -86,6 +86,7 @@ public class StartupMessageConsumer implements MessageConsumer
     });
 
     Logger.info("register message consumers for query lookups");
+    Application.getMessagingFactory().getMessagingQueue("hibiscus.passport.rdh.hbciversion").registerMessageConsumer(new QueryHBCIVersionMessageConsumer());
     Application.getMessagingFactory().getMessagingQueue("hibiscus.query.bankname").registerMessageConsumer(new QueryBanknameMessageConsumer());
     Application.getMessagingFactory().getMessagingQueue("hibiscus.query.accountcrc").registerMessageConsumer(new QueryAccountCRCMessageConsumer());
     Application.getMessagingFactory().getMessagingQueue("hibiscus.transfer.lastschrift").registerMessageConsumer(new TransferLastschriftMessageConsumer());
@@ -96,7 +97,10 @@ public class StartupMessageConsumer implements MessageConsumer
 
 /*********************************************************************
  * $Log$
- * Revision 1.3  2008-02-05 00:48:43  willuhn
+ * Revision 1.4  2008-07-28 09:31:10  willuhn
+ * @N Abfrage der HBCI-Version via Messaging
+ *
+ * Revision 1.3  2008/02/05 00:48:43  willuhn
  * @N Generischer MessageConsumer zur Erstellung von Lastschriften (Siehe Mail an Markus vom 04.02.2008)
  *
  * Revision 1.2  2008/01/25 12:24:05  willuhn
