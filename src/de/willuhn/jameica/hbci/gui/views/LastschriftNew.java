@@ -58,8 +58,8 @@ public class LastschriftNew extends AbstractView {
 		details.addLabelPair(i18n.tr("Verwendungszweck"),					control.getZweck());
 		details.addLabelPair(i18n.tr("weiterer Verwendungszweck"),control.getZweck2());
 		details.addLabelPair(i18n.tr("Betrag"),										control.getBetrag());
+    details.addLabelPair(i18n.tr("Textschlüssel"),            control.getTextSchluessel());
 		details.addLabelPair(i18n.tr("Termin"),										control.getTermin());
-		details.addLabelPair(i18n.tr("Typ"),											control.getTyp());
 
 		details.addSeparator();
 
@@ -92,7 +92,10 @@ public class LastschriftNew extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.13  2008-05-30 12:02:08  willuhn
+ * Revision 1.14  2008-08-01 11:05:14  willuhn
+ * @N BUGZILLA 587
+ *
+ * Revision 1.13  2008/05/30 12:02:08  willuhn
  * @N Erster Code fuer erweiterte Verwendungszwecke - NOCH NICHT FREIGESCHALTET!
  *
  * Revision 1.12  2007/04/23 18:07:15  willuhn

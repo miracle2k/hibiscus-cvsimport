@@ -77,9 +77,9 @@ public class HBCILastschriftJob extends AbstractHBCIJob
 
 			setJobParam("btg",lastschrift.getBetrag(),curr);
 
-			// BUGZILLA #8 http://www.willuhn.de/bugzilla/show_bug.cgi?id=8
-			if (lastschrift.getTyp() != null)
-				setJobParam("type",lastschrift.getTyp());
+      String key = lastschrift.getTextSchluessel();
+      if (key != null && key.length() > 0)
+        setJobParam("type",key);
 
 			HibiscusAddress empfaenger = (HibiscusAddress) Settings.getDBService().createObject(HibiscusAddress.class,null);
 			empfaenger.setBLZ(lastschrift.getGegenkontoBLZ());
@@ -164,7 +164,10 @@ public class HBCILastschriftJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.15  2008-05-30 12:02:08  willuhn
+ * Revision 1.16  2008-08-01 11:05:14  willuhn
+ * @N BUGZILLA 587
+ *
+ * Revision 1.15  2008/05/30 12:02:08  willuhn
  * @N Erster Code fuer erweiterte Verwendungszwecke - NOCH NICHT FREIGESCHALTET!
  *
  * Revision 1.14  2007/12/06 14:42:26  willuhn

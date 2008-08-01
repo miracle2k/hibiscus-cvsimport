@@ -52,6 +52,7 @@ public class UeberweisungImpl extends AbstractBaseUeberweisungImpl
     u.setKonto(getKonto());
     u.setZweck(getZweck());
     u.setZweck2(getZweck2());
+    u.setTextSchluessel(getTextSchluessel());
     
     u.setTermin(isTerminUeberweisung() ? getTermin() : new Date());
     u.setTerminUeberweisung(isTerminUeberweisung());
@@ -100,7 +101,10 @@ public class UeberweisungImpl extends AbstractBaseUeberweisungImpl
 
 /**********************************************************************
  * $Log$
- * Revision 1.40  2008-02-15 17:39:10  willuhn
+ * Revision 1.41  2008-08-01 11:05:14  willuhn
+ * @N BUGZILLA 587
+ *
+ * Revision 1.40  2008/02/15 17:39:10  willuhn
  * @N BUGZILLA 188 Basis-API fuer weitere Zeilen Verwendungszweck. GUI fehlt noch
  * @N DB-Update 0005. Speichern des Textschluessels bei Sammelauftragsbuchungen in der Datenbank
  *

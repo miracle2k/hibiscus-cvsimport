@@ -18,7 +18,7 @@ import java.rmi.RemoteException;
 /**
  * Bildet eine Ueberweisung ab.
  */
-public interface Ueberweisung extends HibiscusTransfer, Terminable, Duplicatable
+public interface Ueberweisung extends BaseUeberweisung, Duplicatable
 {
   /**
    * Prueft, ob es sich um einen bankseitige Termin-Ueberweisung handelt.
@@ -38,7 +38,10 @@ public interface Ueberweisung extends HibiscusTransfer, Terminable, Duplicatable
 
 /**********************************************************************
  * $Log$
- * Revision 1.16  2007-04-23 18:07:14  willuhn
+ * Revision 1.17  2008-08-01 11:05:14  willuhn
+ * @N BUGZILLA 587
+ *
+ * Revision 1.16  2007/04/23 18:07:14  willuhn
  * @C Redesign: "Adresse" nach "HibiscusAddress" umbenannt
  * @C Redesign: "Transfer" nach "HibiscusTransfer" umbenannt
  * @C Redesign: Neues Interface "Transfer", welches von Ueberweisungen, Lastschriften UND Umsaetzen implementiert wird
