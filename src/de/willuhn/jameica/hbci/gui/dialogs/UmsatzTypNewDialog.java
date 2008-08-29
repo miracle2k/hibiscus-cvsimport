@@ -77,8 +77,8 @@ public class UmsatzTypNewDialog extends AbstractDialog
 
           UmsatzTyp typ = control.getUmsatzTyp();
           typ.setName(s);
-          s = (String) control.getArt().getValue();
-          typ.setEinnahme(UmsatzTyp.EINNAHME.equals(s));
+          UmsatzTypControl.UmsatzTypObject uto = (UmsatzTypControl.UmsatzTypObject) control.getArt().getValue();
+          typ.setTyp(uto.getTyp());
           close();
         }
         catch (RemoteException e)
@@ -122,7 +122,10 @@ public class UmsatzTypNewDialog extends AbstractDialog
 
 /*********************************************************************
  * $Log$
- * Revision 1.3  2006-11-23 23:24:17  willuhn
+ * Revision 1.4  2008-08-29 16:46:24  willuhn
+ * @N BUGZILLA 616
+ *
+ * Revision 1.3  2006/11/23 23:24:17  willuhn
  * @N Umsatz-Kategorien: DB-Update, Edit
  *
  * Revision 1.1  2005/12/30 00:14:45  willuhn

@@ -190,8 +190,12 @@ public class UmsatzGroup implements GenericObjectNode, Comparable
     {
       // BUGZILLA 512
       // Gruppiert nach Einnahmen und Ausgaben
-      if (this.typ.isEinnahme() && !other.typ.isEinnahme())
-        return -1; // Einnahmen zuerst
+      
+      // Erst Ausgaben, dann Einnahmen, dann Rest
+      int thisType  = this.typ.getTyp();
+      int otherType = other.typ.getTyp();
+      if (thisType != otherType)
+        return thisType < otherType ? -1 : 1;
       
       String n1  = this.typ.getNummer();  if (n1  == null) n1  = "";
       String n2  = other.typ.getNummer(); if (n2  == null) n2  = "";
@@ -218,7 +222,10 @@ public class UmsatzGroup implements GenericObjectNode, Comparable
 
 /*********************************************************************
  * $Log$
- * Revision 1.5  2008-04-27 22:22:56  willuhn
+ * Revision 1.6  2008-08-29 16:46:24  willuhn
+ * @N BUGZILLA 616
+ *
+ * Revision 1.5  2008/04/27 22:22:56  willuhn
  * @C I18N-Referenzen statisch
  *
  * Revision 1.4  2007/12/06 09:29:45  willuhn

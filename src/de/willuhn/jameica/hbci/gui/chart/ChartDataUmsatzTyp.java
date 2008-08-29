@@ -30,28 +30,33 @@ import de.willuhn.util.I18N;
 public class ChartDataUmsatzTyp implements ChartData
 {
   private I18N i18n = null;
-  private boolean einnahmen = true;
+  private int type = UmsatzTyp.TYP_EGAL;
   private int days = -1;
   
   /**
-   * @param einnahmen legt fest, ob es sich um Einnahmen oder Ausgaben handelt.
+   * @param typ Art der Umsaetze.
+   * @see UmsatzTyp#TYP_AUSGABE
+   * @see UmsatzTyp#TYP_EGAL
+   * @see UmsatzTyp#TYP_EINNAHME
    * ct.
    */
-  public ChartDataUmsatzTyp(boolean einnahmen)
+  public ChartDataUmsatzTyp(int typ)
   {
-    this.i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
-    this.einnahmen = einnahmen;
+    this(typ,-1);
   }
 
   /**
-   * @param einnahmen legt fest, ob es sich um Einnahmen oder Ausgaben handelt.
+   * @param typ Art der Umsaetze.
+   * @see UmsatzTyp#TYP_AUSGABE
+   * @see UmsatzTyp#TYP_EGAL
+   * @see UmsatzTyp#TYP_EINNAHME
    * @param days Anzahl der Tage.
    * ct.
    */
-  public ChartDataUmsatzTyp(boolean einnahmen, int days)
+  public ChartDataUmsatzTyp(int typ, int days)
   {
     this.i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
-    this.einnahmen = einnahmen;
+    this.type = typ;
     this.days = days;
   }
 
@@ -61,7 +66,8 @@ public class ChartDataUmsatzTyp implements ChartData
   public GenericIterator getData() throws RemoteException
   {
     DBIterator list = Settings.getDBService().createList(UmsatzTyp.class);
-    list.addFilter("iseinnahme = " + (einnahmen ? "1" : "0"));
+    if (this.type != UmsatzTyp.TYP_EGAL)
+      list.addFilter("umsatztyp = " + this.type);
     return list;
   }
 
@@ -103,7 +109,10 @@ public class ChartDataUmsatzTyp implements ChartData
 
 /*********************************************************************
  * $Log$
- * Revision 1.4  2006-07-17 15:50:49  willuhn
+ * Revision 1.5  2008-08-29 16:46:23  willuhn
+ * @N BUGZILLA 616
+ *
+ * Revision 1.4  2006/07/17 15:50:49  willuhn
  * @N Sparquote
  *
  * Revision 1.3  2006/04/03 21:39:07  willuhn

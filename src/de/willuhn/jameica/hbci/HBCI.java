@@ -279,6 +279,7 @@ public class HBCI extends AbstractPlugin
     }
     catch (Exception e)
     {
+      Logger.error("unable to init db service",e);
       throw new ApplicationException(getResources().getI18N().tr("Fehler beim Initialisieren der Datenbank"),e);
     }
     finally
@@ -302,7 +303,10 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
- * Revision 1.108  2008-01-25 12:24:05  willuhn
+ * Revision 1.109  2008-08-29 16:46:24  willuhn
+ * @N BUGZILLA 616
+ *
+ * Revision 1.108  2008/01/25 12:24:05  willuhn
  * @B Messaging-Consumer zu frueh registriert
  *
  * Revision 1.107  2008/01/03 18:20:31  willuhn
