@@ -369,14 +369,6 @@ public class KontoauszugList extends UmsatzList
           if (thisValue == null || thisValue.isNaN())
             return;
           betragFrom.setValue(thisValue);
-
-//          // Wenn beim Hoechstbetrag noch nichts eingegeben ist, uebernehmen
-//          // wird dort automatisch den Mindestbetrag
-//          // Vorschlag von Roberto aus Mail vom 30.08.2008
-//          Input i = getHoechstBetrag();
-//          Double value = (Double) i.getValue();
-//          if (value == null || value.isNaN())
-//            i.setValue(betragFrom.getValue());
         }
         catch (Exception e)
         {
@@ -636,7 +628,10 @@ public class KontoauszugList extends UmsatzList
 
 /*********************************************************************
  * $Log$
- * Revision 1.12  2008-08-31 13:50:42  willuhn
+ * Revision 1.13  2008-08-31 13:59:54  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.12  2008/08/31 13:50:42  willuhn
  * @N Automatische Betragsformatierung
  *
  * Revision 1.11  2008/04/06 23:21:43  willuhn
