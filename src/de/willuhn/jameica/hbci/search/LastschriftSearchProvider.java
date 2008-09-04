@@ -21,6 +21,7 @@ import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.gui.action.LastschriftNew;
+import de.willuhn.jameica.hbci.rmi.HBCIDBService;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Lastschrift;
 import de.willuhn.jameica.search.Result;
@@ -54,13 +55,15 @@ public class LastschriftSearchProvider implements SearchProvider
       return null;
     
     String text = "%" + search.toLowerCase() + "%";
-    DBIterator list = Settings.getDBService().createList(Lastschrift.class);
+    HBCIDBService service = (HBCIDBService) Settings.getDBService();
+    DBIterator list = service.createList(Lastschrift.class);
     list.addFilter("LOWER(zweck) LIKE ? OR " +
                    "LOWER(zweck2) LIKE ? OR " +
                    "LOWER(empfaenger_name) LIKE ? OR " +
                    "empfaenger_konto LIKE ? OR " +
                    "empfaenger_blz LIKE ?",
                    new String[]{text,text,text,text,text});
+    list.setOrder("ORDER BY " + service.getSQLTimestamp("termin") + " DESC");
 
     ArrayList results = new ArrayList();
     while (list.hasNext())
@@ -126,7 +129,12 @@ public class LastschriftSearchProvider implements SearchProvider
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2008-09-03 11:13:51  willuhn
+ * Revision 1.2  2008-09-04 23:42:33  willuhn
+ * @N Searchprovider fuer Sammel- und Dauerauftraege
+ * @N Sortierung von Ueberweisungen und Lastschriften in Suchergebnissen
+ * @C "getNaechsteZahlung" von DauerauftragUtil nach TurnusHelper verschoben
+ *
+ * Revision 1.1  2008/09/03 11:13:51  willuhn
  * @N Mehr Suchprovider
  *
  * Revision 1.1  2008/09/03 00:12:06  willuhn

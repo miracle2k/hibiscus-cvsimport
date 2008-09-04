@@ -14,16 +14,16 @@
 package de.willuhn.jameica.hbci.search;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Hashtable;
 import java.util.List;
 
 import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
-import de.willuhn.jameica.hbci.gui.action.UeberweisungNew;
-import de.willuhn.jameica.hbci.rmi.HBCIDBService;
-import de.willuhn.jameica.hbci.rmi.Konto;
-import de.willuhn.jameica.hbci.rmi.Ueberweisung;
+import de.willuhn.jameica.hbci.gui.action.SammelLastschriftNew;
+import de.willuhn.jameica.hbci.rmi.SammelLastBuchung;
+import de.willuhn.jameica.hbci.rmi.SammelLastschrift;
 import de.willuhn.jameica.search.Result;
 import de.willuhn.jameica.search.SearchProvider;
 import de.willuhn.jameica.system.Application;
@@ -33,16 +33,16 @@ import de.willuhn.util.I18N;
 
 
 /**
- * Implementierung einen Search-Provider fuer die Suche in Ueberweisungen.
+ * Implementierung einen Search-Provider fuer die Suche in Sammel-Lastschriften.
  */
-public class UeberweisungSearchProvider implements SearchProvider
+public class SammelLastschriftSearchProvider implements SearchProvider
 {
   /**
    * @see de.willuhn.jameica.search.SearchProvider#getName()
    */
   public String getName()
   {
-    return Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N().tr("Überweisungen");
+    return Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N().tr("Sammel-Lastschriften");
   }
 
   /**
@@ -55,22 +55,37 @@ public class UeberweisungSearchProvider implements SearchProvider
       return null;
     
     String text = "%" + search.toLowerCase() + "%";
-    HBCIDBService service = (HBCIDBService) Settings.getDBService();
-    DBIterator list = service.createList(Ueberweisung.class);
+    
+    // Wir speichern die Daten erstmal in einem Hash, damit wir Duplikate rausfischen koennen
+    Hashtable hash = new Hashtable();
+    
+    // Schritt 1: Die Buchungen von Sammel-Auftraegen
+    DBIterator list = Settings.getDBService().createList(SammelLastBuchung.class);
     list.addFilter("LOWER(zweck) LIKE ? OR " +
                    "LOWER(zweck2) LIKE ? OR " +
-                   "LOWER(empfaenger_name) LIKE ? OR " +
-                   "empfaenger_konto LIKE ? OR " +
-                   "empfaenger_blz LIKE ?",
+                   "LOWER(gegenkonto_name) LIKE ? OR " +
+                   "gegenkonto_nr LIKE ? OR " +
+                   "gegenkonto_blz LIKE ?",
                    new String[]{text,text,text,text,text});
-    list.setOrder("ORDER BY " + service.getSQLTimestamp("termin") + " DESC");
 
-    ArrayList results = new ArrayList();
     while (list.hasNext())
     {
-      results.add(new MyResult((Ueberweisung)list.next()));
+      SammelLastBuchung buchung = (SammelLastBuchung) list.next();
+      SammelLastschrift ueb = (SammelLastschrift) buchung.getSammelTransfer();
+      hash.put(ueb.getID(),new MyResult(ueb));
     }
-    return results;
+    
+    // Schritt 2: Sammel-Auftraege selbst
+    list = Settings.getDBService().createList(SammelLastschrift.class);
+    list.addFilter("LOWER(bezeichnung) LIKE ?",new String[]{text});
+
+    while (list.hasNext())
+    {
+      SammelLastschrift ueb = (SammelLastschrift) list.next();
+      hash.put(ueb.getID(),new MyResult(ueb));
+    }
+
+    return Arrays.asList(hash.values().toArray(new MyResult[hash.size()]));
   }
   
   /**
@@ -78,13 +93,13 @@ public class UeberweisungSearchProvider implements SearchProvider
    */
   private class MyResult implements Result
   {
-    private Ueberweisung u = null;
+    private SammelLastschrift u = null;
     
     /**
      * ct.
      * @param u
      */
-    private MyResult(Ueberweisung u)
+    private MyResult(SammelLastschrift u)
     {
       this.u = u;
     }
@@ -94,7 +109,7 @@ public class UeberweisungSearchProvider implements SearchProvider
      */
     public void execute() throws RemoteException, ApplicationException
     {
-      new UeberweisungNew().handleAction(this.u);
+      new SammelLastschriftNew().handleAction(this.u);
     }
 
     /**
@@ -104,16 +119,8 @@ public class UeberweisungSearchProvider implements SearchProvider
     {
       try
       {
-        Konto k = u.getKonto();
-        String[] params = new String[] {
-            k.getLongName(),
-            u.getZweck(),
-            HBCI.DECIMALFORMAT.format(u.getBetrag()),
-            k.getWaehrung(),
-            u.getGegenkontoName()
-           };
         I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
-        return i18n.tr("{0}: ({1}) {2} {3} an {4}",params);
+        return i18n.tr("{0}: {1}",new String[] {HBCI.DATEFORMAT.format(u.getTermin()),u.getBezeichnung()});
       }
       catch (RemoteException re)
       {
@@ -129,15 +136,9 @@ public class UeberweisungSearchProvider implements SearchProvider
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2008-09-04 23:42:33  willuhn
+ * Revision 1.1  2008-09-04 23:42:33  willuhn
  * @N Searchprovider fuer Sammel- und Dauerauftraege
  * @N Sortierung von Ueberweisungen und Lastschriften in Suchergebnissen
  * @C "getNaechsteZahlung" von DauerauftragUtil nach TurnusHelper verschoben
- *
- * Revision 1.2  2008/09/03 11:13:51  willuhn
- * @N Mehr Suchprovider
- *
- * Revision 1.1  2008/09/03 00:12:06  willuhn
- * @N Erster Code fuer Searchprovider in Hibiscus
  *
  **********************************************************************/
