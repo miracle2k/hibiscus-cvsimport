@@ -382,12 +382,7 @@ public class KontoauszugList extends UmsatzList
             if (value == null || value.isNaN())
             {
               i.setValue(betragFrom.getValue());
-              
-              // Test mit "setSelection" weil "selectAll" unter Windows
-              // nicht richtig zu funktionieren scheint
-              Text t = (Text) i.getControl();
-              t.setSelection(0,t.getText().length()-1);
-              //((Text) i.getControl()).selectAll();
+              ((Text) i.getControl()).selectAll();
             }
           }
         }
@@ -649,7 +644,10 @@ public class KontoauszugList extends UmsatzList
 
 /*********************************************************************
  * $Log$
- * Revision 1.15  2008-09-03 08:27:04  willuhn
+ * Revision 1.16  2008-09-04 09:34:16  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.15  2008/09/03 08:27:04  willuhn
  * @C Test - "selectAll" gegen "setSelection" ersetzt
  *
  * Revision 1.14  2008/09/02 08:55:47  willuhn
