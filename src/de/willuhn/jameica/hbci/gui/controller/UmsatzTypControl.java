@@ -293,7 +293,7 @@ public class UmsatzTypControl extends AbstractControl
      */
     public String getID() throws RemoteException
     {
-      return Integer.toString(this.typ);
+      return String.valueOf(this.typ);
     }
 
     /**
@@ -309,7 +309,10 @@ public class UmsatzTypControl extends AbstractControl
 
 /*********************************************************************
  * $Log$
- * Revision 1.8  2008-08-29 16:46:23  willuhn
+ * Revision 1.9  2008-09-17 23:44:29  willuhn
+ * @B SQL-Query fuer MaxUsage-Abfrage korrigiert
+ *
+ * Revision 1.8  2008/08/29 16:46:23  willuhn
  * @N BUGZILLA 616
  *
  * Revision 1.7  2007/08/24 22:22:00  willuhn

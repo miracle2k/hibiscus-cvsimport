@@ -494,7 +494,7 @@ public class HBCICallbackSWT extends AbstractHibiscusHBCICallback
 				break;
 
 			default:
-				throw new HBCI_Exception(HBCIUtilsInternal.getLocMsg("STATUS_INVALID",Integer.toString(statusTag)));
+				throw new HBCI_Exception(HBCIUtilsInternal.getLocMsg("STATUS_INVALID",String.valueOf(statusTag)));
 		}
     
   }
@@ -503,7 +503,10 @@ public class HBCICallbackSWT extends AbstractHibiscusHBCICallback
 
 /**********************************************************************
  * $Log$
- * Revision 1.58  2008-05-30 12:31:41  willuhn
+ * Revision 1.59  2008-09-17 23:44:29  willuhn
+ * @B SQL-Query fuer MaxUsage-Abfrage korrigiert
+ *
+ * Revision 1.58  2008/05/30 12:31:41  willuhn
  * @N Erster Code fuer gecachte BPD/UPD
  *
  * Revision 1.57  2008/05/30 12:01:37  willuhn
