@@ -164,6 +164,12 @@ public class UmsatzList extends TablePart implements Extendable
             item.setForeground(Settings.getBuchungSollForeground());
           else
             item.setForeground(Settings.getBuchungHabenForeground());
+
+          // Saldo nicht mit einfaerben, dass irritiert sonst,
+          // wenn die Buchung zwar einen negativen Betrag hat,
+          // der Saldo aber einen positiven (und umgekehrt)
+          item.setForeground(6,Color.WIDGET_FG.getSWTColor());
+        
         }
         catch (RemoteException e)
         {
@@ -710,7 +716,10 @@ public class UmsatzList extends TablePart implements Extendable
 
 /**********************************************************************
  * $Log$
- * Revision 1.55  2007-08-09 12:04:39  willuhn
+ * Revision 1.56  2008-09-24 10:24:48  willuhn
+ * @C Saldo in Umsatzliste nicht mit faerben
+ *
+ * Revision 1.55  2007/08/09 12:04:39  willuhn
  * @N Bug 302
  *
  * Revision 1.54  2007/08/09 11:01:38  willuhn
