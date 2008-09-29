@@ -47,7 +47,7 @@ public class LastschriftNew extends AbstractView {
 		
 		LabelGroup konten = new LabelGroup(getParent(),i18n.tr("Konten"));
 		
-		konten.addLabelPair(i18n.tr("persönliches Konto (Empfänger)"),	    control.getKontoAuswahl());		
+		konten.addLabelPair(i18n.tr("persönliches Konto"),	                control.getKontoAuswahl());		
     konten.addLabelPair(i18n.tr("Kontonummer des Zahlungspflichtigen"), control.getEmpfaengerKonto());    
 		konten.addLabelPair(i18n.tr("BLZ des Zahlungspflichtigen"),			    control.getEmpfaengerBlz());
     konten.addLabelPair(i18n.tr("Name des Zahlungspflichtigen"),        control.getEmpfaengerName());
@@ -60,10 +60,6 @@ public class LastschriftNew extends AbstractView {
 		details.addLabelPair(i18n.tr("Betrag"),										control.getBetrag());
     details.addLabelPair(i18n.tr("Textschlüssel"),            control.getTextSchluessel());
 		details.addLabelPair(i18n.tr("Termin"),										control.getTermin());
-
-		details.addSeparator();
-
-		details.addLabelPair("",                                  control.getComment());
 
 		ButtonArea buttonArea = new ButtonArea(getParent(),4);
 		buttonArea.addButton(i18n.tr("Zurück"), 				 				 new Back());
@@ -92,7 +88,10 @@ public class LastschriftNew extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.14  2008-08-01 11:05:14  willuhn
+ * Revision 1.15  2008-09-29 23:48:54  willuhn
+ * @N Ueberfaellig-Hinweis hinter Auswahlfeld fuer Termin verschoben - spart Platz
+ *
+ * Revision 1.14  2008/08/01 11:05:14  willuhn
  * @N BUGZILLA 587
  *
  * Revision 1.13  2008/05/30 12:02:08  willuhn
