@@ -135,6 +135,8 @@ public class SammelTransferBuchungList extends TablePart
         }
       }
     });
+    setRememberColWidths(true);
+    setRememberOrder(true);
   }
  
   /**
@@ -180,6 +182,9 @@ public class SammelTransferBuchungList extends TablePart
         catch (RemoteException e) { /*ignore */}
       }
     });
+    
+    setRememberColWidths(true);
+    setRememberOrder(true);
     // Wir erstellen noch einen Message-Consumer, damit wir ueber neu eintreffende
     // Buchungen informiert werden.
     this.mc = new STMessageConsumer();
@@ -264,7 +269,11 @@ public class SammelTransferBuchungList extends TablePart
 
 /*********************************************************************
  * $Log$
- * Revision 1.7  2007-04-23 18:07:15  willuhn
+ * Revision 1.8  2008-10-12 22:10:20  willuhn
+ * @B Typo in den Updates
+ * @B Spalten-Sortierung und -breite fuer in den Positionen von Sammelauftraegen nicht gespeichert
+ *
+ * Revision 1.7  2007/04/23 18:07:15  willuhn
  * @C Redesign: "Adresse" nach "HibiscusAddress" umbenannt
  * @C Redesign: "Transfer" nach "HibiscusTransfer" umbenannt
  * @C Redesign: Neues Interface "Transfer", welches von Ueberweisungen, Lastschriften UND Umsaetzen implementiert wird

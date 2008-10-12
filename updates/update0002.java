@@ -117,7 +117,7 @@ public class update0002 implements Update
     String driver = HBCIDBService.SETTINGS.getString("database.driver",null);
     String sql = (String) statements.get(driver);
     if (sql == null)
-      throw new ApplicationException(i18n.tr("Datenbank {0} wird unterstützt",driver));
+      throw new ApplicationException(i18n.tr("Datenbank {0} wird nicht unterstützt",driver));
     
     try
     {
@@ -149,7 +149,11 @@ public class update0002 implements Update
 
 /*********************************************************************
  * $Log$
- * Revision 1.5  2008-06-15 21:55:51  willuhn
+ * Revision 1.6  2008-10-12 22:10:20  willuhn
+ * @B Typo in den Updates
+ * @B Spalten-Sortierung und -breite fuer in den Positionen von Sammelauftraegen nicht gespeichert
+ *
+ * Revision 1.5  2008/06/15 21:55:51  willuhn
  * @N update007 - Spalte "content" vergroessert
  * @B Fix in update002 - verursachte Fehler auf alten MySQL-Versionen
  *
