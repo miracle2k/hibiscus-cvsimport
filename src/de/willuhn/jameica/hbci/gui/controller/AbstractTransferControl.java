@@ -238,7 +238,8 @@ public abstract class AbstractTransferControl extends AbstractControl
 		if (betrag != null)
 			return betrag;
     HibiscusTransfer t = getTransfer();
-    double d = t.isNewObject() ? Double.NaN : t.getBetrag();
+    double d = t.getBetrag();
+    if (d == 0.0d) d = Double.NaN;
 		betrag = new DecimalInput(d,HBCI.DECIMALFORMAT);
 
 		// wir loesen den KontoListener aus, um die Waehrung sofort anzuzeigen
@@ -489,7 +490,10 @@ public abstract class AbstractTransferControl extends AbstractControl
 
 /**********************************************************************
  * $Log$
- * Revision 1.46  2008-10-15 21:40:31  willuhn
+ * Revision 1.47  2008-10-27 09:23:38  willuhn
+ * @B Beim Duplizieren wurde der Betrag nicht uebernommen
+ *
+ * Revision 1.46  2008/10/15 21:40:31  willuhn
  * @N BUGZILLA 448
  *
  * Revision 1.45  2008/09/29 23:48:54  willuhn
