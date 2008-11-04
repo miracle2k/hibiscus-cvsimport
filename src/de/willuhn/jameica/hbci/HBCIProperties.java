@@ -207,7 +207,7 @@ public class HBCIProperties
       {
         Logger.warn("HBCI4Java subsystem seems to be not initialized for this thread group, adding thread group");
         HBCI plugin = (HBCI) Application.getPluginLoader().getPlugin(HBCI.class);
-        HBCIUtils.initThread(plugin.getResources().getClassLoader(),null,plugin.getHBCICallback());
+        HBCIUtils.initThread(plugin.getHBCIPropetries(),plugin.getHBCICallback());
         return HBCIUtils.checkAccountCRC(blz, kontonummer);
       }
       catch (Exception e2)
@@ -260,7 +260,10 @@ public class HBCIProperties
 
 /**********************************************************************
  * $Log$
- * Revision 1.30  2008-05-30 12:02:08  willuhn
+ * Revision 1.31  2008-11-04 11:55:16  willuhn
+ * @N Update auf HBCI4Java 2.5.9
+ *
+ * Revision 1.30  2008/05/30 12:02:08  willuhn
  * @N Erster Code fuer erweiterte Verwendungszwecke - NOCH NICHT FREIGESCHALTET!
  *
  * Revision 1.29  2008/05/20 22:47:06  willuhn
