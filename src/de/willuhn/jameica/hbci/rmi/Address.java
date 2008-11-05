@@ -34,7 +34,7 @@ public interface Address extends Remote
    * Liefert die BLZ.
    * @return BLZ.
    * @throws RemoteException
-   * @depricated Bitte stattdessen getBlz() verwenden.
+   * @deprecated Bitte stattdessen getBlz() verwenden.
    */
   public String getBLZ() throws RemoteException;
 
@@ -64,7 +64,10 @@ public interface Address extends Remote
 
 /*********************************************************************
  * $Log$
- * Revision 1.4  2008-01-09 23:32:54  willuhn
+ * Revision 1.5  2008-11-05 09:26:40  willuhn
+ * @B tag typo
+ *
+ * Revision 1.4  2008/01/09 23:32:54  willuhn
  * @B Bug 534
  *
  * Revision 1.3  2007/04/23 21:03:48  willuhn
