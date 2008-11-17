@@ -628,7 +628,7 @@ public class KontoauszugList extends UmsatzList
       try
       {
         getGegenkontoNummer().setText(address.getKontonummer());
-        getGegenkontoBLZ().setValue(address.getBLZ());
+        getGegenkontoBLZ().setValue(address.getBlz());
         getGegenkontoName().setValue(address.getName());
       }
       catch (RemoteException er)
@@ -644,7 +644,10 @@ public class KontoauszugList extends UmsatzList
 
 /*********************************************************************
  * $Log$
- * Revision 1.16  2008-09-04 09:34:16  willuhn
+ * Revision 1.17  2008-11-17 23:29:59  willuhn
+ * @C Aufrufe der depeicated BLZ-Funktionen angepasst
+ *
+ * Revision 1.16  2008/09/04 09:34:16  willuhn
  * *** empty log message ***
  *
  * Revision 1.15  2008/09/03 08:27:04  willuhn

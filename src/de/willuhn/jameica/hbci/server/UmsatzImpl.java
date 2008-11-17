@@ -187,7 +187,7 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
 	 */
 	public void setGegenkonto(Address empf) throws RemoteException
 	{
-		setGegenkontoBLZ(empf.getBLZ());
+		setGegenkontoBLZ(empf.getBlz());
 		setGegenkontoNummer(empf.getKontonummer());
 		setGegenkontoName(empf.getName());
 	}
@@ -673,7 +673,10 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
 
 /**********************************************************************
  * $Log$
- * Revision 1.54  2008-09-03 21:29:44  willuhn
+ * Revision 1.55  2008-11-17 23:30:00  willuhn
+ * @C Aufrufe der depeicated BLZ-Funktionen angepasst
+ *
+ * Revision 1.54  2008/09/03 21:29:44  willuhn
  * @C BUGZILLA 622 - Debug-Ausgaben
  *
  * Revision 1.53  2008/04/27 22:22:56  willuhn

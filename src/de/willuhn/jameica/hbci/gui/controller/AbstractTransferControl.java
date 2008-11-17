@@ -355,7 +355,7 @@ public abstract class AbstractTransferControl extends AbstractControl
 			if (store.booleanValue())
 			{
 				HibiscusAddress e = (HibiscusAddress) Settings.getDBService().createObject(HibiscusAddress.class,null);
-				e.setBLZ(blz);
+				e.setBlz(blz);
 				e.setKontonummer(kto);
 				e.setName(name);
         
@@ -446,7 +446,7 @@ public abstract class AbstractTransferControl extends AbstractControl
 				return;
 			try {
 				getEmpfaengerKonto().setText(gegenkonto.getKontonummer());
-				getEmpfaengerBlz().setValue(gegenkonto.getBLZ());
+				getEmpfaengerBlz().setValue(gegenkonto.getBlz());
 				getEmpfaengerName().setValue(gegenkonto.getName());
 				// Wenn der Empfaenger aus dem Adressbuch kommt, deaktivieren wir die Checkbox
 				getStoreEmpfaenger().setValue(Boolean.FALSE);
@@ -462,7 +462,7 @@ public abstract class AbstractTransferControl extends AbstractControl
           
           DBIterator list = getTransfer().getList();
           list.addFilter("empfaenger_konto = ?",new Object[]{gegenkonto.getKontonummer()});
-          list.addFilter("empfaenger_blz = ?",  new Object[]{gegenkonto.getBLZ()});
+          list.addFilter("empfaenger_blz = ?",  new Object[]{gegenkonto.getBlz()});
           list.setOrder("order by id desc");
           if (list.hasNext())
           {
@@ -490,7 +490,10 @@ public abstract class AbstractTransferControl extends AbstractControl
 
 /**********************************************************************
  * $Log$
- * Revision 1.47  2008-10-27 09:23:38  willuhn
+ * Revision 1.48  2008-11-17 23:29:59  willuhn
+ * @C Aufrufe der depeicated BLZ-Funktionen angepasst
+ *
+ * Revision 1.47  2008/10/27 09:23:38  willuhn
  * @B Beim Duplizieren wurde der Betrag nicht uebernommen
  *
  * Revision 1.46  2008/10/15 21:40:31  willuhn

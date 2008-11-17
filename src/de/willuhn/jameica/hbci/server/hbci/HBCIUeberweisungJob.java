@@ -86,7 +86,7 @@ public class HBCIUeberweisungJob extends AbstractHBCIJob
         setJobParam("key",key);
 
 			HibiscusAddress empfaenger = (HibiscusAddress) Settings.getDBService().createObject(HibiscusAddress.class,null);
-			empfaenger.setBLZ(ueberweisung.getGegenkontoBLZ());
+			empfaenger.setBlz(ueberweisung.getGegenkontoBLZ());
 			empfaenger.setKontonummer(ueberweisung.getGegenkontoNummer());
 			empfaenger.setName(ueberweisung.getGegenkontoName());
 
@@ -182,7 +182,10 @@ public class HBCIUeberweisungJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.39  2008-09-23 11:24:27  willuhn
+ * Revision 1.40  2008-11-17 23:30:00  willuhn
+ * @C Aufrufe der depeicated BLZ-Funktionen angepasst
+ *
+ * Revision 1.39  2008/09/23 11:24:27  willuhn
  * @C Auswertung der Job-Results umgestellt. Die Entscheidung, ob Fehler oder Erfolg findet nun nur noch an einer Stelle (in AbstractHBCIJob) statt. Ausserdem wird ein Job auch dann als erfolgreich erledigt markiert, wenn der globale Job-Status zwar fehlerhaft war, aber fuer den einzelnen Auftrag nicht zweifelsfrei ermittelt werden konnte, ob er erfolgreich war oder nicht. Es koennte unter Umstaenden sein, eine Ueberweisung faelschlicherweise als ausgefuehrt markiert (wenn globaler Status OK, aber Job-Status != ERROR). Das ist aber allemal besser, als sie doppelt auszufuehren.
  *
  * Revision 1.38  2008/08/01 11:05:14  willuhn

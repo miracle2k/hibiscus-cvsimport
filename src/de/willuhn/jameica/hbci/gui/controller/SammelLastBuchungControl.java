@@ -95,7 +95,7 @@ public class SammelLastBuchungControl extends AbstractSammelTransferBuchungContr
 			if (store.booleanValue())
 			{
         HibiscusAddress e = (HibiscusAddress) Settings.getDBService().createObject(HibiscusAddress.class,null);
-        e.setBLZ(blz);
+        e.setBlz(blz);
         e.setKontonummer(kto);
         e.setName(name);
         
@@ -158,7 +158,10 @@ public class SammelLastBuchungControl extends AbstractSammelTransferBuchungContr
 
 /*****************************************************************************
  * $Log$
- * Revision 1.13  2008-08-01 11:05:14  willuhn
+ * Revision 1.14  2008-11-17 23:30:00  willuhn
+ * @C Aufrufe der depeicated BLZ-Funktionen angepasst
+ *
+ * Revision 1.13  2008/08/01 11:05:14  willuhn
  * @N BUGZILLA 587
  *
  * Revision 1.12  2007/04/23 18:07:15  willuhn

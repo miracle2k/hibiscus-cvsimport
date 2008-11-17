@@ -263,7 +263,7 @@ public abstract class AbstractHibiscusTransferImpl extends AbstractDBObject impl
   {
   	if (e == null)
   		return;
-    setGegenkontoBLZ(e.getBLZ());
+    setGegenkontoBLZ(e.getBlz());
   	setGegenkontoNummer(e.getKontonummer());
   	setGegenkontoName(e.getName());
   }
@@ -280,7 +280,10 @@ public abstract class AbstractHibiscusTransferImpl extends AbstractDBObject impl
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2008-09-17 23:44:29  willuhn
+ * Revision 1.8  2008-11-17 23:30:00  willuhn
+ * @C Aufrufe der depeicated BLZ-Funktionen angepasst
+ *
+ * Revision 1.7  2008/09/17 23:44:29  willuhn
  * @B SQL-Query fuer MaxUsage-Abfrage korrigiert
  *
  * Revision 1.6  2008/05/19 22:35:53  willuhn

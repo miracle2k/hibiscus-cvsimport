@@ -92,7 +92,7 @@ public class HBCIDauerauftragStoreJob extends AbstractHBCIJob
 			setJobParam("btg",dauerauftrag.getBetrag(),curr);
 
 			HibiscusAddress empfaenger = (HibiscusAddress) Settings.getDBService().createObject(HibiscusAddress.class,null);
-			empfaenger.setBLZ(dauerauftrag.getGegenkontoBLZ());
+			empfaenger.setBlz(dauerauftrag.getGegenkontoBLZ());
 			empfaenger.setKontonummer(dauerauftrag.getGegenkontoNummer());
 			empfaenger.setName(dauerauftrag.getGegenkontoName());
 			setJobParam("dst",Converter.Address2HBCIKonto(empfaenger));
@@ -210,7 +210,10 @@ public class HBCIDauerauftragStoreJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.22  2008-09-23 11:24:27  willuhn
+ * Revision 1.23  2008-11-17 23:30:00  willuhn
+ * @C Aufrufe der depeicated BLZ-Funktionen angepasst
+ *
+ * Revision 1.22  2008/09/23 11:24:27  willuhn
  * @C Auswertung der Job-Results umgestellt. Die Entscheidung, ob Fehler oder Erfolg findet nun nur noch an einer Stelle (in AbstractHBCIJob) statt. Ausserdem wird ein Job auch dann als erfolgreich erledigt markiert, wenn der globale Job-Status zwar fehlerhaft war, aber fuer den einzelnen Auftrag nicht zweifelsfrei ermittelt werden konnte, ob er erfolgreich war oder nicht. Es koennte unter Umstaenden sein, eine Ueberweisung faelschlicherweise als ausgefuehrt markiert (wenn globaler Status OK, aber Job-Status != ERROR). Das ist aber allemal besser, als sie doppelt auszufuehren.
  *
  * Revision 1.21  2007/12/06 23:53:56  willuhn
