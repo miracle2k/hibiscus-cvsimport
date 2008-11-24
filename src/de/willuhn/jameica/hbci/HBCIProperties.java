@@ -110,11 +110,6 @@ public class HBCIProperties
 	public final static int HBCI_PIN_MAXLENGTH = settings.getInt("hbci.pin.maxlength",10);
 	
   /**
-   * Ein ggf vorhandener Spezialparser fuer Umsaetze 
-   */
-  public final static String HBCI_TRANSFER_SPECIAL_PARSER = settings.getString("hbci.transfer.specialparser",null);
-
-  /**
 	 * Minimale Laenge fuer PINs.
 	 */
 	public final static int HBCI_PIN_MINLENGTH = settings.getInt("hbci.pin.minlength",5);
@@ -260,7 +255,10 @@ public class HBCIProperties
 
 /**********************************************************************
  * $Log$
- * Revision 1.31  2008-11-04 11:55:16  willuhn
+ * Revision 1.32  2008-11-24 00:12:08  willuhn
+ * @R Spezial-Umsatzparser entfernt - wird kuenftig direkt in HBCI4Java gemacht
+ *
+ * Revision 1.31  2008/11/04 11:55:16  willuhn
  * @N Update auf HBCI4Java 2.5.9
  *
  * Revision 1.30  2008/05/30 12:02:08  willuhn
