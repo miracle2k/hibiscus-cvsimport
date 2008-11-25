@@ -170,6 +170,10 @@ public class Converter {
         umsatz.setKommentar(sb.toString());
       }
 		}
+    
+    // TODO EVZ: Hier muessten eigentlich noch die erweiterten Verwendungszwecke angehaengt werden
+    // Das geht aber leider nicht, weil dafuer der Umsatz gespeichert sein muss. Ist er zu diesem
+    // Zeitpunkt aber leider nocht nicht.
 
 
 		// und jetzt noch der Empfaenger (wenn er existiert)
@@ -408,7 +412,10 @@ public class Converter {
 
 /**********************************************************************
  * $Log$
- * Revision 1.46  2008-11-24 00:12:07  willuhn
+ * Revision 1.47  2008-11-25 01:03:12  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.46  2008/11/24 00:12:07  willuhn
  * @R Spezial-Umsatzparser entfernt - wird kuenftig direkt in HBCI4Java gemacht
  *
  * Revision 1.45  2008/11/17 23:30:00  willuhn
