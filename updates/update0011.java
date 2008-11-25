@@ -49,7 +49,10 @@ public class update0011 implements Update
     // SQL-Dialekt wir sprechen
     String driver = HBCIDBService.SETTINGS.getString("database.driver",null);
     if (driver == null || !driver.equals(DBSupportMySqlImpl.class.getName()))
+    {
+      Logger.info("skip update, not needed");
       return; // Update nur fuer MySQL noetig
+    }
     try
     {
       Logger.info("update sql table for update0011");
@@ -81,7 +84,10 @@ public class update0011 implements Update
 
 /*********************************************************************
  * $Log$
- * Revision 1.1  2008-10-01 13:44:18  willuhn
+ * Revision 1.2  2008-11-25 00:52:53  willuhn
+ * @N Loggen, wenn Update 11 nicht noetig ist
+ *
+ * Revision 1.1  2008/10/01 13:44:18  willuhn
  * @B DB-Update 11: Spalte "name" in Tabelle "version" war (nur bei MySQL) zu kurz
  *
  **********************************************************************/
