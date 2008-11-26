@@ -31,7 +31,6 @@ import de.willuhn.jameica.hbci.HBCIProperties;
 import de.willuhn.jameica.hbci.rmi.HibiscusTransfer;
 import de.willuhn.jameica.hbci.rmi.Terminable;
 import de.willuhn.jameica.hbci.server.AccountUtil;
-import de.willuhn.jameica.hbci.server.VerwendungszweckUtil;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.jameica.system.Settings;
 import de.willuhn.util.ApplicationException;
@@ -59,7 +58,7 @@ public class ErweiterteVerwendungszwecke implements Part
   public ErweiterteVerwendungszwecke(HibiscusTransfer transfer) throws RemoteException
   {
     this.transfer = transfer;
-    this.orig     = VerwendungszweckUtil.toArray(this.transfer);
+    this.orig     = this.transfer.getWeitereVerwendungszwecke();
   }
 
   /**
@@ -167,7 +166,10 @@ public class ErweiterteVerwendungszwecke implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2008-09-16 23:43:32  willuhn
+ * Revision 1.4  2008-11-26 00:39:36  willuhn
+ * @N Erste Version erweiterter Verwendungszwecke. Muss dringend noch getestet werden.
+ *
+ * Revision 1.3  2008/09/16 23:43:32  willuhn
  * @N BPDs fuer Anzahl der moeglichen Zeilen Verwendungszweck auswerten - IN PROGRESS
  *
  * Revision 1.2  2008/05/30 12:02:08  willuhn

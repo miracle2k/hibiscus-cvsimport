@@ -30,7 +30,6 @@ import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.gui.parts.ErweiterteVerwendungszwecke;
 import de.willuhn.jameica.hbci.rmi.HibiscusTransfer;
 import de.willuhn.jameica.hbci.rmi.Terminable;
-import de.willuhn.jameica.hbci.server.VerwendungszweckUtil;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.jameica.system.OperationCanceledException;
 import de.willuhn.logging.Logger;
@@ -59,7 +58,7 @@ public class VerwendungszweckDialog extends AbstractDialog
 
     setTitle(i18n.tr("Weitere Verwendungszwecke"));
 
-    this.lines    = VerwendungszweckUtil.toArray(transfer);
+    this.lines    = transfer.getWeitereVerwendungszwecke();
     this.ewz      = new ErweiterteVerwendungszwecke(transfer);
     this.readOnly = ((transfer instanceof Terminable) && ((Terminable)transfer).ausgefuehrt());
   }
@@ -121,7 +120,10 @@ public class VerwendungszweckDialog extends AbstractDialog
 
 /*********************************************************************
  * $Log$
- * Revision 1.2  2008-09-16 23:43:32  willuhn
+ * Revision 1.3  2008-11-26 00:39:36  willuhn
+ * @N Erste Version erweiterter Verwendungszwecke. Muss dringend noch getestet werden.
+ *
+ * Revision 1.2  2008/09/16 23:43:32  willuhn
  * @N BPDs fuer Anzahl der moeglichen Zeilen Verwendungszweck auswerten - IN PROGRESS
  *
  * Revision 1.1  2008/05/30 12:02:08  willuhn
