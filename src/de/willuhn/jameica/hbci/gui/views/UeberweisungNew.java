@@ -67,8 +67,8 @@ public class UeberweisungNew extends AbstractView {
 
     Button execute = new Button(i18n.tr("Jetzt ausführen"), new Action() {
       public void handleAction(Object context) throws ApplicationException {
-				control.handleStore();
-				new UeberweisungExecute().handleAction(transfer);
+				if (control.handleStore()) // BUGZILLA 661
+  				new UeberweisungExecute().handleAction(transfer);
       }
     },null);
     execute.setEnabled(!transfer.ausgefuehrt());
@@ -88,7 +88,10 @@ public class UeberweisungNew extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.18  2008-09-29 23:48:54  willuhn
+ * Revision 1.19  2008-11-30 23:24:57  willuhn
+ * @B BUGZILLA 661
+ *
+ * Revision 1.18  2008/09/29 23:48:54  willuhn
  * @N Ueberfaellig-Hinweis hinter Auswahlfeld fuer Termin verschoben - spart Platz
  *
  * Revision 1.17  2008/08/01 11:05:14  willuhn
