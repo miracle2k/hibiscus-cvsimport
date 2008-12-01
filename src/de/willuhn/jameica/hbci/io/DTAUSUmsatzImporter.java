@@ -14,6 +14,7 @@
 package de.willuhn.jameica.hbci.io;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.Date;
 
 import de.jost_net.OBanToo.Dtaus.ASatz;
@@ -68,6 +69,15 @@ public class DTAUSUmsatzImporter extends AbstractDTAUSImporter
     if (z > 1)
       u.setZweck2(csatz.getVerwendungszweck(2));
 
+    // Erweiterte Verwendungszwecke?
+    if (z > 2)
+    {
+      ArrayList l = new ArrayList();
+      for (int i=3;i<=z;++i)
+        l.add(csatz.getVerwendungszweck(i));
+      u.setWeitereVerwendungszwecke((String[])l.toArray(new String[l.size()]));
+    }
+    
     u.setChangedByUser();
     u.store();
   
@@ -89,7 +99,10 @@ public class DTAUSUmsatzImporter extends AbstractDTAUSImporter
 
 /*********************************************************************
  * $Log$
- * Revision 1.7  2007-04-23 18:07:14  willuhn
+ * Revision 1.8  2008-12-01 23:54:42  willuhn
+ * @N BUGZILLA 188 Erweiterte Verwendungszwecke in Exports/Imports und Sammelauftraegen
+ *
+ * Revision 1.7  2007/04/23 18:07:14  willuhn
  * @C Redesign: "Adresse" nach "HibiscusAddress" umbenannt
  * @C Redesign: "Transfer" nach "HibiscusTransfer" umbenannt
  * @C Redesign: Neues Interface "Transfer", welches von Ueberweisungen, Lastschriften UND Umsaetzen implementiert wird

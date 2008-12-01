@@ -395,6 +395,18 @@ public class Converter {
 			String z2 = b.getZweck2();
 			if (z2 != null && z2.length() > 0)
 				tr.addUsage(z2);
+
+      String[] lines = b.getWeitereVerwendungszwecke();
+      if (lines != null)
+      {
+        for (int i=0;i<lines.length;++i)
+        {
+          if (lines[i] == null || lines[i].length() == 0) // Leerzeilen ignorieren
+            continue;
+          tr.addUsage(lines[i]);
+        }
+      }
+			
 			dtaus.addEntry(tr);
 		}
 		return dtaus;
@@ -405,7 +417,10 @@ public class Converter {
 
 /**********************************************************************
  * $Log$
- * Revision 1.48  2008-11-26 00:39:36  willuhn
+ * Revision 1.49  2008-12-01 23:54:42  willuhn
+ * @N BUGZILLA 188 Erweiterte Verwendungszwecke in Exports/Imports und Sammelauftraegen
+ *
+ * Revision 1.48  2008/11/26 00:39:36  willuhn
  * @N Erste Version erweiterter Verwendungszwecke. Muss dringend noch getestet werden.
  *
  * Revision 1.47  2008/11/25 01:03:12  willuhn

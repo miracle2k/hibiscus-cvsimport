@@ -91,12 +91,21 @@ public interface SammelTransferBuchung extends Transfer, DBObject
    */
   public void setTextSchluessel(String schluessel) throws RemoteException;
 
+  /**
+   * Speichert eine Liste erweiterter Verwendungszwecke.
+   * @param list Liste erweiterter Verwendungszwecke.
+   * @throws RemoteException
+   */
+  public void setWeitereVerwendungszwecke(String[] list) throws RemoteException;
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2007-10-14 23:26:59  willuhn
+ * Revision 1.5  2008-12-01 23:54:42  willuhn
+ * @N BUGZILLA 188 Erweiterte Verwendungszwecke in Exports/Imports und Sammelauftraegen
+ *
+ * Revision 1.4  2007/10/14 23:26:59  willuhn
  * @N Textschluessel in Sammelauftraegen - wird noch nicht persistiert
  *
  * Revision 1.3  2007/04/23 18:07:14  willuhn
