@@ -128,7 +128,8 @@ public class DonateDialog extends AbstractDialog
         try
         {
           ueberweisung = (Ueberweisung) Settings.getDBService().createObject(Ueberweisung.class,null);
-          ueberweisung.setBetrag(((Double)getBetrag().getValue()).doubleValue());
+          Double betrag = (Double) getBetrag().getValue();
+          ueberweisung.setBetrag(betrag == null ? Double.NaN : betrag.doubleValue());
           ueberweisung.setGegenkonto((HibiscusAddress)empfaenger.getValue());
           
           Boolean email = (Boolean) getBill().getValue();
@@ -248,7 +249,11 @@ public class DonateDialog extends AbstractDialog
 
 /*********************************************************************
  * $Log$
- * Revision 1.8  2008-11-17 23:30:00  willuhn
+ * Revision 1.9  2008-12-02 10:52:23  willuhn
+ * @B DecimalInput kann NULL liefern
+ * @B Double.NaN beruecksichtigen
+ *
+ * Revision 1.8  2008/11/17 23:30:00  willuhn
  * @C Aufrufe der depeicated BLZ-Funktionen angepasst
  *
  * Revision 1.7  2008/04/07 16:15:34  willuhn

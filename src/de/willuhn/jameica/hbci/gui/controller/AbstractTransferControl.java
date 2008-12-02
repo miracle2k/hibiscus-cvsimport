@@ -300,7 +300,9 @@ public abstract class AbstractTransferControl extends AbstractControl
   		
 			getTransfer().transactionBegin();
 
-			getTransfer().setBetrag(((Double)getBetrag().getValue()).doubleValue());
+			Double d = (Double) getBetrag().getValue();
+      getTransfer().setBetrag(d == null ? Double.NaN : d.doubleValue());
+			
 			getTransfer().setKonto((Konto)getKontoAuswahl().getValue());
 			getTransfer().setZweck((String)getZweck().getValue());
 			getTransfer().setZweck2(getZweck2().getText());  // "getText()" ist wichtig, weil das ein DialogInput ist
@@ -461,7 +463,11 @@ public abstract class AbstractTransferControl extends AbstractControl
 
 /**********************************************************************
  * $Log$
- * Revision 1.49  2008-11-26 00:39:36  willuhn
+ * Revision 1.50  2008-12-02 10:52:23  willuhn
+ * @B DecimalInput kann NULL liefern
+ * @B Double.NaN beruecksichtigen
+ *
+ * Revision 1.49  2008/11/26 00:39:36  willuhn
  * @N Erste Version erweiterter Verwendungszwecke. Muss dringend noch getestet werden.
  *
  * Revision 1.48  2008/11/17 23:29:59  willuhn

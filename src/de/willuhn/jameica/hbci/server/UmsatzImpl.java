@@ -80,7 +80,8 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
 		// wir nur die speichern, die vollstaendig sind.
 		try {
 
-			if (getBetrag() == 0.0)
+		  double betrag = getBetrag();
+			if (betrag == 0.0 || Double.isNaN(betrag))
 				throw new ApplicationException(i18n.tr("Betrag fehlt."));
 
 			if (getDatum() == null)
@@ -758,7 +759,11 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
 
 /**********************************************************************
  * $Log$
- * Revision 1.56  2008-11-26 00:39:36  willuhn
+ * Revision 1.57  2008-12-02 10:52:23  willuhn
+ * @B DecimalInput kann NULL liefern
+ * @B Double.NaN beruecksichtigen
+ *
+ * Revision 1.56  2008/11/26 00:39:36  willuhn
  * @N Erste Version erweiterter Verwendungszwecke. Muss dringend noch getestet werden.
  *
  * Revision 1.55  2008/11/17 23:30:00  willuhn

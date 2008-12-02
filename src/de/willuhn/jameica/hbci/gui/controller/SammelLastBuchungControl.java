@@ -74,8 +74,7 @@ public class SammelLastBuchungControl extends AbstractSammelTransferBuchungContr
 			getBuchung().transactionBegin();
 
       Double db = (Double)getBetrag().getValue();
-      if (db != null)
-        getBuchung().setBetrag(db.doubleValue());
+      getBuchung().setBetrag(db == null ? Double.NaN : db.doubleValue());
 			getBuchung().setZweck((String)getZweck().getValue());
 			getBuchung().setZweck2((String)getZweck2().getText());  // "getText()" ist wichtig, weil das ein DialogInput ist
       
@@ -165,7 +164,11 @@ public class SammelLastBuchungControl extends AbstractSammelTransferBuchungContr
 
 /*****************************************************************************
  * $Log$
- * Revision 1.15  2008-12-01 23:54:42  willuhn
+ * Revision 1.16  2008-12-02 10:52:23  willuhn
+ * @B DecimalInput kann NULL liefern
+ * @B Double.NaN beruecksichtigen
+ *
+ * Revision 1.15  2008/12/01 23:54:42  willuhn
  * @N BUGZILLA 188 Erweiterte Verwendungszwecke in Exports/Imports und Sammelauftraegen
  *
  * Revision 1.14  2008/11/17 23:30:00  willuhn
