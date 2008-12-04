@@ -72,6 +72,7 @@ public class UmsatzTypTree extends TreePart implements Extension
     }
     this.setRememberColWidths(true);
     this.setRememberOrder(true);
+    this.setMulti(true);
     this.setContextMenu(new UmsatzList());
     this.setFormatter(new TreeFormatter() {
     
@@ -196,7 +197,10 @@ public class UmsatzTypTree extends TreePart implements Extension
 
 /*******************************************************************************
  * $Log$
- * Revision 1.7  2007-12-04 23:59:00  willuhn
+ * Revision 1.8  2008-12-04 22:03:34  willuhn
+ * @N BUGZILLA 665
+ *
+ * Revision 1.7  2007/12/04 23:59:00  willuhn
  * @N Bug 512
  *
  * Revision 1.6  2007/11/01 21:07:27  willuhn
