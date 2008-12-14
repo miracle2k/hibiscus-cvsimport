@@ -46,7 +46,6 @@ import de.willuhn.jameica.hbci.server.TurnusImpl;
 import de.willuhn.jameica.hbci.server.UeberweisungImpl;
 import de.willuhn.jameica.hbci.server.UmsatzImpl;
 import de.willuhn.jameica.hbci.server.UmsatzTypImpl;
-import de.willuhn.jameica.hbci.server.VerwendungszweckImpl;
 import de.willuhn.jameica.messaging.StatusBarMessage;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.jameica.system.BackgroundTask;
@@ -158,10 +157,6 @@ public class BackupCreate implements Action
           backup(SammelUeberweisungBuchungImpl.class,writer,monitor);
           monitor.addPercentComplete(5);
 
-          monitor.setStatusText(i18n.tr("Speichere erweiterte Verwendungszwecke"));
-          backup(VerwendungszweckImpl.class,writer,monitor);
-          monitor.addPercentComplete(5);
-
           // Die Protokolle zum Schluss.
           monitor.setStatusText(i18n.tr("Speichere Protokolle"));
           backup(ProtokollImpl.class,writer,monitor);
@@ -244,7 +239,10 @@ public class BackupCreate implements Action
 
 /*********************************************************************
  * $Log$
- * Revision 1.2  2008-09-02 18:14:25  willuhn
+ * Revision 1.3  2008-12-14 23:18:35  willuhn
+ * @N BUGZILLA 188 - REFACTORING
+ *
+ * Revision 1.2  2008/09/02 18:14:25  willuhn
  * @N Diagnose-Backup erweitert
  *
  * Revision 1.1  2008/01/22 13:34:45  willuhn

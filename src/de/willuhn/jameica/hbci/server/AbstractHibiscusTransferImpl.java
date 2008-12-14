@@ -34,8 +34,6 @@ public abstract class AbstractHibiscusTransferImpl extends AbstractDBObject impl
 
   private final static transient I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
-  private transient String[] verwendungszwecke = null;
-
   /**
    * ct.
    * @throws RemoteException
@@ -230,7 +228,6 @@ public abstract class AbstractHibiscusTransferImpl extends AbstractDBObject impl
 
       Konto k = this.getKonto();
       
-      VerwendungszweckUtil.delete(this); // Loescht die erweiterten Verwendungszwecke
       super.delete();
       
       if (k != null)
@@ -290,9 +287,7 @@ public abstract class AbstractHibiscusTransferImpl extends AbstractDBObject impl
    */
   public String[] getWeitereVerwendungszwecke() throws RemoteException
   {
-    if (this.verwendungszwecke == null)
-      this.verwendungszwecke = VerwendungszweckUtil.get(this);
-    return this.verwendungszwecke;
+    return VerwendungszweckUtil.split((String) this.getAttribute("zweck3"));
   }
 
   /**
@@ -300,7 +295,7 @@ public abstract class AbstractHibiscusTransferImpl extends AbstractDBObject impl
    */
   public void setWeitereVerwendungszwecke(String[] list) throws RemoteException
   {
-    this.verwendungszwecke = list;
+    setAttribute("zweck3",VerwendungszweckUtil.merge(list));
   }
 
   /**
@@ -313,9 +308,6 @@ public abstract class AbstractHibiscusTransferImpl extends AbstractDBObject impl
       this.transactionBegin();
       super.store();
       
-      if (this.verwendungszwecke != null)
-        VerwendungszweckUtil.store(this,this.verwendungszwecke);
-
       Konto k = this.getKonto();
       String[] params = new String[]
       {
@@ -359,7 +351,10 @@ public abstract class AbstractHibiscusTransferImpl extends AbstractDBObject impl
 
 /**********************************************************************
  * $Log$
- * Revision 1.10  2008-12-02 10:52:23  willuhn
+ * Revision 1.11  2008-12-14 23:18:35  willuhn
+ * @N BUGZILLA 188 - REFACTORING
+ *
+ * Revision 1.10  2008/12/02 10:52:23  willuhn
  * @B DecimalInput kann NULL liefern
  * @B Double.NaN beruecksichtigen
  *
