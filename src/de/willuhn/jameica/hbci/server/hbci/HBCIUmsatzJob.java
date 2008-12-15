@@ -124,10 +124,18 @@ public class HBCIUmsatzJob extends AbstractHBCIJob
    */
   void markExecuted() throws RemoteException, ApplicationException
   {
-		GVRKUms result = (GVRKUms) getJobResult();
-		konto.addToProtokoll(i18n.tr("Umsätze abgerufen"),Protokoll.TYP_SUCCESS);
+    konto.addToProtokoll(i18n.tr("Umsätze abgerufen"),Protokoll.TYP_SUCCESS);
 
-		// So, jetzt kopieren wir das ResultSet noch in unsere
+		GVRKUms result = (GVRKUms) getJobResult();
+
+    GVRKUms.UmsLine[] lines = result.getFlatData();
+    if (lines == null || lines.length == 0)
+    {
+      Logger.info("got no new data");
+      return;
+    }
+
+    // So, jetzt kopieren wir das ResultSet noch in unsere
 		// eigenen Datenstrukturen.
 
 		// Wir vergleichen noch mit den Umsaetzen, die wir schon haben und
@@ -144,7 +152,6 @@ public class HBCIUmsatzJob extends AbstractHBCIJob
     Logger.info("merge window: " + d + " - " + new Date());
 		DBIterator existing = konto.getUmsaetze(d,null);
 
-		GVRKUms.UmsLine[] lines = result.getFlatData();
 		for (int i=0;i<lines.length;++i)
 		{
 			final Umsatz umsatz = Converter.HBCIUmsatz2HibiscusUmsatz(lines[i]);
@@ -187,7 +194,10 @@ public class HBCIUmsatzJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.33  2008-12-15 10:57:44  willuhn
+ * Revision 1.34  2008-12-15 11:01:52  willuhn
+ * @C Merge komplett weglassen, wenn gar keine Umsaetze empfangen wurden
+ *
+ * Revision 1.33  2008/12/15 10:57:44  willuhn
  * @N Beim Synchronisieren mit den vorhandenen Umsaetzen nicht mehr mit allen Umsaetzen des Kontos vergleichen sondern nur noch mite den relevanten Daten aus dem "Merge-Window". Das umfasst den Bereich ab ${startdatum} - 30 Tage
  *
  * Revision 1.32  2008/11/25 00:52:38  willuhn
