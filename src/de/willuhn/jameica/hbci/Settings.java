@@ -15,7 +15,6 @@ package de.willuhn.jameica.hbci;
 import java.io.File;
 import java.rmi.ConnectException;
 import java.rmi.RemoteException;
-import java.util.Date;
 
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.RGB;
@@ -341,14 +340,7 @@ public class Settings
   public static Wallet getWallet() throws Exception
   {
 		if (wallet == null)
-    {
       wallet = new Wallet(HBCI.class);
-
-      // BUGZILLA 109 http://www.willuhn.de/bugzilla/show_bug.cgi?id=109
-      // TODO Altes Wallet-Format kann mal raus
-      if (wallet.get("migration") == null)
-        wallet.set("migration",new Date().toString());
-    }
 		return wallet;
   }
 
@@ -395,7 +387,10 @@ public class Settings
 
 /*********************************************************************
  * $Log$
- * Revision 1.53  2008-07-24 09:59:37  willuhn
+ * Revision 1.54  2008-12-17 22:53:22  willuhn
+ * @R steinalten Migrationscode entfernt
+ *
+ * Revision 1.53  2008/07/24 09:59:37  willuhn
  * @C Default-Wert des Auftragslimits erhoeht. 1.000,- waren in der Tat etwas wenig ;)
  *
  * Revision 1.52  2007/12/06 17:57:21  willuhn
