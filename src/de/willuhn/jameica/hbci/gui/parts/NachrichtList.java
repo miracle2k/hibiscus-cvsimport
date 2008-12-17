@@ -101,7 +101,7 @@ public class NachrichtList extends TablePart implements Part
         String s = (String) o;
         if (s.indexOf('\n') != -1)
           return s;
-        // TODO Ist das eine Sparkassen-Eigenart, dass die Nachrichten Festbreite haben?
+        // Ist das eine Sparkassen-Eigenart, dass die Nachrichten Festbreite haben?
         // Na gut, dann nehmen wir die alle ueberfluessigen Leerzeichen raus und brechen hart um.
         s = s.replaceAll("( {1,})"," ");
         s = s.replaceAll("(.{77})","$1\n");
@@ -131,7 +131,10 @@ public class NachrichtList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2007-04-19 18:12:21  willuhn
+ * Revision 1.6  2008-12-17 22:53:39  willuhn
+ * @R t o d o  tag entfernt
+ *
+ * Revision 1.5  2007/04/19 18:12:21  willuhn
  * @N MySQL-Support (GUI zum Konfigurieren fehlt noch)
  *
  * Revision 1.4  2006/11/16 22:29:46  willuhn

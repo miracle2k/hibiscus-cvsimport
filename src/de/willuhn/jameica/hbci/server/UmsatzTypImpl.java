@@ -386,7 +386,6 @@ public class UmsatzTypImpl extends AbstractDBObjectNode implements UmsatzTyp
 
     if (arg0 != null && arg0.startsWith("umsatz:"))
     {
-      // TODO: Beheben! Das ist haesslich!
       try
       {
         String[] s = arg0.split(":");
@@ -496,7 +495,10 @@ public class UmsatzTypImpl extends AbstractDBObjectNode implements UmsatzTyp
 
 /*******************************************************************************
  * $Log$
- * Revision 1.44  2008-10-10 16:45:35  willuhn
+ * Revision 1.45  2008-12-17 22:46:36  willuhn
+ * @R t o d o  tag entfernt
+ *
+ * Revision 1.44  2008/10/10 16:45:35  willuhn
  * @N Moeglichkeit, mehrere Suchbegriffe mit Komma zu verknuepfen, ohne hierfuer regulaere Ausdruecke nutzen zu muessen.
  *
  * Revision 1.43  2008/08/29 16:46:24  willuhn

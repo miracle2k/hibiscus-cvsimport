@@ -44,7 +44,6 @@ public class HibiscusImporter extends AbstractHibiscusIO implements Importer
     ObjectInputStream ois = null;
     try
     {
-      // TODO: Mit der verflucht heissen Nadel gestrickt! ;)
       ois = new ObjectInputStream(is);
       AbstractDBObject current = null;
       DBService service = Settings.getDBService();
@@ -113,7 +112,10 @@ public class HibiscusImporter extends AbstractHibiscusIO implements Importer
 
 /*********************************************************************
  * $Log$
- * Revision 1.3  2007-04-26 13:58:54  willuhn
+ * Revision 1.4  2008-12-17 22:49:48  willuhn
+ * @R t o d o  tag entfernt
+ *
+ * Revision 1.3  2007/04/26 13:58:54  willuhn
  * @N Import-Message nach dem Import senden
  *
  * Revision 1.2  2007/04/23 18:07:14  willuhn

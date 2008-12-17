@@ -228,7 +228,6 @@ public class UmsatzList extends TablePart implements Extendable
 
     if (this.filter)
     {
-      // TODO: Koennte man auch mal noch auf DelayedListener umstellen, ist aber etwas umstaendlich hier
       if (this.kl == null)
         this.kl = new KL();
 
@@ -716,7 +715,10 @@ public class UmsatzList extends TablePart implements Extendable
 
 /**********************************************************************
  * $Log$
- * Revision 1.56  2008-09-24 10:24:48  willuhn
+ * Revision 1.57  2008-12-17 22:49:34  willuhn
+ * @R t o d o  tag entfernt
+ *
+ * Revision 1.56  2008/09/24 10:24:48  willuhn
  * @C Saldo in Umsatzliste nicht mit faerben
  *
  * Revision 1.55  2007/08/09 12:04:39  willuhn
