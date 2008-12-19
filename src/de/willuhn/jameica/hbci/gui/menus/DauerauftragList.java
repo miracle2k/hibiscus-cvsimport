@@ -37,10 +37,9 @@ public class DauerauftragList extends ContextMenu
 	{
 		i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
-		addItem(new CheckedContextMenuItem(i18n.tr("Öffnen"), new DauerauftragNew()));
-		addItem(new CheckedContextMenuItem(i18n.tr("Löschen..."), new DauerauftragDelete()));
-		addItem(ContextMenuItem.SEPARATOR);
-		addItem(new ContextMenuItem(i18n.tr("Neuer Dauerauftrag..."), new DNeu()));
+		addItem(new CheckedContextMenuItem(i18n.tr("Öffnen"), new DauerauftragNew(),"document-open.png"));
+    addItem(new ContextMenuItem(i18n.tr("Neuer Dauerauftrag..."), new DNeu(),"text-x-generic.png"));
+		addItem(new CheckedContextMenuItem(i18n.tr("Löschen..."), new DauerauftragDelete(),"user-trash-full.png"));
 		
 	}
 
@@ -63,7 +62,10 @@ public class DauerauftragList extends ContextMenu
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2006-08-07 14:45:18  willuhn
+ * Revision 1.4  2008-12-19 01:12:09  willuhn
+ * @N Icons in Contextmenus
+ *
+ * Revision 1.3  2006/08/07 14:45:18  willuhn
  * @B typos
  *
  * Revision 1.2  2004/11/13 17:02:04  willuhn
