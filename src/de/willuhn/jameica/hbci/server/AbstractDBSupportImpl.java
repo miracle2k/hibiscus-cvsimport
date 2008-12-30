@@ -21,21 +21,12 @@ import java.sql.Connection;
 import de.willuhn.jameica.hbci.rmi.DBSupport;
 import de.willuhn.logging.Logger;
 import de.willuhn.sql.ScriptExecutor;
-import de.willuhn.util.ApplicationException;
 
 /**
  * Abstrakte Basisklasse fuer den Datenbank-Support.
  */
 public abstract class AbstractDBSupportImpl implements DBSupport
 {
-
-  /**
-   * @see de.willuhn.jameica.hbci.rmi.DBSupport#checkConsistency(java.sql.Connection)
-   */
-  public void checkConsistency(Connection conn) throws RemoteException, ApplicationException
-  {
-    // Leere Dummy-Implementierung
-  }
 
   /**
    * @see de.willuhn.jameica.hbci.rmi.DBSupport#execute(java.sql.Connection, java.io.File)
@@ -100,7 +91,10 @@ public abstract class AbstractDBSupportImpl implements DBSupport
 
 /*********************************************************************
  * $Log$
- * Revision 1.3  2007-07-28 15:51:26  willuhn
+ * Revision 1.4  2008-12-30 15:21:40  willuhn
+ * @N Umstellung auf neue Versionierung
+ *
+ * Revision 1.3  2007/07/28 15:51:26  willuhn
  * @B Bug 447
  *
  * Revision 1.2  2007/07/18 09:45:18  willuhn
