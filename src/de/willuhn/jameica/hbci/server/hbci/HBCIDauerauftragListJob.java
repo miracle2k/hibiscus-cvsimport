@@ -134,8 +134,7 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob
         {
           ex = (Dauerauftrag) existing.next();
           if (auftrag.getOrderID() != null && 
-              auftrag.getOrderID().equals(ex.getOrderID()) &&
-              auftrag.getKonto().equals(ex.getKonto())
+              auftrag.getOrderID().equals(ex.getOrderID())
              )
           {
             // Den haben wir schon, ueberschreiben wir
@@ -212,7 +211,10 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.34  2008-09-23 11:24:27  willuhn
+ * Revision 1.35  2009-01-03 22:38:52  willuhn
+ * @R redundanten Konto-Vergleich entfernt - beide Konten sind IMMER identisch, da a) die existierenden Auftraege von diesem Konto ermittelt werden und b) vor dem Vergleich ein auftrag.setKonto() mit dem Konto aus a) gemacht wird
+ *
+ * Revision 1.34  2008/09/23 11:24:27  willuhn
  * @C Auswertung der Job-Results umgestellt. Die Entscheidung, ob Fehler oder Erfolg findet nun nur noch an einer Stelle (in AbstractHBCIJob) statt. Ausserdem wird ein Job auch dann als erfolgreich erledigt markiert, wenn der globale Job-Status zwar fehlerhaft war, aber fuer den einzelnen Auftrag nicht zweifelsfrei ermittelt werden konnte, ob er erfolgreich war oder nicht. Es koennte unter Umstaenden sein, eine Ueberweisung faelschlicherweise als ausgefuehrt markiert (wenn globaler Status OK, aber Job-Status != ERROR). Das ist aber allemal besser, als sie doppelt auszufuehren.
  *
  * Revision 1.33  2008/01/03 13:26:08  willuhn
