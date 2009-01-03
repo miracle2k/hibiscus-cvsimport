@@ -604,7 +604,7 @@ public class KontoImpl extends AbstractDBObject implements Konto
    */
   public long getChecksum() throws RemoteException
   {
-    String s = getBLZ() + getKontonummer() + getKundennummer();
+    String s = getBLZ() + getKontonummer() + getKundennummer() + getUnterkonto();
     CRC32 crc = new CRC32();
     crc.update(s.getBytes());
     return crc.getValue();
@@ -756,7 +756,10 @@ public class KontoImpl extends AbstractDBObject implements Konto
 
 /*******************************************************************************
  * $Log$
- * Revision 1.92  2008-12-15 10:28:14  willuhn
+ * Revision 1.93  2009-01-03 23:23:38  willuhn
+ * @N Unterkontonummer wird jetzt fuer Checksumme mit beruecksichtigt - konnte vorher dazu fuehren, dass zwei eigentlich verschiedene Konten als identisch angesehen wurden
+ *
+ * Revision 1.92  2008/12/15 10:28:14  willuhn
  * *** empty log message ***
  *
  * Revision 1.91  2008/05/19 22:35:53  willuhn
