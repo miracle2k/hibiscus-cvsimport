@@ -174,12 +174,8 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob
       for (int i=0;i<lines.length;++i)
       {
         auftrag = Converter.HBCIDauer2HibiscusDauerauftrag(lines[i]);
-        // Die Auftraege sind ueber das angegebene Konto abgerufen worden. Also
-        // weisen wir dieses auch hart zu
-        auftrag.setKonto(this.konto);
         if (auftrag.getOrderID() != null && 
-            auftrag.getOrderID().equals(ex.getOrderID()) &&
-            this.konto.getID().equals(ex.getKonto().getID())
+            auftrag.getOrderID().equals(ex.getOrderID())
            )
         {
           found = true;
@@ -211,7 +207,10 @@ public class HBCIDauerauftragListJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.35  2009-01-03 22:38:52  willuhn
+ * Revision 1.36  2009-01-04 22:13:27  willuhn
+ * @R redundanten Konto-Check auch beim Loeschen von Dauerauftraegen entfernt
+ *
+ * Revision 1.35  2009/01/03 22:38:52  willuhn
  * @R redundanten Konto-Vergleich entfernt - beide Konten sind IMMER identisch, da a) die existierenden Auftraege von diesem Konto ermittelt werden und b) vor dem Vergleich ein auftrag.setKonto() mit dem Konto aus a) gemacht wird
  *
  * Revision 1.34  2008/09/23 11:24:27  willuhn
