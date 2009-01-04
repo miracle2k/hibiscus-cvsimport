@@ -80,7 +80,19 @@ public class HBCIVersionInput extends SelectInput implements Input
     {
       String[] s = null;
       if (passport != null)
+      {
         s = passport.getSuppVersions(); // Wir haben einen Passport, dann nur die unterstuetzten anzeigen
+
+        // BUGZILLA 684
+        List list = Arrays.asList(s);
+        if (list.contains("220") && !list.contains("plus")) // "220" enthalten aber nicht "plus"
+        {
+          String[] newList = new String[s.length+1];
+          System.arraycopy(s,0,newList,0,s.length);
+          newList[s.length] = "plus";
+          s = newList;
+        }
+      }
 
       // BUGZILLA 37 http://www.willuhn.de/bugzilla/show_bug.cgi?id=37
       // Ansonsten alle, die wir kennen
@@ -230,7 +242,10 @@ public class HBCIVersionInput extends SelectInput implements Input
 
 /*****************************************************************************
  * $Log$
- * Revision 1.13  2008-07-25 13:31:06  willuhn
+ * Revision 1.14  2009-01-04 23:10:37  willuhn
+ * @B BUGZILLA 684
+ *
+ * Revision 1.13  2008/07/25 13:31:06  willuhn
  * *** empty log message ***
  *
  * Revision 1.12  2008/07/25 11:06:44  willuhn
