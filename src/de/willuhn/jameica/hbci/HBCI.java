@@ -97,6 +97,15 @@ public class HBCI extends AbstractPlugin
     LOGMAPPING.put(Level.INFO,  new Integer(HBCIUtils.LOG_INFO));
     LOGMAPPING.put(Level.DEBUG, new Integer(HBCIUtils.LOG_DEBUG2));
 
+    call(new ServiceCall()
+    {
+      public void call(HBCIDBService service) throws ApplicationException, RemoteException
+      {
+        service.checkConsistency();
+      }
+    });
+    
+
     /////////////////////////////////////////////////////////////////
     // Passport-Verzeichnis ggf. automatisch anlegen
     String path = Settings.getWorkPath() + "/passports/";
@@ -328,7 +337,10 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
- * Revision 1.113  2008-12-31 12:17:37  willuhn
+ * Revision 1.114  2009-01-04 17:22:14  willuhn
+ * @B service.checkConsistency versehentlich entfernt - dadurch wurden keine Datenbank-Updates mehr durchgefuehrt.
+ *
+ * Revision 1.113  2008/12/31 12:17:37  willuhn
  * @B client.product.name darf hoechstens 25 Zeichen lang sein
  *
  * Revision 1.112  2008/12/30 15:21:40  willuhn
