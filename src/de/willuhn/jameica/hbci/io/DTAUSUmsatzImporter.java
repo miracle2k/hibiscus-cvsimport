@@ -77,8 +77,6 @@ public class DTAUSUmsatzImporter extends AbstractDTAUSImporter
         l.add(csatz.getVerwendungszweck(i));
       u.setWeitereVerwendungszwecke((String[])l.toArray(new String[l.size()]));
     }
-    
-    u.setChangedByUser();
     u.store();
   
   }
@@ -99,7 +97,11 @@ public class DTAUSUmsatzImporter extends AbstractDTAUSImporter
 
 /*********************************************************************
  * $Log$
- * Revision 1.8  2008-12-01 23:54:42  willuhn
+ * Revision 1.9  2009-01-04 01:25:47  willuhn
+ * @N Checksumme von Umsaetzen wird nun generell beim Anlegen des Datensatzes gespeichert. Damit koennen Umsaetze nun problemlos geaendert werden, ohne mit "hasChangedByUser" checken zu muessen. Die Checksumme bleibt immer erhalten, weil sie in UmsatzImpl#insert() sofort zu Beginn angelegt wird
+ * @N Umsaetze sind nun vollstaendig editierbar
+ *
+ * Revision 1.8  2008/12/01 23:54:42  willuhn
  * @N BUGZILLA 188 Erweiterte Verwendungszwecke in Exports/Imports und Sammelauftraegen
  *
  * Revision 1.7  2007/04/23 18:07:14  willuhn

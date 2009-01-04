@@ -167,7 +167,6 @@ public class CSVUmsatzImporter implements Importer
 
             u.setGenericAttribute(name,value);
           }
-          u.setChangedByUser();
           u.store();
           Application.getMessagingFactory().sendMessage(new ImportMessage(u));
           created++;
@@ -378,7 +377,11 @@ public class CSVUmsatzImporter implements Importer
 
 /*******************************************************************************
  * $Log$
- * Revision 1.8  2008-08-29 16:56:06  willuhn
+ * Revision 1.9  2009-01-04 01:25:47  willuhn
+ * @N Checksumme von Umsaetzen wird nun generell beim Anlegen des Datensatzes gespeichert. Damit koennen Umsaetze nun problemlos geaendert werden, ohne mit "hasChangedByUser" checken zu muessen. Die Checksumme bleibt immer erhalten, weil sie in UmsatzImpl#insert() sofort zu Beginn angelegt wird
+ * @N Umsaetze sind nun vollstaendig editierbar
+ *
+ * Revision 1.8  2008/08/29 16:56:06  willuhn
  * @N BUGZILLA 615
  *
  * Revision 1.7  2008/04/24 11:37:21  willuhn

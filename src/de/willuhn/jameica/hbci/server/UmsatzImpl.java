@@ -106,6 +106,19 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
   }
 
   /**
+   * @see de.willuhn.datasource.db.AbstractDBObject#insert()
+   */
+  public void insert() throws RemoteException, ApplicationException
+  {
+    // Wir speichern die Checksumme nun grundsaetzlich beim
+    // Anlegen des Datensatzes. Dann koennen wir anschliessend
+    // beliebig aendern und muessens uns nicht mehr mit
+    // "hasChangedByUser" herumschlagen
+    setAttribute("checksum",new Long(getChecksum()));
+    super.insert();
+  }
+
+  /**
    * @see de.willuhn.datasource.db.AbstractDBObject#getForeignObject(java.lang.String)
    */
   protected Class getForeignObject(String field) throws RemoteException {
@@ -544,25 +557,6 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
   }
 
   /**
-   * @see de.willuhn.jameica.hbci.rmi.Umsatz#hasChangedByUser()
-   */
-  public boolean hasChangedByUser() throws RemoteException
-  {
-    Number n = (Number) this.getAttribute("checksum");
-    return (n != null && n.longValue() != 0);
-  }
-
-  /**
-   * @see de.willuhn.jameica.hbci.rmi.Umsatz#setChangedByUser()
-   */
-  public void setChangedByUser() throws RemoteException
-  {
-    if (hasChangedByUser())
-      return; // wurde schon markiert
-    setAttribute("checksum",new Long(getChecksum()));
-  }
-
-  /**
    * @see de.willuhn.jameica.hbci.rmi.Umsatz#setGenericAttribute(java.lang.String, java.lang.String)
    */
   public void setGenericAttribute(String name, String value) throws RemoteException, ApplicationException
@@ -713,7 +707,11 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
 
 /**********************************************************************
  * $Log$
- * Revision 1.58  2008-12-14 23:18:35  willuhn
+ * Revision 1.59  2009-01-04 01:25:47  willuhn
+ * @N Checksumme von Umsaetzen wird nun generell beim Anlegen des Datensatzes gespeichert. Damit koennen Umsaetze nun problemlos geaendert werden, ohne mit "hasChangedByUser" checken zu muessen. Die Checksumme bleibt immer erhalten, weil sie in UmsatzImpl#insert() sofort zu Beginn angelegt wird
+ * @N Umsaetze sind nun vollstaendig editierbar
+ *
+ * Revision 1.58  2008/12/14 23:18:35  willuhn
  * @N BUGZILLA 188 - REFACTORING
  *
  * Revision 1.57  2008/12/02 10:52:23  willuhn

@@ -157,11 +157,6 @@ public class HBCIUmsatzJob extends AbstractHBCIJob
 			final Umsatz umsatz = Converter.HBCIUmsatz2HibiscusUmsatz(lines[i]);
 			umsatz.setKonto(konto); // muessen wir noch machen, weil der Converter das Konto nicht kennt
       
-      // Wenn keine geparsten Verwendungszwecke da sind, machen wir
-      // den Umsatz editierbar.
-      if(lines[i].usage == null || lines[i].usage.length == 0)
-        umsatz.setChangedByUser();
-      
 			if (existing.contains(umsatz) == null)
 			{
 				try
@@ -194,7 +189,11 @@ public class HBCIUmsatzJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.34  2008-12-15 11:01:52  willuhn
+ * Revision 1.35  2009-01-04 01:25:47  willuhn
+ * @N Checksumme von Umsaetzen wird nun generell beim Anlegen des Datensatzes gespeichert. Damit koennen Umsaetze nun problemlos geaendert werden, ohne mit "hasChangedByUser" checken zu muessen. Die Checksumme bleibt immer erhalten, weil sie in UmsatzImpl#insert() sofort zu Beginn angelegt wird
+ * @N Umsaetze sind nun vollstaendig editierbar
+ *
+ * Revision 1.34  2008/12/15 11:01:52  willuhn
  * @C Merge komplett weglassen, wenn gar keine Umsaetze empfangen wurden
  *
  * Revision 1.33  2008/12/15 10:57:44  willuhn

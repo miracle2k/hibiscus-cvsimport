@@ -131,20 +131,6 @@ public interface Umsatz extends HibiscusTransfer, DBObject, Checksum
 	public void setCustomerRef(String ref) throws RemoteException;
 
   /**
-   * Prueft, ob der Umsatz vom User geaendert wurde.
-   * @return true, wenn der Umsatz geaendert wurde.
-   * @throws RemoteException
-   */
-  public boolean hasChangedByUser() throws RemoteException;
-  
-  /**
-   * Markiert den Umsatz als "durch den Benutzer geaendert".
-   * Der Vorgang kann nach dem Speichern nicht rueckgaengig gemacht werden.
-   * @throws RemoteException
-   */
-  public void setChangedByUser() throws RemoteException;
-  
-  /**
    * Erlaubt das Setzen von Attributen des Umsatzes ueber diese generische Funktion.
    * @param name Name des Attributs.
    * @param value Wert.
@@ -178,7 +164,11 @@ public interface Umsatz extends HibiscusTransfer, DBObject, Checksum
 
 /**********************************************************************
  * $Log$
- * Revision 1.16  2007-04-23 18:07:14  willuhn
+ * Revision 1.17  2009-01-04 01:25:47  willuhn
+ * @N Checksumme von Umsaetzen wird nun generell beim Anlegen des Datensatzes gespeichert. Damit koennen Umsaetze nun problemlos geaendert werden, ohne mit "hasChangedByUser" checken zu muessen. Die Checksumme bleibt immer erhalten, weil sie in UmsatzImpl#insert() sofort zu Beginn angelegt wird
+ * @N Umsaetze sind nun vollstaendig editierbar
+ *
+ * Revision 1.16  2007/04/23 18:07:14  willuhn
  * @C Redesign: "Adresse" nach "HibiscusAddress" umbenannt
  * @C Redesign: "Transfer" nach "HibiscusTransfer" umbenannt
  * @C Redesign: Neues Interface "Transfer", welches von Ueberweisungen, Lastschriften UND Umsaetzen implementiert wird

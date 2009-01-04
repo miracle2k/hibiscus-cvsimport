@@ -118,7 +118,6 @@ public class MT940Importer implements Importer
         {
           final Umsatz umsatz = Converter.HBCIUmsatz2HibiscusUmsatz(lines[i]);
           umsatz.setKonto(konto); // muessen wir noch machen, weil der Converter das Konto nicht kennt
-          umsatz.setChangedByUser();
           umsatz.store();
           created++;
           try
@@ -291,7 +290,11 @@ public class MT940Importer implements Importer
 
 /*******************************************************************************
  * $Log$
- * Revision 1.13  2008-01-22 13:34:45  willuhn
+ * Revision 1.14  2009-01-04 01:25:47  willuhn
+ * @N Checksumme von Umsaetzen wird nun generell beim Anlegen des Datensatzes gespeichert. Damit koennen Umsaetze nun problemlos geaendert werden, ohne mit "hasChangedByUser" checken zu muessen. Die Checksumme bleibt immer erhalten, weil sie in UmsatzImpl#insert() sofort zu Beginn angelegt wird
+ * @N Umsaetze sind nun vollstaendig editierbar
+ *
+ * Revision 1.13  2008/01/22 13:34:45  willuhn
  * @N Neuer XML-Import/-Export
  *
  * Revision 1.12  2007/04/23 18:07:14  willuhn
