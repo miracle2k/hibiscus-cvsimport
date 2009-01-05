@@ -124,7 +124,7 @@ public class KontoList extends TablePart implements Part
       {
         Konto k = (Konto) item.getData();
         try {
-          item.setText(4,HBCI.DECIMALFORMAT.format(k.getSaldo()) + " " + k.getWaehrung());
+          item.setText(5,HBCI.DECIMALFORMAT.format(k.getSaldo()) + " " + k.getWaehrung());
           if (k.getSaldo() < 0)
             item.setForeground(Settings.getBuchungSollForeground());
           
@@ -255,7 +255,10 @@ public class KontoList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.12  2009-01-04 17:43:29  willuhn
+ * Revision 1.13  2009-01-05 10:13:46  willuhn
+ * @B In der Spalte "HBCI-Medium" wurd versehentlich der Saldo angezeigt
+ *
+ * Revision 1.12  2009/01/04 17:43:29  willuhn
  * @N BUGZILLA 532
  *
  * Revision 1.11  2009/01/04 16:38:55  willuhn
