@@ -60,7 +60,7 @@ public class update0010 implements Update
     statements.put(DBSupportMySqlImpl.class.getName(),
         "ALTER TABLE property DROP KEY name;\n" +
         "ALTER TABLE property CHANGE name name TEXT NOT NULL;\n" +
-        "ALTER TABLE property ADD UNIQUE KEY (name(512));\n");
+        "ALTER TABLE property ADD UNIQUE KEY (name(255));\n");
   }
 
   /**
@@ -108,7 +108,10 @@ public class update0010 implements Update
 
 /*********************************************************************
  * $Log$
- * Revision 1.3  2008-10-12 22:10:20  willuhn
+ * Revision 1.4  2009-01-07 22:56:43  willuhn
+ * @B BUGZILLA 688
+ *
+ * Revision 1.3  2008/10/12 22:10:20  willuhn
  * @B Typo in den Updates
  * @B Spalten-Sortierung und -breite fuer in den Positionen von Sammelauftraegen nicht gespeichert
  *
