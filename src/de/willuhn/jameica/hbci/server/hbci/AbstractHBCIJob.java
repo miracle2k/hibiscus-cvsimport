@@ -84,7 +84,18 @@ public abstract class AbstractHBCIJob
    * @throws ApplicationException
    */
   abstract String markFailed(String error) throws RemoteException, ApplicationException;
-  
+
+  /**
+   * Wird aufgerufen, wenn der User den Vorgang abgebrochen hat.
+   * Kann von den Jobs implementiert werden, muss aber nicht.
+   * @throws RemoteException
+   * @throws ApplicationException
+   */
+  void markCancelled() throws RemoteException, ApplicationException
+  {
+    
+  }
+
 	/**
 	 * Diese Funktion wird von der HBCIFactory intern aufgerufen.
 	 * Sie uebergibt hier den erzeugten HBCI-Job der Abfrage.
@@ -131,6 +142,13 @@ public abstract class AbstractHBCIJob
   final void handleResult() throws ApplicationException, RemoteException
   {
     HBCIJobResult result = getJobResult();
+    if (HBCIFactory.getInstance().isCancelled())
+    {
+      Logger.warn("hbci session cancelled by user, mark job as cancelled");
+      markCancelled();
+      return;
+    }
+    
     if (result.isOK())
     {
       // Globaler Status ist OK - Job wurde zweifelsfrei erfolgreich ausgefuehrt
@@ -333,7 +351,10 @@ public abstract class AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.28  2008-09-23 11:28:30  willuhn
+ * Revision 1.29  2009-01-16 22:44:22  willuhn
+ * @B Wenn eine HBCI-Session vom User abgebrochen wurde, liefert das JobResult#isOK() u.U. trotzdem true, was dazu fuehrt, dass eine Ueberweisung versehentlich als ausgefuehrt markiert wurde. Neue Funktion "markCancelled()" eingefuehrt.
+ *
+ * Revision 1.28  2008/09/23 11:28:30  willuhn
  * @N Statuscode auch bei Erfolg mit loggen
  *
  * Revision 1.27  2008/09/23 11:24:27  willuhn
