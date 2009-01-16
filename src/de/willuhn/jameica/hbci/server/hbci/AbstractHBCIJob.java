@@ -90,6 +90,7 @@ public abstract class AbstractHBCIJob
    * Kann von den Jobs implementiert werden, muss aber nicht.
    * @throws RemoteException
    * @throws ApplicationException
+   * BUGZILLA 690
    */
   void markCancelled() throws RemoteException, ApplicationException
   {
@@ -142,7 +143,7 @@ public abstract class AbstractHBCIJob
   final void handleResult() throws ApplicationException, RemoteException
   {
     HBCIJobResult result = getJobResult();
-    if (HBCIFactory.getInstance().isCancelled())
+    if (HBCIFactory.getInstance().isCancelled()) // BUGZILLA 690
     {
       Logger.warn("hbci session cancelled by user, mark job as cancelled");
       markCancelled();
@@ -351,7 +352,10 @@ public abstract class AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.29  2009-01-16 22:44:22  willuhn
+ * Revision 1.30  2009-01-16 22:50:00  willuhn
+ * @N bugzilla token
+ *
+ * Revision 1.29  2009/01/16 22:44:22  willuhn
  * @B Wenn eine HBCI-Session vom User abgebrochen wurde, liefert das JobResult#isOK() u.U. trotzdem true, was dazu fuehrt, dass eine Ueberweisung versehentlich als ausgefuehrt markiert wurde. Neue Funktion "markCancelled()" eingefuehrt.
  *
  * Revision 1.28  2008/09/23 11:28:30  willuhn
