@@ -131,7 +131,7 @@ public class UmsatzDetailControl extends AbstractControl {
     }
     catch (Exception e)
     {
-      Logger.error("unable to check, if address in addressbook");
+      Logger.error("unable to check, if address in addressbook",e);
     }
     return null;
   }
@@ -416,7 +416,10 @@ public class UmsatzDetailControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.36  2009-01-04 14:47:53  willuhn
+ * Revision 1.37  2009-01-19 22:45:26  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.36  2009/01/04 14:47:53  willuhn
  * @N Bearbeiten der Umsaetze nochmal ueberarbeitet - Codecleanup
  *
  * Revision 1.35  2009/01/04 01:25:47  willuhn
