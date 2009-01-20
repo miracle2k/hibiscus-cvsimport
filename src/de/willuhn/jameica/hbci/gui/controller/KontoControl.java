@@ -262,7 +262,7 @@ public class KontoControl extends AbstractControl {
         }
         
       }
-    },getKonto());
+    },getKonto(),false,"document-properties.png");
     return this.synchronizeOptions;
   }
   
@@ -586,7 +586,10 @@ public class KontoControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.79  2009-01-04 17:43:30  willuhn
+ * Revision 1.80  2009-01-20 10:51:46  willuhn
+ * @N Mehr Icons - fuer Buttons
+ *
+ * Revision 1.79  2009/01/04 17:43:30  willuhn
  * @N BUGZILLA 532
  *
  * Revision 1.78  2008/05/19 22:35:53  willuhn

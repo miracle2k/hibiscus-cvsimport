@@ -15,10 +15,10 @@ package de.willuhn.jameica.hbci.gui.views;
 import de.willuhn.jameica.gui.AbstractView;
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
+import de.willuhn.jameica.gui.internal.buttons.Back;
 import de.willuhn.jameica.gui.util.ButtonArea;
 import de.willuhn.jameica.gui.util.LabelGroup;
 import de.willuhn.jameica.hbci.HBCI;
-import de.willuhn.jameica.hbci.gui.action.Back;
 import de.willuhn.jameica.hbci.gui.action.DauerauftragDelete;
 import de.willuhn.jameica.hbci.gui.action.DauerauftragExecute;
 import de.willuhn.jameica.hbci.gui.controller.DauerauftragControl;
@@ -70,7 +70,7 @@ public class DauerauftragNew extends AbstractView
 		if (da.isActive())
 			s = "Speichern und aktualisieren";
 
-		buttonArea.addButton(i18n.tr("Zurück"), 	 		 new Back());
+    buttonArea.addButton(new Back(false));
 		buttonArea.addButton(i18n.tr("Löschen"),	 		 new DauerauftragDelete(), da);
 		buttonArea.addButton(s,										 		 new Action()
     {
@@ -93,7 +93,10 @@ public class DauerauftragNew extends AbstractView
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2006-03-27 16:46:21  willuhn
+ * Revision 1.8  2009-01-20 10:51:45  willuhn
+ * @N Mehr Icons - fuer Buttons
+ *
+ * Revision 1.7  2006/03/27 16:46:21  willuhn
  * @N GUI polish
  *
  * Revision 1.6  2006/01/18 00:51:00  willuhn

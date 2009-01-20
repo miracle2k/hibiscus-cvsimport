@@ -21,11 +21,11 @@ import org.eclipse.swt.widgets.TabFolder;
 import de.willuhn.jameica.gui.AbstractView;
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
+import de.willuhn.jameica.gui.internal.buttons.Back;
 import de.willuhn.jameica.gui.util.ButtonArea;
 import de.willuhn.jameica.gui.util.Color;
 import de.willuhn.jameica.gui.util.TabGroup;
 import de.willuhn.jameica.hbci.HBCI;
-import de.willuhn.jameica.hbci.gui.action.Back;
 import de.willuhn.jameica.hbci.gui.action.PassportDetail;
 import de.willuhn.jameica.hbci.gui.action.UmsatzTypNew;
 import de.willuhn.jameica.hbci.gui.controller.SettingsControl;
@@ -112,14 +112,14 @@ public class Settings extends AbstractView {
     umsatzButtons.addButton(i18n.tr("Neue Umsatz-Kategorie..."),new UmsatzTypNew());
 
     ButtonArea buttons = new ButtonArea(getParent(),2);
-		buttons.addButton(i18n.tr("Zurück"),new Back());
+    buttons.addButton(new Back(false));
 		buttons.addButton(i18n.tr("Speichern"),new Action()
     {
       public void handleAction(Object context) throws ApplicationException
       {
       	control.handleStore();
       }
-    });
+    },null,true);
 
     // Mal checken, ob wir uns das zuletzt aktive Tab gemerkt haben.
     if (lastActiveTab != null)
@@ -156,7 +156,10 @@ public class Settings extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.43  2008-08-29 14:30:36  willuhn
+ * Revision 1.44  2009-01-20 10:51:45  willuhn
+ * @N Mehr Icons - fuer Buttons
+ *
+ * Revision 1.43  2008/08/29 14:30:36  willuhn
  * @C Java 1.4 Compatibility - wieso zur Hoelle sind die Fehler vorher nie aufgefallen? Ich compiliere immer gegen 1.4? Suspekt
  *
  * Revision 1.42  2008/07/22 22:30:01  willuhn

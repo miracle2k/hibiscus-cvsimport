@@ -14,9 +14,9 @@ package de.willuhn.jameica.hbci.gui.views;
 
 import de.willuhn.jameica.gui.AbstractView;
 import de.willuhn.jameica.gui.GUI;
+import de.willuhn.jameica.gui.internal.buttons.Back;
 import de.willuhn.jameica.gui.util.ButtonArea;
 import de.willuhn.jameica.hbci.HBCI;
-import de.willuhn.jameica.hbci.gui.action.Back;
 import de.willuhn.jameica.hbci.gui.action.EmpfaengerNew;
 import de.willuhn.jameica.hbci.gui.controller.EmpfaengerControl;
 import de.willuhn.jameica.system.Application;
@@ -44,8 +44,8 @@ public class EmpfaengerList extends AbstractView {
 			control.getEmpfaengerListe().paint(getParent());
 
 			ButtonArea buttons = new ButtonArea(getParent(),2);
-      buttons.addButton(i18n.tr("Zurück"),new Back());
-			buttons.addButton(i18n.tr("Neuer Adressbuch-Eintrag"),new EmpfaengerNew(),null,true);
+      buttons.addButton(new Back(false));
+			buttons.addButton(i18n.tr("Neue Adresse"),new EmpfaengerNew(),null,true);
 
 		}
 		catch (Exception e)
@@ -59,7 +59,10 @@ public class EmpfaengerList extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2006-08-07 14:45:18  willuhn
+ * Revision 1.7  2009-01-20 10:51:46  willuhn
+ * @N Mehr Icons - fuer Buttons
+ *
+ * Revision 1.6  2006/08/07 14:45:18  willuhn
  * @B typos
  *
  * Revision 1.5  2006/01/18 00:51:00  willuhn

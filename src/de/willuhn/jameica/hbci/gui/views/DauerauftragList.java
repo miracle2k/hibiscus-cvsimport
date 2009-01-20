@@ -14,9 +14,9 @@ package de.willuhn.jameica.hbci.gui.views;
 
 import de.willuhn.jameica.gui.AbstractView;
 import de.willuhn.jameica.gui.GUI;
+import de.willuhn.jameica.gui.internal.buttons.Back;
 import de.willuhn.jameica.gui.util.ButtonArea;
 import de.willuhn.jameica.hbci.HBCI;
-import de.willuhn.jameica.hbci.gui.action.Back;
 import de.willuhn.jameica.hbci.gui.action.DauerauftragNew;
 import de.willuhn.jameica.hbci.gui.action.KontoFetchDauerauftraege;
 import de.willuhn.jameica.hbci.gui.controller.DauerauftragControl;
@@ -45,7 +45,7 @@ public class DauerauftragList extends AbstractView {
 			control.getDauerauftragListe().paint(getParent());
 
 			ButtonArea buttons = new ButtonArea(getParent(),3);
-      buttons.addButton(i18n.tr("Zurück"),new Back());
+	    buttons.addButton(new Back(false));
 			buttons.addButton(i18n.tr("Existierende Daueraufträge abrufen"), 	new KontoFetchDauerauftraege());
 			buttons.addButton(i18n.tr("Neuer Dauerauftrag"),									new DauerauftragNew(),null,true);
 
@@ -61,7 +61,10 @@ public class DauerauftragList extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2006-08-07 14:45:18  willuhn
+ * Revision 1.6  2009-01-20 10:51:46  willuhn
+ * @N Mehr Icons - fuer Buttons
+ *
+ * Revision 1.5  2006/08/07 14:45:18  willuhn
  * @B typos
  *
  * Revision 1.4  2006/01/18 00:51:00  willuhn

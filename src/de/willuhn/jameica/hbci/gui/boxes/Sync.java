@@ -116,14 +116,14 @@ public class Sync extends AbstractBox implements Box
         }
         
       }
-    });
+    },null,false,"document-properties.png");
     
     b.addButton(i18n.tr("Synchronisierung starten"),new Action() {
       public void handleAction(Object context) throws ApplicationException
       {
         handleStart();
       }
-    },null,true);
+    },null,true,"mail-send-receive.png");
   }
 
   /**
@@ -181,7 +181,10 @@ public class Sync extends AbstractBox implements Box
 
 /*********************************************************************
  * $Log$
- * Revision 1.15  2008-01-04 16:39:31  willuhn
+ * Revision 1.16  2009-01-20 10:51:46  willuhn
+ * @N Mehr Icons - fuer Buttons
+ *
+ * Revision 1.15  2008/01/04 16:39:31  willuhn
  * @N Weitere Hoehen-Angaben von Komponenten
  *
  * Revision 1.14  2007/12/18 17:10:22  willuhn
