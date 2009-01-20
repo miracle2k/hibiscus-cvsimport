@@ -282,7 +282,13 @@ public class SparQuote implements Part
         // Neues Limit definieren
         cal.setTime(valuta);
         cal.add(Calendar.MONTH,1);
-        cal.set(Calendar.DAY_OF_MONTH,stichtag);
+        
+        // BUGZILLA 691
+        if (stichtag > cal.getActualMaximum(Calendar.DAY_OF_MONTH))
+          cal.set(Calendar.DAY_OF_MONTH,cal.getActualMaximum(Calendar.DAY_OF_MONTH));
+        else
+          cal.set(Calendar.DAY_OF_MONTH, stichtag);
+
         currentLimit = HBCIProperties.startOfDay(cal.getTime());
       }
       
@@ -509,7 +515,10 @@ public class SparQuote implements Part
 
 /*********************************************************************
  * $Log$
- * Revision 1.15  2009-01-12 00:46:50  willuhn
+ * Revision 1.16  2009-01-20 09:33:15  willuhn
+ * @B BUGZILLA 691
+ *
+ * Revision 1.15  2009/01/12 00:46:50  willuhn
  * @N Vereinheitlichtes KontoInput in den Auswertungen
  *
  * Revision 1.14  2008/04/06 23:21:43  willuhn
