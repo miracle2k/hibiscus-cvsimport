@@ -135,7 +135,8 @@ public class Converter {
       }
 		}
 
-		umsatz.setZweck(lines[0]);
+    if (lines.length > 0)
+  		umsatz.setZweck(lines[0]);
     if (lines.length > 1)
       umsatz.setZweck2(lines[1]);
 
@@ -400,7 +401,10 @@ public class Converter {
 
 /**********************************************************************
  * $Log$
- * Revision 1.50  2009-01-20 09:43:34  willuhn
+ * Revision 1.51  2009-01-25 18:04:08  willuhn
+ * @B BUGZILLA 694
+ *
+ * Revision 1.50  2009/01/20 09:43:34  willuhn
  * @C Verteilen der Verwendungszwecke vereinfacht
  *
  * Revision 1.49  2008/12/01 23:54:42  willuhn
