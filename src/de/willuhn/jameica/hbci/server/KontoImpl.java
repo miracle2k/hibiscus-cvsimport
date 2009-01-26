@@ -614,25 +614,6 @@ public class KontoImpl extends AbstractDBObject implements Konto
   }
 
   /**
-   * @see de.willuhn.jameica.hbci.rmi.Konto#getSynchronize()
-   */
-  public boolean getSynchronize() throws RemoteException
-  {
-    Integer i = (Integer) getAttribute("synchronize");
-    if (i == null)
-      return true; // BUGZILLA 277
-    return i.intValue() == 1;
-  }
-
-  /**
-   * @see de.willuhn.jameica.hbci.rmi.Konto#setSynchronize(boolean)
-   */
-  public void setSynchronize(boolean b) throws RemoteException
-  {
-    setAttribute("synchronize", new Integer(b ? 1 : 0));
-  }
-
-  /**
    * @see de.willuhn.jameica.hbci.rmi.Konto#getAusgaben(java.util.Date,
    *      java.util.Date)
    */
@@ -765,7 +746,10 @@ public class KontoImpl extends AbstractDBObject implements Konto
 
 /*******************************************************************************
  * $Log$
- * Revision 1.95  2009-01-04 17:43:29  willuhn
+ * Revision 1.96  2009-01-26 23:17:46  willuhn
+ * @R Feld "synchronize" aus Konto-Tabelle entfernt. Aufgrund der Synchronize-Optionen pro Konto ist die Information redundant und ergibt sich implizit, wenn fuer ein Konto irgendeine der Synchronisations-Optionen aktiviert ist
+ *
+ * Revision 1.95  2009/01/04 17:43:29  willuhn
  * @N BUGZILLA 532
  *
  * Revision 1.94  2009/01/04 16:18:22  willuhn
