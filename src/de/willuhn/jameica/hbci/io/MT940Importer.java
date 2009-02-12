@@ -17,6 +17,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.rmi.RemoteException;
+import java.util.List;
 import java.util.Properties;
 
 import org.kapott.hbci.GV_Result.GVRKUms;
@@ -91,20 +92,20 @@ public class MT940Importer implements Importer
       if (monitor != null)
         monitor.setStatusText(i18n.tr("Speichere Umsätze"));
       
-      GVRKUms.UmsLine[] lines = umsaetze.getFlatData();
+      List lines = umsaetze.getFlatData();
       
-      if (lines.length == 0)
+      if (lines.size() == 0)
       {
         konto.addToProtokoll(i18n.tr("Keine Umsätze importiert"),Protokoll.TYP_ERROR);
         return;
       }
       
-      double factor = 100d / (double) lines.length;
+      double factor = 100d / (double) lines.size();
 
       int created = 0;
       int error   = 0;
 
-      for (int i=0;i<lines.length;++i)
+      for (int i=0;i<lines.size();++i)
       {
         if (monitor != null)
         {
@@ -116,7 +117,7 @@ public class MT940Importer implements Importer
 
         try
         {
-          final Umsatz umsatz = Converter.HBCIUmsatz2HibiscusUmsatz(lines[i]);
+          final Umsatz umsatz = Converter.HBCIUmsatz2HibiscusUmsatz((GVRKUms.UmsLine)lines.get(i));
           umsatz.setKonto(konto); // muessen wir noch machen, weil der Converter das Konto nicht kennt
           umsatz.store();
           created++;
@@ -290,7 +291,10 @@ public class MT940Importer implements Importer
 
 /*******************************************************************************
  * $Log$
- * Revision 1.14  2009-01-04 01:25:47  willuhn
+ * Revision 1.15  2009-02-12 16:14:34  willuhn
+ * @N HBCI4Java-Version mit Unterstuetzung fuer vorgemerkte Umsaetze
+ *
+ * Revision 1.14  2009/01/04 01:25:47  willuhn
  * @N Checksumme von Umsaetzen wird nun generell beim Anlegen des Datensatzes gespeichert. Damit koennen Umsaetze nun problemlos geaendert werden, ohne mit "hasChangedByUser" checken zu muessen. Die Checksumme bleibt immer erhalten, weil sie in UmsatzImpl#insert() sofort zu Beginn angelegt wird
  * @N Umsaetze sind nun vollstaendig editierbar
  *

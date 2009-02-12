@@ -38,7 +38,12 @@ public interface Umsatz extends HibiscusTransfer, DBObject, Checksum
    */
   public final static int FLAG_CHECKED = 1 << 0;
 
-	/**
+  /**
+   * Flag "Vorgemerkt".
+   */
+  public final static int FLAG_NOTBOOKED = 1 << 1;
+
+  /**
 	 * Liefert das Datum der Buchung.
    * @return Datum der Buchung.
    * @throws RemoteException
@@ -194,7 +199,10 @@ public interface Umsatz extends HibiscusTransfer, DBObject, Checksum
 
 /**********************************************************************
  * $Log$
- * Revision 1.18  2009-02-04 23:06:24  willuhn
+ * Revision 1.19  2009-02-12 16:14:34  willuhn
+ * @N HBCI4Java-Version mit Unterstuetzung fuer vorgemerkte Umsaetze
+ *
+ * Revision 1.18  2009/02/04 23:06:24  willuhn
  * @N BUGZILLA 308 - Umsaetze als "geprueft" markieren
  *
  * Revision 1.17  2009/01/04 01:25:47  willuhn
