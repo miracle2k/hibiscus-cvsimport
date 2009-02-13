@@ -167,12 +167,14 @@ public class HBCIUmsatzJob extends AbstractHBCIJob
 			final Umsatz umsatz = Converter.HBCIUmsatz2HibiscusUmsatz((GVRKUms.UmsLine)lines.get(i));
 			umsatz.setKonto(konto); // muessen wir noch machen, weil der Converter das Konto nicht kennt
 
-      if (existing.contains(umsatz) != null)
-        continue; // Haben wir schon
+      // Wir koennen nicht einfach mit "existing.contains(umsatz)" nachschauen, ob der schon
+      // existiert, weil die vorgemerkten Umsaetze andere Salden haben
+      final Umsatz notbooked = findNotBooked(existing,umsatz);
 
-			// Wir koennen nicht einfach mit "existing.contains(umsatz)" nachschauen, ob der schon
-			// existiert, weil die vorgemerkten Umsaetze andere Salden haben
-			final Umsatz notbooked = findNotBooked(existing,umsatz);
+			if (existing.contains(umsatz) != null && notbooked == null)
+        continue; // Haben wir schon und existiert auch nicht mehr als Vormerkposten
+
+			// Vormerkposten gefunden - in echte Buchung umwandeln
 			if (notbooked != null)
 			{
 			  try
@@ -187,20 +189,20 @@ public class HBCIUmsatzJob extends AbstractHBCIJob
           Application.getMessagingFactory().sendMessage(new StatusBarMessage(i18n.tr("Vorgemerkter Umsatz konnte nicht aktualisiert werden. Bitte prüfen Sie das System-Protokoll"),StatusBarMessage.TYPE_ERROR));
           Logger.error("error while updating not-booked umsatz, skipping",e2);
         }
+        continue;
 			}
-			else
-			{
-        try
-        {
-          umsatz.store(); // den Umsatz haben wir noch nicht, speichern!
-          Application.getMessagingFactory().sendMessage(new ImportMessage(umsatz));
-        }
-        catch (Exception e2)
-        {
-          Application.getMessagingFactory().sendMessage(new StatusBarMessage(i18n.tr("Nicht alle empfangenen Umsätze konnten gespeichert werden. Bitte prüfen Sie das System-Protokoll"),StatusBarMessage.TYPE_ERROR));
-          Logger.error("error while adding umsatz, skipping this one",e2);
-        }
-			}
+
+			// Umsatz neu anlegen
+      try
+      {
+        umsatz.store(); // den Umsatz haben wir noch nicht, speichern!
+        Application.getMessagingFactory().sendMessage(new ImportMessage(umsatz));
+      }
+      catch (Exception e2)
+      {
+        Application.getMessagingFactory().sendMessage(new StatusBarMessage(i18n.tr("Nicht alle empfangenen Umsätze konnten gespeichert werden. Bitte prüfen Sie das System-Protokoll"),StatusBarMessage.TYPE_ERROR));
+        Logger.error("error while adding umsatz, skipping this one",e2);
+      }
 		}
 		//
     ////////////////////////////////////////////////////////////////////////////
@@ -217,9 +219,10 @@ public class HBCIUmsatzJob extends AbstractHBCIJob
         final Umsatz umsatz = Converter.HBCIUmsatz2HibiscusUmsatz((GVRKUms.UmsLine)lines.get(i));
         umsatz.setKonto(konto);
         
-        if (existing.contains(umsatz) != null)
+        if (findNotBooked(existing,umsatz) != null)
           continue; // Haben wir schon
-        
+
+        // Vormerkposten neu anlegen
         try
         {
           umsatz.setFlags(Umsatz.FLAG_NOTBOOKED);
@@ -281,7 +284,10 @@ public class HBCIUmsatzJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.37  2009-02-12 18:37:18  willuhn
+ * Revision 1.38  2009-02-13 09:30:35  willuhn
+ * @C Erkennung von Vormerkposten nochmal leicht ueberarbeitet
+ *
+ * Revision 1.37  2009/02/12 18:37:18  willuhn
  * @N Erster Code fuer vorgemerkte Umsaetze
  *
  * Revision 1.36  2009/02/12 16:14:34  willuhn
