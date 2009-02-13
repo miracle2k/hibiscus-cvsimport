@@ -21,9 +21,9 @@ import de.willuhn.jameica.gui.util.ButtonArea;
 import de.willuhn.jameica.gui.util.Headline;
 import de.willuhn.jameica.gui.util.LabelGroup;
 import de.willuhn.jameica.hbci.HBCI;
+import de.willuhn.jameica.hbci.gui.action.DBObjectDelete;
 import de.willuhn.jameica.hbci.gui.action.SammelLastBuchungNew;
 import de.willuhn.jameica.hbci.gui.action.SammelLastschriftExecute;
-import de.willuhn.jameica.hbci.gui.action.SammelTransferDelete;
 import de.willuhn.jameica.hbci.gui.controller.SammelLastschriftControl;
 import de.willuhn.jameica.hbci.rmi.SammelLastschrift;
 import de.willuhn.jameica.hbci.rmi.SammelTransfer;
@@ -64,7 +64,7 @@ public class SammelLastschriftNew extends AbstractView {
 
     ButtonArea buttons = new ButtonArea(getParent(),5);
     buttons.addButton(new Back(transfer.ausgefuehrt()));
-    buttons.addButton(i18n.tr("Löschen"),new SammelTransferDelete(),control.getTransfer());
+    buttons.addButton(i18n.tr("Löschen"),new DBObjectDelete(),control.getTransfer());
 
     Button add = new Button(i18n.tr("Neue Buchungen hinzufügen"), new Action() {
       public void handleAction(Object context) throws ApplicationException {
@@ -99,7 +99,10 @@ public class SammelLastschriftNew extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.15  2009-01-20 10:51:46  willuhn
+ * Revision 1.16  2009-02-13 14:17:01  willuhn
+ * @N BUGZILLA 700
+ *
+ * Revision 1.15  2009/01/20 10:51:46  willuhn
  * @N Mehr Icons - fuer Buttons
  *
  * Revision 1.14  2008/05/30 12:02:08  willuhn

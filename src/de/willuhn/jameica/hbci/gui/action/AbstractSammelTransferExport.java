@@ -36,12 +36,18 @@ public abstract class AbstractSammelTransferExport implements Action
   {
 		I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
-		if (context == null || !(context instanceof SammelTransfer))
-			throw new ApplicationException(i18n.tr("Bitte wählen Sie einen Sammel-Auftrag aus"));
+		if (context == null || (!(context instanceof SammelTransfer) && !(context instanceof SammelTransfer[])))
+      throw new ApplicationException(i18n.tr("Bitte wählen Sie mindestens einen Sammel-Auftrag aus"));
 
 		try
     {
-		  ExportDialog d = new ExportDialog(new SammelTransfer[]{(SammelTransfer)context}, getExportClass());
+		  SammelTransfer[] list = null;
+		  if (context instanceof SammelTransfer)
+		    list = new SammelTransfer[]{(SammelTransfer) context};
+		  else
+		    list = (SammelTransfer[]) context;
+		  
+		  ExportDialog d = new ExportDialog(list, getExportClass());
       d.open();
 		}
 		catch (ApplicationException ae)
@@ -67,7 +73,10 @@ public abstract class AbstractSammelTransferExport implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2006-10-16 14:46:30  willuhn
+ * Revision 1.4  2009-02-13 14:17:01  willuhn
+ * @N BUGZILLA 700
+ *
+ * Revision 1.3  2006/10/16 14:46:30  willuhn
  * @N CSV-Export von Ueberweisungen und Lastschriften
  *
  * Revision 1.2  2006/08/07 21:51:43  willuhn

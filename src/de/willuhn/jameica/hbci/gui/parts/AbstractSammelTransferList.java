@@ -59,6 +59,7 @@ public abstract class AbstractSammelTransferList extends AbstractFromToList
   public AbstractSammelTransferList(Action action)
   {
     super(action);
+    setMulti(true);
     setFormatter(new TableFormatter() {
       public void format(TableItem item) {
         SammelTransfer l = (SammelTransfer) item.getData();
@@ -218,7 +219,10 @@ public abstract class AbstractSammelTransferList extends AbstractFromToList
 
 /**********************************************************************
  * $Log$
- * Revision 1.8  2008-06-30 13:04:10  willuhn
+ * Revision 1.9  2009-02-13 14:17:01  willuhn
+ * @N BUGZILLA 700
+ *
+ * Revision 1.8  2008/06/30 13:04:10  willuhn
  * @N Von-Bis-Filter auch in Sammel-Auftraegen
  *
  * Revision 1.7  2008/02/04 18:56:45  willuhn
