@@ -62,6 +62,11 @@ public class HBCIProperties
   public final static int HBCI_TRANSFER_USAGE_MAXLENGTH = settings.getInt("hbci.transfer.usage.maxlength",27);
 
   /**
+   * Maximale Text-Laenge einer Verwendungszweck-Zeile fuer Auslandsueberweisungen.
+   */
+  public final static int HBCI_FOREIGNTRANSFER_USAGE_MAXLENGTH = settings.getInt("hbci.foreigntransfer.usage.maxlength",140);
+
+  /**
    * Maximale Anzahl von Verwendungszwecken.
    */
   public final static int HBCI_TRANSFER_USAGE_MAXNUM = settings.getInt("hbci.transfer.usage.maxnum",14);
@@ -220,6 +225,44 @@ public class HBCIProperties
   }
 
   /**
+   * Prueft die Gueltigkeit einer IBAN anhand von Pruefziffern.
+   * @see HBCIUtils#checkIBANCRC(java.lang.String)
+   * @param iban die IBAN.
+   * @return true, wenn die IBAN ok ist.
+   */
+  public final static boolean checkIBANCRC(String iban)
+  {
+    if (!de.willuhn.jameica.hbci.Settings.getKontoCheck())
+      return true;
+    try
+    {
+      if (iban == null || 
+          iban.length() == 0 ||
+          iban.length() > HBCI_IBAN_MAXLENGTH)
+      {
+        Logger.warn("iban number [" + iban + "] out of range, skip crc check");
+        return true;
+      }
+      return HBCIUtils.checkIBANCRC(iban);
+    }
+    catch (Exception e)
+    {
+      try
+      {
+        Logger.warn("HBCI4Java subsystem seems to be not initialized for this thread group, adding thread group");
+        HBCI plugin = (HBCI) Application.getPluginLoader().getPlugin(HBCI.class);
+        HBCIUtils.initThread(plugin.getHBCIPropetries(),plugin.getHBCICallback());
+        return HBCIUtils.checkIBANCRC(iban);
+      }
+      catch (Exception e2)
+      {
+        Logger.error("unable to verify iban crc number",e2);
+        return true;
+      }
+    }
+  }
+  
+  /**
    * Resettet die Uhrzeit eines Datums.
    * @param date das Datum.
    * @return das neue Datum.
@@ -261,7 +304,10 @@ public class HBCIProperties
 
 /**********************************************************************
  * $Log$
- * Revision 1.35  2009-02-12 23:55:57  willuhn
+ * Revision 1.36  2009-02-17 00:00:02  willuhn
+ * @N BUGZILLA 159 - Erster Code fuer Auslands-Ueberweisungen
+ *
+ * Revision 1.35  2009/02/12 23:55:57  willuhn
  * @N Erster Code fuer Unterstuetzung von Auslandsueberweisungen: In Tabelle "umsatz" die Spalte "empfaenger_konto" auf 40 Stellen erweitert und Eingabefeld bis max. 34 Stellen, damit IBANs gespeichert werden koennen
  *
  * Revision 1.34  2008/12/14 23:18:35  willuhn

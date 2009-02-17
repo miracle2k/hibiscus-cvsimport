@@ -29,6 +29,7 @@ import de.willuhn.jameica.hbci.messaging.InfoPointMessageConsumer;
 import de.willuhn.jameica.hbci.messaging.QueryAccountCRCMessageConsumer;
 import de.willuhn.jameica.hbci.messaging.QueryBanknameMessageConsumer;
 import de.willuhn.jameica.hbci.messaging.QueryHBCIVersionMessageConsumer;
+import de.willuhn.jameica.hbci.messaging.QueryIBANCRCMessageConsumer;
 import de.willuhn.jameica.hbci.messaging.TransferLastschriftMessageConsumer;
 import de.willuhn.jameica.hbci.rmi.HBCIDBService;
 import de.willuhn.jameica.hbci.server.HBCIDBServiceImpl;
@@ -119,6 +120,7 @@ public class HBCI extends AbstractPlugin
     Application.getMessagingFactory().getMessagingQueue("hibiscus.passport.rdh.hbciversion").registerMessageConsumer(new QueryHBCIVersionMessageConsumer());
     Application.getMessagingFactory().getMessagingQueue("hibiscus.query.bankname").registerMessageConsumer(new QueryBanknameMessageConsumer());
     Application.getMessagingFactory().getMessagingQueue("hibiscus.query.accountcrc").registerMessageConsumer(new QueryAccountCRCMessageConsumer());
+    Application.getMessagingFactory().getMessagingQueue("hibiscus.query.ibancrc").registerMessageConsumer(new QueryIBANCRCMessageConsumer());
     Application.getMessagingFactory().getMessagingQueue("hibiscus.transfer.lastschrift").registerMessageConsumer(new TransferLastschriftMessageConsumer());
     Application.getMessagingFactory().getMessagingQueue("hibiscus.infopoint").registerMessageConsumer(new InfoPointMessageConsumer());
     
@@ -337,7 +339,10 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
- * Revision 1.114  2009-01-04 17:22:14  willuhn
+ * Revision 1.115  2009-02-17 00:00:02  willuhn
+ * @N BUGZILLA 159 - Erster Code fuer Auslands-Ueberweisungen
+ *
+ * Revision 1.114  2009/01/04 17:22:14  willuhn
  * @B service.checkConsistency versehentlich entfernt - dadurch wurden keine Datenbank-Updates mehr durchgefuehrt.
  *
  * Revision 1.113  2008/12/31 12:17:37  willuhn

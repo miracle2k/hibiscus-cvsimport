@@ -23,34 +23,39 @@ public interface Transfer extends Remote
   /**
    * Typ Ueberweisung
    */
-  public final static int TYP_UEBERWEISUNG  = 1;
+  public final static int TYP_UEBERWEISUNG         = 1;
   
   /**
    * Typ Lastschrift
    */
-  public final static int TYP_LASTSCHRIFT   = 2;
+  public final static int TYP_LASTSCHRIFT          = 2;
   
   /**
    * Typ Dauerauftrag
    */
-  public final static int TYP_DAUERAUFTRAG  = 3;
+  public final static int TYP_DAUERAUFTRAG         = 3;
 
   /**
    * Typ Umsatz
    */
-  public final static int TYP_UMSATZ        = 4;
+  public final static int TYP_UMSATZ               = 4;
   
   /**
    * Typ Buchung einer Sammel-Ueberweisung
    */
-  public final static int TYP_SUEB_BUCHUNG  = 5;
+  public final static int TYP_SUEB_BUCHUNG         = 5;
   
   /**
    * Typ Buchung einer Sammel-Lastschrift
    */
-  public final static int TYP_SLAST_BUCHUNG = 6;
+  public final static int TYP_SLAST_BUCHUNG        = 6;
 
-	/**
+  /**
+   * Typ Auslandsueberweisung
+   */
+  public final static int TYP_AUSLANDSUEBERWEISUNG = 7;
+
+  /**
 	 * Liefert die Kontonummer des Gegenkontos.
    * @return Kontonummer des Empfaengers.
    * @throws RemoteException
@@ -110,7 +115,10 @@ public interface Transfer extends Remote
 
 /**********************************************************************
  * $Log$
- * Revision 1.11  2008-11-26 00:39:36  willuhn
+ * Revision 1.12  2009-02-17 00:00:02  willuhn
+ * @N BUGZILLA 159 - Erster Code fuer Auslands-Ueberweisungen
+ *
+ * Revision 1.11  2008/11/26 00:39:36  willuhn
  * @N Erste Version erweiterter Verwendungszwecke. Muss dringend noch getestet werden.
  *
  * Revision 1.10  2008/02/15 17:39:10  willuhn
