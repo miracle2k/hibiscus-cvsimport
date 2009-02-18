@@ -36,6 +36,7 @@ public interface Address extends Remote
    * @throws RemoteException
    * @deprecated Bitte stattdessen getBlz() verwenden.
    */
+  @Deprecated
   public String getBLZ() throws RemoteException;
 
   /**
@@ -64,7 +65,10 @@ public interface Address extends Remote
 
 /*********************************************************************
  * $Log$
- * Revision 1.5  2008-11-05 09:26:40  willuhn
+ * Revision 1.6  2009-02-18 00:35:54  willuhn
+ * @N Auslaendische Bankverbindungen im Adressbuch
+ *
+ * Revision 1.5  2008/11/05 09:26:40  willuhn
  * @B tag typo
  *
  * Revision 1.4  2008/01/09 23:32:54  willuhn
