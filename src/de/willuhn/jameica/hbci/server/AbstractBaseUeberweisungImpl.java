@@ -15,6 +15,7 @@ package de.willuhn.jameica.hbci.server;
 import java.rmi.RemoteException;
 import java.util.Date;
 
+import de.willuhn.datasource.BeanUtil;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.rmi.BaseUeberweisung;
 import de.willuhn.jameica.hbci.rmi.Terminable;
@@ -115,15 +116,16 @@ public abstract class AbstractBaseUeberweisungImpl extends AbstractHibiscusTrans
   private boolean whileStore = false;
 
   /**
-   * @see de.willuhn.jameica.hbci.rmi.Terminable#setAusgefuehrt()
+   * @see de.willuhn.jameica.hbci.rmi.Terminable#setAusgefuehrt(boolean)
    */
-  public void setAusgefuehrt() throws RemoteException, ApplicationException
+  public void setAusgefuehrt(boolean b) throws RemoteException, ApplicationException
   {
     try
     {
       whileStore = true;
-      setAttribute("ausgefuehrt",new Integer(1));
+      setAttribute("ausgefuehrt",new Integer(b ? 1 : 0));
       store();
+      Logger.info("[" + getTableName() + ":" + getID() + "] (" + BeanUtil.toString(this) + ") - executed: " + b);
     }
     finally
     {
@@ -151,7 +153,10 @@ public abstract class AbstractBaseUeberweisungImpl extends AbstractHibiscusTrans
 
 /**********************************************************************
  * $Log$
- * Revision 1.12  2008-08-01 11:05:14  willuhn
+ * Revision 1.13  2009-02-18 10:48:42  willuhn
+ * @N Neuer Schalter "transfer.markexecuted.before", um festlegen zu koennen, wann ein Auftrag als ausgefuehrt gilt (wenn die Quittung von der Bank vorliegt oder wenn der Auftrag erzeugt wurde)
+ *
+ * Revision 1.12  2008/08/01 11:05:14  willuhn
  * @N BUGZILLA 587
  *
  * Revision 1.11  2008/04/27 22:22:56  willuhn

@@ -13,6 +13,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
 
+import de.willuhn.datasource.BeanUtil;
 import de.willuhn.datasource.db.AbstractDBObject;
 import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.jameica.hbci.HBCI;
@@ -152,17 +153,17 @@ public abstract class AbstractSammelTransferImpl extends AbstractDBObject implem
   // beim Speichern nicht um die Ohren fliegt.
   private boolean whileStore = false;
 
-
   /**
-   * @see de.willuhn.jameica.hbci.rmi.Terminable#setAusgefuehrt()
+   * @see de.willuhn.jameica.hbci.rmi.Terminable#setAusgefuehrt(boolean)
    */
-  public void setAusgefuehrt() throws RemoteException, ApplicationException
+  public void setAusgefuehrt(boolean b) throws RemoteException, ApplicationException
   {
     try
     {
       whileStore = true;
-      setAttribute("ausgefuehrt",new Integer(1));
+      setAttribute("ausgefuehrt",new Integer(b ? 1 : 0));
       store();
+      Logger.info("[" + getTableName() + ":" + getID() + "] (" + BeanUtil.toString(this) + ") - executed: " + b);
     }
     finally
     {
@@ -391,7 +392,10 @@ public abstract class AbstractSammelTransferImpl extends AbstractDBObject implem
 
 /*****************************************************************************
  * $Log$
- * Revision 1.4  2008-04-27 22:22:56  willuhn
+ * Revision 1.5  2009-02-18 10:48:42  willuhn
+ * @N Neuer Schalter "transfer.markexecuted.before", um festlegen zu koennen, wann ein Auftrag als ausgefuehrt gilt (wenn die Quittung von der Bank vorliegt oder wenn der Auftrag erzeugt wurde)
+ *
+ * Revision 1.4  2008/04/27 22:22:56  willuhn
  * @C I18N-Referenzen statisch
  *
  * Revision 1.3  2006/12/01 00:02:34  willuhn
