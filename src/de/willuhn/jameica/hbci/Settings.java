@@ -220,7 +220,7 @@ public class Settings
    */
   public static boolean getCheckPin()
   {
-    return settings.getBoolean("checkpin",false);
+    return settings.getBoolean("checkpin",true);
   }
   
   /**
@@ -229,7 +229,7 @@ public class Settings
    */
   public static boolean getCachePin()
   {
-    return settings.getBoolean("cachepin",false);
+    return settings.getBoolean("cachepin",true);
   }
 
   /**
@@ -288,7 +288,7 @@ public class Settings
    */
   public static boolean getOnlineMode()
   {
-    return settings.getBoolean("online",false);
+    return settings.getBoolean("online",true);
   }
   
   /**
@@ -319,7 +319,7 @@ public class Settings
    */
   public static double getUeberweisungLimit()
 	{
-		return settings.getDouble("ueberweisunglimit",5000.0);
+		return settings.getDouble("ueberweisunglimit",10000.0);
 	}
 	
 	/**
@@ -432,7 +432,10 @@ public class Settings
 
 /*********************************************************************
  * $Log$
- * Revision 1.55  2009-01-04 16:38:55  willuhn
+ * Revision 1.56  2009-02-19 10:24:51  willuhn
+ * @C Default-Werte fuer System-Parameter geaendert
+ *
+ * Revision 1.55  2009/01/04 16:38:55  willuhn
  * @N BUGZILLA 523 - ein Konto kann jetzt als Default markiert werden. Das wird bei Auftraegen vorausgewaehlt und ist fett markiert
  *
  * Revision 1.54  2008/12/17 22:53:22  willuhn
