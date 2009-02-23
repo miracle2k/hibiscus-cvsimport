@@ -177,7 +177,7 @@ public class Converter {
 		auftrag.setErsteZahlung(d.firstdate);
 		auftrag.setLetzteZahlung(d.lastdate);
     
-		// TODO: Das ist nicht eindeutig. Da der Converter schaut, ob er ein solches
+		// Das ist nicht eindeutig. Da der Converter schaut, ob er ein solches
     // Konto schon hat und bei Bedarf das existierende verwendet. Es kann aber
     // sein, dass ein User ein und das selbe Konto mit verschiedenen Sicherheitsmedien
     // bedient. In diesem Fall wird der Dauerauftrag evtl. beim falschen Konto
@@ -403,7 +403,10 @@ public class Converter {
 
 /**********************************************************************
  * $Log$
- * Revision 1.52  2009-02-12 16:14:33  willuhn
+ * Revision 1.53  2009-02-23 23:44:50  willuhn
+ * @N Etwas Code fuer Support fuer Unter-/Ober-Kategorien
+ *
+ * Revision 1.52  2009/02/12 16:14:33  willuhn
  * @N HBCI4Java-Version mit Unterstuetzung fuer vorgemerkte Umsaetze
  *
  * Revision 1.51  2009/01/25 18:04:08  willuhn

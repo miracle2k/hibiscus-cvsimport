@@ -17,12 +17,12 @@ import java.util.Date;
 import java.util.regex.PatternSyntaxException;
 
 import de.willuhn.datasource.GenericIterator;
-import de.willuhn.datasource.rmi.DBObject;
+import de.willuhn.datasource.rmi.DBObjectNode;
 
 /**
  * Interface zur Einstufung von Umsaetzen in verschiedene Kategorien.
  */
-public interface UmsatzTyp extends DBObject
+public interface UmsatzTyp extends DBObjectNode
 {
   /**
    * Umsatzkategorie vom Typ "Ausgabe".
@@ -193,7 +193,10 @@ public interface UmsatzTyp extends DBObject
 
 /**********************************************************************
  * $Log$
- * Revision 1.15  2008-08-29 16:46:24  willuhn
+ * Revision 1.16  2009-02-23 23:44:50  willuhn
+ * @N Etwas Code fuer Support fuer Unter-/Ober-Kategorien
+ *
+ * Revision 1.15  2008/08/29 16:46:24  willuhn
  * @N BUGZILLA 616
  *
  * Revision 1.14  2008/02/26 01:01:16  willuhn
@@ -202,10 +205,10 @@ public interface UmsatzTyp extends DBObject
  * @N Charts erst beim ersten Paint-Event zeichnen. Dadurch laesst sich z.Bsp. die Konto-View schneller oeffnen, da der Saldo-Verlauf nicht berechnet werden muss
  *
  * Revision 1.13  2007/03/10 07:18:36  jost
- * Neu: Nummer fÃ¼r die Sortierung der Umsatz-Kategorien
+ * Neu: Nummer für die Sortierung der Umsatz-Kategorien
  *
  * Revision 1.12  2007/03/06 20:06:40  jost
- * Neu: Umsatz-Kategorien-Ãœbersicht
+ * Neu: Umsatz-Kategorien-Übersicht
  *
  * Revision 1.11  2006/11/29 00:40:37  willuhn
  * @N Keylistener in Umsatzlist nur dann ausfuehren, wenn sich wirklich etwas geaendert hat

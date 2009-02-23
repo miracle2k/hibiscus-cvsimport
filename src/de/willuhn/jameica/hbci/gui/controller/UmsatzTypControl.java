@@ -59,6 +59,7 @@ public class UmsatzTypControl extends AbstractControl
   private TextInput pattern     = null;
   private CheckboxInput regex   = null;
   private SelectInput art       = null;
+//  private SelectInput parent    = null;
   
   /**
    * @param view
@@ -208,6 +209,33 @@ public class UmsatzTypControl extends AbstractControl
     }
     return this.art;
   }
+  
+//  /**
+//   * Liefert eine Auswahlbox fuer die Eltern-Kategorie.
+//   * @return Auswahlbox.
+//   * @throws RemoteException
+//   */
+//  public SelectInput getParent() throws RemoteException
+//  {
+//    if (this.parent == null)
+//    {
+//      UmsatzTyp current = getUmsatzTyp();
+//      
+//      GenericIterator possibleParents = null;
+//      if (current.isNewObject())
+//      {
+//        possibleParents = Settings.getDBService().createList(UmsatzTyp.class);
+//        ((DBIterator)possibleParents).setOrder("order by name");
+//      }
+//      else
+//        possibleParents = current.getPossibleParents();
+//
+//      this.parent = new SelectInput(possibleParents,current.getParent());
+//      this.parent.setAttribute("name");
+//      this.parent.setPleaseChoose(i18n.tr("<Keine>"));
+//    }
+//    return this.parent;
+//  }
 
   /**
    * Speichert die Einstellungen.
@@ -216,12 +244,15 @@ public class UmsatzTypControl extends AbstractControl
   {
     try {
       UmsatzTypObject t = (UmsatzTypObject) getArt().getValue();
-      getUmsatzTyp().setTyp(t == null ? UmsatzTyp.TYP_EGAL : t.typ);
-      getUmsatzTyp().setName((String)getName().getValue());
-      getUmsatzTyp().setNummer((String)getNummer().getValue());
-      getUmsatzTyp().setPattern((String)getPattern().getValue());
-      getUmsatzTyp().setRegex(((Boolean)getRegex().getValue()).booleanValue());
-      getUmsatzTyp().store();
+      
+      UmsatzTyp ut = getUmsatzTyp();
+      ut.setTyp(t == null ? UmsatzTyp.TYP_EGAL : t.typ);
+      ut.setName((String)getName().getValue());
+      ut.setNummer((String)getNummer().getValue());
+      ut.setPattern((String)getPattern().getValue());
+      ut.setRegex(((Boolean)getRegex().getValue()).booleanValue());
+//      ut.setParent((UmsatzTyp)getParent().getValue());
+      ut.store();
       Application.getMessagingFactory().sendMessage(new StatusBarMessage(i18n.tr("Umsatz-Kategorie gespeichert"), StatusBarMessage.TYPE_SUCCESS));
     }
     catch (ApplicationException e2)
@@ -309,7 +340,10 @@ public class UmsatzTypControl extends AbstractControl
 
 /*********************************************************************
  * $Log$
- * Revision 1.9  2008-09-17 23:44:29  willuhn
+ * Revision 1.10  2009-02-23 23:44:50  willuhn
+ * @N Etwas Code fuer Support fuer Unter-/Ober-Kategorien
+ *
+ * Revision 1.9  2008/09/17 23:44:29  willuhn
  * @B SQL-Query fuer MaxUsage-Abfrage korrigiert
  *
  * Revision 1.8  2008/08/29 16:46:23  willuhn
