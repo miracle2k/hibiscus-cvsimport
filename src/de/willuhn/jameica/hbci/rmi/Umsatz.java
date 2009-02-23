@@ -194,27 +194,15 @@ public interface Umsatz extends HibiscusTransfer, DBObject, Checksum
    * @throws RemoteException
    */
   public void setFlags(int flags) throws RemoteException;
-  
-  /**
-   * Uebernimmt die finalen Daten fuer einen vorgemerkten Umsatz und macht diesen
-   * zu einem finalen.
-   * @param umsatz der finale Umsatz.
-   * @throws RemoteException
-   */
-  public void applyBooked(Umsatz umsatz) throws RemoteException;
-  
-  /**
-   * Liefert eine Kurz-Checksumme ueber Gegenkonto, Datum und Betrag.
-   * @return Kurz-Checksumme.
-   * @throws RemoteException
-   */
-  public long getTinyChecksum() throws RemoteException;
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.20  2009-02-12 18:37:18  willuhn
+ * Revision 1.21  2009-02-23 17:01:58  willuhn
+ * @C Kein Abgleichen mehr bei vorgemerkten Buchungen sondern stattdessen vorgemerkte loeschen und neu abrufen
+ *
+ * Revision 1.20  2009/02/12 18:37:18  willuhn
  * @N Erster Code fuer vorgemerkte Umsaetze
  *
  * Revision 1.19  2009/02/12 16:14:34  willuhn
