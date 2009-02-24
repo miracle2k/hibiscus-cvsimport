@@ -13,7 +13,6 @@ import java.rmi.RemoteException;
 
 import de.willuhn.jameica.gui.AbstractView;
 import de.willuhn.jameica.gui.GUI;
-import de.willuhn.jameica.gui.input.DialogInput;
 import de.willuhn.jameica.gui.input.SelectInput;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.HBCIProperties;
@@ -81,9 +80,9 @@ public class SammelLastBuchungControl extends AbstractSammelTransferBuchungContr
       TextSchluessel ts = (TextSchluessel) getTextSchluessel().getValue();
       getBuchung().setTextSchluessel(ts == null ? null : ts.getCode());
 
-			String kto  = ((DialogInput) getGegenKonto()).getText();
-			String blz  = (String)getGegenkontoBLZ().getValue();
-			String name = (String)getGegenkontoName().getValue();
+			String kto  = (String) getGegenKonto().getValue();
+			String blz  = (String) getGegenkontoBLZ().getValue();
+			String name = getGegenkontoName().getText();
 
 			getBuchung().setGegenkontoNummer(kto);
 			getBuchung().setGegenkontoBLZ(blz);
@@ -164,7 +163,10 @@ public class SammelLastBuchungControl extends AbstractSammelTransferBuchungContr
 
 /*****************************************************************************
  * $Log$
- * Revision 1.16  2008-12-02 10:52:23  willuhn
+ * Revision 1.17  2009-02-24 23:51:01  willuhn
+ * @N Auswahl der Empfaenger/Zahlungspflichtigen jetzt ueber Auto-Suggest-Felder
+ *
+ * Revision 1.16  2008/12/02 10:52:23  willuhn
  * @B DecimalInput kann NULL liefern
  * @B Double.NaN beruecksichtigen
  *
