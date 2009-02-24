@@ -106,6 +106,7 @@ public class UmsatzDetailControl extends AbstractControl {
     if (this.kommentar != null)
       return this.kommentar;
     this.kommentar = new TextAreaInput(this.getUmsatz().getKommentar());
+    this.kommentar.setEnabled((getUmsatz().getFlags() & Umsatz.FLAG_NOTBOOKED) == 0);
     return this.kommentar;
   }
   
@@ -195,6 +196,7 @@ public class UmsatzDetailControl extends AbstractControl {
     {
       this.umsatzTyp = new UmsatzTypInput(list,ut);
     }
+    this.umsatzTyp.setEnabled((u.getFlags() & Umsatz.FLAG_NOTBOOKED) == 0);
     return this.umsatzTyp;
   }
 
@@ -417,7 +419,10 @@ public class UmsatzDetailControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.38  2009-02-12 23:55:57  willuhn
+ * Revision 1.39  2009-02-24 22:42:33  willuhn
+ * @N Da vorgemerkte Umsaetze jetzt komplett geloescht werden, wenn sie neu abgerufen werden, duerfen sie auch nicht mehr geaendert werden (also auch keine Kategorie und kein Kommentar)
+ *
+ * Revision 1.38  2009/02/12 23:55:57  willuhn
  * @N Erster Code fuer Unterstuetzung von Auslandsueberweisungen: In Tabelle "umsatz" die Spalte "empfaenger_konto" auf 40 Stellen erweitert und Eingabefeld bis max. 34 Stellen, damit IBANs gespeichert werden koennen
  *
  * Revision 1.37  2009/01/19 22:45:26  willuhn

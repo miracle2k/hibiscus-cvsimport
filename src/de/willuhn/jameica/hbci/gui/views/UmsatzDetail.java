@@ -43,15 +43,17 @@ public class UmsatzDetail extends AbstractUmsatzDetail
     Umsatz u = getControl().getUmsatz();
     Button edit = new Button(i18n.tr("Bearbeiten"),new de.willuhn.jameica.hbci.gui.action.UmsatzDetailEdit(),u);
     edit.setEnabled((u.getFlags() & Umsatz.FLAG_NOTBOOKED) == 0);
-    
     buttons.addButton(edit);
-    buttons.addButton(i18n.tr("Speichern"),new Action()
+    
+    Button store = new Button(i18n.tr("Speichern"),new Action()
     {
       public void handleAction(Object context) throws ApplicationException
       {
         getControl().handleStore();
       }
     });
+    store.setEnabled((u.getFlags() & Umsatz.FLAG_NOTBOOKED) == 0);
+    buttons.addButton(store);
     
     Button ab = null;
 
@@ -87,7 +89,10 @@ public class UmsatzDetail extends AbstractUmsatzDetail
 
 /**********************************************************************
  * $Log$
- * Revision 1.35  2009-02-12 18:37:18  willuhn
+ * Revision 1.36  2009-02-24 22:42:33  willuhn
+ * @N Da vorgemerkte Umsaetze jetzt komplett geloescht werden, wenn sie neu abgerufen werden, duerfen sie auch nicht mehr geaendert werden (also auch keine Kategorie und kein Kommentar)
+ *
+ * Revision 1.35  2009/02/12 18:37:18  willuhn
  * @N Erster Code fuer vorgemerkte Umsaetze
  *
  * Revision 1.34  2009/01/20 10:51:45  willuhn
