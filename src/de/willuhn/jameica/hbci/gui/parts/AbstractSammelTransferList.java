@@ -131,7 +131,7 @@ public abstract class AbstractSammelTransferList extends AbstractFromToList
     DBIterator list = service.createList(getObjectType());
     if (from != null) list.addFilter("termin >= ?", new Object[]{new java.sql.Date(HBCIProperties.startOfDay(from).getTime())});
     if (to   != null) list.addFilter("termin <= ?", new Object[]{new java.sql.Date(HBCIProperties.endOfDay(to).getTime())});
-    list.setOrder("ORDER BY " + service.getSQLTimestamp("termin") + " DESC");
+    list.setOrder("ORDER BY " + service.getSQLTimestamp("termin") + " DESC, id DESC");
     return list;
   }
   
@@ -219,7 +219,10 @@ public abstract class AbstractSammelTransferList extends AbstractFromToList
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2009-02-13 14:17:01  willuhn
+ * Revision 1.10  2009-03-01 22:26:19  willuhn
+ * @B BUGZILLA 705
+ *
+ * Revision 1.9  2009/02/13 14:17:01  willuhn
  * @N BUGZILLA 700
  *
  * Revision 1.8  2008/06/30 13:04:10  willuhn
