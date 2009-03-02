@@ -14,7 +14,9 @@
 package de.willuhn.jameica.hbci.io;
 
 import java.io.BufferedWriter;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.rmi.RemoteException;
@@ -30,8 +32,10 @@ import de.willuhn.io.FileFinder;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.plugin.PluginResources;
 import de.willuhn.jameica.system.Application;
+import de.willuhn.logging.Level;
 import de.willuhn.logging.Logger;
 import de.willuhn.util.ApplicationException;
+import de.willuhn.util.Base64;
 import de.willuhn.util.I18N;
 import de.willuhn.util.ProgressMonitor;
 
@@ -87,6 +91,10 @@ public class VelocityExporter implements Exporter
     context.put("dateformat",   HBCI.DATEFORMAT);
     context.put("decimalformat",HBCI.DECIMALFORMAT);
     context.put("objects",      objects);
+    
+//    String icon = getIcon();
+//    if (icon != null)
+//      context.put("icon",icon);
 
     BufferedWriter writer = null;
     try
@@ -125,6 +133,30 @@ public class VelocityExporter implements Exporter
         }
       }
     }
+  }
+  
+  /**
+   * Liefert ein auf dem Report anzuzeigendes Icon als Base64.
+   * @return Icon oder NULL, wenn es nicht geladen werden konnte.
+   */
+  private String getIcon()
+  {
+    InputStream is = null;
+    try
+    {
+      ByteArrayOutputStream bos = new ByteArrayOutputStream();
+      is = Application.getClassLoader().getResourceAsStream("img/hibiscus-icon-64x64.png");
+      int read = 0;
+      byte[] buf = new byte[1024];
+      while ((read = is.read(buf)) != -1)
+        bos.write(buf,0,read);
+      return Base64.encode(bos.toByteArray());
+    }
+    catch (Exception e)
+    {
+      Logger.write(Level.INFO,"unable to read icon, skipping",e);
+    }
+    return null;
   }
   
   /**
@@ -226,7 +258,10 @@ public class VelocityExporter implements Exporter
 
 /**********************************************************************
  * $Log$
- * Revision 1.12  2009-03-01 23:37:03  willuhn
+ * Revision 1.13  2009-03-02 11:41:51  willuhn
+ * @N title in HTML-Exports
+ *
+ * Revision 1.12  2009/03/01 23:37:03  willuhn
  * @C Templates sollten explizit mit Latin1-Encoding gelesen werden, da sie von mir in diesem Encoding erstellt wurden
  *
  * Revision 1.11  2007/04/23 18:07:14  willuhn
