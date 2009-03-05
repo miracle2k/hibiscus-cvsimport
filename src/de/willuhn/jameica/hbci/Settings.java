@@ -220,7 +220,7 @@ public class Settings
    */
   public static boolean getCheckPin()
   {
-    return settings.getBoolean("checkpin",true);
+    return settings.getBoolean("checkpin",false);
   }
   
   /**
@@ -432,7 +432,10 @@ public class Settings
 
 /*********************************************************************
  * $Log$
- * Revision 1.56  2009-02-19 10:24:51  willuhn
+ * Revision 1.57  2009-03-05 13:41:23  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.56  2009/02/19 10:24:51  willuhn
  * @C Default-Werte fuer System-Parameter geaendert
  *
  * Revision 1.55  2009/01/04 16:38:55  willuhn
