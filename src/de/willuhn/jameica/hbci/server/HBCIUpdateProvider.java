@@ -19,6 +19,8 @@ import java.sql.Connection;
 
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.rmi.Version;
+import de.willuhn.jameica.plugin.AbstractPlugin;
+import de.willuhn.jameica.plugin.Manifest;
 import de.willuhn.jameica.plugin.PluginResources;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.logging.Logger;
@@ -33,6 +35,7 @@ public class HBCIUpdateProvider implements UpdateProvider
 {
   private Version version     = null;
   private Connection conn     = null;
+  private Manifest manifest   = null;
   private PluginResources res = null;
 
   /**
@@ -44,7 +47,10 @@ public class HBCIUpdateProvider implements UpdateProvider
   {
     this.conn    = conn;
     this.version = version;
-    this.res     = Application.getPluginLoader().getPlugin(HBCI.class).getResources();
+    
+    AbstractPlugin p = Application.getPluginLoader().getPlugin(HBCI.class);
+    this.manifest    = p.getManifest();
+    this.res         = p.getResources();
   }
 
   /**
@@ -87,7 +93,7 @@ public class HBCIUpdateProvider implements UpdateProvider
   public File getUpdatePath() throws ApplicationException
   {
     // Ist das Unterverzeichnis "plugins" im Plugin
-    return new File(res.getPath(),"updates");
+    return new File(manifest.getPluginDir(),"updates");
   }
 
   /**
@@ -137,7 +143,10 @@ public class HBCIUpdateProvider implements UpdateProvider
 
 /*********************************************************************
  * $Log$
- * Revision 1.2  2007-12-11 15:23:53  willuhn
+ * Revision 1.3  2009-03-10 23:51:31  willuhn
+ * @C PluginResources#getPath als deprecated markiert - stattdessen sollte jetzt Manifest#getPluginDir() verwendet werden
+ *
+ * Revision 1.2  2007/12/11 15:23:53  willuhn
  * @N Class-Update fuer neue Tabellen "op" und "op_buchung"
  *
  * Revision 1.1  2007/12/11 00:33:35  willuhn

@@ -28,7 +28,7 @@ import org.apache.velocity.app.Velocity;
 
 import de.willuhn.io.FileFinder;
 import de.willuhn.jameica.hbci.HBCI;
-import de.willuhn.jameica.plugin.PluginResources;
+import de.willuhn.jameica.plugin.AbstractPlugin;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.logging.Logger;
 import de.willuhn.util.ApplicationException;
@@ -54,10 +54,10 @@ public class VelocityExporter implements Exporter
   {
     super();
     Logger.info("init velocity export engine");
-    i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
-
-    PluginResources res = Application.getPluginLoader().getPlugin(HBCI.class).getResources();
-    this.templateDir = new File(res.getPath() + File.separator + "lib","velocity");
+    
+    AbstractPlugin p = Application.getPluginLoader().getPlugin(HBCI.class);
+    this.i18n = p.getResources().getI18N();
+    this.templateDir = new File(p.getManifest().getPluginDir() + File.separator + "lib","velocity");
   }
 
   /**
@@ -254,7 +254,10 @@ public class VelocityExporter implements Exporter
 
 /**********************************************************************
  * $Log$
- * Revision 1.14  2009-03-02 11:42:10  willuhn
+ * Revision 1.15  2009-03-10 23:51:31  willuhn
+ * @C PluginResources#getPath als deprecated markiert - stattdessen sollte jetzt Manifest#getPluginDir() verwendet werden
+ *
+ * Revision 1.14  2009/03/02 11:42:10  willuhn
  * *** empty log message ***
  *
  * Revision 1.13  2009/03/02 11:41:51  willuhn

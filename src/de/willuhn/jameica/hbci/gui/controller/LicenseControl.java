@@ -79,7 +79,7 @@ public class LicenseControl extends AbstractControl {
     }
 
 
-    String path = plugin.getResources().getPath();
+    String path = plugin.getManifest().getPluginDir();
 
     FileFinder finder = new FileFinder(new File(path + "/lib"));
     finder.matches(".*?info\\.xml$");
@@ -116,7 +116,10 @@ public class LicenseControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.13  2006-06-30 13:51:54  willuhn
+ * Revision 1.14  2009-03-10 23:51:31  willuhn
+ * @C PluginResources#getPath als deprecated markiert - stattdessen sollte jetzt Manifest#getPluginDir() verwendet werden
+ *
+ * Revision 1.13  2006/06/30 13:51:54  willuhn
  * @N Pluginloader Redesign in HEAD uebernommen
  *
  * Revision 1.12  2005/03/09 01:07:02  web0

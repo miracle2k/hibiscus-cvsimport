@@ -170,7 +170,7 @@ public class Settings
 	{
 		if (libPath != null)
 			return libPath;
-		libPath = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getPath() + "/lib";
+		libPath = Application.getPluginLoader().getPlugin(HBCI.class).getManifest().getPluginDir() + "/lib";
     try
     {
       libPath = new File(libPath).getCanonicalPath();
@@ -432,7 +432,10 @@ public class Settings
 
 /*********************************************************************
  * $Log$
- * Revision 1.57  2009-03-05 13:41:23  willuhn
+ * Revision 1.58  2009-03-10 23:51:31  willuhn
+ * @C PluginResources#getPath als deprecated markiert - stattdessen sollte jetzt Manifest#getPluginDir() verwendet werden
+ *
+ * Revision 1.57  2009/03/05 13:41:23  willuhn
  * *** empty log message ***
  *
  * Revision 1.56  2009/02/19 10:24:51  willuhn

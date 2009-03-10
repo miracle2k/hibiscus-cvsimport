@@ -42,16 +42,12 @@ public class HandbuchAction implements Action
       {
         try
         {
-          AbstractPlugin p = Application.getPluginLoader()
-              .getPlugin(HBCI.class);
-          new Program().handleAction(new File(p.getResources().getPath()
-              + "/doc/hibiscus_handbuch.pdf"));
+          AbstractPlugin p = Application.getPluginLoader().getPlugin(HBCI.class);
+          new Program().handleAction(new File(p.getManifest().getPluginDir() + "/doc/hibiscus_handbuch.pdf"));
         }
         catch (ApplicationException ae)
         {
-          Application.getMessagingFactory().sendMessage(
-              new StatusBarMessage(ae.getLocalizedMessage(),
-                  StatusBarMessage.TYPE_ERROR));
+          Application.getMessagingFactory().sendMessage(new StatusBarMessage(ae.getLocalizedMessage(),StatusBarMessage.TYPE_ERROR));
         }
       }
     });
@@ -59,7 +55,10 @@ public class HandbuchAction implements Action
 }
 /*******************************************************************************
  * $Log$
- * Revision 1.2  2007-08-20 15:30:28  willuhn
+ * Revision 1.3  2009-03-10 23:51:31  willuhn
+ * @C PluginResources#getPath als deprecated markiert - stattdessen sollte jetzt Manifest#getPluginDir() verwendet werden
+ *
+ * Revision 1.2  2007/08/20 15:30:28  willuhn
  * @N PostGreSqlSupport von Ralf Burger
  *
  * Revision 1.1  2007/07/23 17:46:45  jost

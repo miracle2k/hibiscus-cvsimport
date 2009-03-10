@@ -24,7 +24,7 @@ import de.willuhn.datasource.db.DBServiceImpl;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.rmi.DBSupport;
 import de.willuhn.jameica.hbci.rmi.HBCIDBService;
-import de.willuhn.jameica.plugin.PluginResources;
+import de.willuhn.jameica.plugin.Manifest;
 import de.willuhn.jameica.plugin.Version;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.logging.Logger;
@@ -146,8 +146,8 @@ public class HBCIDBServiceImpl extends DBServiceImpl implements HBCIDBService
     monitor.setStatusText(i18n.tr("Installiere Hibiscus"));
     this.driver.install();
     
-    PluginResources res = Application.getPluginLoader().getPlugin(HBCI.class).getResources();
-    File file = new File(res.getPath() + File.separator + "sql","create.sql");
+    Manifest mf = Application.getPluginLoader().getPlugin(HBCI.class).getManifest();
+    File file = new File(mf.getPluginDir() + File.separator + "sql","create.sql");
     this.driver.execute(getConnection(),file);
   }
 
@@ -163,7 +163,7 @@ public class HBCIDBServiceImpl extends DBServiceImpl implements HBCIDBService
     df.setMinimumFractionDigits(1);
     df.setGroupingUsed(false);
 
-    PluginResources res = Application.getPluginLoader().getPlugin(HBCI.class).getResources();
+    Manifest mf = Application.getPluginLoader().getPlugin(HBCI.class).getManifest();
 
     double target = Double.parseDouble(newVersion.getMajor() + "." + newVersion.getMinor());
     double old    = Double.parseDouble(oldVersion.getMajor() + "." + oldVersion.getMinor());
@@ -177,7 +177,7 @@ public class HBCIDBServiceImpl extends DBServiceImpl implements HBCIDBService
       {
         newV = old + 0.1d;
 
-        File f = new File(res.getPath() + File.separator + "sql",
+        File f = new File(mf.getPluginDir() + File.separator + "sql",
             "update_" + df.format(old) + "-" + df.format(newV) + ".sql");
 
         I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
@@ -255,7 +255,10 @@ public class HBCIDBServiceImpl extends DBServiceImpl implements HBCIDBService
 
 /*********************************************************************
  * $Log$
- * Revision 1.28  2008-12-30 15:21:40  willuhn
+ * Revision 1.29  2009-03-10 23:51:31  willuhn
+ * @C PluginResources#getPath als deprecated markiert - stattdessen sollte jetzt Manifest#getPluginDir() verwendet werden
+ *
+ * Revision 1.28  2008/12/30 15:21:40  willuhn
  * @N Umstellung auf neue Versionierung
  *
  * Revision 1.27  2008/05/30 14:23:48  willuhn
