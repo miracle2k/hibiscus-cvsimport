@@ -139,7 +139,10 @@ public class HBCIUmsatzJob extends AbstractHBCIJob
       cal.add(Calendar.DATE,settings.getInt("umsatz.mergewindow.offset",-30));
       d = cal.getTime();
     }
-    Logger.info("merge window: " + d + " - " + new Date());
+    if (d == null)
+      Logger.info("merge window: not set");
+    else
+      Logger.info("merge window: " + d + " - now");
 
     // zu mergende Umsaetze ermitteln
     DBIterator existing = konto.getUmsaetze(d,null);
@@ -287,7 +290,10 @@ public class HBCIUmsatzJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.44  2009-03-10 17:11:09  willuhn
+ * Revision 1.45  2009-03-10 17:14:40  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.44  2009/03/10 17:11:09  willuhn
  * @N Mehr Log-Ausgaben
  *
  * Revision 1.43  2009/03/10 14:45:20  willuhn
