@@ -55,7 +55,6 @@ public class SammelUeberweisungNew extends AbstractView {
 		
 		group.addSeparator();
     group.addLabelPair(i18n.tr("Summe der Buchungen"),control.getSumme());
-		group.addLabelPair("",control.getComment());
 
     new Headline(getParent(),i18n.tr("Enthaltene Buchungen"));
     control.getBuchungen().paint(getParent());
@@ -99,7 +98,10 @@ public class SammelUeberweisungNew extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.8  2009-02-13 14:17:01  willuhn
+ * Revision 1.9  2009-03-11 23:40:45  willuhn
+ * @B Kleineres Bugfixing in Sammeltransfer-Control
+ *
+ * Revision 1.8  2009/02/13 14:17:01  willuhn
  * @N BUGZILLA 700
  *
  * Revision 1.7  2009/01/20 10:51:45  willuhn
