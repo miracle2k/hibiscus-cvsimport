@@ -168,6 +168,7 @@ public class HBCIUmsatzJob extends AbstractHBCIJob
       for (int i=0;i<lines.size();++i)
       {
         final Umsatz umsatz = Converter.HBCIUmsatz2HibiscusUmsatz((GVRKUms.UmsLine)lines.get(i));
+        umsatz.setSaldo(0d); // Muss gemacht werden, weil der Saldo beim naechsten Mal anders lauten koennte
         umsatz.setKonto(konto); // muessen wir noch machen, weil der Converter das Konto nicht kennt
 
         if (existing.contains(umsatz) != null)
@@ -297,7 +298,10 @@ public class HBCIUmsatzJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.46  2009-03-11 11:03:38  willuhn
+ * Revision 1.47  2009-03-11 16:21:40  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.46  2009/03/11 11:03:38  willuhn
  * @C Nur noch jene Vormerkposten loeschen, die nicht mehr von der Bank uebertragen wurden
  *
  * Revision 1.45  2009/03/10 17:14:40  willuhn
