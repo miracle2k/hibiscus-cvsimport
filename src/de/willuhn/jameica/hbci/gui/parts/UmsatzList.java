@@ -373,7 +373,7 @@ public class UmsatzList extends TablePart implements Extendable
                 public void handleEvent(Event event)
                 {
                   Logger.debug("applying filter " + p);
-                  regex.setValue(new Boolean(ir));
+                  regex.setValue(Boolean.valueOf(ir));
                   search.setValue(p);
                   search.focus();
                   kl.process();
@@ -758,7 +758,10 @@ public class UmsatzList extends TablePart implements Extendable
 
 /**********************************************************************
  * $Log$
- * Revision 1.60  2009-02-12 18:37:17  willuhn
+ * Revision 1.61  2009-03-11 23:44:32  willuhn
+ * @C code cleanup - keine Booleans instanziieren
+ *
+ * Revision 1.60  2009/02/12 18:37:17  willuhn
  * @N Erster Code fuer vorgemerkte Umsaetze
  *
  * Revision 1.59  2009/02/04 23:06:24  willuhn
