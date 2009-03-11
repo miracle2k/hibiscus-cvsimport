@@ -75,7 +75,7 @@ public class NewInstKeysDialog extends AbstractDialog
 		{
 			public void handleAction(Object context) throws ApplicationException
 			{
-				choosen = new Boolean(true);
+				choosen = Boolean.TRUE;
 				close();
 			}
 		},null,true);
@@ -102,7 +102,10 @@ public class NewInstKeysDialog extends AbstractDialog
 
 /**********************************************************************
  * $Log$
- * Revision 1.8  2009-03-11 23:41:36  willuhn
+ * Revision 1.9  2009-03-11 23:41:52  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.8  2009/03/11 23:41:36  willuhn
  * *** empty log message ***
  *
  * Revision 1.7  2006/06/06 21:42:21  willuhn
