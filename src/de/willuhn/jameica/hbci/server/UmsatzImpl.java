@@ -339,7 +339,7 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
    * @see de.willuhn.jameica.hbci.rmi.Umsatz#setSaldo(double)
    */
   public void setSaldo(double s) throws RemoteException {
-		setAttribute("saldo",new Double(s));
+		setAttribute("saldo",s == Double.NaN ? null : new Double(s));
   }
 
   /**
@@ -741,7 +741,10 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
 
 /**********************************************************************
  * $Log$
- * Revision 1.64  2009-02-23 17:01:58  willuhn
+ * Revision 1.65  2009-03-11 17:53:12  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.64  2009/02/23 17:01:58  willuhn
  * @C Kein Abgleichen mehr bei vorgemerkten Buchungen sondern stattdessen vorgemerkte loeschen und neu abrufen
  *
  * Revision 1.63  2009/02/13 10:52:18  willuhn
