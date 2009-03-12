@@ -339,7 +339,7 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
    * @see de.willuhn.jameica.hbci.rmi.Umsatz#setSaldo(double)
    */
   public void setSaldo(double s) throws RemoteException {
-		setAttribute("saldo",s == Double.NaN ? null : new Double(s));
+		setAttribute("saldo",new Double(s));
   }
 
   /**
@@ -741,7 +741,10 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
 
 /**********************************************************************
  * $Log$
- * Revision 1.65  2009-03-11 17:53:12  willuhn
+ * Revision 1.66  2009-03-12 10:56:01  willuhn
+ * @B Double.NaN geht nicht
+ *
+ * Revision 1.65  2009/03/11 17:53:12  willuhn
  * *** empty log message ***
  *
  * Revision 1.64  2009/02/23 17:01:58  willuhn

@@ -217,7 +217,7 @@ public class HBCIUmsatzJob extends AbstractHBCIJob
           for (int i=0;i<lines.size();++i)
           {
             final Umsatz umsatz = Converter.HBCIUmsatz2HibiscusUmsatz((GVRKUms.UmsLine)lines.get(i));
-            umsatz.setSaldo(Double.NaN); // Muss gemacht werden, weil der Saldo beim naechsten Mal anders lauten koennte
+            umsatz.setSaldo(0d); // Muss gemacht werden, weil der Saldo beim naechsten Mal anders lauten koennte
             umsatz.setKonto(konto);
             fetched.add(umsatz);
             
@@ -298,7 +298,10 @@ public class HBCIUmsatzJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.49  2009-03-11 17:53:12  willuhn
+ * Revision 1.50  2009-03-12 10:56:01  willuhn
+ * @B Double.NaN geht nicht
+ *
+ * Revision 1.49  2009/03/11 17:53:12  willuhn
  * *** empty log message ***
  *
  * Revision 1.48  2009/03/11 17:51:14  willuhn
