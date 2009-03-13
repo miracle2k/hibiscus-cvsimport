@@ -29,6 +29,7 @@ import de.willuhn.jameica.gui.input.TextInput;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.HBCIProperties;
 import de.willuhn.jameica.hbci.Settings;
+import de.willuhn.jameica.hbci.gui.AddressFilter;
 import de.willuhn.jameica.hbci.gui.action.EmpfaengerAdd;
 import de.willuhn.jameica.hbci.gui.dialogs.VerwendungszweckDialog;
 import de.willuhn.jameica.hbci.gui.input.AddressInput;
@@ -130,7 +131,7 @@ public abstract class AbstractTransferControl extends AbstractControl
   {
     if (empfName != null)
       return empfName;
-    empfName = new AddressInput(getTransfer().getGegenkontoName());
+    empfName = new AddressInput(getTransfer().getGegenkontoName(), AddressFilter.INLAND);
     empfName.setMandatory(true);
     empfName.addListener(new EmpfaengerListener());
     return empfName;
@@ -471,7 +472,10 @@ public abstract class AbstractTransferControl extends AbstractControl
 
 /**********************************************************************
  * $Log$
- * Revision 1.53  2009-02-24 23:51:01  willuhn
+ * Revision 1.54  2009-03-13 00:25:12  willuhn
+ * @N Code fuer Auslandsueberweisungen fast fertig
+ *
+ * Revision 1.53  2009/02/24 23:51:01  willuhn
  * @N Auswahl der Empfaenger/Zahlungspflichtigen jetzt ueber Auto-Suggest-Felder
  *
  * Revision 1.52  2009/01/04 16:18:22  willuhn
