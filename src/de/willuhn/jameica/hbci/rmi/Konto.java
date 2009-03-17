@@ -272,6 +272,15 @@ public interface Konto extends DBObject, Checksum
 	 */
 	public DBIterator getUeberweisungen() throws RemoteException;
 
+  /**
+   * Liefert eine Liste aller Auslandsueberweisungen, die ueber dieses Konto getaetigt
+   * wurden.
+   * 
+   * @return Liste der Auslandsueberweisungen.
+   * @throws RemoteException
+   */
+  public DBIterator getAuslandsUeberweisungen() throws RemoteException;
+
 	/**
 	 * Liefert alle Dauerauftraege, die fuer das Konto vorliegen. Dabei werden
 	 * auch jene geliefert, die lokal erstellt, jedoch noch nicht zur Bank
@@ -369,7 +378,10 @@ public interface Konto extends DBObject, Checksum
 
 /*******************************************************************************
  * $Log$
- * Revision 1.39  2009-01-26 23:17:46  willuhn
+ * Revision 1.40  2009-03-17 23:44:15  willuhn
+ * @N BUGZILLA 159 - Auslandsueberweisungen. Erste Version
+ *
+ * Revision 1.39  2009/01/26 23:17:46  willuhn
  * @R Feld "synchronize" aus Konto-Tabelle entfernt. Aufgrund der Synchronize-Optionen pro Konto ist die Information redundant und ergibt sich implizit, wenn fuer ein Konto irgendeine der Synchronisations-Optionen aktiviert ist
  *
  * Revision 1.38  2009/01/04 17:43:29  willuhn
