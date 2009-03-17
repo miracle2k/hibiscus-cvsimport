@@ -50,7 +50,7 @@ public class AuslandsUeberweisungNew extends AbstractView {
 		konten.addLabelPair(i18n.tr("Persönliches Konto"),        control.getKontoAuswahl());
     konten.addHeadline(i18n.tr("Empfänger"));
     konten.addLabelPair(i18n.tr("Name"),                      control.getEmpfaengerName());
-    konten.addLabelPair(i18n.tr("Kontonummer"),               control.getEmpfaengerKonto());    
+    konten.addLabelPair(i18n.tr("IBAN"),                      control.getEmpfaengerKonto());    
     konten.addLabelPair(i18n.tr("Institut"),                  control.getEmpfaengerBank());    
 		konten.addCheckbox(control.getStoreEmpfaenger(),i18n.tr("In Adressbuch übernehmen"));
 
@@ -87,7 +87,10 @@ public class AuslandsUeberweisungNew extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2009-03-13 00:25:12  willuhn
+ * Revision 1.2  2009-03-17 23:50:08  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.1  2009/03/13 00:25:12  willuhn
  * @N Code fuer Auslandsueberweisungen fast fertig
  *
  **********************************************************************/
