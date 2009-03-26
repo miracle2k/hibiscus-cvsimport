@@ -23,7 +23,6 @@ import de.willuhn.datasource.GenericIterator;
 import de.willuhn.datasource.db.AbstractDBObjectNode;
 import de.willuhn.datasource.pseudo.PseudoIterator;
 import de.willuhn.datasource.rmi.DBIterator;
-import de.willuhn.jameica.gui.StatusBarTextItem;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.HBCIProperties;
 import de.willuhn.jameica.hbci.rmi.Umsatz;
@@ -559,7 +558,10 @@ public class UmsatzTypImpl extends AbstractDBObjectNode implements UmsatzTyp
 
 /*******************************************************************************
  * $Log$
- * Revision 1.48  2009-03-26 16:20:58  willuhn
+ * Revision 1.49  2009-03-26 16:21:11  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.48  2009/03/26 16:20:58  willuhn
  * @B Fehler bei ungueltigen regulaeren Ausdruecken fangen
  *
  * Revision 1.47  2009/02/23 23:44:50  willuhn
