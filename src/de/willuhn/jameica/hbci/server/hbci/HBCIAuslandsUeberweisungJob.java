@@ -64,6 +64,8 @@ public class HBCIAuslandsUeberweisungJob extends AbstractHBCIJob
           HBCI.DECIMALFORMAT.format(Settings.getUeberweisungLimit()) + " " + this.konto.getWaehrung()));
 
 			setJobParam("src",Converter.HibiscusKonto2HBCIKonto(konto));
+			setJobParam("src.name",konto.getName());
+			
 
       // BUGZILLA 29 http://www.willuhn.de/bugzilla/show_bug.cgi?id=29
       String curr = konto.getWaehrung();
@@ -145,7 +147,10 @@ public class HBCIAuslandsUeberweisungJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2009-03-13 00:25:12  willuhn
+ * Revision 1.2  2009-03-30 13:46:21  willuhn
+ * @B "src.name" fehlte
+ *
+ * Revision 1.1  2009/03/13 00:25:12  willuhn
  * @N Code fuer Auslandsueberweisungen fast fertig
  *
  **********************************************************************/
