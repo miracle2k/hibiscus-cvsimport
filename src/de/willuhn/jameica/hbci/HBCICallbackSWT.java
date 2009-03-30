@@ -197,14 +197,6 @@ public class HBCICallbackSWT extends AbstractHibiscusHBCICallback
           retData.replace(0,retData.length(),DialogFactory.getPIN(passport));
 					break;
 
-        // BUGZILLA 62, 200:
-        // Die Callbacks NEED_PT_TAN und NEED_PT_SECHMECH werden hier nicht mehr
-        // behandelt sondern direkt im PassportHandle des PIN/TAN-Passports.
-
-        // Die folgenden Callbacks werden direkt im Chipcard-PassportHandle
-        // behandelt
-        // NEED_CHIPCARD, HAVE_CHIPCARD, NEED_HARDPIN, HAVE_HARDPIN, NEED_REMOVE_CHIPCARD:
-
 				case NEED_CONNECTION:
 				  DialogFactory.getConnection();
 					break;
@@ -515,7 +507,14 @@ public class HBCICallbackSWT extends AbstractHibiscusHBCICallback
 
 /**********************************************************************
  * $Log$
- * Revision 1.61  2009-03-18 22:08:59  willuhn
+ * Revision 1.62  2009-03-30 22:54:15  willuhn
+ * @C Checksummen-Speicherung geaendert:
+ *  1) Es wird SHA1 statt MD5 verwendet
+ *  2) Es wird die Checksumme der Checksumme der Checksumme erstellt
+ *  3) ein zufaellig erzeugter Salt wird eingefuegt
+ *  4) es werden nur noch die ersten 3 Zeichen der Checksumme gespeichert
+ *
+ * Revision 1.61  2009/03/18 22:08:59  willuhn
  * *** empty log message ***
  *
  * Revision 1.60  2008/11/04 11:55:16  willuhn
