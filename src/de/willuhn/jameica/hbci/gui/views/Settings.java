@@ -63,7 +63,6 @@ public class Settings extends AbstractView {
 		// Grund-Einstellungen
     TabGroup system = new TabGroup(getTabFolder(),i18n.tr("Grundeinstellungen"));
 		system.addCheckbox(control.getOnlineMode(),i18n.tr("Dauerhafte Internetverbindung, Aufforderung zum Verbinden nicht erforderlich"));
-    system.addCheckbox(control.getCheckPin(),i18n.tr("PIN-Eingaben via Check-Summe prüfen"));
     system.addCheckbox(control.getCachePin(),i18n.tr("PIN-Eingaben für die aktuelle Sitzung zwischenspeichern"));
     system.addCheckbox(control.getCancelSyncOnError(),i18n.tr("HBCI-Synchronisierung bei Fehler abbrechen"));
     system.addCheckbox(control.getDecimalGrouping(),i18n.tr("Tausender-Trennzeichen bei Geld-Beträgen verwenden"));
@@ -156,7 +155,10 @@ public class Settings extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.44  2009-01-20 10:51:45  willuhn
+ * Revision 1.45  2009-03-31 11:01:41  willuhn
+ * @R Speichern des PIN-Hashes komplett entfernt
+ *
+ * Revision 1.44  2009/01/20 10:51:45  willuhn
  * @N Mehr Icons - fuer Buttons
  *
  * Revision 1.43  2008/08/29 14:30:36  willuhn
