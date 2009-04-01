@@ -6,6 +6,9 @@
  * $Locker$
  * $State$
  *
+ * Copyright (c) by willuhn software & services
+ * All rights reserved
+ *
  **********************************************************************/
 
 package de.willuhn.jameica.hbci.server;
@@ -152,7 +155,10 @@ public class DBSupportPostgreSQLImpl extends AbstractDBSupportImpl
 
 /*********************************************************************
  * $Log$
- * Revision 1.3  2008-12-17 22:49:09  willuhn
+ * Revision 1.4  2009-04-01 20:59:39  willuhn
+ * @N PostgreSQL-Unterstuetzung ist wieder da. Initialer Commit
+ *
+ * Revision 1.3  2008/12/17 22:49:09  willuhn
  * @R t o d o  tag entfernt
  *
  * Revision 1.2  2007/09/11 09:26:08  willuhn
