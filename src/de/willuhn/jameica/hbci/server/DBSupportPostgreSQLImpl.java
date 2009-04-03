@@ -52,7 +52,7 @@ public class DBSupportPostgreSQLImpl extends AbstractDBSupportImpl
    */
   public String getJdbcUrl()
   {
-    return HBCIDBService.SETTINGS.getString("database.driver .postgresql.jdbcurl","jdbc:postgresql://localhost:5432/hibiscus");
+    return HBCIDBService.SETTINGS.getString("database.driver.postgresql.jdbcurl","jdbc:postgresql://localhost:5432/hibiscus");
   }
 
   /**
@@ -155,7 +155,10 @@ public class DBSupportPostgreSQLImpl extends AbstractDBSupportImpl
 
 /*********************************************************************
  * $Log$
- * Revision 1.4  2009-04-01 20:59:39  willuhn
+ * Revision 1.5  2009-04-03 16:48:40  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.4  2009/04/01 20:59:39  willuhn
  * @N PostgreSQL-Unterstuetzung ist wieder da. Initialer Commit
  *
  * Revision 1.3  2008/12/17 22:49:09  willuhn
