@@ -291,7 +291,7 @@ public class EinnahmeAusgabeControl extends AbstractControl
 
     EinnahmeAusgabe[] eae;
 
-    Konto konto = (Konto) (Konto) getKontoAuswahl().getValue();
+    Konto konto = (Konto) getKontoAuswahl().getValue();
 
     // Wird nur ein Konto ausgewertet?
     if (konto != null)
@@ -311,9 +311,7 @@ public class EinnahmeAusgabeControl extends AbstractControl
         ermittelnWerte(konto, eae, index);
         index++;
       }
-      eae[it.size()] = new EinnahmeAusgabe("Summe", (Date) this.start
-          .getValue(), summeAnfangssaldo, summeEinnahmen, summeAusgaben,
-          (Date) this.end.getValue(), summeEndsaldo);
+      eae[it.size()] = new EinnahmeAusgabe("Summe", (Date) this.start.getValue(), summeAnfangssaldo, summeEinnahmen, summeAusgaben,(Date) this.end.getValue(), summeEndsaldo);
     }
     return eae;
   }
@@ -364,7 +362,10 @@ public class EinnahmeAusgabeControl extends AbstractControl
 
 /*******************************************************************************
  * $Log$
- * Revision 1.10  2009-01-12 00:46:50  willuhn
+ * Revision 1.11  2009-04-05 21:16:22  willuhn
+ * @B BUGZILLA 716
+ *
+ * Revision 1.10  2009/01/12 00:46:50  willuhn
  * @N Vereinheitlichtes KontoInput in den Auswertungen
  *
  * Revision 1.9  2007/08/12 22:02:10  willuhn

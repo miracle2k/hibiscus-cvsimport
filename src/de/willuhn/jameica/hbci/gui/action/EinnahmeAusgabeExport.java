@@ -33,21 +33,17 @@ public class EinnahmeAusgabeExport implements Action
    */
   public void handleAction(Object context) throws ApplicationException
   {
-    I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class)
-        .getResources().getI18N();
+    I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
     if (context == null)
-      throw new ApplicationException(i18n
-          .tr("Bitte wählen Sie die zu exportierenden Daten aus"));
+      throw new ApplicationException(i18n.tr("Bitte wählen Sie die zu exportierenden Daten aus"));
 
     if (!(context instanceof EinnahmeAusgabe[]))
-      throw new ApplicationException(i18n
-          .tr("Bitte wählen Sie die zu exportierenden Daten aus"));
+      throw new ApplicationException(i18n.tr("Bitte wählen Sie die zu exportierenden Daten aus"));
 
     try
     {
-      ExportDialog d = new ExportDialog((EinnahmeAusgabe[]) context,
-          EinnahmeAusgabe.class);
+      ExportDialog d = new ExportDialog((EinnahmeAusgabe[]) context,EinnahmeAusgabe.class);
       d.open();
     }
     catch (ApplicationException ae)
@@ -67,7 +63,10 @@ public class EinnahmeAusgabeExport implements Action
 
 /*******************************************************************************
  * $Log$
- * Revision 1.2  2007-07-16 12:51:15  willuhn
+ * Revision 1.3  2009-04-05 21:16:22  willuhn
+ * @B BUGZILLA 716
+ *
+ * Revision 1.2  2007/07/16 12:51:15  willuhn
  * @D javadoc
  *
  * Revision 1.1  2007/06/04 15:57:25  jost
