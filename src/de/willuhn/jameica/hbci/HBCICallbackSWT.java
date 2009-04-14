@@ -83,7 +83,9 @@ public class HBCICallbackSWT extends AbstractHibiscusHBCICallback
 			case HBCIUtils.LOG_WARN:
         // Die logge ich mit DEBUG - die nerven sonst
         type = "warn";
-        if (msg != null && msg.startsWith("konnte folgenden nutzerdefinierten Wert nicht in Nachricht einsetzen:"))
+        if (msg != null && (msg.startsWith("konnte folgenden nutzerdefinierten Wert nicht in Nachricht einsetzen:") ||
+                            msg.startsWith("could not insert the following user-defined data"))
+           )
         {
           Logger.debug(msg);
           log = false;
@@ -507,7 +509,10 @@ public class HBCICallbackSWT extends AbstractHibiscusHBCICallback
 
 /**********************************************************************
  * $Log$
- * Revision 1.62  2009-03-30 22:54:15  willuhn
+ * Revision 1.63  2009-04-14 13:38:28  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.62  2009/03/30 22:54:15  willuhn
  * @C Checksummen-Speicherung geaendert:
  *  1) Es wird SHA1 statt MD5 verwendet
  *  2) Es wird die Checksumme der Checksumme der Checksumme erstellt
