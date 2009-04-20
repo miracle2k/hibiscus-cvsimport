@@ -119,6 +119,9 @@ public class KontoauszugList extends UmsatzList
   public synchronized void paint(Composite parent) throws RemoteException
   {
     addColumn(new KontoColumn("konto_id")); // BUGZILLA 723
+    addColumn(i18n.tr("GK Konto"), "empfaenger_konto");
+    addColumn(i18n.tr("GK BLZ"),   "empfaenger_blz");
+    addColumn(i18n.tr("Art"),      "art");
 
     /////////////////////////////////////////////////////////////////
     // Tab-Container
@@ -629,7 +632,10 @@ public class KontoauszugList extends UmsatzList
 
 /*********************************************************************
  * $Log$
- * Revision 1.21  2009-04-20 11:07:06  willuhn
+ * Revision 1.22  2009-04-20 11:11:10  willuhn
+ * @N BUGZILLA 723
+ *
+ * Revision 1.21  2009/04/20 11:07:06  willuhn
  * @N BUGZILLA 723
  *
  * Revision 1.20  2009/01/20 10:51:46  willuhn
