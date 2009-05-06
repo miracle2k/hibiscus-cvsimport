@@ -160,6 +160,7 @@ public class SparQuote implements Part
     filter.addInput(getKontoAuswahl());
     filter.addInput(getTagAuswahl());
 
+    // TODO ICONS FEHLEN
     ButtonArea topButtons = new ButtonArea(parent,2);
     topButtons.addButton(new Back(false));
     topButtons.addButton(i18n.tr("Aktualisieren"), new Action() {
@@ -515,7 +516,10 @@ public class SparQuote implements Part
 
 /*********************************************************************
  * $Log$
- * Revision 1.17  2009-01-20 10:51:46  willuhn
+ * Revision 1.18  2009-05-06 23:11:23  willuhn
+ * @N Mehr Icons auf Buttons
+ *
+ * Revision 1.17  2009/01/20 10:51:46  willuhn
  * @N Mehr Icons - fuer Buttons
  *
  * Revision 1.16  2009/01/20 09:33:15  willuhn

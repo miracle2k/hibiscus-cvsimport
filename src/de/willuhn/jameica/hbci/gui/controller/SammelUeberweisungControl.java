@@ -101,6 +101,7 @@ public class SammelUeberweisungControl extends AbstractSammelTransferControl
     
     TablePart buchungen = new SammelTransferBuchungList(getTransfer(),a);
 
+    // TODO ICONS FEHLEN
     ContextMenu ctx = new ContextMenu();
     ctx.addItem(new CheckedContextMenuItem(i18n.tr("Buchung öffnen"), new SammelUeberweisungBuchungNew()));
     ctx.addItem(new NotActiveMenuItem(i18n.tr("Buchung löschen..."), new Action() {
@@ -206,7 +207,10 @@ public class SammelUeberweisungControl extends AbstractSammelTransferControl
 
 /*****************************************************************************
  * $Log$
- * Revision 1.3  2006-08-07 14:31:59  willuhn
+ * Revision 1.4  2009-05-06 23:11:23  willuhn
+ * @N Mehr Icons auf Buttons
+ *
+ * Revision 1.3  2006/08/07 14:31:59  willuhn
  * @B misc bugfixing
  * @C Redesign des DTAUS-Imports fuer Sammeltransfers
  *

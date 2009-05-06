@@ -46,8 +46,8 @@ public class DauerauftragList extends AbstractView {
 
 			ButtonArea buttons = new ButtonArea(getParent(),3);
 	    buttons.addButton(new Back(false));
-			buttons.addButton(i18n.tr("Existierende Daueraufträge abrufen"), 	new KontoFetchDauerauftraege());
-			buttons.addButton(i18n.tr("Neuer Dauerauftrag"),									new DauerauftragNew(),null,true);
+			buttons.addButton(i18n.tr("Existierende Daueraufträge abrufen"), 	new KontoFetchDauerauftraege(),null,false,"mail-send-receive.png");
+			buttons.addButton(i18n.tr("Neuer Dauerauftrag"),									new DauerauftragNew(),null,true,"text-x-generic.png");
 
 		}
 		catch (Exception e)
@@ -61,7 +61,10 @@ public class DauerauftragList extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2009-01-20 10:51:46  willuhn
+ * Revision 1.7  2009-05-06 23:11:23  willuhn
+ * @N Mehr Icons auf Buttons
+ *
+ * Revision 1.6  2009/01/20 10:51:46  willuhn
  * @N Mehr Icons - fuer Buttons
  *
  * Revision 1.5  2006/08/07 14:45:18  willuhn

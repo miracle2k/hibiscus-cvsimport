@@ -145,6 +145,7 @@ public class KontoauszugList extends UmsatzList
     betrag.addSeparator();
     betrag.addLabelPair(i18n.tr("Verwendungszweck/Kommentar enthält"), getText());
 
+    // TODO ICONS FEHLEN
     ButtonArea buttons = new ButtonArea(parent, 3);
     buttons.addButton(new Back(false));
     buttons.addButton(i18n.tr("Exportieren..."), new Action()
@@ -632,7 +633,10 @@ public class KontoauszugList extends UmsatzList
 
 /*********************************************************************
  * $Log$
- * Revision 1.22  2009-04-20 11:11:10  willuhn
+ * Revision 1.23  2009-05-06 23:11:22  willuhn
+ * @N Mehr Icons auf Buttons
+ *
+ * Revision 1.22  2009/04/20 11:11:10  willuhn
  * @N BUGZILLA 723
  *
  * Revision 1.21  2009/04/20 11:07:06  willuhn

@@ -73,14 +73,14 @@ public class EmpfaengerNew extends AbstractView {
 
     if (control.isHibiscusAdresse())
     {
-      buttonArea.addButton(i18n.tr("Löschen"), new DBObjectDelete(),control.getAddress());
+      buttonArea.addButton(i18n.tr("Löschen"), new DBObjectDelete(),control.getAddress(),false,"user-trash-full.png");
       buttonArea.addButton(i18n.tr("Speichern"), new Action()
       {
         public void handleAction(Object context) throws ApplicationException
         {
           control.handleStore();
         }
-      },null,true);
+      },null,true,"document-save.png");
     }
       
     TabFolder folder = new TabFolder(getParent(), SWT.NONE);
@@ -104,7 +104,10 @@ public class EmpfaengerNew extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.17  2009-02-18 00:35:54  willuhn
+ * Revision 1.18  2009-05-06 23:11:23  willuhn
+ * @N Mehr Icons auf Buttons
+ *
+ * Revision 1.17  2009/02/18 00:35:54  willuhn
  * @N Auslaendische Bankverbindungen im Adressbuch
  *
  * Revision 1.16  2009/01/20 10:51:45  willuhn

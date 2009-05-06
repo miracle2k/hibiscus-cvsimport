@@ -52,6 +52,7 @@ public class EinnahmenAusgaben extends AbstractView
     group.addLabelPair(i18n.tr("Start-Datum"), control.getStart());
     group.addLabelPair(i18n.tr("End-Datum"), control.getEnd());
 
+    // TODO ICONS FEHLEN
     ButtonArea buttons = new ButtonArea(getParent(), 3);
     buttons.addButton(new Back(false));
     buttons.addButton(i18n.tr("Exportieren..."), new Action(){
@@ -96,7 +97,10 @@ public class EinnahmenAusgaben extends AbstractView
 }
 /*******************************************************************************
  * $Log$
- * Revision 1.6  2009-04-05 21:16:22  willuhn
+ * Revision 1.7  2009-05-06 23:11:23  willuhn
+ * @N Mehr Icons auf Buttons
+ *
+ * Revision 1.6  2009/04/05 21:16:22  willuhn
  * @B BUGZILLA 716
  *
  * Revision 1.5  2009/01/20 10:51:46  willuhn

@@ -45,7 +45,7 @@ public class EmpfaengerList extends AbstractView {
 
 			ButtonArea buttons = new ButtonArea(getParent(),2);
       buttons.addButton(new Back(false));
-			buttons.addButton(i18n.tr("Neue Adresse"),new EmpfaengerNew(),null,true);
+			buttons.addButton(i18n.tr("Neue Adresse"),new EmpfaengerNew(),null,true,"contact-new.png");
 
 		}
 		catch (Exception e)
@@ -59,7 +59,10 @@ public class EmpfaengerList extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2009-01-20 10:51:46  willuhn
+ * Revision 1.8  2009-05-06 23:11:23  willuhn
+ * @N Mehr Icons auf Buttons
+ *
+ * Revision 1.7  2009/01/20 10:51:46  willuhn
  * @N Mehr Icons - fuer Buttons
  *
  * Revision 1.6  2006/08/07 14:45:18  willuhn

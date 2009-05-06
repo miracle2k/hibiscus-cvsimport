@@ -61,6 +61,7 @@ public class SammelUeberweisungNew extends AbstractView {
 
 		final SammelUeberweisung l = (SammelUeberweisung) control.getTransfer();
 
+    // TODO ICONS FEHLEN
     ButtonArea buttons = new ButtonArea(getParent(),5);
     buttons.addButton(new Back(transfer.ausgefuehrt()));
     buttons.addButton(i18n.tr("Löschen"),new DBObjectDelete(),control.getTransfer());
@@ -73,7 +74,7 @@ public class SammelUeberweisungNew extends AbstractView {
     });
     add.setEnabled(!transfer.ausgefuehrt());
     
-		Button execute = new Button(i18n.tr("Jetzt ausführen"), new Action() {
+		Button execute = new Button(i18n.tr("Jetzt ausführen..."), new Action() {
 			public void handleAction(Object context) throws ApplicationException {
         if (control.handleStore())
   				new SammelUeberweisungExecute().handleAction(l);
@@ -98,7 +99,10 @@ public class SammelUeberweisungNew extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2009-03-11 23:40:45  willuhn
+ * Revision 1.10  2009-05-06 23:11:23  willuhn
+ * @N Mehr Icons auf Buttons
+ *
+ * Revision 1.9  2009/03/11 23:40:45  willuhn
  * @B Kleineres Bugfixing in Sammeltransfer-Control
  *
  * Revision 1.8  2009/02/13 14:17:01  willuhn

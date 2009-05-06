@@ -46,8 +46,8 @@ public class SammelUeberweisungList extends AbstractView {
 
 			ButtonArea buttons = new ButtonArea(getParent(),3);
       buttons.addButton(new Back(false));
-      buttons.addButton(i18n.tr("Importieren..."),new SammelUeberweisungImport());
-			buttons.addButton(i18n.tr("Neue Sammel-Überweisung"),new SammelUeberweisungNew(),null,true);
+      buttons.addButton(i18n.tr("Importieren..."),new SammelUeberweisungImport(),null,false,"document-open.png");
+			buttons.addButton(i18n.tr("Neue Sammel-Überweisung"),new SammelUeberweisungNew(),null,true,"text-x-generic.png");
 
 		}
 		catch (Exception e)
@@ -61,7 +61,10 @@ public class SammelUeberweisungList extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2009-01-20 10:51:46  willuhn
+ * Revision 1.5  2009-05-06 23:11:23  willuhn
+ * @N Mehr Icons auf Buttons
+ *
+ * Revision 1.4  2009/01/20 10:51:46  willuhn
  * @N Mehr Icons - fuer Buttons
  *
  * Revision 1.3  2006/08/07 14:31:59  willuhn

@@ -58,6 +58,7 @@ public class SammelLastBuchungNew extends AbstractView {
 		details.addLabelPair(i18n.tr("Betrag"),										control.getBetrag());
     details.addLabelPair(i18n.tr("Textschlüssel"),            control.getTextSchluessel());
 
+    // TODO ICONS FEHLEN
 		ButtonArea buttonArea = new ButtonArea(getParent(),4);
     buttonArea.addButton(new Back(l.ausgefuehrt()));
     Button delete = new Button(i18n.tr("Löschen"), new SammelTransferBuchungDelete(),control.getBuchung());
@@ -86,7 +87,10 @@ public class SammelLastBuchungNew extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.12  2009-02-24 23:51:01  willuhn
+ * Revision 1.13  2009-05-06 23:11:23  willuhn
+ * @N Mehr Icons auf Buttons
+ *
+ * Revision 1.12  2009/02/24 23:51:01  willuhn
  * @N Auswahl der Empfaenger/Zahlungspflichtigen jetzt ueber Auto-Suggest-Felder
  *
  * Revision 1.11  2009/01/20 10:51:46  willuhn

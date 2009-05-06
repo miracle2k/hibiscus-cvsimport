@@ -62,21 +62,21 @@ public class AuslandsUeberweisungNew extends AbstractView {
 
 		ButtonArea buttonArea = new ButtonArea(getParent(),4);
     buttonArea.addButton(new Back(transfer.ausgefuehrt()));
-		buttonArea.addButton(i18n.tr("Löschen"),				 				 new DBObjectDelete(), transfer);
+		buttonArea.addButton(i18n.tr("Löschen"),new DBObjectDelete(),transfer,false,"user-trash-full.png");
 
-    Button execute = new Button(i18n.tr("Jetzt ausführen"), new Action() {
+    Button execute = new Button(i18n.tr("Jetzt ausführen..."), new Action() {
       public void handleAction(Object context) throws ApplicationException {
 				if (control.handleStore())
   				new AuslandsUeberweisungExecute().handleAction(transfer);
       }
-    },null);
+    },null,false,"emblem-important.png");
     execute.setEnabled(!transfer.ausgefuehrt());
     
     Button store = new Button(i18n.tr("Speichern"), new Action() {
       public void handleAction(Object context) throws ApplicationException {
       	control.handleStore();
       }
-    },null,!transfer.ausgefuehrt());
+    },null,!transfer.ausgefuehrt(),"document-save.png");
     store.setEnabled(!transfer.ausgefuehrt());
     
     buttonArea.addButton(execute);
@@ -87,7 +87,10 @@ public class AuslandsUeberweisungNew extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2009-03-17 23:50:08  willuhn
+ * Revision 1.3  2009-05-06 23:11:23  willuhn
+ * @N Mehr Icons auf Buttons
+ *
+ * Revision 1.2  2009/03/17 23:50:08  willuhn
  * *** empty log message ***
  *
  * Revision 1.1  2009/03/13 00:25:12  willuhn

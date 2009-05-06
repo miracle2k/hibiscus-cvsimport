@@ -63,6 +63,7 @@ public class UmsatzTypTree extends AbstractView
     settings.addLabelPair(i18n.tr("Start-Datum"), control.getStart());
     settings.addLabelPair(i18n.tr("End-Datum"), control.getEnd());
 
+    // TODO ICONS FEHLEN
     ButtonArea buttons = new ButtonArea(getParent(), 4);
     buttons.addButton(new Back());
 
@@ -136,7 +137,10 @@ public class UmsatzTypTree extends AbstractView
 }
 /*******************************************************************************
  * $Log$
- * Revision 1.8  2009-01-20 10:51:46  willuhn
+ * Revision 1.9  2009-05-06 23:11:23  willuhn
+ * @N Mehr Icons auf Buttons
+ *
+ * Revision 1.8  2009/01/20 10:51:46  willuhn
  * @N Mehr Icons - fuer Buttons
  *
  * Revision 1.7  2008/04/06 23:21:43  willuhn

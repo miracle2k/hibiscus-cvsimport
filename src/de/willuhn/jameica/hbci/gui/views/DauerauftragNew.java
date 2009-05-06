@@ -71,6 +71,7 @@ public class DauerauftragNew extends AbstractView
 		if (da.isActive())
 			s = "Speichern und aktualisieren";
 
+    // TODO ICONS FEHLEN
     buttonArea.addButton(new Back(false));
 		buttonArea.addButton(i18n.tr("Löschen"),	 		 new DauerauftragDelete(), da);
 		buttonArea.addButton(s,										 		 new Action()
@@ -94,7 +95,10 @@ public class DauerauftragNew extends AbstractView
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2009-02-24 23:51:01  willuhn
+ * Revision 1.10  2009-05-06 23:11:23  willuhn
+ * @N Mehr Icons auf Buttons
+ *
+ * Revision 1.9  2009/02/24 23:51:01  willuhn
  * @N Auswahl der Empfaenger/Zahlungspflichtigen jetzt ueber Auto-Suggest-Felder
  *
  * Revision 1.8  2009/01/20 10:51:45  willuhn

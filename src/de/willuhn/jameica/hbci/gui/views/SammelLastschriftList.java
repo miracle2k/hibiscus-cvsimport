@@ -46,8 +46,8 @@ public class SammelLastschriftList extends AbstractView {
 
 			ButtonArea buttons = new ButtonArea(getParent(),3);
       buttons.addButton(new Back(false));
-      buttons.addButton(i18n.tr("Importieren..."),new SammelLastschriftImport());
-			buttons.addButton(i18n.tr("Neue Sammel-Lastschrift"),new SammelLastschriftNew(),null,true);
+      buttons.addButton(i18n.tr("Importieren..."),new SammelLastschriftImport(),null,false,"document-open.png");
+			buttons.addButton(i18n.tr("Neue Sammel-Lastschrift"),new SammelLastschriftNew(),null,true,"text-x-generic.png");
 
 		}
 		catch (Exception e)
@@ -61,7 +61,10 @@ public class SammelLastschriftList extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2009-01-20 10:51:45  willuhn
+ * Revision 1.8  2009-05-06 23:11:23  willuhn
+ * @N Mehr Icons auf Buttons
+ *
+ * Revision 1.7  2009/01/20 10:51:45  willuhn
  * @N Mehr Icons - fuer Buttons
  *
  * Revision 1.6  2006/08/07 14:31:59  willuhn
