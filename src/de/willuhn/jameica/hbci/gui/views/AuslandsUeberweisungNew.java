@@ -51,6 +51,7 @@ public class AuslandsUeberweisungNew extends AbstractView {
     konten.addHeadline(i18n.tr("Empfänger"));
     konten.addLabelPair(i18n.tr("Name"),                      control.getEmpfaengerName());
     konten.addLabelPair(i18n.tr("IBAN"),                      control.getEmpfaengerKonto());    
+    konten.addLabelPair(i18n.tr("BIC"),                       control.getEmpfaengerBic());
     konten.addLabelPair(i18n.tr("Institut"),                  control.getEmpfaengerBank());    
 		konten.addCheckbox(control.getStoreEmpfaenger(),i18n.tr("In Adressbuch übernehmen"));
 
@@ -87,7 +88,10 @@ public class AuslandsUeberweisungNew extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2009-05-06 23:11:23  willuhn
+ * Revision 1.4  2009-05-07 15:13:37  willuhn
+ * @N BIC in Auslandsueberweisung
+ *
+ * Revision 1.3  2009/05/06 23:11:23  willuhn
  * @N Mehr Icons auf Buttons
  *
  * Revision 1.2  2009/03/17 23:50:08  willuhn
