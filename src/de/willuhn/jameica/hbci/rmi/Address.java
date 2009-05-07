@@ -34,15 +34,6 @@ public interface Address extends Remote
    * Liefert die BLZ.
    * @return BLZ.
    * @throws RemoteException
-   * @deprecated Bitte stattdessen getBlz() verwenden.
-   */
-  @Deprecated
-  public String getBLZ() throws RemoteException;
-
-  /**
-   * Liefert die BLZ.
-   * @return BLZ.
-   * @throws RemoteException
    * BUGZILLA 534
    */
   public String getBlz() throws RemoteException;
@@ -65,7 +56,10 @@ public interface Address extends Remote
 
 /*********************************************************************
  * $Log$
- * Revision 1.6  2009-02-18 00:35:54  willuhn
+ * Revision 1.7  2009-05-07 09:58:40  willuhn
+ * @R deprecated Funktionen getBLZ/setBLZ entfernt - bitte nur noch getBlz/setBlz nutzen!
+ *
+ * Revision 1.6  2009/02/18 00:35:54  willuhn
  * @N Auslaendische Bankverbindungen im Adressbuch
  *
  * Revision 1.5  2008/11/05 09:26:40  willuhn

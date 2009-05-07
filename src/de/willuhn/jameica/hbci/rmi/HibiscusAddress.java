@@ -30,15 +30,6 @@ public interface HibiscusAddress extends Address, DBObject
    */
   public void setKontonummer(String kontonummer) throws RemoteException;
 	
-	/**
-	 * Speichert die BLZ des Empfaengers.
-   * @param blz BLZ.
-   * @throws RemoteException
-   * @deprecated Bitte stattdessen setBlz(String) verwenden.
-   */
-  @Deprecated
-  public void setBLZ(String blz) throws RemoteException;
-	
   /**
    * Speichert die BLZ des Empfaengers.
    * @param blz BLZ.
@@ -120,7 +111,10 @@ public interface HibiscusAddress extends Address, DBObject
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2009-02-18 00:35:54  willuhn
+ * Revision 1.6  2009-05-07 09:58:40  willuhn
+ * @R deprecated Funktionen getBLZ/setBLZ entfernt - bitte nur noch getBlz/setBlz nutzen!
+ *
+ * Revision 1.5  2009/02/18 00:35:54  willuhn
  * @N Auslaendische Bankverbindungen im Adressbuch
  *
  * Revision 1.4  2008/11/05 09:26:57  willuhn
