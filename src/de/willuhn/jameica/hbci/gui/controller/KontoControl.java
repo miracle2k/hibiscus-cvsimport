@@ -371,7 +371,7 @@ public class KontoControl extends AbstractControl {
 
 			if (p == null)
 			{
-				GUI.getStatusBar().setErrorText(i18n.tr("Kein Sicherheitsmedium verfügbar."));
+			  Application.getMessagingFactory().sendMessage(new StatusBarMessage(i18n.tr("Bitte wählen Sie ein Sicherheitsmedium aus"), StatusBarMessage.TYPE_ERROR));
 				return;
 			}
 			
@@ -550,7 +550,11 @@ public class KontoControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.81  2009-01-26 23:17:46  willuhn
+ * Revision 1.82  2009-05-07 13:36:57  willuhn
+ * @R Hilfsobjekt "PassportObject" entfernt
+ * @C Cleanup in PassportInput (insb. der weisse Hintergrund hinter dem "Konfigurieren..."-Button hat gestoert
+ *
+ * Revision 1.81  2009/01/26 23:17:46  willuhn
  * @R Feld "synchronize" aus Konto-Tabelle entfernt. Aufgrund der Synchronize-Optionen pro Konto ist die Information redundant und ergibt sich implizit, wenn fuer ein Konto irgendeine der Synchronisations-Optionen aktiviert ist
  *
  * Revision 1.80  2009/01/20 10:51:46  willuhn
