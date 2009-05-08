@@ -44,6 +44,10 @@ public class UmsatzTypDetail extends AbstractView
 		
     LabelGroup group = new LabelGroup(getParent(),i18n.tr("Eigenschaften"));
     group.addLabelPair(i18n.tr("Bezeichnung"), control.getName());
+    
+    group.addCheckbox(control.getCustomColor(),i18n.tr("Benutzerdefinierte Farbe"));
+    group.addLabelPair(i18n.tr("Farbe"), control.getColor());
+    
 //    group.addLabelPair(i18n.tr("Übergeordnete Kategorie"), control.getParent());
     group.addLabelPair(i18n.tr("Nummer"), control.getNummer());
     group.addLabelPair(i18n.tr("Suchbegriff"), control.getPattern());
@@ -54,21 +58,25 @@ public class UmsatzTypDetail extends AbstractView
     
     ButtonArea buttons = new ButtonArea(getParent(),3);
     buttons.addButton(new Back(false));
-    buttons.addButton(i18n.tr("Löschen"),   new DBObjectDelete(),control.getCurrentObject());
+    buttons.addButton(i18n.tr("Löschen"),   new DBObjectDelete(),control.getCurrentObject(),false,"user-trash-full.png");
     buttons.addButton(i18n.tr("Speichern"), new Action()
     {
       public void handleAction(Object context) throws ApplicationException
       {
         control.handleStore();
       }
-    },null,true);
+    },null,true,"document-save.png");
   }
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2009-02-23 23:44:50  willuhn
+ * Revision 1.6  2009-05-08 13:58:30  willuhn
+ * @N Icons in allen Menus und auf allen Buttons
+ * @N Fuer Umsatz-Kategorien koennen nun benutzerdefinierte Farben vergeben werden
+ *
+ * Revision 1.5  2009/02/23 23:44:50  willuhn
  * @N Etwas Code fuer Support fuer Unter-/Ober-Kategorien
  *
  * Revision 1.4  2009/01/20 10:51:45  willuhn

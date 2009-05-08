@@ -129,6 +129,8 @@ public class KontoauszugList extends UmsatzList
     folder.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
     folder.setBackground(Color.BACKGROUND.getSWTColor());
 
+    // TODO: Alle Filterkriterien speichern, ggf. Warnhinweis anzeigen und beim Zurueckspringen
+    //       aus den Details wieder an die korrekte Stelle springen
     TabGroup zeitraum = new TabGroup(folder,i18n.tr("Konto/Zeitraum"));
     zeitraum.addLabelPair(i18n.tr("Konto"), getKontoAuswahl());
     zeitraum.addLabelPair(i18n.tr("Start-Datum"), getStart());
@@ -145,7 +147,6 @@ public class KontoauszugList extends UmsatzList
     betrag.addSeparator();
     betrag.addLabelPair(i18n.tr("Verwendungszweck/Kommentar enthält"), getText());
 
-    // TODO ICONS FEHLEN
     ButtonArea buttons = new ButtonArea(parent, 3);
     buttons.addButton(new Back(false));
     buttons.addButton(i18n.tr("Exportieren..."), new Action()
@@ -154,14 +155,14 @@ public class KontoauszugList extends UmsatzList
       {
         handlePrint();
       }
-    });
+    },null,false,"document-save.png");
     buttons.addButton(i18n.tr("Aktualisieren"), new Action()
     {
       public void handleAction(Object context) throws ApplicationException
       {
         handleReload();
       }
-    },null,true);
+    },null,true,"view-refresh.png");
 
     new Headline(parent,i18n.tr("Gefundene Umsätze"));
 
@@ -633,7 +634,11 @@ public class KontoauszugList extends UmsatzList
 
 /*********************************************************************
  * $Log$
- * Revision 1.23  2009-05-06 23:11:22  willuhn
+ * Revision 1.24  2009-05-08 13:58:30  willuhn
+ * @N Icons in allen Menus und auf allen Buttons
+ * @N Fuer Umsatz-Kategorien koennen nun benutzerdefinierte Farben vergeben werden
+ *
+ * Revision 1.23  2009/05/06 23:11:22  willuhn
  * @N Mehr Icons auf Buttons
  *
  * Revision 1.22  2009/04/20 11:11:10  willuhn

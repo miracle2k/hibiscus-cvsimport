@@ -61,6 +61,7 @@ public class UmsatzTypChart implements Part
   {
     try
     {
+      // TODO: Hier werden die benutzerdefinierten Farben von Kategorien noch nicht genutzt
       final LabelGroup group = new LabelGroup(parent,i18n.tr("Umsatz-Verteilung"),true);
       final ChartData eData = new ChartDataUmsatzTyp(UmsatzTyp.TYP_EINNAHME,start);
       final ChartData aData = new ChartDataUmsatzTyp(UmsatzTyp.TYP_AUSGABE,start);
@@ -161,7 +162,11 @@ public class UmsatzTypChart implements Part
 
 /*********************************************************************
  * $Log$
- * Revision 1.5  2008-08-29 16:46:24  willuhn
+ * Revision 1.6  2009-05-08 13:58:30  willuhn
+ * @N Icons in allen Menus und auf allen Buttons
+ * @N Fuer Umsatz-Kategorien koennen nun benutzerdefinierte Farben vergeben werden
+ *
+ * Revision 1.5  2008/08/29 16:46:24  willuhn
  * @N BUGZILLA 616
  *
  * Revision 1.4  2007/01/16 12:35:43  willuhn
