@@ -208,6 +208,9 @@ public class UmsatzList extends TablePart implements Extendable
     
     // BUGZILLA 233 http://www.willuhn.de/bugzilla/show_bug.cgi?id=233
     setRememberColWidths(true);
+    
+    // BUGZILLA 468 http://www.willuhn.de/bugzilla/show_bug.cgi?id=468
+    setRememberState(true);
 
     // Wir erstellen noch Message-Consumer, damit wir ueber neu eintreffende
     // und geaenderte Umsaetze informiert werden.
@@ -282,6 +285,9 @@ public class UmsatzList extends TablePart implements Extendable
     // Und einmal starten bitte
     if (this.filter)
       kl.process();
+    
+    // Machen wir explizit nochmal, weil wir die paint()-Methode ueberschrieben haben
+    restoreState();
   }
 
 
@@ -758,7 +764,10 @@ public class UmsatzList extends TablePart implements Extendable
 
 /**********************************************************************
  * $Log$
- * Revision 1.61  2009-03-11 23:44:32  willuhn
+ * Revision 1.62  2009-05-11 14:39:53  willuhn
+ * @C Es werden jetzt wieder alle Filterkriterien gespeichert, da auch ein Warnhinweis angezeigt wird, wenn Filter aktiv sind
+ *
+ * Revision 1.61  2009/03/11 23:44:32  willuhn
  * @C code cleanup - keine Booleans instanziieren
  *
  * Revision 1.60  2009/02/12 18:37:17  willuhn
