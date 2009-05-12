@@ -38,7 +38,8 @@ public class HBCIUeberweisungJob extends AbstractHBCIJob
 {
 
 	private Ueberweisung ueberweisung = null;
-  private boolean isTermin = false;
+	private boolean isTermin = false;
+	private boolean isUmb    = false;
 	private Konto konto = null;
 	
 	private boolean markExecutedBefore = false;
@@ -65,7 +66,9 @@ public class HBCIUeberweisungJob extends AbstractHBCIJob
 
       this.ueberweisung = ueberweisung;
       this.konto = this.ueberweisung.getKonto();
+      
       this.isTermin = this.ueberweisung.isTerminUeberweisung();
+      this.isUmb    = this.ueberweisung.isUmbuchung();
 
       if (this.ueberweisung.getBetrag() > Settings.getUeberweisungLimit())
         throw new ApplicationException(i18n.tr("Auftragslimit überschritten: {0} ", 
@@ -152,7 +155,11 @@ public class HBCIUeberweisungJob extends AbstractHBCIJob
    */
   String getIdentifier()
   {
-    return isTermin ? "TermUeb" : "Ueb";
+    if (isTermin)
+      return "TermUeb";
+    if (isUmb)
+      return "Umb";
+    return "Ueb";
   }
   
   /**
@@ -196,7 +203,10 @@ public class HBCIUeberweisungJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.43  2009-03-24 23:02:51  willuhn
+ * Revision 1.44  2009-05-12 22:53:33  willuhn
+ * @N BUGZILLA 189 - Ueberweisung als Umbuchung
+ *
+ * Revision 1.43  2009/03/24 23:02:51  willuhn
  * @B BUGZILLA 712
  *
  * Revision 1.42  2009/02/18 10:48:41  willuhn

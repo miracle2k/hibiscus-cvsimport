@@ -60,8 +60,8 @@ public class UeberweisungNew extends AbstractView {
 		details.addLabelPair(i18n.tr("weiterer Verwendungszweck"),control.getZweck2());
     details.addLabelPair(i18n.tr("Betrag"),                   control.getBetrag());
     details.addLabelPair(i18n.tr("Textschlüssel"),            control.getTextSchluessel());
+    details.addLabelPair(i18n.tr("Auftragstyp"),              control.getTyp());
     details.addLabelPair(i18n.tr("Termin"),                   control.getTermin());
-    details.addCheckbox(control.getBankTermin(), i18n.tr("Als Termin-Überweisung an Bank senden"));
 
 		ButtonArea buttonArea = new ButtonArea(getParent(),4);
     buttonArea.addButton(new Back(transfer.ausgefuehrt()));
@@ -90,7 +90,10 @@ public class UeberweisungNew extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.22  2009-05-06 23:11:23  willuhn
+ * Revision 1.23  2009-05-12 22:53:33  willuhn
+ * @N BUGZILLA 189 - Ueberweisung als Umbuchung
+ *
+ * Revision 1.22  2009/05/06 23:11:23  willuhn
  * @N Mehr Icons auf Buttons
  *
  * Revision 1.21  2009/02/24 23:51:01  willuhn

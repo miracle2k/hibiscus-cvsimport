@@ -95,8 +95,8 @@ public abstract class AbstractHibiscusTransferImpl extends AbstractDBObject impl
   	}
   	catch (RemoteException e)
   	{
-  		Logger.error("error while checking ueberweisung",e);
-  		throw new ApplicationException(i18n.tr("Fehler beim Prüfen der Überweisung."));
+  		Logger.error("error while checking transfer",e);
+  		throw new ApplicationException(i18n.tr("Fehler beim Prüfen des Auftrages."));
   	}
   }
 
@@ -378,7 +378,10 @@ public abstract class AbstractHibiscusTransferImpl extends AbstractDBObject impl
 
 /**********************************************************************
  * $Log$
- * Revision 1.12  2009-03-17 23:44:15  willuhn
+ * Revision 1.13  2009-05-12 22:53:33  willuhn
+ * @N BUGZILLA 189 - Ueberweisung als Umbuchung
+ *
+ * Revision 1.12  2009/03/17 23:44:15  willuhn
  * @N BUGZILLA 159 - Auslandsueberweisungen. Erste Version
  *
  * Revision 1.11  2008/12/14 23:18:35  willuhn
