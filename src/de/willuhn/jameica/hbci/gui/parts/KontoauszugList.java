@@ -180,6 +180,9 @@ public class KontoauszugList extends UmsatzList
 
     // Zum Schluss Sortierung aktualisieren
     sort();
+    
+    // Machen wir explizit nochmal, weil wir die paint()-Methode ueberschrieben haben
+    restoreState();
   }
 
   /**
@@ -669,7 +672,10 @@ public class KontoauszugList extends UmsatzList
 
 /*********************************************************************
  * $Log$
- * Revision 1.26  2009-05-11 14:39:54  willuhn
+ * Revision 1.27  2009-05-19 21:55:57  willuhn
+ * @B Selektion und Markierung auch bei angepasster Sortierung wiederherstellen
+ *
+ * Revision 1.26  2009/05/11 14:39:54  willuhn
  * @C Es werden jetzt wieder alle Filterkriterien gespeichert, da auch ein Warnhinweis angezeigt wird, wenn Filter aktiv sind
  *
  * Revision 1.25  2009/05/08 14:22:55  willuhn
