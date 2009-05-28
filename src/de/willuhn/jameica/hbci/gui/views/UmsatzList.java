@@ -79,8 +79,8 @@ public class UmsatzList extends AbstractView
 			
 			ButtonArea buttons = new ButtonArea(getParent(),3);
       buttons.addButton(new Back());
-      buttons.addButton(i18n.tr("Umsätze importieren..."), new UmsatzImport(),control.getKonto());
-			buttons.addButton(i18n.tr("Umsätze abrufen"), new KontoFetchUmsaetze(),control.getKonto());
+      buttons.addButton(i18n.tr("Umsätze importieren..."), new UmsatzImport(),control.getKonto(),false,"document-open.png");
+			buttons.addButton(i18n.tr("Umsätze abrufen"), new KontoFetchUmsaetze(),control.getKonto(),false,"mail-send-receive.png");
 		}
 		catch (RemoteException e)
 		{
@@ -103,7 +103,10 @@ public class UmsatzList extends AbstractView
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2009-01-20 10:51:45  willuhn
+ * Revision 1.10  2009-05-28 10:45:18  willuhn
+ * @N more icons
+ *
+ * Revision 1.9  2009/01/20 10:51:45  willuhn
  * @N Mehr Icons - fuer Buttons
  *
  * Revision 1.8  2006/06/19 11:52:17  willuhn

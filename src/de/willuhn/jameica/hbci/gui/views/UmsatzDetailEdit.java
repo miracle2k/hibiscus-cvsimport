@@ -41,7 +41,7 @@ public class UmsatzDetailEdit extends AbstractUmsatzDetail
       {
         getControl().handleStore();
       }
-    },null,true);
+    },null,true,"document-save.png");
   }
 
   /**
@@ -58,7 +58,10 @@ public class UmsatzDetailEdit extends AbstractUmsatzDetail
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2009-01-20 10:51:46  willuhn
+ * Revision 1.3  2009-05-28 10:45:18  willuhn
+ * @N more icons
+ *
+ * Revision 1.2  2009/01/20 10:51:46  willuhn
  * @N Mehr Icons - fuer Buttons
  *
  * Revision 1.1  2009/01/04 14:47:53  willuhn

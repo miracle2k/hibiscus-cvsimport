@@ -41,7 +41,7 @@ public class UmsatzDetail extends AbstractUmsatzDetail
     buttons.addButton(new Back());
     
     Umsatz u = getControl().getUmsatz();
-    Button edit = new Button(i18n.tr("Bearbeiten"),new de.willuhn.jameica.hbci.gui.action.UmsatzDetailEdit(),u);
+    Button edit = new Button(i18n.tr("Bearbeiten"),new de.willuhn.jameica.hbci.gui.action.UmsatzDetailEdit(),u,false,"text-x-generic.png");
     edit.setEnabled((u.getFlags() & Umsatz.FLAG_NOTBOOKED) == 0);
     buttons.addButton(edit);
     
@@ -51,7 +51,7 @@ public class UmsatzDetail extends AbstractUmsatzDetail
       {
         getControl().handleStore();
       }
-    });
+    },null,false,"document-save.png");
     store.setEnabled((u.getFlags() & Umsatz.FLAG_NOTBOOKED) == 0);
     buttons.addButton(store);
     
@@ -60,17 +60,17 @@ public class UmsatzDetail extends AbstractUmsatzDetail
     final Address found = getControl().getAddressbookEntry();
     if (found != null)
     {
-      ab = new Button(i18n.tr("Gegenkonto In Adressbuch öffnen"),new de.willuhn.jameica.hbci.gui.action.EmpfaengerNew(),found);
+      ab = new Button(i18n.tr("In Adressbuch öffnen"),new de.willuhn.jameica.hbci.gui.action.EmpfaengerNew(),found,false,"contact-new.png");
     }
     else
     {
-      ab = new Button(i18n.tr("Gegenkonto in Adressbuch übernehmen"),new Action()
+      ab = new Button(i18n.tr("In Adressbuch übernehmen"),new Action()
       {
         public void handleAction(Object context) throws ApplicationException
         {
           new EmpfaengerAdd().handleAction(getControl().getUmsatz());
         }
-      });
+      },null,false,"contact-new.png");
     }
     buttons.addButton(ab);
   }
@@ -89,7 +89,10 @@ public class UmsatzDetail extends AbstractUmsatzDetail
 
 /**********************************************************************
  * $Log$
- * Revision 1.36  2009-02-24 22:42:33  willuhn
+ * Revision 1.37  2009-05-28 10:45:18  willuhn
+ * @N more icons
+ *
+ * Revision 1.36  2009/02/24 22:42:33  willuhn
  * @N Da vorgemerkte Umsaetze jetzt komplett geloescht werden, wenn sie neu abgerufen werden, duerfen sie auch nicht mehr geaendert werden (also auch keine Kategorie und kein Kommentar)
  *
  * Revision 1.35  2009/02/12 18:37:18  willuhn
