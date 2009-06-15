@@ -27,16 +27,7 @@ import de.willuhn.util.I18N;
  */
 public abstract class AbstractDTAUSIO implements IO
 {
-  I18N i18n = null;
-
-  /**
-   * ct.
-   */
-  public AbstractDTAUSIO()
-  {
-    i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
-  }
-  
+  static I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
   /**
    * @see de.willuhn.jameica.hbci.io.IO#getName()
@@ -150,7 +141,10 @@ public abstract class AbstractDTAUSIO implements IO
 
 /*********************************************************************
  * $Log$
- * Revision 1.3  2008-12-17 23:24:23  willuhn
+ * Revision 1.4  2009-06-15 08:51:16  willuhn
+ * @N BUGZILLA 736
+ *
+ * Revision 1.3  2008/12/17 23:24:23  willuhn
  * @N Korrektes Mapping der Textschluessel beim Export/Import von Sammelauftraegen von/nach DTAUS
  *
  * Revision 1.2  2006/06/08 17:40:59  willuhn

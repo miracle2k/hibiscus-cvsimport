@@ -30,14 +30,6 @@ import de.willuhn.util.ApplicationException;
 public class DTAUSTransferImporter extends AbstractDTAUSImporter
 {
   /**
-   * ct.
-   */
-  public DTAUSTransferImporter()
-  {
-    super();
-  }
-  
-  /**
    * @see de.willuhn.jameica.hbci.io.AbstractDTAUSImporter#create(de.willuhn.datasource.rmi.DBObject, java.lang.Object, de.jost_net.OBanToo.Dtaus.CSatz, de.jost_net.OBanToo.Dtaus.ASatz)
    */
   void create(DBObject skel, Object context, CSatz csatz, ASatz asatz)
@@ -91,7 +83,10 @@ public class DTAUSTransferImporter extends AbstractDTAUSImporter
 
 /*********************************************************************
  * $Log$
- * Revision 1.10  2008-12-01 23:54:42  willuhn
+ * Revision 1.11  2009-06-15 08:51:16  willuhn
+ * @N BUGZILLA 736
+ *
+ * Revision 1.10  2008/12/01 23:54:42  willuhn
  * @N BUGZILLA 188 Erweiterte Verwendungszwecke in Exports/Imports und Sammelauftraegen
  *
  * Revision 1.9  2007/04/23 18:07:14  willuhn

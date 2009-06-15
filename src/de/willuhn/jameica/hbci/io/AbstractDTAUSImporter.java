@@ -18,8 +18,6 @@ import java.io.InputStream;
 import java.rmi.RemoteException;
 import java.util.Hashtable;
 
-import org.eclipse.swt.SWTException;
-
 import de.jost_net.OBanToo.Dtaus.ASatz;
 import de.jost_net.OBanToo.Dtaus.CSatz;
 import de.jost_net.OBanToo.Dtaus.DtausDateiParser;
@@ -45,15 +43,6 @@ public abstract class AbstractDTAUSImporter extends AbstractDTAUSIO implements I
 {
   private final static Settings settings = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getSettings();
   private Hashtable kontenCache = new Hashtable();
-
-  /**
-   * ct.
-   */
-  public AbstractDTAUSImporter()
-  {
-    super();
-  }
-  
 
   /**
    * @see de.willuhn.jameica.hbci.io.Importer#doImport(java.lang.Object, de.willuhn.jameica.hbci.io.IOFormat, java.io.InputStream, de.willuhn.util.ProgressMonitor)
@@ -170,18 +159,12 @@ public abstract class AbstractDTAUSImporter extends AbstractDTAUSIO implements I
             monitor.log("  " + ace.getMessage());
             monitor.log("  " + i18n.tr("Überspringe Datensatz"));
           }
+          catch (OperationCanceledException oce)
+          {
+            throw oce;
+          }
           catch (Exception e1)
           {
-            if (e1 instanceof SWTException)
-            {
-              if (e1.getCause() instanceof OperationCanceledException)
-              {
-                Logger.info("operation cancelled");
-                monitor.setStatusText(i18n.tr("Import abgebrochen"));
-                monitor.setStatus(ProgressMonitor.STATUS_CANCEL);
-                return;
-              }
-            }
             error++;
             Logger.error("unable to import transfer",e1);
             monitor.log("  " + i18n.tr("Fehler beim Import des Datensatzes, überspringe Datensatz"));
@@ -329,7 +312,10 @@ public abstract class AbstractDTAUSImporter extends AbstractDTAUSIO implements I
 
 /*********************************************************************
  * $Log$
- * Revision 1.13  2009-03-01 23:17:04  willuhn
+ * Revision 1.14  2009-06-15 08:51:16  willuhn
+ * @N BUGZILLA 736
+ *
+ * Revision 1.13  2009/03/01 23:17:04  willuhn
  * @B BUGZILLA 707
  *
  * Revision 1.12  2008/08/29 21:58:39  willuhn
