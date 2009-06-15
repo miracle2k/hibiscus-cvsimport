@@ -129,7 +129,7 @@ public abstract class AbstractTransferList extends AbstractFromToList
     DBIterator list = service.createList(getObjectType());
     if (from != null) list.addFilter("termin >= ?", new Object[]{new java.sql.Date(HBCIProperties.startOfDay(from).getTime())});
     if (to   != null) list.addFilter("termin <= ?", new Object[]{new java.sql.Date(HBCIProperties.endOfDay(to).getTime())});
-    list.setOrder("ORDER BY " + service.getSQLTimestamp("termin") + " DESC");
+    list.setOrder("ORDER BY " + service.getSQLTimestamp("termin") + " DESC, id DESC");
     return list;
   }
   
@@ -205,7 +205,10 @@ public abstract class AbstractTransferList extends AbstractFromToList
 
 /**********************************************************************
  * $Log$
- * Revision 1.23  2009-02-17 00:00:02  willuhn
+ * Revision 1.24  2009-06-15 09:29:57  willuhn
+ * @N Auftraege zusaetzlich nach ID sortieren, damit die Eintraege nicht "springen", wenn sie den gleichen Termin haben
+ *
+ * Revision 1.23  2009/02/17 00:00:02  willuhn
  * @N BUGZILLA 159 - Erster Code fuer Auslands-Ueberweisungen
  *
  * Revision 1.22  2007/10/25 15:47:21  willuhn
