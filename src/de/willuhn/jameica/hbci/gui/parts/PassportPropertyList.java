@@ -89,11 +89,14 @@ public class PassportPropertyList implements Part
    */
   private static List<Value> init(String prefix, Properties props)
   {
-    // Alphabetisch sortieren
+    List<Value> l = new ArrayList<Value>();
+    if (props == null)
+      return l;
+
     String[] keys = props.keySet().toArray(new String[props.size()]);
+    // Alphabetisch sortieren
     Arrays.sort(keys);
 
-    List<Value> l = new ArrayList<Value>();
     for (String key:keys)
       l.add(new Value(prefix,key,props.getProperty(key)));
     return l;
@@ -264,7 +267,10 @@ public class PassportPropertyList implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2009-06-16 15:34:19  willuhn
+ * Revision 1.2  2009-06-29 09:17:11  willuhn
+ * @B NPE
+ *
+ * Revision 1.1  2009/06/16 15:34:19  willuhn
  * @N Dialog zum Anzeigen der BPD/UPD
  *
  **********************************************************************/
