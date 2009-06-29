@@ -135,12 +135,30 @@ public abstract class AbstractHBCISammelTransferJob extends AbstractHBCIJob
     konto.addToProtokoll(msg,Protokoll.TYP_ERROR);
     return msg;
   }
+
+  /**
+   * @see de.willuhn.jameica.hbci.server.hbci.AbstractHBCIJob#markCancelled()
+   */
+  void markCancelled() throws RemoteException, ApplicationException
+  {
+    // Wenn der Auftrag abgebrochen wurde und schon als ausgefuehrt markiert wurde, machen
+    // wir das jetzt wieder rurckgaengig
+    if (markExecutedBefore)
+      transfer.setAusgefuehrt(false);
+    
+    String msg = i18n.tr("Ausführung des Sammel-Auftrages {0} abgebrochen",transfer.getBezeichnung());
+    konto.addToProtokoll(msg,Protokoll.TYP_ERROR);
+  }
+
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.10  2009-02-18 10:48:41  willuhn
+ * Revision 1.11  2009-06-29 09:00:23  willuhn
+ * @B wenn das Feature "transfer.markexecuted.before" aktiv ist, wurden Auftraege auch dann als ausgefuehrt markiert, wenn sie abgebrochen wurden - die Methode markCancelled() war nicht ueberschrieben worden
+ *
+ * Revision 1.10  2009/02/18 10:48:41  willuhn
  * @N Neuer Schalter "transfer.markexecuted.before", um festlegen zu koennen, wann ein Auftrag als ausgefuehrt gilt (wenn die Quittung von der Bank vorliegt oder wenn der Auftrag erzeugt wurde)
  *
  * Revision 1.9  2008/09/23 11:24:27  willuhn
