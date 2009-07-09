@@ -149,6 +149,8 @@ public class KontoList extends TablePart implements Part
 
     setContextMenu(new de.willuhn.jameica.hbci.gui.menus.KontoList());
     
+    this.setMulti(true);
+    
     this.mc = new SaldoMessageConsumer();
     Application.getMessagingFactory().registerMessageConsumer(this.mc);
   }
@@ -255,7 +257,10 @@ public class KontoList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.13  2009-01-05 10:13:46  willuhn
+ * Revision 1.14  2009-07-09 17:08:03  willuhn
+ * @N BUGZILLA #740
+ *
+ * Revision 1.13  2009/01/05 10:13:46  willuhn
  * @B In der Spalte "HBCI-Medium" wurd versehentlich der Saldo angezeigt
  *
  * Revision 1.12  2009/01/04 17:43:29  willuhn

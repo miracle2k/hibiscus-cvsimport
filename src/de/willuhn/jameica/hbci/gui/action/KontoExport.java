@@ -13,12 +13,12 @@
 
 package de.willuhn.jameica.hbci.gui.action;
 
-import de.willuhn.jameica.hbci.rmi.AuslandsUeberweisung;
+import de.willuhn.jameica.hbci.rmi.Konto;
 
 /**
- * Exporter fuer Auslandsueberweisungen.
+ * Exporter fuer Konten.
  */
-public class AuslandsUeberweisungExport extends AbstractObjectExport
+public class KontoExport extends AbstractObjectExport
 {
 
   /**
@@ -26,7 +26,7 @@ public class AuslandsUeberweisungExport extends AbstractObjectExport
    */
   Class getExportClass()
   {
-    return AuslandsUeberweisung.class;
+    return Konto.class;
   }
 
 }
@@ -34,10 +34,7 @@ public class AuslandsUeberweisungExport extends AbstractObjectExport
 
 /*********************************************************************
  * $Log$
- * Revision 1.2  2009-07-09 17:08:02  willuhn
+ * Revision 1.1  2009-07-09 17:08:03  willuhn
  * @N BUGZILLA #740
- *
- * Revision 1.1  2009/03/17 23:44:14  willuhn
- * @N BUGZILLA 159 - Auslandsueberweisungen. Erste Version
  *
  **********************************************************************/

@@ -18,11 +18,11 @@ import de.willuhn.jameica.hbci.rmi.Lastschrift;
 /**
  * Exporter fuer Lastschriften.
  */
-public class LastschriftExport extends AbstractTransferExport
+public class LastschriftExport extends AbstractObjectExport
 {
 
   /**
-   * @see de.willuhn.jameica.hbci.gui.action.AbstractTransferExport#getExportClass()
+   * @see de.willuhn.jameica.hbci.gui.action.AbstractObjectExport#getExportClass()
    */
   Class getExportClass()
   {
@@ -34,7 +34,10 @@ public class LastschriftExport extends AbstractTransferExport
 
 /*********************************************************************
  * $Log$
- * Revision 1.1  2006-10-16 14:46:30  willuhn
+ * Revision 1.2  2009-07-09 17:08:02  willuhn
+ * @N BUGZILLA #740
+ *
+ * Revision 1.1  2006/10/16 14:46:30  willuhn
  * @N CSV-Export von Ueberweisungen und Lastschriften
  *
  **********************************************************************/

@@ -88,10 +88,6 @@ public class VelocityExporter implements Exporter
     context.put("decimalformat",HBCI.DECIMALFORMAT);
     context.put("objects",      objects);
     
-//    String icon = getIcon();
-//    if (icon != null)
-//      context.put("icon",icon);
-
     BufferedWriter writer = null;
     try
     {
@@ -254,7 +250,10 @@ public class VelocityExporter implements Exporter
 
 /**********************************************************************
  * $Log$
- * Revision 1.15  2009-03-10 23:51:31  willuhn
+ * Revision 1.16  2009-07-09 17:08:03  willuhn
+ * @N BUGZILLA #740
+ *
+ * Revision 1.15  2009/03/10 23:51:31  willuhn
  * @C PluginResources#getPath als deprecated markiert - stattdessen sollte jetzt Manifest#getPluginDir() verwendet werden
  *
  * Revision 1.14  2009/03/02 11:42:10  willuhn
