@@ -20,6 +20,7 @@ import org.kapott.hbci.manager.HBCIUtils;
 import org.kapott.hbci.passport.HBCIPassport;
 
 import de.willuhn.jameica.gui.dialogs.PasswordDialog;
+import de.willuhn.jameica.gui.util.Container;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.HBCIProperties;
 import de.willuhn.jameica.hbci.rmi.Konto;
@@ -134,12 +135,40 @@ public class PINDialog extends PasswordDialog {
 		String retries = getRemainingRetries() > 1 ? i18n.tr("Versuche") : i18n.tr("Versuch");
 		return (i18n.tr("Noch") + " " + getRemainingRetries() + " " + retries + ".");
 	}
+
+  /**
+   * @see de.willuhn.jameica.gui.dialogs.PasswordDialog#extend(de.willuhn.jameica.gui.util.Container)
+   */
+  protected void extend(Container container) throws Exception
+  {
+    super.extend(container);
+    
+//    Composite comp = new Composite(container.getComposite(),SWT.NONE);
+//    GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
+//    gridData.horizontalSpan = 2;
+//    comp.setLayoutData(gridData);
+//    comp.setBackground(Color.BACKGROUND.getSWTColor());
+//
+//    GridLayout layout = new GridLayout();
+//    layout.horizontalSpacing = 0;
+//    layout.verticalSpacing = 0;
+//    layout.marginHeight = 0;
+//    layout.marginWidth = 0;
+//    comp.setLayout(layout);
+//
+//    new PinPad(this.getPasswordInput()).paint(comp);
+  }
+  
+  
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.20  2009-06-29 09:25:29  willuhn
+ * Revision 1.21  2009-07-12 23:19:29  willuhn
+ * @N Code fuer ein GUI-Pin-Pad. Mal sehen, ob ich das irgendwann in Hibiscus uebernehme
+ *
+ * Revision 1.20  2009/06/29 09:25:29  willuhn
  * @N BUGZILLA 738
  *
  * Revision 1.19  2009/03/31 11:01:40  willuhn
