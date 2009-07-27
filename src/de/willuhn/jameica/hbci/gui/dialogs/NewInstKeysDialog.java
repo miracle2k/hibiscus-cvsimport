@@ -20,7 +20,6 @@ import org.kapott.hbci.passport.INILetter;
 
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.dialogs.AbstractDialog;
-import de.willuhn.jameica.gui.input.LabelInput;
 import de.willuhn.jameica.gui.util.ButtonArea;
 import de.willuhn.jameica.gui.util.Color;
 import de.willuhn.jameica.gui.util.LabelGroup;
@@ -66,9 +65,15 @@ public class NewInstKeysDialog extends AbstractDialog
 
 		INILetter iniletter = new INILetter(passport,INILetter.TYPE_INST);
 
-    LabelInput hash = new LabelInput(HBCIUtils.data2hex(iniletter.getKeyHash()));
-    hash.setColor(Color.ERROR);
-		group.addLabelPair(i18n.tr("Hash-Wert") + ":",hash);
+    group.addHeadline(i18n.tr("Hashwert"));
+    group.addText(HBCIUtils.data2hex(iniletter.getKeyHashDisplay()).toUpperCase(),true,Color.ERROR);
+    
+    group.addHeadline(i18n.tr("Exponent"));
+    group.addText(HBCIUtils.data2hex(iniletter.getKeyExponentDisplay()).toUpperCase(),true);
+
+    group.addHeadline(i18n.tr("Modulus"));
+    group.addText(HBCIUtils.data2hex(iniletter.getKeyModulusDisplay()).toUpperCase(),true);
+
 
 		ButtonArea buttons = new ButtonArea(parent,2);
 		buttons.addButton(i18n.tr("OK"),new Action()
@@ -102,7 +107,10 @@ public class NewInstKeysDialog extends AbstractDialog
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2009-03-11 23:41:52  willuhn
+ * Revision 1.10  2009-07-27 13:43:45  willuhn
+ * @N Neue HBCI4Java-Version (2.5.10) mit RDH-10-Support
+ *
+ * Revision 1.9  2009/03/11 23:41:52  willuhn
  * *** empty log message ***
  *
  * Revision 1.8  2009/03/11 23:41:36  willuhn
