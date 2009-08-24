@@ -172,7 +172,7 @@ public class LineChart extends AbstractChart
         color = ((LineChartData)cd).getColor();
 
       if (color == null)
-        color = ColorGenerator.create(i);
+        color = ColorGenerator.create(ColorGenerator.PALETTE_OFFICE + i);
       
       ColorDefinition bg = ColorDefinitionImpl.create(color[0],color[1],color[2]);
       bg.setTransparency(200);
@@ -209,7 +209,10 @@ public class LineChart extends AbstractChart
 
 /*********************************************************************
  * $Log$
- * Revision 1.9  2009-08-21 23:00:16  willuhn
+ * Revision 1.10  2009-08-24 23:55:04  willuhn
+ * @N Bei der Office-Farbpalette beginnen
+ *
+ * Revision 1.9  2009/08/21 23:00:16  willuhn
  * @C Erzeugung der Farben in neue Klasse verschoben
  *
  * Revision 1.8  2008/08/29 14:30:19  willuhn
