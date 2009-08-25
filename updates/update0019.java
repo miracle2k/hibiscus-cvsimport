@@ -51,7 +51,7 @@ public class update0019 implements Update
 
     // Update fuer McKoi
     statements.put(DBSupportMcKoiImpl.class.getName(),
-        "CREATE TABLE empfaenger (" +
+        "ALTER CREATE TABLE empfaenger (" +
         "   id NUMERIC default UNIQUEKEY('empfaenger')," +
         "    kontonummer varchar(15) NULL," +
         "    blz varchar(15) NULL," +
@@ -118,7 +118,10 @@ public class update0019 implements Update
 
 /*********************************************************************
  * $Log$
- * Revision 1.1  2009-02-18 00:35:54  willuhn
+ * Revision 1.2  2009-08-25 09:18:23  willuhn
+ * @B fehlerhaftes Update-Statement fuer McKoi
+ *
+ * Revision 1.1  2009/02/18 00:35:54  willuhn
  * @N Auslaendische Bankverbindungen im Adressbuch
  *
  **********************************************************************/
