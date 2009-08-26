@@ -154,6 +154,7 @@ public class LineChart extends AbstractChart
 
       //   CREATE THE VALUE ORTHOGONAL SERIES
       AreaSeries bs1 = (AreaSeries) AreaSeriesImpl.create();
+      // bs1.setStacked(true); TODO: Damit kann man den Line-Chart STACKED machen
 
       SeriesDefinition sdX = SeriesDefinitionImpl.create();
       xAxisPrimary.getSeriesDefinitions().add(sdX);
@@ -209,7 +210,10 @@ public class LineChart extends AbstractChart
 
 /*********************************************************************
  * $Log$
- * Revision 1.10  2009-08-24 23:55:04  willuhn
+ * Revision 1.11  2009-08-26 10:29:44  willuhn
+ * @N Kommentar fuer stacked line chart
+ *
+ * Revision 1.10  2009/08/24 23:55:04  willuhn
  * @N Bei der Office-Farbpalette beginnen
  *
  * Revision 1.9  2009/08/21 23:00:16  willuhn
