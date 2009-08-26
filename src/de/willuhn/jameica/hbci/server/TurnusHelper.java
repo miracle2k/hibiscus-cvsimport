@@ -249,9 +249,9 @@ public class TurnusHelper
 
 		// komplexer Zahlungsplan
 		if (iv > 1 && ze == Turnus.ZEITEINHEIT_MONATLICH)
-			s = i18n.tr("Aller {0} Monate","" + iv);
+			s = i18n.tr("Alle {0} Monate","" + iv);
 		else if (iv > 1 && ze == Turnus.ZEITEINHEIT_WOECHENTLICH)
-			s = i18n.tr("Aller {0} Wochen","" + iv);
+			s = i18n.tr("Alle {0} Wochen","" + iv);
 
 		// Standardfaelle
 		if (iv == 3 && ze == Turnus.ZEITEINHEIT_MONATLICH)
@@ -281,7 +281,10 @@ public class TurnusHelper
 
 /**********************************************************************
  * $Log$
- * Revision 1.14  2008-09-04 23:42:33  willuhn
+ * Revision 1.15  2009-08-26 21:23:46  willuhn
+ * @C "aller x Wochen/Monate" sagt man wohl nur im Saechsischen ;) Habs geaendert auf "alle x Wochen/Monate". Google liefert mit dieser Schreibweise auch erheblich mehr Treffer
+ *
+ * Revision 1.14  2008/09/04 23:42:33  willuhn
  * @N Searchprovider fuer Sammel- und Dauerauftraege
  * @N Sortierung von Ueberweisungen und Lastschriften in Suchergebnissen
  * @C "getNaechsteZahlung" von DauerauftragUtil nach TurnusHelper verschoben

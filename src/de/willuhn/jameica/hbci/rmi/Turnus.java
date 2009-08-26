@@ -45,7 +45,7 @@ public interface Turnus extends DBObject, Checksum
 	 * Beispiele:<br>
 	 * <ul>
 	 * 	<li>Zahlung wochentlich: Intervall = <code>1</code>, Zeiteinheit = <code>ZEITEINHEIT_WOECHENTLICH</code></li>
-	 * 	<li>Zahlung aller 2 Wochen: Intervall = <code>2</code>, Zeiteinheit = <code>ZEITEINHEIT_WOECHENTLICH</code></li>
+	 * 	<li>Zahlung alle 2 Wochen: Intervall = <code>2</code>, Zeiteinheit = <code>ZEITEINHEIT_WOECHENTLICH</code></li>
 	 *  <li>Vierteljaehrlich (quartalsweise): Intervall = <code>3</code>, Zeiteinheit = <code>ZEITEINHEIT_MONATLICH</code></li>
 	 *  <li>Jaehrlich: Intervall = <code>12</code>, Zeiteinheit = <code>ZEITEINHEIT_MONATLICH</code></li>
 	 * </ul>
@@ -110,7 +110,10 @@ public interface Turnus extends DBObject, Checksum
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2004-10-25 17:58:57  willuhn
+ * Revision 1.6  2009-08-26 21:23:46  willuhn
+ * @C "aller x Wochen/Monate" sagt man wohl nur im Saechsischen ;) Habs geaendert auf "alle x Wochen/Monate". Google liefert mit dieser Schreibweise auch erheblich mehr Treffer
+ *
+ * Revision 1.5  2004/10/25 17:58:57  willuhn
  * @N Haufen Dauerauftrags-Code
  *
  * Revision 1.4  2004/10/17 16:28:46  willuhn
