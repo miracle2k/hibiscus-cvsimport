@@ -109,6 +109,17 @@ public class HBCIFactory {
   
     if (konto == null)
       throw new ApplicationException(i18n.tr("Kein Konto ausgewählt"));
+    
+    try
+    {
+      if ((konto.getFlags() & Konto.FLAG_DISABLED) != 0)
+        throw new ApplicationException(i18n.tr("Das Konto ist deaktiviert"));
+    }
+    catch (RemoteException re)
+    {
+      Logger.error("unable to check flags",re);
+      throw new ApplicationException(i18n.tr("Fehler beim Prüfen des Kontos: {0}",re.getMessage()));
+    }
   
     this.listener = l;
     this.worker = new Worker(konto);
@@ -683,7 +694,10 @@ public class HBCIFactory {
 
 /*******************************************************************************
  * $Log$
- * Revision 1.60  2009-01-16 22:50:00  willuhn
+ * Revision 1.61  2009-09-15 00:32:24  willuhn
+ * @N BUGZILLA 745 - Keine deaktivierten Konten zulassen
+ *
+ * Revision 1.60  2009/01/16 22:50:00  willuhn
  * @N bugzilla token
  *
  * Revision 1.59  2009/01/16 22:44:21  willuhn
