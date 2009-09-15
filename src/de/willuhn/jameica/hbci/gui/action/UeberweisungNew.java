@@ -52,7 +52,8 @@ public class UeberweisungNew implements Action
 			try {
 				Konto k = (Konto) context;
 				u = (Ueberweisung) Settings.getDBService().createObject(Ueberweisung.class,null);
-				u.setKonto(k);
+				if ((k.getFlags() & Konto.FLAG_DISABLED) != Konto.FLAG_DISABLED)
+  				u.setKonto(k);
 			}
 			catch (RemoteException e)
 			{
@@ -108,7 +109,10 @@ public class UeberweisungNew implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2007-04-23 18:07:14  willuhn
+ * Revision 1.10  2009-09-15 00:23:34  willuhn
+ * @N BUGZILLA 745
+ *
+ * Revision 1.9  2007/04/23 18:07:14  willuhn
  * @C Redesign: "Adresse" nach "HibiscusAddress" umbenannt
  * @C Redesign: "Transfer" nach "HibiscusTransfer" umbenannt
  * @C Redesign: Neues Interface "Transfer", welches von Ueberweisungen, Lastschriften UND Umsaetzen implementiert wird

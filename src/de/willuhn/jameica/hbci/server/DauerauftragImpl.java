@@ -161,19 +161,6 @@ public class DauerauftragImpl extends AbstractHibiscusTransferImpl
 			if (ersteZahlung == null)
 				throw new ApplicationException(i18n.tr("Bitte geben Sie ein Datum für die erste Zahlung an"));
 
-			// Jetzt muessen wir noch checken, ob sich das Datum nicht in der Vergangenheit
-			// befindet. Hierzu koennen wir aber nicht das aktuelle Datum als Vergleich nehmen
-			// da das bereits einige Sekunden _nach_ dem Datum der ersten Zahlung liegt.
-			// Daher lassen wir 1 Tag Toleranz zu.
-			// Allerdings checken wir das nur bei Dauerauftraegen, die noch nicht aktiv sind.
-			// Aktive kommen von der Bank und werden daher ganz sicher ein Datum in der Vergangenheit haben
-			if (!isActive())
-			{
-				Date today = new Date(System.currentTimeMillis() - (1000l * 60 * 60 * 24));
-				if (ersteZahlung.before(today))
-					throw new ApplicationException(i18n.tr("Bitte wählen Sie für die erste Zahlung ein Datum in der Zukunft"));
-			}
-
 			// Und jetzt noch checken, dass sich das Datum der letzten Zahlung
 			// nicht vor der ersten Zahlung befindet
       // BUGZILLA 371
@@ -280,7 +267,10 @@ public class DauerauftragImpl extends AbstractHibiscusTransferImpl
 
 /**********************************************************************
  * $Log$
- * Revision 1.31  2008-12-02 10:52:23  willuhn
+ * Revision 1.32  2009-09-15 00:23:34  willuhn
+ * @N BUGZILLA 745
+ *
+ * Revision 1.31  2008/12/02 10:52:23  willuhn
  * @B DecimalInput kann NULL liefern
  * @B Double.NaN beruecksichtigen
  *

@@ -48,7 +48,8 @@ public class SammelUeberweisungNew implements Action
 			try {
 				Konto k = (Konto) context;
 				u = (SammelUeberweisung) Settings.getDBService().createObject(SammelUeberweisung.class,null);
-				u.setKonto(k);
+        if ((k.getFlags() & Konto.FLAG_DISABLED) != Konto.FLAG_DISABLED)
+  				u.setKonto(k);
 			}
 			catch (RemoteException e)
 			{
@@ -74,7 +75,10 @@ public class SammelUeberweisungNew implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2005-09-30 00:08:50  willuhn
+ * Revision 1.2  2009-09-15 00:23:34  willuhn
+ * @N BUGZILLA 745
+ *
+ * Revision 1.1  2005/09/30 00:08:50  willuhn
  * @N SammelUeberweisungen (merged with SammelLastschrift)
  *
  * Revision 1.2  2005/07/04 11:36:53  web0

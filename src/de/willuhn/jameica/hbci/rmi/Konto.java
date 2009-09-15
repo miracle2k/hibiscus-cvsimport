@@ -21,8 +21,17 @@ import de.willuhn.datasource.rmi.DBObject;
 /**
  * Bildet eine Bankverbindung in HBCI ab.
  */
-public interface Konto extends DBObject, Checksum
+public interface Konto extends DBObject, Checksum, Flaggable
 {
+  /**
+   * Flag "kein Flag".
+   */
+  public final static int FLAG_NONE    = 0;
+
+  /**
+   * Flag "Deaktiviert".
+   */
+  public final static int FLAG_DISABLED = 1 << 0;
 
 	/**
 	 * Liefert die Kontonummer fuer diese Bankverbindung.
@@ -378,7 +387,10 @@ public interface Konto extends DBObject, Checksum
 
 /*******************************************************************************
  * $Log$
- * Revision 1.40  2009-03-17 23:44:15  willuhn
+ * Revision 1.41  2009-09-15 00:23:34  willuhn
+ * @N BUGZILLA 745
+ *
+ * Revision 1.40  2009/03/17 23:44:15  willuhn
  * @N BUGZILLA 159 - Auslandsueberweisungen. Erste Version
  *
  * Revision 1.39  2009/01/26 23:17:46  willuhn

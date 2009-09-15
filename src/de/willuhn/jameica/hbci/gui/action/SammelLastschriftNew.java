@@ -48,7 +48,8 @@ public class SammelLastschriftNew implements Action
 			try {
 				Konto k = (Konto) context;
 				u = (SammelLastschrift) Settings.getDBService().createObject(SammelLastschrift.class,null);
-				u.setKonto(k);
+        if ((k.getFlags() & Konto.FLAG_DISABLED) != Konto.FLAG_DISABLED)
+  				u.setKonto(k);
 			}
 			catch (RemoteException e)
 			{
@@ -74,7 +75,10 @@ public class SammelLastschriftNew implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2005-07-04 11:36:53  web0
+ * Revision 1.3  2009-09-15 00:23:34  willuhn
+ * @N BUGZILLA 745
+ *
+ * Revision 1.2  2005/07/04 11:36:53  web0
  * @B bug 89
  *
  * Revision 1.1  2005/02/28 16:28:24  web0
