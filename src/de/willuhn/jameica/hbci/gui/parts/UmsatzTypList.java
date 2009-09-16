@@ -65,7 +65,7 @@ public class UmsatzTypList extends TablePart implements Part
     this.i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
     addColumn(i18n.tr("Bezeichnung"),"name");
     addColumn(i18n.tr("Nummer"),"nummer-int"); // BUGZILLA 554
-    addColumn(i18n.tr("Zweck, Name oder Konto enthält"),"pattern");
+    addColumn(i18n.tr("Suchbegriff"),"pattern"); // BUGZILLA 756
     addColumn(i18n.tr("Umsatzart"),"umsatztyp",new Formatter() {
       public String format(Object o)
       {
@@ -196,7 +196,10 @@ public class UmsatzTypList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.11  2009-05-08 13:58:30  willuhn
+ * Revision 1.12  2009-09-16 16:57:11  willuhn
+ * @N BUGZILLA 756 - Teil 1
+ *
+ * Revision 1.11  2009/05/08 13:58:30  willuhn
  * @N Icons in allen Menus und auf allen Buttons
  * @N Fuer Umsatz-Kategorien koennen nun benutzerdefinierte Farben vergeben werden
  *
