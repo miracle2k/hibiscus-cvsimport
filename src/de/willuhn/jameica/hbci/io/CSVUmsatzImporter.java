@@ -190,6 +190,15 @@ public class CSVUmsatzImporter implements Importer
           if (evz.size() > 0)
             u.setWeitereVerwendungszwecke((String[])evz.toArray(new String[evz.size()]));
           
+          // Hibiscus verlangt, dass Valuta UND Buchungsdatum vorhanden sind.
+          // Oft ist es aber so, dass nur eines der beiden Fehler in der CSV-Datei
+          // existiert. Da beide Werte meistens ohnehin identisch sind, uebernehmen
+          // wir den einen jeweils in den anderen, falls einer von beiden fehlt.
+          Date dd = u.getDatum();
+          Date dv = u.getValuta();
+          if (dd == null) u.setDatum(dv);
+          if (dv == null) u.setValuta(dd);
+          
           u.store();
           Application.getMessagingFactory().sendMessage(new ImportMessage(u));
           created++;
@@ -400,7 +409,10 @@ public class CSVUmsatzImporter implements Importer
 
 /*******************************************************************************
  * $Log$
- * Revision 1.10  2009-05-11 22:34:13  willuhn
+ * Revision 1.11  2009-10-01 17:03:04  willuhn
+ * @C Tolerieren, wenn Valuta oder Datum fehlt - der Wert wird dann aus dem jeweils anderen Feld uebernommen
+ *
+ * Revision 1.10  2009/05/11 22:34:13  willuhn
  * @N BUGZILLA 713
  *
  * Revision 1.9  2009/01/04 01:25:47  willuhn
