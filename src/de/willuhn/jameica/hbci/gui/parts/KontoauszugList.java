@@ -195,7 +195,7 @@ public class KontoauszugList extends UmsatzList
     if (this.kontoAuswahl != null)
       return this.kontoAuswahl;
 
-    this.kontoAuswahl = new KontoInput(null);
+    this.kontoAuswahl = new KontoInput(null,true);
     Konto preset = null;
 
     /////////////////////
@@ -648,7 +648,10 @@ public class KontoauszugList extends UmsatzList
 
 /*********************************************************************
  * $Log$
- * Revision 1.29  2009-09-23 11:47:58  willuhn
+ * Revision 1.30  2009-10-07 23:08:55  willuhn
+ * @N BUGZILLA 745: Deaktivierte Konten in Auswertungen zwar noch anzeigen, jedoch mit "[]" umschlossen. Bei der Erstellung von neuen Auftraegen bleiben sie jedoch ausgeblendet. Bei der Gelegenheit wird das Default-Konto jetzt mit ">" markiert
+ *
+ * Revision 1.29  2009/09/23 11:47:58  willuhn
  * @N Auch im erweiterten Verwendungszweck suchen
  *
  * Revision 1.28  2009/07/16 10:41:05  willuhn

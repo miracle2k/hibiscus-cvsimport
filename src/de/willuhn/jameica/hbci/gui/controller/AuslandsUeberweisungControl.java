@@ -127,7 +127,7 @@ public class AuslandsUeberweisungControl extends AbstractControl
       return this.kontoAuswahl;
     
     KontoListener kl = new KontoListener();
-    this.kontoAuswahl = new KontoInput(getTransfer().getKonto());
+    this.kontoAuswahl = new KontoInput(getTransfer().getKonto(),false);
     this.kontoAuswahl.setMandatory(true);
     this.kontoAuswahl.addListener(kl);
     this.kontoAuswahl.setEnabled(!getTransfer().ausgefuehrt());
@@ -521,7 +521,10 @@ public class AuslandsUeberweisungControl extends AbstractControl
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2009-05-07 15:13:37  willuhn
+ * Revision 1.4  2009-10-07 23:08:56  willuhn
+ * @N BUGZILLA 745: Deaktivierte Konten in Auswertungen zwar noch anzeigen, jedoch mit "[]" umschlossen. Bei der Erstellung von neuen Auftraegen bleiben sie jedoch ausgeblendet. Bei der Gelegenheit wird das Default-Konto jetzt mit ">" markiert
+ *
+ * Revision 1.3  2009/05/07 15:13:37  willuhn
  * @N BIC in Auslandsueberweisung
  *
  * Revision 1.2  2009/03/17 23:44:14  willuhn

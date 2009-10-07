@@ -89,7 +89,7 @@ public abstract class AbstractSammelTransferControl extends AbstractControl
     
     Konto k = getTransfer().getKonto();
     KontoListener kl = new KontoListener();
-    this.kontoAuswahl = new KontoInput(k);
+    this.kontoAuswahl = new KontoInput(k,false);
     this.kontoAuswahl.setMandatory(true);
     this.kontoAuswahl.addListener(kl);
     this.kontoAuswahl.setEnabled(!getTransfer().ausgefuehrt());
@@ -218,7 +218,10 @@ public abstract class AbstractSammelTransferControl extends AbstractControl
 
 /*****************************************************************************
  * $Log$
- * Revision 1.8  2009-03-11 23:40:45  willuhn
+ * Revision 1.9  2009-10-07 23:08:56  willuhn
+ * @N BUGZILLA 745: Deaktivierte Konten in Auswertungen zwar noch anzeigen, jedoch mit "[]" umschlossen. Bei der Erstellung von neuen Auftraegen bleiben sie jedoch ausgeblendet. Bei der Gelegenheit wird das Default-Konto jetzt mit ">" markiert
+ *
+ * Revision 1.8  2009/03/11 23:40:45  willuhn
  * @B Kleineres Bugfixing in Sammeltransfer-Control
  *
  * Revision 1.7  2009/01/04 16:18:22  willuhn
