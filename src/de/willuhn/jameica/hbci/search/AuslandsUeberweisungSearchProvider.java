@@ -42,7 +42,7 @@ public class AuslandsUeberweisungSearchProvider implements SearchProvider
    */
   public String getName()
   {
-    return Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N().tr("Auslandsüberweisungen");
+    return Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N().tr("SEPA-Überweisungen");
   }
 
   /**
@@ -58,9 +58,8 @@ public class AuslandsUeberweisungSearchProvider implements SearchProvider
     DBIterator list = service.createList(AuslandsUeberweisung.class);
     list.addFilter("LOWER(zweck) LIKE ? OR " +
                    "LOWER(empfaenger_name) LIKE ? OR " +
-                   "LOWER(empfaenger_konto) LIKE ? OR " +
-                   "LOWER(empfaenger_bank) LIKE ?",
-                   new String[]{text,text,text,text});
+                   "LOWER(empfaenger_konto) LIKE ?",
+                   new String[]{text,text,text});
     list.setOrder("ORDER BY " + service.getSQLTimestamp("termin") + " DESC");
 
     ArrayList results = new ArrayList();
@@ -127,7 +126,11 @@ public class AuslandsUeberweisungSearchProvider implements SearchProvider
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2009-03-17 23:44:15  willuhn
+ * Revision 1.3  2009-10-20 23:12:58  willuhn
+ * @N Support fuer SEPA-Ueberweisungen
+ * @N Konten um IBAN und BIC erweitert
+ *
+ * Revision 1.2  2009/03/17 23:44:15  willuhn
  * @N BUGZILLA 159 - Auslandsueberweisungen. Erste Version
  *
  * Revision 1.1  2009/03/13 00:25:12  willuhn

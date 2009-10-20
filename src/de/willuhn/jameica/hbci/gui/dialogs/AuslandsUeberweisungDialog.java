@@ -65,7 +65,7 @@ public class AuslandsUeberweisungDialog extends AbstractDialog {
    * @see de.willuhn.jameica.gui.dialogs.AbstractDialog#paint(org.eclipse.swt.widgets.Composite)
    */
   protected void paint(Composite parent) throws Exception {
-		LabelGroup group = new LabelGroup(parent,i18n.tr("Details der Auslandsüberweisung"));
+		LabelGroup group = new LabelGroup(parent,i18n.tr("Details der SEPA-Überweisung"));
 			
 		group.addText(i18n.tr("Sind Sie sicher, daß Sie die Überweisung jetzt ausführen wollen?") + "\n",true);
 
@@ -79,10 +79,12 @@ public class AuslandsUeberweisungDialog extends AbstractDialog {
 		group.addLabelPair(i18n.tr("Name des Empfänger"),empfName);
 
 		Input empfKto = new LabelInput(ueb.getGegenkontoNummer());
-		empfKto.setComment(ueb.getGegenkontoInstitut());
-		group.addLabelPair(i18n.tr("Konto des Empfängers"),empfKto);
+		group.addLabelPair(i18n.tr("IBAN des Empfängers"),empfKto);
 
-    group.addSeparator();
+    Input empfBic = new LabelInput(ueb.getGegenkontoBLZ());
+    group.addLabelPair(i18n.tr("BIC des Empfängers"),empfBic);
+
+		group.addSeparator();
 
     Input betrag = new LabelInput(HBCI.DECIMALFORMAT.format(ueb.getBetrag()) + " " + ueb.getKonto().getWaehrung());
     group.addLabelPair(i18n.tr("Betrag"),betrag);
@@ -114,7 +116,11 @@ public class AuslandsUeberweisungDialog extends AbstractDialog {
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2009-03-13 00:25:12  willuhn
+ * Revision 1.2  2009-10-20 23:12:58  willuhn
+ * @N Support fuer SEPA-Ueberweisungen
+ * @N Konten um IBAN und BIC erweitert
+ *
+ * Revision 1.1  2009/03/13 00:25:12  willuhn
  * @N Code fuer Auslandsueberweisungen fast fertig
  *
  **********************************************************************/

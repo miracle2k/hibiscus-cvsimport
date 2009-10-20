@@ -225,14 +225,15 @@ public class Converter {
    */
   public static Konto HibiscusKonto2HBCIKonto(de.willuhn.jameica.hbci.rmi.Konto konto) throws RemoteException
 	{
-		org.kapott.hbci.structures.Konto k =
-			new org.kapott.hbci.structures.Konto(konto.getBLZ(),konto.getKontonummer());
-		k.country = "DE";
-		k.curr = konto.getWaehrung();
+		org.kapott.hbci.structures.Konto k = new org.kapott.hbci.structures.Konto(konto.getBLZ(),konto.getKontonummer());
+		k.country    = "DE";
+		k.curr       = konto.getWaehrung();
 		k.customerid = konto.getKundennummer();
-    k.type = konto.getBezeichnung(); // BUGZILLA 338
-		k.name = konto.getName();
-    k.subnumber = konto.getUnterkonto(); // BUGZILLA 355
+    k.type       = konto.getBezeichnung(); // BUGZILLA 338
+		k.name       = konto.getName();
+    k.subnumber  = konto.getUnterkonto(); // BUGZILLA 355
+    k.iban       = konto.getIban();
+    k.bic        = konto.getBic();
 		return k;  	
 	}
 
@@ -266,8 +267,7 @@ public class Converter {
 			return (de.willuhn.jameica.hbci.rmi.Konto) list.next(); // Konto gibts schon
 
 		// Ne, wir erstellen ein neues
-		de.willuhn.jameica.hbci.rmi.Konto k =
-			(de.willuhn.jameica.hbci.rmi.Konto) Settings.getDBService().createObject(de.willuhn.jameica.hbci.rmi.Konto.class,null);
+		de.willuhn.jameica.hbci.rmi.Konto k = (de.willuhn.jameica.hbci.rmi.Konto) Settings.getDBService().createObject(de.willuhn.jameica.hbci.rmi.Konto.class,null);
 		k.setBLZ(konto.blz);
 		k.setKontonummer(konto.number);
     k.setUnterkonto(konto.subnumber); // BUGZILLA 355
@@ -275,6 +275,8 @@ public class Converter {
 		k.setName(konto.name);
 		k.setBezeichnung(konto.type);
 		k.setWaehrung(konto.curr);
+		k.setIban(konto.iban);
+		k.setBic(konto.bic);
 		return k;  	
 	}
 
@@ -403,7 +405,11 @@ public class Converter {
 
 /**********************************************************************
  * $Log$
- * Revision 1.53  2009-02-23 23:44:50  willuhn
+ * Revision 1.54  2009-10-20 23:12:58  willuhn
+ * @N Support fuer SEPA-Ueberweisungen
+ * @N Konten um IBAN und BIC erweitert
+ *
+ * Revision 1.53  2009/02/23 23:44:50  willuhn
  * @N Etwas Code fuer Support fuer Unter-/Ober-Kategorien
  *
  * Revision 1.52  2009/02/12 16:14:33  willuhn

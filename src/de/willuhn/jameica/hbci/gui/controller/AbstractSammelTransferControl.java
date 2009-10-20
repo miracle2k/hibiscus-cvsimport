@@ -24,6 +24,7 @@ import de.willuhn.jameica.gui.input.LabelInput;
 import de.willuhn.jameica.gui.input.TextInput;
 import de.willuhn.jameica.gui.parts.TablePart;
 import de.willuhn.jameica.hbci.HBCI;
+import de.willuhn.jameica.hbci.gui.filter.KontoFilter;
 import de.willuhn.jameica.hbci.gui.input.KontoInput;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.SammelTransfer;
@@ -89,7 +90,7 @@ public abstract class AbstractSammelTransferControl extends AbstractControl
     
     Konto k = getTransfer().getKonto();
     KontoListener kl = new KontoListener();
-    this.kontoAuswahl = new KontoInput(k,false);
+    this.kontoAuswahl = new KontoInput(k,KontoFilter.ACTIVE);
     this.kontoAuswahl.setMandatory(true);
     this.kontoAuswahl.addListener(kl);
     this.kontoAuswahl.setEnabled(!getTransfer().ausgefuehrt());
@@ -218,7 +219,11 @@ public abstract class AbstractSammelTransferControl extends AbstractControl
 
 /*****************************************************************************
  * $Log$
- * Revision 1.9  2009-10-07 23:08:56  willuhn
+ * Revision 1.10  2009-10-20 23:12:58  willuhn
+ * @N Support fuer SEPA-Ueberweisungen
+ * @N Konten um IBAN und BIC erweitert
+ *
+ * Revision 1.9  2009/10/07 23:08:56  willuhn
  * @N BUGZILLA 745: Deaktivierte Konten in Auswertungen zwar noch anzeigen, jedoch mit "[]" umschlossen. Bei der Erstellung von neuen Auftraegen bleiben sie jedoch ausgeblendet. Bei der Gelegenheit wird das Default-Konto jetzt mit ">" markiert
  *
  * Revision 1.8  2009/03/11 23:40:45  willuhn

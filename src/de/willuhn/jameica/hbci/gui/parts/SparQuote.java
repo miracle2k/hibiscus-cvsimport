@@ -52,6 +52,7 @@ import de.willuhn.jameica.hbci.HBCIProperties;
 import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.gui.chart.LineChart;
 import de.willuhn.jameica.hbci.gui.chart.LineChartData;
+import de.willuhn.jameica.hbci.gui.filter.KontoFilter;
 import de.willuhn.jameica.hbci.gui.input.KontoInput;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Umsatz;
@@ -125,7 +126,7 @@ public class SparQuote implements Part
     if (this.kontoauswahl != null)
       return this.kontoauswahl;
 
-    this.kontoauswahl = new KontoInput(null,true);
+    this.kontoauswahl = new KontoInput(null,KontoFilter.ALL);
     this.kontoauswahl.setPleaseChoose(i18n.tr("<Alle Konten>"));
     this.kontoauswahl.addListener(new DelayedListener(500,this.listener));
     return this.kontoauswahl;
@@ -517,7 +518,11 @@ public class SparQuote implements Part
 
 /*********************************************************************
  * $Log$
- * Revision 1.20  2009-10-07 23:08:56  willuhn
+ * Revision 1.21  2009-10-20 23:12:58  willuhn
+ * @N Support fuer SEPA-Ueberweisungen
+ * @N Konten um IBAN und BIC erweitert
+ *
+ * Revision 1.20  2009/10/07 23:08:56  willuhn
  * @N BUGZILLA 745: Deaktivierte Konten in Auswertungen zwar noch anzeigen, jedoch mit "[]" umschlossen. Bei der Erstellung von neuen Auftraegen bleiben sie jedoch ausgeblendet. Bei der Gelegenheit wird das Default-Konto jetzt mit ">" markiert
  *
  * Revision 1.19  2009/05/08 13:58:30  willuhn

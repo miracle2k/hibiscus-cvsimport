@@ -90,6 +90,10 @@ public class KontoNew extends AbstractView {
 		left.addLabelPair(i18n.tr("Sicherheitsmedium"),        control.getPassportAuswahl());
 
     SimpleContainer right = new SimpleContainer(columns.getComposite(),true);
+    right.addHeadline(i18n.tr("IBAN/BIC"));
+    right.addLabelPair(i18n.tr("IBAN"),                    control.getIban());
+    right.addLabelPair(i18n.tr("BIC"),                     control.getBic());
+
     right.addHeadline(i18n.tr("Notizen"));
     right.addPart(control.getKommentar());
 
@@ -148,7 +152,11 @@ public class KontoNew extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.27  2009-09-15 00:23:35  willuhn
+ * Revision 1.28  2009-10-20 23:12:58  willuhn
+ * @N Support fuer SEPA-Ueberweisungen
+ * @N Konten um IBAN und BIC erweitert
+ *
+ * Revision 1.27  2009/09/15 00:23:35  willuhn
  * @N BUGZILLA 745
  *
  * Revision 1.26  2009/01/26 23:17:46  willuhn

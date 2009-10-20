@@ -36,7 +36,7 @@ public class AuslandsUeberweisungList extends AbstractView {
 
 		I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
-		GUI.getView().setTitle(i18n.tr("Vorhandene Auslandsüberweisungen"));
+		GUI.getView().setTitle(i18n.tr("Vorhandene SEPA-Überweisungen"));
 		
 		final AuslandsUeberweisungControl control = new AuslandsUeberweisungControl(this);
 		
@@ -47,7 +47,7 @@ public class AuslandsUeberweisungList extends AbstractView {
 			ButtonArea buttons = new ButtonArea(getParent(),3);
 	    buttons.addButton(new Back(false));
       buttons.addButton(i18n.tr("Importieren..."),new AuslandsUeberweisungImport(),null,false,"document-open.png");
-			buttons.addButton(i18n.tr("Neue Auslandsüberweisung"), new AuslandsUeberweisungNew(),null,true,"text-x-generic.png");
+			buttons.addButton(i18n.tr("Neue SEPA-Überweisung"), new AuslandsUeberweisungNew(),null,true,"text-x-generic.png");
 
 		}
 		catch (Exception e)
@@ -61,7 +61,11 @@ public class AuslandsUeberweisungList extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2009-05-06 23:11:23  willuhn
+ * Revision 1.3  2009-10-20 23:12:58  willuhn
+ * @N Support fuer SEPA-Ueberweisungen
+ * @N Konten um IBAN und BIC erweitert
+ *
+ * Revision 1.2  2009/05/06 23:11:23  willuhn
  * @N Mehr Icons auf Buttons
  *
  * Revision 1.1  2009/03/13 00:25:12  willuhn

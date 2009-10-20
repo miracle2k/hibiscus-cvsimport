@@ -53,7 +53,7 @@ public class AuslandsUeberweisungImport implements Action
 		catch (Exception e)
 		{
 			Logger.error("error while importing transfers",e);
-			GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Importieren der Auslandsüberweisungen"));
+			GUI.getStatusBar().setErrorText(i18n.tr("Fehler beim Importieren der SEPA-Überweisungen"));
 		}
   }
 
@@ -62,7 +62,11 @@ public class AuslandsUeberweisungImport implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2009-03-17 23:44:15  willuhn
+ * Revision 1.2  2009-10-20 23:12:58  willuhn
+ * @N Support fuer SEPA-Ueberweisungen
+ * @N Konten um IBAN und BIC erweitert
+ *
+ * Revision 1.1  2009/03/17 23:44:15  willuhn
  * @N BUGZILLA 159 - Auslandsueberweisungen. Erste Version
  *
  **********************************************************************/
