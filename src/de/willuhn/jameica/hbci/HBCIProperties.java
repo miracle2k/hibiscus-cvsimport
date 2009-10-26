@@ -213,15 +213,29 @@ public class HBCIProperties
   {
     if (!de.willuhn.jameica.hbci.Settings.getKontoCheck())
       return true;
+
+    // Haben wir eine gueltige BLZ?
+    if (blz == null || 
+        blz.length() == 0 || 
+        blz.length() != HBCI_BLZ_LENGTH)
+    {
+      Logger.warn("blz [" + blz + "] not defined or out of range, skip crc check");
+      return true;
+    }
+    
+    // Haben wir eine gueltige Kontonummer?
+    if (kontonummer == null || 
+        kontonummer.length() == 0 ||
+        kontonummer.length() > HBCI_KTO_MAXLENGTH_HARD)
+    {
+      Logger.warn("account number [" + kontonummer + "] not defined out of range, skip crc check");
+      return true;
+    }
+    
     try
     {
-      if (kontonummer == null || 
-          kontonummer.length() == 0 ||
-          kontonummer.length() > HBCI_KTO_MAXLENGTH_HARD)
-      {
-        Logger.warn("account number [" + kontonummer + "] out of range, skip crc check");
-        return true;
-      }
+      if (!HBCIUtils.canCheckAccountCRC(blz))
+        return true; // koennen wir nicht pruefen. Dann akzeptieren wir das so.
       return HBCIUtils.checkAccountCRC(blz, kontonummer);
     }
     catch (Exception e)
@@ -231,6 +245,9 @@ public class HBCIProperties
         Logger.warn("HBCI4Java subsystem seems to be not initialized for this thread group, adding thread group");
         HBCI plugin = (HBCI) Application.getPluginLoader().getPlugin(HBCI.class);
         HBCIUtils.initThread(plugin.getHBCIPropetries(),plugin.getHBCICallback());
+
+        if (!HBCIUtils.canCheckAccountCRC(blz))
+          return true;
         return HBCIUtils.checkAccountCRC(blz, kontonummer);
       }
       catch (Exception e2)
@@ -327,7 +344,10 @@ public class HBCIProperties
 
 /**********************************************************************
  * $Log$
- * Revision 1.38  2009-03-18 22:09:25  willuhn
+ * Revision 1.39  2009-10-26 15:58:54  willuhn
+ * @C Account CRC check nur, wenn der Alg. bekannt ist
+ *
+ * Revision 1.38  2009/03/18 22:09:25  willuhn
  * *** empty log message ***
  *
  * Revision 1.37  2009/02/18 00:35:54  willuhn
