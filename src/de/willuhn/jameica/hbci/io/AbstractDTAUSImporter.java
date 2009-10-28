@@ -149,7 +149,16 @@ public abstract class AbstractDTAUSImporter extends AbstractDTAUSIO implements I
           {
             error++;
             
-            String s = i18n.tr("Fehler beim Import eines Datensatzes\n\n{0}\n\nDatensatz überspringen und Import fortsetzen?",ace.getMessage());
+            StringBuffer sb = new StringBuffer();
+            sb.append(i18n.tr("BLZ: {0}",Long.toString(c.getBlzEndbeguenstigt())));
+            sb.append("\n");
+            sb.append(i18n.tr("Kontonummer: {0}",Long.toString(c.getKontonummer())));
+            sb.append("\n");
+            sb.append(i18n.tr("Name: {0}",c.getNameEmpfaenger()));
+            sb.append("\n");
+            sb.append(i18n.tr("Betrag: {0}",HBCI.DECIMALFORMAT.format(c.getBetragInEuro())));
+
+            String s = i18n.tr("Fehler beim Import eines Datensatzes\n\n{0}\n\n{1}\n\nDatensatz überspringen und Import fortsetzen?",new String[]{sb.toString(),ace.getMessage()});
             if (!Application.getCallback().askUser(s))
             {
               monitor.setStatusText(i18n.tr("Import abgebrochen"));
@@ -312,7 +321,10 @@ public abstract class AbstractDTAUSImporter extends AbstractDTAUSIO implements I
 
 /*********************************************************************
  * $Log$
- * Revision 1.14  2009-06-15 08:51:16  willuhn
+ * Revision 1.15  2009-10-28 10:21:01  willuhn
+ * @N BUGZILLA 773
+ *
+ * Revision 1.14  2009/06/15 08:51:16  willuhn
  * @N BUGZILLA 736
  *
  * Revision 1.13  2009/03/01 23:17:04  willuhn
