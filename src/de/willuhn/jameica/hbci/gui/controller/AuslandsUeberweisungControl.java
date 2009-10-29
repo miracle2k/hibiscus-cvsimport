@@ -85,7 +85,7 @@ public class AuslandsUeberweisungControl extends AbstractControl
   }
   
   /**
-   * @return
+   * @return der Auftrag
    * @throws RemoteException
    */
   public AuslandsUeberweisung getTransfer() throws RemoteException
@@ -503,7 +503,10 @@ public class AuslandsUeberweisungControl extends AbstractControl
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2009-10-20 23:12:58  willuhn
+ * Revision 1.6  2009-10-29 12:26:04  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.5  2009/10/20 23:12:58  willuhn
  * @N Support fuer SEPA-Ueberweisungen
  * @N Konten um IBAN und BIC erweitert
  *
