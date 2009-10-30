@@ -33,7 +33,6 @@ import de.willuhn.datasource.GenericObject;
 import de.willuhn.datasource.pseudo.PseudoIterator;
 import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.jameica.gui.Action;
-import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.Part;
 import de.willuhn.jameica.gui.formatter.CurrencyFormatter;
 import de.willuhn.jameica.gui.formatter.Formatter;
@@ -155,7 +154,6 @@ public class SparQuote implements Part
    */
   public void paint(Composite parent) throws RemoteException
   {
-    GUI.getView().setLogoText(i18n.tr("Daten werden geladen..."));
     load();
 
     LabelGroup filter = new LabelGroup(parent,i18n.tr("Anzeige einschränken"));
@@ -518,7 +516,10 @@ public class SparQuote implements Part
 
 /*********************************************************************
  * $Log$
- * Revision 1.21  2009-10-20 23:12:58  willuhn
+ * Revision 1.22  2009-10-30 00:36:09  willuhn
+ * @R Hinweistext "Daten werden geladen..." entfernt
+ *
+ * Revision 1.21  2009/10/20 23:12:58  willuhn
  * @N Support fuer SEPA-Ueberweisungen
  * @N Konten um IBAN und BIC erweitert
  *
