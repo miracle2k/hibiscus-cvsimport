@@ -265,23 +265,23 @@ public class SparQuote implements Part
     while (umsaetze.hasNext())
     {
       Umsatz u = (Umsatz) umsaetze.next();
-      Date valuta = u.getValuta();
-      if (valuta == null)
+      Date date = u.getDatum();
+      if (date == null)
       {
         Logger.warn("no valuta found for umsatz, skipping record");
         continue;
       }
 
-      if (currentLimit == null || valuta.after(currentLimit) || valuta.equals(currentLimit))
+      if (currentLimit == null || date.after(currentLimit) || date.equals(currentLimit))
       {
         // Wir haben das Limit erreicht. Also beginnen wir einen neuen Block
         currentEntry = new UmsatzEntry();
-        currentEntry.monat = valuta;
+        currentEntry.monat = date;
         list.add(currentEntry);
 
         // BUGZILLA 337
         // Neues Limit definieren
-        cal.setTime(valuta);
+        cal.setTime(date);
         cal.add(Calendar.MONTH,1);
         
         // BUGZILLA 691
@@ -516,7 +516,10 @@ public class SparQuote implements Part
 
 /*********************************************************************
  * $Log$
- * Revision 1.22  2009-10-30 00:36:09  willuhn
+ * Revision 1.23  2009-10-30 10:05:05  willuhn
+ * @B Datum statt Valuta verwenden - ein Umsatz landet sonst u.U. im falschen Monat, wenn Datum in einem, Valuta aber im anderen Monat ist
+ *
+ * Revision 1.22  2009/10/30 00:36:09  willuhn
  * @R Hinweistext "Daten werden geladen..." entfernt
  *
  * Revision 1.21  2009/10/20 23:12:58  willuhn
