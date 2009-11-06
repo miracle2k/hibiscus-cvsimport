@@ -258,6 +258,7 @@ public class UmsatzTypTreeControl extends AbstractControl
       this.tree = null;
       getTree().paint(comp);
       comp.layout(true);
+      handleRefreshChart();
     }
     catch (RemoteException re)
     {
@@ -305,7 +306,10 @@ public class UmsatzTypTreeControl extends AbstractControl
 
 /*******************************************************************************
  * $Log$
- * Revision 1.10  2009-10-20 23:12:58  willuhn
+ * Revision 1.11  2009-11-06 09:50:31  willuhn
+ * @B BUGZILLA 779
+ *
+ * Revision 1.10  2009/10/20 23:12:58  willuhn
  * @N Support fuer SEPA-Ueberweisungen
  * @N Konten um IBAN und BIC erweitert
  *
