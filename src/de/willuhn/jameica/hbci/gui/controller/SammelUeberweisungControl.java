@@ -25,6 +25,7 @@ import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.gui.action.SammelTransferBuchungDelete;
 import de.willuhn.jameica.hbci.gui.action.SammelUeberweisungBuchungNew;
 import de.willuhn.jameica.hbci.gui.action.SammelUeberweisungNew;
+import de.willuhn.jameica.hbci.gui.action.UeberweisungNew;
 import de.willuhn.jameica.hbci.gui.parts.SammelTransferBuchungList;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.SammelTransfer;
@@ -157,6 +158,8 @@ public class SammelUeberweisungControl extends AbstractSammelTransferControl
       }
       
     });
+    ctx.addItem(ContextMenuItem.SEPARATOR);
+    ctx.addItem(new CheckedContextMenuItem(i18n.tr("In Einzelüberweisung duplizieren"), new UeberweisungNew(),"stock_next.png"));
     buchungen.setContextMenu(ctx);
     return buchungen;
   }
@@ -229,7 +232,10 @@ public class SammelUeberweisungControl extends AbstractSammelTransferControl
 
 /*****************************************************************************
  * $Log$
- * Revision 1.5  2009-05-08 13:58:30  willuhn
+ * Revision 1.6  2009-11-26 12:00:21  willuhn
+ * @N Buchungen aus Sammelauftraegen in Einzelauftraege duplizieren
+ *
+ * Revision 1.5  2009/05/08 13:58:30  willuhn
  * @N Icons in allen Menus und auf allen Buttons
  * @N Fuer Umsatz-Kategorien koennen nun benutzerdefinierte Farben vergeben werden
  *

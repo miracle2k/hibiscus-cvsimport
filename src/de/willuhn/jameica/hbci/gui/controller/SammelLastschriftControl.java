@@ -22,6 +22,7 @@ import de.willuhn.jameica.gui.parts.ContextMenuItem;
 import de.willuhn.jameica.gui.parts.TablePart;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
+import de.willuhn.jameica.hbci.gui.action.LastschriftNew;
 import de.willuhn.jameica.hbci.gui.action.SammelLastBuchungNew;
 import de.willuhn.jameica.hbci.gui.action.SammelLastschriftNew;
 import de.willuhn.jameica.hbci.gui.action.SammelTransferBuchungDelete;
@@ -154,6 +155,8 @@ public class SammelLastschriftControl extends AbstractSammelTransferControl
         return false;
       }
     });
+    ctx.addItem(ContextMenuItem.SEPARATOR);
+    ctx.addItem(new CheckedContextMenuItem(i18n.tr("In Einzellastschrift duplizieren"), new LastschriftNew(),"stock_previous.png"));
     buchungen.setContextMenu(ctx);
     return buchungen;
   }
@@ -226,7 +229,10 @@ public class SammelLastschriftControl extends AbstractSammelTransferControl
 
 /*****************************************************************************
  * $Log$
- * Revision 1.15  2009-05-08 13:58:30  willuhn
+ * Revision 1.16  2009-11-26 12:00:21  willuhn
+ * @N Buchungen aus Sammelauftraegen in Einzelauftraege duplizieren
+ *
+ * Revision 1.15  2009/05/08 13:58:30  willuhn
  * @N Icons in allen Menus und auf allen Buttons
  * @N Fuer Umsatz-Kategorien koennen nun benutzerdefinierte Farben vergeben werden
  *
