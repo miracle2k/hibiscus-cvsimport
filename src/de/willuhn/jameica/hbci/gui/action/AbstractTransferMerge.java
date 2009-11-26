@@ -70,11 +70,16 @@ public abstract class AbstractTransferMerge implements Action
       if (t.getKonto() == null)
         t.setKonto(transfers[0].getKonto());
       TransferMergeDialog d = new TransferMergeDialog(t,TransferMergeDialog.POSITION_CENTER);
-      boolean delete = ((Boolean) d.open()).booleanValue();
+      SammelTransfer existing = (SammelTransfer) d.open();
+      if (!existing.isNewObject()) // Das ist ein bereits existierender
+        t = existing;
+      
+      boolean delete = d.getDelete();
       
       // OK, wir starten die Erzeugung des Auftrages
       t.transactionBegin();
-      t.store();
+      if (t.isNewObject())
+        t.store(); // nur noetig, wenn ein neuer Sammelauftrag erzeugt wird
       
       Class bClass = getBuchungClass();
       for (int i=0;i<transfers.length;++i)
@@ -147,7 +152,10 @@ public abstract class AbstractTransferMerge implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2008-12-04 21:30:06  willuhn
+ * Revision 1.3  2009-11-26 13:25:30  willuhn
+ * @N Einzel-Auftraege in existierende Sammel-Auftraege uebernehmen
+ *
+ * Revision 1.2  2008/12/04 21:30:06  willuhn
  * @N BUGZILLA 188
  *
  * Revision 1.1  2007/10/25 15:47:21  willuhn
