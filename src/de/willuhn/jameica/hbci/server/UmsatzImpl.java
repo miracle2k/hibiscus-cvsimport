@@ -467,7 +467,7 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
 
       String kto = getGegenkontoNummer();
       String blz = getGegenkontoBLZ();
-      if (kto == null || blz == null)
+      if (kto == null || kto.length() == 0 || blz == null || blz.length() == 0)
         return null;
 
       return i18n.tr("Kto. {0}, BLZ {1}", new String[]{kto,blz});
@@ -747,7 +747,10 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
 
 /**********************************************************************
  * $Log$
- * Revision 1.68  2009-10-29 22:52:05  willuhn
+ * Revision 1.69  2010-01-18 22:59:05  willuhn
+ * @B BUGZILLA 808
+ *
+ * Revision 1.68  2009/10/29 22:52:05  willuhn
  * *** empty log message ***
  *
  * Revision 1.67  2009/09/15 00:23:35  willuhn
