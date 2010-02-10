@@ -77,9 +77,9 @@ public class DBSupportMySqlImpl extends AbstractDBSupportImpl
     {
       I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
       
-      String text = i18n.tr("Bei der Verwendung von MySQL werden Datenbank-Updates " +
-          "nicht automatisch ausgeführt. Bitte führen Sie das folgende SQL-Script " +
-          "manuell aus:\n{0}",f.getAbsolutePath());
+      String text = i18n.tr("Bei der Verwendung von MySQL wird die Datenbank " +
+          "nicht automatisch angelegt. Bitte führen Sie das folgende SQL-Script " +
+          "manuell aus, falls Sie dies nicht bereits getan haben:\n{0}",f.getAbsolutePath());
       Application.addWelcomeMessage(text);
     }
   }
@@ -116,7 +116,10 @@ public class DBSupportMySqlImpl extends AbstractDBSupportImpl
 
 /*********************************************************************
  * $Log$
- * Revision 1.9  2009-04-05 21:40:56  willuhn
+ * Revision 1.10  2010-02-10 14:32:59  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.9  2009/04/05 21:40:56  willuhn
  * @C checkConnection() nur noch alle hoechstens 10 Sekunden ausfuehren
  *
  * Revision 1.8  2008/12/17 22:48:51  willuhn
