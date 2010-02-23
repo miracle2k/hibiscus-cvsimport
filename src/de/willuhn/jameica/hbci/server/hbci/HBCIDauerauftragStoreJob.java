@@ -103,7 +103,7 @@ public class HBCIDauerauftragStoreJob extends AbstractHBCIJob
 
 			String zweck2 = dauerauftrag.getZweck2();
       boolean haveSecond = false;
-			if (zweck2 != null && zweck2.length() > 0)
+			if (zweck2 != null && zweck2.trim().length() > 0)
 			{
         haveSecond = true;
         setJobParam("usage_2",zweck2);
@@ -112,7 +112,7 @@ public class HBCIDauerauftragStoreJob extends AbstractHBCIJob
       int pos = haveSecond ? 3 : 2; // Wenn Zeile 2 fehlt, dann alles eins nach vorn schieben
       for (int i=0;i<lines.length;++i)
       {
-        if (lines[i] == null || lines[i].length() == 0)
+        if (lines[i] == null || lines[i].trim().length() == 0)
           continue;
         setJobParam("usage_" + pos,lines[i]);
         pos++;
@@ -223,7 +223,10 @@ public class HBCIDauerauftragStoreJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.24  2009-03-24 23:02:51  willuhn
+ * Revision 1.25  2010-02-23 11:20:45  willuhn
+ * @C Verwendungszweck ignorieren, wenn er nur aus Whitespaces besteht
+ *
+ * Revision 1.24  2009/03/24 23:02:51  willuhn
  * @B BUGZILLA 712
  *
  * Revision 1.23  2008/11/17 23:30:00  willuhn
