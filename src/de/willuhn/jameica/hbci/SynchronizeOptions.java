@@ -53,6 +53,20 @@ public class SynchronizeOptions implements Serializable
            getSyncUeberweisungen() ||
            getSyncAuslandsUeberweisungen();
   }
+  
+  /**
+   * Aendert den Synchronisierungsstatus aller Auftragstypen.
+   * @param status neuer Status.
+   */
+  public void setAll(boolean status)
+  {
+    this.setSyncSaldo(status);
+    this.setSyncKontoauszuege(status);
+    this.setSyncDauerauftraege(status);
+    this.setSyncLastschriften(status);
+    this.setSyncUeberweisungen(status);
+    this.setSyncAuslandsUeberweisungen(status);
+  }
 
   /**
    * BUGZILLA 346
@@ -173,7 +187,10 @@ public class SynchronizeOptions implements Serializable
 
 /*********************************************************************
  * $Log$
- * Revision 1.7  2009-09-15 00:23:35  willuhn
+ * Revision 1.8  2010-02-26 15:42:23  willuhn
+ * @N Alle Synchronisierungsoptionen auf einmal aktivieren/deaktivieren
+ *
+ * Revision 1.7  2009/09/15 00:23:35  willuhn
  * @N BUGZILLA 745
  *
  * Revision 1.6  2009/03/17 23:44:15  willuhn
