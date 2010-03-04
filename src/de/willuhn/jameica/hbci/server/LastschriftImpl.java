@@ -57,6 +57,7 @@ public class LastschriftImpl extends AbstractBaseUeberweisungImpl
 		u.setTermin(getTermin());
 		u.setZweck(getZweck());
 		u.setZweck2(getZweck2());
+    u.setWeitereVerwendungszwecke(getWeitereVerwendungszwecke());
     u.setTextSchluessel(getTextSchluessel());
 		return u;
 	}
@@ -73,7 +74,10 @@ public class LastschriftImpl extends AbstractBaseUeberweisungImpl
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2008-08-01 11:05:14  willuhn
+ * Revision 1.8  2010-03-04 09:39:40  willuhn
+ * @B BUGZILLA 829
+ *
+ * Revision 1.7  2008/08/01 11:05:14  willuhn
  * @N BUGZILLA 587
  *
  * Revision 1.6  2008/02/15 17:39:10  willuhn

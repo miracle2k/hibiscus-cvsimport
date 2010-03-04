@@ -57,6 +57,7 @@ public class UeberweisungImpl extends AbstractBaseUeberweisungImpl implements Ue
     u.setKonto(getKonto());
     u.setZweck(getZweck());
     u.setZweck2(getZweck2());
+    u.setWeitereVerwendungszwecke(getWeitereVerwendungszwecke());
     u.setTextSchluessel(getTextSchluessel());
     
     u.setTermin(isTerminUeberweisung() ? getTermin() : new Date());
@@ -158,7 +159,10 @@ public class UeberweisungImpl extends AbstractBaseUeberweisungImpl implements Ue
 
 /**********************************************************************
  * $Log$
- * Revision 1.42  2009-05-12 22:53:33  willuhn
+ * Revision 1.43  2010-03-04 09:39:40  willuhn
+ * @B BUGZILLA 829
+ *
+ * Revision 1.42  2009/05/12 22:53:33  willuhn
  * @N BUGZILLA 189 - Ueberweisung als Umbuchung
  *
  * Revision 1.41  2008/08/01 11:05:14  willuhn
