@@ -19,6 +19,7 @@ import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.dialogs.YesNoDialog;
 import de.willuhn.jameica.hbci.HBCI;
+import de.willuhn.jameica.hbci.messaging.ObjectDeletedMessage;
 import de.willuhn.jameica.messaging.StatusBarMessage;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.jameica.system.BackgroundTask;
@@ -150,6 +151,7 @@ public class DBObjectDelete implements Action
 
           // ok, wir loeschen das Objekt
           list[i].delete();
+          Application.getMessagingFactory().sendMessage(new ObjectDeletedMessage(list[i]));
         }
         
         if (monitor != null)
@@ -197,7 +199,10 @@ public class DBObjectDelete implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2007-07-16 12:51:15  willuhn
+ * Revision 1.5  2010-03-05 15:24:53  willuhn
+ * @N BUGZILLA 686
+ *
+ * Revision 1.4  2007/07/16 12:51:15  willuhn
  * @D javadoc
  *
  * Revision 1.3  2007/04/25 14:07:26  willuhn
