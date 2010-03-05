@@ -105,7 +105,7 @@ public class UmsatzTypAuswahlDialog extends AbstractDialog
     group.addText(i18n.tr("Bitte wählen Sie die zu verwendende Kategorie aus."),true);
 
     DBIterator list = Settings.getDBService().createList(UmsatzTyp.class);
-    list.setOrder("ORDER BY parent_id,nummer,name");
+    list.setOrder("ORDER BY nummer,name");
     
     if (this.choosen != null)
       this.input = new UmsatzTypInput(list,this.choosen);
@@ -139,7 +139,10 @@ public class UmsatzTypAuswahlDialog extends AbstractDialog
 
 /*********************************************************************
  * $Log$
- * Revision 1.10  2010-03-05 18:07:26  willuhn
+ * Revision 1.11  2010-03-05 18:29:39  willuhn
+ * @B Einrueckung nochmal entfernt - das kann dazu fuehren, dass Kinder falsch einsortiert werden (ein einfaches order by parent_id reicht nicht)
+ *
+ * Revision 1.10  2010/03/05 18:07:26  willuhn
  * @N Unterkategorien in Selectbox einruecken
  *
  * Revision 1.9  2010/03/05 18:00:27  willuhn
