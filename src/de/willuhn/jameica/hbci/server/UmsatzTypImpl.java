@@ -605,13 +605,26 @@ public class UmsatzTypImpl extends AbstractDBObjectNode implements UmsatzTyp
   {
     setAttribute("customcolor", new Integer(b ? 1 : 0));
   }
+
+  /**
+   * @see de.willuhn.datasource.db.AbstractDBObjectNode#getChildren()
+   */
+  public GenericIterator getChildren() throws RemoteException
+  {
+    DBIterator i = (DBIterator) super.getChildren();
+    i.setOrder("order by nummer,name");
+    return i;
+  }
   
   
 }
 
 /*******************************************************************************
  * $Log$
- * Revision 1.50  2009-05-08 13:58:30  willuhn
+ * Revision 1.51  2010-03-05 17:54:13  willuhn
+ * @C Umsatz-Kategorien nach Nummer und anschliessend nach Name sortieren
+ *
+ * Revision 1.50  2009/05/08 13:58:30  willuhn
  * @N Icons in allen Menus und auf allen Buttons
  * @N Fuer Umsatz-Kategorien koennen nun benutzerdefinierte Farben vergeben werden
  *

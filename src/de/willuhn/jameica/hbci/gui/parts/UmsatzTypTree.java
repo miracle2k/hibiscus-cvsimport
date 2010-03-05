@@ -61,7 +61,7 @@ public class UmsatzTypTree extends TreePart
   {
     DBIterator list = Settings.getDBService().createList(UmsatzTyp.class);
     list.addFilter("parent_id is null");
-    list.setOrder("order by name");
+    list.setOrder("order by nummer,name");
     return list;
   }
   
@@ -203,7 +203,10 @@ public class UmsatzTypTree extends TreePart
 
 /**********************************************************************
  * $Log$
- * Revision 1.11  2010-03-05 15:24:53  willuhn
+ * Revision 1.12  2010-03-05 17:54:13  willuhn
+ * @C Umsatz-Kategorien nach Nummer und anschliessend nach Name sortieren
+ *
+ * Revision 1.11  2010/03/05 15:24:53  willuhn
  * @N BUGZILLA 686
  *
  **********************************************************************/
