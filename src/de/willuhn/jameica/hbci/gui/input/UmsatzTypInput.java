@@ -106,6 +106,28 @@ public class UmsatzTypInput extends SelectInput
   }
 
   /**
+   * @see de.willuhn.jameica.gui.input.SelectInput#format(java.lang.Object)
+   */
+  protected String format(Object bean)
+  {
+    String name = super.format(bean);
+    try
+    {
+      UmsatzTyp t = (UmsatzTyp) bean;
+      int depth = t.getPath().size();
+      for (int i=0;i<depth;++i)
+      {
+        name = "    " + name;
+      }
+    }
+    catch (Exception e)
+    {
+      Logger.error("unable to indent category name",e);
+    }
+    return name;
+  }
+
+  /**
    * Aktualisiert den Kommentar.
    */
   private void refreshComment()
@@ -133,7 +155,10 @@ public class UmsatzTypInput extends SelectInput
 
 /*********************************************************************
  * $Log$
- * Revision 1.6  2008-08-29 16:46:24  willuhn
+ * Revision 1.7  2010-03-05 18:07:26  willuhn
+ * @N Unterkategorien in Selectbox einruecken
+ *
+ * Revision 1.6  2008/08/29 16:46:24  willuhn
  * @N BUGZILLA 616
  *
  * Revision 1.5  2008/08/08 08:57:14  willuhn
