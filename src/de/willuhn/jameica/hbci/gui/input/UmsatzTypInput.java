@@ -106,31 +106,6 @@ public class UmsatzTypInput extends SelectInput
   }
 
   /**
-   * @see de.willuhn.jameica.gui.input.SelectInput#format(java.lang.Object)
-   */
-  protected String format(Object bean)
-  {
-    String name = super.format(bean);
-    return name;
-    
-// TODO: Einrueckung
-//    try
-//    {
-//      UmsatzTyp t = (UmsatzTyp) bean;
-//      int depth = t.getPath().size();
-//      for (int i=0;i<depth;++i)
-//      {
-//        name = "    " + name;
-//      }
-//    }
-//    catch (Exception e)
-//    {
-//      Logger.error("unable to indent category name",e);
-//    }
-//    return name;
-  }
-
-  /**
    * Aktualisiert den Kommentar.
    */
   private void refreshComment()
@@ -158,7 +133,10 @@ public class UmsatzTypInput extends SelectInput
 
 /*********************************************************************
  * $Log$
- * Revision 1.8  2010-03-05 18:29:26  willuhn
+ * Revision 1.9  2010-03-05 23:29:18  willuhn
+ * @N Statische Basis-Funktion zum Laden der Kategorien in der richtigen Reihenfolge
+ *
+ * Revision 1.8  2010/03/05 18:29:26  willuhn
  * @B Einrueckung nochmal entfernt - das kann dazu fuehren, dass Kinder falsch einsortiert werden (ein einfaches order by parent_id reicht nicht)
  *
  * Revision 1.7  2010/03/05 18:07:26  willuhn

@@ -32,7 +32,6 @@ import de.willuhn.jameica.gui.formatter.Formatter;
 import de.willuhn.jameica.gui.formatter.TreeFormatter;
 import de.willuhn.jameica.gui.parts.TreePart;
 import de.willuhn.jameica.hbci.HBCI;
-import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.messaging.ObjectDeletedMessage;
 import de.willuhn.jameica.hbci.rmi.UmsatzTyp;
 import de.willuhn.jameica.hbci.server.UmsatzTypUtil;
@@ -59,9 +58,8 @@ public class UmsatzTypTree extends TreePart
    */
   private final static GenericIterator init() throws RemoteException
   {
-    DBIterator list = Settings.getDBService().createList(UmsatzTyp.class);
+    DBIterator list = UmsatzTypUtil.getAll();
     list.addFilter("parent_id is null");
-    list.setOrder("order by nummer,name");
     return list;
   }
   
@@ -203,7 +201,10 @@ public class UmsatzTypTree extends TreePart
 
 /**********************************************************************
  * $Log$
- * Revision 1.12  2010-03-05 17:54:13  willuhn
+ * Revision 1.13  2010-03-05 23:29:18  willuhn
+ * @N Statische Basis-Funktion zum Laden der Kategorien in der richtigen Reihenfolge
+ *
+ * Revision 1.12  2010/03/05 17:54:13  willuhn
  * @C Umsatz-Kategorien nach Nummer und anschliessend nach Name sortieren
  *
  * Revision 1.11  2010/03/05 15:24:53  willuhn
