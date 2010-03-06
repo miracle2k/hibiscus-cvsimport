@@ -73,6 +73,21 @@ public class UmsatzTypInput extends SelectInput
    */
   private static DBIterator init(int typ) throws RemoteException
   {
+    // TODO: Die Selectbox zeigt derzeit eine platte Liste aller Kategorien an.
+    // Der User kann hier die Ordner-Struktur der Kategorien nicht erkennen.
+    // Statt dem DBIterator sollte zuerst nur die Liste der Root-Elemente geladen
+    // werden (UmsatzTypUtil.getRootElements()). Anschliessend sollte 
+    // ueber jedes Element iteriert und rekursiv die Kinder angehaengt werden.
+    // Dann sind sie erstmal in der richtigen Reihenfolge. Anschliessend sollte
+    // die format(Object)-Funktion hier ueberschrieben werden, um abhaengig von
+    // der Pfad-Tiefe einzuruecken.
+    //
+    // Die ganze Sache wuerde aber etliche SQL-Statements ausloesen. Das waere
+    // alles andere als performant. Stattdessen koennte man im UmsatzTypAuswahlDialog
+    // auch direkt den Tree anzeigen. Dann bleibt aber immer noch die Kategorie-
+    // Auswahl in der Umsatz-Detail-Ansicht offen. Dort kann der Tree nicht
+    // eingeblendet werden.
+    
     DBIterator list = UmsatzTypUtil.getAll();
     if (typ != UmsatzTyp.TYP_EGAL)
       list.addFilter("umsatztyp = " + typ + " or umsatztyp = " + UmsatzTyp.TYP_EGAL + " or umsatztyp is null");
@@ -107,7 +122,10 @@ public class UmsatzTypInput extends SelectInput
 
 /*********************************************************************
  * $Log$
- * Revision 1.11  2010-03-05 23:59:31  willuhn
+ * Revision 1.12  2010-03-06 00:03:23  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.11  2010/03/05 23:59:31  willuhn
  * @C Code-Cleanup
  *
  * Revision 1.10  2010/03/05 23:52:27  willuhn
