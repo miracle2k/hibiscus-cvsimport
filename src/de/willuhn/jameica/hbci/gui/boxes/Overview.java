@@ -34,6 +34,8 @@ import de.willuhn.jameica.gui.util.SimpleContainer;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.HBCIProperties;
 import de.willuhn.jameica.hbci.Settings;
+import de.willuhn.jameica.hbci.gui.filter.KontoFilter;
+import de.willuhn.jameica.hbci.gui.input.KontoInput;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.messaging.StatusBarMessage;
 import de.willuhn.jameica.system.Application;
@@ -118,9 +120,8 @@ public class Overview extends AbstractBox implements Box
     if (this.kontoAuswahl != null)
       return this.kontoAuswahl;
     
-    this.kontoAuswahl = new SelectInput(Settings.getDBService().createList(Konto.class),null);
+    this.kontoAuswahl = new KontoInput(null,KontoFilter.ACTIVE);
     this.kontoAuswahl.setPleaseChoose(i18n.tr("Alle Konten"));
-    this.kontoAuswahl.setAttribute("longname");
     this.kontoAuswahl.addListener(new Listener() {
       public void handleEvent(Event event)
       {
@@ -318,7 +319,10 @@ public class Overview extends AbstractBox implements Box
 
 /*********************************************************************
  * $Log$
- * Revision 1.11  2008-04-23 13:20:54  willuhn
+ * Revision 1.12  2010-03-15 00:18:07  willuhn
+ * @N Siehe http://www.onlinebanking-forum.de/phpBB2/viewtopic.php?p=65782#65782 (Punkt 2)
+ *
+ * Revision 1.11  2008/04/23 13:20:54  willuhn
  * @B Bug 588
  *
  * Revision 1.10  2007/12/18 17:10:22  willuhn
