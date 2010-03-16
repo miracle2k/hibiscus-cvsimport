@@ -105,7 +105,6 @@ public class UmsatzList extends TablePart implements Extendable
   public UmsatzList(Konto konto, Action action) throws RemoteException
   {
     this(konto,0,action);
-    this.konto = konto;
   }
 
   /**
@@ -117,6 +116,7 @@ public class UmsatzList extends TablePart implements Extendable
   public UmsatzList(Konto konto, int days, Action action) throws RemoteException
   {
     this(konto.getUmsaetze(days), action);
+    this.konto = konto;
   }
 
   /**
@@ -816,7 +816,17 @@ public class UmsatzList extends TablePart implements Extendable
 
 /**********************************************************************
  * $Log$
- * Revision 1.63  2009-10-13 10:36:38  willuhn
+ * Revision 1.64  2010-03-16 00:44:18  willuhn
+ * @N Komplettes Redesign des CSV-Imports.
+ *   - Kann nun erheblich einfacher auch fuer andere Datentypen (z.Bsp.Ueberweisungen) verwendet werden
+ *   - Fehlertoleranter
+ *   - Mehrfachzuordnung von Spalten (z.Bsp. bei erweitertem Verwendungszweck) moeglich
+ *   - modulare Deserialisierung der Werte
+ *   - CSV-Exports von Hibiscus koennen nun 1:1 auch wieder importiert werden (Import-Preset identisch mit Export-Format)
+ *   - Import-Preset wird nun im XML-Format nach ~/.jameica/hibiscus/csv serialisiert. Damit wird es kuenftig moeglich sein,
+ *     CSV-Import-Profile vorzukonfigurieren und anschliessend zu exportieren, um sie mit anderen Usern teilen zu koennen
+ *
+ * Revision 1.63  2009/10/13 10:36:38  willuhn
  * @N BUGZILLA #590
  *
  * Revision 1.62  2009/05/11 14:39:53  willuhn

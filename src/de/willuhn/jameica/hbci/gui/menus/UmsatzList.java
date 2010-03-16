@@ -77,7 +77,7 @@ public class UmsatzList extends ContextMenu implements Extendable
 
       public void handleAction(Object context) throws ApplicationException
       {
-        super.handleAction(context == null ? konto : context);
+        super.handleAction(konto != null ? konto : context);
       }
       
     }
@@ -197,7 +197,17 @@ public class UmsatzList extends ContextMenu implements Extendable
 
 /**********************************************************************
  * $Log$
- * Revision 1.34  2009-09-15 00:23:35  willuhn
+ * Revision 1.35  2010-03-16 00:44:18  willuhn
+ * @N Komplettes Redesign des CSV-Imports.
+ *   - Kann nun erheblich einfacher auch fuer andere Datentypen (z.Bsp.Ueberweisungen) verwendet werden
+ *   - Fehlertoleranter
+ *   - Mehrfachzuordnung von Spalten (z.Bsp. bei erweitertem Verwendungszweck) moeglich
+ *   - modulare Deserialisierung der Werte
+ *   - CSV-Exports von Hibiscus koennen nun 1:1 auch wieder importiert werden (Import-Preset identisch mit Export-Format)
+ *   - Import-Preset wird nun im XML-Format nach ~/.jameica/hibiscus/csv serialisiert. Damit wird es kuenftig moeglich sein,
+ *     CSV-Import-Profile vorzukonfigurieren und anschliessend zu exportieren, um sie mit anderen Usern teilen zu koennen
+ *
+ * Revision 1.34  2009/09/15 00:23:35  willuhn
  * @N BUGZILLA 745
  *
  * Revision 1.33  2009/02/24 22:42:33  willuhn
