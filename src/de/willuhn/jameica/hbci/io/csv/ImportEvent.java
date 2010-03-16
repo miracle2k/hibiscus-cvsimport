@@ -11,7 +11,6 @@
 
 package de.willuhn.jameica.hbci.io.csv;
 
-import de.willuhn.util.ProgressMonitor;
 
 /**
  * Event-Objekt.
@@ -27,24 +26,17 @@ public class ImportEvent
    * Optionales Context-Objekt des Imports.
    */
   public Object context = null;
-  
-  /**
-   * Der Fortschrittsmonitor.
-   */
-  public ProgressMonitor monitor = null;
-  
-  /**
-   * Flag, mit dem der Ausloeser des Events erkennen kann, ob der
-   * Vorgang fortgesetzt werden soll oder nicht.
-   */
-  public boolean doit = true;
 }
 
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2010-03-16 00:44:18  willuhn
+ * Revision 1.2  2010-03-16 13:43:56  willuhn
+ * @N CSV-Import von Ueberweisungen und Lastschriften
+ * @N Versionierbarkeit von serialisierten CSV-Profilen
+ *
+ * Revision 1.1  2010/03/16 00:44:18  willuhn
  * @N Komplettes Redesign des CSV-Imports.
  *   - Kann nun erheblich einfacher auch fuer andere Datentypen (z.Bsp.Ueberweisungen) verwendet werden
  *   - Fehlertoleranter

@@ -11,6 +11,8 @@
 
 package de.willuhn.jameica.hbci.io.csv;
 
+import de.willuhn.jameica.system.OperationCanceledException;
+
 
 /**
  * Listener, den ein Format mitbringen kann, um Einfluss auf den Import-Vorgang
@@ -21,9 +23,28 @@ public class ImportListener
   /**
    * Wird aufgerufen, unmittelbar bevor das Objekt in der Datenbank gespeichert wird.
    * @param event das Import-Event.
+   * Das Property "data" ist die zu speichernde Bean.
+   * @throws OperationCanceledException wenn das Speichern des Objektes uebersprungen werden soll.
    */
-  public void beforeStore(ImportEvent event)
+  public void beforeStore(ImportEvent event) throws OperationCanceledException
   {
+  }
+  
+  /**
+   * Wird aufgerufen, nachdem alle Werte der Zeile deserialisiert, aber noch nicht
+   * zur Bean hinzugefuegt wurden. Die Format-Implementierung kann hier - nachdem
+   * alle Properties gelesen wurden, nochmal ein Postprocessing durchfuehren, bevor
+   * die Werte gespeichert werden.
+   * Das wird z.Bsp. gebraucht, wenn ein Property in der Bean aus mehreren CSV-Spalten
+   * zusammengesetzt ist.
+   * @param event das Import-Event.
+   * Das Property "data" ist eine Map<String,Object> mit den Property-Namen als
+   * Keys und den deserialisierten Property-Werten als Values.
+   * @throws OperationCanceledException wenn das Objekt uebersprungen werden soll.
+   */
+  public void beforeSet(ImportEvent event) throws OperationCanceledException
+  {
+    
   }
 }
 
@@ -31,7 +52,11 @@ public class ImportListener
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2010-03-16 00:44:18  willuhn
+ * Revision 1.2  2010-03-16 13:43:56  willuhn
+ * @N CSV-Import von Ueberweisungen und Lastschriften
+ * @N Versionierbarkeit von serialisierten CSV-Profilen
+ *
+ * Revision 1.1  2010/03/16 00:44:18  willuhn
  * @N Komplettes Redesign des CSV-Imports.
  *   - Kann nun erheblich einfacher auch fuer andere Datentypen (z.Bsp.Ueberweisungen) verwendet werden
  *   - Fehlertoleranter

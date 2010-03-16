@@ -46,6 +46,7 @@ public class UmsatzFormat implements Format<Umsatz>
     {
       this.profile = new Profile();
       this.profile.setSkipLines(1);
+      this.profile.setVersion(0);
       
       Serializer ts = new DefaultSerializer();
       Serializer vs = new ValueSerializer();
@@ -143,7 +144,11 @@ public class UmsatzFormat implements Format<Umsatz>
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2010-03-16 00:44:18  willuhn
+ * Revision 1.2  2010-03-16 13:43:56  willuhn
+ * @N CSV-Import von Ueberweisungen und Lastschriften
+ * @N Versionierbarkeit von serialisierten CSV-Profilen
+ *
+ * Revision 1.1  2010/03/16 00:44:18  willuhn
  * @N Komplettes Redesign des CSV-Imports.
  *   - Kann nun erheblich einfacher auch fuer andere Datentypen (z.Bsp.Ueberweisungen) verwendet werden
  *   - Fehlertoleranter
