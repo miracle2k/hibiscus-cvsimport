@@ -196,7 +196,7 @@ public class UmsatzTypVerlauf implements Part
         {
           Object o = umsaetze.next();
           if (!(o instanceof Umsatz))
-            continue;// TODO: Umsatz-Tree: Hier sollten rekursiv die Kinder gemalt werden
+            continue;
           Umsatz u = (Umsatz) o;
           Date valuta = u.getValuta();
           if (valuta == null)
@@ -352,7 +352,10 @@ public class UmsatzTypVerlauf implements Part
 
 /*********************************************************************
  * $Log$
- * Revision 1.5  2010-03-05 15:24:53  willuhn
+ * Revision 1.6  2010-03-22 10:00:48  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.5  2010/03/05 15:24:53  willuhn
  * @N BUGZILLA 686
  *
  * Revision 1.4  2009/08/27 13:37:28  willuhn
