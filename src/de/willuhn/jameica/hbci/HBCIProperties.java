@@ -148,6 +148,27 @@ public class HBCIProperties
   public final static int UMSATZ_DEFAULT_DAYS = settings.getInt("umsatz.default.days",30);
   
   /**
+   * Bereinigt einen Text um die nicht erlaubten Zeichen.
+   * @param text zu bereinigender Text.
+   * @param validChars Liste der erlaubten Zeichen.
+   * @return bereinigter Text.
+   */
+  public final static String clean(String text, String validChars)
+  {
+    if (text == null || text.length() == 0)
+      return text;
+
+    StringBuffer sb = new StringBuffer();
+    char[] chars = text.toCharArray();
+    for (char c:chars)
+    {
+      if (HBCI_DTAUS_VALIDCHARS.contains(Character.toString(c)))
+        sb.append(c);
+    }
+    return sb.toString();
+  }
+  
+  /**
    * Prueft die uebergebenen Strings auf Vorhandensein nicht erlaubter Zeichen.
    * @param chars zu testende Zeichen.
    * @param validChars Liste der gueltigen Zeichen.
@@ -344,7 +365,10 @@ public class HBCIProperties
 
 /**********************************************************************
  * $Log$
- * Revision 1.39  2009-10-26 15:58:54  willuhn
+ * Revision 1.40  2010-03-31 11:19:40  willuhn
+ * @N Automatisches Entfernen nicht-zulaessiger Zeichen
+ *
+ * Revision 1.39  2009/10/26 15:58:54  willuhn
  * @C Account CRC check nur, wenn der Alg. bekannt ist
  *
  * Revision 1.38  2009/03/18 22:09:25  willuhn
