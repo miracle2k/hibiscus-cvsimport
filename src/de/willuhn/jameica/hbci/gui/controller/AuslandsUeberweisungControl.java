@@ -165,7 +165,7 @@ public class AuslandsUeberweisungControl extends AbstractControl
     if (empfkto != null)
       return empfkto;
 
-    empfkto = new TextInput(getTransfer().getGegenkontoNummer(),HBCIProperties.HBCI_IBAN_MAXLENGTH);
+    empfkto = new TextInput(getTransfer().getGegenkontoNummer(),HBCIProperties.HBCI_IBAN_MAXLENGTH + 5); // max. 5 Leerzeichen
     empfkto.setValidChars(HBCIProperties.HBCI_IBAN_VALIDCHARS + " ");
     empfkto.setMandatory(true);
     empfkto.setEnabled(!getTransfer().ausgefuehrt());
@@ -503,7 +503,10 @@ public class AuslandsUeberweisungControl extends AbstractControl
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2009-10-29 12:26:04  willuhn
+ * Revision 1.7  2010-04-05 21:19:34  willuhn
+ * @N Leerzeichen in IBAN zulassen - und nach Eingabe automatisch abschneiden (wie bei BLZ) - siehe http://www.willuhn.de/blog/index.php?/archives/506-Beta-Phase-fuer-Jameica-1.9Hibiscus-1.11-eroeffnet.html#c1079
+ *
+ * Revision 1.6  2009/10/29 12:26:04  willuhn
  * *** empty log message ***
  *
  * Revision 1.5  2009/10/20 23:12:58  willuhn
