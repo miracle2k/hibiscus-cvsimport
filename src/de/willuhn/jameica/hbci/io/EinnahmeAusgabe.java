@@ -13,11 +13,11 @@
 
 package de.willuhn.jameica.hbci.io;
 
+import java.math.BigDecimal;
 import java.rmi.RemoteException;
 import java.util.Date;
 
 import de.willuhn.datasource.GenericObject;
-import de.willuhn.jameica.hbci.HBCI;
 
 /**
  * Container fuer die EinnahmeAusgabe-Daten.
@@ -54,8 +54,11 @@ public class EinnahmeAusgabe implements GenericObject
     this.ausgabe      = ausgabe;
     this.endsaldo     = endsaldo;
     this.enddatum     = enddatum;
-    this.differenz    = anfangssaldo + einnahme + ausgabe - endsaldo;
-    this.hasDiff = (!HBCI.DECIMALFORMAT.format(anfangssaldo + einnahme + ausgabe).equals(HBCI.DECIMALFORMAT.format(endsaldo)));
+
+    BigDecimal v1 = new BigDecimal(anfangssaldo + einnahme + ausgabe);
+    BigDecimal v2 = new BigDecimal(endsaldo);
+    this.differenz = v1.subtract(v2).setScale(2,BigDecimal.ROUND_HALF_EVEN).doubleValue();
+    this.hasDiff = Math.abs(this.differenz) >= 0.01;
   }
 
   /**
@@ -109,7 +112,10 @@ public class EinnahmeAusgabe implements GenericObject
 
 /*******************************************************************************
  * $Log$
- * Revision 1.3  2010-02-17 10:43:41  willuhn
+ * Revision 1.4  2010-04-06 22:49:54  willuhn
+ * @B BUGZILLA 844
+ *
+ * Revision 1.3  2010/02/17 10:43:41  willuhn
  * @N Differenz in Einnahmen/Ausgaben anzeigen, Cleanup
  *
  * Revision 1.2  2007/06/04 17:37:00  willuhn
