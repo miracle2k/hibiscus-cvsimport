@@ -308,13 +308,15 @@ public class UmsatzTypImpl extends AbstractDBObjectNode implements UmsatzTyp
       Matcher mName = pattern.matcher(name);
       Matcher mKto = pattern.matcher(kto);
       Matcher mKom = pattern.matcher(kom);
+      Matcher mAll = pattern.matcher(name + " " + kto + " " + vwz1 + " " + vwz2 + " " + vwz3 + " " + kom);
 
       return (mVwz1.matches() ||
               mVwz2.matches() ||
               mVwz3.matches() ||
               mName.matches() ||
               mKto.matches()  ||
-              mKom.matches()
+              mKom.matches()  ||
+              mAll.matches()
              );
     }
     catch (Exception e)
@@ -626,7 +628,10 @@ public class UmsatzTypImpl extends AbstractDBObjectNode implements UmsatzTyp
 
 /*******************************************************************************
  * $Log$
- * Revision 1.52  2010-03-05 20:16:44  willuhn
+ * Revision 1.53  2010-04-11 20:56:53  willuhn
+ * @N BUGZILLA #846
+ *
+ * Revision 1.52  2010/03/05 20:16:44  willuhn
  * @B ClassCastException - siehe BUGZILLA 686
  *
  * Revision 1.51  2010/03/05 17:54:13  willuhn
