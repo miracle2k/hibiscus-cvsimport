@@ -288,7 +288,7 @@ public class KontoControl extends AbstractControl {
 	{
 		if (bezeichnung != null)
 			return bezeichnung;
-		bezeichnung = new TextInput(getKonto().getBezeichnung());
+		bezeichnung = new TextInput(getKonto().getBezeichnung(),255);
 		return bezeichnung;
 	}
 
@@ -637,7 +637,10 @@ public class KontoControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.85  2010-04-05 21:19:34  willuhn
+ * Revision 1.86  2010-04-14 17:09:56  willuhn
+ * @C Max. 255 Zeichen zulassen - BUGZILLA 567
+ *
+ * Revision 1.85  2010/04/05 21:19:34  willuhn
  * @N Leerzeichen in IBAN zulassen - und nach Eingabe automatisch abschneiden (wie bei BLZ) - siehe http://www.willuhn.de/blog/index.php?/archives/506-Beta-Phase-fuer-Jameica-1.9Hibiscus-1.11-eroeffnet.html#c1079
  *
  * Revision 1.84  2009/10/20 23:12:58  willuhn
