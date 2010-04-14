@@ -61,6 +61,7 @@ public class PassportList extends TablePart implements Part
     this.setMulti(false);
     this.setSummary(false);
     addColumn(i18n.tr("Bezeichnung"),"name");
+    addColumn(i18n.tr("Information"),"info");
   }
 
   /**
@@ -89,7 +90,10 @@ public class PassportList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2009-05-07 13:36:57  willuhn
+ * Revision 1.8  2010-04-14 16:53:01  willuhn
+ * @N BUGZILLA 471
+ *
+ * Revision 1.7  2009/05/07 13:36:57  willuhn
  * @R Hilfsobjekt "PassportObject" entfernt
  * @C Cleanup in PassportInput (insb. der weisse Hintergrund hinter dem "Konfigurieren..."-Button hat gestoert
  *
