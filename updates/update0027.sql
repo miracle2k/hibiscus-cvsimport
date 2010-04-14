@@ -1,18 +1,12 @@
 -- ----------------------------------------------------------------------
--- Erweitert die Tabelle "Konto" um die Spalten "iban" und "bic"
+-- Erweitert die Tabelle "empfaenger" um eine Spalte "kategorie"
 -- ----------------------------------------------------------------------
 
-alter table konto add iban VARCHAR(40) NULL;
-alter table konto add bic VARCHAR(15) NULL;
+alter table empfaenger add kategorie VARCHAR(40) NULL;
 
 -- ----------------------------------------------------------------------
 -- $Log$
--- Revision 1.2  2010-04-14 17:44:10  willuhn
+-- Revision 1.1  2010-04-14 17:44:10  willuhn
 -- @N BUGZILLA 83
 --
--- Revision 1.1  2009/10/20 23:12:58  willuhn
--- @N Support fuer SEPA-Ueberweisungen
--- @N Konten um IBAN und BIC erweitert
---
 -- ----------------------------------------------------------------------
-

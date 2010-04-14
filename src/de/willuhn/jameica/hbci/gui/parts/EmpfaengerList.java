@@ -116,6 +116,7 @@ public class EmpfaengerList extends TablePart implements Part
       }
     });
     addColumn(i18n.tr("IBAN"),"iban");
+    addColumn(i18n.tr("Kategorie"),"kategorie");
     addColumn(i18n.tr("Kommentar"),"kommentar",new Formatter()
     {
       public String format(Object o)
@@ -216,7 +217,7 @@ public class EmpfaengerList extends TablePart implements Part
 
     // Eingabe-Feld fuer die Suche mit Button hinten dran.
     this.search = new TextInput(mySettings.getString("search",null));
-    group.addLabelPair(i18n.tr("Name. Konto oder BLZ enthält"), this.search);
+    group.addLabelPair(i18n.tr("Suchbegriff"), this.search);
     this.search.getControl().addKeyListener(this.listener);
 
     
@@ -370,7 +371,10 @@ public class EmpfaengerList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.24  2010-04-11 21:57:08  willuhn
+ * Revision 1.25  2010-04-14 17:44:10  willuhn
+ * @N BUGZILLA 83
+ *
+ * Revision 1.24  2010/04/11 21:57:08  willuhn
  * @N Anzeige der eigenen Konten im Adressbuch als "virtuelle" Adressen. Basierend auf Ralfs Patch.
  *
  * Revision 1.23  2009/10/20 23:12:58  willuhn

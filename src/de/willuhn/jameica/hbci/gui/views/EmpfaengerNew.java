@@ -64,6 +64,7 @@ public class EmpfaengerNew extends AbstractView {
     SimpleContainer right = new SimpleContainer(columns.getComposite(),true);
     right.addHeadline(i18n.tr("Notizen"));
     right.addPart(control.getKommentar());
+    right.addLabelPair(i18n.tr("Kategorie"),control.getKategorie());
 
     // und noch die Abschicken-Knoepfe
     ButtonArea buttonArea = new ButtonArea(getParent(),control.isHibiscusAdresse() ? 3 : 1);
@@ -104,7 +105,10 @@ public class EmpfaengerNew extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.18  2009-05-06 23:11:23  willuhn
+ * Revision 1.19  2010-04-14 17:44:10  willuhn
+ * @N BUGZILLA 83
+ *
+ * Revision 1.18  2009/05/06 23:11:23  willuhn
  * @N Mehr Icons auf Buttons
  *
  * Revision 1.17  2009/02/18 00:35:54  willuhn

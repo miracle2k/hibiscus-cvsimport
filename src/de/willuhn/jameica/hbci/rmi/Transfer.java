@@ -22,36 +22,43 @@ public interface Transfer extends Remote
 {
   /**
    * Typ Ueberweisung
+   * @deprecated Existiert nur noch zu Migrationszwecken (update0012)
    */
   public final static int TYP_UEBERWEISUNG         = 1;
   
   /**
    * Typ Lastschrift
+   * @deprecated Existiert nur noch zu Migrationszwecken (update0012)
    */
   public final static int TYP_LASTSCHRIFT          = 2;
   
   /**
    * Typ Dauerauftrag
+   * @deprecated Existiert nur noch zu Migrationszwecken (update0012)
    */
   public final static int TYP_DAUERAUFTRAG         = 3;
 
   /**
    * Typ Umsatz
+   * @deprecated Existiert nur noch zu Migrationszwecken (update0012)
    */
   public final static int TYP_UMSATZ               = 4;
   
   /**
    * Typ Buchung einer Sammel-Ueberweisung
+   * @deprecated Existiert nur noch zu Migrationszwecken (update0012)
    */
   public final static int TYP_SUEB_BUCHUNG         = 5;
   
   /**
    * Typ Buchung einer Sammel-Lastschrift
+   * @deprecated Existiert nur noch zu Migrationszwecken (update0012)
    */
   public final static int TYP_SLAST_BUCHUNG        = 6;
 
   /**
    * Typ Auslandsueberweisung
+   * @deprecated Existiert nur noch zu Migrationszwecken (update0012)
    */
   public final static int TYP_AUSLANDSUEBERWEISUNG = 7;
 
@@ -101,6 +108,7 @@ public interface Transfer extends Remote
    * Liefert den Transfer-Typ.
    * @return Transfer-Typ.
    * @throws RemoteException
+   * @deprecated Existiert nur noch zu Migrationszwecken (update0012)
    */
   public int getTransferTyp() throws RemoteException;
   
@@ -115,7 +123,10 @@ public interface Transfer extends Remote
 
 /**********************************************************************
  * $Log$
- * Revision 1.12  2009-02-17 00:00:02  willuhn
+ * Revision 1.13  2010-04-14 17:44:10  willuhn
+ * @N BUGZILLA 83
+ *
+ * Revision 1.12  2009/02/17 00:00:02  willuhn
  * @N BUGZILLA 159 - Erster Code fuer Auslands-Ueberweisungen
  *
  * Revision 1.11  2008/11/26 00:39:36  willuhn

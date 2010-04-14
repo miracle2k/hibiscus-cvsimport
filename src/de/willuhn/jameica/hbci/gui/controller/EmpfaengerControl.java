@@ -13,12 +13,18 @@
 package de.willuhn.jameica.hbci.gui.controller;
 
 import java.rmi.RemoteException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import de.willuhn.datasource.rmi.DBIterator;
+import de.willuhn.datasource.rmi.ResultSetExtractor;
 import de.willuhn.jameica.gui.AbstractControl;
 import de.willuhn.jameica.gui.AbstractView;
 import de.willuhn.jameica.gui.Part;
 import de.willuhn.jameica.gui.input.Input;
+import de.willuhn.jameica.gui.input.SelectInput;
 import de.willuhn.jameica.gui.input.TextAreaInput;
 import de.willuhn.jameica.gui.input.TextInput;
 import de.willuhn.jameica.hbci.HBCI;
@@ -58,6 +64,8 @@ public class EmpfaengerControl extends AbstractControl {
 	private TextInput iban          = null;
   private TextInput bank          = null;
 
+  private SelectInput kategorie   = null;
+  
 	private Input kommentar         = null;
 
   private Part list               = null;
@@ -208,6 +216,37 @@ public class EmpfaengerControl extends AbstractControl {
     return this.kommentar;
   }
   
+  /**
+   * Liefert ein editierbares Auswahlfeld mit der Kategorie.
+   * @return Auswahlfeld.
+   * @throws RemoteException
+   */
+  public SelectInput getKategorie() throws RemoteException
+  {
+    if (this.kategorie != null)
+      return this.kategorie;
+    
+    List<String> list = (List<String>) Settings.getDBService().execute("select kategorie from empfaenger where kategorie is not null and kategorie != '' group by kategorie order by kategorie",null,new ResultSetExtractor()
+    {
+      /**
+       * @see de.willuhn.datasource.rmi.ResultSetExtractor#extract(java.sql.ResultSet)
+       */
+      public Object extract(ResultSet rs) throws RemoteException, SQLException
+      {
+        List<String> list = new ArrayList<String>();
+        list.add(""); // <Keine Kategorie>
+        while (rs.next())
+          list.add(rs.getString(1));
+        return list;
+      }
+    });
+
+    this.kategorie = new SelectInput(list,this.getAddress().getKategorie());
+    this.kategorie.setEditable(true);
+    this.kategorie.setEnabled(isHibiscusAdresse());
+    return this.kategorie;
+  }
+  
 	/**
 	 * Liefert das Eingabe-Feld fuer die BLZ.
 	 * @return Eingabe-Feld.
@@ -310,6 +349,7 @@ public class EmpfaengerControl extends AbstractControl {
         a.setBlz((String)getBlz().getValue());
         a.setName((String)getName().getValue());
         a.setKommentar((String)getKommentar().getValue());
+        a.setKategorie((String)getKategorie().getValue());
 
         a.setBank((String)getBank().getValue());
         a.setIban((String)getIban().getValue());
@@ -334,7 +374,10 @@ public class EmpfaengerControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.48  2009-03-17 23:44:14  willuhn
+ * Revision 1.49  2010-04-14 17:44:10  willuhn
+ * @N BUGZILLA 83
+ *
+ * Revision 1.48  2009/03/17 23:44:14  willuhn
  * @N BUGZILLA 159 - Auslandsueberweisungen. Erste Version
  *
  * Revision 1.47  2009/02/18 00:35:54  willuhn

@@ -51,12 +51,37 @@ public interface Address extends Remote
    * @throws RemoteException
    */
   public String getKommentar() throws RemoteException;
+  
+  /**
+   * Liefert die BIC.
+   * @return die BIC.
+   * @throws RemoteException
+   */
+  public String getBic() throws RemoteException;
+
+  /**
+   * Liefert die IBAN.
+   * @return die IBAN.
+   * @throws RemoteException
+   */
+  public String getIban() throws RemoteException;
+  
+  /**
+   * Liefert einen Freitext mit der Kategorie.
+   * @return Freitext mit der Kategorie.
+   * @throws RemoteException
+   */
+  public String getKategorie() throws RemoteException;
+  
 }
 
 
 /*********************************************************************
  * $Log$
- * Revision 1.7  2009-05-07 09:58:40  willuhn
+ * Revision 1.8  2010-04-14 17:44:10  willuhn
+ * @N BUGZILLA 83
+ *
+ * Revision 1.7  2009/05/07 09:58:40  willuhn
  * @R deprecated Funktionen getBLZ/setBLZ entfernt - bitte nur noch getBlz/setBlz nutzen!
  *
  * Revision 1.6  2009/02/18 00:35:54  willuhn

@@ -15,7 +15,6 @@ package de.willuhn.jameica.hbci.gui.filter;
 
 import java.rmi.RemoteException;
 
-import de.willuhn.datasource.BeanUtil;
 import de.willuhn.jameica.hbci.HBCIProperties;
 import de.willuhn.jameica.hbci.rmi.Address;
 
@@ -79,7 +78,7 @@ public interface AddressFilter extends Filter<Address>
       if (address == null)
         return false;
 
-      String iban = (String) BeanUtil.get(address,"iban"); // Die Konto-Adressen haben zwar ein "getIban", implementieren aber nicht "HibiscusAddress" - daher der Bean-Zugriff
+      String iban = address.getIban();
       return iban != null && iban.length() > 0 &&
              iban.length() <= HBCIProperties.HBCI_IBAN_MAXLENGTH;
     }
@@ -89,7 +88,10 @@ public interface AddressFilter extends Filter<Address>
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2010-04-11 22:05:40  willuhn
+ * Revision 1.3  2010-04-14 17:44:10  willuhn
+ * @N BUGZILLA 83
+ *
+ * Revision 1.2  2010/04/11 22:05:40  willuhn
  * @N virtuelle Konto-Adressen in SEPA-Auftraegen beruecksichtigen
  *
  * Revision 1.1  2009/10/20 23:12:58  willuhn
