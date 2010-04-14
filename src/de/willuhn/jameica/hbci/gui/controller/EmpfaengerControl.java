@@ -270,11 +270,7 @@ public class EmpfaengerControl extends AbstractControl {
   {
     if (this.iban == null)
     {
-      String s = null;
-      Address a = getAddress();
-      if (a instanceof HibiscusAddress)
-        s = ((HibiscusAddress)a).getIban();
-      this.iban = new TextInput(s,HBCIProperties.HBCI_IBAN_MAXLENGTH);
+      this.iban = new TextInput(getAddress().getIban(),HBCIProperties.HBCI_IBAN_MAXLENGTH);
       this.iban.setValidChars(HBCIProperties.HBCI_IBAN_VALIDCHARS);
       this.iban.setEnabled(isHibiscusAdresse());
     }
@@ -290,11 +286,7 @@ public class EmpfaengerControl extends AbstractControl {
   {
     if (this.bic == null)
     {
-      String s = null;
-      Address a = getAddress();
-      if (a instanceof HibiscusAddress)
-        s = ((HibiscusAddress)a).getBic();
-      this.bic = new TextInput(s,HBCIProperties.HBCI_BIC_MAXLENGTH);
+      this.bic = new TextInput(getAddress().getBic(),HBCIProperties.HBCI_BIC_MAXLENGTH);
       this.bic.setValidChars(HBCIProperties.HBCI_BIC_VALIDCHARS);
       this.bic.setEnabled(isHibiscusAdresse());
     }
@@ -374,7 +366,10 @@ public class EmpfaengerControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.49  2010-04-14 17:44:10  willuhn
+ * Revision 1.50  2010-04-14 22:54:23  willuhn
+ * @B Anzeige der IBAN/BIC auch bei "Konto-Adressen"
+ *
+ * Revision 1.49  2010/04/14 17:44:10  willuhn
  * @N BUGZILLA 83
  *
  * Revision 1.48  2009/03/17 23:44:14  willuhn
