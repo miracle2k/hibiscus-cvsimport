@@ -226,7 +226,7 @@ public class EmpfaengerControl extends AbstractControl {
     if (this.kategorie != null)
       return this.kategorie;
     
-    List<String> list = (List<String>) Settings.getDBService().execute("select kategorie from empfaenger where kategorie is not null and kategorie != '' group by kategorie order by kategorie",null,new ResultSetExtractor()
+    List<String> list = (List<String>) Settings.getDBService().execute("select kategorie from empfaenger where kategorie is not null and kategorie != '' group by kategorie order by LOWER(kategorie)",null,new ResultSetExtractor()
     {
       /**
        * @see de.willuhn.datasource.rmi.ResultSetExtractor#extract(java.sql.ResultSet)
@@ -366,7 +366,10 @@ public class EmpfaengerControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
- * Revision 1.50  2010-04-14 22:54:23  willuhn
+ * Revision 1.51  2010-04-15 10:30:07  willuhn
+ * @B case-insensitive Sortierung
+ *
+ * Revision 1.50  2010/04/14 22:54:23  willuhn
  * @B Anzeige der IBAN/BIC auch bei "Konto-Adressen"
  *
  * Revision 1.49  2010/04/14 17:44:10  willuhn
