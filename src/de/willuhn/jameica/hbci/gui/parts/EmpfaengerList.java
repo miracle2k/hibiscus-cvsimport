@@ -166,6 +166,8 @@ public class EmpfaengerList extends TablePart implements Part
     
     // BUGZILLA 233 http://www.willuhn.de/bugzilla/show_bug.cgi?id=233
     this.setRememberColWidths(true);
+    
+    this.setRememberState(true);
 
     // Wir erstellen noch einen Message-Consumer, damit wir ueber neu eintreffende
     // Adressen informiert werden.
@@ -371,7 +373,10 @@ public class EmpfaengerList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.25  2010-04-14 17:44:10  willuhn
+ * Revision 1.26  2010-04-15 10:26:49  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.25  2010/04/14 17:44:10  willuhn
  * @N BUGZILLA 83
  *
  * Revision 1.24  2010/04/11 21:57:08  willuhn
