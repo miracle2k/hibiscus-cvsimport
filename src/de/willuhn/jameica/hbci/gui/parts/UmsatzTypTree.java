@@ -24,13 +24,13 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.TreeItem;
 
 import de.willuhn.datasource.GenericIterator;
-import de.willuhn.datasource.GenericObject;
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.formatter.Formatter;
 import de.willuhn.jameica.gui.formatter.TreeFormatter;
 import de.willuhn.jameica.gui.parts.TreePart;
 import de.willuhn.jameica.hbci.HBCI;
+import de.willuhn.jameica.hbci.messaging.ImportMessage;
 import de.willuhn.jameica.hbci.messaging.ObjectDeletedMessage;
 import de.willuhn.jameica.hbci.rmi.UmsatzTyp;
 import de.willuhn.jameica.hbci.server.UmsatzTypUtil;
@@ -163,7 +163,7 @@ public class UmsatzTypTree extends TreePart
      */
     public Class[] getExpectedMessageTypes()
     {
-      return new Class[]{ObjectDeletedMessage.class};
+      return new Class[]{ObjectDeletedMessage.class,ImportMessage.class};
     }
 
     /**
@@ -171,11 +171,6 @@ public class UmsatzTypTree extends TreePart
      */
     public void handleMessage(Message message) throws Exception
     {
-      ObjectDeletedMessage msg = (ObjectDeletedMessage) message;
-      GenericObject o = msg.getObject();
-      if (!(o instanceof UmsatzTyp))
-        return;
-      
       GUI.getDisplay().asyncExec(new Runnable()
       {
         public void run()
@@ -198,7 +193,10 @@ public class UmsatzTypTree extends TreePart
 
 /**********************************************************************
  * $Log$
- * Revision 1.14  2010-03-05 23:59:31  willuhn
+ * Revision 1.15  2010-04-16 12:20:52  willuhn
+ * @B Parent-ID beim Import von Kategorien beruecksichtigen und neu mappen
+ *
+ * Revision 1.14  2010/03/05 23:59:31  willuhn
  * @C Code-Cleanup
  *
  * Revision 1.13  2010/03/05 23:29:18  willuhn
