@@ -24,6 +24,7 @@ import de.willuhn.datasource.db.DBServiceImpl;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.rmi.DBSupport;
 import de.willuhn.jameica.hbci.rmi.HBCIDBService;
+import de.willuhn.jameica.messaging.QueryMessage;
 import de.willuhn.jameica.plugin.Manifest;
 import de.willuhn.jameica.plugin.Version;
 import de.willuhn.jameica.system.Application;
@@ -134,6 +135,24 @@ public class HBCIDBServiceImpl extends DBServiceImpl implements HBCIDBService
     Updater updater = new Updater(provider);
     updater.execute();
     Logger.info("updates finished");
+  }
+
+  
+  /**
+   * @see de.willuhn.datasource.db.DBServiceImpl#getConnection()
+   */
+  protected Connection getConnection() throws RemoteException
+  {
+    try
+    {
+      return super.getConnection();
+    }
+    catch (RemoteException re)
+    {
+      // Wir benachrichtigen Jameica ueber den Fehler, damit beim Shutdown kein Backup erstellt wird
+      Application.getMessagingFactory().getMessagingQueue("jameica.error").sendMessage(new QueryMessage(re));
+      throw re;
+    }
   }
 
   /**
@@ -255,7 +274,10 @@ public class HBCIDBServiceImpl extends DBServiceImpl implements HBCIDBService
 
 /*********************************************************************
  * $Log$
- * Revision 1.29  2009-03-10 23:51:31  willuhn
+ * Revision 1.30  2010-04-21 10:39:52  willuhn
+ * @N Beim Shutdown kein Backup erstellen, wenn ein Plugin einen Fehler an den Channel "jameica.error" gemeldet hat. Das soll verhindern, dass die Backup-Rotation die letzten noch verbliebenen intakten Backups ueberschreibt
+ *
+ * Revision 1.29  2009/03/10 23:51:31  willuhn
  * @C PluginResources#getPath als deprecated markiert - stattdessen sollte jetzt Manifest#getPluginDir() verwendet werden
  *
  * Revision 1.28  2008/12/30 15:21:40  willuhn
