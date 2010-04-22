@@ -54,7 +54,7 @@ public class UeberweisungNew implements Action
 			try {
 				Konto k = (Konto) context;
 				u = (Ueberweisung) Settings.getDBService().createObject(Ueberweisung.class,null);
-				if ((k.getFlags() & Konto.FLAG_DISABLED) != Konto.FLAG_DISABLED)
+        if ((k.getFlags() & Konto.FLAG_DISABLED) != Konto.FLAG_DISABLED && (k.getFlags() & Konto.FLAG_OFFLINE) != Konto.FLAG_OFFLINE)
   				u.setKonto(k);
 			}
 			catch (RemoteException e)
@@ -137,7 +137,10 @@ public class UeberweisungNew implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.11  2009-11-26 12:00:21  willuhn
+ * Revision 1.12  2010-04-22 16:21:27  willuhn
+ * @N HBCI-relevante Buttons und Aktionen fuer Offline-Konten sperren
+ *
+ * Revision 1.11  2009/11/26 12:00:21  willuhn
  * @N Buchungen aus Sammelauftraegen in Einzelauftraege duplizieren
  *
  * Revision 1.10  2009/09/15 00:23:34  willuhn

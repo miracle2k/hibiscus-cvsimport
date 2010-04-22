@@ -48,7 +48,7 @@ public class SammelUeberweisungNew implements Action
 			try {
 				Konto k = (Konto) context;
 				u = (SammelUeberweisung) Settings.getDBService().createObject(SammelUeberweisung.class,null);
-        if ((k.getFlags() & Konto.FLAG_DISABLED) != Konto.FLAG_DISABLED)
+        if ((k.getFlags() & Konto.FLAG_DISABLED) != Konto.FLAG_DISABLED && (k.getFlags() & Konto.FLAG_OFFLINE) != Konto.FLAG_OFFLINE)
   				u.setKonto(k);
 			}
 			catch (RemoteException e)
@@ -75,7 +75,10 @@ public class SammelUeberweisungNew implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2009-09-15 00:23:34  willuhn
+ * Revision 1.3  2010-04-22 16:21:27  willuhn
+ * @N HBCI-relevante Buttons und Aktionen fuer Offline-Konten sperren
+ *
+ * Revision 1.2  2009/09/15 00:23:34  willuhn
  * @N BUGZILLA 745
  *
  * Revision 1.1  2005/09/30 00:08:50  willuhn

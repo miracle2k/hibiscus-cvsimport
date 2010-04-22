@@ -126,7 +126,8 @@ public class KontoNew extends AbstractView {
     buttons.addButton(new Back());
     
     Button fetch = new Button(i18n.tr("Saldo und Umsätze abrufen"), new KontoFetchUmsaetze(),control.getKonto(),false,"mail-send-receive.png");
-    fetch.setEnabled((control.getKonto().getFlags() & Konto.FLAG_DISABLED) != Konto.FLAG_DISABLED);
+    int flags = control.getKonto().getFlags();
+    fetch.setEnabled((flags & Konto.FLAG_DISABLED) != Konto.FLAG_DISABLED && (flags & Konto.FLAG_OFFLINE) != Konto.FLAG_OFFLINE);
     buttons.addButton(fetch);
     buttons.addButton(i18n.tr("Alle Umsätze anzeigen"),     new UmsatzList(),control.getKonto(),false,"text-x-generic.png");
   }
@@ -153,7 +154,10 @@ public class KontoNew extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.29  2010-04-22 12:42:03  willuhn
+ * Revision 1.30  2010-04-22 16:21:27  willuhn
+ * @N HBCI-relevante Buttons und Aktionen fuer Offline-Konten sperren
+ *
+ * Revision 1.29  2010/04/22 12:42:03  willuhn
  * @N Erste Version des Supports fuer Offline-Konten
  *
  * Revision 1.28  2009/10/20 23:12:58  willuhn
