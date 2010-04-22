@@ -252,7 +252,12 @@ public class UmsatzDetailEditControl extends UmsatzDetailControl
       u.setArt((String)getArt().getValue());
       
       u.setBetrag((Double)getBetrag().getValue());
+      
+      // TODO: Der Saldo sollte eigentlich automatisch errechnet werden
+      // koennen. Ausserdem sollte beim Speichern auch gleich der Saldo
+      // des Offline-Kontos aktualisiert werden.
       u.setSaldo((Double)getSaldo().getValue());
+      
       u.setCustomerRef((String)getCustomerRef().getValue());
       u.setDatum((Date)getDatum().getValue());
       u.setPrimanota((String)getPrimanota().getValue());
@@ -377,7 +382,10 @@ public class UmsatzDetailEditControl extends UmsatzDetailControl
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2009-12-10 17:29:08  willuhn
+ * Revision 1.4  2010-04-22 16:47:49  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.3  2009/12/10 17:29:08  willuhn
  * @B ClassCastException
  *
  * Revision 1.2  2009/01/04 14:47:53  willuhn
