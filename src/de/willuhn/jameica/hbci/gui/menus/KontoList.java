@@ -137,7 +137,7 @@ public class KontoList extends ContextMenu implements Extendable
       this.setImage(SWTUtil.getImage("emblem-symbolic-link.png"));
       addItem(new CheckedSingleContextMenuItem(i18n.tr("Als Standardkonto festlegen"),new KontoMarkDefault(),"emblem-default.png"));
       addItem(ContextMenuItem.SEPARATOR);
-      addItem(new CheckedSingleContextMenuItem(i18n.tr("Kontoauszugsdatum zurücksetzen..."), new KontoResetAuszugsdatum(),"edit-undo.png"));
+      addItem(new CheckedSingleContextMenuItem(i18n.tr("Saldo und Datum zurücksetzen..."), new KontoResetAuszugsdatum(),"edit-undo.png"));
       addItem(new ChangeFlagsMenuItem(i18n.tr("Konto deaktivieren..."), new KontoDisable(),"network-offline.png",false));
       addItem(new ChangeFlagsMenuItem(i18n.tr("Konto aktivieren..."), new FlaggableChange(Konto.FLAG_DISABLED,false),"network-transmit-receive.png",true));
     }
@@ -193,7 +193,10 @@ public class KontoList extends ContextMenu implements Extendable
 
 /*******************************************************************************
  * $Log$
- * Revision 1.20  2009-09-15 00:23:35  willuhn
+ * Revision 1.21  2010-04-22 16:10:43  willuhn
+ * @C Saldo kann bei Offline-Konten zwar nicht manuell bearbeitet werden, dafuer wird er aber beim Zuruecksetzen des Kontos (heisst jetzt "Saldo und Datum zuruecksetzen" statt "Kontoauszugsdatum zuruecksetzen") jetzt ebenfalls geloescht
+ *
+ * Revision 1.20  2009/09/15 00:23:35  willuhn
  * @N BUGZILLA 745
  *
  * Revision 1.19  2009/07/09 17:08:03  willuhn

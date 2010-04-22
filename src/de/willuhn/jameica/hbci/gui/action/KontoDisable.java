@@ -49,18 +49,17 @@ public class KontoDisable implements Action
       if ((k.getFlags() & Konto.FLAG_DISABLED) == Konto.FLAG_DISABLED)
         return;
 
-      String s = i18n.tr("Sind Sie sicher, dass Sie das Konto deaktivieren möchten?\n" +
-          "Der Saldo wird hierbei gelöscht. Geschäftsvorfälle können anschließend nicht mehr " +
-          "über dieses Konto ausgeführt werden. Fortsetzen?");
+      String s = i18n.tr("Sind Sie sicher, dass Sie das Konto deaktivieren möchten?\n\n" +
+                         "Der Saldo wird hierbei gelöscht. Geschäftsvorfälle können anschließend\n" +
+                         "nicht mehr über dieses Konto ausgeführt werden.");
 
       if (!Application.getCallback().askUser(s))
         return;
       
       // Konto zuruecksetzen
       k.transactionBegin();
-      k.setSaldo(Double.NaN);
+      k.reset();
       k.setFlags(k.getFlags() | Konto.FLAG_DISABLED);
-      k.resetSaldoDatum();
       k.store();
       
       Konto kd = Settings.getDefaultKonto();
@@ -107,7 +106,10 @@ public class KontoDisable implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2009-09-15 00:23:34  willuhn
+ * Revision 1.2  2010-04-22 16:10:43  willuhn
+ * @C Saldo kann bei Offline-Konten zwar nicht manuell bearbeitet werden, dafuer wird er aber beim Zuruecksetzen des Kontos (heisst jetzt "Saldo und Datum zuruecksetzen" statt "Kontoauszugsdatum zuruecksetzen") jetzt ebenfalls geloescht
+ *
+ * Revision 1.1  2009/09/15 00:23:34  willuhn
  * @N BUGZILLA 745
  *
  **********************************************************************/
