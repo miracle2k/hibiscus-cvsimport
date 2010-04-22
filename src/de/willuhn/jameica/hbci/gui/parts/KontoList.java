@@ -133,8 +133,10 @@ public class KontoList extends TablePart implements Part
 
           // Checken, ob Konto deaktiviert ist
           int flags = k.getFlags();
-          if ((flags & Konto.FLAG_DISABLED) != 0)
+          if ((flags & Konto.FLAG_DISABLED) == Konto.FLAG_DISABLED)
             item.setForeground(Color.COMMENT.getSWTColor());
+          else if ((flags & Konto.FLAG_OFFLINE) == Konto.FLAG_OFFLINE)
+            item.setForeground(Color.LINK.getSWTColor());
           else if (k.getSaldo() < 0)
             item.setForeground(Settings.getBuchungSollForeground());
           else
@@ -270,7 +272,11 @@ public class KontoList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.15  2009-09-15 00:23:35  willuhn
+ * Revision 1.16  2010-04-22 15:43:06  willuhn
+ * @B Debugging
+ * @N Kontoliste aktualisieren
+ *
+ * Revision 1.15  2009/09/15 00:23:35  willuhn
  * @N BUGZILLA 745
  *
  * Revision 1.14  2009/07/09 17:08:03  willuhn

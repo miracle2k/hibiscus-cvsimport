@@ -57,7 +57,10 @@ public interface KontoFilter extends Filter<Konto>
     {
       if (konto == null)
         return false;
-      return (konto.getFlags() & Konto.FLAG_DISABLED) != Konto.FLAG_DISABLED;
+      
+      int flags = konto.getFlags();
+      return ((flags & Konto.FLAG_DISABLED) != Konto.FLAG_DISABLED) &&
+             ((flags & Konto.FLAG_OFFLINE) != Konto.FLAG_OFFLINE);
     }
   };
 
@@ -76,7 +79,9 @@ public interface KontoFilter extends Filter<Konto>
       
       String iban = konto.getIban();
 
-      return ((konto.getFlags() & Konto.FLAG_DISABLED) != Konto.FLAG_DISABLED) &&
+      int flags = konto.getFlags();
+      return ((flags & Konto.FLAG_DISABLED) != Konto.FLAG_DISABLED) &&
+             ((flags & Konto.FLAG_OFFLINE) != Konto.FLAG_OFFLINE) &&
              (iban != null && iban.length() <= HBCIProperties.HBCI_IBAN_MAXLENGTH);
     }
   }; 
@@ -85,7 +90,11 @@ public interface KontoFilter extends Filter<Konto>
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2009-10-20 23:12:58  willuhn
+ * Revision 1.2  2010-04-22 15:43:06  willuhn
+ * @B Debugging
+ * @N Kontoliste aktualisieren
+ *
+ * Revision 1.1  2009/10/20 23:12:58  willuhn
  * @N Support fuer SEPA-Ueberweisungen
  * @N Konten um IBAN und BIC erweitert
  *
