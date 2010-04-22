@@ -33,7 +33,12 @@ public interface Konto extends DBObject, Checksum, Flaggable
    */
   public final static int FLAG_DISABLED = 1 << 0;
 
-	/**
+  /**
+   * Flag "Offline".
+   */
+  public final static int FLAG_OFFLINE = 1 << 1;
+
+  /**
 	 * Liefert die Kontonummer fuer diese Bankverbindung.
 	 * 
 	 * @return Kontonummer.
@@ -414,7 +419,10 @@ public interface Konto extends DBObject, Checksum, Flaggable
 
 /*******************************************************************************
  * $Log$
- * Revision 1.42  2009-10-20 23:12:58  willuhn
+ * Revision 1.43  2010-04-22 12:42:02  willuhn
+ * @N Erste Version des Supports fuer Offline-Konten
+ *
+ * Revision 1.42  2009/10/20 23:12:58  willuhn
  * @N Support fuer SEPA-Ueberweisungen
  * @N Konten um IBAN und BIC erweitert
  *

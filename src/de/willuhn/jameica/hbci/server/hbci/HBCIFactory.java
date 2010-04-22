@@ -114,6 +114,9 @@ public class HBCIFactory {
     {
       if ((konto.getFlags() & Konto.FLAG_DISABLED) != 0)
         throw new ApplicationException(i18n.tr("Das Konto ist deaktiviert"));
+
+      if ((konto.getFlags() & Konto.FLAG_OFFLINE) != 0)
+        throw new ApplicationException(i18n.tr("Das Konto ist ein Offline-Konto"));
     }
     catch (RemoteException re)
     {
@@ -188,7 +191,9 @@ public class HBCIFactory {
 
     if (job == null)
       throw new ApplicationException(i18n.tr("Kein Job ausgewählt"));
-    
+
+    if ((konto.getFlags() & Konto.FLAG_OFFLINE) != 0)
+      return new Properties();
 
     Logger.info("checking job restrictions");
     PassportHandle ph = null;
@@ -701,7 +706,10 @@ public class HBCIFactory {
 
 /*******************************************************************************
  * $Log$
- * Revision 1.62  2009-12-29 17:06:44  willuhn
+ * Revision 1.63  2010-04-22 12:42:03  willuhn
+ * @N Erste Version des Supports fuer Offline-Konten
+ *
+ * Revision 1.62  2009/12/29 17:06:44  willuhn
  * *** empty log message ***
  *
  * Revision 1.61  2009/09/15 00:32:24  willuhn

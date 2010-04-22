@@ -15,7 +15,6 @@ package de.willuhn.jameica.hbci.passport;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
-import de.willuhn.jameica.hbci.backend.Backend;
 import de.willuhn.jameica.hbci.rmi.Konto;
 
 
@@ -83,19 +82,15 @@ public interface Passport extends Remote {
    * @throws RemoteException
    */
   public Class getConfigDialog() throws RemoteException;
-  
-  /**
-   * Liefert das Banking-Backend.
-   * @return das Banking-Backend.
-   * @throws RemoteException
-   */
-  public Backend getBackend() throws RemoteException;
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2010-04-21 23:39:24  willuhn
+ * Revision 1.6  2010-04-22 12:42:03  willuhn
+ * @N Erste Version des Supports fuer Offline-Konten
+ *
+ * Revision 1.5  2010/04/21 23:39:24  willuhn
  * @N Support fuer Offline-Konten
  *
  * Revision 1.4  2010/04/14 16:51:11  willuhn

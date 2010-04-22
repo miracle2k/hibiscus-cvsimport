@@ -96,6 +96,7 @@ public class KontoNew extends AbstractView {
 
     right.addHeadline(i18n.tr("Notizen"));
     right.addPart(control.getKommentar());
+    right.addInput(control.getOffline());
 
     // und noch die Abschicken-Knoepfe
 		ButtonArea buttonArea = new ButtonArea(getParent(),4);
@@ -152,7 +153,10 @@ public class KontoNew extends AbstractView {
 
 /**********************************************************************
  * $Log$
- * Revision 1.28  2009-10-20 23:12:58  willuhn
+ * Revision 1.29  2010-04-22 12:42:03  willuhn
+ * @N Erste Version des Supports fuer Offline-Konten
+ *
+ * Revision 1.28  2009/10/20 23:12:58  willuhn
  * @N Support fuer SEPA-Ueberweisungen
  * @N Konten um IBAN und BIC erweitert
  *

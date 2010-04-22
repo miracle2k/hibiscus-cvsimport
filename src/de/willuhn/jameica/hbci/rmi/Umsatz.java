@@ -25,7 +25,7 @@ import de.willuhn.datasource.rmi.DBObject;
  * ueber HBCI-Geschaeftsvorfaelle von der Bank geliefert und nur von
  * dort geschrieben.
  */
-public interface Umsatz extends HibiscusTransfer, DBObject, Checksum, Flaggable
+public interface Umsatz extends HibiscusTransfer, DBObject, Checksum, Flaggable, Duplicatable<Umsatz>
 {
   /**
    * Flag "kein Flag".
@@ -168,7 +168,10 @@ public interface Umsatz extends HibiscusTransfer, DBObject, Checksum, Flaggable
 
 /**********************************************************************
  * $Log$
- * Revision 1.23  2010-03-16 00:44:18  willuhn
+ * Revision 1.24  2010-04-22 12:42:02  willuhn
+ * @N Erste Version des Supports fuer Offline-Konten
+ *
+ * Revision 1.23  2010/03/16 00:44:18  willuhn
  * @N Komplettes Redesign des CSV-Imports.
  *   - Kann nun erheblich einfacher auch fuer andere Datentypen (z.Bsp.Ueberweisungen) verwendet werden
  *   - Fehlertoleranter

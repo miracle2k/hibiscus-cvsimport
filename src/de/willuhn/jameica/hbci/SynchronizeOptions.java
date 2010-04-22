@@ -36,7 +36,8 @@ public class SynchronizeOptions implements Serializable
    */
   public SynchronizeOptions(Konto k) throws RemoteException
   {
-    this.disabled = k == null || ((k.getFlags() & Konto.FLAG_DISABLED) != 0);
+    int flags = k.getFlags();
+    this.disabled = k == null || ((flags & Konto.FLAG_DISABLED) != 0) || ((flags & Konto.FLAG_OFFLINE) != 0);
     this.id = k == null ? null : k.getID();
   }
   
@@ -187,7 +188,10 @@ public class SynchronizeOptions implements Serializable
 
 /*********************************************************************
  * $Log$
- * Revision 1.8  2010-02-26 15:42:23  willuhn
+ * Revision 1.9  2010-04-22 12:42:03  willuhn
+ * @N Erste Version des Supports fuer Offline-Konten
+ *
+ * Revision 1.8  2010/02/26 15:42:23  willuhn
  * @N Alle Synchronisierungsoptionen auf einmal aktivieren/deaktivieren
  *
  * Revision 1.7  2009/09/15 00:23:35  willuhn
