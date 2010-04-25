@@ -52,8 +52,9 @@ import de.willuhn.util.ProgressMonitor;
  */
 public class ImportDialog extends AbstractDialog
 {
+  private final static int WINDOW_WIDTH = 420;
 
-	private I18N i18n;
+	private final static I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
   private Input importerListe     = null;
   private GenericObject context   = null;	
@@ -67,10 +68,12 @@ public class ImportDialog extends AbstractDialog
   public ImportDialog(GenericObject context, Class type)
   {
     super(POSITION_CENTER);
-		i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
-		setTitle(i18n.tr("Daten-Import"));
+
     this.context = context;
     this.type = type;
+    
+		this.setTitle(i18n.tr("Daten-Import"));
+    this.setSize(WINDOW_WIDTH,SWT.DEFAULT);
   }
 
   /**
@@ -101,6 +104,7 @@ public class ImportDialog extends AbstractDialog
 				throw new OperationCanceledException();
 			}
 		});
+    getShell().setMinimumSize(getShell().computeSize(WINDOW_WIDTH,SWT.DEFAULT));
   }
 
   /**
@@ -311,7 +315,10 @@ public class ImportDialog extends AbstractDialog
 
 /**********************************************************************
  * $Log$
- * Revision 1.11  2010-03-16 00:44:18  willuhn
+ * Revision 1.12  2010-04-25 21:01:46  willuhn
+ * @B BUGZILLA 851
+ *
+ * Revision 1.11  2010/03/16 00:44:18  willuhn
  * @N Komplettes Redesign des CSV-Imports.
  *   - Kann nun erheblich einfacher auch fuer andere Datentypen (z.Bsp.Ueberweisungen) verwendet werden
  *   - Fehlertoleranter
