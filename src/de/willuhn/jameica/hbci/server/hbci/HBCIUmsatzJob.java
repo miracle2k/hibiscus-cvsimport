@@ -30,6 +30,8 @@ import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Protokoll;
 import de.willuhn.jameica.hbci.rmi.Umsatz;
 import de.willuhn.jameica.hbci.server.Converter;
+import de.willuhn.jameica.hbci.server.hbci.rewriter.RewriterRegistry;
+import de.willuhn.jameica.hbci.server.hbci.rewriter.UmsatzRewriter;
 import de.willuhn.jameica.messaging.StatusBarMessage;
 import de.willuhn.jameica.plugin.PluginResources;
 import de.willuhn.jameica.system.Application;
@@ -165,10 +167,24 @@ public class HBCIUmsatzJob extends AbstractHBCIJob
       int created = 0;
       int skipped = 0;
       Logger.info("applying booked entries");
+      
+      UmsatzRewriter rewriter = RewriterRegistry.getRewriter(konto.getBLZ());
+      
       for (int i=0;i<lines.size();++i)
       {
         final Umsatz umsatz = Converter.HBCIUmsatz2HibiscusUmsatz((GVRKUms.UmsLine)lines.get(i));
         umsatz.setKonto(konto); // muessen wir noch machen, weil der Converter das Konto nicht kennt
+
+        if (rewriter != null)
+        {
+          try
+          {
+            rewriter.rewrite(umsatz);
+          }
+          catch (Exception e) {
+            Logger.error("error while rewriting umsatz",e);
+          }
+        }
 
         if (existing.contains(umsatz) != null)
         {
@@ -329,7 +345,10 @@ public class HBCIUmsatzJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
- * Revision 1.51  2009-03-13 17:58:07  willuhn
+ * Revision 1.52  2010-04-25 23:09:04  willuhn
+ * @N BUGZILLA 244
+ *
+ * Revision 1.51  2009/03/13 17:58:07  willuhn
  * @N Loeschen der Vormerkbuchungen (die aelter als heute sind) auch dann, wenn keine neuen von der Bank gekommen sind
  *
  * Revision 1.50  2009/03/12 10:56:01  willuhn
