@@ -27,7 +27,6 @@ import de.willuhn.jameica.hbci.HBCIProperties;
 import de.willuhn.jameica.hbci.rmi.Address;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Protokoll;
-import de.willuhn.jameica.hbci.rmi.Transfer;
 import de.willuhn.jameica.hbci.rmi.Umsatz;
 import de.willuhn.jameica.hbci.rmi.UmsatzTyp;
 import de.willuhn.jameica.system.Application;
@@ -646,14 +645,6 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
   }
 
   /**
-   * @see de.willuhn.jameica.hbci.rmi.Transfer#getTransferTyp()
-   */
-  public int getTransferTyp() throws RemoteException
-  {
-    return Transfer.TYP_UMSATZ;
-  }
-
-  /**
    * @see de.willuhn.jameica.hbci.rmi.Transfer#getWeitereVerwendungszwecke()
    */
   public String[] getWeitereVerwendungszwecke() throws RemoteException
@@ -719,7 +710,10 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
 
 /**********************************************************************
  * $Log$
- * Revision 1.71  2010-04-22 12:42:03  willuhn
+ * Revision 1.72  2010-04-27 11:02:32  willuhn
+ * @R Veralteten Verwendungszweck-Code entfernt
+ *
+ * Revision 1.71  2010/04/22 12:42:03  willuhn
  * @N Erste Version des Supports fuer Offline-Konten
  *
  * Revision 1.70  2010/03/16 00:44:18  willuhn

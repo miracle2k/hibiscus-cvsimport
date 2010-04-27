@@ -17,7 +17,6 @@ import java.util.Date;
 
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.rmi.Duplicatable;
-import de.willuhn.jameica.hbci.rmi.Transfer;
 import de.willuhn.jameica.hbci.rmi.Ueberweisung;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.logging.Logger;
@@ -129,14 +128,6 @@ public class UeberweisungImpl extends AbstractBaseUeberweisungImpl implements Ue
     
     return super.ueberfaellig();
   }
-  
-  /**
-   * @see de.willuhn.jameica.hbci.rmi.Transfer#getTransferTyp()
-   */
-  public int getTransferTyp() throws RemoteException
-  {
-    return Transfer.TYP_UEBERWEISUNG;
-  }
 
   /**
    * @see de.willuhn.jameica.hbci.rmi.Ueberweisung#isUmbuchung()
@@ -159,7 +150,10 @@ public class UeberweisungImpl extends AbstractBaseUeberweisungImpl implements Ue
 
 /**********************************************************************
  * $Log$
- * Revision 1.43  2010-03-04 09:39:40  willuhn
+ * Revision 1.44  2010-04-27 11:02:32  willuhn
+ * @R Veralteten Verwendungszweck-Code entfernt
+ *
+ * Revision 1.43  2010/03/04 09:39:40  willuhn
  * @B BUGZILLA 829
  *
  * Revision 1.42  2009/05/12 22:53:33  willuhn
