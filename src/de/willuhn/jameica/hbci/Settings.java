@@ -312,7 +312,17 @@ public class Settings
 	{
 		settings.setAttribute("ueberweisunglimit",limit);
 	}
-	
+  
+  /**
+   * Prueft, ob der Saldo in die Berechnung der Umsatz-Checksumme einfliessen soll.
+   * @return true, wenn er einfliessen soll (true ist der Default-Wert).
+   * BUGZILLA 622
+   */
+  public static boolean getSaldoInChecksum()
+  {
+    return settings.getBoolean("umsatz.checksum.saldo",true);
+  }
+  
   /**
    * Liefert das von Hibiscus verwendete Wallet.
    * @return das Wallet.
@@ -412,7 +422,10 @@ public class Settings
 
 /*********************************************************************
  * $Log$
- * Revision 1.60  2009-03-31 11:01:40  willuhn
+ * Revision 1.61  2010-05-06 22:08:45  willuhn
+ * @N BUGZILLA 622
+ *
+ * Revision 1.60  2009/03/31 11:01:40  willuhn
  * @R Speichern des PIN-Hashes komplett entfernt
  *
  * Revision 1.59  2009/03/18 22:10:58  willuhn
