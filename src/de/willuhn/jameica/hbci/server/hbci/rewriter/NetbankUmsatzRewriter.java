@@ -30,7 +30,8 @@ public class NetbankUmsatzRewriter implements UmsatzRewriter
   public List<String> getBlzList()
   {
     List<String> list = new ArrayList<String>();
-    list.add("20090500");
+    list.add("20090500"); // Netbank
+    list.add("60090800"); // SpardaBank BW
     return list;
   }
 
@@ -122,7 +123,10 @@ public class NetbankUmsatzRewriter implements UmsatzRewriter
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2010-04-29 09:28:12  willuhn
+ * Revision 1.4  2010-05-11 10:31:56  willuhn
+ * @N Siehe Mail von Markus vom 11.05.2010
+ *
+ * Revision 1.3  2010/04/29 09:28:12  willuhn
  * @B BUGZILLA 244
  *
  * Revision 1.2  2010/04/26 08:35:29  willuhn
