@@ -28,6 +28,7 @@ import org.kapott.hbci.callback.HBCICallback;
 import org.kapott.hbci.callback.HBCICallbackConsole;
 import org.kapott.hbci.manager.HBCIUtils;
 
+import de.willuhn.jameica.hbci.gui.CustomDateFormat;
 import de.willuhn.jameica.hbci.messaging.InfoPointMessageConsumer;
 import de.willuhn.jameica.hbci.messaging.QueryAccountCRCMessageConsumer;
 import de.willuhn.jameica.hbci.messaging.QueryBanknameMessageConsumer;
@@ -50,7 +51,6 @@ import de.willuhn.util.I18N;
  */
 public class HBCI extends AbstractPlugin
 {
-
   /**
    * Datums-Format dd.MM.yyyy HH:mm.
    */
@@ -59,7 +59,7 @@ public class HBCI extends AbstractPlugin
   /**
    * Datums-Format dd.MM.yyyy.
    */
-  public static DateFormat DATEFORMAT       = new SimpleDateFormat("dd.MM.yyyy");
+  public static DateFormat DATEFORMAT       = new CustomDateFormat("dd.MM.yyyy");
 
   /**
    * Datums-Format ddMMyyyy.
@@ -389,7 +389,10 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
- * Revision 1.119  2010-03-18 11:37:59  willuhn
+ * Revision 1.120  2010-05-15 19:05:56  willuhn
+ * @N BUGZILLA 865
+ *
+ * Revision 1.119  2010/03/18 11:37:59  willuhn
  * @N Ausfuehrlichere und hilfreichere Fehlermeldung, wenn Hibiscus-Datenbank defekt ist oder nicht geoeffnet werden konnte.
  *
  * Revision 1.118  2009/10/14 14:29:35  willuhn
