@@ -138,7 +138,7 @@ public class UmsatzTree extends TreePart implements Extension
     
     });
     this.addColumn(i18n.tr("Bezeichnung"),      "name");
-    this.addColumn(i18n.tr("Verwendungszweck"), "zweck");
+    this.addColumn(i18n.tr("Verwendungszweck"), "mergedzweck");
     this.addColumn(i18n.tr("Datum"),            "datum_pseudo", new DateFormatter(HBCI.DATEFORMAT));
     this.addColumn(i18n.tr("Betrag"),           "betrag",new CurrencyFormatter(HBCIProperties.CURRENCY_DEFAULT_DE,HBCI.DECIMALFORMAT));
   }
@@ -271,7 +271,10 @@ public class UmsatzTree extends TreePart implements Extension
 
 /*******************************************************************************
  * $Log$
- * Revision 1.1  2010-03-05 15:24:53  willuhn
+ * Revision 1.2  2010-05-30 23:29:31  willuhn
+ * @N Alle Verwendungszweckzeilen in Umsatzlist und -tree anzeigen (BUGZILLA 782)
+ *
+ * Revision 1.1  2010/03/05 15:24:53  willuhn
  * @N BUGZILLA 686
  *
  * Revision 1.10  2009/09/16 22:34:32  willuhn
