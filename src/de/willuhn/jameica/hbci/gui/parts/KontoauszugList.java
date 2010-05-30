@@ -140,11 +140,11 @@ public class KontoauszugList extends UmsatzList
     gegenkonto.addLabelPair(i18n.tr("BLZ enthält"),                   getGegenkontoBLZ());
     gegenkonto.addLabelPair(i18n.tr("Name des Kontoinhabers enthält"),getGegenkontoName());
 
-    TabGroup betrag = new TabGroup(folder,i18n.tr("Betrag/Verwendungszweck"));
+    TabGroup betrag = new TabGroup(folder,i18n.tr("Betrag/Text"));
     betrag.addLabelPair(i18n.tr("Mindest-Betrag"),                    getMindestBetrag());
     betrag.addLabelPair(i18n.tr("Höchst-Betrag"),                     getHoechstBetrag());
     betrag.addSeparator();
-    betrag.addLabelPair(i18n.tr("Verwendungszweck/Kommentar enthält"), getText());
+    betrag.addLabelPair(i18n.tr("Verwendungszweck/Kommentar/Art enthält"), getText());
 
     ButtonArea buttons = new ButtonArea(parent, 4);
     buttons.addButton(new Back(false));
@@ -488,7 +488,7 @@ public class KontoauszugList extends UmsatzList
     // Zweck/Kommentar
     if (zk != null && zk.length() > 0) {
       zk = "%" + zk.toLowerCase() + "%";
-      umsaetze.addFilter("(LOWER(zweck) like ? OR LOWER(zweck2) like ? OR LOWER(zweck3) like ? OR LOWER(kommentar) like ?)",new Object[]{zk,zk,zk,zk});
+      umsaetze.addFilter("(LOWER(zweck) like ? OR LOWER(zweck2) like ? OR LOWER(zweck3) like ? OR LOWER(kommentar) like ? OR LOWER(art) like ?)",new Object[]{zk,zk,zk,zk,zk});
       hasFilter = true;
     }
     /////////////////////////////////////////////////////////////////
@@ -683,7 +683,10 @@ public class KontoauszugList extends UmsatzList
 
 /*********************************************************************
  * $Log$
- * Revision 1.32  2009-10-20 23:12:58  willuhn
+ * Revision 1.33  2010-05-30 23:08:32  willuhn
+ * @N Auch in Spalte "art" suchen (BUGZILLA 731)
+ *
+ * Revision 1.32  2009/10/20 23:12:58  willuhn
  * @N Support fuer SEPA-Ueberweisungen
  * @N Konten um IBAN und BIC erweitert
  *
