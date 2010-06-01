@@ -33,8 +33,9 @@ public class IORegistry
 
   static
   {
-    Logger.info("looking for installed import/export filters");
+    Logger.info("looking for installed export filters");
     exporters = load(Exporter.class);
+    Logger.info("looking for installed import filters");
     importers = load(Importer.class);
   }
   
@@ -58,9 +59,8 @@ public class IORegistry
       {
         try
         {
-          Logger.info("trying to load " + list[i].getName());
           IO io = (IO) list[i].newInstance();
-          Logger.info("loaded: " + io.getName());
+          Logger.info("  " + io.getName() + " - " + list[i].getName());
           l.add(io);
         }
         catch (Exception e)
@@ -100,7 +100,10 @@ public class IORegistry
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2006-01-17 00:22:36  willuhn
+ * Revision 1.3  2010-06-01 21:55:40  willuhn
+ * @N uebersichtlichere Log-Ausgabe
+ *
+ * Revision 1.2  2006/01/17 00:22:36  willuhn
  * @N erster Code fuer Swift MT940-Import
  *
  * Revision 1.1  2005/06/08 16:48:54  web0
