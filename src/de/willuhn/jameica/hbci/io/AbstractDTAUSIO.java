@@ -125,7 +125,7 @@ public abstract class AbstractDTAUSIO implements IO
      */
     public String getName()
     {
-      return i18n.tr("DTAUS-Format");
+      return AbstractDTAUSIO.this.getName();
     }
 
     /**
@@ -141,7 +141,10 @@ public abstract class AbstractDTAUSIO implements IO
 
 /*********************************************************************
  * $Log$
- * Revision 1.4  2009-06-15 08:51:16  willuhn
+ * Revision 1.5  2010-06-02 15:32:32  willuhn
+ * @C Bezeichnung geaendert
+ *
+ * Revision 1.4  2009/06/15 08:51:16  willuhn
  * @N BUGZILLA 736
  *
  * Revision 1.3  2008/12/17 23:24:23  willuhn
