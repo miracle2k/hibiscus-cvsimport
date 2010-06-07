@@ -111,7 +111,7 @@ public class UeberweisungControl extends AbstractBaseUeberweisungControl
     if (textschluessel != null)
       return textschluessel;
 
-    textschluessel = new SelectInput(TextSchluessel.get(new String[]{"51","53","54"}),TextSchluessel.get(((BaseUeberweisung)getTransfer()).getTextSchluessel()));
+    textschluessel = new SelectInput(TextSchluessel.get(new String[]{"51","53","54","59"}),TextSchluessel.get(((BaseUeberweisung)getTransfer()).getTextSchluessel()));
     textschluessel.setEnabled(!((Terminable)getTransfer()).ausgefuehrt());
     return textschluessel;
   }
@@ -186,7 +186,10 @@ public class UeberweisungControl extends AbstractBaseUeberweisungControl
 
 /**********************************************************************
  * $Log$
- * Revision 1.45  2009-05-12 22:53:33  willuhn
+ * Revision 1.46  2010-06-07 12:43:41  willuhn
+ * @N BUGZILLA 587
+ *
+ * Revision 1.45  2009/05/12 22:53:33  willuhn
  * @N BUGZILLA 189 - Ueberweisung als Umbuchung
  *
  * Revision 1.44  2008/08/01 11:05:14  willuhn
