@@ -82,7 +82,7 @@ public interface KontoFilter extends Filter<Konto>
       int flags = konto.getFlags();
       return ((flags & Konto.FLAG_DISABLED) != Konto.FLAG_DISABLED) &&
              ((flags & Konto.FLAG_OFFLINE) != Konto.FLAG_OFFLINE) &&
-             (iban != null && iban.length() <= HBCIProperties.HBCI_IBAN_MAXLENGTH);
+             (iban != null && iban.length() > 0 && iban.length() <= HBCIProperties.HBCI_IBAN_MAXLENGTH);
     }
   }; 
 }
@@ -90,7 +90,10 @@ public interface KontoFilter extends Filter<Konto>
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2010-04-22 15:43:06  willuhn
+ * Revision 1.3  2010-06-08 15:54:45  willuhn
+ * @B BUGZILLA 871 - nicht nur pruefen, ob die IBAN lang genug ist sondern auch, ob sie laenger als 0 Zeichen ist
+ *
+ * Revision 1.2  2010/04/22 15:43:06  willuhn
  * @B Debugging
  * @N Kontoliste aktualisieren
  *
