@@ -34,10 +34,11 @@ import de.willuhn.util.I18N;
  */
 public class NewInstKeysDialog extends AbstractDialog
 {
+  private final static I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
+  private final static int WINDOW_WIDTH = 540;
 
-	private HBCIPassport passport;
-	private I18N i18n;
-	private Boolean choosen;
+	private HBCIPassport passport = null;
+	private Boolean choosen       = null;
 
   /**
    * ct.
@@ -47,9 +48,8 @@ public class NewInstKeysDialog extends AbstractDialog
   {
     super(NewInstKeysDialog.POSITION_CENTER);
 		this.passport = p;
-		i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 		setTitle(i18n.tr("Neue Bank-Schlüssel erhalten"));
-    setSize(540,SWT.DEFAULT);
+    setSize(WINDOW_WIDTH,SWT.DEFAULT);
   }
 
   /**
@@ -92,6 +92,7 @@ public class NewInstKeysDialog extends AbstractDialog
         close();
 			}
 		});
+    getShell().setMinimumSize(getShell().computeSize(WINDOW_WIDTH,SWT.DEFAULT));
   }
 
   /**
@@ -107,7 +108,11 @@ public class NewInstKeysDialog extends AbstractDialog
 
 /**********************************************************************
  * $Log$
- * Revision 1.10  2009-07-27 13:43:45  willuhn
+ * Revision 1.11  2010-06-14 23:00:59  willuhn
+ * @C Dialog-Groesse angepasst
+ * @N Datei-Auswahldialog mit nativem Ueberschreib-Hinweis
+ *
+ * Revision 1.10  2009/07/27 13:43:45  willuhn
  * @N Neue HBCI4Java-Version (2.5.10) mit RDH-10-Support
  *
  * Revision 1.9  2009/03/11 23:41:52  willuhn
