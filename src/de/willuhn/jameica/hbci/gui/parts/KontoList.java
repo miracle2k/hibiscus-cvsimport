@@ -133,14 +133,25 @@ public class KontoList extends TablePart implements Part
 
           // Checken, ob Konto deaktiviert ist
           int flags = k.getFlags();
+          
+          // Deaktivierte Konten grau
           if ((flags & Konto.FLAG_DISABLED) == Konto.FLAG_DISABLED)
             item.setForeground(Color.COMMENT.getSWTColor());
+          
+          // Offline-Konten blau
           else if ((flags & Konto.FLAG_OFFLINE) == Konto.FLAG_OFFLINE)
             item.setForeground(Color.LINK.getSWTColor());
-          else if (k.getSaldo() < 0)
-            item.setForeground(Settings.getBuchungSollForeground());
+
+          // Sonst schwarz
           else
             item.setForeground(Color.WIDGET_FG.getSWTColor());
+
+          
+          // Den Saldo faerben wir extra
+          if (k.getSaldo() < 0) // Negativer Saldo rot
+            item.setForeground(5,Settings.getBuchungSollForeground());
+          else if (k.getSaldo() > 0) // Positiver Saldo gruen
+            item.setForeground(5,Settings.getBuchungHabenForeground());
           
           Konto kd = Settings.getDefaultKonto();
           if (kd != null && kd.equals(k))
@@ -272,7 +283,10 @@ public class KontoList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.16  2010-04-22 15:43:06  willuhn
+ * Revision 1.17  2010-06-17 11:37:17  willuhn
+ * @N Farben der Konten etwas uebersichtlicher gestaltet
+ *
+ * Revision 1.16  2010/04/22 15:43:06  willuhn
  * @B Debugging
  * @N Kontoliste aktualisieren
  *
