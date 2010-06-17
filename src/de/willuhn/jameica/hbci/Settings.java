@@ -315,12 +315,12 @@ public class Settings
   
   /**
    * Prueft, ob der Saldo in die Berechnung der Umsatz-Checksumme einfliessen soll.
-   * @return true, wenn er einfliessen soll (true ist der Default-Wert).
+   * @return true, wenn er einfliessen soll (false ist der Default-Wert).
    * BUGZILLA 622
    */
   public static boolean getSaldoInChecksum()
   {
-    return settings.getBoolean("umsatz.checksum.saldo",true);
+    return settings.getBoolean("umsatz.checksum.saldo",false);
   }
   
   /**
@@ -422,7 +422,11 @@ public class Settings
 
 /*********************************************************************
  * $Log$
- * Revision 1.61  2010-05-06 22:08:45  willuhn
+ * Revision 1.62  2010-06-17 15:31:28  willuhn
+ * @C BUGZILLA 622 - Defaultwert des checksum.saldo-Parameters geaendert - steht jetzt per Default auf false, sodass der Saldo NICHT mit in die Checksumme einfliesst
+ * @B BUGZILLA 709 - Konto ist nun ENDLICH nicht mehr Bestandteil der Checksumme, dafuer sind jetzt alle Verwendungszweck-Zeilen drin
+ *
+ * Revision 1.61  2010/05/06 22:08:45  willuhn
  * @N BUGZILLA 622
  *
  * Revision 1.60  2009/03/31 11:01:40  willuhn

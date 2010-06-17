@@ -397,23 +397,15 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
       }
     }
 
-    // TODO: getKonto().getChecksum() duerfte eigentlich nicht in der Checksumme enthalten sein.
-    // Denn wenn das Konto veraendert wird, aendern sich dabei auch die Checksummen der Umsaetze.
-    // Das kann die Umsatzdoppler erklaeren. Da die Checksumme aber in der Datenbank gespeichert
-    // ist, kann ich das hier nicht einfach umbauen. Ich muesste eine Datenbank-Migration machen,
-    // in der die Checksummen ALLER Umsaetze (oder wenigstens die des Merge-Window beim Abruf)
-    // neu berechnet werden. Sollte irgendwann mal gemacht werden
     String s = (""+getArt()).toUpperCase() +
 		           getBetrag() +
-		           getKonto().getChecksum() +
 		           getCustomerRef() +
 		           getGegenkontoBLZ() +
 		           getGegenkontoNummer() +
 		           (""+getGegenkontoName()).toUpperCase() +
 		           getPrimanota() +
-		           (Settings.getSaldoInChecksum() ? getSaldo() : "") +
-		           (""+getZweck()).toUpperCase() +
-		           (""+getZweck2()).toUpperCase() +
+               (Settings.getSaldoInChecksum() ? getSaldo() : "") +
+		           ((String)getAttribute("mergedzweck")).toUpperCase() +
 		           sd +
 							 sv;
 		CRC32 crc = new CRC32();
@@ -728,7 +720,11 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
 
 /**********************************************************************
  * $Log$
- * Revision 1.74  2010-05-30 23:29:31  willuhn
+ * Revision 1.75  2010-06-17 15:31:27  willuhn
+ * @C BUGZILLA 622 - Defaultwert des checksum.saldo-Parameters geaendert - steht jetzt per Default auf false, sodass der Saldo NICHT mit in die Checksumme einfliesst
+ * @B BUGZILLA 709 - Konto ist nun ENDLICH nicht mehr Bestandteil der Checksumme, dafuer sind jetzt alle Verwendungszweck-Zeilen drin
+ *
+ * Revision 1.74  2010/05/30 23:29:31  willuhn
  * @N Alle Verwendungszweckzeilen in Umsatzlist und -tree anzeigen (BUGZILLA 782)
  *
  * Revision 1.73  2010/05/06 22:08:45  willuhn
