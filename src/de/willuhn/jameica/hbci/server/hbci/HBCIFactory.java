@@ -684,10 +684,32 @@ public class HBCIFactory {
    */
   public static Throwable getCause(Throwable t)
   {
+    return getCause(t,null);
+  }
+  
+  /**
+   * Laeuft den Stack der Exceptions bis zur urspruenglichen hoch und liefert sie zurueck.
+   * HBCI4Java verpackt Exceptions oft tief ineinander. Sie werden gefangen, in eine
+   * neue gepackt und wieder geworfen. Um nun die eigentliche Fehlermeldung zu kriegen,
+   * suchen wir hier nach der ersten. 
+   * BUGZILLA 249
+   * @param t die Exception.
+   * @param c optionale Angabe der gesuchten Exception.
+   * Wird sie nicht angegeben, liefert die Funktion die erste geworfene Exception
+   * im Stacktrace. Wird sie angegeben, liefert die Funktion die erste gefundene
+   * Exception dieser Klasse - insofern sie gefunden wird. Wird sie nicht gefunden,
+   * liefert die Funktion NULL.
+   * @return die urspruengliche.
+   */
+  public static Throwable getCause(Throwable t, Class<? extends Throwable> c)
+  {
     Throwable cause = t;
     
     for (int i=0;i<20;++i) // maximal 20 Schritte nach oben
     {
+      if (c != null && c.equals(cause.getClass()))
+        return cause;
+      
       Throwable current = cause.getCause();
 
       if (current == null)
@@ -699,14 +721,19 @@ public class HBCIFactory {
       cause = current;
     }
     
-    return cause;
+    // Wenn eine gesuchte Exception angegeben wurde, haben wir sie hier nicht gefunden
+    return c != null ? null : cause;
   }
+
 }
 
 
 /*******************************************************************************
  * $Log$
- * Revision 1.63  2010-04-22 12:42:03  willuhn
+ * Revision 1.64  2010-06-17 17:20:58  willuhn
+ * @N Exception-Handling beim Laden der Schluesseldatei ueberarbeitet - OperationCancelledException wird nun sauber behandelt - auch wenn sie in HBCI_Exceptions gekapselt ist
+ *
+ * Revision 1.63  2010/04/22 12:42:03  willuhn
  * @N Erste Version des Supports fuer Offline-Konten
  *
  * Revision 1.62  2009/12/29 17:06:44  willuhn
