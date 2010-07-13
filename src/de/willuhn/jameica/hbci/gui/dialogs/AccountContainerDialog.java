@@ -238,7 +238,7 @@ public class AccountContainerDialog extends AbstractDialog
       }
     
     });
-		this.host.setComment(i18n.tr("Bei PIN/TAN bitte ohne \"https://\" eingeben"));
+		this.host.setComment(i18n.tr("Bitte ohne \"https://\" eingeben"));
 		this.host.setMandatory(true);
 		return this.host;
 	}
@@ -309,7 +309,10 @@ public class AccountContainerDialog extends AbstractDialog
 
 /**********************************************************************
  * $Log$
- * Revision 1.12  2009-09-28 13:02:05  willuhn
+ * Revision 1.13  2010-07-13 10:55:29  willuhn
+ * @N Erster Code zum Aendern der Bank-Daten direkt auf der Karte. Muss dringend noch getestet werden - das will ich aber nicht mit meiner Karte machen, weil ich mir schonmal meine Karte mit Tests zerschossen hatte und die aber taeglich brauche ;)
+ *
+ * Revision 1.12  2009/09/28 13:02:05  willuhn
  * @N Pflichtfeld-Check in Account-Container-Dialog
  *
  * Revision 1.11  2009/03/02 13:43:19  willuhn
