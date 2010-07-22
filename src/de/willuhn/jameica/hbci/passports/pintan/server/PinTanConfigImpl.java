@@ -133,7 +133,7 @@ public class PinTanConfigImpl extends UnicastRemoteObject implements PinTanConfi
    */
   public String getHBCIVersion() throws RemoteException
   {
-    return settings.getString(getID() + ".hbciversion",null);
+    return settings.getString(getID() + ".hbciversion",passport.getHBCIVersion());
   }
 
   /**
@@ -481,7 +481,10 @@ public class PinTanConfigImpl extends UnicastRemoteObject implements PinTanConfi
 
 /*****************************************************************************
  * $Log$
- * Revision 1.1  2010-06-17 11:38:16  willuhn
+ * Revision 1.2  2010-07-22 11:35:08  willuhn
+ * @N Per Default die letzte verwendete HBCI-Version anzeigen
+ *
+ * Revision 1.1  2010/06/17 11:38:16  willuhn
  * @C kompletten Code aus "hbci_passport_pintan" in Hibiscus verschoben - es macht eigentlich keinen Sinn mehr, das in separaten Projekten zu fuehren
  *
  * Revision 1.20  2009/03/02 13:41:24  willuhn
