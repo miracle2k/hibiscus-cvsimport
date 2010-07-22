@@ -163,7 +163,7 @@ public class HBCICallbackSWT extends AbstractHibiscusHBCICallback
 
             if (pw != null && pw.length() > 0)
             {
-              Logger.info("using passport key from wallet, passport: " + passport.getClass().getName());
+              Logger.debug("using passport key from wallet, passport: " + passport.getClass().getName());
               retData.replace(0,retData.length(),pw);
               break;
             }
@@ -509,7 +509,10 @@ public class HBCICallbackSWT extends AbstractHibiscusHBCICallback
 
 /**********************************************************************
  * $Log$
- * Revision 1.65  2010-06-17 11:26:48  willuhn
+ * Revision 1.66  2010-07-22 11:35:50  willuhn
+ * @C changed log level
+ *
+ * Revision 1.65  2010/06/17 11:26:48  willuhn
  * @B In HBCICallbackSWT wurden die RDH-Passports nicht korrekt ausgefiltert
  * @C komplettes Projekt "hbci_passport_rdh" in Hibiscus verschoben - es macht eigentlich keinen Sinn mehr, das in separaten Projekten zu fuehren
  * @N BUGZILLA 312
