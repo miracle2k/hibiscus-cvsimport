@@ -55,11 +55,6 @@ public interface Passport extends de.willuhn.jameica.hbci.passport.Passport {
 	public final static String CTAPI = "client.passport.DDV.libname.ctapi";
 
 	/**
-	 * Pfad zur JNI-Lib.
-	 */
-	public final static String JNILIB = "client.passport.DDV.libname.ddv";
-
-	/**
 	 * Liefert den Port des Kartenlesers.
    * @return Port.
    * @throws RemoteException
@@ -152,20 +147,6 @@ public interface Passport extends de.willuhn.jameica.hbci.passport.Passport {
   public void setCTAPIDriver(String file) throws RemoteException;
   
   /**
-   * Liefert den vollstaendigen Pfad und Dateinamen zur JNI-Lib.
-   * @return Pfad  zur JNI-Lib.
-   * @throws RemoteException
-   */
-  public String getJNILib() throws RemoteException;
-  
-  /**
-   * Speichert den vollstaendigen Pfad und Dateinamen  zur JNI-Lib.
-   * @param file Pfad  zur JNI-Lib.
-   * @throws RemoteException
-   */
-  public void setJNILib(String file) throws RemoteException;
-
-  /**
    * Die Presets, auf dem diese Einstellungen basieren.
    * @return Presets.
    * @throws RemoteException
@@ -197,7 +178,10 @@ public interface Passport extends de.willuhn.jameica.hbci.passport.Passport {
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2010-06-17 11:45:49  willuhn
+ * Revision 1.4  2010-07-22 22:36:24  willuhn
+ * @N Code-Cleanup
+ *
+ * Revision 1.3  2010/06/17 11:45:49  willuhn
  * @C kompletten Code aus "hbci_passport_ddv" in Hibiscus verschoben - es macht eigentlich keinen Sinn mehr, das in separaten Projekten zu fuehren
  *
  * Revision 1.16  2007/07/24 13:50:27  willuhn

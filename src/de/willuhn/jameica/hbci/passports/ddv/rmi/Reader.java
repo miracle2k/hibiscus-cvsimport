@@ -53,13 +53,6 @@ public interface Reader extends GenericObject
   public int getCTNumber() throws RemoteException;
 
   /**
-   * Liefert Pfad und Dateiname der JNI-Lib.
-   * @return Pfad und Dateiname der JNI-Lib.
-   * @throws RemoteException
-   */
-  public String getJNILib() throws RemoteException;
-
-  /**
 	 * Prueft, ob dieser Leser von der aktuellen System-Umgebung unterstuetzt wird.
    * @return <code>true</code>, wenn er unterstuetzt wird.
    * @throws RemoteException
@@ -86,7 +79,10 @@ public interface Reader extends GenericObject
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2010-06-17 11:45:49  willuhn
+ * Revision 1.2  2010-07-22 22:36:24  willuhn
+ * @N Code-Cleanup
+ *
+ * Revision 1.1  2010/06/17 11:45:49  willuhn
  * @C kompletten Code aus "hbci_passport_ddv" in Hibiscus verschoben - es macht eigentlich keinen Sinn mehr, das in separaten Projekten zu fuehren
  *
  * Revision 1.3  2006/08/03 22:13:49  willuhn

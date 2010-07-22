@@ -74,6 +74,7 @@ public class PassportTest implements Action
           handle.close(); // nein, nicht im finally, denn wenn das Oeffnen
                           // fehlschlaegt, ist nichts zum Schliessen da ;)
 
+          Logger.flush();
           monitor.setStatus(ProgressMonitor.STATUS_DONE);
           monitor.setPercentComplete(100);
           monitor.setStatusText(i18n.tr("Sicherheits-Medium erfolgreich getestet."));
@@ -190,7 +191,10 @@ public class PassportTest implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2008-05-05 10:22:18  willuhn
+ * Revision 1.10  2010-07-22 22:36:24  willuhn
+ * @N Code-Cleanup
+ *
+ * Revision 1.9  2008/05/05 10:22:18  willuhn
  * @B MACOS - Log-Target am Ende in einem separaten Thread entfernen. Ich bin mir nicht sicher, ob das was bringt. Muss das mal noch auf'm Mac testen
  *
  * Revision 1.8  2007/12/05 10:58:43  willuhn

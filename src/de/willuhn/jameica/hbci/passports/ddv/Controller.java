@@ -656,7 +656,6 @@ public class Controller extends AbstractControl
         getBio().setValue(new Boolean(r.useBIO()));
      		getCTAPI().setValue(s);
      		getSoftPin().setValue(new Boolean(r.useSoftPin()));
-        getPassport().setJNILib(r.getJNILib());
         handleStore();
     	}
     	catch (Throwable t)
@@ -670,6 +669,9 @@ public class Controller extends AbstractControl
 
 /*******************************************************************************
  * $Log$
+ * Revision 1.7  2010-07-22 22:36:24  willuhn
+ * @N Code-Cleanup
+ *
  * Revision 1.6  2010-07-13 11:36:52  willuhn
  * @C Fehlerhandling
  *
