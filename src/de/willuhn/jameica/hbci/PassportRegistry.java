@@ -45,13 +45,12 @@ public class PassportRegistry {
 			Class[] found = finder.findImplementors(Passport.class);
 			for (int i=0;i<found.length;++i)
 			{
-				Logger.info("found passport type " + found[i].getName() + ", try to instantiate");
 				try {
 					Passport p = (Passport) found[i].newInstance();
 					Application.getCallback().getStartupMonitor().setStatusText("init passport " + p.getName());
  				  passportsByName.put(p.getName(),found[i]);
 					passportsByClass.put(found[i].getName(),found[i]);
-					Logger.info("[" + p.getName() + "] instantiated successfully");
+					Logger.info("  " + p.getName() + " [" + p.getClass().getName() + "]");
 				}
 				catch (Exception e)
 				{
@@ -128,7 +127,10 @@ public class PassportRegistry {
 
 /**********************************************************************
  * $Log$
- * Revision 1.14  2007-05-20 23:45:10  willuhn
+ * Revision 1.15  2010-07-22 11:48:55  willuhn
+ * @C Logging
+ *
+ * Revision 1.14  2007/05/20 23:45:10  willuhn
  * @N HBCI-Jobausfuehrung Servertauglich gemacht
  *
  * Revision 1.13  2005/12/05 10:35:34  willuhn
