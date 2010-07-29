@@ -43,7 +43,7 @@ public class ScriptingSaldoMessageConsumer implements MessageConsumer
   public void handleMessage(Message message) throws Exception
   {
     SaldoMessage m = (SaldoMessage) message;
-    Application.getMessagingFactory().getMessagingQueue("jameica.scripting").sendMessage(new QueryMessage("hibiscus_kontoSaldoChanged",m.getObject()));
+    Application.getMessagingFactory().getMessagingQueue("jameica.scripting").sendMessage(new QueryMessage("hibiscus.konto.saldo.changed",m.getObject()));
   }
 }
 
@@ -51,6 +51,9 @@ public class ScriptingSaldoMessageConsumer implements MessageConsumer
 
 /**********************************************************************
  * $Log$
+ * Revision 1.2  2010-07-29 23:49:42  willuhn
+ * @C Events umbenannt. Da sie jetzt keine JS-Funktionen mehr sind, kann man sie auch freier benennen
+ *
  * Revision 1.1  2010-07-25 23:11:59  willuhn
  * @N Erster Code fuer Scripting-Integration
  *

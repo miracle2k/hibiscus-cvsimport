@@ -71,7 +71,7 @@ public class KontoSyncViaScripting implements Action
         monitor.setStatus(ProgressMonitor.STATUS_RUNNING);
         monitor.setStatusText(i18n.tr("Starte Synchronisierung"));
         
-        QueryMessage msg = new QueryMessage("hibiscus_kontoSync",new Object[]{k,monitor});
+        QueryMessage msg = new QueryMessage("hibiscus.konto.sync",new Object[]{k,monitor});
         Application.getMessagingFactory().getMessagingQueue("jameica.scripting").sendSyncMessage(msg);
 
         // GUI neu laden
@@ -115,6 +115,9 @@ public class KontoSyncViaScripting implements Action
 
 /**********************************************************************
  * $Log$
+ * Revision 1.3  2010-07-29 23:49:42  willuhn
+ * @C Events umbenannt. Da sie jetzt keine JS-Funktionen mehr sind, kann man sie auch freier benennen
+ *
  * Revision 1.2  2010-07-26 09:11:41  willuhn
  * @N Scripting-Anbindung jetzt via Background-Task und Rueckmeldung via ProgressMonitor
  *
