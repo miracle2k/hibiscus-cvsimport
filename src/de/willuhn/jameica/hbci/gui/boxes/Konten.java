@@ -81,7 +81,6 @@ public class Konten extends AbstractBox implements Box
   public void paint(Composite parent) throws RemoteException
   {
     KontoList l = new KontoList(new KontoNew());
-    l.setSummary(false);
     l.paint(parent);
   }
 
@@ -98,7 +97,10 @@ public class Konten extends AbstractBox implements Box
 
 /*********************************************************************
  * $Log$
- * Revision 1.7  2010-06-17 12:16:52  willuhn
+ * Revision 1.8  2010-07-29 21:43:22  willuhn
+ * @N BUGZILLA 886
+ *
+ * Revision 1.7  2010/06/17 12:16:52  willuhn
  * @N BUGZILLA 530
  *
  * Revision 1.6  2008/01/04 16:39:31  willuhn
