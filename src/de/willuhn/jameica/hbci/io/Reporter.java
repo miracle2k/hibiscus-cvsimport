@@ -99,8 +99,10 @@ public class Reporter
     rpt.open();
     try
     {
-      URL url = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getClassLoader().getResource("icons/hibiscus-icon-32x32.png");
-      rpt.add(Image.getInstance(url));
+      URL url = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getClassLoader().getResource("icons/hibiscus-icon-64x64.png");
+      Image image = Image.getInstance(url);
+      image.scaleAbsolute(32,32);
+      rpt.add(image);
     }
     catch (Exception e)
     {
@@ -266,7 +268,10 @@ public class Reporter
 
 /*******************************************************************************
  * $Log$
- * Revision 1.4  2010-02-17 10:43:41  willuhn
+ * Revision 1.5  2010-08-09 21:33:08  willuhn
+ * @C Logo etwas sauberer skalieren
+ *
+ * Revision 1.4  2010/02/17 10:43:41  willuhn
  * @N Differenz in Einnahmen/Ausgaben anzeigen, Cleanup
  *
  * Revision 1.3  2007/05/02 11:18:04  willuhn
