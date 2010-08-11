@@ -140,7 +140,11 @@ public class LineChart extends AbstractChart
           Object olabel = BeanUtil.get(o,labelAttribute);
           
           if (olabel == null || ovalue == null || !(ovalue instanceof Number))
+          {
+            dataLine.add(null);
+            labelLine.add(null);
             continue;
+          }
           
           dataLine.add(ovalue);
           labelLine.add(format == null ? olabel : format.format(olabel));
@@ -230,7 +234,10 @@ public class LineChart extends AbstractChart
 
 /*********************************************************************
  * $Log$
- * Revision 1.12  2009-08-27 13:37:28  willuhn
+ * Revision 1.13  2010-08-11 15:48:57  willuhn
+ * @B Objekte mit fehlenden Attributen nicht ueberspringen sondern stattdessen NULL im Vector speichern. Sonst kann es zu einer "ChartException: Mismatch (x !=y) in dataset count found in stacked runtime series" kommen, wenn mehrere Linien gezeichnet werden und die eine unterschiedliche Anzahl von Elementen haben
+ *
+ * Revision 1.12  2009/08/27 13:37:28  willuhn
  * @N Der grafische Saldo-Verlauf zeigt nun zusaetzlich  eine Trendkurve an
  *
  * Revision 1.11  2009/08/26 10:29:44  willuhn
