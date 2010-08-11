@@ -206,7 +206,7 @@ public class SparQuote implements Part
 
     try
     {
-      TabGroup tab2 = new TabGroup(folder,i18n.tr("Grafische Auswertung"));
+      TabGroup tab2 = new TabGroup(folder,i18n.tr("Grafische Auswertung"),false,1);
 
       this.chart = new LineChart();
       this.chart.addData(new ChartDataSparQuote());
@@ -516,6 +516,9 @@ public class SparQuote implements Part
 
 /*********************************************************************
  * $Log$
+ * Revision 1.24  2010-08-11 14:53:19  willuhn
+ * @B Kleiner Darstellungsfehler (unnoetig breiter rechter Rand wegen zweispaltigem Part)
+ *
  * Revision 1.23  2009-10-30 10:05:05  willuhn
  * @B Datum statt Valuta verwenden - ein Umsatz landet sonst u.U. im falschen Monat, wenn Datum in einem, Valuta aber im anderen Monat ist
  *
