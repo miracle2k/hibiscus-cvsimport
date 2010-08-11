@@ -128,7 +128,7 @@ public class UmsatzTypChart implements Part
       });
 
 
-      group.addLabelPair(i18n.tr("Anzahl der anzuzeigenden Tage"),i);
+      group.addInput(i);
       
       final Composite comp = new Composite(group.getComposite(),SWT.NONE);
       GridData gridData = new GridData(GridData.FILL_BOTH);
@@ -161,7 +161,10 @@ public class UmsatzTypChart implements Part
 
 /*********************************************************************
  * $Log$
- * Revision 1.7  2009-08-27 13:37:28  willuhn
+ * Revision 1.8  2010-08-11 16:06:05  willuhn
+ * @N BUGZILLA 783 - Saldo-Chart ueber alle Konten
+ *
+ * Revision 1.7  2009/08/27 13:37:28  willuhn
  * @N Der grafische Saldo-Verlauf zeigt nun zusaetzlich  eine Trendkurve an
  *
  * Revision 1.6  2009/05/08 13:58:30  willuhn

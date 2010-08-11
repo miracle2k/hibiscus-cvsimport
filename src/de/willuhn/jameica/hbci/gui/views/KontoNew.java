@@ -126,8 +126,8 @@ public class KontoNew extends AbstractView {
     TabGroup tab = new TabGroup(folder,i18n.tr("Umsätze der letzten {0} Tage",""+HBCIProperties.UMSATZ_DEFAULT_DAYS), false,1);
     control.getUmsatzList().paint(tab.getComposite());
 
-    TabGroup tab2 = new TabGroup(folder,i18n.tr("Saldo im Verlauf"));
-    control.getUmsatzChart().paint(tab2.getComposite());
+    TabGroup tab2 = new TabGroup(folder,i18n.tr("Saldo im Verlauf"),false,1);
+    control.getSaldoChart().paint(tab2.getComposite());
 
     boolean scripting = Application.getPluginLoader().isInstalled("de.willuhn.jameica.scripting.Plugin");
 
@@ -182,6 +182,9 @@ public class KontoNew extends AbstractView {
 
 /**********************************************************************
  * $Log$
+ * Revision 1.34  2010-08-11 16:06:05  willuhn
+ * @N BUGZILLA 783 - Saldo-Chart ueber alle Konten
+ *
  * Revision 1.33  2010-07-25 23:11:59  willuhn
  * @N Erster Code fuer Scripting-Integration
  *

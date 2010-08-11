@@ -313,7 +313,7 @@ public class UmsatzList extends TablePart implements Extendable
           kl.process();
         }
       });
-      group.addLabelPair(i18n.tr("Nur Umsätze des Zeitraumes"), this.days);
+      group.addInput(this.days);
 
       // Eingabe-Feld fuer die Suche mit Button hinten dran.
       this.search = new SearchInput();
@@ -816,7 +816,10 @@ public class UmsatzList extends TablePart implements Extendable
 
 /**********************************************************************
  * $Log$
- * Revision 1.65  2010-05-30 23:29:31  willuhn
+ * Revision 1.66  2010-08-11 16:06:05  willuhn
+ * @N BUGZILLA 783 - Saldo-Chart ueber alle Konten
+ *
+ * Revision 1.65  2010/05/30 23:29:31  willuhn
  * @N Alle Verwendungszweckzeilen in Umsatzlist und -tree anzeigen (BUGZILLA 782)
  *
  * Revision 1.64  2010/03/16 00:44:18  willuhn

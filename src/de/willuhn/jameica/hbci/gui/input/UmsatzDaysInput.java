@@ -43,6 +43,7 @@ public class UmsatzDaysInput extends SelectInput
   {
     // BUGZILLA 258
     super(init(),new DayObject(getDefaultDays()));
+    this.setName(i18n.tr("Zeitraum"));
   }
 
   /**
@@ -163,7 +164,10 @@ public class UmsatzDaysInput extends SelectInput
 
 /*********************************************************************
  * $Log$
- * Revision 1.5  2006-08-28 22:03:27  willuhn
+ * Revision 1.6  2010-08-11 16:06:04  willuhn
+ * @N BUGZILLA 783 - Saldo-Chart ueber alle Konten
+ *
+ * Revision 1.5  2006/08/28 22:03:27  willuhn
  * @B UmsatzChart - Anzahl der Default-Tage
  *
  * Revision 1.4  2006/08/08 21:18:21  willuhn
