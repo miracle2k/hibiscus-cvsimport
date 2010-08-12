@@ -139,13 +139,6 @@ public class LineChart extends AbstractChart
           Object ovalue = BeanUtil.get(o,dataAttribute);
           Object olabel = BeanUtil.get(o,labelAttribute);
           
-          if (olabel == null || ovalue == null || !(ovalue instanceof Number))
-          {
-            dataLine.add(null);
-            labelLine.add(null);
-            continue;
-          }
-          
           dataLine.add(ovalue);
           labelLine.add(format == null ? olabel : format.format(olabel));
         }
@@ -234,6 +227,9 @@ public class LineChart extends AbstractChart
 
 /*********************************************************************
  * $Log$
+ * Revision 1.14  2010-08-12 10:13:41  willuhn
+ * @R Der NULL-Check ist unnoetig
+ *
  * Revision 1.13  2010-08-11 15:48:57  willuhn
  * @B Objekte mit fehlenden Attributen nicht ueberspringen sondern stattdessen NULL im Vector speichern. Sonst kann es zu einer "ChartException: Mismatch (x !=y) in dataset count found in stacked runtime series" kommen, wenn mehrere Linien gezeichnet werden und die eine unterschiedliche Anzahl von Elementen haben
  *
