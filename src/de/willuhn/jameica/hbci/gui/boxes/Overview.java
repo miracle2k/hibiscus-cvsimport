@@ -47,7 +47,8 @@ import de.willuhn.util.I18N;
  */
 public class Overview extends AbstractBox implements Box
 {
-  private I18N i18n = null;
+  private final static I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
+
   private KontoInput kontoAuswahl  = null;
   private Input saldo              = null;
   private Input ausgaben           = null;
@@ -56,14 +57,6 @@ public class Overview extends AbstractBox implements Box
   
   private DateInput start          = null;
   private DateInput end            = null;
-  
-  /**
-   * ct.
-   */
-  public Overview()
-  {
-    this.i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
-  }
   
   /**
    * @see de.willuhn.jameica.gui.boxes.Box#getName()
@@ -315,7 +308,10 @@ public class Overview extends AbstractBox implements Box
 
 /*********************************************************************
  * $Log$
- * Revision 1.14  2010-06-07 22:41:13  willuhn
+ * Revision 1.15  2010-08-12 17:12:32  willuhn
+ * @N Saldo-Chart komplett ueberarbeitet (Daten wurden vorher mehrmals geladen, Summen-Funktion, Anzeige mehrerer Konten, Durchschnitt ueber mehrere Konten, Bugfixing, echte "Homogenisierung" der Salden via SaldoFinder)
+ *
+ * Revision 1.14  2010/06/07 22:41:13  willuhn
  * @N BUGZILLA 844/852
  *
  * Revision 1.13  2010/03/21 22:43:21  willuhn

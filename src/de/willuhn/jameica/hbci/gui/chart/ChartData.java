@@ -14,8 +14,8 @@
 package de.willuhn.jameica.hbci.gui.chart;
 
 import java.rmi.RemoteException;
+import java.util.List;
 
-import de.willuhn.datasource.GenericIterator;
 import de.willuhn.jameica.gui.formatter.Formatter;
 
 /**
@@ -28,7 +28,7 @@ public interface ChartData
    * @return Datenreihe.
    * @throws RemoteException
    */
-  public GenericIterator getData() throws RemoteException;
+  public List getData() throws RemoteException;
   
   /**
    * Liefert das Label der Datenreihe.
@@ -63,6 +63,9 @@ public interface ChartData
 
 /*********************************************************************
  * $Log$
+ * Revision 1.2  2010-08-12 17:12:32  willuhn
+ * @N Saldo-Chart komplett ueberarbeitet (Daten wurden vorher mehrmals geladen, Summen-Funktion, Anzeige mehrerer Konten, Durchschnitt ueber mehrere Konten, Bugfixing, echte "Homogenisierung" der Salden via SaldoFinder)
+ *
  * Revision 1.1  2005-12-12 15:46:55  willuhn
  * @N Hibiscus verwendet jetzt Birt zum Erzeugen der Charts
  *

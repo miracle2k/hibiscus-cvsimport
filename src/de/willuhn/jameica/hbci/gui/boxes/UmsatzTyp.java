@@ -18,29 +18,25 @@ import java.rmi.RemoteException;
 import org.eclipse.swt.widgets.Composite;
 
 import de.willuhn.jameica.gui.boxes.AbstractBox;
+import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.gui.parts.UmsatzTypChart;
+import de.willuhn.jameica.system.Application;
+import de.willuhn.util.I18N;
 
 /**
  * Implementierung einer Box, die die Umsatzverteilung anzeigt.
  */
 public class UmsatzTyp extends AbstractBox
 {
-
-  /**
-   * ct.
-   */
-  public UmsatzTyp()
-  {
-    super();
-  }
+  private final static I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
   /**
    * @see de.willuhn.jameica.gui.boxes.Box#getName()
    */
   public String getName()
   {
-    return "Hibiscus: " + "Umsatz-Analyse";
+    return "Hibiscus: " + i18n.tr("Umsatz-Analyse");
   }
 
   /**
@@ -90,7 +86,10 @@ public class UmsatzTyp extends AbstractBox
 
 /*********************************************************************
  * $Log$
- * Revision 1.6  2008-01-04 16:39:31  willuhn
+ * Revision 1.7  2010-08-12 17:12:32  willuhn
+ * @N Saldo-Chart komplett ueberarbeitet (Daten wurden vorher mehrmals geladen, Summen-Funktion, Anzeige mehrerer Konten, Durchschnitt ueber mehrere Konten, Bugfixing, echte "Homogenisierung" der Salden via SaldoFinder)
+ *
+ * Revision 1.6  2008/01/04 16:39:31  willuhn
  * @N Weitere Hoehen-Angaben von Komponenten
  *
  * Revision 1.5  2006/06/29 23:10:33  willuhn

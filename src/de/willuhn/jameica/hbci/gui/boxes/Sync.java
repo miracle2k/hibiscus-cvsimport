@@ -43,17 +43,9 @@ import de.willuhn.util.I18N;
  */
 public class Sync extends AbstractBox implements Box
 {
+  private final static I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
-  private I18N i18n = null;
   private SynchronizeList list = null;
-
-  /**
-   * ct.
-   */
-  public Sync()
-  {
-    this.i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
-  }
 
   /**
    * @see de.willuhn.jameica.gui.boxes.Box#getName()
@@ -181,7 +173,10 @@ public class Sync extends AbstractBox implements Box
 
 /*********************************************************************
  * $Log$
- * Revision 1.16  2009-01-20 10:51:46  willuhn
+ * Revision 1.17  2010-08-12 17:12:32  willuhn
+ * @N Saldo-Chart komplett ueberarbeitet (Daten wurden vorher mehrmals geladen, Summen-Funktion, Anzeige mehrerer Konten, Durchschnitt ueber mehrere Konten, Bugfixing, echte "Homogenisierung" der Salden via SaldoFinder)
+ *
+ * Revision 1.16  2009/01/20 10:51:46  willuhn
  * @N Mehr Icons - fuer Buttons
  *
  * Revision 1.15  2008/01/04 16:39:31  willuhn

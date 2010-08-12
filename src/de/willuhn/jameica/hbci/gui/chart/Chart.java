@@ -53,6 +53,7 @@ public interface Chart extends Part
 
   /**
    * Zeichnet das Chart neu.
+   * Ist eigentlich nur noetig, wenn sich die Daten tatsaechlich geaendert haben.
    * @throws RemoteException
    */
   public void redraw() throws RemoteException;
@@ -61,7 +62,10 @@ public interface Chart extends Part
 
 /*********************************************************************
  * $Log$
- * Revision 1.4  2008-02-26 01:01:16  willuhn
+ * Revision 1.5  2010-08-12 17:12:32  willuhn
+ * @N Saldo-Chart komplett ueberarbeitet (Daten wurden vorher mehrmals geladen, Summen-Funktion, Anzeige mehrerer Konten, Durchschnitt ueber mehrere Konten, Bugfixing, echte "Homogenisierung" der Salden via SaldoFinder)
+ *
+ * Revision 1.4  2008/02/26 01:01:16  willuhn
  * @N Update auf Birt 2 (bessere Zeichen-Qualitaet, u.a. durch Anti-Aliasing)
  * @N Neuer Chart "Umsatz-Kategorien im Verlauf"
  * @N Charts erst beim ersten Paint-Event zeichnen. Dadurch laesst sich z.Bsp. die Konto-View schneller oeffnen, da der Saldo-Verlauf nicht berechnet werden muss

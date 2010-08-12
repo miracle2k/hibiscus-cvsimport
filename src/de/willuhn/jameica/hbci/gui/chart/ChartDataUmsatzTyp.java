@@ -14,8 +14,9 @@
 package de.willuhn.jameica.hbci.gui.chart;
 
 import java.rmi.RemoteException;
+import java.util.List;
 
-import de.willuhn.datasource.GenericIterator;
+import de.willuhn.datasource.pseudo.PseudoIterator;
 import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.jameica.gui.formatter.Formatter;
 import de.willuhn.jameica.hbci.HBCI;
@@ -29,7 +30,7 @@ import de.willuhn.util.I18N;
  */
 public class ChartDataUmsatzTyp implements ChartData
 {
-  private I18N i18n = null;
+  private final static I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
   private int type = UmsatzTyp.TYP_EGAL;
   private int days = -1;
   
@@ -55,7 +56,6 @@ public class ChartDataUmsatzTyp implements ChartData
    */
   public ChartDataUmsatzTyp(int typ, int days)
   {
-    this.i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
     this.type = typ;
     this.days = days;
   }
@@ -63,12 +63,12 @@ public class ChartDataUmsatzTyp implements ChartData
   /**
    * @see de.willuhn.jameica.hbci.gui.chart.ChartData#getData()
    */
-  public GenericIterator getData() throws RemoteException
+  public List getData() throws RemoteException
   {
     DBIterator list = Settings.getDBService().createList(UmsatzTyp.class);
     if (this.type != UmsatzTyp.TYP_EGAL)
       list.addFilter("umsatztyp = " + this.type);
-    return list;
+    return PseudoIterator.asList(list);
   }
 
   /**
@@ -109,7 +109,10 @@ public class ChartDataUmsatzTyp implements ChartData
 
 /*********************************************************************
  * $Log$
- * Revision 1.5  2008-08-29 16:46:23  willuhn
+ * Revision 1.6  2010-08-12 17:12:31  willuhn
+ * @N Saldo-Chart komplett ueberarbeitet (Daten wurden vorher mehrmals geladen, Summen-Funktion, Anzeige mehrerer Konten, Durchschnitt ueber mehrere Konten, Bugfixing, echte "Homogenisierung" der Salden via SaldoFinder)
+ *
+ * Revision 1.5  2008/08/29 16:46:23  willuhn
  * @N BUGZILLA 616
  *
  * Revision 1.4  2006/07/17 15:50:49  willuhn

@@ -36,16 +36,7 @@ import de.willuhn.util.I18N;
  */
 public class NachrichtBox extends AbstractBox implements Box
 {
-  private I18N i18n = null;
-
-  /**
-   * ct.
-   */
-  public NachrichtBox()
-  {
-    super();
-    i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
-  }
+  private final static I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
   /**
    * @see de.willuhn.jameica.gui.boxes.Box#getDefaultEnabled()
@@ -149,7 +140,10 @@ public class NachrichtBox extends AbstractBox implements Box
 
 /*********************************************************************
  * $Log$
- * Revision 1.6  2010-03-18 11:37:59  willuhn
+ * Revision 1.7  2010-08-12 17:12:32  willuhn
+ * @N Saldo-Chart komplett ueberarbeitet (Daten wurden vorher mehrmals geladen, Summen-Funktion, Anzeige mehrerer Konten, Durchschnitt ueber mehrere Konten, Bugfixing, echte "Homogenisierung" der Salden via SaldoFinder)
+ *
+ * Revision 1.6  2010/03/18 11:37:59  willuhn
  * @N Ausfuehrlichere und hilfreichere Fehlermeldung, wenn Hibiscus-Datenbank defekt ist oder nicht geoeffnet werden konnte.
  *
  * Revision 1.5  2008/04/01 09:50:17  willuhn

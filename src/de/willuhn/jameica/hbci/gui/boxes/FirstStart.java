@@ -40,6 +40,7 @@ import de.willuhn.util.I18N;
  */
 public class FirstStart extends AbstractBox
 {
+  private final static I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
   /**
    * @see de.willuhn.jameica.gui.boxes.Box#isActive()
@@ -72,7 +73,6 @@ public class FirstStart extends AbstractBox
    */
   public String getName()
   {
-    I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
     return "Hibiscus: " + i18n.tr("Erste Schritte");
   }
   
@@ -91,7 +91,6 @@ public class FirstStart extends AbstractBox
    */
   public void paint(Composite parent) throws RemoteException
   {
-    final I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
     FormTextPart text = new FormTextPart();
     text.setText("<form><p><span color=\"header\" font=\"header\">" + i18n.tr("Herzlich willkommen") + "</span></p>" +
         "<p>" + i18n.tr("Sie starten Hibiscus zum ersten Mal. Bitte richten Sie " +
@@ -146,7 +145,10 @@ public class FirstStart extends AbstractBox
 
 /*********************************************************************
  * $Log$
- * Revision 1.5  2008-04-15 16:16:34  willuhn
+ * Revision 1.6  2010-08-12 17:12:32  willuhn
+ * @N Saldo-Chart komplett ueberarbeitet (Daten wurden vorher mehrmals geladen, Summen-Funktion, Anzeige mehrerer Konten, Durchschnitt ueber mehrere Konten, Bugfixing, echte "Homogenisierung" der Salden via SaldoFinder)
+ *
+ * Revision 1.5  2008/04/15 16:16:34  willuhn
  * @B BUGZILLA 584
  *
  * Revision 1.4  2007/12/29 18:45:37  willuhn
