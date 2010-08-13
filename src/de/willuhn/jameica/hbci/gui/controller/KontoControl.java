@@ -520,10 +520,12 @@ public class KontoControl extends AbstractControl {
 			}
 			
 			int flags = getKonto().getFlags();
-			if (offline) flags |= Konto.FLAG_OFFLINE;
-			else         flags ^= Konto.FLAG_OFFLINE;
-			getKonto().setFlags(flags);
-			
+			boolean have = (flags & Konto.FLAG_OFFLINE) == Konto.FLAG_OFFLINE;
+      if (offline && !have)
+        getKonto().setFlags(flags | Konto.FLAG_OFFLINE);
+      else if (!offline && have)
+        getKonto().setFlags(flags ^ Konto.FLAG_OFFLINE);
+
 			getKonto().setKontonummer((String)getKontonummer().getValue());
       getKonto().setUnterkonto((String)getUnterkonto().getValue());
 			getKonto().setBLZ((String)getBlz().getValue());
@@ -707,6 +709,9 @@ public class KontoControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
+ * Revision 1.94  2010-08-13 13:58:47  willuhn
+ * @B Konto wurde versehentlich als Offline-Konto markiert - siehe http://www.onlinebanking-forum.de/phpBB2/viewtopic.php?p=69107#69107
+ *
  * Revision 1.93  2010-08-12 17:12:31  willuhn
  * @N Saldo-Chart komplett ueberarbeitet (Daten wurden vorher mehrmals geladen, Summen-Funktion, Anzeige mehrerer Konten, Durchschnitt ueber mehrere Konten, Bugfixing, echte "Homogenisierung" der Salden via SaldoFinder)
  *
