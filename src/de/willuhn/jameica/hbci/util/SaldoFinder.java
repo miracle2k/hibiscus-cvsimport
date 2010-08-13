@@ -59,7 +59,7 @@ public class SaldoFinder
       return d;
     
     // Haben wir einen Saldo zu einem frueheren Zeitpunkt?
-    Date lower = this.map.lowerKey(date);
+    Date lower = this.map.lowerKey(date); // JAVA 1.6
     if (lower != null)
       return this.map.get(lower);
     
@@ -73,6 +73,9 @@ public class SaldoFinder
 
 /**********************************************************************
  * $Log$
+ * Revision 1.2  2010-08-13 10:49:33  willuhn
+ * *** empty log message ***
+ *
  * Revision 1.1  2010-08-12 17:12:32  willuhn
  * @N Saldo-Chart komplett ueberarbeitet (Daten wurden vorher mehrmals geladen, Summen-Funktion, Anzeige mehrerer Konten, Durchschnitt ueber mehrere Konten, Bugfixing, echte "Homogenisierung" der Salden via SaldoFinder)
  *
