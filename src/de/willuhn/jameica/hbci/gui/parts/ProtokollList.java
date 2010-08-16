@@ -18,7 +18,6 @@ import java.util.Date;
 
 import org.eclipse.swt.widgets.TableItem;
 
-import de.willuhn.datasource.GenericIterator;
 import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.formatter.DateFormatter;
@@ -79,13 +78,17 @@ public class ProtokollList extends AbstractFromToList
   }
 
   /**
-   * @see de.willuhn.jameica.hbci.gui.parts.AbstractFromToList#getList(java.util.Date, java.util.Date)
+   * @see de.willuhn.jameica.hbci.gui.parts.AbstractFromToList#getList(java.util.Date, java.util.Date, java.lang.String)
    */
-  protected GenericIterator getList(Date from, Date to) throws RemoteException
+  protected DBIterator getList(Date from, Date to, String text) throws RemoteException
   {
     DBIterator list = konto.getProtokolle();
     if (from != null) list.addFilter("datum >= ?", new Object[]{new java.sql.Date(HBCIProperties.startOfDay(from).getTime())});
     if (to   != null) list.addFilter("datum <= ?", new Object[]{new java.sql.Date(HBCIProperties.endOfDay(to).getTime())});
+    if (text != null && text.length() > 0)
+    {
+      list.addFilter("LOWER(kommentar) like ?", new Object[]{"%" + text.toLowerCase() + "%"});
+    }
     return list;
   }
 }
@@ -93,7 +96,10 @@ public class ProtokollList extends AbstractFromToList
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2007-04-24 16:55:00  willuhn
+ * Revision 1.5  2010-08-16 11:13:52  willuhn
+ * @N In den Auftragslisten kann jetzt auch nach einem Text gesucht werden
+ *
+ * Revision 1.4  2007/04/24 16:55:00  willuhn
  * @N Aktualisierte Daten nur bei geaendertem Datum laden
  *
  * Revision 1.3  2005/06/27 15:35:27  web0
