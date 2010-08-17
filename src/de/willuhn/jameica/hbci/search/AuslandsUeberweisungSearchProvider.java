@@ -103,14 +103,15 @@ public class AuslandsUeberweisungSearchProvider implements SearchProvider
       {
         Konto k = u.getKonto();
         String[] params = new String[] {
-            k.getLongName(),
-            u.getZweck(),
+            HBCI.DATEFORMAT.format(u.getTermin()),
             HBCI.DECIMALFORMAT.format(u.getBetrag()),
             k.getWaehrung(),
-            u.getGegenkontoName()
-           };
+            u.getGegenkontoName(),
+            u.getZweck(),
+            k.getLongName(),
+        };
         I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
-        return i18n.tr("{0}: ({1}) {2} {3} an {4}",params);
+        return i18n.tr("{0}: {1} {2} an {3} - {4} (via {5})",params);
       }
       catch (RemoteException re)
       {
@@ -126,7 +127,10 @@ public class AuslandsUeberweisungSearchProvider implements SearchProvider
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2009-10-20 23:12:58  willuhn
+ * Revision 1.4  2010-08-17 11:51:08  willuhn
+ * @N Datum in Lastschriften und SEPA-Ueberweisungen mit anzeigen
+ *
+ * Revision 1.3  2009/10/20 23:12:58  willuhn
  * @N Support fuer SEPA-Ueberweisungen
  * @N Konten um IBAN und BIC erweitert
  *

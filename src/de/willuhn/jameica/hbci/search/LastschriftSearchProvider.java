@@ -107,14 +107,15 @@ public class LastschriftSearchProvider implements SearchProvider
       {
         Konto k = l.getKonto();
         String[] params = new String[] {
-            k.getLongName(),
-            l.getZweck(),
+            HBCI.DATEFORMAT.format(l.getTermin()),
             HBCI.DECIMALFORMAT.format(l.getBetrag()),
             k.getWaehrung(),
-            l.getGegenkontoName()
-           };
+            l.getGegenkontoName(),
+            l.getZweck(),
+            k.getLongName(),
+        };
         I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
-        return i18n.tr("{0}: ({1}) {2} {3} von {4}",params);
+        return i18n.tr("{0}: {1} {2} von {3} - {4} (via {5})",params);
       }
       catch (RemoteException re)
       {
@@ -130,7 +131,10 @@ public class LastschriftSearchProvider implements SearchProvider
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2008-12-14 23:18:35  willuhn
+ * Revision 1.4  2010-08-17 11:51:08  willuhn
+ * @N Datum in Lastschriften und SEPA-Ueberweisungen mit anzeigen
+ *
+ * Revision 1.3  2008/12/14 23:18:35  willuhn
  * @N BUGZILLA 188 - REFACTORING
  *
  * Revision 1.2  2008/09/04 23:42:33  willuhn

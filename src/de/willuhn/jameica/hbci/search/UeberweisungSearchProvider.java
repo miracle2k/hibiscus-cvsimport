@@ -113,7 +113,7 @@ public class UeberweisungSearchProvider implements SearchProvider
             u.getGegenkontoName(),
             u.getZweck(),
             k.getLongName(),
-           };
+        };
         I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
         return i18n.tr("{0}: {1} {2} an {3} - {4} (via {5})",params);
       }
@@ -131,6 +131,9 @@ public class UeberweisungSearchProvider implements SearchProvider
 
 /**********************************************************************
  * $Log$
+ * Revision 1.6  2010-08-17 11:51:08  willuhn
+ * @N Datum in Lastschriften und SEPA-Ueberweisungen mit anzeigen
+ *
  * Revision 1.5  2010-08-17 11:46:58  willuhn
  * @N Datum der Ueberweisung mit anzeigen
  *
