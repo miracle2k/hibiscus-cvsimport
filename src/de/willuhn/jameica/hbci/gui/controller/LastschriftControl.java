@@ -86,6 +86,7 @@ public class LastschriftControl extends AbstractBaseUeberweisungControl
       return textschluessel;
 
     textschluessel = new SelectInput(TextSchluessel.get(new String[]{"05","04"}),TextSchluessel.get(((BaseUeberweisung)getTransfer()).getTextSchluessel()));
+    textschluessel.setName(i18n.tr("Textschlüssel"));
     textschluessel.setEnabled(!((Terminable)getTransfer()).ausgefuehrt());
     return textschluessel;
   }
@@ -94,7 +95,10 @@ public class LastschriftControl extends AbstractBaseUeberweisungControl
 
 /**********************************************************************
  * $Log$
- * Revision 1.11  2008-08-01 11:05:14  willuhn
+ * Revision 1.12  2010-08-17 11:32:11  willuhn
+ * @C Code-Cleanup
+ *
+ * Revision 1.11  2008/08/01 11:05:14  willuhn
  * @N BUGZILLA 587
  *
  * Revision 1.10  2007/04/23 18:07:15  willuhn
