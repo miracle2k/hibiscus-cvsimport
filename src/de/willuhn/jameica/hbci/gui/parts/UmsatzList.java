@@ -79,6 +79,8 @@ import de.willuhn.util.I18N;
  */
 public class UmsatzList extends TablePart implements Extendable
 {
+  private final static I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
+
   private MessageConsumer mcChanged = null;
   private MessageConsumer mcNew     = null;
 
@@ -95,8 +97,6 @@ public class UmsatzList extends TablePart implements Extendable
   
   protected static de.willuhn.jameica.system.Settings mySettings = new de.willuhn.jameica.system.Settings(UmsatzList.class);
 
-  private I18N i18n;
-  
   /**
    * @param konto
    * @param action
@@ -132,7 +132,6 @@ public class UmsatzList extends TablePart implements Extendable
     else
       this.umsaetze = new ArrayList();
     
-    this.i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
     setMulti(true);
     setFormatter(new TableFormatter()
     {
@@ -816,6 +815,9 @@ public class UmsatzList extends TablePart implements Extendable
 
 /**********************************************************************
  * $Log$
+ * Revision 1.67  2010-08-26 11:30:20  willuhn
+ * *** empty log message ***
+ *
  * Revision 1.66  2010-08-11 16:06:05  willuhn
  * @N BUGZILLA 783 - Saldo-Chart ueber alle Konten
  *
