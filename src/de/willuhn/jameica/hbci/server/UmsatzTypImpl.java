@@ -437,7 +437,7 @@ public class UmsatzTypImpl extends AbstractDBObjectNode implements UmsatzTyp
     if (this.isNewObject())
       return;
 
-    Cache.get(UmsatzTyp.class).remove(this); // Aus dem Cache loeschen
+    Cache.get(UmsatzTyp.class,false).remove(this); // Aus dem Cache loeschen
 
     // Ueberschrieben, weil wir beim Loeschen pruefen muessen,
     // ob wir irgendwelchen Umsaetzen zugeordnet sind und
@@ -486,7 +486,7 @@ public class UmsatzTypImpl extends AbstractDBObjectNode implements UmsatzTyp
   public void store() throws RemoteException, ApplicationException
   {
     super.store();
-    Cache.get(UmsatzTyp.class).put(this); // Cache aktualisieren
+    Cache.get(UmsatzTyp.class,false).put(this); // Cache aktualisieren
   }
 
   /**
@@ -612,6 +612,9 @@ public class UmsatzTypImpl extends AbstractDBObjectNode implements UmsatzTyp
 
 /*******************************************************************************
  * $Log$
+ * Revision 1.56  2010-08-26 12:53:08  willuhn
+ * @N Cache nur befuellen, wenn das explizit gefordert wird. Andernfalls wuerde der Cache u.U. unnoetig gefuellt werden, obwohl nur ein Objekt daraus geloescht werden soll
+ *
  * Revision 1.55  2010-08-26 11:31:23  willuhn
  * @N Neuer Cache. In dem werden jetzt die zugeordneten Konten von Auftraegen und Umsaetzen zwischengespeichert sowie die Umsatz-Kategorien. Das beschleunigt das Laden der Umsaetze und Auftraege teilweise erheblich
  *

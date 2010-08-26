@@ -126,7 +126,7 @@ public abstract class AbstractHibiscusTransferImpl extends AbstractDBObject impl
     if (i == null)
       return null; // Kein Konto zugeordnet
    
-    Cache<Konto> cache = Cache.get(Konto.class);
+    Cache<Konto> cache = Cache.get(Konto.class,true);
     return cache.get(i);
   }
 
@@ -385,6 +385,9 @@ public abstract class AbstractHibiscusTransferImpl extends AbstractDBObject impl
 
 /**********************************************************************
  * $Log$
+ * Revision 1.15  2010-08-26 12:53:08  willuhn
+ * @N Cache nur befuellen, wenn das explizit gefordert wird. Andernfalls wuerde der Cache u.U. unnoetig gefuellt werden, obwohl nur ein Objekt daraus geloescht werden soll
+ *
  * Revision 1.14  2010-08-26 11:31:23  willuhn
  * @N Neuer Cache. In dem werden jetzt die zugeordneten Konten von Auftraegen und Umsaetzen zwischengespeichert sowie die Umsatz-Kategorien. Das beschleunigt das Laden der Umsaetze und Auftraege teilweise erheblich
  *
