@@ -104,9 +104,9 @@ public class DonateView extends AbstractView
             d.setGegenkontoName("Olaf Willuhn");
             d.setZweck("Hibiscus-Spende");
 
-            // Wir lassen 4 Tage Vorlauf
+            // Wir lassen 7 Tage Vorlauf
             Calendar cal = Calendar.getInstance();
-            cal.add(Calendar.DATE,4);
+            cal.add(Calendar.DATE,7);
             d.setErsteZahlung(cal.getTime());
             Turnus turnus = (Turnus) Settings.getDBService().createObject(Turnus.class,null);
             turnus.setIntervall(1);
@@ -134,6 +134,9 @@ public class DonateView extends AbstractView
 
 /**********************************************************************
  * $Log$
+ * Revision 1.3  2010-08-26 14:13:44  willuhn
+ * @N Besser 7 Tage Vorlauf
+ *
  * Revision 1.2  2010-08-20 12:56:49  willuhn
  * *** empty log message ***
  *
