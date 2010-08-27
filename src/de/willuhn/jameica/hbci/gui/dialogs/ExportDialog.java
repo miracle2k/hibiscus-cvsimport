@@ -58,9 +58,11 @@ import de.willuhn.util.ProgressMonitor;
  */
 public class ExportDialog extends AbstractDialog
 {
+  private final static int WINDOW_WIDTH = 420;
+
   private static DateFormat DATEFORMAT = new SimpleDateFormat("yyyyMMdd");
 
-	private I18N i18n;
+  private final static I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
   private Input exporterListe     = null;
   private CheckboxInput openFile  = null;
@@ -76,9 +78,10 @@ public class ExportDialog extends AbstractDialog
    */
   public ExportDialog(Object[] objects, Class type)
   {
-    super(POSITION_MOUSE);
-		i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
+    super(POSITION_CENTER);
 		setTitle(i18n.tr("Daten-Export"));
+    this.setSize(WINDOW_WIDTH,SWT.DEFAULT);
+
     this.objects = objects;
     this.type = type;
 
@@ -121,6 +124,7 @@ public class ExportDialog extends AbstractDialog
 				close();
 			}
 		});
+    getShell().setMinimumSize(getShell().computeSize(WINDOW_WIDTH,SWT.DEFAULT));
   }
 
   /**
@@ -387,7 +391,10 @@ public class ExportDialog extends AbstractDialog
 
 /**********************************************************************
  * $Log$
- * Revision 1.20  2010-06-08 11:26:05  willuhn
+ * Revision 1.21  2010-08-27 10:39:54  willuhn
+ * @C Export-Dialog in gleicher Groesse und Position wie Import-Dialog
+ *
+ * Revision 1.20  2010/06/08 11:26:05  willuhn
  * @N SWT besitzt jetzt selbst eine Option im FileDialog, mit der geprueft werden kann, ob die Datei ueberschrieben werden soll oder nicht
  *
  * Revision 1.19  2010/03/16 00:44:17  willuhn
