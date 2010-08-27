@@ -126,8 +126,8 @@ public abstract class AbstractHibiscusTransferImpl extends AbstractDBObject impl
     if (i == null)
       return null; // Kein Konto zugeordnet
    
-    Cache<Konto> cache = Cache.get(Konto.class,true);
-    return cache.get(i);
+    Cache cache = Cache.get(Konto.class,true);
+    return (Konto) cache.get(i);
   }
 
   /**
@@ -385,6 +385,9 @@ public abstract class AbstractHibiscusTransferImpl extends AbstractDBObject impl
 
 /**********************************************************************
  * $Log$
+ * Revision 1.16  2010-08-27 09:24:58  willuhn
+ * @B Generics-Deklaration im Cache hat javac nicht akzeptiert (der Eclipse-Compiler hats komischerweise gefressen)
+ *
  * Revision 1.15  2010-08-26 12:53:08  willuhn
  * @N Cache nur befuellen, wenn das explizit gefordert wird. Andernfalls wuerde der Cache u.U. unnoetig gefuellt werden, obwohl nur ein Objekt daraus geloescht werden soll
  *

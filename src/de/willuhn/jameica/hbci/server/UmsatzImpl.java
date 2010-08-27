@@ -132,8 +132,8 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
     if (i == null)
       return null; // Kein Konto zugeordnet
    
-    Cache<Konto> cache = Cache.get(Konto.class,true);
-    return cache.get(i);
+    Cache cache = Cache.get(Konto.class,true);
+    return (Konto) cache.get(i);
   }
 
   /**
@@ -585,17 +585,17 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
     // ID von fest verdrahteten Kategorien
     Integer i = (Integer) super.getAttribute("umsatztyp_id");
 
-    Cache<UmsatzTyp> cache = Cache.get(UmsatzTyp.class,true);
+    Cache cache = Cache.get(UmsatzTyp.class,true);
 
     // fest zugeordnet
     if (i != null)
-      return cache.get(i);
+      return (UmsatzTyp) cache.get(i);
 
     // Nicht fest zugeordnet, dann schauen wir mal, ob's eine dynamische Zuordnung gibt
-    Iterator<UmsatzTyp> typen = cache.values().iterator();
+    Iterator typen = cache.values().iterator();
     while (typen.hasNext())
     {
-      UmsatzTyp ut = typen.next();
+      UmsatzTyp ut = (UmsatzTyp) typen.next();
       if (ut.matches(this))
         return ut;
     }
@@ -684,6 +684,9 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
 
 /**********************************************************************
  * $Log$
+ * Revision 1.79  2010-08-27 09:24:58  willuhn
+ * @B Generics-Deklaration im Cache hat javac nicht akzeptiert (der Eclipse-Compiler hats komischerweise gefressen)
+ *
  * Revision 1.78  2010-08-26 12:53:08  willuhn
  * @N Cache nur befuellen, wenn das explizit gefordert wird. Andernfalls wuerde der Cache u.U. unnoetig gefuellt werden, obwohl nur ein Objekt daraus geloescht werden soll
  *
