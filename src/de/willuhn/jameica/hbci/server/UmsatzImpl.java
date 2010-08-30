@@ -267,7 +267,7 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
    * @see de.willuhn.jameica.hbci.rmi.HibiscusTransfer#setKonto(de.willuhn.jameica.hbci.rmi.Konto)
    */
   public void setKonto(Konto k) throws RemoteException {
-    setAttribute("konto_id",k == null ? null : new Integer(k.getID()));
+    setAttribute("konto_id",(k == null || k.getID() == null) ? null : new Integer(k.getID()));
   }
 
   /**
@@ -684,6 +684,9 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
 
 /**********************************************************************
  * $Log$
+ * Revision 1.80  2010-08-30 14:25:37  willuhn
+ * @B NPE, wenn Konto angegeben, jedoch ohne ID
+ *
  * Revision 1.79  2010-08-27 09:24:58  willuhn
  * @B Generics-Deklaration im Cache hat javac nicht akzeptiert (der Eclipse-Compiler hats komischerweise gefressen)
  *
