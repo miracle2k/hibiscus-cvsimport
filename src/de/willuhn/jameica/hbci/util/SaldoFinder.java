@@ -38,6 +38,9 @@ public class SaldoFinder
     while (umsaetze.hasNext())
     {
       Umsatz u = (Umsatz) umsaetze.next();
+      // Vormerkbuchungen werden nicht beruecksichtigt, weil sie keinen Saldo haben
+      if ((u.getFlags() & Umsatz.FLAG_NOTBOOKED) == Umsatz.FLAG_NOTBOOKED)
+        continue;
       this.map.put(u.getValuta(),u.getSaldo());
     }
   }
@@ -73,6 +76,9 @@ public class SaldoFinder
 
 /**********************************************************************
  * $Log$
+ * Revision 1.3  2010-09-01 15:33:54  willuhn
+ * @B Vormerkbuchungen in Saldo-Verlauf ignorieren, weil sie keinen Saldo haben
+ *
  * Revision 1.2  2010-08-13 10:49:33  willuhn
  * *** empty log message ***
  *
