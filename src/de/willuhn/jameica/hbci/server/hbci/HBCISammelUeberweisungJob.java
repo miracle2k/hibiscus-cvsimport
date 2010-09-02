@@ -49,14 +49,17 @@ public class HBCISammelUeberweisungJob extends AbstractHBCISammelTransferJob
   public String getName() throws RemoteException
   {
     String name = getSammelTransfer().getBezeichnung();
-    return i18n.tr("Absenden der Sammel-Überweisung {0}",name);
+    return i18n.tr("Sammel-Überweisung {0}",name);
   }
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2006-03-15 18:01:30  willuhn
+ * Revision 1.4  2010-09-02 10:21:06  willuhn
+ * @N BUGZILLA 899
+ *
+ * Revision 1.3  2006/03/15 18:01:30  willuhn
  * @N AbstractHBCIJob#getName
  *
  * Revision 1.2  2005/11/02 17:33:31  willuhn
