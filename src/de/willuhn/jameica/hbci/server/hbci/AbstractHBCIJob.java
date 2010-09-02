@@ -170,9 +170,9 @@ public abstract class AbstractHBCIJob
     {
       // Loggen
       ProgressMonitor monitor = HBCIFactory.getInstance().getProgressMonitor();
-      monitor.log("  " + i18n.tr("Warnungen") + ":");
+      monitor.log(" ");
       for (HBCIRetVal val:warnings)
-        monitor.log("    " + val.code + ": " + val.text);
+        monitor.log("  " + val.code + ": " + val.text);
       monitor.log(" ");
       
       // Auftrag informieren
@@ -382,6 +382,9 @@ public abstract class AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
+ * Revision 1.32  2010-09-02 12:25:13  willuhn
+ * @N BUGZILLA 900
+ *
  * Revision 1.31  2010-09-02 10:21:06  willuhn
  * @N BUGZILLA 899
  *
