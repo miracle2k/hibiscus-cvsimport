@@ -1,4 +1,3 @@
-package de.willuhn.jameica.hbci.gui.parts;
 /**********************************************************************
  * $Source$
  * $Revision$
@@ -9,6 +8,8 @@ package de.willuhn.jameica.hbci.gui.parts;
  * All rights reserved
  *
  **********************************************************************/
+
+package de.willuhn.jameica.hbci.gui.parts;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -402,6 +403,9 @@ public class ChipTanFlickerCode
 
 /**********************************************************************
  * $Log$
+ * Revision 1.2  2010-09-02 22:36:10  willuhn
+ * *** empty log message ***
+ *
  * Revision 1.1  2010-09-02 22:35:37  willuhn
  * @N Test fuer ChipTAN-Flicker-Code
  *
