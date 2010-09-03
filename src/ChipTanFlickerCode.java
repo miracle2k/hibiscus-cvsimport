@@ -9,7 +9,6 @@
  *
  **********************************************************************/
 
-package de.willuhn.jameica.hbci.gui.parts;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -429,6 +428,9 @@ public class ChipTanFlickerCode
 
 /**********************************************************************
  * $Log$
+ * Revision 1.1  2010-09-03 10:04:22  willuhn
+ * @C Zum Test nochmal in default-Package verschoben
+ *
  * Revision 1.4  2010-09-03 10:03:15  willuhn
  * @N Takt-Frequenz konfigurierbar
  *
