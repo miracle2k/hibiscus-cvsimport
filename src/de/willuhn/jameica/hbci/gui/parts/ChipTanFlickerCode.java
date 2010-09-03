@@ -1,3 +1,4 @@
+package de.willuhn.jameica.hbci.gui.parts;
 /**********************************************************************
  * $Source$
  * $Revision$
@@ -428,6 +429,9 @@ public class ChipTanFlickerCode
 
 /**********************************************************************
  * $Log$
+ * Revision 1.6  2010-09-03 10:06:04  willuhn
+ * @C Mist, das Package hatte ich in hbci4java-help jetzt schon angegeben
+ *
  * Revision 1.1  2010-09-03 10:04:22  willuhn
  * @C Zum Test nochmal in default-Package verschoben
  *
