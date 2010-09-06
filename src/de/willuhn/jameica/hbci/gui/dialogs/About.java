@@ -74,7 +74,7 @@ public class About extends AbstractDialog
     FormTextPart text = new FormTextPart();
     text.setText("<form>" +
       "<p><b>Hibiscus - HBCI-Onlinebanking für Jameica</b></p>" +
-      "<p>Licence: GPL [<a href=\"" + Program.class.getName() + "\">http://www.gnu.org/copyleft/gpl.html</a>]</p>" +
+      "<p>Lizenz: GPL [<a href=\"" + Program.class.getName() + "\">http://www.gnu.org/copyleft/gpl.html</a>]</p>" +
       "<p>Copyright by Olaf Willuhn [<a href=\"" + Program.class.getName() + "\">mailto:hibiscus@willuhn.de</a>]</p>" +
       "<p><a href=\"" + Program.class.getName() + "\">http://www.willuhn.de/projects/hibiscus/</a></p>" +
       "<p>Software-Version: " + plugin.getManifest().getVersion() + "</p>" +
@@ -122,7 +122,10 @@ public class About extends AbstractDialog
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2008-07-07 15:37:17  willuhn
+ * Revision 1.8  2010-09-06 20:44:57  willuhn
+ * *** empty log message ***
+ *
+ * Revision 1.7  2008/07/07 15:37:17  willuhn
  * @B Typo
  *
  * Revision 1.6  2008/05/06 10:10:56  willuhn
