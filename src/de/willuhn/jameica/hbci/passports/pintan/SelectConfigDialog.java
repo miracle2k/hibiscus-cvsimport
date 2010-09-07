@@ -34,10 +34,10 @@ import de.willuhn.util.I18N;
  */
 public class SelectConfigDialog extends AbstractDialog
 {
+  private final static I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
+
   private PinTanConfig selected = null;
   private String text           = null;
-
-  private I18N i18n       = null;
 
   /**
    * @param position
@@ -45,8 +45,7 @@ public class SelectConfigDialog extends AbstractDialog
   public SelectConfigDialog(int position)
   {
     super(position);
-    this.i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
-    setTitle(i18n.tr("PIN/TAN-Auswahl"));
+    setTitle(i18n.tr("Auswahl der PIN/TAN-Konfiguration"));
   }
 
   /**
@@ -114,6 +113,9 @@ public class SelectConfigDialog extends AbstractDialog
 
 /*********************************************************************
  * $Log$
+ * Revision 1.3  2010-09-07 15:17:07  willuhn
+ * @N GUI-Cleanup
+ *
  * Revision 1.2  2010-07-22 12:37:41  willuhn
  * @N GUI poliert
  *
