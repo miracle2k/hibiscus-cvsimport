@@ -346,6 +346,7 @@ public class DDVConfig
     settings.setAttribute(this.getPrefix() + "softpin",(String) null);
     settings.setAttribute(this.getPrefix() + "ctnumber",(String) null);
     settings.setAttribute(this.getPrefix() + "entryidx",(String) null);
+    settings.setAttribute(this.getPrefix() + "konto",(String[]) null);
   }
 }
 
@@ -353,6 +354,9 @@ public class DDVConfig
 
 /**********************************************************************
  * $Log$
+ * Revision 1.2  2010-09-08 10:14:32  willuhn
+ * @B Beim Loeschen einer DDV-Config auch die IDs der fest verdrahteten Konten loeschen
+ *
  * Revision 1.1  2010-09-07 15:28:05  willuhn
  * @N BUGZILLA 391 - Kartenleser-Konfiguration komplett umgebaut. Damit lassen sich jetzt beliebig viele Kartenleser und Konfigurationen parellel einrichten
  *
