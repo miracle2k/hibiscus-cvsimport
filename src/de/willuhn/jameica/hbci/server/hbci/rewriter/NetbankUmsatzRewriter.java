@@ -32,6 +32,7 @@ public class NetbankUmsatzRewriter implements UmsatzRewriter
     List<String> list = new ArrayList<String>();
     list.add("20090500"); // Netbank
     list.add("60090800"); // SpardaBank BW
+    list.add("33060592"); // SpardaBank West - siehe https://www.willuhn.de/blog/index.php?url=archives/519-Neues-in-Hibiscus.html&serendipity[csuccess]=true#c1146 
     return list;
   }
 
@@ -123,7 +124,10 @@ public class NetbankUmsatzRewriter implements UmsatzRewriter
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2010-05-11 10:31:56  willuhn
+ * Revision 1.5  2010-09-08 15:31:46  willuhn
+ * @N Spardabank West
+ *
+ * Revision 1.4  2010/05/11 10:31:56  willuhn
  * @N Siehe Mail von Markus vom 11.05.2010
  *
  * Revision 1.3  2010/04/29 09:28:12  willuhn
