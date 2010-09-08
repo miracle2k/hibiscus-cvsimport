@@ -194,7 +194,7 @@ public class PassportHandleImpl extends UnicastRemoteObject implements PassportH
       Logger.info("ddv passport opened");
 
       Logger.info("  hbci version: " + config.getHBCIVersion());
-			handler=new HBCIHandler(config.getHBCIVersion(),hbciPassport);
+			handler = new HBCIHandler(config.getHBCIVersion(),hbciPassport);
       Logger.info("ddv handler opened");
       
 			return handler;
@@ -398,6 +398,9 @@ public class PassportHandleImpl extends UnicastRemoteObject implements PassportH
 
 /**********************************************************************
  * $Log$
+ * Revision 1.7  2010-09-08 11:24:40  willuhn
+ * *** empty log message ***
+ *
  * Revision 1.6  2010-09-07 15:28:05  willuhn
  * @N BUGZILLA 391 - Kartenleser-Konfiguration komplett umgebaut. Damit lassen sich jetzt beliebig viele Kartenleser und Konfigurationen parellel einrichten
  *
