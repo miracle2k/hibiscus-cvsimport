@@ -30,6 +30,7 @@ public class TextSchluessel
   {
     list.add(new TextSchluessel("04",i18n.tr("Abbuchungsverfahren")));
     list.add(new TextSchluessel("05",i18n.tr("Einzugsermächtigung")));
+    list.add(new TextSchluessel("52",i18n.tr("Dauerauftrag")));
     list.add(new TextSchluessel("51",i18n.tr("Überweisung")));
     list.add(new TextSchluessel("53",i18n.tr("Überweisung Lohn/Gehalt/Rente")));
     list.add(new TextSchluessel("54",i18n.tr("Vermögenswirksame Leistungen")));
@@ -140,7 +141,10 @@ public class TextSchluessel
 
 /*********************************************************************
  * $Log$
- * Revision 1.2  2010-06-07 12:43:41  willuhn
+ * Revision 1.3  2010-09-24 12:22:04  willuhn
+ * @N Thomas' Patch fuer Textschluessel in Dauerauftraegen
+ *
+ * Revision 1.2  2010/06/07 12:43:41  willuhn
  * @N BUGZILLA 587
  *
  * Revision 1.1  2008/08/01 11:05:14  willuhn

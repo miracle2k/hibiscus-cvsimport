@@ -23,6 +23,13 @@ import de.willuhn.util.ApplicationException;
 public interface Dauerauftrag extends HibiscusTransfer, Checksum
 {
 
+  /**
+   * Liefert den Textschluessel des Auftrags.
+   * @return Textschluessel.
+   * @throws RemoteException
+   */
+  public String getTextSchluessel() throws RemoteException;
+
 	/**
 	 * Liefert das Datum der ersten Zahlung.
    * @return erste Zahlung.
@@ -64,6 +71,13 @@ public interface Dauerauftrag extends HibiscusTransfer, Checksum
    * @throws RemoteException
    */
   public String getOrderID() throws RemoteException;
+
+  /**
+   * Speichert den Textschluessel.
+   * @param schluessel
+   * @throws RemoteException
+   */
+  public void setTextSchluessel(String schluessel) throws RemoteException;
 
   /**
 	 * Speichert die Order-ID des Dauerauftrages.
@@ -116,7 +130,10 @@ public interface Dauerauftrag extends HibiscusTransfer, Checksum
 
 /**********************************************************************
  * $Log$
- * Revision 1.12  2007-04-23 18:07:14  willuhn
+ * Revision 1.13  2010-09-24 12:22:04  willuhn
+ * @N Thomas' Patch fuer Textschluessel in Dauerauftraegen
+ *
+ * Revision 1.12  2007/04/23 18:07:14  willuhn
  * @C Redesign: "Adresse" nach "HibiscusAddress" umbenannt
  * @C Redesign: "Transfer" nach "HibiscusTransfer" umbenannt
  * @C Redesign: Neues Interface "Transfer", welches von Ueberweisungen, Lastschriften UND Umsaetzen implementiert wird
