@@ -65,14 +65,10 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
    * @see de.willuhn.datasource.db.AbstractDBObject#insertCheck()
    */
   protected void insertCheck() throws ApplicationException {
-		// Die Umsaetze werden nicht von Hand eingegeben sondern
-		// gelangen via HBCI zu uns. Nichtsdestotrotz duerfen
-		// wir nur die speichern, die vollstaendig sind.
-		try {
-
-		  double betrag = getBetrag();
-			if (betrag == 0.0 || Double.isNaN(betrag))
-				throw new ApplicationException(i18n.tr("Betrag fehlt."));
+		try
+		{
+			if (Double.isNaN(getBetrag()))
+				throw new ApplicationException(i18n.tr("Betrag ungültig."));
 
 			if (getDatum() == null)
 				throw new ApplicationException(i18n.tr("Datum fehlt."));
@@ -684,6 +680,9 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
 
 /**********************************************************************
  * $Log$
+ * Revision 1.81  2010-09-27 11:51:38  willuhn
+ * @N BUGZILLA 804
+ *
  * Revision 1.80  2010-08-30 14:25:37  willuhn
  * @B NPE, wenn Konto angegeben, jedoch ohne ID
  *
