@@ -394,6 +394,16 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
 		           ((String)getAttribute("mergedzweck")).toUpperCase() +
 		           sd +
 							 sv;
+    
+    // Bei Vormerkbuchungen haengen wir noch was hinten dran. Da der
+    // Saldo per Default nicht mehr in der Checksumme ist, geht sonst
+    // u.U. das einzige Unterscheidungsmerkmal verloren (die Vormerkbuchungen
+    // haben ja einen Saldo von 0,00. Wir nehmen daher das Flag mit auf.
+    // Aber nur bei Vormerkbuchungen, damit die Checksummen der valutierten
+    // Buchungen gleich bleiben
+    if ((getFlags() & FLAG_NOTBOOKED) != 0)
+      s += "notbooked";
+    
 		CRC32 crc = new CRC32();
 		crc.update(s.getBytes());
     return crc.getValue();
@@ -680,6 +690,9 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
 
 /**********************************************************************
  * $Log$
+ * Revision 1.82  2010-09-28 21:40:27  willuhn
+ * @C Vormerkbuchungen haben eine andere Checksumme als valutierte Buchungen - auch, wenn sie sonst identisch sind
+ *
  * Revision 1.81  2010-09-27 11:51:38  willuhn
  * @N BUGZILLA 804
  *
