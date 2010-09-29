@@ -228,7 +228,7 @@ public class Converter {
 	 * wird jenes stattdessen zurueckgeliefert.
 	 * @param konto das HBCI4Java Konto.
 	 * @param passportClass optionale Angabe einer Passport-Klasse. Ist er angegeben wird, nur dann ein existierendes Konto
-   * verwendet, wenn neben Kontonummer und BLZ auch die Klasse des Passportuebereinstimmt.
+   * verwendet, wenn neben Kontonummer und BLZ auch die Klasse des Passport uebereinstimmt.
 	 * @return unser Konto.
 	 * @throws RemoteException
 	 */
@@ -262,6 +262,8 @@ public class Converter {
 		k.setWaehrung(konto.curr);
 		k.setIban(konto.iban);
 		k.setBic(konto.bic);
+		if (passportClass != null)
+		  k.setPassportClass(passportClass.getName());
 		return k;  	
 	}
 
@@ -392,6 +394,9 @@ public class Converter {
 
 /**********************************************************************
  * $Log$
+ * Revision 1.58  2010-09-29 22:39:18  willuhn
+ * @N Passport automatisch im neuen Konto speichern
+ *
  * Revision 1.57  2010-09-24 12:22:04  willuhn
  * @N Thomas' Patch fuer Textschluessel in Dauerauftraegen
  *
