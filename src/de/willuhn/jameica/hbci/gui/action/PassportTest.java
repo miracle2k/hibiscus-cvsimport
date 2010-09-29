@@ -13,6 +13,7 @@
 package de.willuhn.jameica.hbci.gui.action;
 
 import de.willuhn.jameica.gui.Action;
+import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.passport.Passport;
 import de.willuhn.jameica.hbci.passport.PassportHandle;
@@ -87,6 +88,9 @@ public class PassportTest implements Action
           try
           {
             new KontoMerge().handleAction(handle.getKonten());
+            // Wir starten die aktuelle View neu, damit die Liste der Konten
+            // gleich aktualisiert wird
+            GUI.startView(GUI.getCurrentView().getClass(),GUI.getCurrentView().getCurrentObject());
           }
           catch (Exception e)
           {
@@ -205,6 +209,9 @@ public class PassportTest implements Action
 
 /**********************************************************************
  * $Log$
+ * Revision 1.12  2010-09-29 23:52:45  willuhn
+ * @N Nach erfolgreichem Test View neu laden, damit die Liste der Konten gleich aktualisiert wird
+ *
  * Revision 1.11  2010-09-29 23:43:34  willuhn
  * @N Automatisches Abgleichen und Anlegen von Konten aus KontoFetchFromPassport in KontoMerge verschoben
  * @N Konten automatisch (mit Rueckfrage) anlegen, wenn das Testen der HBCI-Konfiguration erfolgreich war
