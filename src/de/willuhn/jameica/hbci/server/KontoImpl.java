@@ -279,6 +279,15 @@ public class KontoImpl extends AbstractDBObject implements Konto
         su.delete();
       }
 
+      // und jetzt die Auslandsueberweisungen
+      list = getAuslandsUeberweisungen();
+      AuslandsUeberweisung au = null;
+      while (list.hasNext())
+      {
+        au = (AuslandsUeberweisung) list.next();
+        au.delete();
+      }
+
       // und noch die Protokolle
       list = getProtokolle();
       Protokoll p = null;
@@ -743,6 +752,9 @@ public class KontoImpl extends AbstractDBObject implements Konto
 
 /*******************************************************************************
  * $Log$
+ * Revision 1.107  2010-09-29 23:46:18  willuhn
+ * @B Auslandsueberweisungen wurden nicht mitgeloescht
+ *
  * Revision 1.106  2010-08-26 12:53:08  willuhn
  * @N Cache nur befuellen, wenn das explizit gefordert wird. Andernfalls wuerde der Cache u.U. unnoetig gefuellt werden, obwohl nur ein Objekt daraus geloescht werden soll
  *
