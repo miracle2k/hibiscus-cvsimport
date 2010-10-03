@@ -63,7 +63,7 @@ public class UeberweisungExecute implements Action
 			// BUGZILLA 559
 			Date termin = HBCIProperties.startOfDay(u.getTermin());
 			Date now    = HBCIProperties.startOfDay(new Date());
-			if ((termin.getTime() - now.getTime()) >= (24 * 60 * 60 * 1000))
+			if (!u.isTerminUeberweisung() && (termin.getTime() - now.getTime()) >= (24 * 60 * 60 * 1000))
 			{
 			  String q = i18n.tr("Der Termin liegt mindestens 1 Tag in Zukunft.\n" +
 			  		               "Soll der Auftrag stattdessen als bankseitige Termin-Überweisung " +
@@ -120,6 +120,9 @@ public class UeberweisungExecute implements Action
 
 /**********************************************************************
  * $Log$
+ * Revision 1.14  2010-10-03 22:07:47  willuhn
+ * @C Dialog sollte natuerlich nur dann angezeigt werden, wenn es noch KEINE Termin-Ueberweisung ist
+ *
  * Revision 1.13  2010-10-03 21:50:34  willuhn
  * @N BUGZILLA 559 - wenn der Termin der Ueberweisung mind. 1 Tag in der Zukunft liegt, dann vorschlagen, ihn als bankseitige Termin-Ueberweisung auszufuehren
  *
