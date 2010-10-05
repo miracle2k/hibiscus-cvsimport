@@ -137,6 +137,9 @@ public class DonateView extends AbstractView
             u.setGegenkontoNummer(new String(kto));
             u.setGegenkontoName(name);
             u.setZweck("Spende Hibiscus");
+            
+            // Das ist nicht ganz so einfach, weil "@" nicht erlaubt ist. 
+            // GUI.getView().setSuccessText(i18n.tr("Geben Sie Ihre Mailadresse in Verwendungszweck 2 ein, wenn Sie einen Beleg per Mail wünschen"));
             new de.willuhn.jameica.hbci.gui.action.UeberweisungNew().handleAction(u);
           }
           catch (Exception e)
@@ -158,6 +161,9 @@ public class DonateView extends AbstractView
 
 /**********************************************************************
  * $Log$
+ * Revision 1.5  2010-10-05 22:21:48  willuhn
+ * *** empty log message ***
+ *
  * Revision 1.4  2010-10-05 21:39:18  willuhn
  * @C Doppelte Spenden-Funktion entfernt - jetzt nur noch ueber die DonateView
  *
