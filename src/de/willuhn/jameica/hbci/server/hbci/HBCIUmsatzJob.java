@@ -73,8 +73,16 @@ public class HBCIUmsatzJob extends AbstractHBCIJob
 			setJobParam("my",Converter.HibiscusKonto2HBCIKonto(konto));
       
       this.saldoDatum = konto.getSaldoDatum();
-      if (saldoDatum != null)
+      if (this.saldoDatum != null)
       {
+        // BUGZILLA 917 - checken, ob das Datum vielleicht in der Zukunft liegt. Das ist nicht zulaessig
+        Date now = new Date();
+        if (saldoDatum.after(now))
+        {
+          Logger.warn("future start date " + saldoDatum + " given. this is not allowed, changing to current date " + now);
+          this.saldoDatum = now;
+        }
+        
         // Mal schauen, ob wir ein konfiguriertes Offset haben
         int offset = res.getSettings().getInt("umsatz.startdate.offset",0);
         if (offset != 0)
@@ -341,6 +349,9 @@ public class HBCIUmsatzJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
+ * Revision 1.54  2010-10-07 21:02:36  willuhn
+ * @B BUGZILLA 917
+ *
  * Revision 1.53  2010-08-27 11:36:48  willuhn
  * @R unnoetiges if
  *
