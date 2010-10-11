@@ -98,7 +98,7 @@ public class Detail extends AbstractView
 
       ButtonArea buttons = new ButtonArea(getParent(),5);
       buttons.addButton(new Back(true));
-      buttons.addButton(i18n.tr("BPD/UPD anzeigen"),new Action()
+      buttons.addButton(i18n.tr("BPD/UPD"),new Action()
       {
         public void handleAction(Object context) throws ApplicationException
         {
@@ -158,6 +158,9 @@ public class Detail extends AbstractView
 
 /**********************************************************************
  * $Log$
+ * Revision 1.5  2010-10-11 20:58:52  willuhn
+ * @N BUGZILLA 927
+ *
  * Revision 1.4  2010-09-29 23:43:34  willuhn
  * @N Automatisches Abgleichen und Anlegen von Konten aus KontoFetchFromPassport in KontoMerge verschoben
  * @N Konten automatisch (mit Rueckfrage) anlegen, wenn das Testen der HBCI-Konfiguration erfolgreich war

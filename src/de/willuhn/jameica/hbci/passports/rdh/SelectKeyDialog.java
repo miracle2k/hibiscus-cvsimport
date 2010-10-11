@@ -138,7 +138,7 @@ public class SelectKeyDialog extends AbstractDialog
         selected = key.key;
         close();
       }
-    });
+    },null,true);
     buttons.addButton(i18n.tr("Abbrechen"), new Action() {
       public void handleAction(Object context) throws ApplicationException
       {
@@ -217,7 +217,10 @@ public class SelectKeyDialog extends AbstractDialog
 
 /*********************************************************************
  * $Log$
- * Revision 1.1  2010-06-17 11:26:48  willuhn
+ * Revision 1.2  2010-10-11 20:58:52  willuhn
+ * @N BUGZILLA 927
+ *
+ * Revision 1.1  2010/06/17 11:26:48  willuhn
  * @B In HBCICallbackSWT wurden die RDH-Passports nicht korrekt ausgefiltert
  * @C komplettes Projekt "hbci_passport_rdh" in Hibiscus verschoben - es macht eigentlich keinen Sinn mehr, das in separaten Projekten zu fuehren
  * @N BUGZILLA 312

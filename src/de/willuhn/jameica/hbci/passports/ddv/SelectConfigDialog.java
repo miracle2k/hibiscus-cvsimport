@@ -79,7 +79,7 @@ public class SelectConfigDialog extends AbstractDialog
           return;
         close();
       }
-    });
+    },null,true);
     buttons.addButton(i18n.tr("Abbrechen"), new Action() {
       public void handleAction(Object context) throws ApplicationException
       {
@@ -111,6 +111,9 @@ public class SelectConfigDialog extends AbstractDialog
 
 /*********************************************************************
  * $Log$
+ * Revision 1.2  2010-10-11 20:58:52  willuhn
+ * @N BUGZILLA 927
+ *
  * Revision 1.1  2010-09-07 15:28:05  willuhn
  * @N BUGZILLA 391 - Kartenleser-Konfiguration komplett umgebaut. Damit lassen sich jetzt beliebig viele Kartenleser und Konfigurationen parellel einrichten
  *

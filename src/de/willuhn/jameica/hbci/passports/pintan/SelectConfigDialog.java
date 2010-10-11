@@ -82,7 +82,7 @@ public class SelectConfigDialog extends AbstractDialog
           return;
         close();
       }
-    });
+    },null,true);
     buttons.addButton(i18n.tr("Abbrechen"), new Action() {
       public void handleAction(Object context) throws ApplicationException
       {
@@ -113,6 +113,9 @@ public class SelectConfigDialog extends AbstractDialog
 
 /*********************************************************************
  * $Log$
+ * Revision 1.4  2010-10-11 20:58:51  willuhn
+ * @N BUGZILLA 927
+ *
  * Revision 1.3  2010-09-07 15:17:07  willuhn
  * @N GUI-Cleanup
  *
