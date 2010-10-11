@@ -50,7 +50,7 @@ public class About extends AbstractDialog
   public About(int position)
   {
     super(position);
-    setTitle("About...");
+    this.setTitle("Hibiscus");
   }
 
   /**
@@ -65,12 +65,10 @@ public class About extends AbstractDialog
     list.addFilter("name = ?", new String[]{"db"});
     Version version = (Version) list.next();
     
-    setTitle(i18n.tr("About"));
-
     Label l = GUI.getStyleFactory().createLabel(parent,SWT.BORDER);
     l.setImage(SWTUtil.getImage("hibiscus.jpg"));
 
-    Container container = new LabelGroup(parent,i18n.tr("About"),true);
+    Container container = new LabelGroup(parent,i18n.tr("Versionsinformationen"),true);
     
     FormTextPart text = new FormTextPart();
     text.setText("<form>" +
@@ -130,6 +128,9 @@ public class About extends AbstractDialog
 
 /**********************************************************************
  * $Log$
+ * Revision 1.10  2010-10-11 20:46:20  willuhn
+ * @N BUGZILLA 928
+ *
  * Revision 1.9  2010-10-05 21:39:18  willuhn
  * @C Doppelte Spenden-Funktion entfernt - jetzt nur noch ueber die DonateView
  *
