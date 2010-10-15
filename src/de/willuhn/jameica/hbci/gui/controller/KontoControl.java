@@ -241,7 +241,7 @@ public class KontoControl extends AbstractControl {
     if (unterkonto != null)
       return unterkonto;
     unterkonto = new TextInput(getKonto().getUnterkonto(),HBCIProperties.HBCI_KTO_MAXLENGTH_HARD);
-    unterkonto.setValidChars(HBCIProperties.HBCI_KTO_VALIDCHARS);
+    unterkonto.setValidChars(HBCIProperties.HBCI_IBAN_VALIDCHARS);
     unterkonto.setComment(i18n.tr("Kann meist frei gelassen werden"));
     return unterkonto;
   }
@@ -721,6 +721,9 @@ public class KontoControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
+ * Revision 1.96  2010-10-15 15:31:11  willuhn
+ * @B Alphanumerische Zeichen in Unterkonto zulassen. Siehe Mail von Stefan vom 15.10.2010
+ *
  * Revision 1.95  2010-09-02 12:25:13  willuhn
  * @N BUGZILLA 900
  *
