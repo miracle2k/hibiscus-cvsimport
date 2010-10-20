@@ -460,6 +460,7 @@ public class Controller extends AbstractControl
       getConfig().setCTAPIDriver((String) getCTAPI().getValue());
       getConfig().setHBCIVersion((String) getHBCIVersion().getValue());
       getConfig().setName((String) getBezeichnung().getValue());
+      DDVConfigFactory.store(getConfig());
 
       Application.getMessagingFactory().sendMessage(new StatusBarMessage(i18n.tr("Einstellungen gespeichert"),StatusBarMessage.TYPE_SUCCESS));
       return true;
@@ -636,6 +637,9 @@ public class Controller extends AbstractControl
 
 /*******************************************************************************
  * $Log$
+ * Revision 1.10  2010-10-20 14:28:47  willuhn
+ * @B Neue Kartenleser-Config wurde nicht in Factory registriert - siehe http://www.onlinebanking-forum.de/phpBB2/viewtopic.php?p=70575#70575
+ *
  * Revision 1.9  2010-10-17 21:58:56  willuhn
  * @C Aendern der Bankdaten auf der Karte auch dann moeglich, wenn auf dem Slot ungueltige Daten stehen
  *
