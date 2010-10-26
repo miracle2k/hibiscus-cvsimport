@@ -2,11 +2,14 @@
 -- Erweitert die Tabelle "dauerauftrag" um eine Spalte "typ"
 -- ----------------------------------------------------------------------
 
-alter table dauerauftrag add typ VARCHAR(02) NULL;
+alter table dauerauftrag add typ VARCHAR(2) NULL;
 
 
 -- ----------------------------------------------------------------------
 -- $Log$
+-- Revision 1.3  2010-10-26 23:10:52  willuhn
+-- @C s/02/s/
+--
 -- Revision 1.2  2010-09-24 12:26:23  willuhn
 -- @N Log
 --
