@@ -229,10 +229,6 @@ public class PassportHandleImpl extends UnicastRemoteObject implements PassportH
 			}
 			return (Konto[]) result.toArray(new Konto[result.size()]);
 		}
-		catch (RemoteException e)
-		{
-			throw e;
-		}
 		finally
 		{
 			try {
@@ -303,6 +299,9 @@ public class PassportHandleImpl extends UnicastRemoteObject implements PassportH
 
 /**********************************************************************
  * $Log$
+ * Revision 1.12  2010-10-27 10:25:10  willuhn
+ * @C Unnoetiges Fangen und Weiterwerfen von Exceptions
+ *
  * Revision 1.11  2010-10-17 21:58:56  willuhn
  * @C Aendern der Bankdaten auf der Karte auch dann moeglich, wenn auf dem Slot ungueltige Daten stehen
  *
