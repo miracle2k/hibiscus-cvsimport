@@ -49,7 +49,7 @@ public class About extends AbstractDialog
    */
   public About(int position)
   {
-    super(position);
+    super(position,false);
     this.setTitle("Hibiscus");
   }
 
@@ -128,6 +128,9 @@ public class About extends AbstractDialog
 
 /**********************************************************************
  * $Log$
+ * Revision 1.11  2010-10-28 22:49:00  willuhn
+ * @C Groesse nicht mehr aenderbar
+ *
  * Revision 1.10  2010-10-11 20:46:20  willuhn
  * @N BUGZILLA 928
  *
