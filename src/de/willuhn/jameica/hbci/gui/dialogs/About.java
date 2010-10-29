@@ -104,14 +104,14 @@ public class About extends AbstractDialog
       }
     
     });
-    buttons.addButton(" " + i18n.tr("Spenden") + " ",new Action() {
+    buttons.addButton(i18n.tr("Spenden"),new Action() {
       public void handleAction(Object context) throws ApplicationException
       {
         close();
         new DonateView().handleAction(null);
       }
     },null,false,"emblem-special.png");
-    buttons.addButton("   " + i18n.tr("Schlieﬂen") + "   ",new Action() {
+    buttons.addButton(i18n.tr("Schlieﬂen"),new Action() {
       public void handleAction(Object context) throws ApplicationException
       {
         close();
@@ -133,6 +133,9 @@ public class About extends AbstractDialog
 
 /**********************************************************************
  * $Log$
+ * Revision 1.13  2010-10-29 09:27:30  willuhn
+ * *** empty log message ***
+ *
  * Revision 1.12  2010-10-29 09:26:40  willuhn
  * *** empty log message ***
  *
