@@ -15,7 +15,6 @@ package de.willuhn.jameica.hbci.server;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.lang.reflect.Method;
 import java.rmi.RemoteException;
 import java.security.SecureRandom;
@@ -139,27 +138,13 @@ public class DBSupportH2Impl extends AbstractDBSupportImpl
   }
 
   /**
-   * Ueberschrieben, weil SQL-Scripts bei H2 mit einem Prefix versehen werden.
-   * Das soll der Admin sicherheitshalber manuell durchfuehren. Wir hinterlassen stattdessen
-   * nur einen Hinweistext mit den auszufuehrenden SQL-Scripts.
-   * @see de.willuhn.jameica.hbci.server.AbstractDBSupportImpl#execute(java.sql.Connection, java.io.File)
+   * @see de.willuhn.jameica.hbci.rmi.DBSupport#getScriptPrefix()
    */
-  public void execute(Connection conn, File sqlScript) throws RemoteException
+  public String getScriptPrefix() throws RemoteException
   {
-    if (sqlScript == null)
-      return; // Ignore
-
-    // Wir schreiben unseren Prefix davor.
-    String prefix = HBCIDBService.SETTINGS.getString("database.driver.h2.scriptprefix","h2-");
-    sqlScript = new File(sqlScript.getParent(),prefix + sqlScript.getName());
-    if (!sqlScript.exists())
-    {
-      Logger.debug("file " + sqlScript + " does not exist, skipping");
-      return;
-    }
-    super.execute(conn,sqlScript);
+    return "h2-";
   }
-  
+
   /**
    * @see de.willuhn.jameica.hbci.rmi.DBSupport#getSQLTimestamp(java.lang.String)
    */
@@ -190,7 +175,10 @@ public class DBSupportH2Impl extends AbstractDBSupportImpl
 
 /*********************************************************************
  * $Log$
- * Revision 1.11  2009-06-02 15:49:41  willuhn
+ * Revision 1.12  2010-11-02 12:02:19  willuhn
+ * @R Support fuer McKoi entfernt. User, die noch dieses alte DB-Format nutzen, sollen erst auf Jameica 1.6/Hibiscus 1.8 (oder maximal Jameica 1.9/Hibiscus 1.11) wechseln, dort die Migration auf H2 durchfuehren und dann erst auf Hibiscus 1.12 updaten
+ *
+ * Revision 1.11  2009/06/02 15:49:41  willuhn
  * @N method to display h2 database version
  *
  * Revision 1.10  2009/05/28 22:39:01  willuhn

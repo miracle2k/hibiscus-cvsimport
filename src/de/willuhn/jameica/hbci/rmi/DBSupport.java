@@ -69,10 +69,17 @@ public interface DBSupport extends Serializable
    * @throws RemoteException
    */
   public void execute(Connection conn, File sqlScript) throws RemoteException;
+  
+  /**
+   * Liefert einen Dateinamens-Prefix, der SQL-Scripts vorangestellt werden soll.
+   * @return Dateinamens-Prefix.
+   * @throws RemoteException
+   */
+  public String getScriptPrefix() throws RemoteException;
 
   /**
    * Liefert den Namen der SQL-Funktion, mit der die Datenbank aus einem DATE-Feld einen UNIX-Timestamp macht.
-   * Bei MySQL ist das z.Bsp. "UNIX_TIMESTAMP" und bei McKoi schlicht "TONUMBER".
+   * Bei MySQL ist das z.Bsp. "UNIX_TIMESTAMP".
    * @param content der Feld-Name.
    * @return Name der SQL-Funktion samt Parameter. Also zum Beispiel "TONUMBER(datum)".
    * @throws RemoteException
@@ -99,7 +106,10 @@ public interface DBSupport extends Serializable
 
 /*********************************************************************
  * $Log$
- * Revision 1.8  2008-12-30 15:21:40  willuhn
+ * Revision 1.9  2010-11-02 12:02:20  willuhn
+ * @R Support fuer McKoi entfernt. User, die noch dieses alte DB-Format nutzen, sollen erst auf Jameica 1.6/Hibiscus 1.8 (oder maximal Jameica 1.9/Hibiscus 1.11) wechseln, dort die Migration auf H2 durchfuehren und dann erst auf Hibiscus 1.12 updaten
+ *
+ * Revision 1.8  2008/12/30 15:21:40  willuhn
  * @N Umstellung auf neue Versionierung
  *
  * Revision 1.7  2008/02/04 18:48:18  willuhn
