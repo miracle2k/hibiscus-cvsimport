@@ -133,30 +133,6 @@ public class VelocityExporter implements Exporter
     }
   }
   
-//  /**
-//   * Liefert ein auf dem Report anzuzeigendes Icon als Base64.
-//   * @return Icon oder NULL, wenn es nicht geladen werden konnte.
-//   */
-//  private String getIcon()
-//  {
-//    InputStream is = null;
-//    try
-//    {
-//      ByteArrayOutputStream bos = new ByteArrayOutputStream();
-//      is = Application.getClassLoader().getResourceAsStream("img/hibiscus-icon-64x64.png");
-//      int read = 0;
-//      byte[] buf = new byte[1024];
-//      while ((read = is.read(buf)) != -1)
-//        bos.write(buf,0,read);
-//      return Base64.encode(bos.toByteArray());
-//    }
-//    catch (Exception e)
-//    {
-//      Logger.write(Level.INFO,"unable to read icon, skipping",e);
-//    }
-//    return null;
-//  }
-  
   /**
    * @see de.willuhn.jameica.hbci.io.IO#getName()
    */
@@ -256,7 +232,10 @@ public class VelocityExporter implements Exporter
 
 /**********************************************************************
  * $Log$
- * Revision 1.17  2009-08-24 11:54:28  willuhn
+ * Revision 1.18  2010-11-02 23:01:04  willuhn
+ * @R auskommentierte Methode entfernt
+ *
+ * Revision 1.17  2009/08/24 11:54:28  willuhn
  * @N Umstellung auf neuen VelocityService
  *
  * Revision 1.16  2009/07/09 17:08:03  willuhn
