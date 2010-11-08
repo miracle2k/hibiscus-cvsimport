@@ -157,9 +157,9 @@ public class KontoList extends TablePart implements Part
 
           
           // Den Saldo faerben wir extra
-          if (k.getSaldo() < 0) // Negativer Saldo rot
+          if (k.getSaldo() <= -0.01) // Negativer Saldo rot
             item.setForeground(5,Settings.getBuchungSollForeground());
-          else if (k.getSaldo() > 0) // Positiver Saldo gruen
+          else if (k.getSaldo() >= 0.01) // Positiver Saldo gruen
             item.setForeground(5,Settings.getBuchungHabenForeground());
           
           Konto kd = Settings.getDefaultKonto();
@@ -380,6 +380,9 @@ public class KontoList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
+ * Revision 1.21  2010-11-08 10:24:03  willuhn
+ * @B korrekte farbige Hervorhebung auch bei Cent-Bruchteilen
+ *
  * Revision 1.20  2010-07-29 21:43:22  willuhn
  * @N BUGZILLA 886
  *
