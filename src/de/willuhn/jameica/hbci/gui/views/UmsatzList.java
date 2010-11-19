@@ -88,7 +88,7 @@ public class UmsatzList extends AbstractView
       Button fetch = null;
 
       if ((flags & Konto.FLAG_OFFLINE) == Konto.FLAG_OFFLINE)
-        fetch = new Button(i18n.tr("Umsatz anlegen"), new UmsatzDetailEdit(),control.getKonto(),false,"office-calendar.png");
+        fetch = new Button(i18n.tr("Umsatz anlegen"), new UmsatzDetailEdit(),control.getKonto(),false,"emblem-documents.png");
       else
         fetch = new Button(i18n.tr("Umsätze abrufen"), new KontoFetchUmsaetze(),control.getKonto(),false,"mail-send-receive.png");
       
@@ -116,7 +116,10 @@ public class UmsatzList extends AbstractView
 
 /**********************************************************************
  * $Log$
- * Revision 1.13  2010-04-22 16:40:57  willuhn
+ * Revision 1.14  2010-11-19 18:37:20  willuhn
+ * @N Erste Version der Termin-View mit Appointment-Providern
+ *
+ * Revision 1.13  2010/04/22 16:40:57  willuhn
  * @N Manuelles Anlegen neuer Umsaetze fuer Offline-Konten moeglich
  *
  * Revision 1.12  2010/04/22 16:21:27  willuhn

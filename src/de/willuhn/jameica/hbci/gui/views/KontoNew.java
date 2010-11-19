@@ -140,7 +140,7 @@ public class KontoNew extends AbstractView {
 
     if ((flags & Konto.FLAG_OFFLINE) == Konto.FLAG_OFFLINE)
     {
-      fetch = new Button(i18n.tr("Umsatz anlegen"), new UmsatzDetailEdit(),control.getKonto(),false,"office-calendar.png");
+      fetch = new Button(i18n.tr("Umsatz anlegen"), new UmsatzDetailEdit(),control.getKonto(),false,"emblem-documents.png");
       
       if (scripting)
       {
@@ -182,6 +182,9 @@ public class KontoNew extends AbstractView {
 
 /**********************************************************************
  * $Log$
+ * Revision 1.35  2010-11-19 18:37:20  willuhn
+ * @N Erste Version der Termin-View mit Appointment-Providern
+ *
  * Revision 1.34  2010-08-11 16:06:05  willuhn
  * @N BUGZILLA 783 - Saldo-Chart ueber alle Konten
  *
