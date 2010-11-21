@@ -53,7 +53,6 @@ public class LastschriftImpl extends AbstractBaseUeberweisungImpl
 		u.setGegenkontoNummer(getGegenkontoNummer());
 		u.setGegenkontoName(getGegenkontoName());
 		u.setKonto(getKonto());
-		u.setTermin(getTermin());
 		u.setZweck(getZweck());
 		u.setZweck2(getZweck2());
     u.setWeitereVerwendungszwecke(getWeitereVerwendungszwecke());
@@ -65,7 +64,10 @@ public class LastschriftImpl extends AbstractBaseUeberweisungImpl
 
 /**********************************************************************
  * $Log$
- * Revision 1.9  2010-04-27 11:02:32  willuhn
+ * Revision 1.10  2010-11-21 23:55:47  willuhn
+ * @C Uebernahme des Termins beim Duplizieren war nicht konsistent. Jetzt wird er nur noch bei Bank-gefuehrten Termin-Ueberweisungen uebernommen
+ *
+ * Revision 1.9  2010/04/27 11:02:32  willuhn
  * @R Veralteten Verwendungszweck-Code entfernt
  *
  * Revision 1.8  2010/03/04 09:39:40  willuhn

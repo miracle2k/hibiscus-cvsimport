@@ -350,7 +350,6 @@ public abstract class AbstractSammelTransferImpl extends AbstractDBObject implem
       l.transactionBegin();
       l.setBezeichnung(this.getBezeichnung());
       l.setKonto(this.getKonto());
-      ((Terminable)l).setTermin(this.getTermin());
       l.store();
       DBIterator list = this.getBuchungen();
       while (list.hasNext())
@@ -392,7 +391,10 @@ public abstract class AbstractSammelTransferImpl extends AbstractDBObject implem
 
 /*****************************************************************************
  * $Log$
- * Revision 1.5  2009-02-18 10:48:42  willuhn
+ * Revision 1.6  2010-11-21 23:55:47  willuhn
+ * @C Uebernahme des Termins beim Duplizieren war nicht konsistent. Jetzt wird er nur noch bei Bank-gefuehrten Termin-Ueberweisungen uebernommen
+ *
+ * Revision 1.5  2009/02/18 10:48:42  willuhn
  * @N Neuer Schalter "transfer.markexecuted.before", um festlegen zu koennen, wann ein Auftrag als ausgefuehrt gilt (wenn die Quittung von der Bank vorliegt oder wenn der Auftrag erzeugt wurde)
  *
  * Revision 1.4  2008/04/27 22:22:56  willuhn
