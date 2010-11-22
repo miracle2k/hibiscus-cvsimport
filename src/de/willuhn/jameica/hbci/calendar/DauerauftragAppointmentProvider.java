@@ -114,7 +114,7 @@ public class DauerauftragAppointmentProvider implements AppointmentProvider
   /**
    * Hilfsklasse zum Anzeigen und Oeffnen des Appointments.
    */
-  public class MyAppointment implements Appointment
+  private class MyAppointment implements Appointment
   {
     private Dauerauftrag t = null;
     private Date termin    = null;
@@ -199,6 +199,9 @@ public class DauerauftragAppointmentProvider implements AppointmentProvider
 
 /**********************************************************************
  * $Log$
+ * Revision 1.4  2010-11-22 00:52:53  willuhn
+ * @C Appointment-Inner-Class darf auch private sein
+ *
  * Revision 1.3  2010-11-21 23:57:57  willuhn
  * @N Wir merken uns das letzte Datum und springen wieder zu dem zurueck, wenn wir z.Bsp. aus der Detail-Ansicht eines Auftrages zurueckkommen
  *

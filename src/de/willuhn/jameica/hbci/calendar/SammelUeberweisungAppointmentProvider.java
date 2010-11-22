@@ -78,7 +78,7 @@ public class SammelUeberweisungAppointmentProvider implements AppointmentProvide
   /**
    * Hilfsklasse zum Anzeigen und Oeffnen des Appointments.
    */
-  public class MyAppointment implements Appointment
+  private class MyAppointment implements Appointment
   {
     private SammelUeberweisung t = null;
     
@@ -172,6 +172,9 @@ public class SammelUeberweisungAppointmentProvider implements AppointmentProvide
 
 /**********************************************************************
  * $Log$
+ * Revision 1.3  2010-11-22 00:52:53  willuhn
+ * @C Appointment-Inner-Class darf auch private sein
+ *
  * Revision 1.2  2010-11-21 23:31:26  willuhn
  * @N Auch abgelaufene Termine anzeigen
  * @N Turnus von Dauerauftraegen berechnen

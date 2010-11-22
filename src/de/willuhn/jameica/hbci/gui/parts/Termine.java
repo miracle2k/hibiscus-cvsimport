@@ -28,8 +28,6 @@ public class Termine extends CalendarPart
    */
   public Termine()
   {
-    super();
-
     // Wir laden automatisch die Termin-Provider.
     try
     {
@@ -58,6 +56,9 @@ public class Termine extends CalendarPart
 
 /**********************************************************************
  * $Log$
+ * Revision 1.2  2010-11-22 00:52:53  willuhn
+ * @C Appointment-Inner-Class darf auch private sein
+ *
  * Revision 1.1  2010-11-19 18:37:19  willuhn
  * @N Erste Version der Termin-View mit Appointment-Providern
  *
