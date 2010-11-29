@@ -114,7 +114,7 @@ public class LineChart extends AbstractChart<LineChartData>
       lineSeries.enableArea(true); // Flaeche ausmalen
       lineSeries.setAntialias(SWT.ON);
       lineSeries.enableStack(this.isStacked());
-      lineSeries.enableStep(cd.getCurve());
+      lineSeries.enableStep(!cd.getCurve());
       //
       //////////////////////////////////////////////////////////////////////////
 
@@ -237,6 +237,9 @@ public class LineChart extends AbstractChart<LineChartData>
 
 /*********************************************************************
  * $Log$
+ * Revision 1.17  2010-11-29 22:44:30  willuhn
+ * @B getCurve() wurde falsch rum interpretiert ;)
+ *
  * Revision 1.16  2010-11-24 16:27:17  willuhn
  * @R Eclipse BIRT komplett rausgeworden. Diese unsaegliche Monster ;)
  * @N Stattdessen verwenden wir jetzt SWTChart (http://www.swtchart.org). Das ist statt den 6MB von BIRT sagenhafte 250k gross
