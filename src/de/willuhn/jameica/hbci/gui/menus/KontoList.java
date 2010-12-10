@@ -89,9 +89,9 @@ public class KontoList extends ContextMenu implements Extendable
     }); // BUGZILLA 473
     addItem(ContextMenuItem.SEPARATOR);
 
-    addItem(new ContextMenuItem(i18n.tr("Neue Überweisung..."),new UeberweisungNew(),"stock_next.png"));
-    addItem(new ContextMenuItem(i18n.tr("Neue Lastschrift..."),new LastschriftNew(),"stock_previous.png"));
-    addItem(new ContextMenuItem(i18n.tr("Neuer Dauerauftrag..."),new DauerauftragNew(),"stock_form-time-field.png"));
+    addItem(new CheckedSingleContextMenuItem(i18n.tr("Neue Überweisung..."),new UeberweisungNew(),"stock_next.png"));
+    addItem(new CheckedSingleContextMenuItem(i18n.tr("Neue Lastschrift..."),new LastschriftNew(),"stock_previous.png"));
+    addItem(new CheckedSingleContextMenuItem(i18n.tr("Neuer Dauerauftrag..."),new DauerauftragNew(),"stock_form-time-field.png"));
 
     addItem(ContextMenuItem.SEPARATOR);
     addItem(new CheckedContextMenuItem(i18n.tr("Exportieren..."),new KontoExport(),"document-save.png"));
@@ -193,7 +193,10 @@ public class KontoList extends ContextMenu implements Extendable
 
 /*******************************************************************************
  * $Log$
- * Revision 1.22  2010-04-22 16:21:27  willuhn
+ * Revision 1.23  2010-12-10 17:23:32  willuhn
+ * @C Menueintrage fuer neue Auftraege nur aktivieren, wenn ein einzelnes Konto selektiert ist. Die Menueintraege machen sonst keinen Sinn
+ *
+ * Revision 1.22  2010/04/22 16:21:27  willuhn
  * @N HBCI-relevante Buttons und Aktionen fuer Offline-Konten sperren
  *
  * Revision 1.21  2010/04/22 16:10:43  willuhn
