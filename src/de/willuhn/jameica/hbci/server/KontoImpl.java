@@ -216,7 +216,7 @@ public class KontoImpl extends AbstractDBObject implements Konto
     if (this.isNewObject())
       return;
     
-    Cache.get(Konto.class,false).remove(this); // Aus Cache loeschen
+    Cache.clear(Konto.class); // Cache loeschen
 
     // Wir muessen auch alle Umsaetze, Ueberweisungen und Protokolle mitloeschen
     // da Constraints dorthin existieren.
@@ -540,7 +540,7 @@ public class KontoImpl extends AbstractDBObject implements Konto
       addToProtokoll(i18n.tr("Konto-Eigenschaften aktualisiert"),Protokoll.TYP_SUCCESS);
     super.store();
     
-    Cache.get(Konto.class,false).put(this); // Cache aktualisieren
+    Cache.clear(Konto.class); // Cache loeschen
   }
 
   /**
@@ -752,6 +752,9 @@ public class KontoImpl extends AbstractDBObject implements Konto
 
 /*******************************************************************************
  * $Log$
+ * Revision 1.108  2010-12-14 12:48:00  willuhn
+ * @B Cache wurde nicht immer korrekt aktualisiert, was dazu fuehren konnte, dass sich das Aendern/Loeschen/Anlegen von Kategorien erst nach 10 Sekunden auswirkte und bis dahin Umsaetze der Kategorie "nicht zugeordnet" zugewiesen wurden, obwohl sie in einer Kategorie waren
+ *
  * Revision 1.107  2010-09-29 23:46:18  willuhn
  * @B Auslandsueberweisungen wurden nicht mitgeloescht
  *

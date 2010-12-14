@@ -66,6 +66,15 @@ class Cache
   {
     this.validTo = System.currentTimeMillis() + (timeout * 1000);
   }
+
+  /**
+   * Loescht den genannten Cache.
+   * @param type der Cache.
+   */
+  static void clear(Class<? extends DBObject> type)
+  {
+    caches.remove(type);
+  }
   
   /**
    * Liefert den Cache fuer den genannten Typ.
@@ -148,23 +157,11 @@ class Cache
    * @param object das zu speichernde Objekt.
    * @throws RemoteException
    */
-  void put(DBObject object) throws RemoteException
+  private void put(DBObject object) throws RemoteException
   {
     if (object == null)
       return;
     data.put(object.getID(),object);
-  }
-  
-  /**
-   * Entfernt ein Objekt aus dem Cache.
-   * @param object das zu entfernende Objekt.
-   * @throws RemoteException
-   */
-  void remove(DBObject object) throws RemoteException
-  {
-    if (object == null)
-      return;
-    data.remove(object.getID());
   }
   
   /**
@@ -181,6 +178,9 @@ class Cache
 
 /**********************************************************************
  * $Log$
+ * Revision 1.5  2010-12-14 12:48:00  willuhn
+ * @B Cache wurde nicht immer korrekt aktualisiert, was dazu fuehren konnte, dass sich das Aendern/Loeschen/Anlegen von Kategorien erst nach 10 Sekunden auswirkte und bis dahin Umsaetze der Kategorie "nicht zugeordnet" zugewiesen wurden, obwohl sie in einer Kategorie waren
+ *
  * Revision 1.4  2010-08-27 09:24:58  willuhn
  * @B Generics-Deklaration im Cache hat javac nicht akzeptiert (der Eclipse-Compiler hats komischerweise gefressen)
  *
