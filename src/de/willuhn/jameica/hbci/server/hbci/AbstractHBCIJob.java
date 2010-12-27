@@ -89,6 +89,9 @@ public abstract class AbstractHBCIJob
   /**
    * Wird aufgerufen, wenn der User den Vorgang abgebrochen hat.
    * Kann von den Jobs implementiert werden, muss aber nicht.
+   * Die Funktion wird nur genau dann aufgerufen, wenn der Job noch abbrechbar war - sprich,
+   * wenn er noch nicht an die Bank uebertragen wurde. Wurde er jedoch bereits an die Bank
+   * gesendet, dann wird entweder markFailed() oder markExecuted() aufgerufen.
    * @throws RemoteException
    * @throws ApplicationException
    * BUGZILLA 690
@@ -384,6 +387,9 @@ public abstract class AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
+ * Revision 1.35  2010-12-27 23:03:13  willuhn
+ * *** empty log message ***
+ *
  * Revision 1.34  2010-12-27 22:51:25  willuhn
  * *** empty log message ***
  *
