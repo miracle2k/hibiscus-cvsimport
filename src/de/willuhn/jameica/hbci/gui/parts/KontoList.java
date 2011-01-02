@@ -31,6 +31,7 @@ import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.Part;
+import de.willuhn.jameica.gui.formatter.CurrencyFormatter;
 import de.willuhn.jameica.gui.formatter.DateFormatter;
 import de.willuhn.jameica.gui.formatter.Formatter;
 import de.willuhn.jameica.gui.formatter.TableFormatter;
@@ -216,7 +217,7 @@ public class KontoList extends TablePart implements Part
         if (!Double.isNaN(d))
         {
           // Wir haben tatsaechlich eines, wo was drin steht
-          addColumn(i18n.tr("Verfügbar"),"saldo_available");
+          addColumn(i18n.tr("Verfügbar"),"saldo_available", new CurrencyFormatter(k.getWaehrung(), HBCI.DECIMALFORMAT));
           return;
         }
       }
@@ -380,6 +381,9 @@ public class KontoList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
+ * Revision 1.22  2011-01-02 23:18:51  willuhn
+ * @B Verfuegbarer Betrag wurde nicht korrekt als Waehrung formatiert
+ *
  * Revision 1.21  2010-11-08 10:24:03  willuhn
  * @B korrekte farbige Hervorhebung auch bei Cent-Bruchteilen
  *
