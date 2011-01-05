@@ -23,6 +23,7 @@ import de.willuhn.jameica.hbci.rmi.Umsatz;
 import de.willuhn.jameica.hbci.server.UmsatzUtil;
 import de.willuhn.jameica.messaging.Message;
 import de.willuhn.jameica.messaging.MessageConsumer;
+import de.willuhn.logging.Logger;
 
 /**
  * Ueber die Klasse koennen die in der aktuellen Session
@@ -94,12 +95,37 @@ public class NeueUmsaetze implements MessageConsumer
     return first;
   }
 
+  /**
+   * Liefert true, wenn der Umsatz in der aktuellen Sitzung abgerufen wurde.
+   * @param u der zu pruefende Umsatz.
+   * @return true, wenn er neu ist.
+   */
+  public static boolean isNew(Umsatz u)
+  {
+    if (first == null || u == null)
+      return false;
+
+    try
+    {
+      return (((Integer)u.getAttribute("id-int")).compareTo(new Integer(first)) >= 0);
+    }
+    catch (Exception e)
+    {
+      Logger.error("unable to determine new state",e);
+    }
+    return false;
+  }
+  
 }
 
 
 /*********************************************************************
  * $Log$
- * Revision 1.5  2007-08-09 12:04:39  willuhn
+ * Revision 1.6  2011-01-05 11:19:10  willuhn
+ * @N Fettdruck (bei neuen Umsaetzen) und grauer Text (bei Vormerkbuchungen) jetzt auch in "Umsaetze nach Kategorien"
+ * @N NeueUmsaetze.isNew(Umsatz) zur Pruefung, ob ein Umsatz neu ist
+ *
+ * Revision 1.5  2007/08/09 12:04:39  willuhn
  * @N Bug 302
  *
  * Revision 1.4  2007/08/07 23:54:15  willuhn

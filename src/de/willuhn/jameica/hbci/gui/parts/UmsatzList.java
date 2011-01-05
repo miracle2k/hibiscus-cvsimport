@@ -140,27 +140,8 @@ public class UmsatzList extends TablePart implements Extendable
         Umsatz u = (Umsatz) item.getData();
         if (u == null) return;
 
-        // BUGZILLA 302
-        // Die ID ermitteln wir fuer jeden Datensatz neu, weil
-        // sich der Wert zwischenzeitlich aendern kann, wenn neue hinzukommen,
-        // waehrend die Tabelle aktiv ist.
-        String firstID = NeueUmsaetze.getID();
         try {
-          if (firstID != null)
-          {
-            try
-            {
-              if (((Integer)u.getAttribute("id-int")).compareTo(new Integer(firstID)) >= 0)
-                item.setFont(Font.BOLD.getSWTFont());
-              else
-                item.setFont(Font.DEFAULT.getSWTFont());
-            }
-            catch (Exception e)
-            {
-              // Dann wirds halt nicht fett gedruckt.
-              Logger.error("unable to parse ID for umsatz",e);
-            }
-          }
+          item.setFont(NeueUmsaetze.isNew(u) ? Font.BOLD.getSWTFont() : Font.DEFAULT.getSWTFont());
           
           if ((u.getFlags() & Umsatz.FLAG_NOTBOOKED) != 0)
           {
@@ -817,6 +798,10 @@ public class UmsatzList extends TablePart implements Extendable
 
 /**********************************************************************
  * $Log$
+ * Revision 1.69  2011-01-05 11:19:10  willuhn
+ * @N Fettdruck (bei neuen Umsaetzen) und grauer Text (bei Vormerkbuchungen) jetzt auch in "Umsaetze nach Kategorien"
+ * @N NeueUmsaetze.isNew(Umsatz) zur Pruefung, ob ein Umsatz neu ist
+ *
  * Revision 1.68  2010-09-27 11:55:05  willuhn
  * @N BUGZILLA 804
  *
