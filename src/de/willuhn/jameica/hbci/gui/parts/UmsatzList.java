@@ -162,6 +162,7 @@ public class UmsatzList extends TablePart implements Extendable
             item.setForeground(7,Color.WIDGET_FG.getSWTColor());
           }
 
+          item.setText(1,""); // Kein Text in den Flags - wir wollen nur das Bild
           if ((u.getFlags() & Umsatz.FLAG_CHECKED) != 0)
             item.setImage(1,SWTUtil.getImage("emblem-default.png"));
         
@@ -176,7 +177,7 @@ public class UmsatzList extends TablePart implements Extendable
     // BUGZILLA 23 http://www.willuhn.de/bugzilla/show_bug.cgi?id=23
     // BUGZILLA 86 http://www.willuhn.de/bugzilla/show_bug.cgi?id=86
     addColumn("#","id-int");
-    addColumn(i18n.tr("Flags"),                   null);
+    addColumn(i18n.tr("Flags"),                     "flags");
     addColumn(i18n.tr("Gegenkonto"),                "empfaenger");
     addColumn(i18n.tr("Verwendungszweck"),          "mergedzweck");
     addColumn(i18n.tr("Datum"),                     "datum_pseudo", new DateFormatter(HBCI.DATEFORMAT));
@@ -798,6 +799,9 @@ public class UmsatzList extends TablePart implements Extendable
 
 /**********************************************************************
  * $Log$
+ * Revision 1.71  2011-01-11 22:44:40  willuhn
+ * @N BUGZILLA 978
+ *
  * Revision 1.70  2011-01-05 11:20:27  willuhn
  * *** empty log message ***
  *
