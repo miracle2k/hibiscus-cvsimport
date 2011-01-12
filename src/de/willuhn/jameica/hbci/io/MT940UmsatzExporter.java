@@ -123,7 +123,7 @@ public class MT940UmsatzExporter implements Exporter
         {
           for (int j=0;j<s3.length;++j)
           {
-            out.write("?2" + (j+2) + s3);
+            out.write("?2" + (j+2) + s3[j]);
           }
         }
 
@@ -251,6 +251,9 @@ public class MT940UmsatzExporter implements Exporter
 
 /*********************************************************************
  * $Log$
+ * Revision 1.4  2011-01-12 17:46:30  willuhn
+ * @B Zeiger im Array fehlte
+ *
  * Revision 1.3  2011-01-12 17:39:46  willuhn
  * @B "-" entfernen
  *
