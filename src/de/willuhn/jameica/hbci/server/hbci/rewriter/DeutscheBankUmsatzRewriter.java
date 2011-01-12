@@ -31,6 +31,7 @@ public class DeutscheBankUmsatzRewriter implements UmsatzRewriter
   {
     List<String> list = new ArrayList<String>();
     list.add("50070024");
+    list.add("10070024"); // Deutsche Bank Berlin
     list.add("60070070");
     return list;
   }
@@ -133,6 +134,9 @@ public class DeutscheBankUmsatzRewriter implements UmsatzRewriter
 
 /**********************************************************************
  * $Log$
+ * Revision 1.3  2011-01-12 23:07:19  willuhn
+ * @N BUGZILLA 887
+ *
  * Revision 1.2  2010-11-18 10:22:08  willuhn
  * @N Siehe Mail von Axel vom 18.11.2010
  *
