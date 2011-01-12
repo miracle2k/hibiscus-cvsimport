@@ -18,6 +18,7 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
@@ -241,6 +242,7 @@ public class ImportDialog extends AbstractDialog
 			return importerListe;
 		}
 
+    Collections.sort(l);
 		Imp[] imp = (Imp[]) l.toArray(new Imp[size]);
 		importerListe = new SelectInput(PseudoIterator.fromArray(imp),null);
 		return importerListe;
@@ -315,7 +317,10 @@ public class ImportDialog extends AbstractDialog
 
 /**********************************************************************
  * $Log$
- * Revision 1.12  2010-04-25 21:01:46  willuhn
+ * Revision 1.13  2011-01-12 17:53:05  willuhn
+ * @C Format-Namen sortieren
+ *
+ * Revision 1.12  2010/04/25 21:01:46  willuhn
  * @B BUGZILLA 851
  *
  * Revision 1.11  2010/03/16 00:44:18  willuhn
