@@ -195,7 +195,7 @@ public class MT940UmsatzExporter implements Exporter
     return new IOFormat[]{new IOFormat() {
       public String getName()
       {
-        return i18n.tr("MT940-Format");
+        return i18n.tr("Swift MT940-Format");
       }
     
       /**
@@ -251,6 +251,9 @@ public class MT940UmsatzExporter implements Exporter
 
 /*********************************************************************
  * $Log$
+ * Revision 1.2  2011-01-12 17:37:43  willuhn
+ * @C MT940-Import und -Export sollten den gleichen Namen tragen
+ *
  * Revision 1.1  2011-01-05 00:10:11  willuhn
  * @N BUGZILLA 669 - MT940-Exporter fuer Umsaetze - basierend auf dem Code von Andre. Noch zu testen!
  *
