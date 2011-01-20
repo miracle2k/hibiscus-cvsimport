@@ -16,8 +16,8 @@ import java.util.Date;
 import java.util.TreeMap;
 
 import de.willuhn.datasource.GenericIterator;
-import de.willuhn.jameica.hbci.HBCIProperties;
 import de.willuhn.jameica.hbci.rmi.Umsatz;
+import de.willuhn.jameica.util.DateUtil;
 
 /**
  * Hilfsklasse zum Finden eines Saldos zum angegebenen Zeitpunkt aus
@@ -54,7 +54,7 @@ public class SaldoFinder
   {
     if (date == null)
       return 0.0d;
-    Date key = HBCIProperties.startOfDay(date);
+    Date key = DateUtil.startOfDay(date);
     
     // Checken, ob wir fuer genau diesen Tag einen Saldo haben
     Double d = this.map.get(key);
@@ -76,6 +76,9 @@ public class SaldoFinder
 
 /**********************************************************************
  * $Log$
+ * Revision 1.4  2011-01-20 17:13:21  willuhn
+ * @C HBCIProperties#startOfDay und HBCIProperties#endOfDay nach Jameica in DateUtil verschoben
+ *
  * Revision 1.3  2010-09-01 15:33:54  willuhn
  * @B Vormerkbuchungen in Saldo-Verlauf ignorieren, weil sie keinen Saldo haben
  *
