@@ -33,6 +33,7 @@ public class DeutscheBankUmsatzRewriter implements UmsatzRewriter
     list.add("50070024");
     list.add("10070024"); // Deutsche Bank Berlin
     list.add("60070070");
+    list.add("62070081"); // Deutsche Bank Heilbronn
     return list;
   }
 
@@ -134,6 +135,9 @@ public class DeutscheBankUmsatzRewriter implements UmsatzRewriter
 
 /**********************************************************************
  * $Log$
+ * Revision 1.4  2011-01-24 10:10:31  willuhn
+ * @N Deutsche Bank Heilbronn
+ *
  * Revision 1.3  2011-01-12 23:07:19  willuhn
  * @N BUGZILLA 887
  *
