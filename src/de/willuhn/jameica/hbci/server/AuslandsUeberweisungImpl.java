@@ -116,7 +116,8 @@ public class AuslandsUeberweisungImpl extends AbstractBaseUeberweisungImpl imple
    */
   public void setTextSchluessel(String schluessel) throws RemoteException
   {
-    throw new RemoteException("textschluessel not allowed for foreign transfer");
+    if (schluessel != null && schluessel.length() > 0)
+      throw new RemoteException("textschluessel not allowed for foreign transfer");
   }
 
   /**
@@ -140,7 +141,8 @@ public class AuslandsUeberweisungImpl extends AbstractBaseUeberweisungImpl imple
    */
   public void setWeitereVerwendungszwecke(String[] list) throws RemoteException
   {
-    throw new RemoteException("extended usages not allowed for foreign transfer");
+    if (list != null && list.length > 0)
+      throw new RemoteException("extended usages not allowed for foreign transfer");
   }
 
   /**
@@ -148,14 +150,18 @@ public class AuslandsUeberweisungImpl extends AbstractBaseUeberweisungImpl imple
    */
   public void setZweck2(String zweck2) throws RemoteException
   {
-    throw new RemoteException("second usage not allowed for foreign transfer");
+    if (zweck2 != null && zweck2.length() > 0)
+      throw new RemoteException("second usage not allowed for foreign transfer");
   }
 }
 
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2010-04-27 11:02:32  willuhn
+ * Revision 1.6  2011-03-01 10:52:18  willuhn
+ * @B Exception nur dann werfen, wenn bei Textschluessel oder Verwendungszweck auch tatsaechlich etwas angegeben wurde - siehe Mail von Patrick vom 01.03.2011
+ *
+ * Revision 1.5  2010/04/27 11:02:32  willuhn
  * @R Veralteten Verwendungszweck-Code entfernt
  *
  * Revision 1.4  2009/10/20 23:12:58  willuhn
