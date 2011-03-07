@@ -18,6 +18,7 @@ import de.willuhn.jameica.gui.parts.ContextMenuItem;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.gui.action.DauerauftragDelete;
 import de.willuhn.jameica.hbci.gui.action.DauerauftragNew;
+import de.willuhn.jameica.hbci.gui.action.KontoFetchDauerauftraege;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
@@ -37,10 +38,11 @@ public class DauerauftragList extends ContextMenu
 	{
 		i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
-		addItem(new CheckedContextMenuItem(i18n.tr("Öffnen"), new DauerauftragNew(),"document-open.png"));
-    addItem(new ContextMenuItem(i18n.tr("Neuer Dauerauftrag..."), new DNeu(),"text-x-generic.png"));
-		addItem(new CheckedContextMenuItem(i18n.tr("Löschen..."), new DauerauftragDelete(),"user-trash-full.png"));
-		
+		addItem(new CheckedContextMenuItem(i18n.tr("Öffnen"),            new DauerauftragNew(),"document-open.png"));
+    addItem(new ContextMenuItem(i18n.tr("Neuer Dauerauftrag..."),    new DNeu(),"text-x-generic.png"));
+		addItem(new CheckedContextMenuItem(i18n.tr("Löschen..."),        new DauerauftragDelete(),"user-trash-full.png"));
+		addItem(ContextMenuItem.SEPARATOR);
+		addItem(new ContextMenuItem(i18n.tr("Daueraufträge abrufen..."), new KontoFetchDauerauftraege(),"mail-send-receive.png"));
 	}
 
 	/**
@@ -62,7 +64,10 @@ public class DauerauftragList extends ContextMenu
 
 /**********************************************************************
  * $Log$
- * Revision 1.4  2008-12-19 01:12:09  willuhn
+ * Revision 1.5  2011-03-07 10:33:53  willuhn
+ * @N BUGZILLA 999
+ *
+ * Revision 1.4  2008/12/19 01:12:09  willuhn
  * @N Icons in Contextmenus
  *
  * Revision 1.3  2006/08/07 14:45:18  willuhn
