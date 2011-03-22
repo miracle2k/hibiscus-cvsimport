@@ -90,10 +90,12 @@ public class DBObjectDelete implements Action
       list = new DBObject[]{(DBObject)context}; // Array mit einem Element
     
     Worker worker = new Worker(list);
-    if (list.length > 100)
-      Application.getController().start(worker);
-    else
-      worker.run(null);
+
+// Das machen wir nicht mehr. Durch die dauernden Wechsel im Event Dispatcher wird das schweinelangsam
+//    if (list.length > 100)
+//      Application.getController().start(worker);
+//    else
+    worker.run(null);
   }
   
   /**
@@ -199,7 +201,10 @@ public class DBObjectDelete implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.5  2010-03-05 15:24:53  willuhn
+ * Revision 1.6  2011-03-22 12:23:35  willuhn
+ * @R Loeschen in separatem Thread entfernt
+ *
+ * Revision 1.5  2010/03/05 15:24:53  willuhn
  * @N BUGZILLA 686
  *
  * Revision 1.4  2007/07/16 12:51:15  willuhn
