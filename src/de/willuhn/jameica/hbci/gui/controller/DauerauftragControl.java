@@ -263,7 +263,7 @@ public class DauerauftragControl extends AbstractTransferControl {
         t.setErsteZahlung(ez);
         Date next = t.getNaechsteZahlung();
         if (next != null)
-          ersteZahlung.setComment(i18n.tr("Nächste Zahlung: {0}", HBCI.DATEFORMAT.format(next)));
+          ersteZahlung.setComment(i18n.tr("Nächste: {0}", HBCI.DATEFORMAT.format(next)));
         else
           ersteZahlung.setComment("");
       }
@@ -280,6 +280,9 @@ public class DauerauftragControl extends AbstractTransferControl {
 
 /**********************************************************************
  * $Log$
+ * Revision 1.31  2011-04-06 08:17:16  willuhn
+ * @N Detail-Anzeige zweispaltig, damit sie besser auf kleinere Bildschirme passt - siehe http://www.onlinebanking-forum.de/phpBB2/viewtopic.php?p=74593#74593
+ *
  * Revision 1.30  2010-09-24 12:22:04  willuhn
  * @N Thomas' Patch fuer Textschluessel in Dauerauftraegen
  *
