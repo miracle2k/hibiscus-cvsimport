@@ -253,24 +253,6 @@ public abstract class AbstractTransferControl extends AbstractControl
 		betrag.setName(i18n.tr("Betrag"));
 		betrag.setComment(HBCIProperties.CURRENCY_DEFAULT_DE);
     betrag.setMandatory(true);
-    
-    // Forciert das korrekte Formatieren des Betrages nach Focus-Wechsel
-    betrag.addListener(new Listener() {
-      public void handleEvent(Event event) {
-        try
-        {
-          Double value = (Double) betrag.getValue();
-          if (value == null)
-            return;
-          betrag.setValue(value);
-        }
-        catch (Exception e)
-        {
-          Logger.error("unable to autoformat value",e);
-        }
-      }
-    
-    });
 		return betrag;
 	}
 
@@ -468,6 +450,9 @@ public abstract class AbstractTransferControl extends AbstractControl
 
 /**********************************************************************
  * $Log$
+ * Revision 1.58  2011-04-07 17:52:07  willuhn
+ * @N BUGZILLA 1014
+ *
  * Revision 1.57  2010-08-17 11:32:10  willuhn
  * @C Code-Cleanup
  *

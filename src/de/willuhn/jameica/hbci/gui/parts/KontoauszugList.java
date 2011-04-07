@@ -456,12 +456,6 @@ public class KontoauszugList extends UmsatzList
       {
         try
         {
-          // forciert gleich die Formatierung mit Komma und Nachkommastellen
-          Double thisValue = (Double) betragFrom.getValue();
-          if (thisValue == null || thisValue.isNaN())
-            return;
-          betragFrom.setValue(thisValue);
-
           // Nur bei Focus Out
           if (event.type == SWT.FocusOut)
           {
@@ -499,24 +493,6 @@ public class KontoauszugList extends UmsatzList
     this.betragTo = new DecimalInput(mySettings.getDouble("kontoauszug.list.betrag.to",Double.NaN), HBCI.DECIMALFORMAT);
     this.betragTo.setComment(HBCIProperties.CURRENCY_DEFAULT_DE);
     this.betragTo.addListener(this.listener);
-    this.betragTo.addListener(new Listener()
-    {
-      public void handleEvent(Event event)
-      {
-        try
-        {
-          // forciert die Formatierung mit Komma und Nachkommastellen
-          Double thisValue = (Double) betragTo.getValue();
-          if (thisValue == null || thisValue.isNaN())
-            return;
-          betragTo.setValue(thisValue);
-        }
-        catch (Exception e)
-        {
-          Logger.error("error while auto formatting",e);
-        }
-      }
-    });
     return this.betragTo;
   }
 
@@ -801,6 +777,9 @@ public class KontoauszugList extends UmsatzList
 
 /*********************************************************************
  * $Log$
+ * Revision 1.40  2011-04-07 17:52:07  willuhn
+ * @N BUGZILLA 1014
+ *
  * Revision 1.39  2011-01-20 17:13:21  willuhn
  * @C HBCIProperties#startOfDay und HBCIProperties#endOfDay nach Jameica in DateUtil verschoben
  *
