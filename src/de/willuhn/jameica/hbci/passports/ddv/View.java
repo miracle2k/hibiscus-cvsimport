@@ -14,7 +14,6 @@ package de.willuhn.jameica.hbci.passports.ddv;
 import de.willuhn.jameica.gui.AbstractView;
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
-import de.willuhn.jameica.gui.internal.buttons.Back;
 import de.willuhn.jameica.gui.parts.ButtonArea;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.system.Application;
@@ -39,7 +38,6 @@ public class View extends AbstractView
     control.getConfigList().paint(getParent());
     
     ButtonArea buttons = new ButtonArea();
-    buttons.addButton(new Back(true));
     buttons.addButton(i18n.tr("Kartenleser suchen..."), new Action()
     {
       public void handleAction(Object context) throws ApplicationException
@@ -63,6 +61,10 @@ public class View extends AbstractView
 
 /**********************************************************************
  * $Log$
+ * Revision 1.7  2011-04-08 15:19:15  willuhn
+ * @R Alle Zurueck-Buttons entfernt - es gibt jetzt einen globalen Zurueck-Button oben rechts
+ * @C Code-Cleanup
+ *
  * Revision 1.6  2010-09-07 15:28:05  willuhn
  * @N BUGZILLA 391 - Kartenleser-Konfiguration komplett umgebaut. Damit lassen sich jetzt beliebig viele Kartenleser und Konfigurationen parellel einrichten
  *

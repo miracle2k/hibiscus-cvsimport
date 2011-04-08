@@ -19,7 +19,6 @@ import java.util.List;
 import de.willuhn.jameica.gui.AbstractView;
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
-import de.willuhn.jameica.gui.internal.buttons.Back;
 import de.willuhn.jameica.gui.parts.ButtonArea;
 import de.willuhn.jameica.gui.util.LabelGroup;
 import de.willuhn.jameica.hbci.HBCI;
@@ -54,7 +53,6 @@ public class EinnahmenAusgaben extends AbstractView
     group.addInput(control.getEnd());
 
     ButtonArea buttons = new ButtonArea();
-    buttons.addButton(new Back(false));
     buttons.addButton(i18n.tr("Aktualisieren"), new Action()
     {
       /**
@@ -97,6 +95,10 @@ public class EinnahmenAusgaben extends AbstractView
 }
 /*******************************************************************************
  * $Log$
+ * Revision 1.10  2011-04-08 15:19:14  willuhn
+ * @R Alle Zurueck-Buttons entfernt - es gibt jetzt einen globalen Zurueck-Button oben rechts
+ * @C Code-Cleanup
+ *
  * Revision 1.9  2010-08-24 17:38:05  willuhn
  * @N BUGZILLA 896
  *

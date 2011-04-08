@@ -14,8 +14,7 @@
 package de.willuhn.jameica.hbci.gui.views;
 
 import de.willuhn.jameica.gui.Action;
-import de.willuhn.jameica.gui.internal.buttons.Back;
-import de.willuhn.jameica.gui.util.ButtonArea;
+import de.willuhn.jameica.gui.parts.ButtonArea;
 import de.willuhn.jameica.hbci.gui.controller.UmsatzDetailControl;
 import de.willuhn.jameica.hbci.gui.controller.UmsatzDetailEditControl;
 import de.willuhn.util.ApplicationException;
@@ -33,8 +32,8 @@ public class UmsatzDetailEdit extends AbstractUmsatzDetail
   public void bind() throws Exception
   {
     super.bind();
-    ButtonArea buttons = new ButtonArea(getParent(),2);
-    buttons.addButton(new Back(false));
+    
+    ButtonArea buttons = new ButtonArea();
     buttons.addButton(i18n.tr("Speichern"),new Action()
     {
       public void handleAction(Object context) throws ApplicationException
@@ -42,6 +41,7 @@ public class UmsatzDetailEdit extends AbstractUmsatzDetail
         getControl().handleStore();
       }
     },null,true,"document-save.png");
+    buttons.paint(getParent());
   }
 
   /**
@@ -58,7 +58,11 @@ public class UmsatzDetailEdit extends AbstractUmsatzDetail
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2009-05-28 10:45:18  willuhn
+ * Revision 1.4  2011-04-08 15:19:13  willuhn
+ * @R Alle Zurueck-Buttons entfernt - es gibt jetzt einen globalen Zurueck-Button oben rechts
+ * @C Code-Cleanup
+ *
+ * Revision 1.3  2009/05/28 10:45:18  willuhn
  * @N more icons
  *
  * Revision 1.2  2009/01/20 10:51:46  willuhn

@@ -15,8 +15,7 @@ package de.willuhn.jameica.hbci.passports.pintan;
 import de.willuhn.jameica.gui.AbstractView;
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
-import de.willuhn.jameica.gui.internal.buttons.Back;
-import de.willuhn.jameica.gui.util.ButtonArea;
+import de.willuhn.jameica.gui.parts.ButtonArea;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.util.ApplicationException;
@@ -39,8 +38,7 @@ public class View extends AbstractView
 
     control.getConfigList().paint(getParent());
     
-    ButtonArea buttons = new ButtonArea(getParent(), 2);
-    buttons.addButton(new Back(true));
+    ButtonArea buttons = new ButtonArea();
     buttons.addButton(i18n.tr("Neue Konfiguration anlegen"),new Action()
     {
       public void handleAction(Object context) throws ApplicationException
@@ -48,12 +46,17 @@ public class View extends AbstractView
         control.handleCreate();
       }
     },null,false,"document-new.png");
+    buttons.paint(getParent());
   }
 }
 
 
 /**********************************************************************
  * $Log$
+ * Revision 1.4  2011-04-08 15:19:14  willuhn
+ * @R Alle Zurueck-Buttons entfernt - es gibt jetzt einen globalen Zurueck-Button oben rechts
+ * @C Code-Cleanup
+ *
  * Revision 1.3  2010-09-07 15:17:07  willuhn
  * @N GUI-Cleanup
  *

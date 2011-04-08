@@ -15,7 +15,6 @@ package de.willuhn.jameica.hbci.gui.views;
 import de.willuhn.jameica.gui.AbstractView;
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
-import de.willuhn.jameica.gui.internal.buttons.Back;
 import de.willuhn.jameica.gui.internal.parts.PanelButtonPrint;
 import de.willuhn.jameica.gui.parts.Button;
 import de.willuhn.jameica.gui.parts.ButtonArea;
@@ -70,7 +69,6 @@ public class UeberweisungNew extends AbstractView
     container.addInput(control.getTermin());
 
 		ButtonArea buttonArea = new ButtonArea();
-    buttonArea.addButton(new Back(transfer.ausgefuehrt()));
 		buttonArea.addButton(i18n.tr("Löschen"),new DBObjectDelete(),transfer,false,"user-trash-full.png");
     buttonArea.addButton(i18n.tr("Duplizieren..."), new UeberweisungDuplicate(),transfer,false,"edit-copy.png");
 
@@ -99,6 +97,10 @@ public class UeberweisungNew extends AbstractView
 
 /**********************************************************************
  * $Log$
+ * Revision 1.27  2011-04-08 15:19:14  willuhn
+ * @R Alle Zurueck-Buttons entfernt - es gibt jetzt einen globalen Zurueck-Button oben rechts
+ * @C Code-Cleanup
+ *
  * Revision 1.26  2011-04-08 13:38:44  willuhn
  * @N Druck-Support fuer Einzel-Ueberweisungen. Weitere werden folgen.
  *

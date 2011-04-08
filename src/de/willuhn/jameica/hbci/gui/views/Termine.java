@@ -16,7 +16,6 @@ import java.util.Date;
 
 import de.willuhn.jameica.gui.AbstractView;
 import de.willuhn.jameica.gui.GUI;
-import de.willuhn.jameica.gui.internal.buttons.Back;
 import de.willuhn.jameica.gui.parts.ButtonArea;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.system.Application;
@@ -46,7 +45,6 @@ public class Termine extends AbstractView
 		this.termine.paint(getParent());
 
 		ButtonArea buttons = new ButtonArea();
-    buttons.addButton(new Back(false));
     // buttons.addButton(new ReminderNew());
     buttons.paint(getParent());
   }
@@ -63,6 +61,10 @@ public class Termine extends AbstractView
 
 /**********************************************************************
  * $Log$
+ * Revision 1.4  2011-04-08 15:19:13  willuhn
+ * @R Alle Zurueck-Buttons entfernt - es gibt jetzt einen globalen Zurueck-Button oben rechts
+ * @C Code-Cleanup
+ *
  * Revision 1.3  2011-01-14 17:33:41  willuhn
  * @N Erster Code fuer benutzerdefinierte Erinnerungen via Reminder-Framework
  *
