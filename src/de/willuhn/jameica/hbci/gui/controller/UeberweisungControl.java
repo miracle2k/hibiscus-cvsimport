@@ -20,10 +20,10 @@ import de.willuhn.jameica.gui.AbstractView;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.input.Input;
 import de.willuhn.jameica.gui.input.SelectInput;
-import de.willuhn.jameica.gui.parts.TablePart;
 import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.TextSchluessel;
 import de.willuhn.jameica.hbci.gui.action.UeberweisungNew;
+import de.willuhn.jameica.hbci.gui.parts.UeberweisungList;
 import de.willuhn.jameica.hbci.rmi.BaseUeberweisung;
 import de.willuhn.jameica.hbci.rmi.HibiscusTransfer;
 import de.willuhn.jameica.hbci.rmi.Terminable;
@@ -36,7 +36,7 @@ import de.willuhn.logging.Logger;
 public class UeberweisungControl extends AbstractBaseUeberweisungControl
 {
 
-	private TablePart table		         = null;
+	private UeberweisungList table		 = null;
   private Ueberweisung transfer      = null;
   private SelectInput typ            = null;
   private SelectInput textschluessel = null;
@@ -95,7 +95,7 @@ public class UeberweisungControl extends AbstractBaseUeberweisungControl
 	 * @return Tabelle.
 	 * @throws RemoteException
 	 */
-	public TablePart getUeberweisungListe() throws RemoteException
+	public UeberweisungList getUeberweisungListe() throws RemoteException
 	{
 		if (table != null)
 			return table;
@@ -188,6 +188,9 @@ public class UeberweisungControl extends AbstractBaseUeberweisungControl
 
 /**********************************************************************
  * $Log$
+ * Revision 1.48  2011-04-08 17:41:45  willuhn
+ * @N Erster Druck-Support fuer Ueberweisungslisten
+ *
  * Revision 1.47  2010-08-17 11:32:10  willuhn
  * @C Code-Cleanup
  *
