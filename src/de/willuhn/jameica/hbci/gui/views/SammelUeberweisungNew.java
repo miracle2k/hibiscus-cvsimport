@@ -17,6 +17,7 @@ import java.rmi.RemoteException;
 import de.willuhn.jameica.gui.AbstractView;
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
+import de.willuhn.jameica.gui.internal.parts.PanelButtonPrint;
 import de.willuhn.jameica.gui.parts.Button;
 import de.willuhn.jameica.gui.parts.ButtonArea;
 import de.willuhn.jameica.gui.util.Container;
@@ -27,6 +28,7 @@ import de.willuhn.jameica.hbci.gui.action.DBObjectDelete;
 import de.willuhn.jameica.hbci.gui.action.SammelUeberweisungBuchungNew;
 import de.willuhn.jameica.hbci.gui.action.SammelUeberweisungExecute;
 import de.willuhn.jameica.hbci.gui.controller.SammelUeberweisungControl;
+import de.willuhn.jameica.hbci.io.print.PrintSupportSammelUeberweisung;
 import de.willuhn.jameica.hbci.rmi.SammelTransfer;
 import de.willuhn.jameica.hbci.rmi.SammelUeberweisung;
 import de.willuhn.jameica.system.Application;
@@ -50,6 +52,7 @@ public class SammelUeberweisungNew extends AbstractView
     SammelTransfer transfer = control.getTransfer();
 
 		GUI.getView().setTitle(i18n.tr("Sammel-Überweisung bearbeiten"));
+    GUI.getView().addPanelButton(new PanelButtonPrint(new PrintSupportSammelUeberweisung(transfer)));
 		
 		Container group = new SimpleContainer(getParent());
 		group.addHeadline(i18n.tr("Eigenschaften"));
@@ -116,6 +119,9 @@ public class SammelUeberweisungNew extends AbstractView
 
 /**********************************************************************
  * $Log$
+ * Revision 1.14  2011-04-11 16:48:33  willuhn
+ * @N Drucken von Sammel- und Dauerauftraegen
+ *
  * Revision 1.13  2011-04-08 15:19:14  willuhn
  * @R Alle Zurueck-Buttons entfernt - es gibt jetzt einen globalen Zurueck-Button oben rechts
  * @C Code-Cleanup

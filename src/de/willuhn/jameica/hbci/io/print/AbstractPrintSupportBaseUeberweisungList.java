@@ -77,12 +77,12 @@ public abstract class AbstractPrintSupportBaseUeberweisungList extends AbstractP
       border.setGapSize(3);
       look.setCellBorder(border);
       
-      GridPrint table = new GridPrint("l:p:n, l:d:n, l:d:n, r:p:n, l:p:g, l:p:n",look);
+      GridPrint table = new GridPrint("l:p:n, l:d:n, l:d:n, l:p:g, r:p:n, l:p:n",look);
       table.addHeader(new TextPrint(i18n.tr("Datum"),fontTinyBold));
       table.addHeader(new TextPrint(i18n.tr("Konto"),fontTinyBold));
       table.addHeader(new TextPrint(i18n.tr("Gegenkonto"),fontTinyBold));
-      table.addHeader(new TextPrint(i18n.tr("Betrag"),fontTinyBold));
       table.addHeader(new TextPrint(i18n.tr("Zweck"),fontTinyBold));
+      table.addHeader(new TextPrint(i18n.tr("Betrag"),fontTinyBold));
       table.addHeader(new TextPrint(i18n.tr("Status"),fontTinyBold));
 
       BaseUeberweisung[] list = (BaseUeberweisung[]) data;
@@ -100,8 +100,8 @@ public abstract class AbstractPrintSupportBaseUeberweisungList extends AbstractP
         table.add(new TextPrint(HBCI.DATEFORMAT.format(u.getTermin()),style));
         table.add(new TextPrint(k.getLongName(),style));
         table.add(new TextPrint(i18n.tr("{0}, Kto. {1}, BLZ {2}",u.getGegenkontoName(),u.getGegenkontoNummer(),u.getGegenkontoBLZ()),style));
-        table.add(new TextPrint(HBCI.DECIMALFORMAT.format(u.getBetrag()) + " " + k.getWaehrung(),style));
         table.add(new TextPrint(usage,style));
+        table.add(new TextPrint(HBCI.DECIMALFORMAT.format(u.getBetrag()) + " " + k.getWaehrung(),style));
         table.add(new TextPrint(i18n.tr(u.ausgefuehrt() ? "ausgeführt" : "offen"),style));
       }
       return table;
@@ -118,6 +118,9 @@ public abstract class AbstractPrintSupportBaseUeberweisungList extends AbstractP
 
 /**********************************************************************
  * $Log$
+ * Revision 1.2  2011-04-11 16:48:33  willuhn
+ * @N Drucken von Sammel- und Dauerauftraegen
+ *
  * Revision 1.1  2011-04-11 14:36:37  willuhn
  * @N Druck-Support fuer Lastschriften und SEPA-Ueberweisungen
  *
