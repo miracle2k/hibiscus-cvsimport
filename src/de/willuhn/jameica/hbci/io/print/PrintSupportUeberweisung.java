@@ -174,35 +174,15 @@ public class PrintSupportUeberweisung extends AbstractPrintSupport
       throw new ApplicationException(i18n.tr("Druck fehlgeschlagen: {0}",re.getMessage()));
     }
   }
-  
-  /**
-   * @see de.willuhn.jameica.hbci.io.print.AbstractPrintSupport#getName()
-   */
-  String getName() throws ApplicationException
-  {
-    if (this.ueberweisung != null)
-    {
-      try
-      {
-        String name = this.ueberweisung.getGegenkontoName();
-        if (name == null || name.length() == 0)
-          return i18n.tr("Neue Überweisung");
-        return i18n.tr("Überweisung an {0}",name);
-      }
-      catch (RemoteException re)
-      {
-        Logger.error("unable to determine name",re);
-      }
-    }
-    
-    return super.getName();
-  }
 }
 
 
 
 /**********************************************************************
  * $Log$
+ * Revision 1.4  2011-04-11 11:28:08  willuhn
+ * @N Drucken aus dem Contextmenu heraus
+ *
  * Revision 1.3  2011-04-08 17:41:45  willuhn
  * @N Erster Druck-Support fuer Ueberweisungslisten
  *
