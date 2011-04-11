@@ -15,6 +15,7 @@ package de.willuhn.jameica.hbci.gui.menus;
 import java.rmi.RemoteException;
 
 import de.willuhn.jameica.gui.Action;
+import de.willuhn.jameica.gui.internal.action.Print;
 import de.willuhn.jameica.gui.parts.CheckedContextMenuItem;
 import de.willuhn.jameica.gui.parts.ContextMenu;
 import de.willuhn.jameica.gui.parts.ContextMenuItem;
@@ -27,6 +28,7 @@ import de.willuhn.jameica.hbci.gui.action.LastschriftImport;
 import de.willuhn.jameica.hbci.gui.action.LastschriftMerge;
 import de.willuhn.jameica.hbci.gui.action.LastschriftNew;
 import de.willuhn.jameica.hbci.gui.action.TerminableMarkExecuted;
+import de.willuhn.jameica.hbci.io.print.PrintSupportLastschriftList;
 import de.willuhn.jameica.hbci.rmi.Lastschrift;
 import de.willuhn.jameica.messaging.StatusBarMessage;
 import de.willuhn.jameica.system.Application;
@@ -59,6 +61,12 @@ public class LastschriftList extends ContextMenu
     addItem(new NotActiveSingleMenuItem(i18n.tr("Jetzt ausführen..."), new LastschriftExecute(),"emblem-important.png"));
     addItem(new NotActiveMultiMenuItem(i18n.tr("Als \"ausgeführt\" markieren..."), new TerminableMarkExecuted(),"emblem-default.png"));
     addItem(ContextMenuItem.SEPARATOR);
+    addItem(new CheckedContextMenuItem(i18n.tr("Drucken..."),new Action() {
+      public void handleAction(Object context) throws ApplicationException
+      {
+        new Print().handleAction(new PrintSupportLastschriftList(context));
+      }
+    },"document-print.png"));
     addItem(new CheckedContextMenuItem(i18n.tr("Exportieren..."),new LastschriftExport(),"document-save.png"));
     addItem(new ContextMenuItem(i18n.tr("Importieren..."),new LastschriftImport(),"document-open.png"));
 		
@@ -198,7 +206,10 @@ public class LastschriftList extends ContextMenu
 
 /**********************************************************************
  * $Log$
- * Revision 1.13  2009-11-26 12:00:21  willuhn
+ * Revision 1.14  2011-04-11 14:36:37  willuhn
+ * @N Druck-Support fuer Lastschriften und SEPA-Ueberweisungen
+ *
+ * Revision 1.13  2009/11/26 12:00:21  willuhn
  * @N Buchungen aus Sammelauftraegen in Einzelauftraege duplizieren
  *
  * Revision 1.12  2008/12/19 01:12:09  willuhn
