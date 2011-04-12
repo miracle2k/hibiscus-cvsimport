@@ -252,8 +252,16 @@ public class UmsatzTypTreeControl extends AbstractControl
   {
     try
     {
+      Object selection = getTree().getSelection();
       getTree().setList(getUmsaetze());
       getTree().setExpanded(settings.getBoolean("expanded",false));
+
+      // Selektion wiederherstellen - das bewirkt, dass auch im Chart die Selektion erhalten bleibt
+      if (selection instanceof Object[])
+        getTree().select((Object[]) selection);
+      else
+        getTree().select(selection);
+      
       handleRefreshChart();
     }
     catch (RemoteException re)
@@ -335,6 +343,9 @@ public class UmsatzTypTreeControl extends AbstractControl
 
 /*******************************************************************************
  * $Log$
+ * Revision 1.16  2011-04-12 21:16:47  willuhn
+ * @N BUGZILLA 629 - statt FocusListener jetzt SelectionListener
+ *
  * Revision 1.15  2011-01-20 17:13:21  willuhn
  * @C HBCIProperties#startOfDay und HBCIProperties#endOfDay nach Jameica in DateUtil verschoben
  *
