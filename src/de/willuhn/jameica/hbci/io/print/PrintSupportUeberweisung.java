@@ -36,9 +36,9 @@ public class PrintSupportUeberweisung extends AbstractPrintSupportBaseUeberweisu
   }
 
   /**
-   * @see de.willuhn.jameica.hbci.io.print.AbstractPrintSupportBaseUeberweisung#getTitle()
+   * @see de.willuhn.jameica.hbci.io.print.AbstractPrintSupport#getTitle()
    */
-  String getTitle()
+  String getTitle() throws ApplicationException
   {
     return i18n.tr("Überweisung");
   }
@@ -67,6 +67,9 @@ public class PrintSupportUeberweisung extends AbstractPrintSupportBaseUeberweisu
 
 /**********************************************************************
  * $Log$
+ * Revision 1.6  2011-04-13 17:35:46  willuhn
+ * @N Druck-Support fuer Kontoauszuege fehlte noch
+ *
  * Revision 1.5  2011-04-11 14:36:37  willuhn
  * @N Druck-Support fuer Lastschriften und SEPA-Ueberweisungen
  *
