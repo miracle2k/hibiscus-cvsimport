@@ -146,8 +146,8 @@ public class PrintSupportUmsatzList extends AbstractPrintSupport
         
         // Header mit dem Konto
         Konto k = (Konto) Settings.getDBService().createObject(Konto.class,id);
-        
-        // TODO: Druck des Kontos fehlt noch
+        TextStyle styleKonto = new TextStyle().font(fontTinyBold).foreground(new RGB(0,0,0));
+        table.add(new TextPrint(k.getLongName(),styleKonto),GridPrint.REMAINDER);
         
         
         // Liste der Umsaetze im Konto
@@ -206,6 +206,9 @@ public class PrintSupportUmsatzList extends AbstractPrintSupport
 
 /**********************************************************************
  * $Log$
+ * Revision 1.2  2011-04-14 08:42:53  willuhn
+ * @N Konto-Header
+ *
  * Revision 1.1  2011-04-13 17:35:46  willuhn
  * @N Druck-Support fuer Kontoauszuege fehlte noch
  *
