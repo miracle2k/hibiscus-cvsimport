@@ -96,9 +96,8 @@ public class UmsatzTree extends TreePart implements Extension
           Object value = i.getAttribute("betrag");
           if (value == null || !(value instanceof Double))
             return;
+          
           Double betrag = (Double) value;
-          if (betrag == null)
-            return;
           
           // Mal checken, ob wir eine benutzerdefinierte Farbe haben
           UmsatzTyp ut = null;
@@ -299,6 +298,9 @@ public class UmsatzTree extends TreePart implements Extension
 
 /*******************************************************************************
  * $Log$
+ * Revision 1.6  2011-04-26 12:15:51  willuhn
+ * @B Potentielle Bugs gemaess Code-Checker
+ *
  * Revision 1.5  2011-01-05 11:20:27  willuhn
  * *** empty log message ***
  *
