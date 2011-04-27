@@ -218,6 +218,17 @@ public class UmsatzTypImpl extends AbstractDBObjectNode implements UmsatzTyp
    */
   public boolean matches(Umsatz umsatz) throws RemoteException
   {
+    // Wenn der Umsatz fest zugeordnet ist, duerfen wir nicht nach Begriffen suchen
+    // Dann gilt er nur als zugeordnet, wenn es der gleiche Typ ist
+    if (umsatz.isAssigned())
+    {
+      String id = this.getID();
+      if (id == null)
+        return false;
+      UmsatzTyp typ = umsatz.getUmsatzTyp();
+      return typ.equals(this);
+    }
+    
     // BUGZILLA 614 - wenn die Kategorie gar nicht passt, koennen wir gleich abbrechen
     double betrag = umsatz.getBetrag();
     int typ       = this.getTyp();
@@ -589,6 +600,9 @@ public class UmsatzTypImpl extends AbstractDBObjectNode implements UmsatzTyp
 
 /*******************************************************************************
  * $Log$
+ * Revision 1.63  2011-04-27 11:07:02  willuhn
+ * @B Umsaetze, die bereits fest zugeordnet sind, duerfen nicht gematcht werden
+ *
  * Revision 1.62  2011-01-20 17:13:21  willuhn
  * @C HBCIProperties#startOfDay und HBCIProperties#endOfDay nach Jameica in DateUtil verschoben
  *
