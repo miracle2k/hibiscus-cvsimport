@@ -34,6 +34,7 @@ import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
 
+import de.willuhn.datasource.BeanUtil;
 import de.willuhn.datasource.GenericIterator;
 import de.willuhn.datasource.GenericObject;
 import de.willuhn.datasource.pseudo.PseudoIterator;
@@ -756,8 +757,11 @@ public class UmsatzList extends TablePart implements Extendable
           try
           {
             // BUGZILLA 692 haben wir den schon?
-            if (umsaetze.contains(o))
-              return;
+            for (Object u:umsaetze)
+            {
+              if (BeanUtil.equals(u,o))
+                return;
+            }
 
             umsaetze.add(o);
             if (filter && kl != null)
@@ -799,6 +803,9 @@ public class UmsatzList extends TablePart implements Extendable
 
 /**********************************************************************
  * $Log$
+ * Revision 1.72  2011-04-28 08:02:42  willuhn
+ * @B BUGZILLA 692
+ *
  * Revision 1.71  2011-01-11 22:44:40  willuhn
  * @N BUGZILLA 978
  *
