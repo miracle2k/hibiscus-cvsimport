@@ -18,7 +18,6 @@ import java.util.zip.CRC32;
 
 import de.willuhn.datasource.GenericObject;
 import de.willuhn.jameica.hbci.HBCI;
-import de.willuhn.jameica.hbci.rmi.Checksum;
 import de.willuhn.jameica.hbci.rmi.Dauerauftrag;
 import de.willuhn.jameica.hbci.rmi.Turnus;
 import de.willuhn.jameica.system.Application;
@@ -202,16 +201,26 @@ public class DauerauftragImpl extends AbstractHibiscusTransferImpl
    */
   public boolean equals(GenericObject o) throws RemoteException
   {
-		if (o == null)
+		if (o == null || !(o instanceof Dauerauftrag))
 			return false;
-		try {
-			Checksum other = (Checksum) o;
+		
+		try
+		{
+      Dauerauftrag other = (Dauerauftrag) o;
+
+		  // Wenn die ID uebereinstimmt, sind sie auf jeden Fall gleich. Egal, was die Checksumme sagt
+      String id1 = this.getID();
+      String id2 = other.getID();
+      if (id1 != null && id2 != null && id1.equals(id2))
+        return true;
+		  
 			return other.getChecksum() == getChecksum();
 		}
-		catch (ClassCastException e)
-		{
-			return false;
-		}
+    catch (Exception e)
+    {
+      Logger.error("error while comparing objects",e);
+      return false;
+    }
   }
 
   /**
@@ -274,6 +283,9 @@ public class DauerauftragImpl extends AbstractHibiscusTransferImpl
 
 /**********************************************************************
  * $Log$
+ * Revision 1.35  2011-04-28 07:50:07  willuhn
+ * @B BUGZILLA 692
+ *
  * Revision 1.34  2010-09-24 12:22:04  willuhn
  * @N Thomas' Patch fuer Textschluessel in Dauerauftraegen
  *
