@@ -144,6 +144,10 @@ public class Controller extends AbstractControl {
     },"user-trash-full.png"));
 
     configList.setContextMenu(ctx);
+    configList.setMulti(false);
+    configList.setRememberColWidths(true);
+    configList.setRememberOrder(true);
+    configList.setSummary(false);
 
     return configList;
   }
@@ -521,6 +525,9 @@ public class Controller extends AbstractControl {
 
 /**********************************************************************
  * $Log$
+ * Revision 1.5  2011-04-28 07:34:43  willuhn
+ * @R Summen-Zeile nicht mehr anzeigen - unnuetz
+ *
  * Revision 1.4  2010-09-07 15:17:07  willuhn
  * @N GUI-Cleanup
  *

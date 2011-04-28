@@ -386,7 +386,12 @@ public class Controller extends AbstractControl {
       	}
       }
     });
-    return keyList;
+
+    keyList.setMulti(false);
+    keyList.setRememberColWidths(true);
+    keyList.setRememberOrder(true);
+    keyList.setSummary(false);
+		return keyList;
 	}
 
   /**
@@ -755,6 +760,9 @@ public class Controller extends AbstractControl {
 
 /**********************************************************************
  * $Log$
+ * Revision 1.4  2011-04-28 07:34:43  willuhn
+ * @R Summen-Zeile nicht mehr anzeigen - unnuetz
+ *
  * Revision 1.3  2010-09-29 23:43:34  willuhn
  * @N Automatisches Abgleichen und Anlegen von Konten aus KontoFetchFromPassport in KontoMerge verschoben
  * @N Konten automatisch (mit Rueckfrage) anlegen, wenn das Testen der HBCI-Konfiguration erfolgreich war
