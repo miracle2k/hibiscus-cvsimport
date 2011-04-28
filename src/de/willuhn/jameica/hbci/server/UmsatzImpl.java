@@ -281,11 +281,13 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
 		{
 			Umsatz other = (Umsatz) o;
 
-			// Wenn die ID uebereinstimmt, sind sie auf jeden Fall gleich. Egal, was die Checksumme sagt
+			// Wenn beide eine ID haben, brauchen wir nur anhand der ID vergleichen
+			// Die Pruefung via Checksumme ist nur noetig, wenn neue Datensaetze
+			// gespeichert werden sollen
 			String id1 = this.getID();
 			String id2 = other.getID();
-			if (id1 != null && id2 != null && id1.equals(id2))
-			  return true;
+			if (id1 != null && id2 != null)
+			  return id1.equals(id2);
 			  
 			return other.getChecksum() == getChecksum();
 		}
@@ -683,6 +685,9 @@ public class UmsatzImpl extends AbstractDBObject implements Umsatz
 
 /**********************************************************************
  * $Log$
+ * Revision 1.86  2011-04-28 12:15:25  willuhn
+ * @N Wenn beide Umsaetze eine ID haben, muss nur anhand derer verglichen werden
+ *
  * Revision 1.85  2011-04-28 07:50:07  willuhn
  * @B BUGZILLA 692
  *

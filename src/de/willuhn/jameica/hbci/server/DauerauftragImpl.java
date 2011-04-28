@@ -208,11 +208,13 @@ public class DauerauftragImpl extends AbstractHibiscusTransferImpl
 		{
       Dauerauftrag other = (Dauerauftrag) o;
 
-		  // Wenn die ID uebereinstimmt, sind sie auf jeden Fall gleich. Egal, was die Checksumme sagt
+      // Wenn beide eine ID haben, brauchen wir nur anhand der ID vergleichen
+      // Die Pruefung via Checksumme ist nur noetig, wenn neue Datensaetze
+      // gespeichert werden sollen
       String id1 = this.getID();
       String id2 = other.getID();
-      if (id1 != null && id2 != null && id1.equals(id2))
-        return true;
+      if (id1 != null && id2 != null)
+        return id1.equals(id2);
 		  
 			return other.getChecksum() == getChecksum();
 		}
@@ -283,6 +285,9 @@ public class DauerauftragImpl extends AbstractHibiscusTransferImpl
 
 /**********************************************************************
  * $Log$
+ * Revision 1.36  2011-04-28 12:15:57  willuhn
+ * @N Wenn beide Umsaetze eine ID haben, muss nur anhand derer verglichen werden
+ *
  * Revision 1.35  2011-04-28 07:50:07  willuhn
  * @B BUGZILLA 692
  *
