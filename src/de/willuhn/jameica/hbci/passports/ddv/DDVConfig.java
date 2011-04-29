@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.willuhn.datasource.rmi.ObjectNotFoundException;
+import de.willuhn.jameica.hbci.passport.Configuration;
 import de.willuhn.jameica.hbci.passports.ddv.rmi.Reader;
 import de.willuhn.jameica.hbci.passports.ddv.server.CustomReader;
 import de.willuhn.jameica.hbci.rmi.Konto;
@@ -26,7 +27,7 @@ import de.willuhn.logging.Logger;
 /**
  * Konfiguration eines einzelnen Kartenlesers.
  */
-public class DDVConfig
+public class DDVConfig implements Configuration
 {
   /**
    * Moegliche Ports fuer den Leser.
@@ -54,6 +55,22 @@ public class DDVConfig
     return this.id;
   }
   
+  /**
+   * @see de.willuhn.jameica.hbci.passport.Configuration#getDescription()
+   */
+  public String getDescription()
+  {
+    return this.getReaderPreset().getName() + " (" + this.getName() + ")";
+  }
+
+  /**
+   * @see de.willuhn.jameica.hbci.passport.Configuration#getConfigDialog()
+   */
+  public Class getConfigDialog() throws RemoteException
+  {
+    return Detail.class;
+  }
+
   /**
    * Liefert den Schluessel-Praefix fuer die Parameter.
    * @return Schluessel-Praefix fuer die Parameter.
@@ -356,6 +373,10 @@ public class DDVConfig
 
 /**********************************************************************
  * $Log$
+ * Revision 1.5  2011-04-29 09:17:35  willuhn
+ * @N Neues Standard-Interface "Configuration" fuer eine gemeinsame API ueber alle Arten von HBCI-Konfigurationen
+ * @R Passports sind keine UnicastRemote-Objekte mehr
+ *
  * Revision 1.4  2010-12-01 21:59:00  willuhn
  * @B die HBCI-Version wurde nicht pro Config gespeichert sondern galt fuer alle Configs
  *

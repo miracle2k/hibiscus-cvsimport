@@ -14,6 +14,7 @@ import java.rmi.RemoteException;
 import org.kapott.hbci.passport.HBCIPassport;
 
 import de.willuhn.datasource.GenericObject;
+import de.willuhn.jameica.hbci.passport.Configuration;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.system.OperationCanceledException;
 import de.willuhn.util.ApplicationException;
@@ -22,7 +23,7 @@ import de.willuhn.util.ApplicationException;
  * Bildet einen importierten oder erstellten RDH-Schluessel in Hibiscus ab. 
  * @author willuhn
  */
-public interface RDHKey extends GenericObject
+public interface RDHKey extends GenericObject, Configuration
 {
   /**
    * Liefert Pfad- und Dateiname des Schluessels.
@@ -115,6 +116,10 @@ public interface RDHKey extends GenericObject
 
 /*****************************************************************************
  * $Log$
+ * Revision 1.2  2011-04-29 09:17:35  willuhn
+ * @N Neues Standard-Interface "Configuration" fuer eine gemeinsame API ueber alle Arten von HBCI-Konfigurationen
+ * @R Passports sind keine UnicastRemote-Objekte mehr
+ *
  * Revision 1.1  2010-06-17 11:26:49  willuhn
  * @B In HBCICallbackSWT wurden die RDH-Passports nicht korrekt ausgefiltert
  * @C komplettes Projekt "hbci_passport_rdh" in Hibiscus verschoben - es macht eigentlich keinen Sinn mehr, das in separaten Projekten zu fuehren
