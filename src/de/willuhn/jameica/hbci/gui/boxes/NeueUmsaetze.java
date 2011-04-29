@@ -65,7 +65,7 @@ public class NeueUmsaetze extends AbstractBox
   {
     GenericIterator list = de.willuhn.jameica.hbci.messaging.NeueUmsaetze.getNeueUmsaetze();
     UmsatzList umsaetze = new UmsatzList(list,new UmsatzDetail());
-    umsaetze.addColumn(new KontoColumn("konto_id"));
+    umsaetze.addColumn(new KontoColumn());
     umsaetze.setFilterVisible(false);
     umsaetze.paint(parent);
   }
@@ -90,6 +90,9 @@ public class NeueUmsaetze extends AbstractBox
 
 /*********************************************************************
  * $Log$
+ * Revision 1.8  2011-04-29 15:33:28  willuhn
+ * @N Neue Spalte "ausgefuehrt_am", in der das tatsaechliche Ausfuehrungsdatum von Auftraegen vermerkt wird
+ *
  * Revision 1.7  2010-08-12 17:12:32  willuhn
  * @N Saldo-Chart komplett ueberarbeitet (Daten wurden vorher mehrmals geladen, Summen-Funktion, Anzeige mehrerer Konten, Durchschnitt ueber mehrere Konten, Bugfixing, echte "Homogenisierung" der Salden via SaldoFinder)
  *

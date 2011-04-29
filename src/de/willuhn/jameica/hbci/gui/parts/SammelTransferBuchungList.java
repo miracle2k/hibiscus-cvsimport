@@ -32,6 +32,7 @@ import de.willuhn.jameica.gui.parts.TablePart;
 import de.willuhn.jameica.gui.util.Color;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.HBCIProperties;
+import de.willuhn.jameica.hbci.gui.parts.columns.BlzColumn;
 import de.willuhn.jameica.hbci.messaging.ImportMessage;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.SammelTransfer;
@@ -83,22 +84,7 @@ public class SammelTransferBuchungList extends TablePart
     addColumn(i18n.tr("Verwendungszweck"),"zweck");
     addColumn(i18n.tr("Kontoinhaber"),"gegenkonto_name");
     addColumn(i18n.tr("Kontonummer"),"gegenkonto_nr");
-    addColumn(i18n.tr("Bankleitzahl"),"gegenkonto_blz", new Formatter() {
-      /**
-       * @see de.willuhn.jameica.gui.formatter.Formatter#format(java.lang.Object)
-       */
-      public String format(Object o)
-      {
-        if (o == null)
-          return null;
-        String blz = o.toString();
-        String name = HBCIUtils.getNameForBLZ(blz);
-        if (name != null && name.length() > 0)
-          blz += " [" + name + "]";
-        return blz;
-      }
-    
-    });
+    addColumn(new BlzColumn("gegenkonto_blz",i18n.tr("Bankleitzahl")));
     addColumn(i18n.tr("Betrag"),"this",new Formatter() {
       public String format(Object o)
       {
@@ -269,7 +255,10 @@ public class SammelTransferBuchungList extends TablePart
 
 /*********************************************************************
  * $Log$
- * Revision 1.8  2008-10-12 22:10:20  willuhn
+ * Revision 1.9  2011-04-29 15:33:28  willuhn
+ * @N Neue Spalte "ausgefuehrt_am", in der das tatsaechliche Ausfuehrungsdatum von Auftraegen vermerkt wird
+ *
+ * Revision 1.8  2008/10/12 22:10:20  willuhn
  * @B Typo in den Updates
  * @B Spalten-Sortierung und -breite fuer in den Positionen von Sammelauftraegen nicht gespeichert
  *
