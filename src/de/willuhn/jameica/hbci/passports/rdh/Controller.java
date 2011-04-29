@@ -342,9 +342,8 @@ public class Controller extends AbstractControl {
         try
         {
           String q = i18n.tr("Wollen Sie diesen Schlüssel wirklich löschen?\n" +
-                             "Hierbei wird nur die Verknüpfung aus Hibiscus\n" +
-                             "entfernt. Die Schlüsseldatei selbst bleibt erhalten.\n" +
-                             "Alternativ können Sie den Schlüssel auch deaktivieren.");
+                             "Hierbei wird nur die Verknüpfung aus Hibiscus " +
+                             "entfernt. Die Schlüsseldatei selbst bleibt erhalten.");
         
           if (!Application.getCallback().askUser(q))
             return;
@@ -760,6 +759,9 @@ public class Controller extends AbstractControl {
 
 /**********************************************************************
  * $Log$
+ * Revision 1.5  2011-04-29 11:38:57  willuhn
+ * @N Konfiguration der HBCI-Medien ueberarbeitet. Es gibt nun direkt in der Navi einen Punkt "Bank-Zugaenge", in der alle Medien angezeigt werden.
+ *
  * Revision 1.4  2011-04-28 07:34:43  willuhn
  * @R Summen-Zeile nicht mehr anzeigen - unnuetz
  *

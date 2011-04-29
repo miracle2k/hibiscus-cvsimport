@@ -18,6 +18,7 @@ import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.gui.dialogs.PassportAuswahlDialog;
+import de.willuhn.jameica.hbci.passport.Configuration;
 import de.willuhn.jameica.hbci.passport.Passport;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.jameica.system.OperationCanceledException;
@@ -33,56 +34,65 @@ public class PassportDetail implements Action
   private final static I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
   /**
-   * Erwartet ein Objekt vom Typ <code>de.willuhn.jameica.hbci.passport.Passport</code>.
+   * Erwartet ein Objekt vom Typ {@link Passport} oder {@link Configuration}.
    * @see de.willuhn.jameica.gui.Action#handleAction(java.lang.Object)
    */
   public void handleAction(Object context) throws ApplicationException
   {
-    Passport p = null;
-  	if (context != null && (context instanceof Passport))
-  	{
-      p = (Passport) context;
-  	}
-    else
+    try
     {
-      try
+      if (context instanceof Configuration)
       {
-        p = (Passport) new PassportAuswahlDialog(PassportAuswahlDialog.POSITION_CENTER).open();
-      }
-      catch (ApplicationException ae)
-      {
-        throw ae;
-      }
-      catch (OperationCanceledException oce)
-      {
-        Logger.info("operation cancelled");
+        GUI.startView(((Configuration) context).getConfigDialog(),context);
         return;
       }
-      catch (Exception e)
+      
+      Passport p = null;
+      if (context instanceof Passport)
       {
-        Logger.error("error while opening passport",e);
-        throw new ApplicationException(i18n.tr("Fehler beim Laden: {0}",e.getMessage()));
+        p = (Passport) context;
       }
-    }
-    
-    if (p == null)
-      return;
+      else
+      {
+        try
+        {
+          p = (Passport) new PassportAuswahlDialog(PassportAuswahlDialog.POSITION_CENTER).open();
+        }
+        catch (ApplicationException ae)
+        {
+          throw ae;
+        }
+        catch (OperationCanceledException oce)
+        {
+          Logger.info("operation cancelled");
+          return;
+        }
+        catch (Exception e)
+        {
+          Logger.error("error while opening passport",e);
+          throw new ApplicationException(i18n.tr("Fehler beim Laden: {0}",e.getMessage()));
+        }
+      }
+      
+      if (p == null)
+        return;
 
-		try
-		{
-			GUI.startView(p.getConfigDialog(),p);
-		}
-		catch (RemoteException e)
-		{
-			Logger.error("error while opening passport",e);
+      GUI.startView(p.getConfigDialog(),p);
+    }
+    catch (RemoteException e)
+    {
+      Logger.error("error while opening passport",e);
       throw new ApplicationException(i18n.tr("Fehler beim Laden: {0}",e.getMessage()));
-		}
+    }
   }
 }
 
 
 /**********************************************************************
  * $Log$
+ * Revision 1.6  2011-04-29 11:38:57  willuhn
+ * @N Konfiguration der HBCI-Medien ueberarbeitet. Es gibt nun direkt in der Navi einen Punkt "Bank-Zugaenge", in der alle Medien angezeigt werden.
+ *
  * Revision 1.5  2011-04-28 07:32:58  willuhn
  * @C Code-Cleanup
  *

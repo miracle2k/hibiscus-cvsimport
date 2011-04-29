@@ -73,13 +73,6 @@ public class Detail extends AbstractView
     control.getKontoAuswahl().paint(getParent());
 
     ButtonArea buttonArea = new ButtonArea();
-    buttonArea.addButton(i18n.tr("Kartenleser suchen..."), new Action()
-    {
-      public void handleAction(Object context) throws ApplicationException
-      {
-        control.handleScan();
-      }
-    },null,false,"view-refresh.png");
     buttonArea.addButton(i18n.tr("Konfiguration testen"), new Action()
     {
       public void handleAction(Object context) throws ApplicationException
@@ -109,6 +102,9 @@ public class Detail extends AbstractView
 
 /**********************************************************************
  * $Log$
+ * Revision 1.3  2011-04-29 11:38:58  willuhn
+ * @N Konfiguration der HBCI-Medien ueberarbeitet. Es gibt nun direkt in der Navi einen Punkt "Bank-Zugaenge", in der alle Medien angezeigt werden.
+ *
  * Revision 1.2  2011-04-08 15:19:15  willuhn
  * @R Alle Zurueck-Buttons entfernt - es gibt jetzt einen globalen Zurueck-Button oben rechts
  * @C Code-Cleanup

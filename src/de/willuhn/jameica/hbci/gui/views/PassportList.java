@@ -3,30 +3,33 @@
  * $Revision$
  * $Date$
  * $Author$
- * $Locker$
- * $State$
  *
- * Copyright (c) by willuhn.webdesign
+ * Copyright (c) by willuhn - software & services
  * All rights reserved
  *
  **********************************************************************/
-package de.willuhn.jameica.hbci.passports.pintan;
+
+package de.willuhn.jameica.hbci.gui.views;
 
 import de.willuhn.jameica.gui.AbstractView;
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
+import de.willuhn.jameica.gui.parts.Button;
 import de.willuhn.jameica.gui.parts.ButtonArea;
 import de.willuhn.jameica.gui.util.Container;
 import de.willuhn.jameica.gui.util.SimpleContainer;
 import de.willuhn.jameica.hbci.HBCI;
+import de.willuhn.jameica.hbci.gui.action.PassportDetail;
+import de.willuhn.jameica.hbci.gui.controller.PassportControl;
+import de.willuhn.jameica.hbci.gui.parts.PassportTree;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
 
 /**
- * Dialog zur Konfiguration eines Passports vom Typ PIN/TAN.
+ * View zum Anzeigen der Bank-Zugaenge.
  */
-public class View extends AbstractView
+public class PassportList extends AbstractView
 {
   private final static I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
@@ -35,42 +38,31 @@ public class View extends AbstractView
    */
   public void bind() throws Exception
   {
-		GUI.getView().setTitle(i18n.tr("PIN/TAN-Konfigurationen"));
-		final Controller control = new Controller(this);
+    GUI.getView().setTitle(i18n.tr("Bank-Zugänge"));
+    final PassportControl control = new PassportControl(this);
 
     Container c = new SimpleContainer(getParent());
-    c.addText(i18n.tr("Klicken Sie auf \"PIN/TAN-Zugang anlegen\", um einen neuen Bank-Zugang über das PIN/TAN-Verfahren einzurichten."),true);
+    c.addText(i18n.tr("Klicken Sie auf \"Neuer Bank-Zugang...\", um eine neue PIN/TAN- oder " +
+    		              "Kartenleser-Konfiguration anzulegen oder eine Schlüsseldatei zu erstellen bzw. zu importieren."),true);
 
-		ButtonArea buttons = new ButtonArea();
-    buttons.addButton(i18n.tr("PIN/TAN-Zugang anlegen"),new Action()
-    {
+    final PassportTree tree = control.getPassports();
+
+    ButtonArea buttons = new ButtonArea();
+    buttons.addButton(new Button(i18n.tr("Neuer Bank-Zugang..."),new Action() {
       public void handleAction(Object context) throws ApplicationException
       {
-        control.handleCreate();
+        new PassportDetail().handleAction(tree.getPassport());
       }
-    },null,false,"document-new.png");
+    },null,false,"seahorse-preferences.png"));
     buttons.paint(getParent());
 
-    control.getConfigList().paint(getParent());
+    tree.paint(getParent());
   }
 }
 
-
 /**********************************************************************
  * $Log$
- * Revision 1.5  2011-04-29 11:38:57  willuhn
+ * Revision 1.1  2011-04-29 11:38:57  willuhn
  * @N Konfiguration der HBCI-Medien ueberarbeitet. Es gibt nun direkt in der Navi einen Punkt "Bank-Zugaenge", in der alle Medien angezeigt werden.
  *
- * Revision 1.4  2011-04-08 15:19:14  willuhn
- * @R Alle Zurueck-Buttons entfernt - es gibt jetzt einen globalen Zurueck-Button oben rechts
- * @C Code-Cleanup
- *
- * Revision 1.3  2010-09-07 15:17:07  willuhn
- * @N GUI-Cleanup
- *
- * Revision 1.2  2010-07-13 11:01:05  willuhn
- * @N Icons in PIN/TAN-Config
- *
- * Revision 1.1  2010/06/17 11:38:15  willuhn
- * @C kompletten Code aus "hbci_passport_pintan" in Hibiscus verschoben - es macht eigentlich keinen Sinn mehr, das in separaten Projekten zu fuehren
  **********************************************************************/

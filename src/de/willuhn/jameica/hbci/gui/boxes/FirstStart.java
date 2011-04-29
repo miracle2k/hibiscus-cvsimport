@@ -87,16 +87,15 @@ public class FirstStart extends AbstractBox
     FormTextPart text = new FormTextPart();
     text.setText("<form><p><span color=\"header\" font=\"header\">" + i18n.tr("Herzlich willkommen") + "</span></p>" +
         "<p>" + i18n.tr("Sie starten Hibiscus zum ersten Mal. Bitte richten Sie " +
-        "zunächst ein Sicherheitsmedium (Chipkarte, Schlüsseldiskette oder PIN/TAN) ein. " +
-        "Wechseln Sie anschließend zur Konten-Übersicht und rufen Sie die verfügbaren Konten ab " +
-        "oder richten Sie diese manuell ein, falls Ihre Bank das automatische Abrufen der " +
-        "HBCI-Konten nicht unterstützt.") + "</p></form>");
+        "zunächst einen Bank-Zugang (Chipkarte, Schlüsseldiskette oder PIN/TAN) ein. " +
+        "Wechseln Sie anschließend zur Konten-Übersicht und prüfen Sie die angelegten Konten. " +
+        "Falls sie nicht automatisch angelegt wurden, dann erstellen Sie das Konto bitte manuell.") + "</p></form>");
     
     text.paint(parent);
     
     ButtonArea buttons = new ButtonArea(parent,2);
-    buttons.addButton(i18n.tr("Sicherheitsmedium einrichten >>"),new PassportDetail(),null,true);
-    buttons.addButton(i18n.tr("Konten-Übersicht"),new KontoList(),null);
+    buttons.addButton(i18n.tr("Bank-Zugang einrichten >>"),new PassportDetail(),null,true,"seahorse-preferences.png");
+    buttons.addButton(i18n.tr("Konten-Übersicht"),new KontoList(),null,false,"system-file-manager.png");
   }
 
   /**
@@ -111,6 +110,9 @@ public class FirstStart extends AbstractBox
 
 /*********************************************************************
  * $Log$
+ * Revision 1.9  2011-04-29 11:38:58  willuhn
+ * @N Konfiguration der HBCI-Medien ueberarbeitet. Es gibt nun direkt in der Navi einen Punkt "Bank-Zugaenge", in der alle Medien angezeigt werden.
+ *
  * Revision 1.8  2010-09-29 22:03:05  willuhn
  * @N Kann ja noch weiter verkuerzt werden ;)
  *
