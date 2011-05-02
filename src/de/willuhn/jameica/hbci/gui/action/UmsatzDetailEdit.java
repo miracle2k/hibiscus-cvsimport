@@ -13,6 +13,7 @@
 package de.willuhn.jameica.hbci.gui.action;
 
 import java.rmi.RemoteException;
+import java.util.Date;
 
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
@@ -49,6 +50,9 @@ public class UmsatzDetailEdit implements Action
         
         Umsatz u = (Umsatz) Settings.getDBService().createObject(Umsatz.class,null);
         u.setKonto(k);
+        Date d = new Date();
+        u.setValuta(d);
+        u.setDatum(d);
         context = u;
       }
       catch (RemoteException re)
@@ -68,7 +72,10 @@ public class UmsatzDetailEdit implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2010-04-22 16:40:57  willuhn
+ * Revision 1.3  2011-05-02 09:44:32  willuhn
+ * @N BUGZILLA 1035
+ *
+ * Revision 1.2  2010/04/22 16:40:57  willuhn
  * @N Manuelles Anlegen neuer Umsaetze fuer Offline-Konten moeglich
  *
  * Revision 1.1  2009/01/04 14:47:53  willuhn
