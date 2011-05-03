@@ -139,11 +139,28 @@ public abstract class AbstractReader implements Reader
   {
     return this.getName();
   }
+
+  /**
+   * @see java.lang.Object#equals(java.lang.Object)
+   */
+  public boolean equals(Object obj)
+  {
+    if (!(obj instanceof Reader))
+      return false;
+    
+    Reader other = (Reader) obj;
+    String s1 = this.getClass().getName()  + this.getName()  + this.getCTAPIDriver();
+    String s2 = other.getClass().getName() + other.getName() + other.getCTAPIDriver();
+    return s1.equals(s2);
+  }
 }
 
 
 /**********************************************************************
  * $Log$
+ * Revision 1.6  2011-05-03 16:43:50  willuhn
+ * @B da fehlte eine equals()-Funktion
+ *
  * Revision 1.5  2010-09-07 15:28:05  willuhn
  * @N BUGZILLA 391 - Kartenleser-Konfiguration komplett umgebaut. Damit lassen sich jetzt beliebig viele Kartenleser und Konfigurationen parellel einrichten
  *
