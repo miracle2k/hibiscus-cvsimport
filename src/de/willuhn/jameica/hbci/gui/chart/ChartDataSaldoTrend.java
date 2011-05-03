@@ -18,6 +18,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import de.willuhn.logging.Logger;
+
 /**
  * Implementierung eines Datensatzes fuer die Darstellung des Saldo-Durchschnitts.
  */
@@ -31,6 +33,11 @@ public class ChartDataSaldoTrend extends AbstractChartDataSaldo
    */
   public void add(List<Saldo> data)
   {
+    if (data == null)
+    {
+      Logger.warn("skipping data line, contains no data");
+      return;
+    }
     if (this.data == null)
     {
       this.data = new ArrayList<Saldo>();
@@ -116,6 +123,9 @@ public class ChartDataSaldoTrend extends AbstractChartDataSaldo
 
 /*********************************************************************
  * $Log$
+ * Revision 1.4  2011-05-03 10:15:56  willuhn
+ * @B NPE
+ *
  * Revision 1.3  2010-08-12 17:12:32  willuhn
  * @N Saldo-Chart komplett ueberarbeitet (Daten wurden vorher mehrmals geladen, Summen-Funktion, Anzeige mehrerer Konten, Durchschnitt ueber mehrere Konten, Bugfixing, echte "Homogenisierung" der Salden via SaldoFinder)
  *
