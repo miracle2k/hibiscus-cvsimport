@@ -70,9 +70,9 @@ public class Settings extends AbstractView
 		
     // Farb-Einstellungen
     TabGroup colors = new TabGroup(getTabFolder(),i18n.tr("Farben"));
-    colors.addLabelPair(i18n.tr("Vordergrund Sollbuchung"),control.getBuchungSollForeground());
-    colors.addLabelPair(i18n.tr("Vordergrund Habenbuchung"),control.getBuchungHabenForeground());
-		colors.addLabelPair(i18n.tr("Vordergrund überfällige Überweisungen"),control.getUeberfaelligForeground());
+    colors.addLabelPair(i18n.tr("Textfarbe von Sollbuchungen"),control.getBuchungSollForeground());
+    colors.addLabelPair(i18n.tr("Textfarbe von Habenbuchungen"),control.getBuchungHabenForeground());
+		colors.addLabelPair(i18n.tr("Textfarbe für überfällige Aufträge"),control.getUeberfaelligForeground());
 
 		// Passports
     TabGroup passports = new TabGroup(getTabFolder(),i18n.tr("HBCI-Sicherheitsmedien"));
@@ -147,6 +147,9 @@ public class Settings extends AbstractView
 
 /**********************************************************************
  * $Log$
+ * Revision 1.51  2011-05-03 16:43:36  willuhn
+ * @C Bezeichner geaendert
+ *
  * Revision 1.50  2011-05-03 10:13:15  willuhn
  * @R Hintergrund-Farbe nicht mehr explizit setzen. Erzeugt auf Windows und insb. Mac teilweise unschoene Effekte. Besonders innerhalb von Label-Groups, die auf Windows/Mac andere Hintergrund-Farben verwenden als der Default-Hintergrund
  *
