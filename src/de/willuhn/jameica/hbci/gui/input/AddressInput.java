@@ -31,7 +31,6 @@ import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.input.Input;
 import de.willuhn.jameica.gui.input.SearchInput;
 import de.willuhn.jameica.gui.parts.Button;
-import de.willuhn.jameica.gui.util.Color;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.HBCIProperties;
 import de.willuhn.jameica.hbci.gui.dialogs.AdresseAuswahlDialog;
@@ -209,7 +208,6 @@ public class AddressInput implements Input
   public void paint(Composite parent, int width)
   {
     Composite comp = new Composite(parent,SWT.NONE);
-    comp.setBackground(Color.BACKGROUND.getSWTColor());
     GridLayout layout = new GridLayout(2, false);
     layout.marginHeight = 0;
     layout.marginWidth = 1;
@@ -426,6 +424,9 @@ public class AddressInput implements Input
 
 /**********************************************************************
  * $Log$
+ * Revision 1.8  2011-05-03 10:13:15  willuhn
+ * @R Hintergrund-Farbe nicht mehr explizit setzen. Erzeugt auf Windows und insb. Mac teilweise unschoene Effekte. Besonders innerhalb von Label-Groups, die auf Windows/Mac andere Hintergrund-Farben verwenden als der Default-Hintergrund
+ *
  * Revision 1.7  2010-07-03 20:51:37  willuhn
  * @B "..."-Button wurde nach Ausfuehrung nicht mit deaktiviert. Machte aber eigentlich keinen Unterschied, weil der "Speichern"-Button da bereits deaktiviert ist und ein Uebernehmen des geaenderten Empfaengers ohnehin nicht moeglich gewesen waere
  *

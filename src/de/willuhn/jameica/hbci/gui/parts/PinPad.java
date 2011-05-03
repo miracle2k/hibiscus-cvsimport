@@ -26,7 +26,6 @@ import org.eclipse.swt.widgets.Composite;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.Part;
 import de.willuhn.jameica.gui.input.PasswordInput;
-import de.willuhn.jameica.gui.util.Color;
 import de.willuhn.jameica.gui.util.Font;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.system.Application;
@@ -64,7 +63,6 @@ public class PinPad implements Part
     this.comp = new Composite(parent,SWT.NONE);
     GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
     this.comp.setLayoutData(gridData);
-    this.comp.setBackground(Color.BACKGROUND.getSWTColor());
 
     GridLayout layout = new GridLayout(3,true);
     layout.horizontalSpacing = 4;
@@ -128,7 +126,10 @@ public class PinPad implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2009-11-10 12:00:35  willuhn
+ * Revision 1.3  2011-05-03 10:13:15  willuhn
+ * @R Hintergrund-Farbe nicht mehr explizit setzen. Erzeugt auf Windows und insb. Mac teilweise unschoene Effekte. Besonders innerhalb von Label-Groups, die auf Windows/Mac andere Hintergrund-Farben verwenden als der Default-Hintergrund
+ *
+ * Revision 1.2  2009/11/10 12:00:35  willuhn
  * *** empty log message ***
  *
  * Revision 1.1  2009/07/12 23:19:29  willuhn
