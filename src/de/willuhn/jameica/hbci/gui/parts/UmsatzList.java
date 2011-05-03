@@ -449,10 +449,7 @@ public class UmsatzList extends TablePart implements Extendable
       if (text != null)
         return text;
 
-//      this.text = GUI.getStyleFactory().createText(parent);
-      text = new Text(parent,SWT.NONE | SWT.SINGLE);
-      text.setForeground(Color.WIDGET_FG.getSWTColor());
-      text.setBackground(Color.WIDGET_BG.getSWTColor());
+      text = GUI.getStyleFactory().createText(parent);
       // BUGZILLA 258
       this.text.setText(mySettings.getString("search",""));
       this.text.addKeyListener(kl);
@@ -803,6 +800,10 @@ public class UmsatzList extends TablePart implements Extendable
 
 /**********************************************************************
  * $Log$
+ * Revision 1.73  2011-05-03 16:46:10  willuhn
+ * @R Flatstyle entfernt - war eh nicht mehr zeitgemaess und rendere auf aktuellen OS sowieso haesslich
+ * @C SelectInput verwendet jetzt Combo statt CCombo - das sieht auf den verschiedenen OS besser aus
+ *
  * Revision 1.72  2011-04-28 08:02:42  willuhn
  * @B BUGZILLA 692
  *
