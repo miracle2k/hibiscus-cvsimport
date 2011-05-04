@@ -54,7 +54,7 @@ public class LineChart extends AbstractChart<LineChartData>
    */
   public void redraw() throws RemoteException
   {
-    if (this.chart == null)
+    if (this.chart == null || this.chart.isDisposed())
       return;
     
     // Cleanup, falls noetig
@@ -237,6 +237,9 @@ public class LineChart extends AbstractChart<LineChartData>
 
 /*********************************************************************
  * $Log$
+ * Revision 1.18  2011-05-04 11:05:02  willuhn
+ * @B Dispose-Check fehlte
+ *
  * Revision 1.17  2010-11-29 22:44:30  willuhn
  * @B getCurve() wurde falsch rum interpretiert ;)
  *
