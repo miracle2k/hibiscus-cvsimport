@@ -15,9 +15,6 @@ package de.willuhn.jameica.hbci.gui.dialogs;
 
 import java.util.Date;
 
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.KeyAdapter;
-import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
@@ -65,14 +62,6 @@ public class DauerauftragDeleteDialog extends AbstractDialog
    */
   protected void paint(Composite parent) throws Exception
   {
-    // Bei Druck auf ESC interpretieren wir das als Abbruch.
-    parent.addKeyListener(new KeyAdapter() {
-      public void keyReleased(KeyEvent e) {
-        if (e.keyCode == SWT.ESC)
-          throw new OperationCanceledException();
-      }
-    });
-    
 		Container group = new SimpleContainer(parent);
 
 		group.addHeadline(i18n.tr("Zieldatum zur Löschung des Dauerauftrages"));
@@ -193,6 +182,9 @@ public class DauerauftragDeleteDialog extends AbstractDialog
 
 /**********************************************************************
  * $Log$
+ * Revision 1.9  2011-05-06 12:35:24  willuhn
+ * @R Nicht mehr noetig - macht AbstractDialog jetzt selbst
+ *
  * Revision 1.8  2011-03-07 10:33:53  willuhn
  * @N BUGZILLA 999
  *
