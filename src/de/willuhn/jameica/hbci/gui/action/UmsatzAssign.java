@@ -31,6 +31,7 @@ import de.willuhn.util.I18N;
  */
 public class UmsatzAssign implements Action
 {
+  private final static I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
   /**
    * Erwartet ein Objekt vom Typ <code>Umsatz</code> oder <code>Umsatz[]</code>.
@@ -38,8 +39,6 @@ public class UmsatzAssign implements Action
    */
   public void handleAction(Object context) throws ApplicationException
   {
-		I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
-
 		if (context == null)
       throw new ApplicationException(i18n.tr("Bitte wählen Sie einen oder mehrere Umsätze aus"));
 
@@ -137,6 +136,9 @@ public class UmsatzAssign implements Action
 
 /**********************************************************************
  * $Log$
+ * Revision 1.10  2011-05-06 09:04:16  willuhn
+ * *** empty log message ***
+ *
  * Revision 1.9  2010-09-27 11:51:38  willuhn
  * @N BUGZILLA 804
  *
