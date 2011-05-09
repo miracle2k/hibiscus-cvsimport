@@ -74,14 +74,15 @@ public class Detail extends AbstractView
     {
       ButtonArea buttons = new ButtonArea();
       // BUGZILLA 218
-      String secMech = control.getConfig().getSecMech();
+      String secMech  = control.getConfig().getSecMech();
+      String tanMedia = control.getConfig().getTanMedia();
       Button b = new Button(i18n.tr("TAN-Verfahren zurücksetzen"), new Action() {
         public void handleAction(Object context) throws ApplicationException
         {
-          control.handleDeleteSecMech();
+          control.handleDeleteTanSettings();
         }
       },null,false,"edit-undo.png");
-      b.setEnabled(secMech != null && secMech.length() > 0);
+      b.setEnabled((secMech != null && secMech.length() > 0) || (tanMedia != null && tanMedia.length() > 0));
       buttons.addButton(b);
 
       buttons.addButton(i18n.tr("Verbrauchte TANs"),new Action()
@@ -127,6 +128,9 @@ public class Detail extends AbstractView
 
 /**********************************************************************
  * $Log$
+ * Revision 1.6  2011-05-09 09:35:15  willuhn
+ * @N BUGZILLA 827
+ *
  * Revision 1.5  2011-04-08 15:19:14  willuhn
  * @R Alle Zurueck-Buttons entfernt - es gibt jetzt einen globalen Zurueck-Button oben rechts
  * @C Code-Cleanup
