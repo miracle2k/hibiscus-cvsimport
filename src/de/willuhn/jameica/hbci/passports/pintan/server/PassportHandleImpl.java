@@ -26,6 +26,7 @@ import de.willuhn.datasource.GenericIterator;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.HBCICallbackSWT;
 import de.willuhn.jameica.hbci.passport.PassportHandle;
+import de.willuhn.jameica.hbci.passports.pintan.ChipTANDialog;
 import de.willuhn.jameica.hbci.passports.pintan.PinTanConfigFactory;
 import de.willuhn.jameica.hbci.passports.pintan.PtSecMech;
 import de.willuhn.jameica.hbci.passports.pintan.PtSecMechDialog;
@@ -257,9 +258,23 @@ public class PassportHandleImpl extends UnicastRemoteObject implements PassportH
       // BUGZILLA 62
       case HBCICallback.NEED_PT_TAN:
       {
-        TANDialog td = new TANDialog(config);
-        td.setText(msg);
-        retData.replace(0,retData.length(),(String)td.open());
+        TANDialog dialog = null;
+        
+        String hhdUc = retData.toString();
+        if (hhdUc != null && hhdUc.length() > 0)
+        {
+          // Wir haben einen Flicker-Code. Also zeigen wir den Flicker-Dialog statt
+          // dem normalen TAN-Dialog an
+          dialog = new ChipTANDialog(config,hhdUc);
+        }
+        else
+        {
+          // regulaerer TAN-Dialog
+          dialog = new TANDialog(config);
+        }
+        
+        dialog.setText(msg);
+        retData.replace(0,retData.length(),(String)dialog.open());
         return true;
       }
 
@@ -315,6 +330,9 @@ public class PassportHandleImpl extends UnicastRemoteObject implements PassportH
 
 /**********************************************************************
  * $Log$
+ * Revision 1.8  2011-05-09 17:27:39  willuhn
+ * @N Erste Vorbereitungen fuer optisches chipTAN
+ *
  * Revision 1.7  2011-05-09 09:35:15  willuhn
  * @N BUGZILLA 827
  *
