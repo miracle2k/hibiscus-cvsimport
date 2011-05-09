@@ -148,7 +148,7 @@ public class PtSecMechDialog extends AbstractDialog
   
   /**
    * Erzeugt eine Combo-Box mit der Auswahl der verfuegbaren Verfahren.
-   * @return Auwahl-Feld.
+   * @return Auswahl-Feld.
    * @throws ApplicationException
    */
   private SelectInput getType() throws ApplicationException
@@ -166,6 +166,9 @@ public class PtSecMechDialog extends AbstractDialog
 
 /*********************************************************************
  * $Log$
+ * Revision 1.6  2011-05-09 08:35:18  willuhn
+ * *** empty log message ***
+ *
  * Revision 1.5  2011-05-09 08:33:02  willuhn
  * @C GUI-polish
  *
