@@ -112,7 +112,7 @@ public class UeberweisungControl extends AbstractBaseUeberweisungControl
     if (textschluessel != null)
       return textschluessel;
 
-    textschluessel = new SelectInput(TextSchluessel.get(new String[]{"51","53","54","59"}),TextSchluessel.get(((BaseUeberweisung)getTransfer()).getTextSchluessel()));
+    textschluessel = new SelectInput(TextSchluessel.get(TextSchluessel.SET_UEB),TextSchluessel.get(((BaseUeberweisung)getTransfer()).getTextSchluessel()));
     textschluessel.setName(i18n.tr("Textschlüssel"));
     textschluessel.setEnabled(!((Terminable)getTransfer()).ausgefuehrt());
     return textschluessel;
@@ -188,6 +188,9 @@ public class UeberweisungControl extends AbstractBaseUeberweisungControl
 
 /**********************************************************************
  * $Log$
+ * Revision 1.49  2011-05-10 11:41:30  willuhn
+ * @N Text-Schluessel als Konstanten definiert - Teil aus dem Patch von Thomas vom 07.12.2010
+ *
  * Revision 1.48  2011-04-08 17:41:45  willuhn
  * @N Erster Druck-Support fuer Ueberweisungslisten
  *

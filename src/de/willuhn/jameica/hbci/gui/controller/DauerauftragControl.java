@@ -243,7 +243,7 @@ public class DauerauftragControl extends AbstractTransferControl {
     if (textschluessel != null)
       return textschluessel;
 
-    textschluessel = new SelectInput(TextSchluessel.get(new String[]{"52","53","54"}),TextSchluessel.get(((Dauerauftrag)getTransfer()).getTextSchluessel()));
+    textschluessel = new SelectInput(TextSchluessel.get(TextSchluessel.SET_DAUER),TextSchluessel.get(((Dauerauftrag)getTransfer()).getTextSchluessel()));
     return textschluessel;
   }
   /**
@@ -280,6 +280,9 @@ public class DauerauftragControl extends AbstractTransferControl {
 
 /**********************************************************************
  * $Log$
+ * Revision 1.33  2011-05-10 11:41:30  willuhn
+ * @N Text-Schluessel als Konstanten definiert - Teil aus dem Patch von Thomas vom 07.12.2010
+ *
  * Revision 1.32  2011-04-11 16:48:33  willuhn
  * @N Drucken von Sammel- und Dauerauftraegen
  *
