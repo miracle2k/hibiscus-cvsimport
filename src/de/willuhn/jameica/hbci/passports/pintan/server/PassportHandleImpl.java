@@ -36,6 +36,7 @@ import de.willuhn.jameica.hbci.passports.pintan.TanMediaDialog;
 import de.willuhn.jameica.hbci.passports.pintan.rmi.PinTanConfig;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.server.Converter;
+import de.willuhn.jameica.messaging.StatusBarMessage;
 import de.willuhn.jameica.plugin.AbstractPlugin;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.jameica.system.OperationCanceledException;
@@ -263,15 +264,22 @@ public class PassportHandleImpl extends UnicastRemoteObject implements PassportH
         String hhdUc = retData.toString();
         if (hhdUc != null && hhdUc.length() > 0)
         {
-          // Wir haben einen Flicker-Code. Also zeigen wir den Flicker-Dialog statt
-          // dem normalen TAN-Dialog an
-          dialog = new ChipTANDialog(config,hhdUc);
+          try
+          {
+            // Wir haben einen Flicker-Code. Also zeigen wir den Flicker-Dialog statt
+            // dem normalen TAN-Dialog an
+            dialog = new ChipTANDialog(config,hhdUc);
+          }
+          catch (Exception e)
+          {
+            Logger.error("unable to open chiptan dialog, fallback to chiptan manual",e);
+            Application.getMessagingFactory().sendMessage(new StatusBarMessage(e.getMessage() + " - Fallback auf manuelle Eingabe",StatusBarMessage.TYPE_ERROR));
+          }
         }
-        else
-        {
-          // regulaerer TAN-Dialog
+        
+        // regulaerer TAN-Dialog
+        if (dialog == null)
           dialog = new TANDialog(config);
-        }
         
         dialog.setText(msg);
         retData.replace(0,retData.length(),(String)dialog.open());
@@ -330,6 +338,9 @@ public class PassportHandleImpl extends UnicastRemoteObject implements PassportH
 
 /**********************************************************************
  * $Log$
+ * Revision 1.9  2011-05-10 11:16:55  willuhn
+ * @C Fallback auf normalen TAN-Dialog, wenn der Flicker-Code nicht lesbar ist
+ *
  * Revision 1.8  2011-05-09 17:27:39  willuhn
  * @N Erste Vorbereitungen fuer optisches chipTAN
  *
