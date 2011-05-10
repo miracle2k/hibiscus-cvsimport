@@ -100,28 +100,8 @@ public class HBCIDauerauftragStoreJob extends AbstractHBCIJob
 			empfaenger.setKontonummer(dauerauftrag.getGegenkontoNummer());
 			empfaenger.setName(dauerauftrag.getGegenkontoName());
 			setJobParam("dst",Converter.Address2HBCIKonto(empfaenger));
-
 			setJobParam("name",empfaenger.getName());
-
-			setJobParam("usage",dauerauftrag.getZweck());
-
-			String zweck2 = dauerauftrag.getZweck2();
-      boolean haveSecond = false;
-			if (zweck2 != null && zweck2.trim().length() > 0)
-			{
-        haveSecond = true;
-        setJobParam("usage_2",zweck2);
-			}
-      String[] lines = dauerauftrag.getWeitereVerwendungszwecke();
-      int pos = haveSecond ? 3 : 2; // Wenn Zeile 2 fehlt, dann alles eins nach vorn schieben
-      for (int i=0;i<lines.length;++i)
-      {
-        if (lines[i] == null || lines[i].trim().length() == 0)
-          continue;
-        setJobParam("usage_" + pos,lines[i]);
-        pos++;
-      }
-
+      setJobParamUsage(dauerauftrag);
 			setJobParam("firstdate",dauerauftrag.getErsteZahlung());
 
 			Date letzteZahlung = dauerauftrag.getLetzteZahlung();
@@ -227,6 +207,9 @@ public class HBCIDauerauftragStoreJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
+ * Revision 1.27  2011-05-10 12:18:11  willuhn
+ * @C Code zum Setzen der usage-Parameter in gemeinsamer Basisklasse AbstractHBCIJob - der Code war 3x identisch vorhanden
+ *
  * Revision 1.26  2010-09-24 12:22:04  willuhn
  * @N Thomas' Patch fuer Textschluessel in Dauerauftraegen
  *

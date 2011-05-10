@@ -86,26 +86,7 @@ public class HBCILastschriftJob extends AbstractHBCIJob
 
 			setJobParam("other",Converter.Address2HBCIKonto(empfaenger));
 			setJobParam("name",empfaenger.getName());
-
-			setJobParam("usage",lastschrift.getZweck());
-
-			String zweck2 = lastschrift.getZweck2();
-			boolean haveSecond = false;
-			if (zweck2 != null && zweck2.trim().length() > 0)
-			{
-			  haveSecond = true;
-        setJobParam("usage_2",zweck2);
-			}
-      
-      String[] lines = lastschrift.getWeitereVerwendungszwecke();
-      int pos = haveSecond ? 3 : 2; // Wenn Zeile 2 fehlt, dann alles eins nach vorn schieben
-      for (int i=0;i<lines.length;++i)
-      {
-        if (lines[i] == null || lines[i].trim().length() == 0)
-          continue;
-        setJobParam("usage_" + pos,lines[i]);
-        pos++;
-      }
+      setJobParamUsage(lastschrift);
 
       de.willuhn.jameica.system.Settings settings = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getSettings();
       markExecutedBefore = settings.getBoolean("transfer.markexecuted.before",false);
@@ -190,6 +171,9 @@ public class HBCILastschriftJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
+ * Revision 1.24  2011-05-10 12:18:11  willuhn
+ * @C Code zum Setzen der usage-Parameter in gemeinsamer Basisklasse AbstractHBCIJob - der Code war 3x identisch vorhanden
+ *
  * Revision 1.23  2010-02-23 11:20:45  willuhn
  * @C Verwendungszweck ignorieren, wenn er nur aus Whitespaces besteht
  *
