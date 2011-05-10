@@ -83,6 +83,7 @@ public class UeberweisungControl extends AbstractBaseUeberweisungControl
     list.add(new Typ(false,false));
     list.add(new Typ(true,false));
     list.add(new Typ(false,true));
+    // TODO: Bei BZU- oder Spenden-Ueberweisung muss die Box deaktiviert werden und beide Flags duerfen nicht gesetzt sein
     this.typ = new SelectInput(list,new Typ(u.isTerminUeberweisung(),u.isUmbuchung()));
     this.typ.setName(i18n.tr("Auftragstyp"));
     this.typ.setAttribute("name");
@@ -188,6 +189,9 @@ public class UeberweisungControl extends AbstractBaseUeberweisungControl
 
 /**********************************************************************
  * $Log$
+ * Revision 1.50  2011-05-10 12:17:07  willuhn
+ * *** empty log message ***
+ *
  * Revision 1.49  2011-05-10 11:41:30  willuhn
  * @N Text-Schluessel als Konstanten definiert - Teil aus dem Patch von Thomas vom 07.12.2010
  *
