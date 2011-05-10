@@ -298,7 +298,6 @@ public class HBCIProperties
     }
     catch (NumberFormatException nfe)
     {
-      // TODO HBCI4Java koennte diese Exception vermutlich auch selbst fangen und false liefern
       Logger.warn("invalid iban: " + nfe.getMessage());
       return false;
     }
@@ -351,6 +350,9 @@ public class HBCIProperties
 
 /**********************************************************************
  * $Log$
+ * Revision 1.43  2011-05-10 11:51:15  willuhn
+ * @R Marker entfernt
+ *
  * Revision 1.42  2011-01-20 17:13:21  willuhn
  * @C HBCIProperties#startOfDay und HBCIProperties#endOfDay nach Jameica in DateUtil verschoben
  *
