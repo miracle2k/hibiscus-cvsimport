@@ -102,7 +102,7 @@ public class UmsatzTypVerlauf implements Part
     try
     {
       this.chart = new LineChart();
-      this.chart.setStacked(false); // TODO: BUGZILLA 749
+      this.chart.setStacked(false); // TODO Stacked Graph für "Umsätze nach Kategorieren" BUGZILLA 749
       this.chart.setTitle(i18n.tr("Umsätze der Kategorien im zeitlichen Verlauf"));
       for (int i=0;i<this.data.size();++i)
       {
@@ -312,6 +312,9 @@ public class UmsatzTypVerlauf implements Part
 
 /*********************************************************************
  * $Log$
+ * Revision 1.10  2011-05-10 11:52:32  willuhn
+ * @R Marker geaendert
+ *
  * Revision 1.9  2011-01-20 17:13:21  willuhn
  * @C HBCIProperties#startOfDay und HBCIProperties#endOfDay nach Jameica in DateUtil verschoben
  *
