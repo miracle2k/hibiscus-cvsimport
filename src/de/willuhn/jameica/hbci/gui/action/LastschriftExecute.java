@@ -27,6 +27,7 @@ import de.willuhn.jameica.hbci.rmi.Lastschrift;
 import de.willuhn.jameica.hbci.server.hbci.HBCIFactory;
 import de.willuhn.jameica.hbci.server.hbci.HBCILastschriftJob;
 import de.willuhn.jameica.system.Application;
+import de.willuhn.jameica.system.OperationCanceledException;
 import de.willuhn.logging.Logger;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
@@ -65,6 +66,11 @@ public class LastschriftExecute implements Action
 				if (!((Boolean)d.open()).booleanValue())
 					return;
 			}
+			catch (OperationCanceledException oce)
+			{
+			  Logger.info(oce.getMessage());
+			  return;
+			}
 			catch (Exception e)
 			{
 				Logger.error("error while showing confirm dialog",e);
@@ -101,7 +107,10 @@ public class LastschriftExecute implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.7  2007-07-04 09:16:24  willuhn
+ * Revision 1.8  2011-05-11 10:05:32  willuhn
+ * @N OCE fangen
+ *
+ * Revision 1.7  2007/07/04 09:16:24  willuhn
  * @B Aktuelle View nach Ausfuehrung eines HBCI-Jobs nur noch dann aktualisieren, wenn sie sich zwischenzeitlich nicht geaendert hat
  *
  * Revision 1.6  2005/07/26 23:57:18  web0
