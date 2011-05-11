@@ -352,7 +352,7 @@ public class ChipTANDialog extends TANDialog
       }
       catch (Exception e)
       {
-        Logger.error("unable to check flicker code " + this.code,e);
+        Logger.error("unparsable flicker code " + this.code,e);
         return false;
       }
     }
@@ -362,6 +362,9 @@ public class ChipTANDialog extends TANDialog
 
 /**********************************************************************
  * $Log$
+ * Revision 1.4  2011-05-11 08:33:54  willuhn
+ * *** empty log message ***
+ *
  * Revision 1.3  2011-05-10 11:16:55  willuhn
  * @C Fallback auf normalen TAN-Dialog, wenn der Flicker-Code nicht lesbar ist
  *
