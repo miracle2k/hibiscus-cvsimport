@@ -59,6 +59,11 @@ public class HBCIProperties
   public final static String HBCI_BLZ_VALIDCHARS = settings.getString("hbci.blz.validchars","0123456789"); 
 
   /**
+   * Liste der in der BZÜ-Pruefziffer erlaubten Zeichen.
+   */
+  public final static String HBCI_BZU_VALIDCHARS = settings.getString("hbci.bzu.validchars","0123456789"); 
+
+  /**
    * BUGZILLA 280
    * Liste der in Kontonummern erlaubten Zeichen.
    */
@@ -350,6 +355,9 @@ public class HBCIProperties
 
 /**********************************************************************
  * $Log$
+ * Revision 1.44  2011-05-11 16:23:57  willuhn
+ * @N BUGZILLA 591
+ *
  * Revision 1.43  2011-05-10 11:51:15  willuhn
  * @R Marker entfernt
  *

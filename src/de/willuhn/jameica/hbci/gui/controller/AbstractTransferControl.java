@@ -187,7 +187,7 @@ public abstract class AbstractTransferControl extends AbstractControl
 	 * @return Eingabe-Feld.
 	 * @throws RemoteException
 	 */
-	public Input getZweck() throws RemoteException
+	public TextInput getZweck() throws RemoteException
 	{
 		if (zweck != null)
 			return zweck;
@@ -450,6 +450,9 @@ public abstract class AbstractTransferControl extends AbstractControl
 
 /**********************************************************************
  * $Log$
+ * Revision 1.59  2011-05-11 16:23:57  willuhn
+ * @N BUGZILLA 591
+ *
  * Revision 1.58  2011-04-07 17:52:07  willuhn
  * @N BUGZILLA 1014
  *

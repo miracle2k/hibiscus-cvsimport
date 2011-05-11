@@ -94,7 +94,7 @@ public class TextSchluessel
   /**
    * Set von zulaessigen Textschluesseln fuer Ueberweisungen.
    */
-  public final static String[] SET_UEB = new String[]{TS_UEB,TS_LOHN,TS_VL,TS_RUECKUEB};
+  public final static String[] SET_UEB = new String[]{TS_UEB,TS_LOHN,TS_VL,TS_RUECKUEB,TS_BZU};
 
   private final static List<TextSchluessel> list = new ArrayList<TextSchluessel>();
   
@@ -215,6 +215,9 @@ public class TextSchluessel
 
 /*********************************************************************
  * $Log$
+ * Revision 1.5  2011-05-11 16:23:57  willuhn
+ * @N BUGZILLA 591
+ *
  * Revision 1.4  2011-05-10 11:41:30  willuhn
  * @N Text-Schluessel als Konstanten definiert - Teil aus dem Patch von Thomas vom 07.12.2010
  *
