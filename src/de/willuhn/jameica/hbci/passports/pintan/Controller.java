@@ -362,6 +362,11 @@ public class Controller extends AbstractControl {
       UsedTanDialog d = new UsedTanDialog(getConfig());
       d.open();
     }
+    catch (OperationCanceledException oce)
+    {
+      Logger.info(oce.getMessage());
+      return;
+    }
     catch (Exception e)
     {
       Logger.error("error while loading used TANs",e);
@@ -526,6 +531,9 @@ public class Controller extends AbstractControl {
 
 /**********************************************************************
  * $Log$
+ * Revision 1.8  2011-05-11 10:20:28  willuhn
+ * @N OCE fangen
+ *
  * Revision 1.7  2011-05-09 09:35:15  willuhn
  * @N BUGZILLA 827
  *

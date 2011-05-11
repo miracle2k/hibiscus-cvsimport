@@ -95,7 +95,8 @@ public class AddressInput implements Input
         }
         catch (OperationCanceledException oce)
         {
-          // ignore
+          Logger.info(oce.getMessage());
+          return;
         }
         catch (Exception e)
         {
@@ -443,6 +444,9 @@ public class AddressInput implements Input
 
 /**********************************************************************
  * $Log$
+ * Revision 1.10  2011-05-11 10:20:29  willuhn
+ * @N OCE fangen
+ *
  * Revision 1.9  2011-05-11 08:42:32  willuhn
  * @N setData(String,Object) und getData(String) in Input. Damit koennen generische Nutzdaten im Eingabefeld gespeichert werden (siehe SWT-Widget)
  *

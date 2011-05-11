@@ -18,6 +18,7 @@ import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.gui.dialogs.ExportDialog;
 import de.willuhn.jameica.hbci.rmi.UmsatzTyp;
 import de.willuhn.jameica.system.Application;
+import de.willuhn.jameica.system.OperationCanceledException;
 import de.willuhn.logging.Logger;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
@@ -60,6 +61,11 @@ public class UmsatzTypExport implements Action
       ExportDialog d = new ExportDialog(u, UmsatzTyp.class);
       d.open();
 		}
+    catch (OperationCanceledException oce)
+    {
+      Logger.info(oce.getMessage());
+      return;
+    }
 		catch (ApplicationException ae)
 		{
 			throw ae;
@@ -76,7 +82,10 @@ public class UmsatzTypExport implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2008-02-13 23:44:27  willuhn
+ * Revision 1.2  2011-05-11 10:20:29  willuhn
+ * @N OCE fangen
+ *
+ * Revision 1.1  2008/02/13 23:44:27  willuhn
  * @R Hibiscus-Eigenformat (binaer-serialisierte Objekte) bei Export und Import abgeklemmt
  * @N Import und Export von Umsatz-Kategorien im XML-Format
  * @B Verzaehler bei XML-Import

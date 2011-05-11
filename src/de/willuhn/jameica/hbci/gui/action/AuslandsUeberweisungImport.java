@@ -44,7 +44,8 @@ public class AuslandsUeberweisungImport implements Action
 		}
     catch (OperationCanceledException oce)
     {
-      // ignore
+      Logger.info(oce.getMessage());
+      return;
     }
 		catch (ApplicationException ae)
 		{
@@ -62,7 +63,10 @@ public class AuslandsUeberweisungImport implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2009-10-20 23:12:58  willuhn
+ * Revision 1.3  2011-05-11 10:20:28  willuhn
+ * @N OCE fangen
+ *
+ * Revision 1.2  2009/10/20 23:12:58  willuhn
  * @N Support fuer SEPA-Ueberweisungen
  * @N Konten um IBAN und BIC erweitert
  *

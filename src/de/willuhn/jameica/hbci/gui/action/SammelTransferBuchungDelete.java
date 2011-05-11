@@ -20,6 +20,7 @@ import de.willuhn.jameica.gui.dialogs.YesNoDialog;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.rmi.SammelTransferBuchung;
 import de.willuhn.jameica.system.Application;
+import de.willuhn.jameica.system.OperationCanceledException;
 import de.willuhn.logging.Logger;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
@@ -59,6 +60,11 @@ public class SammelTransferBuchungDelete implements Action
 				if (!choice.booleanValue())
 					return;
 			}
+	    catch (OperationCanceledException oce)
+	    {
+	      Logger.info(oce.getMessage());
+	      return;
+	    }
 			catch (Exception e)
 			{
 				Logger.error("error while deleting buchung",e);
@@ -80,7 +86,10 @@ public class SammelTransferBuchungDelete implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2005-09-30 00:08:50  willuhn
+ * Revision 1.2  2011-05-11 10:20:28  willuhn
+ * @N OCE fangen
+ *
+ * Revision 1.1  2005/09/30 00:08:50  willuhn
  * @N SammelUeberweisungen (merged with SammelLastschrift)
  *
  **********************************************************************/

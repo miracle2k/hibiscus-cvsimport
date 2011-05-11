@@ -18,6 +18,7 @@ import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.gui.dialogs.ExportDialog;
 import de.willuhn.jameica.hbci.rmi.Umsatz;
 import de.willuhn.jameica.system.Application;
+import de.willuhn.jameica.system.OperationCanceledException;
 import de.willuhn.logging.Logger;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
@@ -59,6 +60,11 @@ public class UmsatzExport implements Action
       ExportDialog d = new ExportDialog(u, Umsatz.class);
       d.open();
 		}
+    catch (OperationCanceledException oce)
+    {
+      Logger.info(oce.getMessage());
+      return;
+    }
 		catch (ApplicationException ae)
 		{
 			throw ae;
@@ -75,7 +81,10 @@ public class UmsatzExport implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.3  2006-01-18 00:51:01  willuhn
+ * Revision 1.4  2011-05-11 10:20:28  willuhn
+ * @N OCE fangen
+ *
+ * Revision 1.3  2006/01/18 00:51:01  willuhn
  * @B bug 65
  *
  * Revision 1.2  2005/07/04 12:41:39  web0

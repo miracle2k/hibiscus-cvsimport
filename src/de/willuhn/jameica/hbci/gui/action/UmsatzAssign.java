@@ -75,6 +75,7 @@ public class UmsatzAssign implements Action
     }
     catch (OperationCanceledException oce)
     {
+      Logger.info(oce.getMessage());
       return;
     }
     catch (ApplicationException ae)
@@ -136,6 +137,9 @@ public class UmsatzAssign implements Action
 
 /**********************************************************************
  * $Log$
+ * Revision 1.11  2011-05-11 10:20:28  willuhn
+ * @N OCE fangen
+ *
  * Revision 1.10  2011-05-06 09:04:16  willuhn
  * *** empty log message ***
  *

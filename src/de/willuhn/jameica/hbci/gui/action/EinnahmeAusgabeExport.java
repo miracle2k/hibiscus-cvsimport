@@ -18,6 +18,7 @@ import de.willuhn.jameica.hbci.gui.dialogs.ExportDialog;
 import de.willuhn.jameica.hbci.server.EinnahmeAusgabe;
 import de.willuhn.jameica.messaging.StatusBarMessage;
 import de.willuhn.jameica.system.Application;
+import de.willuhn.jameica.system.OperationCanceledException;
 import de.willuhn.logging.Logger;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
@@ -43,6 +44,11 @@ public class EinnahmeAusgabeExport implements Action
       ExportDialog d = new ExportDialog((EinnahmeAusgabe[]) context,EinnahmeAusgabe.class);
       d.open();
     }
+    catch (OperationCanceledException oce)
+    {
+      Logger.info(oce.getMessage());
+      return;
+    }
     catch (ApplicationException ae)
     {
       throw ae;
@@ -58,6 +64,9 @@ public class EinnahmeAusgabeExport implements Action
 
 /*******************************************************************************
  * $Log$
+ * Revision 1.5  2011-05-11 10:20:28  willuhn
+ * @N OCE fangen
+ *
  * Revision 1.4  2010-08-24 17:38:04  willuhn
  * @N BUGZILLA 896
  *

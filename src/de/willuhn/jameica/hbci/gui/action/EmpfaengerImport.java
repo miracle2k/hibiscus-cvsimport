@@ -45,7 +45,8 @@ public class EmpfaengerImport implements Action
 		}
     catch (OperationCanceledException oce)
     {
-      // ignore
+      Logger.info(oce.getMessage());
+      return;
     }
 		catch (ApplicationException ae)
 		{
@@ -63,7 +64,10 @@ public class EmpfaengerImport implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2007-04-23 18:07:14  willuhn
+ * Revision 1.3  2011-05-11 10:20:29  willuhn
+ * @N OCE fangen
+ *
+ * Revision 1.2  2007/04/23 18:07:14  willuhn
  * @C Redesign: "Adresse" nach "HibiscusAddress" umbenannt
  * @C Redesign: "Transfer" nach "HibiscusTransfer" umbenannt
  * @C Redesign: Neues Interface "Transfer", welches von Ueberweisungen, Lastschriften UND Umsaetzen implementiert wird

@@ -267,7 +267,8 @@ public class KontoControl extends AbstractControl {
         }
         catch (OperationCanceledException oce)
         {
-          // ignore
+          Logger.info(oce.getMessage());
+          return;
         }
         catch (ApplicationException ae)
         {
@@ -586,7 +587,8 @@ public class KontoControl extends AbstractControl {
 		}
     catch (OperationCanceledException oce)
     {
-      // ignore
+      Logger.info(oce.getMessage());
+      return;
     }
 		catch (ApplicationException ae)
 		{
@@ -726,6 +728,9 @@ public class KontoControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
+ * Revision 1.98  2011-05-11 10:20:29  willuhn
+ * @N OCE fangen
+ *
  * Revision 1.97  2011-04-29 11:38:57  willuhn
  * @N Konfiguration der HBCI-Medien ueberarbeitet. Es gibt nun direkt in der Navi einen Punkt "Bank-Zugaenge", in der alle Medien angezeigt werden.
  *

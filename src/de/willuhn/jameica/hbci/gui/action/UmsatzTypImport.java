@@ -45,7 +45,8 @@ public class UmsatzTypImport implements Action
 		}
     catch (OperationCanceledException oce)
     {
-      // ignore
+      Logger.info(oce.getMessage());
+      return;
     }
 		catch (ApplicationException ae)
 		{
@@ -63,7 +64,10 @@ public class UmsatzTypImport implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2008-02-13 23:44:27  willuhn
+ * Revision 1.2  2011-05-11 10:20:28  willuhn
+ * @N OCE fangen
+ *
+ * Revision 1.1  2008/02/13 23:44:27  willuhn
  * @R Hibiscus-Eigenformat (binaer-serialisierte Objekte) bei Export und Import abgeklemmt
  * @N Import und Export von Umsatz-Kategorien im XML-Format
  * @B Verzaehler bei XML-Import

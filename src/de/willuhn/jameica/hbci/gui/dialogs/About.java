@@ -32,6 +32,7 @@ import de.willuhn.jameica.hbci.rmi.Version;
 import de.willuhn.jameica.messaging.StatusBarMessage;
 import de.willuhn.jameica.plugin.AbstractPlugin;
 import de.willuhn.jameica.system.Application;
+import de.willuhn.jameica.system.OperationCanceledException;
 import de.willuhn.logging.Logger;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
@@ -95,6 +96,11 @@ public class About extends AbstractDialog
         {
           new DebugDialog(DebugDialog.POSITION_CENTER).open();
         }
+        catch (OperationCanceledException oce)
+        {
+          Logger.info(oce.getMessage());
+          return;
+        }
         catch (Exception e)
         {
           Logger.error("unable to display debug dialog",e);
@@ -132,6 +138,9 @@ public class About extends AbstractDialog
 
 /**********************************************************************
  * $Log$
+ * Revision 1.15  2011-05-11 10:20:29  willuhn
+ * @N OCE fangen
+ *
  * Revision 1.14  2010-10-29 09:35:32  willuhn
  * *** empty log message ***
  *

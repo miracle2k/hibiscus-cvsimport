@@ -44,7 +44,8 @@ public class KontoImport implements Action
 		}
     catch (OperationCanceledException oce)
     {
-      // ignore
+      Logger.info(oce.getMessage());
+      return;
     }
 		catch (ApplicationException ae)
 		{
@@ -62,7 +63,10 @@ public class KontoImport implements Action
 
 /**********************************************************************
  * $Log$
- * Revision 1.1  2009-07-09 17:08:02  willuhn
+ * Revision 1.2  2011-05-11 10:20:29  willuhn
+ * @N OCE fangen
+ *
+ * Revision 1.1  2009/07/09 17:08:02  willuhn
  * @N BUGZILLA #740
  *
  **********************************************************************/
