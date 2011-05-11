@@ -152,7 +152,7 @@ public class PrintSupportUmsatzList extends AbstractPrintSupport
         // Liste der Umsaetze im Konto
         for (Umsatz u:umsaetze)
         {
-          String usage = VerwendungszweckUtil.merge(u.getZweck(),u.getZweck2(),(String)u.getAttribute("zweck3"));
+          String usage = VerwendungszweckUtil.toString(u,"\n");
           StringBuffer sb = new StringBuffer();
           {
             String name = u.getGegenkontoName();
@@ -205,6 +205,9 @@ public class PrintSupportUmsatzList extends AbstractPrintSupport
 
 /**********************************************************************
  * $Log$
+ * Revision 1.5  2011-05-11 09:12:07  willuhn
+ * @C Merge-Funktionen fuer den Verwendungszweck ueberarbeitet
+ *
  * Revision 1.4  2011-04-29 07:44:56  willuhn
  * @B Siehe http://www.willuhn.de/blog/index.php?/archives/553-Hibiscus-Druck-Support.html#c1293
  *

@@ -102,7 +102,7 @@ public class PrintSupportDauerauftrag extends AbstractPrintSupport
       
       // Verwendungszweck
       {
-        String usage = VerwendungszweckUtil.merge(a.getZweck(),a.getZweck2(),(String)a.getAttribute("zweck3"));
+        String usage = VerwendungszweckUtil.toString(a,"\n");
         table.add(new TextPrint(i18n.tr("Verwendungszweck"),fontNormal));
         table.add(new TextPrint(notNull(usage),fontNormal));
       }
@@ -175,6 +175,9 @@ public class PrintSupportDauerauftrag extends AbstractPrintSupport
 
 /**********************************************************************
  * $Log$
+ * Revision 1.3  2011-05-11 09:12:06  willuhn
+ * @C Merge-Funktionen fuer den Verwendungszweck ueberarbeitet
+ *
  * Revision 1.2  2011-04-13 17:35:46  willuhn
  * @N Druck-Support fuer Kontoauszuege fehlte noch
  *

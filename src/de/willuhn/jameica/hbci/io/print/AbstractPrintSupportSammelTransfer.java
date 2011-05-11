@@ -138,7 +138,7 @@ public abstract class AbstractPrintSupportSammelTransfer extends AbstractPrintSu
         while (buchungen.hasNext())
         {
           SammelTransferBuchung b = (SammelTransferBuchung) buchungen.next();
-          String usage = VerwendungszweckUtil.merge(b.getZweck(),b.getZweck2(),(String)b.getAttribute("zweck3"));
+          String usage = VerwendungszweckUtil.toString(b,"\n");
 
           table.add(new TextPrint(Integer.toString(++count),fontTiny));
           table.add(new TextPrint(i18n.tr("{0}, Kto. {1}, BLZ {2}",b.getGegenkontoName(),b.getGegenkontoNummer(),b.getGegenkontoBLZ()),fontTiny));
@@ -167,6 +167,9 @@ public abstract class AbstractPrintSupportSammelTransfer extends AbstractPrintSu
 
 /**********************************************************************
  * $Log$
+ * Revision 1.4  2011-05-11 09:12:06  willuhn
+ * @C Merge-Funktionen fuer den Verwendungszweck ueberarbeitet
+ *
  * Revision 1.3  2011-05-02 11:16:44  willuhn
  * @N Ausfuehrungsdatum mit drucken
  *

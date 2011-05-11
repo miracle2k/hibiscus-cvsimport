@@ -96,7 +96,7 @@ public abstract class AbstractPrintSupportBaseUeberweisungList extends AbstractP
         TextStyle style = u.ausgefuehrt() ? typeDone : typeOpen;
         
         Konto k = u.getKonto();
-        String usage = VerwendungszweckUtil.merge(u.getZweck(),u.getZweck2(),(String)u.getAttribute("zweck3"));
+        String usage = VerwendungszweckUtil.toString(u,"\n");
         Date ausgefuehrt = u.getAusfuehrungsdatum();
         
         table.add(new TextPrint(HBCI.DATEFORMAT.format(u.getTermin()),style));
@@ -123,6 +123,9 @@ public abstract class AbstractPrintSupportBaseUeberweisungList extends AbstractP
 
 /**********************************************************************
  * $Log$
+ * Revision 1.4  2011-05-11 09:12:07  willuhn
+ * @C Merge-Funktionen fuer den Verwendungszweck ueberarbeitet
+ *
  * Revision 1.3  2011-05-02 11:16:44  willuhn
  * @N Ausfuehrungsdatum mit drucken
  *

@@ -92,7 +92,7 @@ public abstract class AbstractPrintSupportBaseUeberweisung extends AbstractPrint
       
       // Verwendungszweck
       {
-        String usage = VerwendungszweckUtil.merge(a.getZweck(),a.getZweck2(),(String)a.getAttribute("zweck3"));
+        String usage = VerwendungszweckUtil.toString(a,"\n");
         table.add(new TextPrint(i18n.tr("Verwendungszweck"),fontNormal));
         table.add(new TextPrint(notNull(usage),fontNormal));
       }
@@ -161,6 +161,9 @@ public abstract class AbstractPrintSupportBaseUeberweisung extends AbstractPrint
 
 /**********************************************************************
  * $Log$
+ * Revision 1.4  2011-05-11 09:12:06  willuhn
+ * @C Merge-Funktionen fuer den Verwendungszweck ueberarbeitet
+ *
  * Revision 1.3  2011-05-02 11:16:44  willuhn
  * @N Ausfuehrungsdatum mit drucken
  *
