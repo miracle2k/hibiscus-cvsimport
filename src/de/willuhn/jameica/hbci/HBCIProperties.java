@@ -75,6 +75,11 @@ public class HBCIProperties
   public final static int HBCI_TRANSFER_USAGE_MAXLENGTH = settings.getInt("hbci.transfer.usage.maxlength",27);
 
   /**
+   * Laenge der Pruefziffern bei BZÜ-Ueberweisung.
+   */
+  public final static int HBCI_TRANSFER_BZU_LENGTH = settings.getInt("hbci.transfer.bzu.length",13);
+
+  /**
    * Maximale Text-Laenge einer Verwendungszweck-Zeile fuer Auslandsueberweisungen.
    */
   public final static int HBCI_FOREIGNTRANSFER_USAGE_MAXLENGTH = settings.getInt("hbci.foreigntransfer.usage.maxlength",140);
@@ -355,6 +360,9 @@ public class HBCIProperties
 
 /**********************************************************************
  * $Log$
+ * Revision 1.45  2011-05-12 08:08:27  willuhn
+ * @N BUGZILLA 591
+ *
  * Revision 1.44  2011-05-11 16:23:57  willuhn
  * @N BUGZILLA 591
  *
