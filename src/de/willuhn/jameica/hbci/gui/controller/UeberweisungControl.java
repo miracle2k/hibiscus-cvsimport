@@ -135,9 +135,6 @@ public class UeberweisungControl extends AbstractBaseUeberweisungControl
       textschluessel.addListener(new Listener() {
         public void handleEvent(Event event)
         {
-          if (!textschluessel.hasChanged())
-            return;
-          
           TextSchluessel s = (TextSchluessel) textschluessel.getValue();
           updateZweck(s != null ? s.getCode() : null);
         }
@@ -252,6 +249,9 @@ public class UeberweisungControl extends AbstractBaseUeberweisungControl
 
 /**********************************************************************
  * $Log$
+ * Revision 1.53  2011-05-13 07:40:11  willuhn
+ * *** empty log message ***
+ *
  * Revision 1.52  2011-05-12 08:08:27  willuhn
  * @N BUGZILLA 591
  *
