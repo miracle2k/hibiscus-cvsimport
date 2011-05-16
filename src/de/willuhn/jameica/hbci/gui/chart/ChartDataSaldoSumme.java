@@ -39,17 +39,27 @@ public class ChartDataSaldoSumme extends AbstractChartDataSaldo
   public void add(List<Saldo> data)
   {
     if (this.data == null)
+      this.data = new ArrayList<Saldo>(data.size());
+
+    boolean first = this.data.size() == 0;
+    
+    // Per Definition ist die Anzahl der Elemente immer gleich
+    for (int i=0;i<data.size();++i)
     {
-      this.data = new ArrayList<Saldo>();
-      this.data.addAll(data);
-    }
-    else
-    {
-      // Per Definition ist die Anzahl der Elemente immer gleich
-      for (int i=0;i<this.data.size();++i)
+      Saldo saldo = data.get(i);
+
+      Saldo sum = null;
+      if (first)
       {
-        Saldo s = this.data.get(i);
-        s.setSaldo(s.getSaldo() + data.get(i).getSaldo());
+        // BUGZILLA 1044: Wir duerfen nicht die Saldo-Objekte von draussen
+        // verwenden, weil wir sonst auf Referenzen arbeiten, die nicht uns gehoeren
+        sum = new Saldo(saldo.getDatum(),saldo.getSaldo());
+        this.data.add(i,sum);
+      }
+      else
+      {
+        sum = this.data.get(i);
+        sum.setSaldo(sum.getSaldo() + saldo.getSaldo());
       }
     }
   }
@@ -66,6 +76,9 @@ public class ChartDataSaldoSumme extends AbstractChartDataSaldo
 
 /*********************************************************************
  * $Log$
+ * Revision 1.2  2011-05-16 08:44:08  willuhn
+ * @B BUGZILLA 1044
+ *
  * Revision 1.1  2010-08-12 17:12:32  willuhn
  * @N Saldo-Chart komplett ueberarbeitet (Daten wurden vorher mehrmals geladen, Summen-Funktion, Anzeige mehrerer Konten, Durchschnitt ueber mehrere Konten, Bugfixing, echte "Homogenisierung" der Salden via SaldoFinder)
  *
