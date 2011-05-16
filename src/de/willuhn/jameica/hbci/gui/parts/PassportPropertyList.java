@@ -47,6 +47,9 @@ public class PassportPropertyList implements Part
 {
   private final static I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
+  private final static String PREFIX_BPD = "BPD";
+  private final static String PREFIX_UPD = "UPD";
+  
   private HBCIPassport passport = null;
   private List<Value> list      = new ArrayList<Value>();
   private PropertyTable table   = null;
@@ -69,8 +72,8 @@ public class PassportPropertyList implements Part
   {
     Container container = new SimpleContainer(parent);
 
-    this.list.addAll(init("BPD",this.passport.getBPD()));
-    this.list.addAll(init("UPD",this.passport.getUPD()));
+    this.list.addAll(init(PREFIX_BPD,this.passport.getBPD()));
+    this.list.addAll(init(PREFIX_UPD,this.passport.getUPD()));
 
     this.search = new TextInput(null);
     this.search.setName(i18n.tr("Suche"));
@@ -79,6 +82,21 @@ public class PassportPropertyList implements Part
     
     this.table = new PropertyTable();
     this.table.paint(parent);
+  }
+  
+  /**
+   * Loescht alle BPD aus der Tabelle.
+   */
+  public synchronized void clearBPD()
+  {
+    List<Value> newList = new ArrayList<Value>();
+    for (Value value:this.list)
+    {
+      if (!PREFIX_BPD.equals(value.prefix))
+        newList.add(value);
+    }
+    this.list = newList;
+    reload();
   }
   
   /**
@@ -267,7 +285,10 @@ public class PassportPropertyList implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.2  2009-06-29 09:17:11  willuhn
+ * Revision 1.3  2011-05-16 09:55:29  willuhn
+ * @N Funktion zum Loeschen der BPD
+ *
+ * Revision 1.2  2009/06/29 09:17:11  willuhn
  * @B NPE
  *
  * Revision 1.1  2009/06/16 15:34:19  willuhn
