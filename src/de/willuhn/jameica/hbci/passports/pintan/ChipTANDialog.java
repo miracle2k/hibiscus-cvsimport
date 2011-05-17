@@ -248,7 +248,7 @@ public class ChipTANDialog extends TANDialog
       if (s == null || s.length() == 0)
         throw new ApplicationException(i18n.tr("Kein Flicker-Code angegeben"));
 
-      this.code = s.toUpperCase().replaceAll("[^A-F0-9]","");
+      this.code = s.toUpperCase();
 
       if (!this.check())
         throw new ApplicationException(i18n.tr("Flicker-Code nicht lesbar"));
@@ -362,6 +362,9 @@ public class ChipTANDialog extends TANDialog
 
 /**********************************************************************
  * $Log$
+ * Revision 1.5  2011-05-17 23:37:22  willuhn
+ * @C Wir duerfen nicht einfach Zeichen entfernen
+ *
  * Revision 1.4  2011-05-11 08:33:54  willuhn
  * *** empty log message ***
  *
