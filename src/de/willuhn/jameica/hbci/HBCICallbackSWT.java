@@ -69,6 +69,7 @@ public class HBCICallbackSWT extends AbstractHibiscusHBCICallback
     String type = null;
   	switch (level)
   	{
+  	  case HBCIUtils.LOG_INTERN:
   		case HBCIUtils.LOG_DEBUG2:
 			case HBCIUtils.LOG_DEBUG:
   			Logger.debug(msg);
@@ -509,6 +510,9 @@ public class HBCICallbackSWT extends AbstractHibiscusHBCICallback
 
 /**********************************************************************
  * $Log$
+ * Revision 1.68  2011-05-18 09:49:45  willuhn
+ * @N Log-Level "INTERN" hinzugefuegt
+ *
  * Revision 1.67  2010-07-22 22:36:24  willuhn
  * @N Code-Cleanup
  *
