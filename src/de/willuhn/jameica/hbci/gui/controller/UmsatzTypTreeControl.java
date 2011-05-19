@@ -27,7 +27,6 @@ import de.willuhn.jameica.gui.AbstractControl;
 import de.willuhn.jameica.gui.AbstractView;
 import de.willuhn.jameica.gui.input.DateInput;
 import de.willuhn.jameica.gui.input.Input;
-import de.willuhn.jameica.gui.input.SelectInput;
 import de.willuhn.jameica.gui.parts.TreePart;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.gui.filter.KontoFilter;
@@ -50,7 +49,7 @@ public class UmsatzTypTreeControl extends AbstractControl
 {
   private final static I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
-  private SelectInput kontoAuswahl = null;
+  private KontoInput kontoAuswahl  = null;
   private DateInput start          = null;
   private DateInput end            = null;
   
@@ -87,6 +86,7 @@ public class UmsatzTypTreeControl extends AbstractControl
       return this.kontoAuswahl;
     
     this.kontoAuswahl = new KontoInput(null,KontoFilter.ALL);
+    this.kontoAuswahl.setRememberSelection("auswertungen.umsatztree");
     this.kontoAuswahl.setPleaseChoose(i18n.tr("<Alle Konten>"));
     return this.kontoAuswahl;
   }
@@ -334,6 +334,9 @@ public class UmsatzTypTreeControl extends AbstractControl
 
 /*******************************************************************************
  * $Log$
+ * Revision 1.18  2011-05-19 08:41:53  willuhn
+ * @N BUGZILLA 1038 - generische Loesung
+ *
  * Revision 1.17  2011-04-29 07:41:56  willuhn
  * @N BUGZILLA 781
  *
