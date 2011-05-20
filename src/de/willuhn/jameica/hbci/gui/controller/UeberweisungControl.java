@@ -82,7 +82,7 @@ public class UeberweisungControl extends AbstractBaseUeberweisungControl
   {
     if (this.typ != null)
       return this.typ;
-    Ueberweisung u = (Ueberweisung) getTransfer();
+    final Ueberweisung u = (Ueberweisung) getTransfer();
     
     List<Typ> list = new ArrayList<Typ>();
     list.add(new Typ(false,false));
@@ -93,6 +93,26 @@ public class UeberweisungControl extends AbstractBaseUeberweisungControl
     this.typ.setName(i18n.tr("Auftragstyp"));
     this.typ.setAttribute("name");
     this.typ.setEnabled(!u.ausgefuehrt());
+    this.typ.addListener(new Listener() {
+      public void handleEvent(Event event)
+      {
+        // Wir muessen die Entscheidung, ob es eine Termin-Ueberweisung ist,
+        // sofort im Objekt speichern, denn die Information wird von
+        // "getTermin()" gebraucht, um zu erkennen, ob der Auftrag faellig ist
+        try
+        {
+          Typ t = (Typ) getTyp().getValue();
+          u.setTerminUeberweisung(t.termin);
+
+          // Kommentar vom Termin-Eingabefeld aktualisieren.
+          getTermin().updateComment();
+        }
+        catch (Exception e)
+        {
+          Logger.error("unable to set flag",e);
+        }
+      }
+    });
     return this.typ;
   }
   
@@ -249,6 +269,9 @@ public class UeberweisungControl extends AbstractBaseUeberweisungControl
 
 /**********************************************************************
  * $Log$
+ * Revision 1.54  2011-05-20 16:22:31  willuhn
+ * @N Termin-Eingabefeld in eigene Klasse ausgelagert (verhindert duplizierten Code) - bessere Kommentare
+ *
  * Revision 1.53  2011-05-13 07:40:11  willuhn
  * *** empty log message ***
  *

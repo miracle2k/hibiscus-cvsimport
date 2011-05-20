@@ -151,7 +151,7 @@ public class SynchronizeOptionsDialog extends AbstractDialog
     if (this.syncUeb == null)
     {
       this.syncUeb = new CheckboxInput(options.getSyncUeberweisungen());
-      this.syncUeb.setName(i18n.tr("Überfällige Überweisungen absenden"));
+      this.syncUeb.setName(i18n.tr("Fällige Überweisungen absenden"));
     }
     return this.syncUeb;
   }
@@ -165,7 +165,7 @@ public class SynchronizeOptionsDialog extends AbstractDialog
     if (this.syncLast == null)
     {
       this.syncLast = new CheckboxInput(options.getSyncLastschriften());
-      this.syncLast.setName(i18n.tr("Überfällige Lastschriften einziehen"));
+      this.syncLast.setName(i18n.tr("Fällige Lastschriften einziehen"));
     }
     return this.syncLast;
   }
@@ -193,7 +193,7 @@ public class SynchronizeOptionsDialog extends AbstractDialog
     if (this.syncAueb == null)
     {
       this.syncAueb = new CheckboxInput(options.getSyncAuslandsUeberweisungen());
-      this.syncAueb.setName(i18n.tr("Überfällige SEPA-Überweisungen absenden"));
+      this.syncAueb.setName(i18n.tr("Fällige SEPA-Überweisungen absenden"));
     }
     return this.syncAueb;
   }
@@ -226,6 +226,9 @@ public class SynchronizeOptionsDialog extends AbstractDialog
 
 /*********************************************************************
  * $Log$
+ * Revision 1.11  2011-05-20 16:22:31  willuhn
+ * @N Termin-Eingabefeld in eigene Klasse ausgelagert (verhindert duplizierten Code) - bessere Kommentare
+ *
  * Revision 1.10  2011-04-29 12:13:57  willuhn
  * @N GUI-Polish
  *
