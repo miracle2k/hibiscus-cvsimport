@@ -233,7 +233,8 @@ public class Settings
    */
   public static boolean getStorePin()
   {
-    return Application.getStartupParams().getPassword() == null && getCachePin() && settings.getBoolean("storepin",false);
+    return false;
+    // return Application.getStartupParams().getPassword() == null && getCachePin() && settings.getBoolean("storepin",false);
   }
 
   /**
@@ -439,6 +440,9 @@ public class Settings
 
 /*********************************************************************
  * $Log$
+ * Revision 1.66  2011-05-23 14:53:26  willuhn
+ * @R wieder deaktiviert - wegen diesem arroganten Schnoesel hier: http://www.onlinebanking-forum.de/phpBB2/viewtopic.php?p=75512#75512
+ *
  * Revision 1.65  2011-05-23 12:57:38  willuhn
  * @N optionales Speichern der PINs im Wallet. Ich announce das aber nicht. Ich hab das nur eingebaut, weil mir das Gejammer der User auf den Nerv ging und ich nicht will, dass sich User hier selbst irgendwelche Makros basteln, um die PIN dennoch zu speichern
  *
