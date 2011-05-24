@@ -139,7 +139,7 @@ public class DialogFactory
     }
 
     // Wenn wir noch nichts im Cache haben, schauen wir im Wallet - wenn das erlaubt ist
-    if (data == null && Settings.getStorePin())
+    if (data == null && Settings.getStorePin() && (passport instanceof HBCIPassportPinTan))
     {
       String s = (String) Settings.getWallet().get(key);
       if (s != null)
@@ -278,6 +278,9 @@ public class DialogFactory
 
 /**********************************************************************
  * $Log$
+ * Revision 1.39  2011-05-24 10:45:32  willuhn
+ * *** empty log message ***
+ *
  * Revision 1.38  2011-05-24 09:06:11  willuhn
  * @C Refactoring und Vereinfachung von HBCI-Callbacks
  *
