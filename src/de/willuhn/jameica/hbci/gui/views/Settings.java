@@ -63,7 +63,7 @@ public class Settings extends AbstractView
     TabGroup system = new TabGroup(getTabFolder(),i18n.tr("Grundeinstellungen"));
 		system.addCheckbox(control.getOnlineMode(),i18n.tr("Dauerhafte Internetverbindung, Aufforderung zum Verbinden nicht erforderlich"));
     system.addCheckbox(control.getCachePin(),i18n.tr("PIN-Eingaben für die aktuelle Sitzung zwischenspeichern"));
-    // system.addCheckbox(control.getStorePin(),i18n.tr("PIN-Eingaben permanent speichern"));
+    // system.addCheckbox(control.getStorePin(),i18n.tr("PIN-Eingaben permanent speichern (nur bei PIN/TAN)"));
     system.addCheckbox(control.getCancelSyncOnError(),i18n.tr("HBCI-Synchronisierung bei Fehler abbrechen"));
     system.addCheckbox(control.getDecimalGrouping(),i18n.tr("Tausender-Trennzeichen bei Geld-Beträgen anzeigen"));
     system.addCheckbox(control.getKontoCheck(),i18n.tr("Kontonummern und Bankleitzahlen mittels Prüfsumme testen"));
@@ -148,6 +148,9 @@ public class Settings extends AbstractView
 
 /**********************************************************************
  * $Log$
+ * Revision 1.55  2011-05-24 09:06:11  willuhn
+ * @C Refactoring und Vereinfachung von HBCI-Callbacks
+ *
  * Revision 1.54  2011-05-23 14:48:04  willuhn
  * @R wieder deaktiviert - wegen diesem arroganten Schnoesel hier: http://www.onlinebanking-forum.de/phpBB2/viewtopic.php?p=75512#75512
  *

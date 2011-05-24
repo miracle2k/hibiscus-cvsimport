@@ -24,6 +24,7 @@ import org.kapott.hbci.passport.HBCIPassport;
 
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.HBCICallbackSWT;
+import de.willuhn.jameica.hbci.gui.DialogFactory;
 import de.willuhn.jameica.hbci.passport.PassportHandle;
 import de.willuhn.jameica.hbci.passports.ddv.DDVConfig;
 import de.willuhn.jameica.hbci.passports.ddv.DDVConfigFactory;
@@ -246,6 +247,12 @@ public class PassportHandleImpl extends UnicastRemoteObject implements PassportH
     
     switch (reason) {
     
+      case HBCICallback.NEED_SOFTPIN:
+      {
+        retData.replace(0,retData.length(),DialogFactory.getPIN(passport));
+        return true;
+      }
+
       case HBCICallback.NEED_CHIPCARD:
         return handleCallback(i18n.tr("Bitte legen Sie die Chipkarte in das Lesegerät"),true,settings.getBoolean("waitfor.card.insert",false));
 
@@ -299,6 +306,9 @@ public class PassportHandleImpl extends UnicastRemoteObject implements PassportH
 
 /**********************************************************************
  * $Log$
+ * Revision 1.13  2011-05-24 09:06:11  willuhn
+ * @C Refactoring und Vereinfachung von HBCI-Callbacks
+ *
  * Revision 1.12  2010-10-27 10:25:10  willuhn
  * @C Unnoetiges Fangen und Weiterwerfen von Exceptions
  *
