@@ -32,6 +32,7 @@ import de.willuhn.jameica.gui.util.SWTUtil;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.HBCIProperties;
 import de.willuhn.jameica.hbci.Settings;
+import de.willuhn.jameica.hbci.gui.DialogFactory;
 import de.willuhn.jameica.hbci.gui.action.PassportDetail;
 import de.willuhn.jameica.hbci.gui.action.UmsatzTypNew;
 import de.willuhn.jameica.hbci.gui.parts.PassportList;
@@ -281,12 +282,20 @@ public class SettingsControl extends AbstractControl
 		Settings.setUeberfaelligForeground(uf.getRGB());
 
 		Settings.setOnlineMode(((Boolean)getOnlineMode().getValue()).booleanValue());
-    Settings.setCachePin(((Boolean)getCachePin().getValue()).booleanValue());
-    Settings.setStorePin(((Boolean)getStorePin().getValue()).booleanValue());
     Settings.setDecimalGrouping(((Boolean)getDecimalGrouping().getValue()).booleanValue());
     Settings.setKontoCheck(((Boolean)getKontoCheck().getValue()).booleanValue());
     Settings.setCancelSyncOnError(((Boolean)getCancelSyncOnError().getValue()).booleanValue());
-		
+
+    boolean storeEnabled = ((Boolean)getStorePin().getValue()).booleanValue();
+    boolean cacheEnabled = ((Boolean)getCachePin().getValue()).booleanValue();
+    
+    Settings.setCachePin(cacheEnabled);
+    Settings.setStorePin(storeEnabled);
+
+    // Cache und Store leeren, wenn das Feature deaktiviert wurde
+    if (!cacheEnabled) DialogFactory.clearPINCache();
+    if (!storeEnabled) DialogFactory.clearPINStore();
+    
     Double limit = (Double) getUeberweisungLimit().getValue();
 		Settings.setUeberweisungLimit(limit == null ? 0.0d : limit.doubleValue());
 
@@ -297,6 +306,9 @@ public class SettingsControl extends AbstractControl
 
 /**********************************************************************
  * $Log$
+ * Revision 1.59  2011-05-25 08:53:31  willuhn
+ * @N Cache und Store leeren, wenn die Features deaktiviert wurden
+ *
  * Revision 1.58  2011-05-23 12:57:37  willuhn
  * @N optionales Speichern der PINs im Wallet. Ich announce das aber nicht. Ich hab das nur eingebaut, weil mir das Gejammer der User auf den Nerv ging und ich nicht will, dass sich User hier selbst irgendwelche Makros basteln, um die PIN dennoch zu speichern
  *
