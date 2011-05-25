@@ -12,6 +12,8 @@
  **********************************************************************/
 package de.willuhn.jameica.hbci.gui.action;
 
+import org.kapott.hbci.manager.HBCIHandler;
+
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.hbci.HBCI;
@@ -49,7 +51,8 @@ public class PassportTest implements Action
 		BackgroundTask task = new BackgroundTask() {
       public void run(final ProgressMonitor monitor) throws ApplicationException
       {
-        Target target = null;
+        HBCIHandler handler = null;
+        Target target       = null;
         try {
           monitor.setStatusText(i18n.tr("Teste Sicherheits-Medium..."));
 
@@ -72,7 +75,7 @@ public class PassportTest implements Action
             handle = ((Passport)context).getHandle();
           else
             handle = (PassportHandle) context;
-          handle.open();
+          handler = handle.open();
           handle.close(); // nein, nicht im finally, denn wenn das Oeffnen
                           // fehlschlaegt, ist nichts zum Schliessen da ;)
 
@@ -105,7 +108,7 @@ public class PassportTest implements Action
           // Wenn ein Fehler auftrat, MUSS der PIN-Cache geloescht werden. Denn falls
           // es genau deshalb fehlschlug, WEIL der User eine falsche PIN eingegeben
           // hat, kriegt er sonst keine Chance, seine Eingabe zu korrigieren
-          DialogFactory.clearPINCache();
+          DialogFactory.clearPINCache(handler != null ? handler.getPassport() : null);
           
           Application.getMessagingFactory().sendMessage(new StatusBarMessage(ae.getMessage(), StatusBarMessage.TYPE_ERROR));
           monitor.setStatus(ProgressMonitor.STATUS_ERROR);
@@ -118,7 +121,7 @@ public class PassportTest implements Action
           // Wenn ein Fehler auftrat, MUSS der PIN-Cache geloescht werden. Denn falls
           // es genau deshalb fehlschlug, WEIL der User eine falsche PIN eingegeben
           // hat, kriegt er sonst keine Chance, seine Eingabe zu korrigieren
-          DialogFactory.clearPINCache();
+          DialogFactory.clearPINCache(handler != null ? handler.getPassport() : null);
 
           // Wir entfernen das Ding vor dem Ausgeben der Fehlermeldungen.
           // die kommen sonst alle doppelt.
@@ -220,6 +223,9 @@ public class PassportTest implements Action
 
 /**********************************************************************
  * $Log$
+ * Revision 1.14  2011-05-25 10:05:49  willuhn
+ * @N Im Fehlerfall nur noch die PINs/Passwoerter der betroffenen Passports aus dem Cache loeschen. Wenn eine PIN falsch ist, muss man jetzt nicht mehr alle neu eingeben
+ *
  * Revision 1.13  2010-11-02 11:14:57  willuhn
  * @B PIN-Cache leeren, wenn beim Testen ein Fehler auftrat
  *

@@ -293,8 +293,8 @@ public class SettingsControl extends AbstractControl
     Settings.setStorePin(storeEnabled);
 
     // Cache und Store leeren, wenn das Feature deaktiviert wurde
-    if (!cacheEnabled) DialogFactory.clearPINCache();
-    if (!storeEnabled) DialogFactory.clearPINStore();
+    if (!cacheEnabled) DialogFactory.clearPINCache(null);
+    if (!storeEnabled) DialogFactory.clearPINStore(null);
     
     Double limit = (Double) getUeberweisungLimit().getValue();
 		Settings.setUeberweisungLimit(limit == null ? 0.0d : limit.doubleValue());
@@ -306,6 +306,9 @@ public class SettingsControl extends AbstractControl
 
 /**********************************************************************
  * $Log$
+ * Revision 1.60  2011-05-25 10:05:49  willuhn
+ * @N Im Fehlerfall nur noch die PINs/Passwoerter der betroffenen Passports aus dem Cache loeschen. Wenn eine PIN falsch ist, muss man jetzt nicht mehr alle neu eingeben
+ *
  * Revision 1.59  2011-05-25 08:53:31  willuhn
  * @N Cache und Store leeren, wenn die Features deaktiviert wurden
  *
