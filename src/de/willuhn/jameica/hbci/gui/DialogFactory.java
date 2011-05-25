@@ -217,6 +217,15 @@ public class DialogFactory
 
     // Wir loeschen auch die gespeicherten PINs
     // Unabhaengig davon, ob das Feature gerade aktiviert ist oder nicht.
+    // Denn ohne Cache gibts auch keinen Store.
+    clearPINStore();
+  }
+  
+  /**
+   * Loescht den permanenten Store mit den PINs.
+   */
+  public static void clearPINStore()
+  {
     try
     {
       Settings.getWallet().deleteAll("hibiscus.pin.");
@@ -278,6 +287,9 @@ public class DialogFactory
 
 /**********************************************************************
  * $Log$
+ * Revision 1.40  2011-05-25 08:56:20  willuhn
+ * *** empty log message ***
+ *
  * Revision 1.39  2011-05-24 10:45:32  willuhn
  * *** empty log message ***
  *
