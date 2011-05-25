@@ -16,7 +16,6 @@ package de.willuhn.jameica.hbci;
 import java.security.SecureRandom;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.Map;
 
 import org.eclipse.swt.SWTException;
@@ -472,6 +471,9 @@ public class HBCICallbackSWT extends AbstractHibiscusHBCICallback
 
 /**********************************************************************
  * $Log$
+ * Revision 1.71  2011-05-25 10:03:09  willuhn
+ * @R unused import
+ *
  * Revision 1.70  2011-05-25 10:02:53  willuhn
  * @C getypter Account-Cache
  *
