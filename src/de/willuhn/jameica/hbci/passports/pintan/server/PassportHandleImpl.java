@@ -272,6 +272,7 @@ public class PassportHandleImpl extends UnicastRemoteObject implements PassportH
         {
           // Wir haben einen Flicker-Code. Also zeigen wir den Flicker-Dialog statt
           // dem normalen TAN-Dialog an
+          Logger.debug("got challenge HHDuc " + hhdUc + ", trying to open chiptan dialog");
           dialog = new ChipTANDialog(config,hhdUc);
         }
         
@@ -336,6 +337,9 @@ public class PassportHandleImpl extends UnicastRemoteObject implements PassportH
 
 /**********************************************************************
  * $Log$
+ * Revision 1.12  2011-05-26 08:52:26  willuhn
+ * @N Challenge HHDuc fuer Diagnose-Zwecke loggen
+ *
  * Revision 1.11  2011-05-24 09:06:11  willuhn
  * @C Refactoring und Vereinfachung von HBCI-Callbacks
  *
