@@ -267,18 +267,21 @@ public class PassportHandleImpl extends UnicastRemoteObject implements PassportH
       {
         TANDialog dialog = null;
         
-        String hhdUc = retData.toString();
-        if (hhdUc != null && hhdUc.length() > 0)
+        String flicker = retData.toString();
+        if (flicker != null && flicker.length() > 0)
         {
           // Wir haben einen Flicker-Code. Also zeigen wir den Flicker-Dialog statt
           // dem normalen TAN-Dialog an
-          Logger.debug("got challenge HHDuc " + hhdUc + ", trying to open chiptan dialog");
-          dialog = new ChipTANDialog(config,hhdUc);
+          Logger.debug("got challenge HHDuc " + flicker + ", using optical chiptan dialog");
+          dialog = new ChipTANDialog(config,flicker);
         }
         
         // regulaerer TAN-Dialog
         if (dialog == null)
+        {
+          Logger.debug("using regular tan dialog");
           dialog = new TANDialog(config);
+        }
         
         dialog.setText(msg);
         retData.replace(0,retData.length(),(String)dialog.open());
@@ -337,6 +340,9 @@ public class PassportHandleImpl extends UnicastRemoteObject implements PassportH
 
 /**********************************************************************
  * $Log$
+ * Revision 1.13  2011-05-27 10:51:02  willuhn
+ * @N Erster Support fuer optisches chipTAN
+ *
  * Revision 1.12  2011-05-26 08:52:26  willuhn
  * @N Challenge HHDuc fuer Diagnose-Zwecke loggen
  *
