@@ -113,6 +113,11 @@ public class HBCIProperties
    */
   public final static int HBCI_BIC_MAXLENGTH = settings.getInt("hbci.bic.maxlength",11);
 
+  /**
+   * Maximale Laenge des Datentyps "ID" in der HBCI-Spec.
+   */
+  public final static int HBCI_ID_MAXLENGTH = settings.getInt("hbci.id.maxlength",30);
+
   
   // BUGZILLA #49 http://www.willuhn.de/bugzilla/show_bug.cgi?id=49
   /**
@@ -360,6 +365,9 @@ public class HBCIProperties
 
 /**********************************************************************
  * $Log$
+ * Revision 1.46  2011-05-27 11:33:23  willuhn
+ * @N BUGZILLA 1056
+ *
  * Revision 1.45  2011-05-12 08:08:27  willuhn
  * @N BUGZILLA 591
  *

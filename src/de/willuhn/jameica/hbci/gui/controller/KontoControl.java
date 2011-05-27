@@ -240,8 +240,8 @@ public class KontoControl extends AbstractControl {
   {
     if (unterkonto != null)
       return unterkonto;
-    unterkonto = new TextInput(getKonto().getUnterkonto(),HBCIProperties.HBCI_KTO_MAXLENGTH_HARD);
-    unterkonto.setValidChars(HBCIProperties.HBCI_IBAN_VALIDCHARS);
+    unterkonto = new TextInput(getKonto().getUnterkonto(),HBCIProperties.HBCI_ID_MAXLENGTH);
+    unterkonto.setValidChars(HBCIProperties.HBCI_DTAUS_VALIDCHARS);
     unterkonto.setComment(i18n.tr("Kann meist frei gelassen werden"));
     return unterkonto;
   }
@@ -728,6 +728,9 @@ public class KontoControl extends AbstractControl {
 
 /**********************************************************************
  * $Log$
+ * Revision 1.99  2011-05-27 11:33:23  willuhn
+ * @N BUGZILLA 1056
+ *
  * Revision 1.98  2011-05-11 10:20:29  willuhn
  * @N OCE fangen
  *

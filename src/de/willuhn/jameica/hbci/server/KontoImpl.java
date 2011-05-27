@@ -97,7 +97,7 @@ public class KontoImpl extends AbstractDBObject implements Konto
       HBCIProperties.checkChars(getBLZ(), HBCIProperties.HBCI_BLZ_VALIDCHARS);
       HBCIProperties.checkChars(getKontonummer(),HBCIProperties.HBCI_KTO_VALIDCHARS);
       HBCIProperties.checkLength(getKontonummer(), HBCIProperties.HBCI_KTO_MAXLENGTH_HARD);
-      HBCIProperties.checkLength(getUnterkonto(), HBCIProperties.HBCI_KTO_MAXLENGTH_HARD);
+      HBCIProperties.checkLength(getUnterkonto(), HBCIProperties.HBCI_ID_MAXLENGTH);
 
       if (getKundennummer() == null || getKundennummer().length() == 0)
         throw new ApplicationException(i18n.tr("Bitte geben Sie Ihre Kundennummer ein."));
@@ -753,6 +753,9 @@ public class KontoImpl extends AbstractDBObject implements Konto
 
 /*******************************************************************************
  * $Log$
+ * Revision 1.110  2011-05-27 11:33:23  willuhn
+ * @N BUGZILLA 1056
+ *
  * Revision 1.109  2011-01-20 17:13:21  willuhn
  * @C HBCIProperties#startOfDay und HBCIProperties#endOfDay nach Jameica in DateUtil verschoben
  *
