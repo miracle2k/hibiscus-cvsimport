@@ -147,6 +147,15 @@ public class HBCI extends AbstractPlugin
   }
   
   /**
+   * @see de.willuhn.jameica.plugin.AbstractPlugin#uninstall(boolean)
+   */
+  public void uninstall(boolean deleteUserData) throws ApplicationException
+  {
+    // TODO: Hier das Hibiscus-Wallet loeschen
+    
+  }
+
+  /**
    * Initialisiert das HBCI4Java-Subsystem.
    * @param callbackClass der zu verwendende Callback.
    * @throws ApplicationException
@@ -368,6 +377,9 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
+ * Revision 1.122  2011-06-01 21:21:31  willuhn
+ * *** empty log message ***
+ *
  * Revision 1.121  2010-11-02 11:32:09  willuhn
  * @R Alten SQL-Update-Mechanismus komplett entfernt. Wir haben das jetzt seit Hibiscus 1.8 (2008) aus Migrationsgruenden mit uns herumgetragen. Das ist jetzt lange genug her. User, die noch Hibiscus < 1.8 nutzen, muessen jetzt erst auf 1.8 updaten, damit noch die letzten sql/update_x.y-x.y.sql ausgefuehrt werden und dann erst auf die aktuelle Version
  *
