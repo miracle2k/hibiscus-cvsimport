@@ -28,6 +28,7 @@ import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.Umsatz;
+import de.willuhn.jameica.hbci.server.VerwendungszweckUtil;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.logging.Logger;
 import de.willuhn.util.ApplicationException;
@@ -140,44 +141,7 @@ public class PDFUmsatzExporter implements Exporter
           reporter.addColumn(reporter.getDetailCell(reporter.notNull(u.getGegenkontoName()) + "\n"
                                     + reporter.notNull(u.getArt()), Element.ALIGN_LEFT));
 
-          StringBuffer sb = new StringBuffer();
-          
-          sb.append(u.getZweck());
-          sb.append("\n");
-
-          String z2 = u.getZweck2();
-          if (z2 != null && z2.length() > 0)
-          {
-            sb.append(z2);
-            sb.append("\n");
-          }
-          
-          String[] ewz = u.getWeitereVerwendungszwecke();
-          if (ewz != null && ewz.length > 0)
-          {
-            for (int k=0;k<ewz.length;++k)
-            {
-              if (ewz[k] == null || ewz.length == 0)
-                continue;
-              sb.append(ewz[k]);
-              sb.append("\n");
-            }
-          }
-          else
-          {
-            // Fuer Rueckwaertskompatibilitaet geben wir bei den
-            // Umsaetzen, bei denen noch keine Erweiterten Verwendungszwecke
-            // existieren, die Kommentare noch mit aus. Dort standen
-            // ja mal die weiteren Verwendungszwecke drin
-            String comment = u.getKommentar();
-            if (comment != null && comment.length() > 0)
-            {
-              sb.append(comment);
-              sb.append("\n");
-            }
-          }
-          reporter.addColumn(reporter.getDetailCell(sb.toString(), Element.ALIGN_LEFT));
-          
+          reporter.addColumn(reporter.getDetailCell(VerwendungszweckUtil.toString(u,"\n"), Element.ALIGN_LEFT));
           reporter.addColumn(reporter.getDetailCell(u.getBetrag()));
           reporter.addColumn(reporter.getDetailCell(u.getSaldo()));
           reporter.setNextRecord();
@@ -246,7 +210,10 @@ public class PDFUmsatzExporter implements Exporter
 
 /*********************************************************************
  * $Log$
- * Revision 1.12  2010-03-05 15:24:53  willuhn
+ * Revision 1.13  2011-06-07 10:07:50  willuhn
+ * @C Verwendungszweck-Handling vereinheitlicht/vereinfacht - geht jetzt fast ueberall ueber VerwendungszweckUtil
+ *
+ * Revision 1.12  2010/03/05 15:24:53  willuhn
  * @N BUGZILLA 686
  *
  * Revision 1.11  2008/12/01 23:54:42  willuhn

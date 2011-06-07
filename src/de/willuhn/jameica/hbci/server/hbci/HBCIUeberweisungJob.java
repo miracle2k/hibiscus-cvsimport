@@ -151,7 +151,7 @@ public class HBCIUeberweisungJob extends AbstractHBCIJob
     // Bei der kennen wir auch schon den Typ.
     if (this.isBzu)
     {
-      // Bei BZU muessen die erste Zeile Verwendungszweck zwingen die BZU-Daten sein
+      // Bei BZU muessen in der ersten Zeile Verwendungszweck zwingend die BZU-Daten stehen.
       // Das ist eine 13-stellige Checksumme, die im Job unter "bzudata" gespeichert wird.
       // Die restlichen Zeilen Verwendungszweck kommen dann hinten dran ab usage_2
       setJobParam("bzudata",this.ueberweisung.getZweck());
@@ -269,6 +269,9 @@ public class HBCIUeberweisungJob extends AbstractHBCIJob
 
 /**********************************************************************
  * $Log$
+ * Revision 1.50  2011-06-07 10:07:50  willuhn
+ * @C Verwendungszweck-Handling vereinheitlicht/vereinfacht - geht jetzt fast ueberall ueber VerwendungszweckUtil
+ *
  * Revision 1.49  2011-05-12 08:08:27  willuhn
  * @N BUGZILLA 591
  *
