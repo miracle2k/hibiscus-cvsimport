@@ -156,7 +156,7 @@ public class SammelLastschriftAppointmentProvider implements AppointmentProvider
     public RGB getColor()
     {
       if (hasAlarm())
-        return Settings.getBuchungSollForeground().getRGB();
+        return Settings.getBuchungHabenForeground().getRGB();
       return Color.COMMENT.getSWTColor().getRGB();
     }
 
@@ -198,6 +198,9 @@ public class SammelLastschriftAppointmentProvider implements AppointmentProvider
 
 /**********************************************************************
  * $Log$
+ * Revision 1.5  2011-06-08 15:29:09  willuhn
+ * @B Falsche Farbe
+ *
  * Revision 1.4  2011-01-20 17:12:39  willuhn
  * @C geaendertes Appointment-Interface
  *
