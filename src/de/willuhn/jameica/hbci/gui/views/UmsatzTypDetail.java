@@ -47,7 +47,7 @@ public class UmsatzTypDetail extends AbstractView
     group.addLabelPair(i18n.tr("Farbe"), control.getColor());
     
     group.addLabelPair(i18n.tr("Übergeordnete Kategorie"), control.getParent());
-    group.addLabelPair(i18n.tr("Nummer"), control.getNummer());
+    group.addLabelPair(i18n.tr("Reihenfolge"), control.getNummer());
     group.addLabelPair(i18n.tr("Suchbegriff"), control.getPattern());
     group.addCheckbox(control.getRegex(),i18n.tr("Suchbegriff ist ein regulärer Ausdruck"));
     group.addSeparator();
@@ -71,6 +71,9 @@ public class UmsatzTypDetail extends AbstractView
 
 /**********************************************************************
  * $Log$
+ * Revision 1.9  2011-06-08 08:12:48  willuhn
+ * @C BUGZILLA 988 "Nummer" in "Reihenfolge" geaendert
+ *
  * Revision 1.8  2011-04-08 15:19:14  willuhn
  * @R Alle Zurueck-Buttons entfernt - es gibt jetzt einen globalen Zurueck-Button oben rechts
  * @C Code-Cleanup
