@@ -233,8 +233,7 @@ public class Settings
    */
   public static boolean getStorePin()
   {
-    return false;
-    // return Application.getStartupParams().getPassword() == null && getCachePin() && settings.getBoolean("storepin",false);
+    return Application.getStartupParams().getPassword() == null && getCachePin() && settings.getBoolean("storepin",false);
   }
 
   /**
@@ -440,6 +439,9 @@ public class Settings
 
 /*********************************************************************
  * $Log$
+ * Revision 1.67  2011-06-09 10:14:59  willuhn
+ * *** empty log message ***
+ *
  * Revision 1.66  2011-05-23 14:53:26  willuhn
  * @R wieder deaktiviert - wegen diesem arroganten Schnoesel hier: http://www.onlinebanking-forum.de/phpBB2/viewtopic.php?p=75512#75512
  *
