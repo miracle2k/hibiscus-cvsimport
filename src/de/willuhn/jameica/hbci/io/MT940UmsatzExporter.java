@@ -105,7 +105,14 @@ public class MT940UmsatzExporter implements Exporter
     		
     		out.write("NTRF" + notNull(u.getCustomerRef(),"NONREF") + NL);
 
-    		out.write(":86:?00" + notNull(u.getArt(),"") + "?10" + notNull(u.getPrimanota(),""));
+    		// TODO: Der GV-Code sollte mit von der Bank abgerufen werden. Dann koennen wir ihn hier auch mit exportieren.
+    		// Im Moment koennen wir hier leider nur zwischen Soll- und Haben-Buchung unterscheiden und mehr oder weniger raten.
+    		// 051 = Ueberweisungsgutschrift
+    		// 020 = Ueberweisungsauftrag
+    		// Siehe https://www.ksk-koeln.de/datenstruktur_mt940_swift.pdfx
+    		String gvcode = betrag >= 0.0d? "051" : "020";
+    		
+    		out.write(":86:" + gvcode + "?00" + notNull(u.getArt(),"") + "?10" + notNull(u.getPrimanota(),""));
     		
     		//Verwendungszweck
     		String[] lines = VerwendungszweckUtil.toArray(u);
@@ -242,6 +249,9 @@ public class MT940UmsatzExporter implements Exporter
 
 /*********************************************************************
  * $Log$
+ * Revision 1.8  2011-06-09 08:40:33  willuhn
+ * @B BUGZILLA 669 - GV-Code fehlte in Feld :86:
+ *
  * Revision 1.7  2011-06-07 10:07:50  willuhn
  * @C Verwendungszweck-Handling vereinheitlicht/vereinfacht - geht jetzt fast ueberall ueber VerwendungszweckUtil
  *
