@@ -87,7 +87,7 @@ public class Converter {
 		umsatz.setDatum(u.bdate);
 		umsatz.setValuta(u.valuta);
 		
-		// TODO: Der GV-Code aus der Umsatzzeile muss mit in Hibiscus uebernommen werden, da er beim MT940-Export wieder gebraucht wird
+		// TODO: (BUGZILLA 1065) Der GV-Code aus der Umsatzzeile muss mit in Hibiscus uebernommen werden, da er beim MT940-Export wieder gebraucht wird
 		// umsatz.setGVCode(u.gvcode);
 
 		////////////////////////////////////////////////////////////////////////////
@@ -354,6 +354,9 @@ public class Converter {
 
 /**********************************************************************
  * $Log$
+ * Revision 1.61  2011-06-09 08:50:10  willuhn
+ * *** empty log message ***
+ *
  * Revision 1.60  2011-06-09 08:35:18  willuhn
  * *** empty log message ***
  *
