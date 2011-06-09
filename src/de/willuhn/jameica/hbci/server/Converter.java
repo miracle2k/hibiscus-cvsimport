@@ -86,6 +86,9 @@ public class Converter {
     umsatz.setBetrag(betrag);
 		umsatz.setDatum(u.bdate);
 		umsatz.setValuta(u.valuta);
+		
+		// TODO: Der GV-Code aus der Umsatzzeile muss mit in Hibiscus uebernommen werden, da er beim MT940-Export wieder gebraucht wird
+		// umsatz.setGVCode(u.gvcode);
 
 		////////////////////////////////////////////////////////////////////////////
 		// Verwendungszweck
@@ -351,6 +354,9 @@ public class Converter {
 
 /**********************************************************************
  * $Log$
+ * Revision 1.60  2011-06-09 08:35:18  willuhn
+ * *** empty log message ***
+ *
  * Revision 1.59  2011-06-07 10:07:50  willuhn
  * @C Verwendungszweck-Handling vereinheitlicht/vereinfacht - geht jetzt fast ueberall ueber VerwendungszweckUtil
  *
