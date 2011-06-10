@@ -150,13 +150,16 @@ public class FirstStart extends AbstractBox
    */
   public int getHeight()
   {
-    return 160;
+    return 180;
   }
 }
 
 
 /*********************************************************************
  * $Log$
+ * Revision 1.13  2011-06-10 10:32:43  willuhn
+ * @C In Ubuntu ist die Default-Schrift so gross, dass der Content nicht ganz rein passte
+ *
  * Revision 1.12  2011-06-09 10:07:45  willuhn
  * @C Rahmen und Hintergrundfarbe nur unter Windows/OSX anzeigen
  *
