@@ -409,6 +409,10 @@ public class Controller extends AbstractControl
       Application.getMessagingFactory().sendMessage(new StatusBarMessage(ae.getMessage(),StatusBarMessage.TYPE_ERROR));
       GUI.getStatusBar().setErrorText(i18n.tr(ae.getMessage()));
     }
+    catch (OperationCanceledException oce)
+    {
+      Logger.info("operation cancelled");
+    }
     catch (Exception e)
     {
       Logger.error("error while deleting config",e);
@@ -629,6 +633,10 @@ public class Controller extends AbstractControl
 
 /*******************************************************************************
  * $Log$
+ * Revision 1.14  2011-06-17 08:49:19  willuhn
+ * @N Contextmenu im Tree mit den Bank-Zugaengen
+ * @N Loeschen von Bank-Zugaengen direkt im Tree
+ *
  * Revision 1.13  2011-05-03 16:44:08  willuhn
  * @C Auswahl des Presets ueber Combo-Box statt DialogInput
  *
