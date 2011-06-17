@@ -33,7 +33,8 @@ public class NetbankUmsatzRewriter implements UmsatzRewriter
     List<String> list = new ArrayList<String>();
     list.add("20090500"); // Netbank
     list.add("60090800"); // SpardaBank BW
-    list.add("33060592"); // SpardaBank West - siehe https://www.willuhn.de/blog/index.php?url=archives/519-Neues-in-Hibiscus.html&serendipity[csuccess]=true#c1146 
+    list.add("33060592"); // SpardaBank West - siehe https://www.willuhn.de/blog/index.php?url=archives/519-Neues-in-Hibiscus.html&serendipity[csuccess]=true#c1146
+    list.add("12096597"); // SpardaBank Berlin - https://www.willuhn.de/bugzilla/show_bug.cgi?id=887#c14
     return list;
   }
 
@@ -120,6 +121,9 @@ public class NetbankUmsatzRewriter implements UmsatzRewriter
 
 /**********************************************************************
  * $Log$
+ * Revision 1.7  2011-06-17 15:22:50  willuhn
+ * @N added 12096597
+ *
  * Revision 1.6  2011-06-07 10:07:51  willuhn
  * @C Verwendungszweck-Handling vereinheitlicht/vereinfacht - geht jetzt fast ueberall ueber VerwendungszweckUtil
  *
