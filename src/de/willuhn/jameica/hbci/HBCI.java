@@ -136,8 +136,18 @@ public class HBCI extends AbstractPlugin
    */
   public void uninstall(boolean deleteUserData) throws ApplicationException
   {
-    // TODO: Hier das Hibiscus-Wallet loeschen
+    if (!deleteUserData)
+      return;
     
+    try
+    {
+      Logger.info("deleting hibiscus wallet");
+      Settings.getWallet().deleteAll(null);
+    }
+    catch (Exception e)
+    {
+      Logger.error("unable to delete wallet",e);
+    }
   }
 
   /**
@@ -362,6 +372,9 @@ public class HBCI extends AbstractPlugin
 
 /**********************************************************************
  * $Log$
+ * Revision 1.124  2011-06-19 12:03:19  willuhn
+ * @N Wallet loeschen, wenn bei der Deinstallation die Benutzerdaten geloescht werden sollen
+ *
  * Revision 1.123  2011-06-17 16:06:58  willuhn
  * @N Die MessageConsumer fuer die benamten Queues werden jetzt in plugin.xml deklariert
  *
