@@ -48,7 +48,7 @@ public class update0033 implements Update
     statements.put(DBSupportMySqlImpl.class.getName(),"ALTER TABLE konto CHANGE unterkonto unterkonto varchar(30) NULL;\n");
 
     // Update fuer PostGreSQL
-    statements.put(DBSupportPostgreSQLImpl.class.getName(),"ALTER TABLE konto ALTER COLUMN unterkonto varchar(30) NULL;\n");
+    statements.put(DBSupportPostgreSQLImpl.class.getName(),"ALTER TABLE konto ALTER COLUMN unterkonto TYPE varchar(30) NULL;\n");
   }
 
   /**
@@ -95,6 +95,9 @@ public class update0033 implements Update
 
 /*********************************************************************
  * $Log$
+ * Revision 1.4  2011-06-22 16:26:38  willuhn
+ * @B Postgres-Fixes
+ *
  * Revision 1.3  2011-06-22 13:07:50  willuhn
  * @R UNDO, die Tabelle existierte tatsaechlich nicht
  *

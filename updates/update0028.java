@@ -47,7 +47,7 @@ public class update0028 implements Update
     statements.put(DBSupportMySqlImpl.class.getName(),"ALTER TABLE konto CHANGE passport_class passport_class TEXT NULL;\n");
 
     // Update fuer PostGreSQL
-    statements.put(DBSupportPostgreSQLImpl.class.getName(),"ALTER TABLE konto ALTER COLUMN passport_class varchar(1000) NULL;\n");
+    statements.put(DBSupportPostgreSQLImpl.class.getName(),"ALTER TABLE konto ALTER COLUMN passport_class TYPE varchar(1000) NULL;\n");
   }
 
   /**
@@ -95,6 +95,9 @@ public class update0028 implements Update
 
 /*********************************************************************
  * $Log$
+ * Revision 1.3  2011-06-22 16:26:38  willuhn
+ * @B Postgres-Fixes
+ *
  * Revision 1.2  2010-11-02 12:02:20  willuhn
  * @R Support fuer McKoi entfernt. User, die noch dieses alte DB-Format nutzen, sollen erst auf Jameica 1.6/Hibiscus 1.8 (oder maximal Jameica 1.9/Hibiscus 1.11) wechseln, dort die Migration auf H2 durchfuehren und dann erst auf Hibiscus 1.12 updaten
  *
