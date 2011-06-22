@@ -48,7 +48,7 @@ public class update0033 implements Update
     statements.put(DBSupportMySqlImpl.class.getName(),"ALTER TABLE konto CHANGE unterkonto unterkonto varchar(30) NULL;\n");
 
     // Update fuer PostGreSQL
-    statements.put(DBSupportPostgreSQLImpl.class.getName(),"ALTER TABLE konto ALTER COLUMN unterkonto varchar(30) NULL;\n");
+    statements.put(DBSupportPostgreSQLImpl.class.getName(),"ALTER TABLE \"konto\" ALTER COLUMN unterkonto varchar(30) NULL;\n");
   }
 
   /**
@@ -95,6 +95,9 @@ public class update0033 implements Update
 
 /*********************************************************************
  * $Log$
+ * Revision 1.2  2011-06-22 12:31:17  willuhn
+ * @B da kommt ein "org.postgresql.util.PSQLException: FEHLER: Relation ueberweisung existiert nicht" - eventuell fehlten da Quotes.
+ *
  * Revision 1.1  2011-05-27 11:33:23  willuhn
  * @N BUGZILLA 1056
  *
