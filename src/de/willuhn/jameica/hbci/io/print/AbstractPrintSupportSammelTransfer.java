@@ -89,7 +89,7 @@ public abstract class AbstractPrintSupportSammelTransfer extends AbstractPrintSu
 
         // Termin
         Date termin = a.getTermin();
-        table.add(new TextPrint(i18n.tr("Termin"),fontNormal));
+        table.add(new TextPrint(i18n.tr("Fällig am"),fontNormal));
         table.add(new TextPrint(termin == null ? "-" : HBCI.DATEFORMAT.format(termin),fontNormal));
 
         // Summe
@@ -167,6 +167,9 @@ public abstract class AbstractPrintSupportSammelTransfer extends AbstractPrintSu
 
 /**********************************************************************
  * $Log$
+ * Revision 1.5  2011-06-24 07:55:41  willuhn
+ * @C Bei Hibiscus-verwalteten Terminen besser "Fällig am" verwenden - ist nicht so missverstaendlich - der User denkt sonst ggf. es sei ein bankseitig terminierter Auftrag
+ *
  * Revision 1.4  2011-05-11 09:12:06  willuhn
  * @C Merge-Funktionen fuer den Verwendungszweck ueberarbeitet
  *

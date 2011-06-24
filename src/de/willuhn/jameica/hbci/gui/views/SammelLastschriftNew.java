@@ -59,7 +59,7 @@ public class SammelLastschriftNew extends AbstractView
 		group.addHeadline(i18n.tr("Eigenschaften"));
     group.addLabelPair(i18n.tr("Gutschriftskonto"),control.getKontoAuswahl());
     group.addLabelPair(i18n.tr("Bezeichnung"),control.getName());
-    group.addLabelPair(i18n.tr("Termin"),control.getTermin());
+    group.addInput(control.getTermin());
 		
 		group.addSeparator();
     group.addLabelPair(i18n.tr("Summe der Buchungen"),control.getSumme());
@@ -120,6 +120,9 @@ public class SammelLastschriftNew extends AbstractView
 
 /**********************************************************************
  * $Log$
+ * Revision 1.23  2011-06-24 07:55:41  willuhn
+ * @C Bei Hibiscus-verwalteten Terminen besser "Fällig am" verwenden - ist nicht so missverstaendlich - der User denkt sonst ggf. es sei ein bankseitig terminierter Auftrag
+ *
  * Revision 1.22  2011-04-11 16:48:33  willuhn
  * @N Drucken von Sammel- und Dauerauftraegen
  *

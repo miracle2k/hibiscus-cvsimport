@@ -98,7 +98,7 @@ public class OffeneUeberweisungen extends AbstractBox implements Box
     offeneUeberweisungen.addColumn(i18n.tr("Konto"),"konto_id");
     offeneUeberweisungen.addColumn(i18n.tr("Empfängers"),"empfaenger_name");
     offeneUeberweisungen.addColumn(i18n.tr("Betrag"),"betrag", new CurrencyFormatter("",HBCI.DECIMALFORMAT));
-    offeneUeberweisungen.addColumn(i18n.tr("Termin"),"termin", new DateFormatter(HBCI.LONGDATEFORMAT));
+    offeneUeberweisungen.addColumn(i18n.tr("Fällig am"),"termin", new DateFormatter(HBCI.LONGDATEFORMAT));
 
     offeneUeberweisungen.setContextMenu(new UeberweisungList());
     offeneUeberweisungen.setSummary(false);
@@ -119,6 +119,9 @@ public class OffeneUeberweisungen extends AbstractBox implements Box
 
 /*********************************************************************
  * $Log$
+ * Revision 1.12  2011-06-24 07:55:41  willuhn
+ * @C Bei Hibiscus-verwalteten Terminen besser "Fällig am" verwenden - ist nicht so missverstaendlich - der User denkt sonst ggf. es sei ein bankseitig terminierter Auftrag
+ *
  * Revision 1.11  2010-08-12 17:12:32  willuhn
  * @N Saldo-Chart komplett ueberarbeitet (Daten wurden vorher mehrmals geladen, Summen-Funktion, Anzeige mehrerer Konten, Durchschnitt ueber mehrere Konten, Bugfixing, echte "Homogenisierung" der Salden via SaldoFinder)
  *

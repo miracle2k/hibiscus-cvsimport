@@ -60,7 +60,7 @@ public class AuslandsUeberweisungNew extends AbstractView
     details.addHeadline(i18n.tr("Details"));
 		details.addLabelPair(i18n.tr("Verwendungszweck"),					control.getZweck());
     details.addLabelPair(i18n.tr("Betrag"),                   control.getBetrag());
-    details.addLabelPair(i18n.tr("Termin"),                   control.getTermin());
+    details.addInput(control.getTermin());
 
 		ButtonArea buttonArea = new ButtonArea();
 		buttonArea.addButton(i18n.tr("Löschen"),new DBObjectDelete(),transfer,false,"user-trash-full.png");
@@ -90,6 +90,9 @@ public class AuslandsUeberweisungNew extends AbstractView
 
 /**********************************************************************
  * $Log$
+ * Revision 1.8  2011-06-24 07:55:41  willuhn
+ * @C Bei Hibiscus-verwalteten Terminen besser "Fällig am" verwenden - ist nicht so missverstaendlich - der User denkt sonst ggf. es sei ein bankseitig terminierter Auftrag
+ *
  * Revision 1.7  2011-04-11 14:36:37  willuhn
  * @N Druck-Support fuer Lastschriften und SEPA-Ueberweisungen
  *
