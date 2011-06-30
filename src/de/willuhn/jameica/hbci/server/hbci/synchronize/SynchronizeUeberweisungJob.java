@@ -26,7 +26,7 @@ import de.willuhn.util.ApplicationException;
 /**
  * Ein Synchronize-Job fuer das Ausfuehren einer faelligen Ueberweisung.
  */
-public class SynchronizeUeberweisungJob extends AbstractSynchronizeJob
+public class SynchronizeUeberweisungJob extends AbstractSynchronizeJob<Ueberweisung>
 {
 
   /**
@@ -43,7 +43,7 @@ public class SynchronizeUeberweisungJob extends AbstractSynchronizeJob
    */
   public AbstractHBCIJob[] createHBCIJobs() throws RemoteException, ApplicationException
   {
-    return new AbstractHBCIJob[]{new HBCIUeberweisungJob((Ueberweisung)getContext())};
+    return new AbstractHBCIJob[]{new HBCIUeberweisungJob(getContext())};
   }
 
   /**
@@ -51,7 +51,7 @@ public class SynchronizeUeberweisungJob extends AbstractSynchronizeJob
    */
   public String getName() throws RemoteException
   {
-    Ueberweisung ueb = (Ueberweisung) getContext();
+    Ueberweisung ueb = getContext();
     Konto k = ueb.getKonto();
     if (ueb.isTerminUeberweisung())
     {
@@ -95,7 +95,10 @@ public class SynchronizeUeberweisungJob extends AbstractSynchronizeJob
 
 /*********************************************************************
  * $Log$
- * Revision 1.6  2008-04-13 04:20:41  willuhn
+ * Revision 1.7  2011-06-30 15:23:22  willuhn
+ * @N Synchronize-Jobs getypt
+ *
+ * Revision 1.6  2008/04/13 04:20:41  willuhn
  * @N Bug 583
  *
  * Revision 1.5  2007/12/03 13:14:09  willuhn

@@ -22,8 +22,9 @@ import de.willuhn.util.ApplicationException;
 /**
  * Interface fuer einen einzelnen Synchronisierungs-Job.
  * @author willuhn
+ * @param <T> Typ dex Jobs.
  */
-public interface SynchronizeJob extends GenericObject
+public interface SynchronizeJob<T extends GenericObject> extends GenericObject
 {
   /**
    * Erzeugt einen oder mehrere HBCI-Jobs basierend auf dem SynchronizeJob.
@@ -56,12 +57,22 @@ public interface SynchronizeJob extends GenericObject
    * @throws RemoteException
    */
   public boolean isRecurring() throws RemoteException;
+  
+  /**
+   * Liefert das Context-Objekt des Jobs.
+   * @return das Context-Objekt des Jobs.
+   * @throws RemoteException
+   */
+  public T getContext() throws RemoteException;
 }
 
 
 /*********************************************************************
  * $Log$
- * Revision 1.4  2008-04-13 04:20:41  willuhn
+ * Revision 1.5  2011-06-30 15:23:22  willuhn
+ * @N Synchronize-Jobs getypt
+ *
+ * Revision 1.4  2008/04/13 04:20:41  willuhn
  * @N Bug 583
  *
  * Revision 1.3  2006/10/09 21:43:26  willuhn

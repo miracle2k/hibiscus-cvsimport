@@ -24,7 +24,7 @@ import de.willuhn.util.ApplicationException;
 /**
  * Ein Synchronize-Job fuer das Abrufen der Dauerauftraege eines Kontos.
  */
-public class SynchronizeDauerauftragListJob extends AbstractSynchronizeJob
+public class SynchronizeDauerauftragListJob extends AbstractSynchronizeJob<Konto>
 {
 
   /**
@@ -41,7 +41,7 @@ public class SynchronizeDauerauftragListJob extends AbstractSynchronizeJob
    */
   public AbstractHBCIJob[] createHBCIJobs() throws RemoteException, ApplicationException
   {
-    return new AbstractHBCIJob[]{new HBCIDauerauftragListJob((Konto)getContext())};
+    return new AbstractHBCIJob[]{new HBCIDauerauftragListJob(getContext())};
   }
 
   /**
@@ -49,7 +49,7 @@ public class SynchronizeDauerauftragListJob extends AbstractSynchronizeJob
    */
   public String getName() throws RemoteException
   {
-    Konto k = (Konto) getContext();
+    Konto k = getContext();
     return i18n.tr("{0}: Daueraufträge abrufen",k.getLongName());
   }
 
@@ -73,7 +73,10 @@ public class SynchronizeDauerauftragListJob extends AbstractSynchronizeJob
 
 /*********************************************************************
  * $Log$
- * Revision 1.6  2008-04-13 04:20:41  willuhn
+ * Revision 1.7  2011-06-30 15:23:22  willuhn
+ * @N Synchronize-Jobs getypt
+ *
+ * Revision 1.6  2008/04/13 04:20:41  willuhn
  * @N Bug 583
  *
  * Revision 1.5  2007/06/15 11:20:32  willuhn

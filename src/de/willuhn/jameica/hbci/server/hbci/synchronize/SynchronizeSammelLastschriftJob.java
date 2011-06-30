@@ -26,7 +26,7 @@ import de.willuhn.util.ApplicationException;
 /**
  * Ein Synchronize-Job fuer das Ausfuehren einer faelligen Sammel-Lastschrift.
  */
-public class SynchronizeSammelLastschriftJob extends AbstractSynchronizeJob
+public class SynchronizeSammelLastschriftJob extends AbstractSynchronizeJob<SammelLastschrift>
 {
 
   /**
@@ -43,7 +43,7 @@ public class SynchronizeSammelLastschriftJob extends AbstractSynchronizeJob
    */
   public AbstractHBCIJob[] createHBCIJobs() throws RemoteException, ApplicationException
   {
-    return new AbstractHBCIJob[]{new HBCISammelLastschriftJob((SammelLastschrift)getContext())};
+    return new AbstractHBCIJob[]{new HBCISammelLastschriftJob(getContext())};
   }
 
   /**
@@ -51,7 +51,7 @@ public class SynchronizeSammelLastschriftJob extends AbstractSynchronizeJob
    */
   public String getName() throws RemoteException
   {
-    SammelLastschrift last = (SammelLastschrift) getContext();
+    SammelLastschrift last = getContext();
     Konto k = last.getKonto();
     String[] params = new String[] {
         k.getLongName(),
@@ -82,7 +82,10 @@ public class SynchronizeSammelLastschriftJob extends AbstractSynchronizeJob
 
 /*********************************************************************
  * $Log$
- * Revision 1.5  2008-04-13 04:20:41  willuhn
+ * Revision 1.6  2011-06-30 15:23:22  willuhn
+ * @N Synchronize-Jobs getypt
+ *
+ * Revision 1.5  2008/04/13 04:20:41  willuhn
  * @N Bug 583
  *
  * Revision 1.4  2007/06/15 11:20:32  willuhn
