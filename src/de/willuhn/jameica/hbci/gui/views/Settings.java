@@ -73,7 +73,6 @@ public class Settings extends AbstractView
     TabGroup colors = new TabGroup(getTabFolder(),i18n.tr("Farben"));
     colors.addLabelPair(i18n.tr("Textfarbe von Sollbuchungen"),control.getBuchungSollForeground());
     colors.addLabelPair(i18n.tr("Textfarbe von Habenbuchungen"),control.getBuchungHabenForeground());
-		colors.addLabelPair(i18n.tr("Textfarbe für fällige Aufträge"),control.getUeberfaelligForeground());
 
 		// Passports
     TabGroup passports = new TabGroup(getTabFolder(),i18n.tr("HBCI-Sicherheitsmedien"));
@@ -148,6 +147,9 @@ public class Settings extends AbstractView
 
 /**********************************************************************
  * $Log$
+ * Revision 1.57  2011-06-30 16:29:42  willuhn
+ * @N Unterstuetzung fuer neues UnreadCount-Feature
+ *
  * Revision 1.56  2011-06-06 12:24:21  willuhn
  * *** empty log message ***
  *

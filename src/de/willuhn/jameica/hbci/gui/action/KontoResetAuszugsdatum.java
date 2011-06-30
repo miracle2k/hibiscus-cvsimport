@@ -27,6 +27,7 @@ import de.willuhn.util.I18N;
  */
 public class KontoResetAuszugsdatum implements Action
 {
+  private final static I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class).getResources().getI18N();
 
   /**
    * Erwartet ein Objekt vom Typ <code>Konto</code> im Context.
@@ -35,8 +36,6 @@ public class KontoResetAuszugsdatum implements Action
    */
   public void handleAction(Object context) throws ApplicationException
   {
-    I18N i18n = Application.getPluginLoader().getPlugin(HBCI.class)
-        .getResources().getI18N();
 
     if (context == null || !(context instanceof Konto))
       throw new ApplicationException(i18n.tr("Bitte wählen Sie ein Konto aus"));
@@ -76,7 +75,10 @@ public class KontoResetAuszugsdatum implements Action
 
 /*******************************************************************************
  * $Log$
- * Revision 1.4  2010-04-22 16:10:43  willuhn
+ * Revision 1.5  2011-06-30 16:29:41  willuhn
+ * @N Unterstuetzung fuer neues UnreadCount-Feature
+ *
+ * Revision 1.4  2010/04/22 16:10:43  willuhn
  * @C Saldo kann bei Offline-Konten zwar nicht manuell bearbeitet werden, dafuer wird er aber beim Zuruecksetzen des Kontos (heisst jetzt "Saldo und Datum zuruecksetzen" statt "Kontoauszugsdatum zuruecksetzen") jetzt ebenfalls geloescht
  *
  * Revision 1.3  2008/12/15 10:52:16  willuhn

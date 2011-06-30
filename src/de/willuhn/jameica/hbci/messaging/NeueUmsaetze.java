@@ -61,7 +61,7 @@ public class NeueUmsaetze implements MessageConsumer
     
     GenericObject o = ((ImportMessage)message).getObject();
     
-    if (o == null || o.getID() == null || !(o instanceof Umsatz))
+    if (o == null || !(o instanceof Umsatz) || o.getID() == null)
       return; // interessiert uns nicht
     
     
@@ -121,6 +121,9 @@ public class NeueUmsaetze implements MessageConsumer
 
 /*********************************************************************
  * $Log$
+ * Revision 1.8  2011-06-30 16:29:42  willuhn
+ * @N Unterstuetzung fuer neues UnreadCount-Feature
+ *
  * Revision 1.7  2011-01-05 11:20:27  willuhn
  * *** empty log message ***
  *

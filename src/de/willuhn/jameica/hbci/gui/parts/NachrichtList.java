@@ -26,6 +26,7 @@ import de.willuhn.jameica.gui.formatter.DateFormatter;
 import de.willuhn.jameica.gui.formatter.Formatter;
 import de.willuhn.jameica.gui.formatter.TableFormatter;
 import de.willuhn.jameica.gui.parts.TablePart;
+import de.willuhn.jameica.gui.util.Font;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.Settings;
 import de.willuhn.jameica.hbci.rmi.HBCIDBService;
@@ -70,11 +71,7 @@ public class NachrichtList extends TablePart implements Part
         Nachricht n = (Nachricht) item.getData();
         try
         {
-          if (!n.isGelesen())
-          {
-            // Ungelesene Nachrichten farbig
-            item.setForeground(Settings.getUeberfaelligForeground());
-          }
+          item.setFont(n.isGelesen() ? Font.DEFAULT.getSWTFont() : Font.BOLD.getSWTFont());
         }
         catch (RemoteException e)
         {
@@ -131,7 +128,10 @@ public class NachrichtList extends TablePart implements Part
 
 /**********************************************************************
  * $Log$
- * Revision 1.6  2008-12-17 22:53:39  willuhn
+ * Revision 1.7  2011-06-30 16:29:41  willuhn
+ * @N Unterstuetzung fuer neues UnreadCount-Feature
+ *
+ * Revision 1.6  2008/12/17 22:53:39  willuhn
  * @R t o d o  tag entfernt
  *
  * Revision 1.5  2007/04/19 18:12:21  willuhn

@@ -29,6 +29,7 @@ import de.willuhn.jameica.gui.formatter.DateFormatter;
 import de.willuhn.jameica.gui.formatter.TableFormatter;
 import de.willuhn.jameica.gui.util.Color;
 import de.willuhn.jameica.gui.util.DelayedListener;
+import de.willuhn.jameica.gui.util.Font;
 import de.willuhn.jameica.hbci.HBCI;
 import de.willuhn.jameica.hbci.HBCIProperties;
 import de.willuhn.jameica.hbci.Settings;
@@ -67,10 +68,8 @@ public abstract class AbstractTransferList extends AbstractFromToList
           return;
 
         try {
-          if (l.getTermin().before(new Date()) && !l.ausgefuehrt())
-          {
-            item.setForeground(Settings.getUeberfaelligForeground());
-          }
+          boolean faellig = (l.getTermin().before(new Date()) && !l.ausgefuehrt());
+          item.setFont(faellig ? Font.BOLD.getSWTFont() : Font.DEFAULT.getSWTFont());
           if (l.ausgefuehrt())
             item.setForeground(Color.COMMENT.getSWTColor());
         }
@@ -204,6 +203,9 @@ public abstract class AbstractTransferList extends AbstractFromToList
 
 /**********************************************************************
  * $Log$
+ * Revision 1.28  2011-06-30 16:29:41  willuhn
+ * @N Unterstuetzung fuer neues UnreadCount-Feature
+ *
  * Revision 1.27  2011-04-29 15:33:28  willuhn
  * @N Neue Spalte "ausgefuehrt_am", in der das tatsaechliche Ausfuehrungsdatum von Auftraegen vermerkt wird
  *
