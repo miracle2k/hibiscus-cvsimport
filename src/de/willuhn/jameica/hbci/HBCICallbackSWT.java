@@ -238,6 +238,8 @@ public class HBCICallbackSWT extends AbstractHibiscusHBCICallback
 	        }
 					break;
 
+				// Die folgenden beiden Callbacks duerfen nicht in den RDH-Passport verschoben
+			  // werden, weil sie auftreten koennen, wenn kein currentPassport hier hinterlegt ist
 				case HAVE_INST_MSG:
           // BUGZILLA 68 http://www.willuhn.de/bugzilla/show_bug.cgi?id=68
           try
@@ -492,6 +494,9 @@ public class HBCICallbackSWT extends AbstractHibiscusHBCICallback
 
 /**********************************************************************
  * $Log$
+ * Revision 1.75  2011-07-06 14:45:13  willuhn
+ * *** empty log message ***
+ *
  * Revision 1.74  2011-07-06 14:36:50  willuhn
  * *** empty log message ***
  *
