@@ -355,7 +355,6 @@ public class HBCICallbackSWT extends AbstractHibiscusHBCICallback
    */
   public void setCurrentHandle(PassportHandle handle)
   {
-    Logger.debug("current handle: " + (handle == null ? "<null>" : handle.getClass()));
     this.currentHandle = handle;
   }
   
@@ -493,6 +492,9 @@ public class HBCICallbackSWT extends AbstractHibiscusHBCICallback
 
 /**********************************************************************
  * $Log$
+ * Revision 1.74  2011-07-06 14:36:50  willuhn
+ * *** empty log message ***
+ *
  * Revision 1.73  2011-07-06 14:33:35  willuhn
  * @B Callbacks 12 und 13 duerfen nicht im Passport behandelt werden, weil das auch in Situationen passieren kann, wo der Passport gerade nicht im Callback registriert ist
  *
