@@ -73,6 +73,10 @@ public abstract class AbstractSammelTransferBuchungImpl extends AbstractDBObject
       if (getGegenkontoName() == null || getGegenkontoName().length() == 0)
         throw new ApplicationException(i18n.tr("Bitte geben Sie den Namen des Kontoinhabers des Gegenkontos ein"));
 
+      int blzLen = getGegenkontoBLZ().length();
+      if (blzLen != HBCIProperties.HBCI_BLZ_LENGTH)
+        throw new ApplicationException(i18n.tr("Ungültige BLZ \"{0}\". Muss {1} Stellen lang sein.", new String[]{getGegenkontoBLZ(),""+HBCIProperties.HBCI_BLZ_LENGTH}));
+
       HBCIProperties.checkLength(getGegenkontoName(), HBCIProperties.HBCI_TRANSFER_NAME_MAXLENGTH);
 
       // BUGZILLA 163
@@ -269,7 +273,10 @@ public abstract class AbstractSammelTransferBuchungImpl extends AbstractDBObject
 
 /*****************************************************************************
  * $Log$
- * Revision 1.19  2010-03-04 09:39:40  willuhn
+ * Revision 1.20  2011-07-11 08:14:13  willuhn
+ * @B Laengen-Pruefung der BLZ fehlte
+ *
+ * Revision 1.19  2010/03/04 09:39:40  willuhn
  * @B BUGZILLA 829
  *
  * Revision 1.18  2008/12/14 23:18:35  willuhn
