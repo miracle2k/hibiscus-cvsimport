@@ -155,11 +155,7 @@ public class SettingsControl extends AbstractControl
       public void handleEvent(Event event)
       {
         boolean b1 = (Boolean) getCachePin().getValue();
-        boolean b2 = Application.getStartupParams().getPassword() == null;
-        getStorePin().setEnabled(b1 && b2);
-        
-        if (!b2)
-          getStorePin().setComment(i18n.tr("Deaktiviert. Master-Passwort nicht manuell eingegeben"));
+        getStorePin().setEnabled(b1);
       }
     };
     this.cachePin = new CheckboxInput(Settings.getCachePin());

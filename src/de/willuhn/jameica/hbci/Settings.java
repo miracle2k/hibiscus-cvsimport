@@ -209,7 +209,7 @@ public class Settings
    */
   public static boolean getStorePin()
   {
-    return Application.getStartupParams().getPassword() == null && getCachePin() && settings.getBoolean("storepin",false);
+    return getCachePin() && settings.getBoolean("storepin",false);
   }
 
   /**
